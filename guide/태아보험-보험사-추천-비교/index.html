@@ -123,9 +123,16 @@
     .toc { background:var(--blue-l);border-radius:12px;padding:18px 20px;margin-bottom:30px;border-left:4px solid var(--blue); }
     .toc-label { font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.08em;margin-bottom:10px; }
     .toc ol { padding-left:18px; }
-    .toc li { margin-bottom:5px; }
-    .toc a { font-size:14px;color:var(--blue-d);text-decoration:none;font-weight:500; }
+    .toc li { margin-bottom:8px; line-height:1.6; }
+    .toc a { font-size:14px;color:var(--blue-d);text-decoration:none;font-weight:500;
+             word-break:keep-all;overflow-wrap:break-word;display:block; }
     .toc a:hover { text-decoration:underline; }
+    @media(max-width:480px){
+      .toc { padding:14px 14px 14px 16px; }
+      .toc ol { padding-left:16px; }
+      .toc a { font-size:13px; }
+      .toc li { margin-bottom:10px; }
+    }
 
     /* SECTION */
     .sec { margin-bottom:2.8rem;scroll-margin-top:5rem; }
@@ -260,7 +267,7 @@
     <h1>태아보험 보험사 추천 비교<br>삼성·현대해상·DB·메리츠<br>어디가 진짜 좋을까?</h1>
     <p class="hero-sub">GA 전문가 200만 상담 데이터 기반으로 4대 보험사를 항목별로 비교했어요. 생명보험 vs 손해보험 차이, 보험사별 장단점, 내 상황에 맞는 선택법까지 한 번에 정리합니다.</p>
     <div class="hero-meta">베이비빌리 · 업데이트 2026.05.05</div>
-    <img src="./img-summary.jpg" alt="태아보험 한 장 요약 — 베이비빌리" class="hero-img" loading="eager">
+    <img src="./img-summary.jpg" alt="태아보험 보험사 추천 비교 2026 — 삼성생명·현대해상·DB손보·메리츠 핵심 정리 인포그래픽 | 베이비빌리" class="hero-img" loading="eager" width="720" height="480">
     <a href="https://babybilly.co/insurance/baby/talk/v1" class="hero-cta">
       🍼 내 상황에 맞는 보험사 무료 비교 상담
       <span>선물 + 전문가 1:1 상담 무료</span>
@@ -511,7 +518,7 @@
     <div class="sec-label">Step 06</div>
     <h2>30세 만기 vs 100세 만기<br>뭘 선택해야 할까?</h2>
 
-    <img src="./img-maturity.png" alt="태아보험 30세 vs 100세 만기 비교표" loading="lazy">
+    <img src="./img-maturity.png" alt="태아보험 30세 만기 vs 100세 만기 보험료·보장기간 완전 비교 — 어느 쪽이 유리할까 | 베이비빌리" loading="lazy" width="720" height="480">
 
     <div class="tbl-wrap">
       <table class="tbl">
@@ -553,7 +560,7 @@
 
   <!-- FULL CTA -->
   <div class="cta-full">
-    <img src="./img-calc.jpg" alt="베이비빌리 태아보험 보험료 계산" loading="lazy">
+    <img src="./img-calc.jpg" alt="태아보험 보험료 계산 — 삼성·현대해상·DB·메리츠 설계서 무료 비교 | 베이비빌리 GA 상담" loading="lazy" width="720" height="480">
     <h2>우리 아기 보험료,<br>지금 바로 계산해 볼까요?</h2>
     <p>200만 상담 데이터 기반으로<br>내 상황에 맞는 최적 보험료를 찾아드려요.</p>
     <a href="https://babybilly.co/insurance/baby/talk/v1" class="cta-btn">🍼 무료 보험료 계산 상담</a>

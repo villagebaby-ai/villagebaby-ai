@@ -620,7 +620,7 @@
 
   /* 모바일 TOC 드로어 */
   .mobile-toc-btn {
-    display: none;
+    display: none; /* 데스크톱에서 숨김, 모바일 미디어쿼리에서 flex로 표시 */
     width: 100%;
     background: var(--blue-light);
     border: 1px solid var(--blue-mid);
@@ -632,7 +632,6 @@
     cursor: pointer;
     text-align: left;
     margin-bottom: 1.5rem;
-    display: none;
     align-items: center;
     justify-content: space-between;
   }
@@ -687,8 +686,14 @@
     /* page layout */
     .page { padding-top: 1.5rem; padding-bottom: 3rem; grid-template-columns: 1fr; }
 
+    /* 사이드바 숨김 — sticky 겹침 방지 */
+    .sidebar { display: none; }
+
     /* mobile toc button 표시 */
     .mobile-toc-btn { display: flex; }
+
+    /* 모바일 TOC 링크 줄바꿈 개선 */
+    .mobile-toc-panel a { word-break: keep-all; overflow-wrap: break-word; line-height: 1.55; }
 
     /* article header */
     .article-header h2 { font-size: 18px; }

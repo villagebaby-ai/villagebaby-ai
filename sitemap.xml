@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://villagebaby.kr/</loc>
     <lastmod>2026-05-05</lastmod>
@@ -8,26 +9,58 @@
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/태아보험-가입시기-필수특약/</loc>
-    <lastmod>2025-05-05</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아보험-가입시기-필수특약/img-summary.jpg</image:loc>
+      <image:title>태아보험 가입 시기와 필수 특약 총정리 인포그래픽 | 베이비빌리</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/태아보험-보험사-추천-비교/</loc>
-    <lastmod>2025-05-05</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아보험-보험사-추천-비교/img-summary.jpg</image:loc>
+      <image:title>태아보험 보험사 추천 비교 2026 — 삼성생명·현대해상·DB손보·메리츠 | 베이비빌리</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아보험-보험사-추천-비교/img-maturity.png</image:loc>
+      <image:title>태아보험 30세 만기 vs 100세 만기 비교 | 베이비빌리</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/</loc>
-    <lastmod>2025-05-05</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/img-summary.jpg</image:loc>
+      <image:title>태아보험 보험료 총정리 2026 — 만기·납입방식별 실제 금액 비교 | 베이비빌리</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/img-maturity.png</image:loc>
+      <image:title>태아보험 30세 만기 vs 100세 만기 보험료 비교 | 베이비빌리</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/img-calc.jpg</image:loc>
+      <image:title>태아보험 보험료 계산 및 보험사 무료 비교 상담 | 베이비빌리</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/태아실손보험-일반실손-차이/</loc>
-    <lastmod>2025-05-05</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아실손보험-일반실손-차이/img-summary.jpg</image:loc>
+      <image:title>태아실손보험 vs 일반실손 핵심 차이 2026 — 선천이상 담보 비교 | 베이비빌리</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/태아실손보험-일반실손-차이/img-vs.png</image:loc>
+      <image:title>태아보험 실손 vs 일반보험 실손 담보 범위 비교 | 베이비빌리</image:title>
+    </image:image>
   </url>
 </urlset>
