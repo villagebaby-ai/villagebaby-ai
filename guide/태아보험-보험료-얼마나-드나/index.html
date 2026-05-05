@@ -76,8 +76,8 @@
           },
           {
             "@type": "Question",
-            "name": "GA를 통해 가입하면 보험료가 더 비싼가요?",
-            "acceptedAnswer": {"@type": "Answer", "text": "아니에요. GA(법인보험대리점)와 보험사 직접 가입의 보험료는 금감원 규정상 동일해요. 오히려 GA를 통하면 여러 보험사를 비교하고 불필요한 특약을 제거해서 실질적으로 더 저렴한 구성이 가능해요."}
+            "name": "전문가를 통해 가입하면 보험료가 더 비싼가요?",
+            "acceptedAnswer": {"@type": "Answer", "text": "아니에요. 전문가(GA)를 통한 가입과 보험사 직접 가입의 보험료는 금감원 규정상 동일해요. 오히려 전문가를 통하면 여러 보험사를 비교하고 불필요한 특약을 제거해서 실질적으로 더 저렴한 구성이 가능해요."}
           }
         ]
       }
@@ -101,7 +101,7 @@
     }
     body { font-family:'Noto Sans KR',sans-serif;background:#F8F8FB;color:var(--t1);line-height:1.7;-webkit-font-smoothing:antialiased; }
 
-    nav { position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--gray-b);padding:0 16px;height:52px;display:flex;align-items:center;justify-content:space-between; }
+    nav.site-nav { position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--gray-b);padding:0 16px;height:52px;display:flex;align-items:center;justify-content:space-between; }
     .nav-logo { font-size:16px;font-weight:700;color:var(--blue);text-decoration:none; }
     .nav-cta { font-size:13px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:7px 16px;text-decoration:none; }
 
@@ -230,9 +230,9 @@
 <body>
 <div id="rpb"></div>
 
-<nav>
+<nav class="site-nav">
   <a class="nav-logo" href="https://villagebaby.kr/">🍼 베이비빌리</a>
-  <a class="nav-cta" href="https://babybilly.co/insurance/baby/talk/v1">무료 상담</a>
+  <a class="nav-cta" href="https://babybilly.co/insurance/baby/talk/v1">카톡 무료 상담</a>
 </nav>
 
 <a href="https://babybilly.co/insurance/baby/talk/v1" class="float-btn">
@@ -252,7 +252,7 @@
     <div class="hero-meta">베이비빌리 · 업데이트 2026.05.05</div>
     <img src="./img-summary.jpg"
          alt="태아보험 보험료 총정리 2026 — 만기·납입방식별 실제 금액 비교 인포그래픽 | 베이비빌리"
-         class="hero-img" loading="eager" width="720" height="480">
+         class="hero-img" loading="eager">
     <a href="https://babybilly.co/insurance/baby/talk/v1" class="hero-cta">
       💬 내 상황 맞춤 보험료 무료로 확인하기
       <span>여러 보험사 설계서 한 번에 비교</span>
@@ -418,7 +418,7 @@
 
     <img src="./img-timing.png"
          alt="태아보험 임신 주수별 가입 가능 기간 및 특약 선택 범위 — 22주 이전 가입 권장 | 베이비빌리"
-         loading="lazy" width="720" height="480">
+         loading="lazy">
 
     <div class="tl-list">
       <div class="tl-item">
@@ -452,7 +452,7 @@
 
     <img src="./img-maturity.png"
          alt="태아보험 30세 만기 vs 100세 만기 보험료·보장기간 비교 — 어느 쪽이 유리할까 | 베이비빌리"
-         loading="lazy" width="720" height="480">
+         loading="lazy">
 
     <div class="tbl-wrap">
       <table class="tbl">
@@ -552,21 +552,21 @@
     </ul>
 
     <img src="./img-process.png"
-         alt="태아보험 가입 진행 순서 — GA 베이비빌리를 통해 여러 보험사 한 번에 비교하는 방법"
-         loading="lazy" width="720" height="480">
+         alt="태아보험 가입 진행 순서 — 베이비빌리를 통해 여러 보험사 한 번에 비교하는 방법"
+         loading="lazy">
 
     <div class="box-green">
-      <p>✅ <strong>GA 가입이 유리한 이유:</strong> GA를 통하면 여러 보험사 설계서를 한 번에 비교할 수 있어요. 보험료는 직접 가입과 동일하지만, 전문가가 불필요한 특약을 빼고 필수 특약만 구성해 줘서 실제 납입 금액이 더 저렴해지는 경우가 많아요.</p>
+      <p>✅ <strong>전문가 비교가 유리한 이유:</strong> 전문가를 통하면 여러 보험사 설계서를 한 번에 비교할 수 있어요. 보험료는 직접 가입과 동일하지만, 불필요한 특약을 빼고 필수 특약만 구성해 줘서 실제 납입 금액이 더 저렴해지는 경우가 많아요. 베이비빌리 베동 커뮤니티와 실제 전문가 상담에서는 비교 상담이 항상 첫 번째로 권장돼요. 가입은 카톡으로만도 가능해요! 🍀</p>
     </div>
   </section>
 
   <!-- CTA FULL -->
   <div class="cta-full">
     <h2>태아보험 보험료<br>지금 바로 비교해 보세요</h2>
-    <p>30초 상담 신청으로 여러 보험사 설계서를 무료로 받아볼 수 있어요.<br>GA 전문 상담사가 최적의 보험료 조합을 찾아드려요.</p>
+    <p>30초 상담 신청으로 여러 보험사 설계서를 무료로 받아볼 수 있어요.<br>태아보험 전문 상담사가 최적의 보험료 조합을 찾아드려요.</p>
     <img src="./img-calc.jpg"
-         alt="태아보험 보험료 계산 — 삼성화재·현대해상·DB손보·메리츠 설계서 무료 비교 | 베이비빌리 GA 상담"
-         loading="lazy" width="500" height="334">
+         alt="태아보험 보험료 계산 — 삼성화재·현대해상·DB손보·메리츠 설계서 무료 비교 | 베이비빌리 상담"
+         loading="lazy">
     <a href="https://babybilly.co/insurance/baby/talk/v1" class="cta-btn">💬 무료 보험료 비교 상담 신청</a>
   </div>
 
@@ -597,8 +597,8 @@
       </div>
 
       <div class="faq-item">
-        <div class="faq-q">GA를 통해 가입하면 보험료가 더 비싼가요?</div>
-        <div class="faq-a">아니에요. GA(법인보험대리점)와 보험사 직접 가입의 보험료는 금감원 규정상 동일해요. 오히려 GA를 통하면 여러 보험사를 비교하고 불필요한 특약을 제거해서 실질적으로 더 저렴한 구성이 가능해요.</div>
+        <div class="faq-q">전문가를 통해 가입하면 보험료가 더 비싼가요?</div>
+        <div class="faq-a">아니에요. 전문가를 통한 가입과 보험사 직접 가입의 보험료는 금감원 규정상 동일해요. 오히려 전문가를 통하면 여러 보험사를 비교하고 불필요한 특약을 제거해서 실질적으로 더 저렴한 구성이 가능해요.</div>
       </div>
 
     </div>
