@@ -139,4 +139,60 @@
       <image:title>출산 후 D+1~3개월 보험 타임라인 | 베이비빌리</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/child/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/어린이보험-재설계-언제-필요할까/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/child/어린이보험-재설계-언제-필요할까/img-summary.jpg</image:loc>
+      <image:title>어린이보험 재설계 시그널 5가지와 점검 프로세스 | 베이비빌리</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/어린이보험-보험사-비교-추천/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/child/어린이보험-보험사-비교-추천/img-summary.jpg</image:loc>
+      <image:title>어린이보험 보험사 비교 추천 2026 — 6개사 솔직 분석 | 베이비빌리</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/어린이보험-필수특약-TOP10/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/child/어린이보험-필수특약-TOP10/img-summary.jpg</image:loc>
+      <image:title>어린이보험 필수특약 TOP 10 — 빼면 후회하는 보장 | 베이비빌리</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/어린이보험-보험료-적정선/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/child/어린이보험-보험료-적정선/img-summary.jpg</image:loc>
+      <image:title>어린이보험 보험료 적정선 2026 — 월 5만~15만원 구간별 가이드 | 베이비빌리</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/어린이보험-환급형-vs-순수보장형/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/child/어린이보험-환급형-vs-순수보장형/img-summary.jpg</image:loc>
+      <image:title>어린이보험 환급형 vs 순수보장형 — 30년 후 진짜 유리한 선택 | 베이비빌리</image:title>
+    </image:image>
+  </url>
 </urlset>
