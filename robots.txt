@@ -1,0 +1,44 @@
+User-agent: *
+Allow: /
+
+# 주요 검색엔진 명시 허용
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: Daum
+Allow: /
+
+# AI 크롤러 (GEO 노출용 — ChatGPT, Perplexity, Claude)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap & RSS
+Sitemap: https://villagebaby.kr/sitemap.xml
+Sitemap: https://villagebaby.kr/rss.xml

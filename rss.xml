@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>베이비빌리 — 태아·어린이보험 가이드</title>
+    <link>https://villagebaby.kr/</link>
+    <atom:link href="https://villagebaby.kr/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
+    <language>ko-kr</language>
+    <copyright>© 베이비빌리 (베키스튜디오)</copyright>
+    <lastBuildDate>Tue, 05 May 2026 00:00:00 +0900</lastBuildDate>
+    <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+    <generator>villagebaby.kr</generator>
+    <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
+    <webMaster>contact@villagebaby.kr (베이비빌리)</webMaster>
+    <image>
+      <url>https://villagebaby.kr/og-image.jpg</url>
+      <title>베이비빌리 — 태아·어린이보험 가이드</title>
+      <link>https://villagebaby.kr/</link>
+    </image>
+    <category>보험</category>
+    <category>태아보험</category>
+    <category>어린이보험</category>
+
+    <!-- 태아보험 가이드 허브 -->
+    <item>
+      <title>태아보험 가이드 전체 — 가입시기·보험료·특약·청구까지</title>
+      <link>https://villagebaby.kr/guide/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>태아보험 가입 전후로 알아야 할 모든 것을 다룬 8개 완전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구, 거절 사례, 출산 후 체크리스트까지.</description>
+    </item>
+
+    <!-- 태아보험 8개 -->
+    <item>
+      <title>태아보험 가입시기 & 필수특약 — 22주 데드라인과 보장 핵심</title>
+      <link>https://villagebaby.kr/guide/태아보험-가입시기-필수특약/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아보험-가입시기-필수특약/</guid>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>임신 몇 주차에 가입해야 할까? 22주 데드라인의 의미, 4D 초음파 전 가입의 중요성, 절대 빠지면 안 되는 필수특약 5가지 정리.</description>
+    </item>
+
+    <item>
+      <title>태아보험 보험사 추천 비교 2026 — 6개사 솔직 분석</title>
+      <link>https://villagebaby.kr/guide/태아보험-보험사-추천-비교/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아보험-보험사-추천-비교/</guid>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>현대해상, 메리츠, 삼성, KB, DB, 한화 6개 주요 보험사의 장단점을 솔직하게 비교. 베동 커뮤니티 실제 추천 빈도까지.</description>
+    </item>
+
+    <item>
+      <title>태아보험 보험료 얼마나 드나 — 만기·납입방식별 실제 금액</title>
+      <link>https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/</guid>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>월 8~15만원이라는데 진짜? 산모 나이별·만기별·특약별 실제 보험료 시뮬레이션. 보험료 절약하는 5가지 방법.</description>
+    </item>
+
+    <item>
+      <title>태아실손보험 vs 일반실손 차이 — 선천이상 담보 비교</title>
+      <link>https://villagebaby.kr/guide/태아실손보험-일반실손-차이/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아실손보험-일반실손-차이/</guid>
+      <pubDate>Sun, 04 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>둘 다 들어야 하나? 보장 범위·자기부담금·갱신 구조 비교. 출산 후 일반실손 전환 시점과 방법.</description>
+    </item>
+
+    <item>
+      <title>태아보험 청구 방법 완전 정리 — 출생 후 서류·절차·팁</title>
+      <link>https://villagebaby.kr/guide/태아보험-청구-방법/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아보험-청구-방법/</guid>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>출생 후 태아보험 청구 절차, 필요 서류 체크리스트, 보험사별 청구 방법 3가지, 자주 누락되는 항목 TOP 5와 거절 시 대처법.</description>
+    </item>
+
+    <item>
+      <title>태아보험 특약 총정리 — 필수·선택·불필요 완전 분류</title>
+      <link>https://villagebaby.kr/guide/태아보험-특약-총정리/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아보험-특약-총정리/</guid>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>주계약 vs 특약, 필수 TOP 5, 상황별 추가 특약, 불필요 특약 5가지, 과잉 설계 TOP 5 패턴, 보험료 영향도 분석.</description>
+    </item>
+
+    <item>
+      <title>태아보험 거절 사례 & 대처법 — 재도전 전략까지</title>
+      <link>https://villagebaby.kr/guide/태아보험-거절-사례/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/태아보험-거절-사례/</guid>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>임신성 당뇨, 고령 산모, 다태아, 태아 이상 소견. 실제 거절 사례 TOP 6과 조건부 승인 받는 재도전 전략.</description>
+    </item>
+
+    <item>
+      <title>출산 후 보험 체크리스트 — D+1~3개월 타임라인</title>
+      <link>https://villagebaby.kr/guide/출산후-보험-체크리스트/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/출산후-보험-체크리스트/</guid>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>태아보험</category>
+      <description>D+1~D+7 타임라인, 태아특약 자녀특약 전환, 실손 중복 점검, 청구 체크리스트, 1세/3세/7세 시점별 보험 리뷰 포인트.</description>
+    </item>
+
+    <!-- 어린이보험 가이드 허브 -->
+    <item>
+      <title>어린이보험 가이드 — 재설계·비교·특약·보험료 완전 정리</title>
+      <link>https://villagebaby.kr/child/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/child/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>어린이보험</category>
+      <description>자녀 0~10세 부모를 위한 어린이보험 실전 가이드 5선. 재설계 시점, 보험사 비교, 필수특약, 보험료 적정선, 환급형 vs 순수보장형.</description>
+    </item>
+
+    <!-- 어린이보험 5개 -->
+    <item>
+      <title>어린이보험 재설계 언제 필요할까 — 점검 시그널 5가지</title>
+      <link>https://villagebaby.kr/child/어린이보험-재설계-언제-필요할까/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/child/어린이보험-재설계-언제-필요할까/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>어린이보험</category>
+      <description>이미 가입한 어린이보험, 갈아타야 할 때는? 재설계 시그널 5가지, 12개 점검 체크리스트, 해지·추가·전환 의사결정 플로우.</description>
+    </item>
+
+    <item>
+      <title>어린이보험 보험사 비교 추천 2026 — 6개사 솔직 분석</title>
+      <link>https://villagebaby.kr/child/어린이보험-보험사-비교-추천/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/child/어린이보험-보험사-비교-추천/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>어린이보험</category>
+      <description>현대·삼성·KB·메리츠·DB·한화 6개사 솔직 비교. 보험사별 강점·약점·추천 케이스. 베동 커뮤니티 실제 추천 빈도.</description>
+    </item>
+
+    <item>
+      <title>어린이보험 필수특약 TOP 10 — 빼면 후회하는 보장</title>
+      <link>https://villagebaby.kr/child/어린이보험-필수특약-TOP10/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/child/어린이보험-필수특약-TOP10/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>어린이보험</category>
+      <description>진단비·수술비·입원일당·응급실·골절·화상·깁스·5대질병까지 빼면 후회하는 보장 10가지와 빼도 되는 특약 5가지.</description>
+    </item>
+
+    <item>
+      <title>어린이보험 보험료 적정선 — 월 5만~15만원 구간별 가이드</title>
+      <link>https://villagebaby.kr/child/어린이보험-보험료-적정선/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/child/어린이보험-보험료-적정선/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>어린이보험</category>
+      <description>월 5만~15만원 구간별 보장 비교, 자녀 나이별·만기별 시뮬레이션, 갱신형 vs 비갱신형 30년 누적, 보험료 절약 5전략.</description>
+    </item>
+
+    <item>
+      <title>어린이보험 환급형 vs 순수보장형 — 30년 후 진짜 유리한 선택</title>
+      <link>https://villagebaby.kr/child/어린이보험-환급형-vs-순수보장형/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/child/어린이보험-환급형-vs-순수보장형/</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리</dc:creator>
+      <category>어린이보험</category>
+      <description>30년 후 인플레이션 반영 실수익 시뮬레이션, 환급형의 함정 4가지, 순수보장형 + 별도 적금이 왜 유리한지 솔직 분석.</description>
+    </item>
+
+  </channel>
+</rss>
