@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>베이비빌리 — 부모를 위한 보험 1:1 무료 상담</title>
-  <meta name="description" content="태아·어린이·운전자·여성·암보험까지. 10년 경력 부모 보험 전문가가 누적 200만 부모 보험 데이터를 기반으로 비교 설계해드려요.">
+  <title>베이비빌리 — 부모를 위한 모든 보험 1:1 무료 상담</title>
+  <meta name="description" content="태아·어린이·성인·암·주택·운전자보험까지. 10년 경력 부모 보험 전문가가 카톡으로 1:1 상담. 부담 없는 영업 NO, 푸짐한 사은품 증정.">
   <meta name="robots" content="noindex,nofollow">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="부모를 위한 보험 1:1 무료 상담 — 베이비빌리">
-  <meta property="og:description" content="태아·어린이·운전자·여성·암보험까지. 누적 200만 부모 보험 데이터 보유.">
+  <meta property="og:title" content="간편하게 카톡 상담받고 선물 받아가세요 — 베이비빌리">
+  <meta property="og:description" content="부담스러운 영업은 NO. 카톡으로만 1:1 상담. 부모를 위한 모든 보험을 한 번에.">
+  <meta property="og:image" content="https://villagebaby.kr/heroimage.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://villagebaby.kr/heroimage.jpg">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,137 +22,132 @@
     :root{
       --blue:#3373BA; --blue-d:#235A96; --blue-l:#EBF2FA; --blue-mid:#7BA8D6;
       --t1:#1A2B3D; --t2:#4A5C70; --t3:#8694A6;
-      --bg:#FAFBFC; --white:#FFFFFF; --border:#E5EBF2;
-      --yellow:#FFC107; --red:#E53935; --green:#10B981;
-      --orange:#FF6B35;
+      --bg:#FAFBFC; --white:#FFFFFF; --border:#E5EBF2; --soft:#F5F7FA;
+      --yellow:#FFC107; --red:#E53935; --green:#10B981; --orange:#FF6B35;
+      --pink:#FFE5E5;
     }
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     html{scroll-behavior:smooth}
     html,body{font-family:'Noto Sans KR',sans-serif;color:var(--t1);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-    button{cursor:pointer;font-family:inherit}
+    button{cursor:pointer;font-family:inherit;border:none;background:none}
 
     /* COUNTDOWN BAR */
-    .countdown{position:sticky;top:0;z-index:101;background:linear-gradient(90deg,var(--orange) 0%,#E53935 100%);color:#fff;padding:8px 14px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:-0.01em;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+    .countdown{position:sticky;top:0;z-index:101;background:linear-gradient(90deg,var(--orange) 0%,#E53935 100%);color:#fff;padding:8px 14px;text-align:center;font-size:12.5px;font-weight:700;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
     .countdown .icon{animation:shake 1.2s infinite}
     @keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
     .countdown strong{background:rgba(255,255,255,.22);padding:2px 8px;border-radius:8px;font-weight:900;font-variant-numeric:tabular-nums}
-    @media(max-width:480px){
-      .countdown{font-size:11.5px;padding:7px 10px;line-height:1.4}
-    }
 
     /* HEADER */
     header.top{position:sticky;top:34px;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-    header.top .logo-link{display:flex;align-items:center;gap:8px;flex-shrink:0}
+    header.top .logo-link{display:flex;align-items:center;gap:8px}
     header.top .logo-img{height:30px;width:auto;display:block}
-    header.top .logo-fallback{font-size:18px;font-weight:900;color:var(--blue-d);letter-spacing:-0.02em}
-    header.top .badge{font-size:11px;background:var(--blue-l);color:var(--blue-d);padding:5px 10px;border-radius:12px;font-weight:700;white-space:nowrap}
-    header.top .cta-top{background:var(--blue);color:#fff;padding:9px 14px;border-radius:22px;font-size:12.5px;font-weight:900;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;box-shadow:0 3px 10px rgba(51,115,186,.25);transition:transform .15s,box-shadow .15s}
-    header.top .cta-top:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(51,115,186,.35)}
+    header.top .logo-fallback{font-size:18px;font-weight:900;color:var(--blue-d)}
+    header.top .cta-top{background:var(--blue);color:#fff;padding:9px 14px;border-radius:22px;font-size:12.5px;font-weight:900;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;box-shadow:0 3px 10px rgba(51,115,186,.25)}
     header.top .cta-top::before{content:'';width:7px;height:7px;background:#FFEB55;border-radius:50%;animation:pulse 1.5s infinite}
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
     @media(max-width:380px){
-      header.top{padding:9px 12px;top:32px}
+      header.top{top:32px;padding:9px 12px}
       header.top .logo-img{height:26px}
-      header.top .badge{display:none}
-      header.top .cta-top{padding:8px 12px;font-size:12px}
     }
 
-    /* HERO */
-    .hero{position:relative;padding:32px 20px 24px;text-align:center;background:linear-gradient(180deg,#D6E4F2 0%,var(--bg) 100%);overflow:hidden}
-    .hero-bg-img{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:min(85%,460px);opacity:.42;pointer-events:none;z-index:0;border-radius:14px}
-    .hero-content{position:relative;z-index:1}
-    .hero h1{font-size:25px;font-weight:900;color:var(--t1);line-height:1.35;margin-bottom:10px;letter-spacing:-0.03em}
-    .hero h1 em{color:var(--blue-d);font-style:normal}
-    .hero .sub{font-size:14px;color:var(--t2);max-width:540px;margin:0 auto;line-height:1.65}
-    .hero .trust-line{margin-top:14px;display:inline-flex;gap:14px;font-size:12px;color:var(--t2);background:var(--white);border:1px solid var(--border);padding:7px 14px;border-radius:24px;flex-wrap:wrap;justify-content:center}
-    .hero .trust-line strong{color:var(--blue-d);font-weight:900}
+    /* HERO BLOCK (screenshot match) */
+    .hero{padding:46px 24px 30px;text-align:center;background:var(--white)}
+    .hero h1{font-size:24px;font-weight:900;color:var(--t1);line-height:1.45;letter-spacing:-0.02em;margin-bottom:12px}
+    .hero h1 em{font-style:normal;color:var(--blue-d)}
+    .hero .sub{font-size:13.5px;color:var(--t2);line-height:1.7;margin-bottom:24px}
+    .hero .sub strong{color:var(--t1);font-weight:900}
+    .hero-img{margin:8px auto 0;max-width:280px;width:80%;height:auto;border-radius:18px}
+    .hero .ribbon{display:inline-block;background:#FFF1E6;color:#D55A19;font-size:11.5px;font-weight:900;padding:5px 12px;border-radius:14px;margin-bottom:14px;letter-spacing:-0.01em}
 
     /* CONTAINER */
-    .container{max-width:680px;margin:0 auto;padding:0 18px;position:relative}
-    .section{padding:32px 0 20px}
+    .container{max-width:520px;margin:0 auto;padding:0 22px;position:relative}
+    .wide{max-width:680px}
 
-    /* FORM (위로 이동) */
-    .form-section{padding:18px 0 22px;position:relative}
-    .form-card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:22px 20px;box-shadow:0 8px 30px rgba(51,115,186,.08);position:relative;z-index:1}
-    .form-head{text-align:center;margin-bottom:16px}
-    .form-head h2{font-size:18px;font-weight:900;letter-spacing:-0.02em;margin-bottom:4px}
-    .form-head p{font-size:12.5px;color:var(--t2)}
+    /* 3-STEP */
+    .steps3{padding:30px 0 14px}
+    .step3-row{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--soft)}
+    .step3-row:last-child{border-bottom:none}
+    .step3-num{width:34px;height:34px;border-radius:50%;background:var(--blue-d);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .step3-text{flex:1;font-size:14px;line-height:1.6;color:var(--t1);padding-top:6px}
+    .step3-text strong{color:var(--blue-d);font-weight:900}
+
+    /* REASONS */
+    .reasons{padding:34px 0 20px}
+    .sec-title{font-size:18px;font-weight:900;text-align:center;color:var(--t1);letter-spacing:-0.02em;line-height:1.5;margin-bottom:22px}
+    .sec-title em{font-style:normal;color:var(--blue-d)}
+    .reason-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:18px 18px;margin-bottom:10px;display:flex;align-items:flex-start;gap:14px}
+    .reason-icon{width:46px;height:46px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+    .reason-text h4{font-size:13.5px;font-weight:900;color:var(--blue-d);margin-bottom:4px;letter-spacing:-0.01em}
+    .reason-text p{font-size:12.5px;color:var(--t2);line-height:1.65}
+
+    /* REVIEWS */
+    .reviews-wrap{padding:30px 0 20px}
+    .review-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:20px 20px}
+    .review-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .review-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FFD9D9 0%,#FFB5B5 100%);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+    .review-name{font-size:13px;font-weight:900;color:var(--t1)}
+    .review-stars{color:var(--yellow);font-size:13px;letter-spacing:1px;margin-top:2px}
+    .review-headline{font-size:14px;font-weight:900;color:var(--t1);margin-bottom:10px;line-height:1.5}
+    .review-quote{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:12.5px;color:var(--t1);line-height:1.65;margin-bottom:8px}
+    .review-quote::before{content:'❝';color:var(--blue-mid);font-size:16px;font-weight:900;margin-right:4px}
+    .review-more{display:block;width:100%;text-align:center;background:var(--white);border:1.5px solid var(--border);border-radius:24px;padding:11px;font-size:13px;font-weight:700;color:var(--t2);margin-top:14px;cursor:pointer}
+    .review-more::after{content:' →';color:var(--t3)}
+
+    /* FORM */
+    .form-section{padding:30px 0 26px}
+    .form-card{background:var(--white);border:1.5px solid var(--blue);border-radius:18px;padding:24px 22px;box-shadow:0 12px 36px rgba(51,115,186,.14);position:relative}
+    .form-head{text-align:center;margin-bottom:18px}
+    .form-head h2{font-size:18px;font-weight:900;letter-spacing:-0.02em;margin-bottom:4px;color:var(--t1)}
+    .form-head p{font-size:13px;color:var(--t2)}
+    .form-head .gift-tag{display:inline-block;background:#FFF1E6;color:#D55A19;font-size:11.5px;font-weight:900;padding:5px 11px;border-radius:14px;margin-bottom:8px}
 
     .field{margin-bottom:14px}
     .field label.flbl{display:block;font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:6px}
     .field label.flbl .req{color:var(--red);margin-left:3px}
     .field input[type="text"],.field input[type="tel"],.field textarea{
-      width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:14.5px;font-family:inherit;color:var(--t1);background:#FAFBFC;transition:border-color .15s,background .15s
+      width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:14.5px;font-family:inherit;color:var(--t1);background:#FAFBFC;transition:.15s
     }
     .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);background:var(--white)}
-    .field textarea{resize:vertical;min-height:60px;font-size:14px}
-    .field .hint{font-size:11px;color:var(--t3);margin-top:4px}
+    .field textarea{resize:vertical;min-height:60px;font-size:14px;transition:opacity .3s,border-color .15s,background .15s}
 
-    /* 관심보험 선택 버튼 */
-    .interest-btn{width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;background:#FAFBFC;font-size:13.5px;font-family:inherit;color:var(--t2);cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:600;transition:border-color .15s}
-    .interest-btn:hover{border-color:var(--blue-mid)}
+    .interest-btn{width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;background:#FAFBFC;font-size:13.5px;color:var(--t2);text-align:left;display:flex;align-items:center;justify-content:space-between;font-weight:600}
+    .interest-btn::after{content:'›';color:var(--t3);font-size:18px}
     .interest-btn .ph{color:var(--t3)}
-    .interest-btn::after{content:'›';color:var(--t3);font-size:18px;font-weight:700}
     .interest-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
     .interest-chips:empty{display:none}
     .interest-chip{background:var(--blue-l);color:var(--blue-d);font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:12px}
 
     .agree{display:flex;align-items:flex-start;gap:7px;font-size:11.5px;color:var(--t2);margin-bottom:12px;line-height:1.55}
     .agree input{margin-top:2px;flex-shrink:0;accent-color:var(--blue);transform:scale(1.05)}
-    .agree button.link{background:none;border:none;color:var(--blue-d);text-decoration:underline;font-weight:600;font-size:11.5px;padding:0;cursor:pointer}
+    .agree button.link{color:var(--blue-d);text-decoration:underline;font-weight:600;font-size:11.5px;padding:0;cursor:pointer}
 
-    .submit-btn{width:100%;background:var(--blue);color:#fff;padding:15px;border:none;border-radius:12px;font-size:15.5px;font-weight:900;letter-spacing:-0.01em;transition:background .15s,transform .15s;position:relative;overflow:hidden}
+    .submit-btn{width:100%;background:var(--blue);color:#fff;padding:15px;border-radius:12px;font-size:15.5px;font-weight:900;letter-spacing:-0.01em;transition:.15s;position:relative}
     .submit-btn:hover{background:var(--blue-d);transform:translateY(-1px)}
-    .submit-btn:disabled{background:var(--t3);cursor:not-allowed;transform:none}
+    .submit-btn:disabled{background:var(--t3);cursor:not-allowed}
     .submit-btn .gift{display:block;font-size:11.5px;font-weight:700;opacity:.92;margin-top:2px}
 
-    .alt-cta{text-align:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border)}
+    .alt-cta{text-align:center;margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
     .alt-cta p{font-size:11.5px;color:var(--t3);margin-bottom:7px}
-    .alt-cta a{display:inline-block;background:#FFEB00;color:#3C1E1E;padding:9px 18px;border-radius:22px;font-size:12.5px;font-weight:700}
+    .alt-cta a{display:inline-block;background:#FFEB00;color:#3C1E1E;padding:10px 20px;border-radius:22px;font-size:12.5px;font-weight:700}
 
-    /* MINI WHY */
-    .mini-why{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:18px 0 0}
-    .mw-item{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:11px 7px;text-align:center}
-    .mw-item .e{font-size:18px;display:block;margin-bottom:3px}
-    .mw-item h4{font-size:11.5px;font-weight:900;color:var(--t1);line-height:1.35;letter-spacing:-0.01em}
-
-    /* LIVE FEED */
-    .live{padding:28px 18px;background:linear-gradient(180deg,#F5F9FD 0%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .live-inner{max-width:680px;margin:0 auto}
-    .live-head{text-align:center;margin-bottom:14px}
-    .live-head .pulse-tag{display:inline-flex;align-items:center;gap:6px;background:#FEF2F2;color:var(--red);padding:5px 11px;border-radius:14px;font-size:11.5px;font-weight:700;margin-bottom:6px}
+    /* LIVE MINI */
+    .live{padding:20px 0 22px}
+    .live-head{text-align:center;margin-bottom:12px}
+    .live-head .pulse-tag{display:inline-flex;align-items:center;gap:6px;background:#FEF2F2;color:var(--red);padding:5px 11px;border-radius:14px;font-size:11px;font-weight:700;margin-bottom:5px}
     .live-head .pulse-tag::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 1.5s infinite}
-    .live-head h3{font-size:15px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
-    .live-head p{font-size:12px;color:var(--t3);margin-top:3px}
-    .live-feed{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:6px;height:170px;overflow:hidden;position:relative}
+    .live-head h3{font-size:13px;font-weight:900;color:var(--t1)}
+    .live-head p{font-size:11.5px;color:var(--t3);margin-top:3px}
+    .live-feed{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:6px;height:140px;overflow:hidden}
     .live-list{display:flex;flex-direction:column;gap:5px}
-    .live-row{display:flex;align-items:center;gap:9px;padding:9px 10px;background:#F8FBFE;border-radius:8px;font-size:12px;flex-shrink:0;min-height:40px;animation:slideIn .5s ease}
+    .live-row{display:flex;align-items:center;gap:9px;padding:8px 9px;background:#F8FBFE;border-radius:8px;font-size:11.5px;animation:slideIn .5s ease}
     @keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-    .live-avatar{width:26px;height:26px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-    .live-text{flex:1;color:var(--t1);min-width:0}
+    .live-avatar{width:24px;height:24px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+    .live-text{flex:1;min-width:0}
     .live-text strong{color:var(--blue-d);font-weight:700}
-    .live-text .gray{color:var(--t3);font-size:11px}
-    .live-time{font-size:11px;color:var(--t3);white-space:nowrap;flex-shrink:0}
-
-    /* REVIEWS */
-    .reviews h2{font-size:18px;font-weight:900;text-align:center;margin-bottom:14px;letter-spacing:-0.02em}
-    .review-grid{display:grid;grid-template-columns:1fr;gap:8px}
-    .review-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
-    .review-stars{color:var(--yellow);font-size:13px;letter-spacing:1px}
-    .review-text{font-size:13px;color:var(--t1);line-height:1.55}
-    .review-author{font-size:11px;color:var(--t3);font-weight:600}
-
-    /* FAQ */
-    .faq h2{font-size:18px;font-weight:900;text-align:center;margin-bottom:14px;letter-spacing:-0.02em}
-    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:11px;margin-bottom:7px;overflow:hidden}
-    .faq-q{width:100%;background:none;border:none;font-size:13px;font-weight:700;color:var(--t1);padding:13px 16px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
-    .faq-q::before{content:'Q.';color:var(--blue);font-weight:900;flex-shrink:0;margin-right:6px}
-    .faq-q .arrow{color:var(--t3);font-size:12px;transition:transform .2s}
-    .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
-    .faq-a{font-size:12.5px;color:var(--t2);line-height:1.65;padding:0 16px 14px 38px;display:none}
-    .faq-item.open .faq-a{display:block}
+    .live-text .gray{color:var(--t3);font-size:10.5px}
+    .live-time{font-size:10.5px;color:var(--t3);white-space:nowrap}
 
     /* MODAL */
     .modal-overlay{position:fixed;inset:0;background:rgba(20,30,45,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:18px;animation:fadeIn .2s ease}
@@ -161,23 +159,20 @@
     .modal-head h3{font-size:17px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
     .modal-body{padding:18px 22px;overflow-y:auto;flex:1}
     .modal-foot{padding:14px 22px 18px;border-top:1px solid var(--border);display:flex;gap:8px}
-    .modal-btn{flex:1;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;border:1.5px solid var(--border);background:var(--white);color:var(--t2);cursor:pointer;transition:.15s}
+    .modal-btn{flex:1;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;border:1.5px solid var(--border);background:var(--white);color:var(--t2);cursor:pointer}
     .modal-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
-    .modal-btn:hover{transform:translateY(-1px)}
 
     .modal-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
     .check-item{position:relative}
     .check-item input{position:absolute;opacity:0;pointer-events:none}
-    .check-item label{display:flex;align-items:center;justify-content:flex-start;gap:8px;text-align:left;padding:13px 14px;background:#FAFBFC;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;color:var(--t2);cursor:pointer;transition:all .15s;margin:0}
+    .check-item label{display:flex;align-items:center;gap:8px;padding:13px 14px;background:#FAFBFC;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;color:var(--t2);cursor:pointer;transition:all .15s}
     .check-item input:checked + label{background:var(--blue-l);border-color:var(--blue);color:var(--blue-d);font-weight:700}
     .check-item label .e{font-size:16px}
 
     .privacy-content{font-size:12.5px;color:var(--t1);line-height:1.7;background:#F8FAFC;border-radius:10px;padding:16px 18px;border:1px solid var(--border)}
-    .privacy-content p{margin-bottom:10px}
-    .privacy-content strong{color:var(--blue-d)}
+    .privacy-content h4{font-size:13px;font-weight:900;margin:12px 0 4px}
     .privacy-content ul{padding-left:18px;margin:4px 0 10px}
-    .privacy-content li{margin-bottom:3px}
-    .privacy-content h4{font-size:13px;font-weight:900;margin:12px 0 4px;color:var(--t1)}
+    .privacy-content strong{color:var(--blue-d)}
 
     /* TOAST */
     .toast-stack{position:fixed;left:14px;bottom:14px;z-index:150;display:flex;flex-direction:column;gap:8px;pointer-events:none;max-width:calc(100vw - 28px)}
@@ -186,24 +181,19 @@
     @keyframes toastIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
     @keyframes toastOut{to{opacity:0;transform:translateX(-20px)}}
     .toast-icon{width:26px;height:26px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-    .toast-text{flex:1;color:var(--t1);min-width:0;overflow:hidden}
+    .toast-text{flex:1;min-width:0}
     .toast-text strong{color:var(--blue-d);font-weight:700}
     .toast-text .gray{color:var(--t3);font-size:11px}
 
     /* FOOTER */
-    footer{padding:22px 20px;text-align:center;color:var(--t3);font-size:12.5px;border-top:1px solid var(--border);background:var(--white);font-weight:600}
+    footer{padding:22px 20px 50px;text-align:center;color:var(--t3);font-size:12.5px;background:var(--white);font-weight:600}
 
     /* MOBILE */
     @media(max-width:480px){
-      .container{padding:0 14px}
-      .hero{padding:24px 16px 18px}
-      .hero h1{font-size:22px}
-      .hero .sub{font-size:13px}
-      .form-card{padding:20px 16px}
-      .form-head h2{font-size:17px}
-      .mini-why{grid-template-columns:repeat(2,1fr)}
-      .live-feed{height:160px}
-      .live-row{padding:8px 9px;font-size:11.5px}
+      .hero{padding:36px 20px 24px}
+      .hero h1{font-size:21px}
+      .container{padding:0 18px}
+      .form-card{padding:20px 18px}
       .toast{font-size:11.5px;padding:9px 11px;max-width:calc(100vw - 32px)}
     }
     @media(max-width:360px){
@@ -213,41 +203,121 @@
 </head>
 <body>
 
-<!-- COUNTDOWN BAR -->
+<!-- COUNTDOWN -->
 <div class="countdown" id="countdown-bar" role="status" aria-live="polite">
   <span class="icon">🎁</span>
-  <span>선착순 선물 혜택 마감까지</span>
+  <span>선착순 사은품 마감까지</span>
   <strong id="countdown-time">--일 --:--:--</strong>
 </div>
 
 <!-- HEADER -->
 <header class="top">
   <a href="#" class="logo-link" aria-label="베이비빌리 홈">
-    <img src="/logo.png" alt="베이비빌리" class="logo-img" onerror="this.src='img/logo.png';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='inline'}">
+    <img src="/logo.png" alt="베이비빌리" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
     <span class="logo-fallback" style="display:none">베이비빌리</span>
   </a>
-  <span class="badge">10년+ 부모 보험 전문</span>
   <a href="#apply" class="cta-top">무료 상담</a>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-bg-img" src="img/baby-bubble.jpg" alt="" aria-hidden="true">
-  <div class="hero-content">
-    <h1>태아부터 우리 가족까지<br><em>모든 보험 1:1 무료 상담</em></h1>
-    <p class="sub">10년 경력 전문가가 손해·생명보험 11개사 통합 비교 설계</p>
-    <div class="trust-line">
-      <span>⭐ <strong>10년+ 경력</strong></span>
-      <span>📊 누적 <strong>200만</strong> 부모 데이터</span>
-    </div>
-  </div>
+  <span class="ribbon">🎁 가입 시 추가 선물 증정</span>
+  <h1>간편하게 카톡 상담받고<br><em>푸짐한 사은품</em> 받아가세요!</h1>
+  <p class="sub">
+    <strong>부담스러운 영업은 NO</strong><br>
+    카톡으로만 안내드려요
+  </p>
+  <img src="https://villagebaby.kr/heroimage.jpg" alt="베이비빌리 사은품 이미지" class="hero-img" loading="eager">
 </section>
+
+<!-- 3-STEP -->
+<div class="container">
+  <section class="steps3">
+    <div class="step3-row">
+      <div class="step3-num">1</div>
+      <p class="step3-text"><strong>보험 전문가의 카톡으로</strong> 부담없이 1:1 상담받고</p>
+    </div>
+    <div class="step3-row">
+      <div class="step3-num">2</div>
+      <p class="step3-text">다음 달 초에 <strong>푸짐한 사은품</strong> 받아요</p>
+    </div>
+    <div class="step3-row">
+      <div class="step3-num">3</div>
+      <p class="step3-text">실제 가입까지 진행하면 <strong>가입 선물</strong>도 함께 드려요</p>
+    </div>
+  </section>
+</div>
+
+<!-- REASONS -->
+<div class="container">
+  <section class="reasons">
+    <h2 class="sec-title">우리 가족에게 꼭 맞는<br>보험을 찾는 분들이<br><em>베이비빌리</em>를 선택한 이유</h2>
+
+    <div class="reason-card">
+      <div class="reason-icon">🏆</div>
+      <div class="reason-text">
+        <h4>10년 이상의 부모·가족 보험 노하우</h4>
+        <p>태아·어린이·성인·암·운전자·주택보험까지 한 곳에서. 부모 가족 단위 보장 설계만 10년 경력 전문가.</p>
+      </div>
+    </div>
+
+    <div class="reason-card">
+      <div class="reason-icon">⚖️</div>
+      <div class="reason-text">
+        <h4>11개 보험사 통합 비교</h4>
+        <p>손해보험 6사 + 생명보험 5사. 특정 보험사 편향 없이 우리 가족 상황에 정말 맞는 곳만 추려드려요.</p>
+      </div>
+    </div>
+
+    <div class="reason-card">
+      <div class="reason-icon">💬</div>
+      <div class="reason-text">
+        <h4>카톡으로만 부담없이 1:1 상담</h4>
+        <p>전화 영업·푸시 NO. 카톡으로 부담 없이 물어보고, 비교 자료 받아보고, 결정은 본인 페이스대로.</p>
+      </div>
+    </div>
+
+    <div class="reason-card">
+      <div class="reason-icon">📊</div>
+      <div class="reason-text">
+        <h4>200만 부모 데이터 기반 솔직한 안내</h4>
+        <p>실제 가입자·청구자 데이터를 보유. 광고가 아닌 실데이터로 빼야 할 특약·꼭 넣을 보장을 알려드려요.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- REVIEWS -->
+<div class="container">
+  <section class="reviews-wrap">
+    <h2 class="sec-title">최근 상담받은 부모님들이<br>남겨주신 <em>실제 후기</em>예요</h2>
+
+    <div class="review-card">
+      <div class="review-head">
+        <div class="review-avatar">👩‍💼</div>
+        <div>
+          <div class="review-name">김혜진 상담사 후기</div>
+          <div class="review-stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="review-headline">친절·정직 상담 너무 너무 좋았어요!</p>
+      <div class="review-quote">
+        다른 데서 들었던 거랑 비교하니까 진짜 차이가 큰 거 알았어요. 필요 없는 특약은 빼라고 솔직하게 알려주셨고, 우리 가족 4명 보험을 한 번에 정리해주셔서 너무 편했어요. 부담스러운 영업 없이 카톡으로만 진행해서 좋았습니다.
+      </div>
+      <div class="review-quote">
+        둘째 임신 중에 운전자보험까지 같이 점검 받았어요. 남편 거 운전자보험 옛날 거였는데 보장축소 전에 갈아탈 수 있게 안내해주셔서 감사해요. 5세대 실손도 친절하게 차이 설명해주셨어요.
+      </div>
+      <button class="review-more" type="button" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">상담 신청하고 후기 받아보기</button>
+    </div>
+  </section>
+</div>
 
 <!-- FORM -->
 <div class="container">
   <section class="form-section" id="apply">
     <form class="form-card" id="inquiry-form" method="POST" action="/api/inquiry" novalidate>
       <div class="form-head">
+        <span class="gift-tag">🎁 신청만 해도 사은품 증정</span>
         <h2>부모를 위한 모든 보험 전문가</h2>
         <p>베이비빌리 팀이 함께 합니다.</p>
       </div>
@@ -274,7 +344,6 @@
         <label class="flbl" for="memo">추가 메모 <span style="color:var(--t3);font-weight:400;font-size:11px;">(선택)</span></label>
         <textarea id="memo" name="memo" placeholder="예: 첫째 임신 22주, 임당 진단 받았어요"></textarea>
       </div>
-      <script>/*MEMO_ROLLER_PLACEHOLDER*/</script>
 
       <label class="agree">
         <input type="checkbox" name="agree" required checked>
@@ -283,7 +352,7 @@
 
       <button type="submit" class="submit-btn" id="submit-btn">
         💬 무료 상담 신청하기
-        <span class="gift">선착순 선물 혜택 포함</span>
+        <span class="gift">선착순 사은품 + 가입 시 추가 선물</span>
       </button>
 
       <div class="alt-cta">
@@ -291,19 +360,12 @@
         <a href="https://pf.kakao.com/_bxjJfn/chat" target="_blank" rel="noopener">💛 카톡 채널로 바로 문의</a>
       </div>
     </form>
-
-    <div class="mini-why">
-      <div class="mw-item"><span class="e">🏆</span><h4>10년+ 전문</h4></div>
-      <div class="mw-item"><span class="e">⚖️</span><h4>11개사 비교</h4></div>
-      <div class="mw-item"><span class="e">📊</span><h4>200만 데이터</h4></div>
-      <div class="mw-item"><span class="e">🤝</span><h4>강요 없음</h4></div>
-    </div>
   </section>
 </div>
 
 <!-- LIVE -->
-<section class="live">
-  <div class="live-inner">
+<div class="container">
+  <section class="live">
     <div class="live-head">
       <div class="pulse-tag">LIVE 신청 현황</div>
       <h3>지금 이 순간에도 신청 중</h3>
@@ -312,42 +374,6 @@
     <div class="live-feed">
       <div class="live-list" id="live-list"></div>
     </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<div class="container">
-  <section class="section reviews">
-    <h2>실제 상담 후기</h2>
-    <div class="review-grid">
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"필요 없는 특약은 빼라고 솔직하게 알려주셔서 신뢰가 갔어요."</p>
-        <p class="review-author">— 35세 산모, 첫째 임신 22주</p>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"아이 어린이보험 보러 갔는데 남편 운전자보험까지 같이 정리됐어요."</p>
-        <p class="review-author">— 38세 아빠, 자녀 4·7세</p>
-      </div>
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">"우리 가족 4명 보험 통합으로 봐주셨어요. 카톡으로 진행해서 편했습니다."</p>
-        <p class="review-author">— 32세 엄마, 자녀 2세</p>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- FAQ -->
-<div class="container">
-  <section class="section faq">
-    <h2>자주 묻는 질문</h2>
-    <div class="faq-item"><button class="faq-q" type="button">상담 비용이 발생하나요?<span class="arrow">▾</span></button><p class="faq-a">전혀 없습니다. 비교·설계·자료 제공까지 모두 무료입니다.</p></div>
-    <div class="faq-item"><button class="faq-q" type="button">가입 강요는 없나요?<span class="arrow">▾</span></button><p class="faq-a">없습니다. 비교 자료를 받아보고 결정은 본인 페이스대로 하시면 돼요.</p></div>
-    <div class="faq-item"><button class="faq-q" type="button">어떤 보험사들을 비교하나요?<span class="arrow">▾</span></button><p class="faq-a">손해보험 6사 + 생명보험 5사, 총 11개사 통합 비교합니다.</p></div>
-    <div class="faq-item"><button class="faq-q" type="button">상담 시간은 얼마나 걸리나요?<span class="arrow">▾</span></button><p class="faq-a">초기 카톡 문의 5~10분, 본격 비교 상담 평균 30~40분입니다.</p></div>
-    <div class="faq-item"><button class="faq-q" type="button">개인정보는 안전한가요?<span class="arrow">▾</span></button><p class="faq-a">상담 목적 외 어떤 곳에도 공유되지 않으며, 종료 후 즉시 파기됩니다.</p></div>
   </section>
 </div>
 
@@ -361,14 +387,16 @@
       <div class="modal-checks">
         <div class="check-item"><input type="checkbox" id="i1" name="interests" value="태아보험"><label for="i1"><span class="e">🤰</span>태아보험</label></div>
         <div class="check-item"><input type="checkbox" id="i2" name="interests" value="어린이보험"><label for="i2"><span class="e">🧒</span>어린이보험</label></div>
-        <div class="check-item"><input type="checkbox" id="i3" name="interests" value="운전자보험"><label for="i3"><span class="e">🚗</span>운전자보험</label></div>
-        <div class="check-item"><input type="checkbox" id="i4" name="interests" value="여성보험"><label for="i4"><span class="e">👩</span>여성보험</label></div>
-        <div class="check-item"><input type="checkbox" id="i5" name="interests" value="교육보험"><label for="i5"><span class="e">🎓</span>교육·학자금</label></div>
-        <div class="check-item"><input type="checkbox" id="i6" name="interests" value="암보험"><label for="i6"><span class="e">🎗️</span>암보험</label></div>
-        <div class="check-item"><input type="checkbox" id="i7" name="interests" value="실손보험"><label for="i7"><span class="e">🏥</span>실손보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i3" name="interests" value="성인보험"><label for="i3"><span class="e">🧑</span>성인보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i4" name="interests" value="암보험"><label for="i4"><span class="e">🎗️</span>암보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i5" name="interests" value="실손보험"><label for="i5"><span class="e">🏥</span>실손보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i6" name="interests" value="운전자보험"><label for="i6"><span class="e">🚗</span>운전자보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i7" name="interests" value="여성보험"><label for="i7"><span class="e">👩</span>여성보험</label></div>
         <div class="check-item"><input type="checkbox" id="i8" name="interests" value="간병보험"><label for="i8"><span class="e">👵</span>간병보험</label></div>
-        <div class="check-item"><input type="checkbox" id="i9" name="interests" value="치아보험"><label for="i9"><span class="e">🦷</span>치아보험</label></div>
-        <div class="check-item"><input type="checkbox" id="i10" name="interests" value="기타"><label for="i10"><span class="e">💡</span>기타·잘 몰라요</label></div>
+        <div class="check-item"><input type="checkbox" id="i9" name="interests" value="주택·화재보험"><label for="i9"><span class="e">🏠</span>주택·화재보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i10" name="interests" value="자녀 교육보험"><label for="i10"><span class="e">🎓</span>교육·학자금</label></div>
+        <div class="check-item"><input type="checkbox" id="i11" name="interests" value="치아보험"><label for="i11"><span class="e">🦷</span>치아보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i12" name="interests" value="기타"><label for="i12"><span class="e">💡</span>기타·잘 몰라요</label></div>
       </div>
     </div>
     <div class="modal-foot">
@@ -390,6 +418,7 @@
           <li>보험 가입 상담 및 보험상품 추천</li>
           <li>비교 설계 자료 제공</li>
           <li>상담 일정 안내 및 후속 연락</li>
+          <li>이벤트 사은품 배송</li>
         </ul>
         <h4>2. 수집하는 개인정보의 항목</h4>
         <ul>
@@ -411,21 +440,18 @@
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
 
 <script>
-  /* ───────── COUNTDOWN ───────── */
+  /* COUNTDOWN */
   function getDeadline(){
-    const now = new Date();
-    const y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+    const now = new Date(), y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
     if (d <= 15) return new Date(y, m, 15, 23, 59, 59);
-    return new Date(y, m + 1, 0, 23, 59, 59); /* 다음달 0일 = 이번달 말일 */
+    return new Date(y, m + 1, 0, 23, 59, 59);
   }
   const cntEl = document.getElementById('countdown-time');
   function tickCountdown(){
-    const target = getDeadline();
-    let diff = Math.max(0, target - new Date());
+    let diff = Math.max(0, getDeadline() - new Date());
     const days = Math.floor(diff / 86400000); diff -= days * 86400000;
     const hh = String(Math.floor(diff / 3600000)).padStart(2,'0'); diff -= Math.floor(diff/3600000) * 3600000;
     const mm = String(Math.floor(diff / 60000)).padStart(2,'0'); diff -= Math.floor(diff/60000) * 60000;
@@ -434,16 +460,14 @@
   }
   tickCountdown(); setInterval(tickCountdown, 1000);
 
-  /* ───────── MODAL ───────── */
+  /* MODAL */
   function openModal(id){
     const m = document.getElementById(id);
-    m.classList.add('show');
-    m.setAttribute('aria-hidden','false');
+    m.classList.add('show'); m.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
   }
   function closeModal(m){
-    m.classList.remove('show');
-    m.setAttribute('aria-hidden','true');
+    m.classList.remove('show'); m.setAttribute('aria-hidden','true');
     if (!document.querySelector('.modal-overlay.show')) document.body.style.overflow = '';
   }
   document.addEventListener('click', e => {
@@ -471,42 +495,58 @@
     closeModal(document.getElementById('interests-modal'));
   });
 
-  /* ───────── FAQ ───────── */
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
-  });
+  /* MEMO ROLLER */
+  const MEMO_EXAMPLES = [
+    '예: 첫째 임신 22주, 임당 진단 받았어요',
+    '예: 남편 보험도 검토하고 싶어요',
+    '예: 아파트 이사가면 화재보험 가입해야 해요',
+    '예: 애기 육아 중이라 펫보험 할인도 있는지 궁금해요',
+    '예: 자동차보험은 있음. 운전자보험만 문의드려요',
+    '예: 둘째 출산 예정인데 보험 통합 점검 받고 싶어요',
+    '예: 어린이보험 갱신 다가오는데 갈아탈지 고민이에요',
+    '예: 부모님 간병보험 알아보고 있어요',
+    '예: 5세대 실손 4세대랑 어떤게 더 나은지 비교해주세요',
+    '예: 30~40대 부모인데 암보험 늦지 않았을까요?',
+    '예: 여성보험 임신 전후 구분 어떻게 되나요?',
+    '예: 자녀 학자금보험 vs 적금 어떤게 나아요?',
+    '예: 환급형 어린이보험 가입했는데 후회되네요',
+    '예: 임신 32주인데 태아보험 아직 가능한가요?',
+  ];
+  const memoEl = document.getElementById('memo');
+  let memoIdx = 0;
+  setInterval(() => {
+    if (document.activeElement === memoEl || memoEl.value.length > 0) return;
+    memoIdx = (memoIdx + 1) % MEMO_EXAMPLES.length;
+    memoEl.style.opacity = '0.4';
+    setTimeout(() => { memoEl.placeholder = MEMO_EXAMPLES[memoIdx]; memoEl.style.opacity = '1'; }, 280);
+  }, 3500);
 
-  /* ───────── LIVE & TOAST ───────── */
+  /* LIVE & TOAST */
   const FAMILIES = ['김','이','박','최','정','강','조','윤','장','임','한','오','서','신','권','황','안','송','류','홍','전','고','문','손','양','배','백','허','유','남'];
   const PRODUCTS = [
-    {name:'태아보험', emoji:'🤰'},{name:'어린이보험', emoji:'🧒'},{name:'운전자보험', emoji:'🚗'},
-    {name:'여성보험', emoji:'👩'},{name:'암보험', emoji:'🎗️'},{name:'실손보험', emoji:'🏥'},
-    {name:'자녀 교육보험', emoji:'🎓'},{name:'간병보험', emoji:'👵'},{name:'치아보험', emoji:'🦷'},
+    {name:'태아보험', emoji:'🤰'},{name:'어린이보험', emoji:'🧒'},{name:'성인보험', emoji:'🧑'},
+    {name:'암보험', emoji:'🎗️'},{name:'운전자보험', emoji:'🚗'},{name:'실손보험', emoji:'🏥'},
+    {name:'주택·화재보험', emoji:'🏠'},{name:'간병보험', emoji:'👵'},{name:'여성보험', emoji:'👩'},
+    {name:'치아보험', emoji:'🦷'},{name:'교육·학자금', emoji:'🎓'},
   ];
   const REGIONS = ['서울','경기','부산','대구','인천','광주','대전','울산','세종','경남','경북','전남','충남','충북','강원','제주'];
-  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const pick = a => a[Math.floor(Math.random()*a.length)];
   const makeName = () => pick(FAMILIES) + '**';
-  const makeEntry = time => ({ name: makeName(), region: pick(REGIONS), product: pick(PRODUCTS), time: time || '방금 전' });
+  const makeEntry = t => ({ name: makeName(), region: pick(REGIONS), product: pick(PRODUCTS), time: t || '방금 전' });
 
   const liveList = document.getElementById('live-list');
   function makeRow(e){
-    const row = document.createElement('div');
-    row.className = 'live-row';
-    row.innerHTML = `
-      <div class="live-avatar">${e.product.emoji}</div>
-      <div class="live-text">
-        <div><strong>${e.name}</strong>님이 <strong>${e.product.name}</strong> 신청</div>
-        <div class="gray">${e.region} · 24시간 내 연락 예정</div>
-      </div>
-      <div class="live-time">${e.time}</div>`;
-    return row;
+    const r = document.createElement('div');
+    r.className = 'live-row';
+    r.innerHTML = `<div class="live-avatar">${e.product.emoji}</div><div class="live-text"><div><strong>${e.name}</strong>님이 <strong>${e.product.name}</strong> 신청</div><div class="gray">${e.region}</div></div><div class="live-time">${e.time}</div>`;
+    return r;
   }
-  ['방금 전','1분 전','3분 전','5분 전','9분 전','14분 전','21분 전','29분 전'].forEach(t => liveList.appendChild(makeRow(makeEntry(t))));
+  ['방금 전','1분 전','3분 전','5분 전','9분 전','14분 전','21분 전'].forEach(t => liveList.appendChild(makeRow(makeEntry(t))));
 
   function addLive(){
     liveList.insertBefore(makeRow(makeEntry('방금 전')), liveList.firstChild);
-    while (liveList.children.length > 12) liveList.removeChild(liveList.lastChild);
-    const labels = ['방금 전','1분 전','3분 전','5분 전','8분 전','13분 전','19분 전','27분 전','38분 전','51분 전','1시간 전','1시간 전'];
+    while (liveList.children.length > 10) liveList.removeChild(liveList.lastChild);
+    const labels = ['방금 전','1분 전','3분 전','5분 전','8분 전','13분 전','19분 전','27분 전','38분 전','51분 전'];
     liveList.querySelectorAll('.live-row').forEach((r, i) => {
       const t = r.querySelector('.live-time'); if (t && labels[i]) t.textContent = labels[i];
     });
@@ -528,11 +568,29 @@
   }
   setTimeout(function loop(){ showToast(); setTimeout(loop, 6000 + Math.random()*6000); }, 3000);
 
-  /* ───────── 폼 제출 ───────── */
+  /* 격려 토스트 */
+  function showEncourageToast(msg, emoji){
+    const t = document.createElement('div');
+    t.className = 'toast'; t.style.background = 'var(--blue-d)'; t.style.borderColor = 'var(--blue-d)';
+    t.innerHTML = `<div class="toast-icon" style="background:rgba(255,255,255,.2)">${emoji||'✨'}</div><div class="toast-text" style="color:#fff"><div style="font-weight:700">${msg}</div></div>`;
+    toastStack.appendChild(t);
+    setTimeout(() => t.classList.add('out'), 2400);
+    setTimeout(() => t.remove(), 2900);
+    while (toastStack.children.length > 3) toastStack.firstChild.remove();
+  }
+  let _shownNameOk = false, _shownPhoneOk = false;
+  document.getElementById('name').addEventListener('blur', e => {
+    if (e.target.value.trim().length >= 2 && !_shownNameOk) { showEncourageToast('좋아요! 거의 다 됐어요 🎉', '👋'); _shownNameOk = true; }
+  });
+  document.getElementById('phone').addEventListener('blur', e => {
+    if (e.target.value.replace(/\D/g,'').length >= 10 && !_shownPhoneOk) { showEncourageToast('마지막 한 단계만 남았어요 🙌', '💬'); _shownPhoneOk = true; }
+  });
+
+  /* FORM SUBMIT */
   const form = document.getElementById('inquiry-form');
   const btn = document.getElementById('submit-btn');
   form.addEventListener('submit', function(e){
-    e.preventDefault(); /* 백엔드 연결 후엔 이 줄 제거 */
+    e.preventDefault();
     const fd = new FormData(form);
     const interests = fd.getAll('interests');
     if (!fd.get('name') || !fd.get('phone')) { alert('성함과 연락처를 입력해주세요.'); return; }
@@ -545,11 +603,11 @@
     setTimeout(() => {
       console.log('[Inquiry]', { name: fd.get('name'), phone: fd.get('phone'), interests, memo: fd.get('memo'), timestamp: new Date().toISOString() });
       btn.innerHTML = '✓ 신청 완료'; btn.style.background = 'var(--green)';
-      alert('신청이 접수됐어요!\n24시간 이내에 카톡 또는 전화로 연락드릴게요. 🙏');
+      alert('신청이 접수됐어요!\n24시간 이내에 카톡 또는 전화로 연락드릴게요. 🙏\n사은품은 다음 달 초에 발송돼요.');
       form.reset();
       summary.innerHTML = '<span class="ph">선택해주세요 — 자세히 보기</span>';
       chipsBox.innerHTML = '';
-      setTimeout(() => { btn.disabled = false; btn.innerHTML = '💬 무료 상담 신청하기<span class="gift">선착순 선물 혜택 포함</span>'; btn.style.background = ''; }, 2000);
+      setTimeout(() => { btn.disabled = false; btn.innerHTML = '💬 무료 상담 신청하기<span class="gift">선착순 사은품 + 가입 시 추가 선물</span>'; btn.style.background = ''; }, 2000);
     }, 600);
   });
   document.getElementById('phone').addEventListener('input', function(e){
@@ -557,64 +615,6 @@
     if (v.length >= 8) v = v.replace(/(\d{3})(\d{4})(\d+)/, '$1-$2-$3');
     else if (v.length >= 4) v = v.replace(/(\d{3})(\d+)/, '$1-$2');
     e.target.value = v;
-  });
-
-  /* ───────── 추가 메모 placeholder 롤링 ───────── */
-  const MEMO_EXAMPLES = [
-    '예: 첫째 임신 22주, 임당 진단 받았어요',
-    '예: 남편 보험도 검토하고 싶어요',
-    '예: 아파트 이사가면 화재보험 가입해야 해요',
-    '예: 애기 육아 중이라 펫보험 할인도 있는지 궁금해요',
-    '예: 자동차보험은 있음. 운전자보험만 문의드려요',
-    '예: 둘째 출산 예정인데 보험 통합 점검 받고 싶어요',
-    '예: 어린이보험 갱신 다가오는데 갈아탈지 고민이에요',
-    '예: 부모님 간병보험 알아보고 있어요',
-    '예: 5세대 실손 4세대랑 어떤게 더 나은지 비교해주세요',
-    '예: 30~40대 부모인데 암보험 늦지 않았을까요?',
-    '예: 여성보험 임신 전후 구분 어떻게 되나요?',
-    '예: 자녀 학자금보험 vs 적금 어떤게 나아요?',
-    '예: 환급형 어린이보험 가입했는데 후회되네요',
-    '예: 임신 32주인데 태아보험 아직 가능한가요?',
-  ];
-  const memoEl = document.getElementById('memo');
-  let memoIdx = 0;
-  function rollMemo(){
-    if (document.activeElement === memoEl || memoEl.value.length > 0) return;
-    memoIdx = (memoIdx + 1) % MEMO_EXAMPLES.length;
-    memoEl.style.transition = 'opacity .3s';
-    memoEl.style.opacity = '0.4';
-    setTimeout(() => {
-      memoEl.placeholder = MEMO_EXAMPLES[memoIdx];
-      memoEl.style.opacity = '1';
-    }, 300);
-  }
-  setInterval(rollMemo, 3500);
-
-  /* ───────── 입력 격려 토스트 ───────── */
-  function showEncourageToast(msg, emoji){
-    const t = document.createElement('div');
-    t.className = 'toast';
-    t.style.background = 'var(--blue-d)';
-    t.style.borderColor = 'var(--blue-d)';
-    t.innerHTML = `<div class="toast-icon" style="background:rgba(255,255,255,.2)">${emoji||'✨'}</div><div class="toast-text" style="color:#fff"><div style="font-weight:700">${msg}</div></div>`;
-    toastStack.appendChild(t);
-    setTimeout(() => t.classList.add('out'), 2400);
-    setTimeout(() => t.remove(), 2900);
-    while (toastStack.children.length > 3) toastStack.firstChild.remove();
-  }
-  let _shownNameOk = false, _shownPhoneOk = false;
-  document.getElementById('name').addEventListener('blur', function(e){
-    if (e.target.value.trim().length >= 2 && !_shownNameOk) {
-      showEncourageToast('좋아요! 거의 다 됐어요 🎉', '👋');
-      _shownNameOk = true;
-    }
-  });
-  document.getElementById('phone').addEventListener('blur', function(e){
-    const digits = e.target.value.replace(/\D/g,'');
-    if (digits.length >= 10 && !_shownPhoneOk) {
-      showEncourageToast('마지막 한 단계만 남았어요 🙌', '💬');
-      _shownPhoneOk = true;
-    }
   });
 </script>
 
