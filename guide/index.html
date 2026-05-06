@@ -2,28 +2,26 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>태아보험 가이드 전체 — 가입시기·보험료·특약·청구까지 | 베이비빌리</title>
   <meta name="description" content="태아보험 가입 전후로 알아야 할 모든 것. 가입시기, 필수특약, 보험료, 보험사 비교, 청구 방법, 거절 사례, 출산 후 체크리스트까지 8개 완전 가이드.">
   <meta name="keywords" content="태아보험 가이드, 태아보험 가입, 태아보험 비교, 태아보험 추천, 베이비빌리">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://villagebaby.kr/heroimage.jpg">
-  <meta name="twitter:image" content="https://villagebaby.kr/heroimage.jpg">
-  <meta property="og:image:width" content="727">
-  <meta property="og:image:height" content="320">
   <meta property="og:title" content="태아보험 가이드 전체 — 베이비빌리">
   <meta property="og:description" content="태아보험 가입 전후로 알아야 할 모든 것. 8개 완전 가이드.">
   <meta property="og:url" content="https://villagebaby.kr/guide/">
+  <meta property="og:image" content="https://villagebaby.kr/heroimage.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="twitter:image" content="https://villagebaby.kr/heroimage.jpg">
   <link rel="canonical" href="https://villagebaby.kr/guide/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Schema.org: CollectionPage + BreadcrumbList + ItemList -->
+  <!-- Pretendard (브랜드 폰트) -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,23 +32,18 @@
         "name": "태아보험 가이드 전체",
         "description": "태아보험 가입 전후로 알아야 할 모든 것을 다룬 8개 완전 가이드.",
         "url": "https://villagebaby.kr/guide/",
-        "publisher": {
-          "@type": "Organization",
-          "name": "베이비빌리",
-          "url": "https://villagebaby.kr/"
-        }
+        "publisher": {"@type":"Organization","name":"베이비빌리","url":"https://villagebaby.kr/"}
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://villagebaby.kr/"},
-          {"@type": "ListItem", "position": 2, "name": "가이드", "item": "https://villagebaby.kr/guide/"}
+          {"@type":"ListItem","position":1,"name":"홈","item":"https://villagebaby.kr/"},
+          {"@type":"ListItem","position":2,"name":"가이드","item":"https://villagebaby.kr/guide/"}
         ]
       },
       {
         "@type": "ItemList",
         "name": "태아보험 가이드 8선",
-        "itemListOrder": "https://schema.org/ItemListOrderAscending",
         "numberOfItems": 8,
         "itemListElement": [
           {"@type":"ListItem","position":1,"name":"태아보험 가입시기 & 필수특약","url":"https://villagebaby.kr/guide/태아보험-가입시기-필수특약/"},
@@ -69,157 +62,278 @@
 
   <style>
     :root{
-      --blue:#3373BA; --blue-d:#235A96; --blue-l:#EBF2FA; --blue-mid:#7BA8D6;
-      --t1:#1A2B3D; --t2:#4A5C70; --t3:#8694A6;
-      --bg:#FAFBFC; --white:#FFFFFF; --border:#E5EBF2;
+      /* Billy Blue */
+      --blue-900:#0D3B6F; --blue-800:#15518F; --blue-700:#2563B6; --blue-600:#2D7CD2;
+      --blue-500:#4A90E2; --blue-400:#7BA8D6; --blue-300:#A6C4E8; --blue-200:#C9DCEF;
+      --blue-100:#E4ECF6; --blue-50:#EFF4FA;
+      /* Billy Pink */
+      --pink-100:#FFE0CC; --pink-50:#FFF1E6;
+      /* Sub */
+      --yellow:#FFC700; --lemon:#FFE05E; --light-yellow:#FFE4B5;
+      --skyblue:#C9E2EE; --light-pink:#FFCFE4; --light-violet:#ECE0FF; --mint:#BFEBE0;
+      /* Grayscale */
+      --black:#000000; --gray-900:#1F2937; --gray-800:#374151; --gray-700:#4B5563;
+      --gray-600:#6B7280; --gray-500:#9CA3AF; --gray-400:#D1D5DB; --gray-300:#E5E7EB;
+      --gray-200:#F3F4F6; --gray-100:#F9FAFB; --white:#FFFFFF;
+      /* System */
+      --red:#F94646; --orange:#F94400; --green:#2ED371;
+      /* Shadow */
+      --shadow-blue: 0 3px 17px 1px rgba(45,124,210,.30);
+      --shadow-xl: 0 3px 27px 6px rgba(0,0,0,.15);
+      --shadow-l: 0 3px 17px 6px rgba(0,0,0,.15);
+      --shadow-s: 0 1px 6px 0 rgba(0,0,0,.15);
+      --shadow-xs: 0 0 3px 0 rgba(0,0,0,.10);
     }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Noto Sans KR',sans-serif;color:var(--t1);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+      color:var(--gray-900);background:var(--white);
+      -webkit-font-smoothing:antialiased;word-break:keep-all;line-height:1.5
+    }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
+    button{cursor:pointer;font-family:inherit;border:none;background:none}
 
-    nav.site-nav{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
-    nav.site-nav .logo{font-family:'Noto Serif KR';font-size:20px;font-weight:700;color:var(--blue-d)}
-    nav.site-nav .cta{background:var(--blue);color:#fff;padding:10px 18px;border-radius:24px;font-size:13px;font-weight:700}
+    /* Typography (Pretendard) */
+    .h1{font-size:32px;font-weight:700;letter-spacing:-0.025em;line-height:1.3}
+    .h2{font-size:24px;font-weight:700;letter-spacing:-0.02em;line-height:1.35}
+    .h3{font-size:20px;font-weight:700;letter-spacing:-0.02em;line-height:1.4}
+    .h4{font-size:18px;font-weight:700;letter-spacing:-0.015em;line-height:1.45}
+    .h5{font-size:16px;font-weight:700;letter-spacing:-0.01em;line-height:1.5}
+    .sub1{font-size:15px;font-weight:600;line-height:1.55}
+    .body1{font-size:14px;font-weight:400;line-height:1.6}
+    .body2{font-size:13px;font-weight:400;line-height:1.6}
+    .caption{font-size:11px;font-weight:400;line-height:1.5;color:var(--gray-600)}
 
-    .hero{padding:80px 24px 60px;text-align:center;background:linear-gradient(180deg,var(--blue-l) 0%,var(--bg) 100%)}
-    .hero .label{display:inline-block;background:var(--white);color:var(--blue-d);font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:18px;border:1px solid var(--blue-mid)}
-    .hero h1{font-family:'Noto Serif KR';font-size:38px;font-weight:700;color:var(--t1);line-height:1.35;margin-bottom:18px;letter-spacing:-0.02em}
-    .hero p{font-size:16px;color:var(--t2);max-width:640px;margin:0 auto;line-height:1.8}
+    /* HEADER */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--gray-200)}
+    .nav-inner{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .nav-logo{display:flex;align-items:center;gap:8px}
+    .nav-logo img{height:32px;width:auto;display:block}
+    .nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--blue-600);color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:24px;box-shadow:var(--shadow-blue);transition:transform .15s,box-shadow .2s}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 22px 2px rgba(45,124,210,.4)}
+    .nav-cta::before{content:'';width:6px;height:6px;background:#FFEB55;border-radius:50%;animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
 
-    .container{max-width:1100px;margin:0 auto;padding:0 24px}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin:60px auto;max-width:1100px;padding:0 24px}
-    .card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:30px 28px;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:14px;position:relative}
-    .card:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(51,115,186,.12);border-color:var(--blue-mid)}
-    .card .num{position:absolute;top:24px;right:28px;font-family:'Noto Serif KR';font-size:48px;font-weight:700;color:var(--blue-l);line-height:1}
-    .card .icon{font-size:32px;margin-bottom:4px}
-    .card h3{font-size:20px;font-weight:700;color:var(--t1);line-height:1.4;letter-spacing:-0.01em}
-    .card p{font-size:14px;color:var(--t2);line-height:1.7}
-    .card .read{margin-top:auto;color:var(--blue-d);font-size:13px;font-weight:700;padding-top:10px}
-    .card .read::after{content:' →';transition:transform .2s;display:inline-block}
-    .card:hover .read::after{transform:translateX(4px)}
+    /* HERO */
+    .hero{padding:64px 24px 40px;text-align:center;background:linear-gradient(180deg,var(--blue-50) 0%,var(--white) 100%)}
+    .hero .badge{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--blue-700);font-size:12px;font-weight:700;padding:6px 14px;border-radius:16px;margin-bottom:18px;box-shadow:var(--shadow-xs)}
+    .hero h1{max-width:680px;margin:0 auto 14px;color:var(--gray-900)}
+    .hero h1 em{font-style:normal;color:var(--blue-700)}
+    .hero p{max-width:560px;margin:0 auto;color:var(--gray-700)}
+    .hero-stats{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:24px}
+    .stat{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--gray-200);padding:8px 14px;border-radius:16px;font-size:12.5px;color:var(--gray-700);font-weight:600}
+    .stat strong{color:var(--blue-700);font-weight:700}
 
-    .section-title{font-family:'Noto Serif KR';font-size:28px;font-weight:700;text-align:center;margin:60px 0 8px;letter-spacing:-0.02em}
-    .section-sub{text-align:center;font-size:14px;color:var(--t2);margin-bottom:0}
+    /* CONTAINER */
+    .container{max-width:1120px;margin:0 auto;padding:0 24px}
 
-    .cta-section{background:var(--blue-d);color:#fff;padding:70px 24px;text-align:center;margin-top:80px;border-radius:24px;max-width:1100px;margin-left:auto;margin-right:auto}
-    .cta-section h2{font-family:'Noto Serif KR';font-size:28px;font-weight:700;margin-bottom:14px;letter-spacing:-0.02em}
-    .cta-section p{font-size:15px;opacity:.92;margin-bottom:28px}
-    .cta-btn{display:inline-block;background:#fff;color:var(--blue-d);padding:16px 36px;border-radius:30px;font-size:15px;font-weight:700;transition:transform .2s}
-    .cta-btn:hover{transform:translateY(-2px)}
+    /* SECTION HEADER */
+    .sec{padding:48px 0 24px}
+    .sec-head{margin-bottom:24px}
+    .sec-head .label{display:inline-block;background:var(--blue-100);color:var(--blue-700);font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:14px;margin-bottom:10px;letter-spacing:0.02em}
+    .sec-head h2{color:var(--gray-900)}
+    .sec-head .desc{color:var(--gray-600);font-size:14px;margin-top:6px}
 
-    footer{padding:50px 24px 40px;text-align:center;color:var(--t3);font-size:13px;border-top:1px solid var(--border);margin-top:60px;background:var(--white)}
-    footer a{color:var(--blue-d);font-weight:700}
+    /* CONTENT GRID (디자인 시스템 Contents List 패턴) */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{display:flex;align-items:center;gap:16px;background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:18px 20px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-l);border-color:var(--blue-200)}
+    .card-thumb{width:80px;height:80px;border-radius:12px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;position:relative;overflow:hidden}
+    .card-thumb.pink{background:var(--pink-50)}
+    .card-thumb.yellow{background:var(--light-yellow)}
+    .card-thumb.mint{background:var(--mint)}
+    .card-thumb.violet{background:var(--light-violet)}
+    .card-thumb.beige{background:var(--pink-100)}
+    .card-thumb.skyblue{background:var(--skyblue)}
+    .card-thumb .num{position:absolute;top:6px;left:8px;font-size:10px;font-weight:700;color:var(--gray-500);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:8px}
+    .card-body{flex:1;min-width:0}
+    .card-tag{display:inline-block;font-size:10.5px;font-weight:700;color:var(--blue-700);background:var(--blue-100);padding:3px 8px;border-radius:6px;margin-bottom:6px;letter-spacing:0.02em}
+    .card-tag.pink{color:#D55A19;background:var(--pink-100)}
+    .card-tag.red{color:#fff;background:var(--red)}
+    .card-title{font-size:15px;font-weight:700;color:var(--gray-900);line-height:1.4;letter-spacing:-0.01em;margin-bottom:4px}
+    .card-desc{font-size:12.5px;color:var(--gray-600);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .card-arrow{font-size:18px;color:var(--gray-400);flex-shrink:0;transition:transform .2s,color .2s}
+    .card:hover .card-arrow{color:var(--blue-600);transform:translateX(3px)}
 
+    /* CTA BLOCK */
+    .cta-block{background:linear-gradient(135deg,var(--blue-700) 0%,var(--blue-800) 100%);border-radius:16px;padding:36px 28px;text-align:center;color:#fff;margin:48px 0 32px;box-shadow:var(--shadow-l)}
+    .cta-block h3{color:#fff;margin-bottom:8px}
+    .cta-block p{color:rgba(255,255,255,.85);font-size:14px;margin-bottom:20px}
+    .cta-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue-700);font-size:15px;font-weight:700;padding:14px 28px;border-radius:24px;transition:transform .15s,box-shadow .2s}
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+
+    /* FOOTER */
+    footer{padding:32px 24px 60px;text-align:center;background:var(--gray-100);border-top:1px solid var(--gray-200);color:var(--gray-600)}
+    footer .ftop{font-size:13px;font-weight:600;margin-bottom:8px}
+    footer .fbot{font-size:11px;color:var(--gray-500)}
+    footer a{color:var(--blue-700);font-weight:600}
+
+    /* MOBILE */
     @media(max-width:760px){
-      .hero h1{font-size:28px}
-      .grid{grid-template-columns:1fr;gap:16px;margin:40px auto}
-      .card{padding:24px 22px}
-      .card .num{font-size:36px;top:20px;right:22px}
-      .section-title{font-size:22px;margin:40px 0 8px}
-      .cta-section{margin-top:50px;padding:50px 24px}
-      .cta-section h2{font-size:22px}
+      .h1{font-size:26px}.h2{font-size:21px}.h3{font-size:18px}
+      .hero{padding:48px 20px 32px}
+      .grid{grid-template-columns:1fr;gap:10px}
+      .card{padding:14px 16px;gap:12px}
+      .card-thumb{width:64px;height:64px;font-size:28px;border-radius:10px}
+      .card-title{font-size:14px}
+      .card-desc{font-size:12px}
+      .container{padding:0 18px}
+      .sec{padding:36px 0 18px}
+      .cta-block{padding:30px 22px;border-radius:14px}
+      .cta-btn{padding:13px 24px;font-size:14px}
+    }
+    @media(max-width:380px){
+      .nav-inner{padding:12px 16px}
+      .nav-cta{padding:8px 12px;font-size:12px}
+      .hero-stats{gap:6px}
+      .stat{padding:7px 11px;font-size:11.5px}
     }
   </style>
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="/" class="logo"><img src="/logo.png" alt="베이비빌리" style="height:30px;width:auto;display:inline-block;vertical-align:middle"></a>
-  <a href="https://babybilly.co/insurance/baby/talk/v1" class="cta">카톡 무료 상담</a>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="베이비빌리 홈">
+      <img src="/logo.png" alt="베이비빌리">
+    </a>
+    <a href="https://babybilly.co/insurance/baby/talk/v1" class="nav-cta">카톡 무료 상담</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <header class="hero">
-  <span class="label">📚 태아보험 가이드</span>
-  <h1>태아보험,<br>이 8개만 알면 충분합니다</h1>
-  <p>가입시기부터 보험사 비교, 보험료, 특약, 청구 방법, 출산 후 체크리스트까지.<br>베이비빌리 베동 커뮤니티 실제 후기와 전문가 분석을 한 곳에 정리했어요.</p>
+  <span class="badge">📚 태아보험 완전 가이드</span>
+  <h1 class="h1">태아보험,<br><em>이 8개만 알면 충분합니다</em></h1>
+  <p class="body1">가입시기부터 보험사 비교, 보험료, 특약, 청구 방법, 출산 후 체크리스트까지.<br>베이비빌리 베동 커뮤니티 후기와 전문가 분석을 한 곳에 정리했어요.</p>
+  <div class="hero-stats">
+    <span class="stat">⭐ <strong>10년+</strong> 부모 보험 전문</span>
+    <span class="stat">📊 누적 <strong>200만</strong> 부모 데이터</span>
+    <span class="stat">⚖️ <strong>11개사</strong> 통합 비교</span>
+  </div>
 </header>
 
 <main>
-  <h2 class="section-title">가입 전에 꼭 읽어야 할 가이드</h2>
-  <p class="section-sub">임신 사실을 알게 된 직후부터 22주 전까지</p>
+  <!-- 가입 전 -->
+  <div class="container">
+    <section class="sec">
+      <div class="sec-head">
+        <span class="label">STEP 1 · 가입 전 필독</span>
+        <h2 class="h2">임신 사실을 알게 됐다면</h2>
+        <p class="desc">22주 데드라인 전에 꼭 읽어야 할 핵심 가이드</p>
+      </div>
 
-  <div class="grid">
-    <a href="/guide/태아보험-가입시기-필수특약/" class="card">
-      <span class="num">01</span>
-      <span class="icon">📅</span>
-      <h3>태아보험 가입시기 & 필수특약</h3>
-      <p>임신 몇 주차에 가입해야 할까? 22주 데드라인의 의미, 4D 초음파 전 가입의 중요성, 절대 빠지면 안 되는 필수특약 5가지.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+      <div class="grid">
+        <a href="/guide/태아보험-가입시기-필수특약/" class="card">
+          <div class="card-thumb pink"><span class="num">01</span>⏰</div>
+          <div class="card-body">
+            <span class="card-tag">가입시기</span>
+            <p class="card-title">태아보험 가입시기 & 필수특약</p>
+            <p class="card-desc">22주 데드라인의 의미, 4D 초음파 전 가입 이유, 절대 빠지면 안 되는 필수특약 5가지.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a href="/guide/태아보험-보험사-추천-비교/" class="card">
-      <span class="num">02</span>
-      <span class="icon">🏢</span>
-      <h3>태아보험 보험사 추천 비교</h3>
-      <p>현대해상, 메리츠, 삼성, KB, DB, 한화. 6개 주요 보험사의 장단점을 솔직하게 비교. 베동 커뮤니티 실제 추천 빈도까지.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+        <a href="/guide/태아보험-보험사-추천-비교/" class="card">
+          <div class="card-thumb yellow"><span class="num">02</span>🏦</div>
+          <div class="card-body">
+            <span class="card-tag">보험사 비교</span>
+            <p class="card-title">현대·삼성·KB·메리츠 솔직 비교</p>
+            <p class="card-desc">6대 보험사 장단점 비교 + 베동 커뮤니티 실제 추천 빈도 데이터까지.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a href="/guide/태아보험-보험료-얼마나-드나/" class="card">
-      <span class="num">03</span>
-      <span class="icon">💰</span>
-      <h3>태아보험 보험료 얼마나 드나</h3>
-      <p>월 8~15만원이라는데 진짜? 산모 나이별·만기별·특약별 실제 보험료 시뮬레이션. 보험료 절약하는 5가지 방법까지.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+        <a href="/guide/태아보험-보험료-얼마나-드나/" class="card">
+          <div class="card-thumb mint"><span class="num">03</span>💰</div>
+          <div class="card-body">
+            <span class="card-tag">보험료</span>
+            <p class="card-title">월 8~15만원 진짜? 실제 보험료</p>
+            <p class="card-desc">산모 나이별·만기별·특약별 시뮬레이션. 보험료 절약하는 5가지 방법까지.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a href="/guide/태아실손보험-일반실손-차이/" class="card">
-      <span class="num">04</span>
-      <span class="icon">🏥</span>
-      <h3>태아실손 vs 일반실손 차이</h3>
-      <p>둘 다 들어야 하나? 보장 범위·자기부담금·갱신 구조 비교. 출산 후 일반실손으로 전환하는 시점과 방법.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+        <a href="/guide/태아실손보험-일반실손-차이/" class="card">
+          <div class="card-thumb skyblue"><span class="num">04</span>🩺</div>
+          <div class="card-body">
+            <span class="card-tag red">5세대 NEW</span>
+            <p class="card-title">태아실손 vs 일반실손 차이</p>
+            <p class="card-desc">2026.5.6 시행 5세대 실손 반영. 선천이상 담보·자기부담률·전환 시점 완벽 정리.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a href="/guide/태아보험-특약-총정리/" class="card">
-      <span class="num">05</span>
-      <span class="icon">📋</span>
-      <h3>태아보험 특약 총정리</h3>
-      <p>주계약 vs 특약 차이, 필수 특약 TOP 5, 상황별 추천 특약, 절대 안 넣어야 할 특약 5가지. 과잉 설계 방지 가이드.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+        <a href="/guide/태아보험-특약-총정리/" class="card">
+          <div class="card-thumb violet"><span class="num">05</span>📋</div>
+          <div class="card-body">
+            <span class="card-tag">특약 분석</span>
+            <p class="card-title">태아보험 특약 총정리</p>
+            <p class="card-desc">필수 vs 선택 vs 불필요 3분류 + 과잉 설계 TOP 5 패턴 공개.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a href="/guide/태아보험-거절-사례/" class="card">
-      <span class="num">06</span>
-      <span class="icon">⚠️</span>
-      <h3>태아보험 거절 사례 & 대처법</h3>
-      <p>임신성 당뇨, 고령 산모, 다태아, 태아 이상 소견. 실제 거절 사례 TOP 6과 조건부 승인 받는 재도전 전략.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+        <a href="/guide/태아보험-거절-사례/" class="card">
+          <div class="card-thumb beige"><span class="num">06</span>⚠️</div>
+          <div class="card-body">
+            <span class="card-tag pink">거절 대처</span>
+            <p class="card-title">태아보험 거절 사례 & 재도전</p>
+            <p class="card-desc">임당·고령·다태아·이상 소견 거절 사유 TOP 6와 조건부 승인 받는 전략.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
+      </div>
+    </section>
   </div>
 
-  <h2 class="section-title">출산 전후 체크할 가이드</h2>
-  <p class="section-sub">출산 직전부터 출산 후 1년까지</p>
+  <!-- 출산 전후 -->
+  <div class="container">
+    <section class="sec">
+      <div class="sec-head">
+        <span class="label">STEP 2 · 출산 전후</span>
+        <h2 class="h2">출산 직전부터 D+90까지</h2>
+        <p class="desc">청구 절차와 보험 점검 타이밍을 놓치지 마세요</p>
+      </div>
 
-  <div class="grid">
-    <a href="/guide/태아보험-청구-방법/" class="card">
-      <span class="num">07</span>
-      <span class="icon">📨</span>
-      <h3>태아보험 청구 방법</h3>
-      <p>출생 직후 청구 절차, 필요 서류 체크리스트, 보험사별 청구 방법 3가지, 자주 누락되는 항목 TOP 5와 거절 시 대처법.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+      <div class="grid">
+        <a href="/guide/태아보험-청구-방법/" class="card">
+          <div class="card-thumb pink"><span class="num">07</span>📨</div>
+          <div class="card-body">
+            <span class="card-tag">청구</span>
+            <p class="card-title">태아보험 청구 방법 완전 정리</p>
+            <p class="card-desc">출생 후 청구 서류·절차·카톡 청구 + 놓치기 쉬운 청구 항목 TOP 5.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
 
-    <a href="/guide/출산후-보험-체크리스트/" class="card">
-      <span class="num">08</span>
-      <span class="icon">✅</span>
-      <h3>출산 후 보험 체크리스트</h3>
-      <p>D+1부터 D+7까지 일일 체크리스트, 태아특약 자녀특약 전환, 실손 중복 정리, 1세·3세·7세 시점별 보험 리뷰 포인트.</p>
-      <span class="read">가이드 읽기</span>
-    </a>
+        <a href="/guide/출산후-보험-체크리스트/" class="card">
+          <div class="card-thumb mint"><span class="num">08</span>✅</div>
+          <div class="card-body">
+            <span class="card-tag">체크리스트</span>
+            <p class="card-title">출산 후 보험 체크리스트</p>
+            <p class="card-desc">D+1~D+90 타임라인, 태아특약 자녀특약 전환, 1·3·7세 시점별 리뷰.</p>
+          </div>
+          <span class="card-arrow">›</span>
+        </a>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-block">
+        <h3 class="h3">가이드를 다 봤는데도 헷갈린다면</h3>
+        <p>태아보험 전문 상담사가 산모 상황에 맞춰 1:1로 비교 설계해드려요.<br>카톡으로 부담 없이 시작하세요.</p>
+        <a href="https://babybilly.co/insurance/baby/talk/v1" class="cta-btn">💬 카톡으로 무료 상담 시작</a>
+      </div>
+    </section>
   </div>
-
-  <section class="cta-section">
-    <h2>가이드를 읽어도 헷갈린다면?</h2>
-    <p>태아보험 전문 상담사가 산모 상황에 맞춰 1:1로 비교 설계해드려요. 카톡으로 부담 없이 시작하세요.</p>
-    <a href="https://babybilly.co/insurance/baby/talk/v1" class="cta-btn">💬 카톡으로 무료 상담 시작</a>
-  </section>
 </main>
 
 <footer>
-  <p>© 베이비빌리 · <a href="/">홈으로</a></p>
-  <p style="margin-top:8px;font-size:12px;color:var(--t3)">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요.</p>
+  <p class="ftop">부모를 위한 모든 보험 연구소</p>
+  <p class="fbot">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요.</p>
 </footer>
 
 </body>
