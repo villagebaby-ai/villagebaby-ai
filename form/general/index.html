@@ -223,7 +223,7 @@
 <!-- HEADER -->
 <header class="top">
   <a href="#" class="logo-link" aria-label="베이비빌리 홈">
-    <img src="img/logo.png" alt="Baby Billy" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+    <img src="/logo.png" alt="베이비빌리" class="logo-img" onerror="this.src='img/logo.png';this.onerror=function(){this.style.display='none';this.nextElementSibling.style.display='inline'}">
     <span class="logo-fallback" style="display:none">베이비빌리</span>
   </a>
   <span class="badge">10년+ 부모 보험 전문</span>
@@ -248,8 +248,8 @@
   <section class="form-section" id="apply">
     <form class="form-card" id="inquiry-form" method="POST" action="/api/inquiry" novalidate>
       <div class="form-head">
-        <h2>1분 무료 상담 신청 🎁</h2>
-        <p>24시간 내 카톡으로 연락드려요</p>
+        <h2>부모를 위한 모든 보험 전문가</h2>
+        <p>베이비빌리 팀이 함께 합니다.</p>
       </div>
 
       <div class="field">
@@ -274,6 +274,7 @@
         <label class="flbl" for="memo">추가 메모 <span style="color:var(--t3);font-weight:400;font-size:11px;">(선택)</span></label>
         <textarea id="memo" name="memo" placeholder="예: 첫째 임신 22주, 임당 진단 받았어요"></textarea>
       </div>
+      <script>/*MEMO_ROLLER_PLACEHOLDER*/</script>
 
       <label class="agree">
         <input type="checkbox" name="agree" required checked>
@@ -557,6 +558,37 @@
     else if (v.length >= 4) v = v.replace(/(\d{3})(\d+)/, '$1-$2');
     e.target.value = v;
   });
+
+  /* ───────── 추가 메모 placeholder 롤링 ───────── */
+  const MEMO_EXAMPLES = [
+    '예: 첫째 임신 22주, 임당 진단 받았어요',
+    '예: 남편 보험도 검토하고 싶어요',
+    '예: 아파트 이사가면 화재보험 가입해야 해요',
+    '예: 애기 육아 중이라 펫보험 할인도 있는지 궁금해요',
+    '예: 자동차보험은 있음. 운전자보험만 문의드려요',
+    '예: 둘째 출산 예정인데 보험 통합 점검 받고 싶어요',
+    '예: 어린이보험 갱신 다가오는데 갈아탈지 고민이에요',
+    '예: 부모님 간병보험 알아보고 있어요',
+    '예: 5세대 실손 4세대랑 어떤게 더 나은지 비교해주세요',
+    '예: 30~40대 부모인데 암보험 늦지 않았을까요?',
+    '예: 여성보험 임신 전후 구분 어떻게 되나요?',
+    '예: 자녀 학자금보험 vs 적금 어떤게 나아요?',
+    '예: 환급형 어린이보험 가입했는데 후회되네요',
+    '예: 임신 32주인데 태아보험 아직 가능한가요?',
+  ];
+  const memoEl = document.getElementById('memo');
+  let memoIdx = 0;
+  function rollMemo(){
+    if (document.activeElement === memoEl || memoEl.value.length > 0) return;
+    memoIdx = (memoIdx + 1) % MEMO_EXAMPLES.length;
+    memoEl.style.transition = 'opacity .3s';
+    memoEl.style.opacity = '0.4';
+    setTimeout(() => {
+      memoEl.placeholder = MEMO_EXAMPLES[memoIdx];
+      memoEl.style.opacity = '1';
+    }, 300);
+  }
+  setInterval(rollMemo, 3500);
 
   /* ───────── 입력 격려 토스트 ───────── */
   function showEncourageToast(msg, emoji){
