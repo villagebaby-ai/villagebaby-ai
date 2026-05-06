@@ -117,7 +117,11 @@
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
 
     /* HERO */
-    .hero{padding:64px 24px 40px;text-align:center;background:linear-gradient(180deg,var(--blue-50) 0%,var(--white) 100%)}
+    .hero{position:relative;padding:64px 24px 40px;text-align:center;background:linear-gradient(180deg,var(--blue-50) 0%,var(--white) 100%);overflow:hidden}
+    .hero-deco{position:absolute;pointer-events:none;z-index:0;opacity:.85}
+    .hero-deco.left{left:max(-30px,calc(50% - 380px));top:60px;width:120px}
+    .hero-deco.right{right:max(-30px,calc(50% - 380px));bottom:24px;width:130px;transform:rotate(8deg)}
+    .hero-content{position:relative;z-index:1}
     .hero .badge{display:inline-flex;align-items:center;gap:6px;background:var(--white);color:var(--blue-700);font-size:12px;font-weight:700;padding:6px 14px;border-radius:16px;margin-bottom:18px;box-shadow:var(--shadow-xs)}
     .hero h1{max-width:680px;margin:0 auto 14px;color:var(--gray-900)}
     .hero h1 em{font-style:normal;color:var(--blue-700)}
@@ -125,6 +129,10 @@
     .hero-stats{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:24px}
     .stat{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--gray-200);padding:8px 14px;border-radius:16px;font-size:12.5px;color:var(--gray-700);font-weight:600}
     .stat strong{color:var(--blue-700);font-weight:700}
+    @media(max-width:760px){
+      .hero-deco.left{width:80px;left:-10px;top:auto;bottom:8px;opacity:.55}
+      .hero-deco.right{width:80px;right:-10px;top:8px;bottom:auto;opacity:.55}
+    }
 
     /* CONTAINER */
     .container{max-width:1120px;margin:0 auto;padding:0 24px}
@@ -140,7 +148,8 @@
     .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
     .card{display:flex;align-items:center;gap:16px;background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:18px 20px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
     .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-l);border-color:var(--blue-200)}
-    .card-thumb{width:80px;height:80px;border-radius:12px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;position:relative;overflow:hidden}
+    .card-thumb{width:88px;height:88px;border-radius:12px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;position:relative;overflow:hidden}
+    .card-thumb img{width:100%;height:100%;object-fit:contain;padding:6px}
     .card-thumb.pink{background:var(--pink-50)}
     .card-thumb.yellow{background:var(--light-yellow)}
     .card-thumb.mint{background:var(--mint)}
@@ -206,13 +215,17 @@
 
 <!-- HERO -->
 <header class="hero">
-  <span class="badge">📚 태아보험 완전 가이드</span>
-  <h1 class="h1">태아보험,<br><em>이 8개만 알면 충분합니다</em></h1>
-  <p class="body1">가입시기부터 보험사 비교, 보험료, 특약, 청구 방법, 출산 후 체크리스트까지.<br>베이비빌리 베동 커뮤니티 후기와 전문가 분석을 한 곳에 정리했어요.</p>
-  <div class="hero-stats">
-    <span class="stat">⭐ <strong>10년+</strong> 부모 보험 전문</span>
-    <span class="stat">📊 누적 <strong>200만</strong> 부모 데이터</span>
-    <span class="stat">⚖️ <strong>11개사</strong> 통합 비교</span>
+  <img class="hero-deco left" src="/assets/img/baby-cloud.png" alt="" aria-hidden="true">
+  <img class="hero-deco right" src="/assets/img/baby-wave-small.png" alt="" aria-hidden="true">
+  <div class="hero-content">
+    <span class="badge">📚 태아보험 완전 가이드</span>
+    <h1 class="h1">태아보험,<br><em>이 8개만 알면 충분합니다</em></h1>
+    <p class="body1">가입시기부터 보험사 비교, 보험료, 특약, 청구 방법, 출산 후 체크리스트까지.<br>베이비빌리 베동 커뮤니티 후기와 전문가 분석을 한 곳에 정리했어요.</p>
+    <div class="hero-stats">
+      <span class="stat">⭐ <strong>10년+</strong> 부모 보험 전문</span>
+      <span class="stat">📊 누적 <strong>200만</strong> 부모 데이터</span>
+      <span class="stat">⚖️ <strong>11개사</strong> 통합 비교</span>
+    </div>
   </div>
 </header>
 
@@ -228,7 +241,7 @@
 
       <div class="grid">
         <a href="/guide/태아보험-가입시기-필수특약/" class="card">
-          <div class="card-thumb pink"><span class="num">01</span>⏰</div>
+          <div class="card-thumb pink"><span class="num">01</span><img src="/assets/img/pregnant-mom.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag">가입시기</span>
             <p class="card-title">태아보험 가입시기 & 필수특약</p>
@@ -238,7 +251,7 @@
         </a>
 
         <a href="/guide/태아보험-보험사-추천-비교/" class="card">
-          <div class="card-thumb yellow"><span class="num">02</span>🏦</div>
+          <div class="card-thumb yellow"><span class="num">02</span><img src="/assets/img/baby-magnifier.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag">보험사 비교</span>
             <p class="card-title">현대·삼성·KB·메리츠 솔직 비교</p>
@@ -248,7 +261,7 @@
         </a>
 
         <a href="/guide/태아보험-보험료-얼마나-드나/" class="card">
-          <div class="card-thumb mint"><span class="num">03</span>💰</div>
+          <div class="card-thumb mint"><span class="num">03</span><img src="/assets/img/baby-medical.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag">보험료</span>
             <p class="card-title">월 8~15만원 진짜? 실제 보험료</p>
@@ -258,7 +271,7 @@
         </a>
 
         <a href="/guide/태아실손보험-일반실손-차이/" class="card">
-          <div class="card-thumb skyblue"><span class="num">04</span>🩺</div>
+          <div class="card-thumb skyblue"><span class="num">04</span><img src="/assets/img/baby-angel.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag red">5세대 NEW</span>
             <p class="card-title">태아실손 vs 일반실손 차이</p>
@@ -268,7 +281,7 @@
         </a>
 
         <a href="/guide/태아보험-특약-총정리/" class="card">
-          <div class="card-thumb violet"><span class="num">05</span>📋</div>
+          <div class="card-thumb violet"><span class="num">05</span><img src="/assets/img/baby-bear-study.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag">특약 분석</span>
             <p class="card-title">태아보험 특약 총정리</p>
@@ -278,7 +291,7 @@
         </a>
 
         <a href="/guide/태아보험-거절-사례/" class="card">
-          <div class="card-thumb beige"><span class="num">06</span>⚠️</div>
+          <div class="card-thumb beige"><span class="num">06</span><img src="/assets/img/baby-wave.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag pink">거절 대처</span>
             <p class="card-title">태아보험 거절 사례 & 재도전</p>
@@ -301,7 +314,7 @@
 
       <div class="grid">
         <a href="/guide/태아보험-청구-방법/" class="card">
-          <div class="card-thumb pink"><span class="num">07</span>📨</div>
+          <div class="card-thumb pink"><span class="num">07</span><img src="/assets/img/baby-laughing.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag">청구</span>
             <p class="card-title">태아보험 청구 방법 완전 정리</p>
@@ -311,7 +324,7 @@
         </a>
 
         <a href="/guide/출산후-보험-체크리스트/" class="card">
-          <div class="card-thumb mint"><span class="num">08</span>✅</div>
+          <div class="card-thumb mint"><span class="num">08</span><img src="/assets/img/baby-birthday.png" alt=""></div>
           <div class="card-body">
             <span class="card-tag">체크리스트</span>
             <p class="card-title">출산 후 보험 체크리스트</p>
