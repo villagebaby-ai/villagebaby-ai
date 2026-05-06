@@ -19,195 +19,206 @@
       --t1:#1A2B3D; --t2:#4A5C70; --t3:#8694A6;
       --bg:#FAFBFC; --white:#FFFFFF; --border:#E5EBF2;
       --yellow:#FFC107; --red:#E53935; --green:#10B981;
+      --orange:#FF6B35;
     }
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{font-family:'Noto Sans KR',sans-serif;color:var(--t1);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden}
+    html{scroll-behavior:smooth}
+    html,body{font-family:'Noto Sans KR',sans-serif;color:var(--t1);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
     button{cursor:pointer;font-family:inherit}
 
+    /* COUNTDOWN BAR */
+    .countdown{position:sticky;top:0;z-index:101;background:linear-gradient(90deg,var(--orange) 0%,#E53935 100%);color:#fff;padding:8px 14px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:-0.01em;display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap}
+    .countdown .icon{animation:shake 1.2s infinite}
+    @keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+    .countdown strong{background:rgba(255,255,255,.22);padding:2px 8px;border-radius:8px;font-weight:900;font-variant-numeric:tabular-nums}
+    @media(max-width:480px){
+      .countdown{font-size:11.5px;padding:7px 10px;line-height:1.4}
+    }
+
     /* HEADER */
-    header.top{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    header.top{position:sticky;top:34px;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
     header.top .logo-link{display:flex;align-items:center;gap:8px;flex-shrink:0}
     header.top .logo-img{height:30px;width:auto;display:block}
     header.top .logo-fallback{font-size:18px;font-weight:900;color:var(--blue-d);letter-spacing:-0.02em}
     header.top .badge{font-size:11px;background:var(--blue-l);color:var(--blue-d);padding:5px 10px;border-radius:12px;font-weight:700;white-space:nowrap}
     header.top .cta-top{background:var(--blue);color:#fff;padding:9px 14px;border-radius:22px;font-size:12.5px;font-weight:900;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;box-shadow:0 3px 10px rgba(51,115,186,.25);transition:transform .15s,box-shadow .15s}
     header.top .cta-top:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(51,115,186,.35)}
-    header.top .cta-top::before{content:'';width:7px;height:7px;background:#FFEB55;border-radius:50%;animation:pulse 1.5s infinite;box-shadow:0 0 0 0 rgba(255,235,85,.6)}
+    header.top .cta-top::before{content:'';width:7px;height:7px;background:#FFEB55;border-radius:50%;animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
     @media(max-width:380px){
-      header.top{padding:9px 12px}
+      header.top{padding:9px 12px;top:32px}
       header.top .logo-img{height:26px}
       header.top .badge{display:none}
       header.top .cta-top{padding:8px 12px;font-size:12px}
     }
 
     /* HERO */
-    .hero{position:relative;padding:50px 20px 40px;text-align:center;background:linear-gradient(180deg,#D6E4F2 0%,var(--bg) 100%);overflow:hidden}
-    .hero-bg-img{position:absolute;top:30px;left:50%;transform:translateX(-50%);width:min(90%,520px);opacity:.55;pointer-events:none;z-index:0}
+    .hero{position:relative;padding:32px 20px 24px;text-align:center;background:linear-gradient(180deg,#D6E4F2 0%,var(--bg) 100%);overflow:hidden}
+    .hero-bg-img{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:min(85%,460px);opacity:.42;pointer-events:none;z-index:0;border-radius:14px}
     .hero-content{position:relative;z-index:1}
-    .hero .pretitle{display:inline-block;background:var(--white);color:var(--blue-d);font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:20px;margin-bottom:18px;border:1px solid var(--blue-mid)}
-    .hero h1{font-size:28px;font-weight:900;color:var(--t1);line-height:1.35;margin-bottom:14px;letter-spacing:-0.03em}
+    .hero h1{font-size:25px;font-weight:900;color:var(--t1);line-height:1.35;margin-bottom:10px;letter-spacing:-0.03em}
     .hero h1 em{color:var(--blue-d);font-style:normal}
-    .hero .sub{font-size:14.5px;color:var(--t2);max-width:540px;margin:0 auto 20px;line-height:1.7}
-
-    /* TRUST */
-    .trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:18px 20px;background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--t2)}
-    .trust-item strong{color:var(--blue-d);font-weight:900}
-    .trust-divider{width:1px;height:22px;background:var(--border);align-self:center}
+    .hero .sub{font-size:14px;color:var(--t2);max-width:540px;margin:0 auto;line-height:1.65}
+    .hero .trust-line{margin-top:14px;display:inline-flex;gap:14px;font-size:12px;color:var(--t2);background:var(--white);border:1px solid var(--border);padding:7px 14px;border-radius:24px;flex-wrap:wrap;justify-content:center}
+    .hero .trust-line strong{color:var(--blue-d);font-weight:900}
 
     /* CONTAINER */
-    .container{max-width:680px;margin:0 auto;padding:0 20px;position:relative}
-    .section{padding:46px 0 28px}
+    .container{max-width:680px;margin:0 auto;padding:0 18px;position:relative}
+    .section{padding:32px 0 20px}
 
-    /* COVERAGE */
-    .coverage{position:relative}
-    .coverage h2{font-size:21px;font-weight:900;text-align:center;margin-bottom:8px;letter-spacing:-0.02em}
-    .coverage .desc{text-align:center;font-size:13px;color:var(--t3);margin-bottom:22px}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-    .chip{background:var(--white);border:1.5px solid var(--border);border-radius:22px;padding:10px 16px;font-size:13px;font-weight:700;color:var(--t1);display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+    /* FORM (위로 이동) */
+    .form-section{padding:18px 0 22px;position:relative}
+    .form-card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:22px 20px;box-shadow:0 8px 30px rgba(51,115,186,.08);position:relative;z-index:1}
+    .form-head{text-align:center;margin-bottom:16px}
+    .form-head h2{font-size:18px;font-weight:900;letter-spacing:-0.02em;margin-bottom:4px}
+    .form-head p{font-size:12.5px;color:var(--t2)}
 
-    /* DECO IMAGES */
-    .deco{position:absolute;pointer-events:none;z-index:0}
-    .deco img{width:100%;height:auto;display:block}
-
-    /* LIVE FEED */
-    .live{padding:36px 20px;background:linear-gradient(180deg,var(--white) 0%,#F5F9FD 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-    .live-inner{max-width:680px;margin:0 auto}
-    .live-head{text-align:center;margin-bottom:18px}
-    .live-head .pulse{display:inline-flex;align-items:center;gap:6px;background:#FEF2F2;color:var(--red);padding:5px 11px;border-radius:14px;font-size:11.5px;font-weight:700;margin-bottom:8px}
-    .live-head .pulse::before{content:'';width:7px;height:7px;background:var(--red);border-radius:50%;animation:pulse 1.5s infinite}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
-    .live-head h3{font-size:17px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
-    .live-head p{font-size:12.5px;color:var(--t3);margin-top:4px}
-    .live-feed{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:8px;height:240px;overflow:hidden;position:relative}
-    .live-list{display:flex;flex-direction:column;gap:6px;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-    .live-row{display:flex;align-items:center;gap:10px;padding:11px 12px;background:#F8FBFE;border-radius:10px;font-size:12.5px;flex-shrink:0;min-height:46px;animation:slideIn .5s ease}
-    @keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-    .live-avatar{width:30px;height:30px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-    .live-text{flex:1;color:var(--t1);min-width:0}
-    .live-text strong{color:var(--blue-d);font-weight:700}
-    .live-text .gray{color:var(--t3);font-size:11.5px}
-    .live-time{font-size:11px;color:var(--t3);white-space:nowrap;flex-shrink:0}
-
-    /* WHY US */
-    .why{position:relative}
-    .why h2{font-size:21px;font-weight:900;text-align:center;margin-bottom:22px;letter-spacing:-0.02em}
-    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .why-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 16px}
-    .why-card .icon{font-size:22px;margin-bottom:6px}
-    .why-card h4{font-size:14px;font-weight:900;color:var(--t1);margin-bottom:4px;letter-spacing:-0.01em}
-    .why-card p{font-size:12.5px;color:var(--t2);line-height:1.55}
-
-    .deco-wave{right:-40px;top:-30px;width:140px;opacity:.85}
-
-    /* PROCESS */
-    .process{padding:36px 20px;background:var(--blue-l);position:relative;overflow:hidden}
-    .process-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
-    .process h2{font-size:19px;font-weight:900;text-align:center;margin-bottom:20px;letter-spacing:-0.02em;color:var(--blue-d)}
-    .steps{display:flex;flex-direction:column;gap:10px}
-    .step{display:flex;align-items:center;gap:14px;background:var(--white);padding:13px 16px;border-radius:12px}
-    .step-num{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
-    .step h4{font-size:13.5px;font-weight:900;color:var(--t1);margin-bottom:2px}
-    .step p{font-size:12px;color:var(--t3);line-height:1.5}
-    .deco-phone{position:absolute;right:-20px;bottom:-10px;width:120px;opacity:.92;z-index:0}
-
-    /* FORM */
-    .form-section{padding:46px 0 30px;position:relative}
-    .form-head{text-align:center;margin-bottom:24px}
-    .form-head h2{font-size:22px;font-weight:900;letter-spacing:-0.02em;margin-bottom:6px}
-    .form-head p{font-size:13px;color:var(--t2)}
-    .form-card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:28px 22px;box-shadow:0 8px 30px rgba(51,115,186,.06);position:relative;z-index:1}
-    .field{margin-bottom:18px}
-    .field label{display:block;font-size:13px;font-weight:700;color:var(--t1);margin-bottom:7px}
-    .field label .req{color:var(--red);margin-left:3px}
+    .field{margin-bottom:14px}
+    .field label.flbl{display:block;font-size:12.5px;font-weight:700;color:var(--t1);margin-bottom:6px}
+    .field label.flbl .req{color:var(--red);margin-left:3px}
     .field input[type="text"],.field input[type="tel"],.field textarea{
-      width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14.5px;font-family:inherit;color:var(--t1);background:#FAFBFC;transition:border-color .15s,background .15s
+      width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;font-size:14.5px;font-family:inherit;color:var(--t1);background:#FAFBFC;transition:border-color .15s,background .15s
     }
     .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);background:var(--white)}
-    .field textarea{resize:vertical;min-height:74px}
-    .field .hint{font-size:11.5px;color:var(--t3);margin-top:5px}
+    .field textarea{resize:vertical;min-height:60px;font-size:14px}
+    .field .hint{font-size:11px;color:var(--t3);margin-top:4px}
 
-    .checkbox-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-    .check-item{position:relative}
-    .check-item input{position:absolute;opacity:0;pointer-events:none}
-    .check-item label{display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 6px;background:#FAFBFC;border:1.5px solid var(--border);border-radius:10px;font-size:12px;font-weight:700;color:var(--t2);cursor:pointer;transition:all .15s;margin:0;min-height:42px;line-height:1.3}
-    .check-item input:checked + label{background:var(--blue-l);border-color:var(--blue);color:var(--blue-d)}
+    /* 관심보험 선택 버튼 */
+    .interest-btn{width:100%;padding:12px 13px;border:1.5px solid var(--border);border-radius:10px;background:#FAFBFC;font-size:13.5px;font-family:inherit;color:var(--t2);cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:600;transition:border-color .15s}
+    .interest-btn:hover{border-color:var(--blue-mid)}
+    .interest-btn .ph{color:var(--t3)}
+    .interest-btn::after{content:'›';color:var(--t3);font-size:18px;font-weight:700}
+    .interest-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+    .interest-chips:empty{display:none}
+    .interest-chip{background:var(--blue-l);color:var(--blue-d);font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:12px}
 
-    .agree{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--t2);margin-bottom:14px;line-height:1.6}
-    .agree input{margin-top:3px;flex-shrink:0;accent-color:var(--blue);transform:scale(1.1)}
-    .agree a{color:var(--blue-d);text-decoration:underline;font-weight:600}
+    .agree{display:flex;align-items:flex-start;gap:7px;font-size:11.5px;color:var(--t2);margin-bottom:12px;line-height:1.55}
+    .agree input{margin-top:2px;flex-shrink:0;accent-color:var(--blue);transform:scale(1.05)}
+    .agree button.link{background:none;border:none;color:var(--blue-d);text-decoration:underline;font-weight:600;font-size:11.5px;padding:0;cursor:pointer}
 
-    .submit-btn{width:100%;background:var(--blue);color:#fff;padding:16px;border:none;border-radius:12px;font-size:15.5px;font-weight:900;letter-spacing:-0.01em;transition:background .15s,transform .15s}
+    .submit-btn{width:100%;background:var(--blue);color:#fff;padding:15px;border:none;border-radius:12px;font-size:15.5px;font-weight:900;letter-spacing:-0.01em;transition:background .15s,transform .15s;position:relative;overflow:hidden}
     .submit-btn:hover{background:var(--blue-d);transform:translateY(-1px)}
     .submit-btn:disabled{background:var(--t3);cursor:not-allowed;transform:none}
+    .submit-btn .gift{display:block;font-size:11.5px;font-weight:700;opacity:.92;margin-top:2px}
 
-    .alt-cta{text-align:center;margin-top:16px;padding-top:16px;border-top:1px dashed var(--border)}
-    .alt-cta p{font-size:12px;color:var(--t3);margin-bottom:8px}
-    .alt-cta a{display:inline-block;background:#FFEB00;color:#3C1E1E;padding:10px 20px;border-radius:24px;font-size:12.5px;font-weight:700}
+    .alt-cta{text-align:center;margin-top:12px;padding-top:12px;border-top:1px dashed var(--border)}
+    .alt-cta p{font-size:11.5px;color:var(--t3);margin-bottom:7px}
+    .alt-cta a{display:inline-block;background:#FFEB00;color:#3C1E1E;padding:9px 18px;border-radius:22px;font-size:12.5px;font-weight:700}
 
-    .deco-baby-lying{position:absolute;left:-30px;top:60px;width:130px;opacity:.85;z-index:0;pointer-events:none}
+    /* MINI WHY */
+    .mini-why{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:18px 0 0}
+    .mw-item{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:11px 7px;text-align:center}
+    .mw-item .e{font-size:18px;display:block;margin-bottom:3px}
+    .mw-item h4{font-size:11.5px;font-weight:900;color:var(--t1);line-height:1.35;letter-spacing:-0.01em}
+
+    /* LIVE FEED */
+    .live{padding:28px 18px;background:linear-gradient(180deg,#F5F9FD 0%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .live-inner{max-width:680px;margin:0 auto}
+    .live-head{text-align:center;margin-bottom:14px}
+    .live-head .pulse-tag{display:inline-flex;align-items:center;gap:6px;background:#FEF2F2;color:var(--red);padding:5px 11px;border-radius:14px;font-size:11.5px;font-weight:700;margin-bottom:6px}
+    .live-head .pulse-tag::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:pulse 1.5s infinite}
+    .live-head h3{font-size:15px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
+    .live-head p{font-size:12px;color:var(--t3);margin-top:3px}
+    .live-feed{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:6px;height:170px;overflow:hidden;position:relative}
+    .live-list{display:flex;flex-direction:column;gap:5px}
+    .live-row{display:flex;align-items:center;gap:9px;padding:9px 10px;background:#F8FBFE;border-radius:8px;font-size:12px;flex-shrink:0;min-height:40px;animation:slideIn .5s ease}
+    @keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .live-avatar{width:26px;height:26px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+    .live-text{flex:1;color:var(--t1);min-width:0}
+    .live-text strong{color:var(--blue-d);font-weight:700}
+    .live-text .gray{color:var(--t3);font-size:11px}
+    .live-time{font-size:11px;color:var(--t3);white-space:nowrap;flex-shrink:0}
 
     /* REVIEWS */
-    .reviews{position:relative}
-    .reviews h2{font-size:20px;font-weight:900;text-align:center;margin-bottom:20px;letter-spacing:-0.02em}
-    .review-grid{display:grid;grid-template-columns:1fr;gap:10px}
-    .review-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 18px;display:flex;flex-direction:column;gap:8px}
+    .reviews h2{font-size:18px;font-weight:900;text-align:center;margin-bottom:14px;letter-spacing:-0.02em}
+    .review-grid{display:grid;grid-template-columns:1fr;gap:8px}
+    .review-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
     .review-stars{color:var(--yellow);font-size:13px;letter-spacing:1px}
-    .review-text{font-size:13px;color:var(--t1);line-height:1.6}
-    .review-author{font-size:11.5px;color:var(--t3);font-weight:600}
+    .review-text{font-size:13px;color:var(--t1);line-height:1.55}
+    .review-author{font-size:11px;color:var(--t3);font-weight:600}
 
     /* FAQ */
-    .faq h2{font-size:20px;font-weight:900;text-align:center;margin-bottom:18px;letter-spacing:-0.02em}
-    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:8px}
-    .faq-q{font-size:13.5px;font-weight:700;color:var(--t1);margin-bottom:5px;display:flex;gap:7px}
-    .faq-q::before{content:'Q.';color:var(--blue);font-weight:900;flex-shrink:0}
-    .faq-a{font-size:12.5px;color:var(--t2);line-height:1.65;padding-left:20px}
+    .faq h2{font-size:18px;font-weight:900;text-align:center;margin-bottom:14px;letter-spacing:-0.02em}
+    .faq-item{background:var(--white);border:1px solid var(--border);border-radius:11px;margin-bottom:7px;overflow:hidden}
+    .faq-q{width:100%;background:none;border:none;font-size:13px;font-weight:700;color:var(--t1);padding:13px 16px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer}
+    .faq-q::before{content:'Q.';color:var(--blue);font-weight:900;flex-shrink:0;margin-right:6px}
+    .faq-q .arrow{color:var(--t3);font-size:12px;transition:transform .2s}
+    .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+    .faq-a{font-size:12.5px;color:var(--t2);line-height:1.65;padding:0 16px 14px 38px;display:none}
+    .faq-item.open .faq-a{display:block}
 
-    /* TOAST (live popup) */
-    .toast-stack{position:fixed;left:14px;bottom:14px;z-index:200;display:flex;flex-direction:column;gap:8px;pointer-events:none;max-width:calc(100vw - 28px)}
-    .toast{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:11px 14px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px;font-size:12.5px;animation:toastIn .4s ease;max-width:340px}
+    /* MODAL */
+    .modal-overlay{position:fixed;inset:0;background:rgba(20,30,45,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:18px;animation:fadeIn .2s ease}
+    .modal-overlay.show{display:flex}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .modal{background:var(--white);border-radius:16px;width:100%;max-width:460px;max-height:88vh;display:flex;flex-direction:column;overflow:hidden;animation:popIn .25s ease}
+    @keyframes popIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .modal-head{padding:20px 22px 14px;text-align:center;border-bottom:1px solid var(--border)}
+    .modal-head h3{font-size:17px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
+    .modal-body{padding:18px 22px;overflow-y:auto;flex:1}
+    .modal-foot{padding:14px 22px 18px;border-top:1px solid var(--border);display:flex;gap:8px}
+    .modal-btn{flex:1;padding:12px;border-radius:10px;font-size:13.5px;font-weight:700;border:1.5px solid var(--border);background:var(--white);color:var(--t2);cursor:pointer;transition:.15s}
+    .modal-btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+    .modal-btn:hover{transform:translateY(-1px)}
+
+    .modal-checks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .check-item{position:relative}
+    .check-item input{position:absolute;opacity:0;pointer-events:none}
+    .check-item label{display:flex;align-items:center;justify-content:flex-start;gap:8px;text-align:left;padding:13px 14px;background:#FAFBFC;border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;color:var(--t2);cursor:pointer;transition:all .15s;margin:0}
+    .check-item input:checked + label{background:var(--blue-l);border-color:var(--blue);color:var(--blue-d);font-weight:700}
+    .check-item label .e{font-size:16px}
+
+    .privacy-content{font-size:12.5px;color:var(--t1);line-height:1.7;background:#F8FAFC;border-radius:10px;padding:16px 18px;border:1px solid var(--border)}
+    .privacy-content p{margin-bottom:10px}
+    .privacy-content strong{color:var(--blue-d)}
+    .privacy-content ul{padding-left:18px;margin:4px 0 10px}
+    .privacy-content li{margin-bottom:3px}
+    .privacy-content h4{font-size:13px;font-weight:900;margin:12px 0 4px;color:var(--t1)}
+
+    /* TOAST */
+    .toast-stack{position:fixed;left:14px;bottom:14px;z-index:150;display:flex;flex-direction:column;gap:8px;pointer-events:none;max-width:calc(100vw - 28px)}
+    .toast{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:10px 13px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:flex;align-items:center;gap:10px;font-size:12px;animation:toastIn .4s ease;max-width:320px}
     .toast.out{animation:toastOut .35s ease forwards}
     @keyframes toastIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
     @keyframes toastOut{to{opacity:0;transform:translateX(-20px)}}
-    .toast-icon{width:28px;height:28px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+    .toast-icon{width:26px;height:26px;border-radius:50%;background:var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
     .toast-text{flex:1;color:var(--t1);min-width:0;overflow:hidden}
     .toast-text strong{color:var(--blue-d);font-weight:700}
     .toast-text .gray{color:var(--t3);font-size:11px}
 
     /* FOOTER */
-    footer{padding:28px 20px;text-align:center;color:var(--t3);font-size:12.5px;border-top:1px solid var(--border);background:var(--white)}
+    footer{padding:22px 20px;text-align:center;color:var(--t3);font-size:12.5px;border-top:1px solid var(--border);background:var(--white);font-weight:600}
 
-    /* MOBILE FINE-TUNE */
+    /* MOBILE */
     @media(max-width:480px){
-      .hero{padding:42px 16px 32px}
-      .hero h1{font-size:24px}
-      .hero .sub{font-size:13.5px}
-      .trust{gap:10px;font-size:12px;padding:14px 16px}
-      .trust-item{font-size:12px}
-      .trust-item strong{font-size:14px}
-      .container{padding:0 16px}
-      .section{padding:38px 0 22px}
-      .coverage h2,.why h2,.reviews h2,.faq h2{font-size:19px}
-      .form-head h2{font-size:20px}
-      .why-grid{grid-template-columns:1fr;gap:8px}
-      .why-card{padding:16px 14px}
-      .checkbox-grid{grid-template-columns:repeat(2,1fr)}
-      .form-card{padding:22px 18px}
-      .live-feed{height:220px}
-      .live-row{padding:10px;font-size:12px}
-      .toast{max-width:calc(100vw - 32px);font-size:12px;padding:10px 12px}
-      .deco-wave,.deco-phone,.deco-baby-lying{display:none}
+      .container{padding:0 14px}
+      .hero{padding:24px 16px 18px}
+      .hero h1{font-size:22px}
+      .hero .sub{font-size:13px}
+      .form-card{padding:20px 16px}
+      .form-head h2{font-size:17px}
+      .mini-why{grid-template-columns:repeat(2,1fr)}
+      .live-feed{height:160px}
+      .live-row{padding:8px 9px;font-size:11.5px}
+      .toast{font-size:11.5px;padding:9px 11px;max-width:calc(100vw - 32px)}
     }
     @media(max-width:360px){
-      .checkbox-grid{grid-template-columns:1fr 1fr}
-      .check-item label{font-size:11.5px;padding:10px 4px}
+      .modal-checks{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
+<!-- COUNTDOWN BAR -->
+<div class="countdown" id="countdown-bar" role="status" aria-live="polite">
+  <span class="icon">🎁</span>
+  <span>선착순 선물 혜택 마감까지</span>
+  <strong id="countdown-time">--일 --:--:--</strong>
+</div>
+
+<!-- HEADER -->
 <header class="top">
   <a href="#" class="logo-link" aria-label="베이비빌리 홈">
     <img src="img/logo.png" alt="Baby Billy" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
@@ -219,48 +230,81 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-bg-img" src="/img/baby-bubble.png" alt="" aria-hidden="true">
+  <img class="hero-bg-img" src="img/baby-bubble.jpg" alt="" aria-hidden="true">
   <div class="hero-content">
-    <span class="pretitle">부모를 위한 보험 통합 상담</span>
     <h1>태아부터 우리 가족까지<br><em>모든 보험 1:1 무료 상담</em></h1>
-    <p class="sub">태아·어린이·운전자·여성·암·실손·간병까지 한 번에.<br>10년 경력 부모 보험 전문가가 정직하게 비교 설계해드려요.</p>
+    <p class="sub">10년 경력 전문가가 손해·생명보험 11개사 통합 비교 설계</p>
+    <div class="trust-line">
+      <span>⭐ <strong>10년+ 경력</strong></span>
+      <span>📊 누적 <strong>200만</strong> 부모 데이터</span>
+    </div>
   </div>
 </section>
 
-<!-- TRUST -->
-<div class="trust">
-  <div class="trust-item">⭐ <strong>10년+ 경력</strong></div>
-  <div class="trust-divider"></div>
-  <div class="trust-item">📊 누적 <strong>200만</strong> 부모 보험 데이터 보유</div>
-</div>
-
-<!-- COVERAGE -->
+<!-- FORM -->
 <div class="container">
-  <section class="section coverage">
-    <h2>이 모든 보험을 한 곳에서</h2>
-    <p class="desc">관심 분야 어떤 것이든 통합 비교</p>
-    <div class="chips">
-      <span class="chip">🤰 태아보험</span>
-      <span class="chip">🧒 어린이보험</span>
-      <span class="chip">🚗 운전자보험</span>
-      <span class="chip">👩 여성보험</span>
-      <span class="chip">🎓 교육·학자금</span>
-      <span class="chip">🎗️ 암보험</span>
-      <span class="chip">🏥 실손보험</span>
-      <span class="chip">👵 간병보험</span>
-      <span class="chip">🦷 치아보험</span>
-      <span class="chip">🐕 펫보험</span>
+  <section class="form-section" id="apply">
+    <form class="form-card" id="inquiry-form" method="POST" action="/api/inquiry" novalidate>
+      <div class="form-head">
+        <h2>1분 무료 상담 신청 🎁</h2>
+        <p>24시간 내 카톡으로 연락드려요</p>
+      </div>
+
+      <div class="field">
+        <label class="flbl" for="name">성함<span class="req">*</span></label>
+        <input type="text" id="name" name="name" placeholder="홍길동" required autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label class="flbl" for="phone">연락처<span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required autocomplete="tel">
+      </div>
+
+      <div class="field">
+        <label class="flbl">관심 보험 <span style="color:var(--t3);font-weight:400;font-size:11px;">(중복 가능)</span></label>
+        <button type="button" class="interest-btn" id="open-interests">
+          <span id="interest-summary"><span class="ph">선택해주세요 — 자세히 보기</span></span>
+        </button>
+        <div class="interest-chips" id="interest-chips"></div>
+      </div>
+
+      <div class="field">
+        <label class="flbl" for="memo">추가 메모 <span style="color:var(--t3);font-weight:400;font-size:11px;">(선택)</span></label>
+        <textarea id="memo" name="memo" placeholder="예: 첫째 임신 22주, 임당 진단 받았어요"></textarea>
+      </div>
+
+      <label class="agree">
+        <input type="checkbox" name="agree" required>
+        <span>[필수] 개인정보 수집·이용 동의 <button type="button" class="link" id="open-privacy">자세히</button></span>
+      </label>
+
+      <button type="submit" class="submit-btn" id="submit-btn">
+        💬 무료 상담 신청하기
+        <span class="gift">선착순 선물 혜택 포함</span>
+      </button>
+
+      <div class="alt-cta">
+        <p>폼 작성이 번거로우시면</p>
+        <a href="https://pf.kakao.com/_bxjJfn/chat" target="_blank" rel="noopener">💛 카톡 채널로 바로 문의</a>
+      </div>
+    </form>
+
+    <div class="mini-why">
+      <div class="mw-item"><span class="e">🏆</span><h4>10년+ 전문</h4></div>
+      <div class="mw-item"><span class="e">⚖️</span><h4>11개사 비교</h4></div>
+      <div class="mw-item"><span class="e">📊</span><h4>200만 데이터</h4></div>
+      <div class="mw-item"><span class="e">🤝</span><h4>강요 없음</h4></div>
     </div>
   </section>
 </div>
 
-<!-- LIVE FEED -->
+<!-- LIVE -->
 <section class="live">
   <div class="live-inner">
     <div class="live-head">
-      <div class="pulse">LIVE 상담 신청 현황</div>
-      <h3>지금 이 순간에도 부모님들이 신청 중</h3>
-      <p>오늘 신청 <strong id="today-count" style="color:var(--blue-d);font-weight:900">147</strong>건 · 평균 24시간 이내 연락</p>
+      <div class="pulse-tag">LIVE 신청 현황</div>
+      <h3>지금 이 순간에도 신청 중</h3>
+      <p>오늘 신청 <strong id="today-count" style="color:var(--blue-d);font-weight:900">147</strong>건 · 24시간 내 연락</p>
     </div>
     <div class="live-feed">
       <div class="live-list" id="live-list"></div>
@@ -268,124 +312,24 @@
   </div>
 </section>
 
-<!-- WHY US -->
-<div class="container">
-  <section class="section why">
-    <div class="deco deco-wave"><img src="/img/baby-wave.png" alt=""></div>
-    <h2>왜 베이비빌리에 맡길까요?</h2>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="icon">🏆</div>
-        <h4>10년+ 부모 보험 전문</h4>
-        <p>임산부·영유아·자녀 보장 설계만 10년 이상.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">⚖️</div>
-        <h4>손해·생명 통합 비교</h4>
-        <p>특정 보험사 편향 없이 11개사 통합 비교.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">📊</div>
-        <h4>200만 부모 데이터</h4>
-        <p>실제 가입·청구 데이터 기반의 솔직한 안내.</p>
-      </div>
-      <div class="why-card">
-        <div class="icon">🤝</div>
-        <h4>강요 없는 상담</h4>
-        <p>카톡으로 부담 없이. 결정은 본인 페이스대로.</p>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="process-inner">
-    <h2>상담은 이렇게 진행돼요</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div><h4>신청서 제출</h4><p>1분이면 충분해요</p></div></div>
-      <div class="step"><div class="step-num">2</div><div><h4>24시간 내 연락</h4><p>카톡 또는 전화</p></div></div>
-      <div class="step"><div class="step-num">3</div><div><h4>1:1 비교 상담</h4><p>가족 상황 파악</p></div></div>
-      <div class="step"><div class="step-num">4</div><div><h4>맞춤 자료 제공</h4><p>3~5개 안 비교</p></div></div>
-    </div>
-  </div>
-  <img class="deco-phone" src="/img/mom-phone.png" alt="">
-</section>
-
-<!-- FORM -->
-<div class="container">
-  <section class="form-section" id="apply">
-    <img class="deco-baby-lying" src="/img/baby-lying.png" alt="" aria-hidden="true">
-    <div class="form-head">
-      <h2>지금 무료 상담 신청</h2>
-      <p>1분이면 충분해요. 24시간 내 연락드려요.</p>
-    </div>
-
-    <form class="form-card" id="inquiry-form" method="POST" action="/api/inquiry" novalidate>
-      <div class="field">
-        <label for="name">성함<span class="req">*</span></label>
-        <input type="text" id="name" name="name" placeholder="홍길동" required autocomplete="name">
-      </div>
-
-      <div class="field">
-        <label for="phone">연락처<span class="req">*</span></label>
-        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required autocomplete="tel">
-        <p class="hint">카톡으로 먼저 연락드릴게요. 통화 부담 없으세요.</p>
-      </div>
-
-      <div class="field">
-        <label>관심 보험 <span style="color:var(--t3);font-weight:400;font-size:11px;">(중복 선택 가능)</span></label>
-        <div class="checkbox-grid">
-          <div class="check-item"><input type="checkbox" id="i1" name="interests" value="태아보험"><label for="i1">🤰 태아</label></div>
-          <div class="check-item"><input type="checkbox" id="i2" name="interests" value="어린이보험"><label for="i2">🧒 어린이</label></div>
-          <div class="check-item"><input type="checkbox" id="i3" name="interests" value="운전자보험"><label for="i3">🚗 운전자</label></div>
-          <div class="check-item"><input type="checkbox" id="i4" name="interests" value="여성보험"><label for="i4">👩 여성</label></div>
-          <div class="check-item"><input type="checkbox" id="i5" name="interests" value="교육보험"><label for="i5">🎓 교육</label></div>
-          <div class="check-item"><input type="checkbox" id="i6" name="interests" value="암보험"><label for="i6">🎗️ 암</label></div>
-          <div class="check-item"><input type="checkbox" id="i7" name="interests" value="실손보험"><label for="i7">🏥 실손</label></div>
-          <div class="check-item"><input type="checkbox" id="i8" name="interests" value="간병보험"><label for="i8">👵 간병</label></div>
-          <div class="check-item"><input type="checkbox" id="i9" name="interests" value="기타"><label for="i9">💡 기타</label></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="memo">추가 메모 <span style="color:var(--t3);font-weight:400;font-size:11px;">(선택)</span></label>
-        <textarea id="memo" name="memo" placeholder="예: 첫째 임신 22주, 임당 진단 받았어요"></textarea>
-      </div>
-
-      <label class="agree">
-        <input type="checkbox" name="agree" required>
-        <span>[필수] 개인정보 수집·이용 동의 — 상담 목적에 한해 수집하며, 종료 후 즉시 파기됩니다. <a href="#">자세히</a></span>
-      </label>
-
-      <button type="submit" class="submit-btn" id="submit-btn">💬 무료 상담 신청하기</button>
-
-      <div class="alt-cta">
-        <p>폼 작성이 번거로우시면</p>
-        <a href="https://pf.kakao.com/_bxjJfn/chat" target="_blank">💛 카톡 채널로 바로 문의</a>
-      </div>
-    </form>
-  </section>
-</div>
-
 <!-- REVIEWS -->
 <div class="container">
   <section class="section reviews">
-    <h2>실제 상담받으신 부모님 후기</h2>
+    <h2>실제 상담 후기</h2>
     <div class="review-grid">
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"다른 데서 들었던 것보다 훨씬 솔직하게 말씀해주셨어요. 필요 없는 특약은 빼라고 알려주셔서 신뢰가 갔어요."</p>
+        <p class="review-text">"필요 없는 특약은 빼라고 솔직하게 알려주셔서 신뢰가 갔어요."</p>
         <p class="review-author">— 35세 산모, 첫째 임신 22주</p>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"아이 어린이보험만 보러 갔는데 남편 운전자보험까지 같이 점검해주셔서 가족 전체 정리됐어요."</p>
-        <p class="review-author">— 38세 아빠, 자녀 4세·7세</p>
+        <p class="review-text">"아이 어린이보험 보러 갔는데 남편 운전자보험까지 같이 정리됐어요."</p>
+        <p class="review-author">— 38세 아빠, 자녀 4·7세</p>
       </div>
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">"암보험·실손까지 우리 가족 4명 통합으로 봐주셨어요. 카톡으로 진행해서 편했습니다."</p>
+        <p class="review-text">"우리 가족 4명 보험 통합으로 봐주셨어요. 카톡으로 진행해서 편했습니다."</p>
         <p class="review-author">— 32세 엄마, 자녀 2세</p>
       </div>
     </div>
@@ -396,189 +340,217 @@
 <div class="container">
   <section class="section faq">
     <h2>자주 묻는 질문</h2>
-    <div class="faq-item"><p class="faq-q">상담 비용이 발생하나요?</p><p class="faq-a">전혀 없습니다. 비교·설계·자료 제공까지 모두 무료입니다.</p></div>
-    <div class="faq-item"><p class="faq-q">가입 강요는 없나요?</p><p class="faq-a">없습니다. 비교 자료를 받아보고 결정은 본인 페이스대로 하시면 돼요.</p></div>
-    <div class="faq-item"><p class="faq-q">어떤 보험사들을 비교하나요?</p><p class="faq-a">손해보험 6사 + 생명보험 5사, 총 11개사 통합 비교합니다.</p></div>
-    <div class="faq-item"><p class="faq-q">상담 시간은 얼마나 걸리나요?</p><p class="faq-a">초기 카톡 문의 5~10분, 본격 비교 상담 평균 30~40분입니다.</p></div>
-    <div class="faq-item"><p class="faq-q">개인정보는 안전한가요?</p><p class="faq-a">상담 목적 외 어떤 곳에도 공유되지 않으며, 종료 후 즉시 파기됩니다.</p></div>
+    <div class="faq-item"><button class="faq-q" type="button">상담 비용이 발생하나요?<span class="arrow">▾</span></button><p class="faq-a">전혀 없습니다. 비교·설계·자료 제공까지 모두 무료입니다.</p></div>
+    <div class="faq-item"><button class="faq-q" type="button">가입 강요는 없나요?<span class="arrow">▾</span></button><p class="faq-a">없습니다. 비교 자료를 받아보고 결정은 본인 페이스대로 하시면 돼요.</p></div>
+    <div class="faq-item"><button class="faq-q" type="button">어떤 보험사들을 비교하나요?<span class="arrow">▾</span></button><p class="faq-a">손해보험 6사 + 생명보험 5사, 총 11개사 통합 비교합니다.</p></div>
+    <div class="faq-item"><button class="faq-q" type="button">상담 시간은 얼마나 걸리나요?<span class="arrow">▾</span></button><p class="faq-a">초기 카톡 문의 5~10분, 본격 비교 상담 평균 30~40분입니다.</p></div>
+    <div class="faq-item"><button class="faq-q" type="button">개인정보는 안전한가요?<span class="arrow">▾</span></button><p class="faq-a">상담 목적 외 어떤 곳에도 공유되지 않으며, 종료 후 즉시 파기됩니다.</p></div>
   </section>
 </div>
 
-<footer>
-  부모를 위한 모든 보험 연구소
-</footer>
+<footer>부모를 위한 모든 보험 연구소</footer>
 
-<!-- TOAST CONTAINER -->
+<!-- MODAL: 관심 보험 -->
+<div class="modal-overlay" id="interests-modal" role="dialog" aria-labelledby="im-title" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-head"><h3 id="im-title">관심 있는 보험 선택</h3></div>
+    <div class="modal-body">
+      <div class="modal-checks">
+        <div class="check-item"><input type="checkbox" id="i1" name="interests" value="태아보험"><label for="i1"><span class="e">🤰</span>태아보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i2" name="interests" value="어린이보험"><label for="i2"><span class="e">🧒</span>어린이보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i3" name="interests" value="운전자보험"><label for="i3"><span class="e">🚗</span>운전자보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i4" name="interests" value="여성보험"><label for="i4"><span class="e">👩</span>여성보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i5" name="interests" value="교육보험"><label for="i5"><span class="e">🎓</span>교육·학자금</label></div>
+        <div class="check-item"><input type="checkbox" id="i6" name="interests" value="암보험"><label for="i6"><span class="e">🎗️</span>암보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i7" name="interests" value="실손보험"><label for="i7"><span class="e">🏥</span>실손보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i8" name="interests" value="간병보험"><label for="i8"><span class="e">👵</span>간병보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i9" name="interests" value="치아보험"><label for="i9"><span class="e">🦷</span>치아보험</label></div>
+        <div class="check-item"><input type="checkbox" id="i10" name="interests" value="기타"><label for="i10"><span class="e">💡</span>기타·잘 몰라요</label></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="modal-btn" type="button" data-close>취소</button>
+      <button class="modal-btn primary" type="button" id="apply-interests">선택 완료</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: 개인정보 -->
+<div class="modal-overlay" id="privacy-modal" role="dialog" aria-labelledby="pm-title" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-head"><h3 id="pm-title">개인정보 수집·이용 동의</h3></div>
+    <div class="modal-body">
+      <div class="privacy-content">
+        <p><strong>베이비빌리</strong>는 아래와 같이 고객님의 개인정보를 수집·이용합니다.</p>
+        <h4>1. 개인정보의 수집·이용 목적</h4>
+        <ul>
+          <li>보험 가입 상담 및 보험상품 추천</li>
+          <li>비교 설계 자료 제공</li>
+          <li>상담 일정 안내 및 후속 연락</li>
+        </ul>
+        <h4>2. 수집하는 개인정보의 항목</h4>
+        <ul>
+          <li>성함, 휴대폰번호</li>
+          <li>관심 보험 종류 (선택)</li>
+          <li>상담 메모 (선택)</li>
+        </ul>
+        <h4>3. 개인정보의 보유 및 이용 기간</h4>
+        <ul>
+          <li>보험 가입 상담 완료 또는 동의 철회 시까지</li>
+        </ul>
+        <h4>4. 동의거부권</h4>
+        <ul>
+          <li>고객은 개인정보 수집·이용에 대한 동의를 거부할 권리가 있습니다. 다만, 동의를 거부할 경우 보험상품 상담 및 추천을 받으실 수 없습니다.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="modal-btn primary" type="button" data-close style="flex:1">닫기</button></div>
+  </div>
+</div>
+
+<!-- TOAST -->
 <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
 
 <script>
-  /* ───────── LIVE FEED & TOAST ───────── */
+  /* ───────── COUNTDOWN ───────── */
+  function getDeadline(){
+    const now = new Date();
+    const y = now.getFullYear(), m = now.getMonth(), d = now.getDate();
+    if (d <= 15) return new Date(y, m, 15, 23, 59, 59);
+    return new Date(y, m + 1, 0, 23, 59, 59); /* 다음달 0일 = 이번달 말일 */
+  }
+  const cntEl = document.getElementById('countdown-time');
+  function tickCountdown(){
+    const target = getDeadline();
+    let diff = Math.max(0, target - new Date());
+    const days = Math.floor(diff / 86400000); diff -= days * 86400000;
+    const hh = String(Math.floor(diff / 3600000)).padStart(2,'0'); diff -= Math.floor(diff/3600000) * 3600000;
+    const mm = String(Math.floor(diff / 60000)).padStart(2,'0'); diff -= Math.floor(diff/60000) * 60000;
+    const ss = String(Math.floor(diff / 1000)).padStart(2,'0');
+    cntEl.textContent = (days > 0 ? `${days}일 ` : '') + `${hh}:${mm}:${ss}`;
+  }
+  tickCountdown(); setInterval(tickCountdown, 1000);
+
+  /* ───────── MODAL ───────── */
+  function openModal(id){
+    const m = document.getElementById(id);
+    m.classList.add('show');
+    m.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(m){
+    m.classList.remove('show');
+    m.setAttribute('aria-hidden','true');
+    if (!document.querySelector('.modal-overlay.show')) document.body.style.overflow = '';
+  }
+  document.addEventListener('click', e => {
+    if (e.target.classList && e.target.classList.contains('modal-overlay')) closeModal(e.target);
+    if (e.target.dataset && e.target.dataset.close !== undefined) closeModal(e.target.closest('.modal-overlay'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.show').forEach(closeModal);
+  });
+  document.getElementById('open-interests').addEventListener('click', () => openModal('interests-modal'));
+  document.getElementById('open-privacy').addEventListener('click', () => openModal('privacy-modal'));
+
+  const summary = document.getElementById('interest-summary');
+  const chipsBox = document.getElementById('interest-chips');
+  document.getElementById('apply-interests').addEventListener('click', () => {
+    const checks = document.querySelectorAll('#interests-modal input[name="interests"]:checked');
+    const labels = Array.from(checks).map(c => c.value);
+    if (labels.length === 0) {
+      summary.innerHTML = '<span class="ph">선택해주세요 — 자세히 보기</span>';
+      chipsBox.innerHTML = '';
+    } else {
+      summary.textContent = labels.length + '개 선택됨';
+      chipsBox.innerHTML = labels.map(l => `<span class="interest-chip">${l}</span>`).join('');
+    }
+    closeModal(document.getElementById('interests-modal'));
+  });
+
+  /* ───────── FAQ ───────── */
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+  });
+
+  /* ───────── LIVE & TOAST ───────── */
   const FAMILIES = ['김','이','박','최','정','강','조','윤','장','임','한','오','서','신','권','황','안','송','류','홍','전','고','문','손','양','배','백','허','유','남'];
   const PRODUCTS = [
-    {name:'태아보험', emoji:'🤰'},
-    {name:'어린이보험', emoji:'🧒'},
-    {name:'운전자보험', emoji:'🚗'},
-    {name:'여성보험', emoji:'👩'},
-    {name:'암보험', emoji:'🎗️'},
-    {name:'실손보험', emoji:'🏥'},
-    {name:'자녀 교육보험', emoji:'🎓'},
-    {name:'간병보험', emoji:'👵'},
-    {name:'치아보험', emoji:'🦷'},
+    {name:'태아보험', emoji:'🤰'},{name:'어린이보험', emoji:'🧒'},{name:'운전자보험', emoji:'🚗'},
+    {name:'여성보험', emoji:'👩'},{name:'암보험', emoji:'🎗️'},{name:'실손보험', emoji:'🏥'},
+    {name:'자녀 교육보험', emoji:'🎓'},{name:'간병보험', emoji:'👵'},{name:'치아보험', emoji:'🦷'},
   ];
   const REGIONS = ['서울','경기','부산','대구','인천','광주','대전','울산','세종','경남','경북','전남','충남','충북','강원','제주'];
-  const TIMES_RECENT = ['방금 전','1분 전','2분 전','3분 전','4분 전','6분 전','9분 전','12분 전','16분 전','21분 전','27분 전','34분 전','42분 전','51분 전','1시간 전','1시간 전'];
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const makeName = () => pick(FAMILIES) + '**';
+  const makeEntry = time => ({ name: makeName(), region: pick(REGIONS), product: pick(PRODUCTS), time: time || '방금 전' });
 
-  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-  function makeName(){ return pick(FAMILIES) + '**'; }
-  function makeEntry(time){
-    const product = pick(PRODUCTS);
-    return {
-      name: makeName(),
-      region: pick(REGIONS),
-      product: product,
-      time: time || pick(TIMES_RECENT),
-    };
-  }
-
-  /* 초기 피드: 6개 채워두기 */
   const liveList = document.getElementById('live-list');
-  function makeRow(entry){
+  function makeRow(e){
     const row = document.createElement('div');
     row.className = 'live-row';
     row.innerHTML = `
-      <div class="live-avatar">${entry.product.emoji}</div>
+      <div class="live-avatar">${e.product.emoji}</div>
       <div class="live-text">
-        <div><strong>${entry.name}</strong>님이 <strong>${entry.product.name}</strong> 신청</div>
-        <div class="gray">${entry.region} · 24시간 내 연락 예정</div>
+        <div><strong>${e.name}</strong>님이 <strong>${e.product.name}</strong> 신청</div>
+        <div class="gray">${e.region} · 24시간 내 연락 예정</div>
       </div>
-      <div class="live-time">${entry.time}</div>
-    `;
+      <div class="live-time">${e.time}</div>`;
     return row;
   }
+  ['방금 전','1분 전','3분 전','5분 전','9분 전','14분 전','21분 전','29분 전'].forEach(t => liveList.appendChild(makeRow(makeEntry(t))));
 
-  const initialEntries = [
-    makeEntry('방금 전'),
-    makeEntry('1분 전'),
-    makeEntry('3분 전'),
-    makeEntry('5분 전'),
-    makeEntry('9분 전'),
-    makeEntry('14분 전'),
-    makeEntry('21분 전'),
-    makeEntry('29분 전'),
-  ];
-  initialEntries.forEach(e => liveList.appendChild(makeRow(e)));
-
-  /* 주기적으로 새 항목 prepend */
   function addLive(){
-    const entry = makeEntry('방금 전');
-    const row = makeRow(entry);
-    row.style.animation = 'slideIn .5s ease';
-    liveList.insertBefore(row, liveList.firstChild);
-    /* 길이 제한 */
+    liveList.insertBefore(makeRow(makeEntry('방금 전')), liveList.firstChild);
     while (liveList.children.length > 12) liveList.removeChild(liveList.lastChild);
-    /* 시간 라벨 한 칸씩 밀기 (간단 시뮬) */
-    const rows = liveList.querySelectorAll('.live-row');
     const labels = ['방금 전','1분 전','3분 전','5분 전','8분 전','13분 전','19분 전','27분 전','38분 전','51분 전','1시간 전','1시간 전'];
-    rows.forEach((r, i) => {
-      const t = r.querySelector('.live-time');
-      if (t && labels[i]) t.textContent = labels[i];
+    liveList.querySelectorAll('.live-row').forEach((r, i) => {
+      const t = r.querySelector('.live-time'); if (t && labels[i]) t.textContent = labels[i];
     });
   }
-
-  /* 신청 카운터 살아 움직이기 */
   let count = 147;
   const counter = document.getElementById('today-count');
-  function bumpCounter(){
-    count += 1 + Math.floor(Math.random()*2);
-    counter.textContent = count;
-  }
+  setInterval(() => { addLive(); count += 1 + Math.floor(Math.random()*2); counter.textContent = count; }, 4500 + Math.random()*2500);
 
-  setInterval(() => {
-    addLive();
-    bumpCounter();
-  }, 4500 + Math.random()*2500);
-
-  /* 토스트 알림 */
   const toastStack = document.getElementById('toast-stack');
   function showToast(){
-    const entry = makeEntry('방금 전');
+    const e = makeEntry('방금 전');
     const t = document.createElement('div');
     t.className = 'toast';
-    t.innerHTML = `
-      <div class="toast-icon">${entry.product.emoji}</div>
-      <div class="toast-text">
-        <div><strong>${entry.name}</strong>님이 <strong>${entry.product.name}</strong> 신청</div>
-        <div class="gray">${entry.region} · 방금 전</div>
-      </div>
-    `;
+    t.innerHTML = `<div class="toast-icon">${e.product.emoji}</div><div class="toast-text"><div><strong>${e.name}</strong>님이 <strong>${e.product.name}</strong> 신청</div><div class="gray">${e.region} · 방금 전</div></div>`;
     toastStack.appendChild(t);
-    setTimeout(() => t.classList.add('out'), 4200);
-    setTimeout(() => t.remove(), 4700);
-    /* 동시 표시 제한 */
+    setTimeout(() => t.classList.add('out'), 4000);
+    setTimeout(() => t.remove(), 4500);
     while (toastStack.children.length > 2) toastStack.firstChild.remove();
   }
-
-  /* 첫 토스트는 3초 뒤, 그 이후 6~12초 간격으로 무한 */
-  setTimeout(function loop(){
-    showToast();
-    setTimeout(loop, 6000 + Math.random()*6000);
-  }, 3000);
+  setTimeout(function loop(){ showToast(); setTimeout(loop, 6000 + Math.random()*6000); }, 3000);
 
   /* ───────── 폼 제출 ───────── */
   const form = document.getElementById('inquiry-form');
   const btn = document.getElementById('submit-btn');
-
   form.addEventListener('submit', function(e){
     e.preventDefault(); /* 백엔드 연결 후엔 이 줄 제거 */
-
-    const formData = new FormData(form);
-    const interests = formData.getAll('interests');
-
-    if (!formData.get('name') || !formData.get('phone')) {
-      alert('성함과 연락처를 입력해주세요.');
-      return;
-    }
-    if (!formData.get('agree')) {
-      alert('개인정보 수집·이용 동의에 체크해주세요.');
-      return;
-    }
+    const fd = new FormData(form);
+    const interests = fd.getAll('interests');
+    if (!fd.get('name') || !fd.get('phone')) { alert('성함과 연락처를 입력해주세요.'); return; }
+    if (!fd.get('agree')) { alert('개인정보 수집·이용 동의에 체크해주세요.'); return; }
     if (interests.length === 0) {
-      const ok = confirm('관심 보험을 선택하지 않으셨습니다. 그래도 신청하시겠어요? (전반 상담으로 진행됩니다)');
+      const ok = confirm('관심 보험을 선택하지 않으셨습니다. 그래도 신청하시겠어요?');
       if (!ok) return;
     }
-
-    btn.disabled = true;
-    btn.textContent = '신청 중...';
-
+    btn.disabled = true; btn.innerHTML = '신청 중...';
     setTimeout(() => {
-      const payload = {
-        name: formData.get('name'),
-        phone: formData.get('phone'),
-        interests: interests,
-        memo: formData.get('memo'),
-        timestamp: new Date().toISOString()
-      };
-      console.log('[Inquiry]', payload);
-
-      btn.textContent = '✓ 신청 완료';
-      btn.style.background = 'var(--green)';
-
+      console.log('[Inquiry]', { name: fd.get('name'), phone: fd.get('phone'), interests, memo: fd.get('memo'), timestamp: new Date().toISOString() });
+      btn.innerHTML = '✓ 신청 완료'; btn.style.background = 'var(--green)';
       alert('신청이 접수됐어요!\n24시간 이내에 카톡 또는 전화로 연락드릴게요. 🙏');
-
       form.reset();
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.textContent = '💬 무료 상담 신청하기';
-        btn.style.background = '';
-      }, 2000);
+      summary.innerHTML = '<span class="ph">선택해주세요 — 자세히 보기</span>';
+      chipsBox.innerHTML = '';
+      setTimeout(() => { btn.disabled = false; btn.innerHTML = '💬 무료 상담 신청하기<span class="gift">선착순 선물 혜택 포함</span>'; btn.style.background = ''; }, 2000);
     }, 600);
   });
-
-  /* 전화번호 자동 하이픈 */
-  const phoneInput = document.getElementById('phone');
-  phoneInput.addEventListener('input', function(e){
-    let v = e.target.value.replace(/\D/g, '');
-    if (v.length > 11) v = v.slice(0, 11);
+  document.getElementById('phone').addEventListener('input', function(e){
+    let v = e.target.value.replace(/\D/g, ''); if (v.length > 11) v = v.slice(0, 11);
     if (v.length >= 8) v = v.replace(/(\d{3})(\d{4})(\d+)/, '$1-$2-$3');
     else if (v.length >= 4) v = v.replace(/(\d{3})(\d+)/, '$1-$2');
     e.target.value = v;
