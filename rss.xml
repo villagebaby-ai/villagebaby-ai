@@ -371,5 +371,46 @@
       <category>여성보험</category>
       <description>임신 중 합병증(임신성 당뇨·임신중독증·태반조기박리)부터 출산 시 합병증(자궁파열·산후출혈)·산후우울증까지 보험사별 진단비 비교와 14일 내 청구 절차 정리.</description>
     </item>
+
+    <!-- 암보험 클러스터 (NEW) -->
+    <item>
+      <title>암보험 완전정리 2026 — 가족력·갱신·소액vs고액·보험사 한 페이지 [PILLAR]</title>
+      <link>https://villagebaby.kr/cancer/암보험-완전정리/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/cancer/암보험-완전정리/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>암보험</category>
+      <description>한국인 평생 암 위험 38% 통계부터 5대 일반암 진단비, 소액암(갑상선·전립선)·고액암(폐·간·췌장) 차등, 갱신형 vs 비갱신형 30년 차이, 가족력 가입 전략, 보험사 7개사 비교까지 30~40대 부모 핵심 종합 Pillar 가이드.</description>
+    </item>
+
+    <item>
+      <title>가족력 암보험 가입 가이드 — 부담보 회피·11개사 인수 정책</title>
+      <link>https://villagebaby.kr/cancer/가족력-암보험-가입가이드/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/cancer/가족력-암보험-가입가이드/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>암보험</category>
+      <description>부모·자매 암 이력별 인수 가능성, BRCA·HNPCC 유전성 암 정책, 본인 0기·1기 과거력 인수 사례, 부담보 회피 5단계 전략, 가족력 인수 관대한 보험사 TOP 4 정리.</description>
+    </item>
+
+    <item>
+      <title>암보험 갱신형 vs 비갱신형 — 30년 누적 1.8배 차이 완전분석</title>
+      <link>https://villagebaby.kr/cancer/갱신형-vs-비갱신형/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/cancer/갱신형-vs-비갱신형/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>암보험</category>
+      <description>30세 가입 → 60세까지 30년 누적 보험료 시뮬, 갱신형 60대 폭등 데이터, 비갱신 100세 만기 절감 효과, 갱신형이 유리한 케이스, 100세 vs 80세 만기 비교까지.</description>
+    </item>
+
+    <item>
+      <title>소액암 vs 고액암 — 갑상선·전립선 vs 폐·간·췌장 진단비 차등 완전정리</title>
+      <link>https://villagebaby.kr/cancer/소액암-vs-고액암/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/cancer/소액암-vs-고액암/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>암보험</category>
+      <description>암 분류 4단계(고액·일반·소액·상피내암) 진단비 차등 구조, 소액암 5종·고액암 8종 상세, 30대 표준 풀커버 설계 시뮬, 약관 확인 체크리스트까지.</description>
+    </item>
   </channel>
 </rss>
