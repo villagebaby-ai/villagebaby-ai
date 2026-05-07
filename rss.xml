@@ -412,5 +412,46 @@
       <category>암보험</category>
       <description>암 분류 4단계(고액·일반·소액·상피내암) 진단비 차등 구조, 소액암 5종·고액암 8종 상세, 30대 표준 풀커버 설계 시뮬, 약관 확인 체크리스트까지.</description>
     </item>
+
+    <!-- 간병보험 클러스터 (NEW) -->
+    <item>
+      <title>간병보험 완전정리 2026 — 노인장기요양·치매·뇌졸중·간병인 사용일당 한 페이지 [PILLAR]</title>
+      <link>https://villagebaby.kr/care/간병보험-완전정리/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/care/간병보험-완전정리/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>간병보험</category>
+      <description>한국 65세+ 치매 유병률 10% 통계부터 국가 노인장기요양과 민간 간병보험 차이, 치매 CDR 진단비, 뇌졸중 보장, 간병인 사용일당, 부모님 가입 시기, 보험사 7개사 비교까지 30~40대 자녀 핵심 종합 Pillar 가이드.</description>
+    </item>
+
+    <item>
+      <title>노인장기요양보험 vs 민간 간병보험 — 등급·보장 영역·둘 다 가입 시뮬</title>
+      <link>https://villagebaby.kr/care/노인장기요양보험-vs-민간간병보험/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/care/노인장기요양보험-vs-민간간병보험/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>간병보험</category>
+      <description>국가 장기요양 1~5등급 산정 기준, 본인부담률 15~20%, 민간 간병보험 진단비·일당 보장 영역 매트릭스, 둘 다 가입 시 5년 누적 1.06억 → 4,300만 절감 시뮬까지.</description>
+    </item>
+
+    <item>
+      <title>치매·뇌졸중 간병 보장 — CDR 등급·뇌출혈·뇌경색 진단비 완전정리</title>
+      <link>https://villagebaby.kr/care/치매-뇌졸중-간병-보장/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/care/치매-뇌졸중-간병-보장/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>간병보험</category>
+      <description>치매 CDR 1~3 등급별 진단비 차등 구조, 알츠하이머 외 혈관성·루이소체·전두측두엽 치매 보장, 뇌출혈 100% vs 뇌경색 50~100% 보장 비율, 후유장해 추가 보장, 보험사 7개사 비교까지.</description>
+    </item>
+
+    <item>
+      <title>부모님 간병보험 가입 가이드 — 60·70대 인수·자녀가 대신 가입 5단계</title>
+      <link>https://villagebaby.kr/care/부모님-간병보험-가입가이드/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/care/부모님-간병보험-가입가이드/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>간병보험</category>
+      <description>부모님 50~75세 연령별 가입 가능성, 만성질환 보유자 인수 정책, 무진단·무심사 보험 비교, 자녀가 계약자로 대신 가입하는 5단계 절차, 고연령 인수 관대한 보험사 TOP 4 정리.</description>
+    </item>
   </channel>
 </rss>
