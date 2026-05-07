@@ -41,7 +41,9 @@ Allow: /
 
 # Admin (내부 전용 — 검색 노출 금지)
 User-agent: *
+Disallow: /admin-vb-7k9f2x4a/
 Disallow: /admin/
+Disallow: /control/
 Disallow: /form/
 
 # Sitemap & RSS
