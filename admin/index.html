@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 대시보드 — villagebaby.kr</title>
+  <meta name="description" content="villagebaby.kr 관리자 대시보드 (내부 전용)">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <style>
+    :root{
+      --bg:#0F172A; --bg-2:#1E293B; --bg-3:#334155;
+      --line:#334155; --line-2:#475569;
+      --t1:#F1F5F9; --t2:#CBD5E1; --t3:#94A3B8; --t4:#64748B;
+      --blue:#60A5FA; --blue-d:#2563EB; --blue-bg:rgba(96,165,250,.12);
+      --green:#34D399; --green-bg:rgba(52,211,153,.12);
+      --yellow:#FBBF24; --yellow-bg:rgba(251,191,36,.12);
+      --red:#F87171; --red-bg:rgba(248,113,113,.12);
+      --purple:#A78BFA; --purple-bg:rgba(167,139,250,.12);
+      --pink:#F472B6; --pink-bg:rgba(244,114,182,.12);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{font-family:'Pretendard Variable','Pretendard',ui-monospace,'JetBrains Mono',monospace;background:var(--bg);color:var(--t1);font-size:13.5px;line-height:1.5;-webkit-font-smoothing:antialiased;word-break:keep-all}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;font-family:inherit;border:none;background:none;color:inherit}
+
+    /* TOPBAR */
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .topbar .logo{font-weight:900;font-size:15px;color:var(--t1);letter-spacing:-0.01em}
+    .topbar .logo .badge{display:inline-block;background:var(--red-bg);color:var(--red);font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;letter-spacing:0.05em}
+    .topbar-right{display:flex;align-items:center;gap:8px}
+    .search-input{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--t1);width:240px;font-family:inherit}
+    .search-input::placeholder{color:var(--t4)}
+    .search-input:focus{outline:none;border-color:var(--blue)}
+    .pill{background:var(--bg-2);border:1px solid var(--line);padding:6px 11px;border-radius:6px;font-size:11.5px;color:var(--t2);font-weight:600}
+    .pill strong{color:var(--blue);font-weight:700}
+
+    /* CONTAINER */
+    .container{max-width:1280px;margin:0 auto;padding:24px 20px 80px}
+
+    /* STATS BAR */
+    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
+    .stat{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+    .stat .lbl{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;margin-bottom:6px}
+    .stat .val{font-size:22px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
+    .stat .val .unit{font-size:13px;color:var(--t3);font-weight:600;margin-left:3px}
+
+    /* QUICK LINKS */
+    .quick-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;padding:14px 16px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px}
+    .quick-links .lbl{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;align-self:center;margin-right:6px}
+    .ql-btn{display:inline-flex;align-items:center;gap:5px;background:var(--bg-3);border:1px solid var(--line-2);padding:6px 11px;border-radius:6px;font-size:12px;color:var(--t2);font-weight:600;transition:.15s}
+    .ql-btn:hover{background:var(--blue-d);color:#fff;border-color:var(--blue)}
+    .ql-btn.gh{background:#0d1117;border-color:#21262d}
+    .ql-btn.gh:hover{background:#21262d}
+
+    /* SECTION */
+    .section{margin-bottom:32px}
+    .section-head{display:flex;align-items:center;gap:10px;padding:0 4px 12px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+    .section-icon{font-size:18px}
+    .section-title{font-size:15px;font-weight:900;color:var(--t1);letter-spacing:-0.01em}
+    .section-count{background:var(--bg-2);color:var(--t3);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:auto}
+    .section-desc{font-size:11.5px;color:var(--t4);margin-left:6px}
+
+    /* URL TABLE */
+    .url-table{width:100%;border-collapse:collapse;font-size:12.5px}
+    .url-table tr{border-bottom:1px solid var(--line)}
+    .url-table tr:last-child{border-bottom:none}
+    .url-table tr:hover{background:rgba(255,255,255,.02)}
+    .url-table td{padding:10px 12px;vertical-align:middle}
+    .url-table .col-status{width:60px;text-align:center}
+    .url-table .col-tag{width:90px}
+    .url-table .col-title{font-weight:600;color:var(--t1)}
+    .url-table .col-url{color:var(--t3);font-family:ui-monospace,'JetBrains Mono',monospace;font-size:11.5px}
+    .url-table .col-actions{width:140px;text-align:right;white-space:nowrap}
+
+    .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 2px var(--green-bg)}
+    .status-dot.draft{background:var(--yellow);box-shadow:0 0 0 2px var(--yellow-bg)}
+    .status-dot.priority{background:var(--red);box-shadow:0 0 0 2px var(--red-bg);animation:pulse 1.5s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+
+    .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:0.02em;line-height:1}
+    .tag.pillar{background:var(--red-bg);color:var(--red)}
+    .tag.spoke{background:var(--blue-bg);color:var(--blue)}
+    .tag.guide{background:var(--green-bg);color:var(--green)}
+    .tag.child{background:var(--pink-bg);color:var(--pink)}
+    .tag.system{background:var(--purple-bg);color:var(--purple)}
+    .tag.form{background:var(--yellow-bg);color:var(--yellow)}
+    .tag.hub{background:var(--blue-bg);color:var(--blue)}
+    .tag.new{background:var(--red-bg);color:var(--red)}
+
+    .btn{display:inline-flex;align-items:center;gap:4px;background:var(--bg-3);border:1px solid var(--line-2);padding:5px 9px;border-radius:5px;font-size:11px;color:var(--t2);font-weight:600;margin-left:4px;transition:.12s}
+    .btn:hover{background:var(--blue-d);color:#fff;border-color:var(--blue)}
+    .btn.copy:hover{background:var(--green);color:#000;border-color:var(--green)}
+
+    /* SEARCH HIGHLIGHT */
+    tr.hidden{display:none}
+
+    /* MOBILE */
+    @media(max-width:760px){
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .container{padding:16px 14px 60px}
+      .topbar{padding:10px 14px;flex-wrap:wrap}
+      .search-input{width:100%}
+      .url-table .col-url{display:none}
+      .url-table td{padding:8px 6px;font-size:12px}
+      .url-table .col-actions{width:auto}
+      .btn{padding:4px 7px;font-size:10.5px}
+    }
+
+    /* COPY TOAST */
+    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--green);color:#000;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.4);opacity:0;transition:.25s;pointer-events:none;z-index:200}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">⚙️ villagebaby.kr <span class="badge">ADMIN</span></div>
+  <div class="topbar-right">
+    <input type="text" class="search-input" id="search" placeholder="🔍 페이지 검색...">
+    <span class="pill" id="visible-count"><strong>—</strong> 페이지</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="lbl">전체 페이지</div><div class="val">26<span class="unit">개</span></div></div>
+    <div class="stat"><div class="lbl">5세대 클러스터</div><div class="val">8<span class="unit">개</span></div></div>
+    <div class="stat"><div class="lbl">태아 가이드</div><div class="val">10<span class="unit">개</span></div></div>
+    <div class="stat"><div class="lbl">어린이 가이드</div><div class="val">6<span class="unit">개</span></div></div>
+    <div class="stat"><div class="lbl">최종 업데이트</div><div class="val">05.06<span class="unit"></span></div></div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="quick-links">
+    <span class="lbl">QUICK</span>
+    <a href="https://github.com/villagebaby-ai/villagebaby-ai" target="_blank" rel="noopener" class="ql-btn gh">📦 GitHub Repo</a>
+    <a href="https://github.com/villagebaby-ai/villagebaby-ai/pulls" target="_blank" rel="noopener" class="ql-btn gh">🔀 Pull Requests</a>
+    <a href="https://github.com/villagebaby-ai/villagebaby-ai/actions" target="_blank" rel="noopener" class="ql-btn gh">⚡ Actions</a>
+    <a href="https://search.google.com/search-console" target="_blank" rel="noopener" class="ql-btn">🔍 Google Search Console</a>
+    <a href="https://searchadvisor.naver.com/" target="_blank" rel="noopener" class="ql-btn">🟢 Naver Search Advisor</a>
+    <a href="https://www.bing.com/webmasters" target="_blank" rel="noopener" class="ql-btn">🟠 Bing Webmaster</a>
+    <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="ql-btn">📊 Google Analytics</a>
+    <a href="https://pf.kakao.com/_bxjJfn" target="_blank" rel="noopener" class="ql-btn">💛 카카오 채널</a>
+  </div>
+
+  <!-- 메인 페이지 -->
+  <section class="section" data-cat="메인">
+    <div class="section-head">
+      <span class="section-icon">🏠</span>
+      <h2 class="section-title">메인 페이지</h2>
+      <span class="section-desc">홈 + 허브 페이지</span>
+      <span class="section-count">3</span>
+    </div>
+    <table class="url-table">
+      <tbody>
+        <tr><td class="col-status"><span class="status-dot" title="Live"></span></td><td class="col-tag"><span class="tag hub">홈</span></td><td class="col-title">베이비빌리 홈</td><td class="col-url">/</td><td class="col-actions"><a href="/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag hub">태아 허브</span></td><td class="col-title">태아보험 가이드 허브</td><td class="col-url">/guide/</td><td class="col-actions"><a href="/guide/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag hub">어린이 허브</span></td><td class="col-title">어린이보험 가이드 허브</td><td class="col-url">/child/</td><td class="col-actions"><a href="/child/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/">복사</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5세대 실손 클러스터 -->
+  <section class="section" data-cat="5세대">
+    <div class="section-head">
+      <span class="section-icon">⚡</span>
+      <h2 class="section-title">5세대 실손 클러스터</h2>
+      <span class="section-desc">Pillar 1 + Spokes 7</span>
+      <span class="section-count">8</span>
+    </div>
+    <table class="url-table">
+      <tbody>
+        <tr><td class="col-status"><span class="status-dot priority" title="Pillar"></span></td><td class="col-tag"><span class="tag pillar">PILLAR</span></td><td class="col-title">5세대 실손 완전정리 — 4세대와 무엇이 달라졌나</td><td class="col-url">/guide/5세대-실손-완전정리/</td><td class="col-actions"><a href="/guide/5세대-실손-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-완전정리/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span></td><td class="col-title">어린이 5세대 실손 — 케이스별 분석</td><td class="col-url">/guide/어린이-5세대-실손/</td><td class="col-actions"><a href="/guide/어린이-5세대-실손/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/어린이-5세대-실손/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span></td><td class="col-title">4세대 vs 5세대 실손 보험료 비교 (30년 누적)</td><td class="col-url">/guide/4세대-5세대-실손-보험료-비교/</td><td class="col-actions"><a href="/guide/4세대-5세대-실손-보험료-비교/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/4세대-5세대-실손-보험료-비교/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span></td><td class="col-title">5세대 실손 갈아타기 가이드 (4세대 가입자)</td><td class="col-url">/guide/5세대-실손-갈아타기-가이드/</td><td class="col-actions"><a href="/guide/5세대-실손-갈아타기-가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-갈아타기-가이드/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span> <span class="tag new">NEW</span></td><td class="col-title">5세대 실손 자기부담률 50% 분석</td><td class="col-url">/guide/5세대-실손-자기부담률-50/</td><td class="col-actions"><a href="/guide/5세대-실손-자기부담률-50/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-자기부담률-50/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span> <span class="tag new">NEW</span></td><td class="col-title">5세대 비급여 중증 vs 비중증 분류</td><td class="col-url">/guide/5세대-실손-비급여-중증-비중증/</td><td class="col-actions"><a href="/guide/5세대-실손-비급여-중증-비중증/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-비급여-중증-비중증/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span> <span class="tag new">NEW</span></td><td class="col-title">5세대 실손 청구 시뮬레이션 (10가지 케이스)</td><td class="col-url">/guide/5세대-실손-청구-시뮬레이션/</td><td class="col-actions"><a href="/guide/5세대-실손-청구-시뮬레이션/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-청구-시뮬레이션/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag spoke">Spoke</span> <span class="tag new">NEW</span></td><td class="col-title">30대·40대 5세대 실손 보험료 가이드</td><td class="col-url">/guide/30대-40대-5세대-실손-보험료/</td><td class="col-actions"><a href="/guide/30대-40대-5세대-실손-보험료/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/30대-40대-5세대-실손-보험료/">복사</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 태아보험 가이드 -->
+  <section class="section" data-cat="태아">
+    <div class="section-head">
+      <span class="section-icon">🤰</span>
+      <h2 class="section-title">태아보험 가이드</h2>
+      <span class="section-desc">8개 핵심 + v2 SEO 테스트 페이지</span>
+      <span class="section-count">9</span>
+    </div>
+    <table class="url-table">
+      <tbody>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아보험 가입시기 & 필수특약</td><td class="col-url">/guide/태아보험-가입시기-필수특약/</td><td class="col-actions"><a href="/guide/태아보험-가입시기-필수특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-가입시기-필수특약/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아보험 보험사 추천 비교 (6개사)</td><td class="col-url">/guide/태아보험-보험사-추천-비교/</td><td class="col-actions"><a href="/guide/태아보험-보험사-추천-비교/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-보험사-추천-비교/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아보험 보험료 얼마나 드나</td><td class="col-url">/guide/태아보험-보험료-얼마나-드나/</td><td class="col-actions"><a href="/guide/태아보험-보험료-얼마나-드나/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아실손 vs 일반실손 차이</td><td class="col-url">/guide/태아실손보험-일반실손-차이/</td><td class="col-actions"><a href="/guide/태아실손보험-일반실손-차이/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아실손보험-일반실손-차이/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot draft" title="A/B test"></span></td><td class="col-tag"><span class="tag guide">A/B v2</span></td><td class="col-title">태아실손 vs 일반실손 차이 (v2 SEO 개선판)</td><td class="col-url">/guide/태아실손보험-일반실손-차이-v2/</td><td class="col-actions"><a href="/guide/태아실손보험-일반실손-차이-v2/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아실손보험-일반실손-차이-v2/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아보험 특약 총정리</td><td class="col-url">/guide/태아보험-특약-총정리/</td><td class="col-actions"><a href="/guide/태아보험-특약-총정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-특약-총정리/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아보험 청구 방법 완전 정리</td><td class="col-url">/guide/태아보험-청구-방법/</td><td class="col-actions"><a href="/guide/태아보험-청구-방법/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-청구-방법/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">태아보험 거절 사례 & 대처법</td><td class="col-url">/guide/태아보험-거절-사례/</td><td class="col-actions"><a href="/guide/태아보험-거절-사례/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-거절-사례/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag guide">가이드</span></td><td class="col-title">출산 후 보험 체크리스트</td><td class="col-url">/guide/출산후-보험-체크리스트/</td><td class="col-actions"><a href="/guide/출산후-보험-체크리스트/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/출산후-보험-체크리스트/">복사</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 어린이보험 가이드 -->
+  <section class="section" data-cat="어린이">
+    <div class="section-head">
+      <span class="section-icon">🧒</span>
+      <h2 class="section-title">어린이보험 가이드</h2>
+      <span class="section-desc">자녀 0~10세 부모 대상</span>
+      <span class="section-count">5</span>
+    </div>
+    <table class="url-table">
+      <tbody>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 재설계 — 언제 필요할까</td><td class="col-url">/child/어린이보험-재설계-언제-필요할까/</td><td class="col-actions"><a href="/child/어린이보험-재설계-언제-필요할까/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-재설계-언제-필요할까/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 보험사 비교 추천</td><td class="col-url">/child/어린이보험-보험사-비교-추천/</td><td class="col-actions"><a href="/child/어린이보험-보험사-비교-추천/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-보험사-비교-추천/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 필수특약 TOP 10</td><td class="col-url">/child/어린이보험-필수특약-TOP10/</td><td class="col-actions"><a href="/child/어린이보험-필수특약-TOP10/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-필수특약-TOP10/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 보험료 적정선</td><td class="col-url">/child/어린이보험-보험료-적정선/</td><td class="col-actions"><a href="/child/어린이보험-보험료-적정선/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-보험료-적정선/">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 환급형 vs 순수보장형</td><td class="col-url">/child/어린이보험-환급형-vs-순수보장형/</td><td class="col-actions"><a href="/child/어린이보험-환급형-vs-순수보장형/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-환급형-vs-순수보장형/">복사</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Form -->
+  <section class="section" data-cat="폼">
+    <div class="section-head">
+      <span class="section-icon">📝</span>
+      <h2 class="section-title">신청 폼 (noindex)</h2>
+      <span class="section-desc">상담 신청 페이지 — 검색 노출 제외</span>
+      <span class="section-count">1</span>
+    </div>
+    <table class="url-table">
+      <tbody>
+        <tr><td class="col-status"><span class="status-dot draft"></span></td><td class="col-tag"><span class="tag form">폼</span></td><td class="col-title">통합 상담 신청 (사은품 + 카운트다운)</td><td class="col-url">/form/general/</td><td class="col-actions"><a href="/form/general/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/form/general/">복사</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 시스템 -->
+  <section class="section" data-cat="시스템">
+    <div class="section-head">
+      <span class="section-icon">⚙️</span>
+      <h2 class="section-title">시스템 / SEO 파일</h2>
+      <span class="section-desc">검색엔진·메타 파일</span>
+      <span class="section-count">5</span>
+    </div>
+    <table class="url-table">
+      <tbody>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag system">XML</span></td><td class="col-title">Sitemap (검색엔진용)</td><td class="col-url">/sitemap.xml</td><td class="col-actions"><a href="/sitemap.xml" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/sitemap.xml">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag system">RSS</span></td><td class="col-title">RSS Feed (네이버 우대)</td><td class="col-url">/rss.xml</td><td class="col-actions"><a href="/rss.xml" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/rss.xml">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag system">TXT</span></td><td class="col-title">robots.txt (크롤러 허용 목록)</td><td class="col-url">/robots.txt</td><td class="col-actions"><a href="/robots.txt" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/robots.txt">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag system">IMG</span></td><td class="col-title">Favicon (Billy 캐릭터)</td><td class="col-url">/favicon.png</td><td class="col-actions"><a href="/favicon.png" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/favicon.png">복사</button></td></tr>
+        <tr><td class="col-status"><span class="status-dot"></span></td><td class="col-tag"><span class="tag system">IMG</span></td><td class="col-title">OG 썸네일 (카톡 공유용)</td><td class="col-url">/heroimage.jpg</td><td class="col-actions"><a href="/heroimage.jpg" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/heroimage.jpg">복사</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- TIPS -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-icon">💡</span>
+      <h2 class="section-title">관리 TIPS</h2>
+    </div>
+    <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:13px;line-height:1.85;color:var(--t2)">
+      <p style="margin-bottom:8px"><strong style="color:var(--blue)">📍 Search Console 색인 요청 항상 3종 셋트:</strong> Google + Naver Search Advisor + Bing Webmaster. 한 곳만 하면 트래픽 절반 손해.</p>
+      <p style="margin-bottom:8px"><strong style="color:var(--green)">✅ 새 페이지 배포 후 체크리스트:</strong> ① sitemap.xml 갱신 → ② rss.xml 갱신 → ③ Pillar/허브 내부 링크 → ④ 3종 색인 요청.</p>
+      <p style="margin-bottom:8px"><strong style="color:var(--yellow)">⚠️ 카톡 OG 캐시:</strong> 1~3일 캐싱됨. 빠른 갱신은 <a href="https://developers.kakao.com/tool/clear/og" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Kakao 디버거</a>에서 URL 캐시 삭제.</p>
+      <p style="margin-bottom:8px"><strong style="color:var(--purple)">🔀 PR 워크플로우:</strong> <code style="background:var(--bg-3);padding:2px 6px;border-radius:4px;font-size:12px">git checkout -b feature/이름</code> → 작업 → push → PR 생성. 검토 후 머지.</p>
+      <p><strong style="color:var(--pink)">🎯 Cluster 전략:</strong> 새 카테고리는 Pillar 1 + Spokes 5~7 형태로. 양방향 인바운드 링크가 토픽 권위도의 핵심.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="toast" id="toast">URL 복사됨 ✓</div>
+
+<script>
+  // 검색 필터
+  const searchInput = document.getElementById('search');
+  const visibleCount = document.getElementById('visible-count').querySelector('strong');
+  const allRows = document.querySelectorAll('.url-table tr');
+
+  function applyFilter() {
+    const q = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+    allRows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      if (!q || text.includes(q)) {
+        row.classList.remove('hidden');
+        visible++;
+      } else {
+        row.classList.add('hidden');
+      }
+    });
+    visibleCount.textContent = visible;
+
+    // 빈 섹션 숨기기
+    document.querySelectorAll('.section').forEach(sec => {
+      const visibleRows = sec.querySelectorAll('.url-table tr:not(.hidden)');
+      const hasTable = sec.querySelector('.url-table');
+      if (hasTable && q && visibleRows.length === 0) {
+        sec.style.display = 'none';
+      } else {
+        sec.style.display = '';
+      }
+    });
+  }
+  searchInput.addEventListener('input', applyFilter);
+  applyFilter();
+
+  // 단축키 / 로 검색 포커스
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    }
+    if (e.key === 'Escape' && document.activeElement === searchInput) {
+      searchInput.value = '';
+      applyFilter();
+      searchInput.blur();
+    }
+  });
+
+  // URL 복사
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  document.querySelectorAll('.btn.copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.url;
+      try {
+        await navigator.clipboard.writeText(url);
+        toast.textContent = '✓ ' + url;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+      } catch (e) {
+        alert('복사 실패: ' + url);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
