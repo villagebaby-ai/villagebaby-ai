@@ -330,5 +330,46 @@
       <category>운전자보험</category>
       <description>자녀 동승 보장 강화, 카시트 위반 보장, 가족운전자 한정 할인, 자녀 후유장해까지 부모 관점에서 정리한 운전자보험 특약 가이드.</description>
     </item>
+
+    <!-- 여성보험 클러스터 (NEW) -->
+    <item>
+      <title>여성보험 완전정리 2026 — 임산부·여성암·출산합병증·산후우울증 한 페이지 [PILLAR]</title>
+      <link>https://villagebaby.kr/female/여성보험-완전정리/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/female/여성보험-완전정리/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>여성보험</category>
+      <description>임신 22주 데드라인부터 유방·자궁경부·난소암 진단비 가중, 출산 합병증, 산후우울증 보장, 보험사 7개사 비교까지 — 가임기 여성·산모가 알아야 할 모든 것을 한 페이지에 정리한 종합 Pillar 가이드.</description>
+    </item>
+
+    <item>
+      <title>임산부 여성보험 가입 가이드 — 22주 데드라인·시기별 인수 전략</title>
+      <link>https://villagebaby.kr/female/임산부-여성보험-가입가이드/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/female/임산부-여성보험-가입가이드/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>여성보험</category>
+      <description>임신 시기별 가입 가능 보험사, 22주 데드라인 전략, 임신성 당뇨·임신중독증 등 임신성 질환 보장, 부담보 회피 5단계 전략까지 산모 관점에서 정리.</description>
+    </item>
+
+    <item>
+      <title>여성암 보장 가이드 — 유방암·자궁경부암·난소암 진단비 완전정리</title>
+      <link>https://villagebaby.kr/female/여성암-유방암-자궁경부암-보장/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/female/여성암-유방암-자궁경부암-보장/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>여성보험</category>
+      <description>유방암·자궁경부암·자궁내막암·난소암·갑상선암 진단비 가중 구조, 갱신 vs 비갱신 30년 누적 차이, 가족력·과거력 가입 사례까지 30대+ 여성 필수 가이드.</description>
+    </item>
+
+    <item>
+      <title>출산합병증·산후우울증 보장 — 제왕절개·임신중독증·산후우울증</title>
+      <link>https://villagebaby.kr/female/출산합병증-산후우울증-보장/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/female/출산합병증-산후우울증-보장/</guid>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>여성보험</category>
+      <description>임신 중 합병증(임신성 당뇨·임신중독증·태반조기박리)부터 출산 시 합병증(자궁파열·산후출혈)·산후우울증까지 보험사별 진단비 비교와 14일 내 청구 절차 정리.</description>
+    </item>
   </channel>
 </rss>
