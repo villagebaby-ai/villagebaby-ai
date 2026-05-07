@@ -9,9 +9,19 @@
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/태아보험-완전정리/</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.98</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
+      <image:title>태아보험 완전정리 2026 — 가입시기·보험사·보험료·특약·청구 한 페이지 | 베이비빌리</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/태아보험-가입시기-필수특약/</loc>
