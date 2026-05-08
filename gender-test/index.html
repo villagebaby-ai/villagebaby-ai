@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3373BA" />
+  <link rel="icon" type="image/png" href="https://villagebaby.kr/favicon.png" />
+  <link rel="apple-touch-icon" href="https://villagebaby.kr/favicon.png" />
+  <!-- 미리보기 배포: 운영 사이트(gender-test.babybilly.co)와 중복 인덱싱 방지 -->
+  <link rel="canonical" href="https://gender-test.babybilly.co/" />
+
+  <title>[미리보기] 각도법 성별 예측 — 빌리지베이비</title>
+  <meta name="description" content="각도법(Nub theory) 성별 예측 도구의 빌리지베이비 미리보기 빌드입니다. 운영 사이트는 gender-test.babybilly.co" />
+  <meta name="author" content="빌리지베이비 (Villagebaby)" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="각도법 성별 예측 | 11-14주 초음파로 보는 아들·딸" />
+  <meta property="og:description" content="11~14주 초음파 사진을 올리면 빌리AI가 각도법으로 성별을 예측해드려요." />
+  <meta property="og:url" content="https://gender-test.babybilly.co/" />
+  <meta property="og:image" content="https://villagebaby.kr/heroimage.jpg" />
+  <meta property="og:site_name" content="빌리지베이비" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="각도법 성별 예측 | 빌리지베이비" />
+  <meta name="twitter:description" content="11~14주 초음파 사진으로 아들·딸을 재미로 예측해드려요." />
+  <meta name="twitter:image" content="https://villagebaby.kr/heroimage.jpg" />
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "각도법 성별 예측 by 빌리지베이비",
+    "url": "https://gender-test.babybilly.co/",
+    "description": "임신 11~14주 초음파 사진을 각도법(Nub theory)으로 분석해 아기 성별을 예측하는 무료 AI 도구.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "ko",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+    "publisher": { "@type": "Organization", "name": "빌리지베이비", "url": "https://villagebaby.kr" }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "빌리지베이비", "item": "https://villagebaby.kr" },
+      { "@type": "ListItem", "position": 2, "name": "각도법 성별 예측", "item": "https://gender-test.babybilly.co/" }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (GEO 친화) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "각도법(Nub theory)이란 무엇인가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "각도법은 임신 11~14주 초음파 사진에서 태아 골반 끝 성기결절이 척추와 이루는 각도로 성별을 추정하는 비공식 방법입니다. 의학적 진단법은 아니며 재미로 보는 도구입니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "몇 주차 초음파 사진이 가장 좋나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "11주~14주 사이가 가장 정확도가 높습니다. 이 시기에 성기결절이 가장 선명하게 관찰됩니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "각도법은 얼마나 정확한가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "연구마다 차이가 있지만 11주에 약 70~80%, 12~13주에는 80% 이상이 보고되기도 합니다. 사진 각도와 화질에 크게 좌우됩니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "어떤 사진을 올려야 하나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "태아 옆모습(sagittal view)이 보이고, 척추 라인과 골반 끝 성기결절이 모두 식별되는 11~14주 초음파 사진을 권장합니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "4D 컬러 초음파 사진도 분석되나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "4D 컬러나 정면샷은 척추-너브 각도 측정이 어려워 정확도가 떨어집니다. 흑백 옆모습 사진을 권장합니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "업로드한 사진은 어떻게 처리되나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "업로드한 사진은 분석을 위해 Google Gemini API로 1회 전송되며, 빌리지베이비 서버에는 저장되지 않습니다." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1788708077887234" crossorigin="anonymous"></script>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    @keyframes float-animation {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    .animate-float { animation: float-animation 3.5s ease-in-out infinite; }
+
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      25%  { transform: translateY(-10px) rotate(1deg); }
+      50%  { transform: translateY(-18px) rotate(0); }
+      75%  { transform: translateY(-8px) rotate(-1deg); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      30%  { transform: translateY(8px) rotate(-1deg); }
+      60%  { transform: translateY(-12px) rotate(0.5deg); }
+    }
+    @keyframes floatC {
+      0%, 100% { transform: translateY(0) scale(1); }
+      40%  { transform: translateY(-14px) scale(1.015); }
+      70%  { transform: translateY(-6px) scale(1.008); }
+    }
+    @keyframes floatD {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50%  { transform: translateY(-16px) rotate(1deg); }
+    }
+    .billy-float-a { animation: floatA 12s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+    .billy-float-b { animation: floatB 15s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+    .billy-float-c { animation: floatC 10s cubic-bezier(0.45,0.05,0.55,0.95) infinite; }
+    .billy-float-d { animation: floatD 11s cubic-bezier(0.45,0.05,0.55,0.95) infinite 1s; }
+
+    /* details summary 화살표 제거 */
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+
+
+  <script type="importmap">
+  {
+    "imports": {
+      "react/": "https://esm.sh/react@^19.1.1/",
+      "react": "https://esm.sh/react@^19.1.1",
+      "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+      "@google/genai": "https://esm.sh/@google/genai@^1.13.0",
+      "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+      "canvas-confetti": "https://esm.sh/canvas-confetti@1.9.3",
+      "@amplitude/analytics-browser": "https://esm.sh/@amplitude/analytics-browser@^2.23.7"
+    }
+  }
+  </script>
+  <script type="module" crossorigin src="./assets/index-REoOOfCq.js"></script>
+</head>
+<body class="bg-[#F8F8F6]">
+  <div id="root"></div>
+</body>
+</html>
