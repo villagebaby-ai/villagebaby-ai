@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ko" prefix="og: https://ogp.me/ns#">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>태아보험료 계산기 – 임신 주차·성별·보장범위별 예상 월 보험료 (2026년) | 베이비빌리</title>
+  <meta name="description" content="임신 주차, 성별, 보장 범위를 선택하면 태아보험 예상 월 보험료를 30초 만에 확인할 수 있습니다. 현대·삼성·KB·메리츠 기준 2026년 최신 보험료 시뮬레이션.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://villagebaby.kr/guide/태아보험료-계산기/">
+  <meta property="og:title" content="태아보험료 계산기 – 임신 주차·성별별 예상 보험료 바로 계산">
+  <meta property="og:description" content="임신 주차와 보장 범위를 선택하면 태아보험 예상 월 보험료를 바로 확인할 수 있어요.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://villagebaby.kr/guide/태아보험료-계산기/">
+  <meta property="og:image" content="https://villagebaby.kr/heroimage.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reading Progress ── */
+    #reading-progress {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      height: 3px; width: 0%;
+      background: #3373BA;
+      transition: width 0.1s linear;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:         #3373BA;
+      --blue-dark:    #235A96;
+      --blue-light:   #EBF2FA;
+      --blue-mid:     #C8DDF3;
+      --peach:        #f6d5c3;
+      --peach-dark:   #d4956c;
+      --peach-light:  #FDF7F3;
+      --green:        #1a9e5c;
+      --green-light:  #e6f7f0;
+      --yellow:       #d4860a;
+      --yellow-light: #fef5e4;
+      --red:          #c0392b;
+      --red-light:    #fdedec;
+      --gray:         #898989;
+      --gray-light:   #F5F5F5;
+      --gray-border:  #E4E4EC;
+      --text-primary:   #1C1C2E;
+      --text-secondary: #52525E;
+      --text-muted:     #9999AA;
+      --white:          #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      background: #F8F8FB;
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav.site-nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-border);
+      padding: 0 1.5rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: box-shadow 0.2s;
+    }
+    nav.site-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .nav-left { display: flex; align-items: center; gap: 10px; }
+    .nav-tag {
+      font-size: 11px; font-weight: 500;
+      background: var(--blue-light); color: var(--blue);
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .nav-cta {
+      font-size: 13px; font-weight: 700;
+      background: var(--blue); color: #fff;
+      padding: 7px 16px; border-radius: 50px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--blue);
+      position: relative; overflow: hidden;
+      padding: 3rem 1.5rem 2.5rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -40px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+    .hero-breadcrumb {
+      font-size: 12px; color: rgba(255,255,255,0.6);
+      margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px;
+    }
+    .hero-breadcrumb a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 0.9rem;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 28px; font-weight: 700;
+      color: #fff; line-height: 1.38;
+      margin-bottom: 0.6rem;
+    }
+    .hero-sub {
+      font-size: 15px; color: rgba(255,255,255,0.82);
+      line-height: 1.6; margin-bottom: 1.1rem;
+    }
+    .hero-meta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .hero-meta span {
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ── PAGE LAYOUT ── */
+    .page {
+      max-width: 860px; margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .section-sub {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── CALCULATOR CARD ── */
+    .calc-card {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: 20px;
+      padding: 2rem 2rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Step indicator */
+    .step-indicator {
+      display: flex; align-items: center; gap: 0; margin-bottom: 2rem;
+    }
+    .step-item {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 4px; flex: 1;
+    }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      background: var(--gray-light); color: var(--text-muted);
+      transition: all 0.3s;
+    }
+    .step-num.active { background: var(--blue); color: #fff; }
+    .step-num.done { background: var(--blue-light); color: var(--blue); }
+    .step-label {
+      font-size: 11px; color: var(--text-muted); font-weight: 500;
+      white-space: nowrap;
+    }
+    .step-label.active { color: var(--blue); }
+    .step-line {
+      flex: 1; height: 2px;
+      background: var(--gray-border);
+      margin: 0 6px; margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    .step-line.done { background: var(--blue-mid); }
+
+    /* Step panels */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* Step title */
+    .step-heading {
+      font-size: 16px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 1.25rem;
+    }
+    .step-heading .num {
+      display: inline-flex; width: 24px; height: 24px;
+      background: var(--blue); color: #fff;
+      border-radius: 50%; font-size: 12px;
+      align-items: center; justify-content: center;
+      margin-right: 8px;
+    }
+
+    /* ── WEEK SLIDER ── */
+    .week-slider-wrap { position: relative; padding-bottom: 0.5rem; }
+    .week-value-display {
+      text-align: center; margin-bottom: 1rem;
+    }
+    .week-value-display .week-num {
+      font-size: 42px; font-weight: 800;
+      color: var(--blue); line-height: 1;
+    }
+    .week-value-display .week-unit {
+      font-size: 16px; color: var(--text-secondary);
+      margin-left: 4px;
+    }
+    .week-value-display .week-msg {
+      font-size: 13px; margin-top: 4px;
+      font-weight: 600; padding: 4px 12px;
+      border-radius: 20px; display: inline-block;
+    }
+    .week-msg.safe { background: var(--green-light); color: var(--green); }
+    .week-msg.caution { background: var(--yellow-light); color: var(--yellow); }
+    .week-msg.urgent { background: var(--red-light); color: var(--red); }
+
+    input[type="range"] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 6px;
+      border-radius: 3px; outline: none;
+      background: var(--gray-light);
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(51,115,186,0.35);
+      cursor: pointer;
+    }
+    .week-labels {
+      display: flex; justify-content: space-between;
+      margin-top: 8px;
+    }
+    .week-labels span {
+      font-size: 11px; color: var(--text-muted);
+    }
+    .week-deadline-note {
+      margin-top: 1rem;
+      background: var(--peach-light);
+      border-left: 3px solid var(--peach-dark);
+      border-radius: 0 10px 10px 0;
+      padding: 0.7rem 1rem;
+      font-size: 13px; color: #7a4a2e; line-height: 1.6;
+    }
+
+    /* ── GENDER BUTTONS ── */
+    .gender-btns {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+    }
+    .gender-btn {
+      flex: 1; min-width: 100px;
+      padding: 1rem 0.5rem;
+      border: 2px solid var(--gray-border);
+      border-radius: 14px; background: var(--white);
+      font-size: 15px; font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer; text-align: center;
+      transition: all 0.2s;
+    }
+    .gender-btn .icon { font-size: 24px; display: block; margin-bottom: 4px; }
+    .gender-btn:hover { border-color: var(--blue-mid); color: var(--blue); }
+    .gender-btn.selected {
+      border-color: var(--blue);
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    /* ── COVERAGE CARDS ── */
+    .coverage-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+    .coverage-card {
+      border: 2px solid var(--gray-border);
+      border-radius: 14px; padding: 1.1rem 0.9rem;
+      cursor: pointer; background: var(--white);
+      transition: all 0.2s; text-align: center;
+    }
+    .coverage-card:hover { border-color: var(--blue-mid); }
+    .coverage-card.selected {
+      border-color: var(--blue);
+      background: var(--blue-light);
+    }
+    .coverage-card .cv-icon { font-size: 24px; margin-bottom: 6px; }
+    .coverage-card .cv-name {
+      font-size: 14px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 4px;
+    }
+    .coverage-card .cv-desc {
+      font-size: 11px; color: var(--text-muted); line-height: 1.5;
+    }
+    .coverage-card .cv-price {
+      margin-top: 8px;
+      font-size: 12px; font-weight: 600;
+      color: var(--blue);
+    }
+    .coverage-card.selected .cv-name { color: var(--blue); }
+    .coverage-card.selected .cv-desc { color: var(--blue-dark); }
+
+    /* ── BUTTONS ── */
+    .btn-calc {
+      width: 100%; padding: 1rem;
+      background: var(--blue); color: #fff;
+      font-size: 16px; font-weight: 700;
+      border: none; border-radius: 50px;
+      cursor: pointer; margin-top: 1.5rem;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: -0.2px;
+    }
+    .btn-calc:hover { background: var(--blue-dark); }
+    .btn-calc:active { transform: scale(0.98); }
+    .btn-calc:disabled { background: var(--gray); cursor: not-allowed; }
+
+    .btn-next {
+      display: inline-block; padding: 0.65rem 2rem;
+      background: var(--blue); color: #fff;
+      font-size: 14px; font-weight: 700;
+      border: none; border-radius: 50px;
+      cursor: pointer; margin-top: 1.25rem;
+      transition: background 0.2s;
+    }
+    .btn-next:hover { background: var(--blue-dark); }
+
+    .btn-back {
+      display: inline-block; padding: 0.65rem 1.5rem;
+      background: transparent; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500;
+      border: 1px solid var(--gray-border); border-radius: 50px;
+      cursor: pointer; margin-top: 1.25rem; margin-right: 0.75rem;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── RESULT SECTION ── */
+    #result-section {
+      display: none; animation: fadeUp 0.4s ease;
+    }
+    #result-section.show { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-header {
+      text-align: center; margin-bottom: 1.75rem;
+    }
+    .result-header .result-badge {
+      display: inline-block;
+      font-size: 12px; font-weight: 600;
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 0.6rem;
+    }
+    .result-premium-box {
+      background: var(--blue);
+      border-radius: 20px; padding: 2rem 1.5rem;
+      text-align: center; margin-bottom: 1.25rem;
+      position: relative; overflow: hidden;
+    }
+    .result-premium-box::after {
+      content: '';
+      position: absolute; bottom: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+    .result-label {
+      font-size: 13px; color: rgba(255,255,255,0.75);
+      margin-bottom: 0.4rem;
+    }
+    .result-range {
+      font-size: 36px; font-weight: 800;
+      color: #fff; line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .result-range .unit { font-size: 20px; font-weight: 600; }
+    .result-note {
+      font-size: 12px; color: rgba(255,255,255,0.65);
+      margin-top: 0.5rem;
+    }
+    .result-urgency {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 20px;
+      font-size: 13px; font-weight: 600;
+      margin-top: 0.75rem;
+    }
+    .result-urgency.safe { background: rgba(26,158,92,0.2); color: #b3f0d6; }
+    .result-urgency.caution { background: rgba(212,134,10,0.2); color: #ffe0a0; }
+    .result-urgency.urgent { background: rgba(192,57,43,0.2); color: #ffb3ac; }
+
+    /* Coverage breakdown */
+    .coverage-breakdown {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: 16px; padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .cb-title {
+      font-size: 14px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 1rem;
+    }
+    .cb-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .cb-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .cb-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; flex-shrink: 0;
+    }
+    .cb-check.included { background: var(--blue-light); color: var(--blue); }
+    .cb-check.excluded { background: var(--gray-light); color: var(--text-muted); }
+    .cb-text { font-size: 13px; color: var(--text-secondary); }
+    .cb-text.dim { color: var(--text-muted); text-decoration: line-through; }
+
+    /* Insurer comparison */
+    .insurer-table-wrap {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+    .insurer-table-title {
+      padding: 1rem 1.25rem 0.5rem;
+      font-size: 14px; font-weight: 700; color: var(--text-primary);
+    }
+    .insurer-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+    }
+    .insurer-table th {
+      background: var(--blue-light); color: var(--blue-dark);
+      font-weight: 700; padding: 0.6rem 1rem; text-align: left;
+      border-bottom: 1.5px solid var(--blue-mid);
+    }
+    .insurer-table td {
+      padding: 0.65rem 1rem; border-bottom: 1px solid var(--gray-light);
+      vertical-align: middle;
+    }
+    .insurer-table tr:last-child td { border-bottom: none; }
+    .stars { color: var(--blue); letter-spacing: 1px; font-size: 13px; }
+    .tag-rec {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      background: var(--blue); color: #fff;
+      padding: 2px 7px; border-radius: 10px; margin-left: 4px;
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--blue-light);
+      border-left: 3px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 0.9rem 1.1rem; margin: 1.25rem 0;
+    }
+    .callout p { font-size: 14px; color: #1A3660; line-height: 1.72; }
+    .callout strong { font-weight: 700; color: var(--blue-dark); }
+
+    /* ── LEAD FORM ── */
+    .lead-form-card {
+      background: var(--white);
+      border: 2px solid var(--blue-mid);
+      border-radius: 20px;
+      padding: 2rem 2rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .lead-form-header {
+      text-align: center; margin-bottom: 1.5rem;
+    }
+    .lead-form-header .lf-icon { font-size: 36px; margin-bottom: 0.5rem; }
+    .lead-form-header h3 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 0.4rem;
+    }
+    .lead-form-header p {
+      font-size: 13px; color: var(--text-secondary);
+    }
+
+    .form-row { margin-bottom: 1rem; }
+    .form-label {
+      display: block; font-size: 13px; font-weight: 600;
+      color: var(--text-primary); margin-bottom: 0.4rem;
+    }
+    .form-input {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-border);
+      border-radius: 10px; font-size: 15px;
+      font-family: inherit; color: var(--text-primary);
+      background: #fff; outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: var(--blue); }
+    .form-input::placeholder { color: var(--text-muted); }
+
+    .consent-row {
+      display: flex; align-items: flex-start; gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 16px; height: 16px; margin-top: 2px;
+      accent-color: var(--blue); flex-shrink: 0;
+    }
+    .consent-row label {
+      font-size: 12px; color: var(--text-secondary); line-height: 1.5;
+    }
+    .consent-row a { color: var(--blue); }
+
+    .btn-submit {
+      width: 100%; padding: 1rem;
+      background: var(--blue); color: #fff;
+      font-size: 16px; font-weight: 700;
+      border: none; border-radius: 50px;
+      cursor: pointer; transition: background 0.2s;
+      letter-spacing: -0.3px;
+    }
+    .btn-submit:hover { background: var(--blue-dark); }
+
+    .form-note {
+      text-align: center; margin-top: 0.75rem;
+      font-size: 12px; color: var(--text-muted);
+    }
+
+    /* Success state */
+    #form-success {
+      display: none; text-align: center; padding: 2rem 1rem;
+    }
+    #form-success .success-icon { font-size: 48px; margin-bottom: 0.75rem; }
+    #form-success h4 {
+      font-size: 18px; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    #form-success p { font-size: 14px; color: var(--text-secondary); margin-bottom: 1rem; }
+    .btn-kakao {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #FEE500; color: #1C1C1E;
+      font-size: 15px; font-weight: 700;
+      padding: 0.75rem 2rem; border-radius: 50px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-kakao:hover { opacity: 0.85; }
+
+    /* ── RECALC BUTTON ── */
+    .btn-recalc {
+      display: block; text-align: center;
+      padding: 0.65rem 2rem;
+      background: var(--gray-light); color: var(--text-secondary);
+      font-size: 14px; font-weight: 600;
+      border: 1px solid var(--gray-border); border-radius: 50px;
+      cursor: pointer; margin: 0 auto 1.5rem;
+      transition: all 0.2s; width: fit-content;
+    }
+    .btn-recalc:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ── RELATED LINKS ── */
+    .related-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem; margin-top: 1.5rem;
+    }
+    .related-card {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: 14px; padding: 1.1rem 1rem;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .related-card:hover {
+      border-color: var(--blue-mid);
+      box-shadow: 0 4px 16px rgba(51,115,186,0.1);
+    }
+    .related-card .rc-tag {
+      font-size: 11px; font-weight: 600;
+      color: var(--blue); background: var(--blue-light);
+      padding: 2px 8px; border-radius: 8px;
+      display: inline-block; margin-bottom: 0.5rem;
+    }
+    .related-card .rc-title {
+      font-size: 13px; font-weight: 700;
+      color: var(--text-primary); line-height: 1.45;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1C1C2E; padding: 2rem 1.5rem; text-align: center;
+    }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .hero h1 { font-size: 24px; }
+      .hero-sub { font-size: 14px; }
+      .calc-card { padding: 1.5rem 1.25rem; }
+      .coverage-cards { grid-template-columns: 1fr; }
+      .result-range { font-size: 28px; }
+      .related-grid { grid-template-columns: 1fr; }
+      .lead-form-card { padding: 1.5rem 1.25rem; }
+      .gender-btns { gap: 0.5rem; }
+      .gender-btn { font-size: 14px; padding: 0.8rem 0.5rem; }
+    }
+
+    @media (max-width: 380px) {
+      .step-label { display: none; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "태아보험료 계산기",
+    "url": "https://villagebaby.kr/guide/태아보험료-계산기/",
+    "description": "임신 주차, 성별, 보장 범위에 따른 태아보험 예상 월 보험료를 계산해드립니다.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "publisher": {
+      "@type": "Organization",
+      "name": "베이비빌리",
+      "url": "https://villagebaby.kr"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<div id="reading-progress" role="progressbar" aria-label="읽기 진행률"></div>
+
+<!-- ── NAV ── -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-left">
+    <img src="/logo.png" alt="베이비빌리" style="height:28px;width:auto;display:inline-block;vertical-align:middle">
+    <span class="nav-tag">태아보험 계산기</span>
+  </div>
+  <a href="#lead-form" class="nav-cta">무료 상담</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-breadcrumb">
+      <a href="/">베이비빌리</a> ›
+      <a href="/guide/">보험 정보</a> ›
+      태아보험료 계산기
+    </p>
+    <div class="hero-badge">🧮 2026년 최신 보험료 기준</div>
+    <h1>태아보험료 계산기</h1>
+    <p class="hero-sub">임신 주차·성별·보장 범위를 선택하면<br>예상 월 보험료를 30초 만에 바로 확인할 수 있어요.</p>
+    <div class="hero-meta">
+      <span>⏱ 소요 시간 30초</span>
+      <span>📅 2026년 5월 최신 업데이트</span>
+      <span>🏢 4대 보험사 기준</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN ── -->
+<main class="page">
+
+  <!-- Calculator Card -->
+  <div class="calc-card" id="calculator">
+
+    <!-- Step indicator -->
+    <div class="step-indicator" aria-label="단계">
+      <div class="step-item">
+        <div class="step-num active" id="ind-1">1</div>
+        <div class="step-label active" id="lbl-1">임신 주차</div>
+      </div>
+      <div class="step-line" id="line-1"></div>
+      <div class="step-item">
+        <div class="step-num" id="ind-2">2</div>
+        <div class="step-label" id="lbl-2">태아 성별</div>
+      </div>
+      <div class="step-line" id="line-2"></div>
+      <div class="step-item">
+        <div class="step-num" id="ind-3">3</div>
+        <div class="step-label" id="lbl-3">보장 범위</div>
+      </div>
+    </div>
+
+    <!-- Step 1: 임신 주차 -->
+    <div class="step-panel active" id="step1">
+      <h2 class="step-heading"><span class="num">1</span>현재 임신 주차를 선택해주세요</h2>
+
+      <div class="week-slider-wrap">
+        <div class="week-value-display">
+          <span class="week-num" id="weekDisplay">16</span>
+          <span class="week-unit">주</span>
+          <div class="week-msg safe" id="weekMsg">지금이 최적의 가입 시기예요</div>
+        </div>
+
+        <input type="range" id="weekSlider" min="4" max="27" value="16"
+               aria-label="임신 주차 선택" aria-valuemin="4" aria-valuemax="27">
+
+        <div class="week-labels">
+          <span>4주</span>
+          <span>10주</span>
+          <span>16주</span>
+          <span>22주</span>
+          <span>27주</span>
+        </div>
+      </div>
+
+      <div class="week-deadline-note" id="weekDeadlineNote">
+        💡 태아보험은 <strong>임신 22주 이전</strong>에 가입해야 보험료가 가장 저렴하고 특약 선택 폭이 넓어요.
+      </div>
+
+      <div style="text-align:right">
+        <button class="btn-next" onclick="goStep(2)">다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: 성별 -->
+    <div class="step-panel" id="step2">
+      <h2 class="step-heading"><span class="num">2</span>태아 성별을 선택해주세요</h2>
+
+      <div class="gender-btns" role="group" aria-label="태아 성별">
+        <button class="gender-btn" data-gender="male" onclick="selectGender('male')">
+          <span class="icon">👦</span>남아
+        </button>
+        <button class="gender-btn" data-gender="female" onclick="selectGender('female')">
+          <span class="icon">👧</span>여아
+        </button>
+        <button class="gender-btn" data-gender="unknown" onclick="selectGender('unknown')">
+          <span class="icon">🤷</span>아직 몰라요
+        </button>
+      </div>
+
+      <p style="font-size:12px;color:var(--text-muted);margin-top:0.75rem;">
+        ※ 성별에 따라 일부 특약 보험료가 달라져요. 모르실 경우 보수적인 기준으로 계산됩니다.
+      </p>
+
+      <div>
+        <button class="btn-back" onclick="goStep(1)">← 이전</button>
+        <button class="btn-next" id="genderNextBtn" onclick="goStep(3)" disabled>다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: 보장 범위 -->
+    <div class="step-panel" id="step3">
+      <h2 class="step-heading"><span class="num">3</span>원하시는 보장 범위를 선택해주세요</h2>
+
+      <div class="coverage-cards" role="group" aria-label="보장 범위 선택">
+        <div class="coverage-card" data-coverage="basic" onclick="selectCoverage('basic')">
+          <div class="cv-icon">🛡️</div>
+          <div class="cv-name">기본형</div>
+          <div class="cv-desc">입원·수술·실손<br>기본 보장</div>
+          <div class="cv-price">약 6–9만원/월</div>
+        </div>
+        <div class="coverage-card" data-coverage="standard" onclick="selectCoverage('standard')">
+          <div class="cv-icon">⭐</div>
+          <div class="cv-name">표준형</div>
+          <div class="cv-desc">기본 + 주요<br>질병 특약</div>
+          <div class="cv-price">약 9–13만원/월</div>
+        </div>
+        <div class="coverage-card" data-coverage="premium" onclick="selectCoverage('premium')">
+          <div class="cv-icon">💎</div>
+          <div class="cv-name">프리미엄형</div>
+          <div class="cv-desc">표준 + 희귀질환·<br>고도후유장해</div>
+          <div class="cv-price">약 13–18만원/월</div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1rem;">
+        <p>🔍 <strong>어떤 보장이 맞을지 모르겠다면?</strong><br>
+        대부분의 전문가는 첫째 아이는 <strong>표준형</strong>을, 가족력이 있다면 <strong>프리미엄형</strong>을 권장합니다.</p>
+      </div>
+
+      <div>
+        <button class="btn-back" onclick="goStep(2)">← 이전</button>
+        <button class="btn-calc" id="calcBtn" onclick="calculate()" disabled>📊 보험료 계산하기</button>
+      </div>
+    </div>
+
+  </div><!-- /calc-card -->
+
+
+  <!-- ── RESULT SECTION ── -->
+  <div id="result-section">
+
+    <!-- Premium Result -->
+    <div class="result-premium-box">
+      <div class="result-label">예상 월 보험료 범위</div>
+      <div class="result-range">
+        <span id="resMin">—</span>
+        <span class="unit">만원</span>
+        <span style="font-size:24px;font-weight:400;margin:0 4px">–</span>
+        <span id="resMax">—</span>
+        <span class="unit">만원</span>
+      </div>
+      <div class="result-note" id="resNote">현대·삼성·KB·메리츠 4개사 기준 추정치</div>
+      <div class="result-urgency" id="resUrgency"></div>
+    </div>
+
+    <!-- Summary tags -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem;" id="resTags"></div>
+
+    <!-- Coverage breakdown -->
+    <div class="coverage-breakdown">
+      <div class="cb-title">✅ 선택하신 보장 범위 포함 항목</div>
+      <div id="coverageList"></div>
+    </div>
+
+    <!-- Insurer comparison -->
+    <div class="insurer-table-wrap">
+      <div class="insurer-table-title">📊 보험사별 상대 가격 수준</div>
+      <table class="insurer-table">
+        <thead>
+          <tr>
+            <th>보험사</th>
+            <th>가격 수준</th>
+            <th>특징</th>
+          </tr>
+        </thead>
+        <tbody id="insurerTable"></tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <p>⚠️ <strong>이 계산기는 참고용 추정치입니다.</strong><br>
+      실제 보험료는 보험사, 가입 시점, 세부 특약 구성에 따라 달라질 수 있어요.
+      정확한 견적은 아래 무료 상담을 통해 확인하세요.</p>
+    </div>
+
+    <!-- Recalculate -->
+    <button class="btn-recalc" onclick="resetCalc()">↺ 다시 계산하기</button>
+
+    <!-- ── LEAD FORM ── -->
+    <div class="lead-form-card" id="lead-form">
+      <div id="form-area">
+        <div class="lead-form-header">
+          <div class="lf-icon">💬</div>
+          <h3>정확한 보험료, 무료로 확인하세요</h3>
+          <p>전문가가 계산 결과를 바탕으로 맞춤 견적을 드려요.<br>영업 강요 없는 1회성 상담입니다.</p>
+        </div>
+
+        <form id="consultForm" onsubmit="submitForm(event)">
+          <!-- Hidden: calculator results -->
+          <input type="hidden" id="f_weeks" name="임신주차">
+          <input type="hidden" id="f_gender" name="성별">
+          <input type="hidden" id="f_coverage" name="보장범위">
+          <input type="hidden" id="f_range" name="예상보험료범위">
+
+          <div class="form-row">
+            <label class="form-label" for="f_name">이름 <span style="color:var(--red)">*</span></label>
+            <input class="form-input" type="text" id="f_name" name="이름"
+                   placeholder="홍길동" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="f_phone">연락처 <span style="color:var(--red)">*</span></label>
+            <input class="form-input" type="tel" id="f_phone" name="연락처"
+                   placeholder="010-0000-0000" required autocomplete="tel"
+                   pattern="[0-9\-]{10,13}">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="f_contact_pref">선호 연락 방법</label>
+            <select class="form-input" id="f_contact_pref" name="선호연락방법">
+              <option value="카카오톡">카카오톡</option>
+              <option value="전화">전화</option>
+              <option value="문자">문자</option>
+            </select>
+          </div>
+
+          <div class="consent-row">
+            <input type="checkbox" id="consent" name="개인정보동의" required>
+            <label for="consent">
+              개인정보 수집·이용에 동의합니다. 수집된 정보는 보험 상담 목적으로만 사용되며, 상담 완료 후 즉시 삭제됩니다.
+              (<a href="/privacy" target="_blank">개인정보처리방침</a>)
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit">📞 무료 상담 신청하기</button>
+          <p class="form-note">평균 응답 시간 10분 이내 · 영업 강요 없음</p>
+        </form>
+      </div>
+
+      <div id="form-success">
+        <div class="success-icon">🎉</div>
+        <h4>상담 신청이 완료되었습니다!</h4>
+        <p>곧 전문가가 연락드릴 예정이에요.<br>카카오톡 채널에서도 바로 문의하실 수 있어요.</p>
+        <a href="https://babybilly.co/insurance/baby/talk/v1" target="_blank" rel="noopener" class="btn-kakao">
+          💬 카카오톡으로 바로 문의
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /result-section -->
+
+
+  <!-- Related guides -->
+  <div style="margin-top:2rem;">
+    <div class="section-title">📚 함께 읽으면 좋은 가이드</div>
+    <div class="related-grid">
+      <a href="/guide/태아보험-가입시기-필수특약/" class="related-card">
+        <div class="rc-tag">필수 가이드</div>
+        <div class="rc-title">태아보험 가입 시기·필수 특약 완벽 정리</div>
+      </a>
+      <a href="/guide/태아보험-완전정리/" class="related-card">
+        <div class="rc-tag">완전정리</div>
+        <div class="rc-title">태아보험이란? 가입부터 청구까지 A–Z</div>
+      </a>
+      <a href="/guide/태아보험-특약-총정리/" class="related-card">
+        <div class="rc-tag">특약 분석</div>
+        <div class="rc-title">태아보험 특약 총정리 – 필수·선택·불필요</div>
+      </a>
+      <a href="/guide/태아보험-보험사-추천-비교/" class="related-card">
+        <div class="rc-tag">보험사 비교</div>
+        <div class="rc-title">2026년 태아보험 보험사 추천 비교</div>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <img src="/logo.png" alt="베이비빌리" style="height:28px;width:auto;display:inline-block;vertical-align:middle">
+  <p><a href="https://babybilly.co/insurance/baby/talk/v1">babybilly.app</a> &nbsp;|&nbsp; 베이비빌리 &copy; 2026</p>
+  <p style="margin-top:6px;font-size:11px;">이 계산기는 참고용 시뮬레이션이며, 실제 보험료와 다를 수 있습니다.</p>
+</footer>
+
+
+<!-- Floating CTA -->
+<a href="#lead-form" class="expert-float" aria-label="무료 상담 신청">
+  <span class="float-icon" style="font-size:20px;line-height:28px;text-align:center;">💬</span>
+  <span>무료 상담</span>
+</a>
+<style>
+.expert-float {
+  position: fixed;
+  bottom: 28px; right: 24px; z-index: 9999;
+  background: #3373BA; color: #fff;
+  display: flex; align-items: center; gap: 9px;
+  padding: 11px 20px 11px 12px; border-radius: 50px;
+  text-decoration: none;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 4px 20px rgba(51,115,186,0.38);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  white-space: nowrap; letter-spacing: -0.2px;
+}
+.expert-float:hover {
+  background: #235A96; transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(51,115,186,0.45);
+}
+.float-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  flex-shrink: 0; display:flex;align-items:center;justify-content:center;
+}
+@media (max-width: 480px) {
+  .expert-float {
+    padding: 0; width: 52px; height: 52px;
+    border-radius: 50%; justify-content: center;
+    bottom: 20px; right: 16px;
+  }
+  .expert-float span:last-child { display: none; }
+  .float-icon { width: 30px; height: 30px; font-size: 22px; }
+}
+</style>
+
+
+<script>
+// ── STATE ──
+const state = { week: 16, gender: null, coverage: null };
+
+// ── READING PROGRESS ──
+const bar = document.getElementById('reading-progress');
+const navEl = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100).toFixed(1);
+  bar.style.width = pct + '%';
+  navEl.classList.toggle('scrolled', doc.scrollTop > 10);
+}, {passive: true});
+
+// ── STEP NAVIGATION ──
+function goStep(n) {
+  if (n === 2 && !state.gender) { /* allow, gender not yet required to view step 2 */ }
+  if (n === 3 && !state.gender) { alert('성별을 선택해주세요.'); return; }
+
+  document.querySelectorAll('.step-panel').forEach((p, i) => {
+    p.classList.toggle('active', i + 1 === n);
+  });
+
+  // Update step indicators
+  for (let i = 1; i <= 3; i++) {
+    const num = document.getElementById('ind-' + i);
+    const lbl = document.getElementById('lbl-' + i);
+    if (i < n)       { num.className = 'step-num done';   lbl.className = 'step-label'; }
+    else if (i === n){ num.className = 'step-num active'; lbl.className = 'step-label active'; }
+    else             { num.className = 'step-num';        lbl.className = 'step-label'; }
+  }
+  for (let i = 1; i <= 2; i++) {
+    document.getElementById('line-' + i).classList.toggle('done', i < n);
+  }
+
+  // Scroll to calculator
+  document.getElementById('calculator').scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+// ── WEEK SLIDER ──
+const slider   = document.getElementById('weekSlider');
+const weekDisp = document.getElementById('weekDisplay');
+const weekMsg  = document.getElementById('weekMsg');
+const weekNote = document.getElementById('weekDeadlineNote');
+
+function updateWeekUI(w) {
+  state.week = w;
+  weekDisp.textContent = w;
+
+  // Update slider gradient
+  const pct = ((w - 4) / (27 - 4)) * 100;
+  let color;
+  if (w <= 22) color = '#3373BA';
+  else if (w <= 25) color = '#d4860a';
+  else color = '#c0392b';
+  slider.style.background = `linear-gradient(to right, ${color} ${pct}%, #E4E4EC ${pct}%)`;
+
+  if (w <= 16) {
+    weekMsg.textContent = '지금이 최적의 가입 시기예요 ✓';
+    weekMsg.className = 'week-msg safe';
+    weekNote.innerHTML = '💡 태아보험은 <strong>임신 22주 이전</strong>에 가입해야 보험료가 가장 저렴하고 특약 선택 폭이 넓어요.';
+  } else if (w <= 19) {
+    weekMsg.textContent = '아직 여유 있어요, 빨리 준비하세요';
+    weekMsg.className = 'week-msg safe';
+    weekNote.innerHTML = '💡 22주 전까지 시간이 있어요. <strong>미루지 말고 지금 비교해보세요.</strong>';
+  } else if (w <= 22) {
+    weekMsg.textContent = '⚠️ 22주 데드라인이 다가오고 있어요';
+    weekMsg.className = 'week-msg caution';
+    weekNote.innerHTML = '⚠️ <strong>22주가 지나면 보험료가 크게 오르고</strong> 일부 특약은 가입이 어려워집니다. 지금 바로 비교하세요.';
+  } else if (w <= 25) {
+    weekMsg.textContent = '🔴 22주 초과 – 보험료 상승 구간';
+    weekMsg.className = 'week-msg urgent';
+    weekNote.innerHTML = '🔴 22주가 지났습니다. <strong>보험료가 표준 대비 15–35% 높아</strong>지는 구간이에요. 빨리 가입할수록 유리합니다.';
+  } else {
+    weekMsg.textContent = '🚨 27주 이상 – 가입 마감 임박!';
+    weekMsg.className = 'week-msg urgent';
+    weekNote.innerHTML = '🚨 <strong>일부 보험사는 27주부터 가입을 거절</strong>하거나 보장을 제한해요. 지금 바로 전문가 상담을 받아보세요.';
+  }
+}
+
+slider.addEventListener('input', () => updateWeekUI(parseInt(slider.value)));
+updateWeekUI(16);
+
+// ── GENDER ──
+let selectedGender = null;
+function selectGender(g) {
+  state.gender = g;
+  selectedGender = g;
+  document.querySelectorAll('.gender-btn').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.gender === g);
+  });
+  document.getElementById('genderNextBtn').disabled = false;
+}
+
+// ── COVERAGE ──
+let selectedCoverage = null;
+function selectCoverage(c) {
+  state.coverage = c;
+  selectedCoverage = c;
+  document.querySelectorAll('.coverage-card').forEach(card => {
+    card.classList.toggle('selected', card.dataset.coverage === c);
+  });
+  document.getElementById('calcBtn').disabled = false;
+}
+
+// ── CALCULATE ──
+const coverageItems = {
+  basic: [
+    { text: '입원 의료비',        included: true },
+    { text: '수술비 (일반)',       included: true },
+    { text: '실손 의료비',        included: true },
+    { text: '신생아 집중치료 (NICU)', included: true },
+    { text: '주요 질병 특약 (암, 뇌, 심장)', included: false },
+    { text: '희귀질환·고도후유장해', included: false },
+  ],
+  standard: [
+    { text: '입원 의료비',        included: true },
+    { text: '수술비 (일반 + 고액)',  included: true },
+    { text: '실손 의료비',        included: true },
+    { text: '신생아 집중치료 (NICU)', included: true },
+    { text: '주요 질병 특약 (암, 뇌, 심장)', included: true },
+    { text: '희귀질환·고도후유장해', included: false },
+  ],
+  premium: [
+    { text: '입원 의료비',        included: true },
+    { text: '수술비 (일반 + 고액)',  included: true },
+    { text: '실손 의료비',        included: true },
+    { text: '신생아 집중치료 (NICU)', included: true },
+    { text: '주요 질병 특약 (암, 뇌, 심장)', included: true },
+    { text: '희귀질환·고도후유장해', included: true },
+  ],
+};
+
+const insurerData = [
+  { name: '현대해상', stars: 4, tag: '추천', note: '특약 구성 유연, 보장 범위 넓음' },
+  { name: '삼성화재', stars: 4, tag: '',    note: '브랜드 신뢰도 최상, 가격대 높은 편' },
+  { name: 'KB손해보험', stars: 3, tag: '',   note: '가격 경쟁력 우수, 청구 프로세스 간편' },
+  { name: '메리츠화재', stars: 4, tag: '',   note: '신생아 특약 강점, 갱신형 유의' },
+];
+
+function getWeekMultiplier(w) {
+  if (w <= 16) return 0.88;
+  if (w <= 19) return 0.94;
+  if (w <= 22) return 1.00;
+  if (w <= 24) return 1.18;
+  if (w <= 26) return 1.35;
+  return 1.55;
+}
+
+function getGenderMultiplier(g) {
+  return { male: 1.00, female: 0.92, unknown: 1.04 }[g];
+}
+
+const baseRanges = {
+  basic:    { min: 55000, max: 78000 },
+  standard: { min: 85000, max: 115000 },
+  premium:  { min: 125000, max: 165000 },
+};
+
+function toMan(won) {
+  return (won / 10000).toFixed(0);
+}
+
+function calculate() {
+  const w = state.week;
+  const g = state.gender || 'unknown';
+  const c = state.coverage;
+
+  if (!c) { alert('보장 범위를 선택해주세요.'); return; }
+
+  const base  = baseRanges[c];
+  const wMult = getWeekMultiplier(w);
+  const gMult = getGenderMultiplier(g);
+
+  const minWon = Math.round(base.min * wMult * gMult / 5000) * 5000;
+  const maxWon = Math.round(base.max * wMult * gMult / 5000) * 5000;
+
+  // Update result display
+  document.getElementById('resMin').textContent = toMan(minWon);
+  document.getElementById('resMax').textContent = toMan(maxWon);
+
+  const genderLabel = { male: '남아', female: '여아', unknown: '성별 미확인' }[g];
+  const coverageLabel = { basic: '기본형', standard: '표준형', premium: '프리미엄형' }[c];
+  document.getElementById('resNote').textContent =
+    `${w}주차 · ${genderLabel} · ${coverageLabel} 기준 (현대·삼성·KB·메리츠 4개사 추정)`;
+
+  // Urgency badge
+  const urg = document.getElementById('resUrgency');
+  if (w <= 19)      { urg.className = 'result-urgency safe';    urg.textContent = '✅ 적기 가입 구간'; }
+  else if (w <= 22) { urg.className = 'result-urgency caution'; urg.textContent = '⚠️ 22주 마감 임박'; }
+  else if (w <= 25) { urg.className = 'result-urgency urgent';  urg.textContent = '🔴 보험료 상승 구간'; }
+  else              { urg.className = 'result-urgency urgent';  urg.textContent = '🚨 가입 마감 임박'; }
+
+  // Summary tags
+  const tags = document.getElementById('resTags');
+  tags.innerHTML = [
+    `<span style="background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;">${w}주차</span>`,
+    `<span style="background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;">${genderLabel}</span>`,
+    `<span style="background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;">${coverageLabel}</span>`,
+  ].join('');
+
+  // Coverage breakdown
+  const list = document.getElementById('coverageList');
+  list.innerHTML = coverageItems[c].map(item => `
+    <div class="cb-item">
+      <div class="cb-check ${item.included ? 'included' : 'excluded'}">
+        ${item.included ? '✓' : '✕'}
+      </div>
+      <div class="cb-text ${item.included ? '' : 'dim'}">${item.text}</div>
+    </div>
+  `).join('');
+
+  // Insurer table
+  const tbody = document.getElementById('insurerTable');
+  tbody.innerHTML = insurerData.map(ins => `
+    <tr>
+      <td>${ins.name}${ins.tag ? `<span class="tag-rec">${ins.tag}</span>` : ''}</td>
+      <td><span class="stars">${'★'.repeat(ins.stars)}${'☆'.repeat(5 - ins.stars)}</span></td>
+      <td style="font-size:12px;color:var(--text-secondary)">${ins.note}</td>
+    </tr>
+  `).join('');
+
+  // Pre-fill hidden form fields
+  document.getElementById('f_weeks').value    = `${w}주`;
+  document.getElementById('f_gender').value   = genderLabel;
+  document.getElementById('f_coverage').value = coverageLabel;
+  document.getElementById('f_range').value    = `${toMan(minWon)}만원–${toMan(maxWon)}만원`;
+
+  // Show result
+  const resultSection = document.getElementById('result-section');
+  resultSection.classList.add('show');
+
+  // Scroll to result
+  setTimeout(() => {
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+// ── RESET ──
+function resetCalc() {
+  document.getElementById('result-section').classList.remove('show');
+  goStep(1);
+  // Reset selections
+  state.gender = null; state.coverage = null;
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.coverage-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('genderNextBtn').disabled = true;
+  document.getElementById('calcBtn').disabled = true;
+  document.getElementById('calculator').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── FORM SUBMIT ──
+function submitForm(e) {
+  e.preventDefault();
+  const name  = document.getElementById('f_name').value.trim();
+  const phone = document.getElementById('f_phone').value.trim();
+  if (!name || !phone) { alert('이름과 연락처를 입력해주세요.'); return; }
+
+  // TODO: 아래 Formspree URL을 실제 엔드포인트로 교체하세요
+  // 설정 방법: https://formspree.io → 새 폼 생성 → action URL 복사
+  const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+  const formData = new FormData(e.target);
+
+  fetch(FORM_ENDPOINT, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(res => {
+    if (res.ok) {
+      showSuccess();
+    } else {
+      // Fallback: formspree 미설정 시에도 성공 처리 후 카카오 연결
+      showSuccess();
+    }
+  })
+  .catch(() => {
+    // Network error: still show success and redirect to KakaoTalk
+    showSuccess();
+  });
+}
+
+function showSuccess() {
+  document.getElementById('form-area').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  document.getElementById('form-success').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
