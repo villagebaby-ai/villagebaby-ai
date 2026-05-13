@@ -1,0 +1,753 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 태아보험 핏체크 — 매거진 1순위 리드 도구
+// 12문항(객관식 11 + 게이트 1) → client-side 점수 계산 → 결과 표시 + 카톡 CTA
+// 폼 endpoint는 placeholder. 추후 Tally/babybilly endpoint로 교체.
+const FORM_ENDPOINT = 'FORM_ENDPOINT_TODO';
+
+// JSON-LD: 인터랙티브 도구
+const toolJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: '태아보험 핏체크',
+      url: 'https://villagebaby.kr/magazine/tools/fit-check/',
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Web',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' },
+      description: '임신 주차·검사 결과·가족력 등 12문항으로 태아보험 가입 가능성과 추천 시기, 주의 특약을 진단해드리는 무료 도구.',
+      publisher: { '@type': 'Organization', name: '베이비빌리', url: 'https://villagebaby.kr/' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '홈', item: 'https://villagebaby.kr/' },
+        { '@type': 'ListItem', position: 2, name: '보험 매거진', item: 'https://villagebaby.kr/magazine/' },
+        { '@type': 'ListItem', position: 3, name: '태아보험 핏체크', item: 'https://villagebaby.kr/magazine/tools/fit-check/' },
+      ],
+    },
+  ],
+};
+---
+<BaseLayout
+  title="태아보험 핏체크 12문항 — 가입 가능성·추천 시기 무료 진단 | 베이비빌리"
+  description="임신 주차·검사 결과·가족력 등 12문항에 답하시면 태아보험 가입 가능성과 추천 시기, 주의 특약을 정리해드려요. 약 2분 소요, 무료.">
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(toolJsonLd)} />
+
+  <nav class="breadcrumb">
+    <a href="/magazine/">매거진</a>
+    <span>›</span>
+    <span>핏체크</span>
+  </nav>
+
+  <section class="intro">
+    <p class="intro-label">2분 진단</p>
+    <h1>태아보험 핏체크</h1>
+    <p class="intro-lede">
+      임신 주차·검사 결과·가족력 등 12문항에 답하시면 가입 가능성 점수와 추천 시기, 주의 특약 3개를 정리해드려요. 가입 권유가 아닌 의사결정 도움 목적이에요.
+    </p>
+  </section>
+
+  <div id="fit-check-app" data-endpoint={FORM_ENDPOINT}>
+
+    <!-- STEP 0: 시작 안내 -->
+    <section class="step" data-step="0">
+      <h2>시작 전 안내</h2>
+      <ul class="intro-list">
+        <li>객관식 11문항과 마지막 1단계로 구성돼요</li>
+        <li>모든 답변은 브라우저에만 저장되며, 마지막 단계에서 결과 받기를 위한 연락처를 입력하시기 전까지 외부로 전송되지 않아요</li>
+        <li>결과는 보험사 가입을 권유하기 위함이 아니라 본인의 의사결정 흐름을 정리해드리기 위한 안내예요</li>
+      </ul>
+      <button class="btn-primary" type="button" data-action="next">시작하기</button>
+    </section>
+
+    <!-- STEP 1-11: 객관식 문항 -->
+    <section class="step" data-step="1" hidden>
+      <p class="step-meta">1 / 12</p>
+      <h2>현재 임신 주차는 몇 주인가요?</h2>
+      <div class="options" data-key="week">
+        <label><input type="radio" name="q1" value="early" data-score="-15"><span>7주 이하 (이른 시기)</span></label>
+        <label><input type="radio" name="q1" value="8-11" data-score="-5"><span>8–11주</span></label>
+        <label><input type="radio" name="q1" value="12-22" data-score="0"><span>12–22주 (골든타임)</span></label>
+        <label><input type="radio" name="q1" value="23-28" data-score="-10"><span>23–28주</span></label>
+        <label><input type="radio" name="q1" value="29-35" data-score="-20"><span>29–35주</span></label>
+        <label><input type="radio" name="q1" value="36+" data-score="-30"><span>36주 이상 (출산 임박)</span></label>
+        <label><input type="radio" name="q1" value="unsure" data-score="-5"><span>아직 정확히 모르겠어요</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="2" hidden>
+      <p class="step-meta">2 / 12</p>
+      <h2>산모님 나이가 어떻게 되시나요?</h2>
+      <div class="options" data-key="age">
+        <label><input type="radio" name="q2" value="under19" data-score="-5"><span>19세 미만</span></label>
+        <label><input type="radio" name="q2" value="19-34" data-score="0"><span>19–34세</span></label>
+        <label><input type="radio" name="q2" value="35-39" data-score="-3"><span>35–39세</span></label>
+        <label><input type="radio" name="q2" value="40+" data-score="-7"><span>40세 이상</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="3" hidden>
+      <p class="step-meta">3 / 12</p>
+      <h2>임신성 합병증 진단을 받으신 적이 있으신가요?</h2>
+      <div class="options" data-key="complication">
+        <label><input type="radio" name="q3" value="none" data-score="0"><span>없어요</span></label>
+        <label><input type="radio" name="q3" value="diabetes" data-score="-8"><span>임신성 당뇨</span></label>
+        <label><input type="radio" name="q3" value="hypertension" data-score="-8"><span>임신성 고혈압</span></label>
+        <label><input type="radio" name="q3" value="preeclampsia" data-score="-12"><span>자간전증</span></label>
+        <label><input type="radio" name="q3" value="other" data-score="-8"><span>그 외 합병증</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="4" hidden>
+      <p class="step-meta">4 / 12</p>
+      <h2>NT(목투명대) 검사 결과는 어떠셨나요?</h2>
+      <div class="options" data-key="nt">
+        <label><input type="radio" name="q4" value="none" data-score="0"><span>아직 검사 전</span></label>
+        <label><input type="radio" name="q4" value="normal" data-score="0"><span>정상 (2mm 이하)</span></label>
+        <label><input type="radio" name="q4" value="border" data-score="-10"><span>경계 (2–3mm)</span></label>
+        <label><input type="radio" name="q4" value="thick" data-score="-20"><span>두꺼움 (3mm 초과)</span></label>
+        <label><input type="radio" name="q4" value="unsure" data-score="-3"><span>잘 모르겠어요</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="5" hidden>
+      <p class="step-meta">5 / 12</p>
+      <h2>양수검사 또는 융모막검사를 받으셨나요?</h2>
+      <div class="options" data-key="amnio">
+        <label><input type="radio" name="q5" value="none" data-score="0"><span>받지 않았어요</span></label>
+        <label><input type="radio" name="q5" value="normal" data-score="0"><span>받았고 정상이에요</span></label>
+        <label><input type="radio" name="q5" value="abnormal" data-score="-25"><span>이상 소견이 있었어요</span></label>
+        <label><input type="radio" name="q5" value="pending" data-score="-5"><span>결과를 기다리고 있어요</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="6" hidden>
+      <p class="step-meta">6 / 12</p>
+      <h2>1·2차 기형아 검사(쿼드·인테그레이티드) 결과는요?</h2>
+      <div class="options" data-key="screen">
+        <label><input type="radio" name="q6" value="none" data-score="0"><span>아직 검사 전</span></label>
+        <label><input type="radio" name="q6" value="normal" data-score="0"><span>정상이에요</span></label>
+        <label><input type="radio" name="q6" value="lowrisk" data-score="-2"><span>저위험 결과</span></label>
+        <label><input type="radio" name="q6" value="highrisk" data-score="-15"><span>고위험 결과</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="7" hidden>
+      <p class="step-meta">7 / 12</p>
+      <h2>가족력이 있는 질환이 있으신가요?</h2>
+      <div class="options" data-key="family">
+        <label><input type="radio" name="q7" value="none" data-score="0"><span>없어요</span></label>
+        <label><input type="radio" name="q7" value="cancer" data-score="-5"><span>암</span></label>
+        <label><input type="radio" name="q7" value="congenital" data-score="-10"><span>선천성 질환</span></label>
+        <label><input type="radio" name="q7" value="both" data-score="-15"><span>둘 다 있어요</span></label>
+        <label><input type="radio" name="q7" value="other" data-score="-3"><span>그 외 만성 질환</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="8" hidden>
+      <p class="step-meta">8 / 12</p>
+      <h2>임신은 단태아인가요, 다태아인가요?</h2>
+      <div class="options" data-key="multi">
+        <label><input type="radio" name="q8" value="single" data-score="0"><span>단태아</span></label>
+        <label><input type="radio" name="q8" value="twin" data-score="-5"><span>쌍둥이</span></label>
+        <label><input type="radio" name="q8" value="triplet" data-score="-12"><span>삼태아 이상</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="9" hidden>
+      <p class="step-meta">9 / 12</p>
+      <h2>과거에 보험 가입 거절이나 해지를 경험하신 적이 있나요?</h2>
+      <div class="options" data-key="rejection">
+        <label><input type="radio" name="q9" value="none" data-score="0"><span>없어요</span></label>
+        <label><input type="radio" name="q9" value="reject1" data-score="-8"><span>거절 1회</span></label>
+        <label><input type="radio" name="q9" value="reject2" data-score="-15"><span>거절 2회 이상</span></label>
+        <label><input type="radio" name="q9" value="cancelled" data-score="-10"><span>해지 경험</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="10" hidden>
+      <p class="step-meta">10 / 12</p>
+      <h2>현재 가입 중인 실손·의료비 보험이 있으신가요?</h2>
+      <div class="options" data-key="existing">
+        <label><input type="radio" name="q10" value="none" data-score="0"><span>없어요</span></label>
+        <label><input type="radio" name="q10" value="self" data-score="0"><span>산모 본인 실손이 있어요</span></label>
+        <label><input type="radio" name="q10" value="group" data-score="0"><span>가족 단체 보험이 있어요</span></label>
+        <label><input type="radio" name="q10" value="both" data-score="0"><span>둘 다 있어요</span></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="11" hidden>
+      <p class="step-meta">11 / 12</p>
+      <h2>월 보험료 예산은 어느 정도로 생각하고 계세요?</h2>
+      <div class="options" data-key="budget">
+        <label><input type="radio" name="q11" value="under5" data-score="0"><span>5만원 이하</span></label>
+        <label><input type="radio" name="q11" value="5-10" data-score="0"><span>5–10만원</span></label>
+        <label><input type="radio" name="q11" value="10-15" data-score="0"><span>10–15만원</span></label>
+        <label><input type="radio" name="q11" value="over15" data-score="0"><span>15만원 초과</span></label>
+        <label><input type="radio" name="q11" value="unsure" data-score="0"><span>아직 정하지 못했어요</span></label>
+      </div>
+    </section>
+
+    <!-- STEP 12: 게이트 폼 -->
+    <section class="step gate" data-step="12" hidden>
+      <p class="step-meta">12 / 12 · 마지막 단계</p>
+      <h2>결과 받으실 정보를 입력해주세요</h2>
+      <p class="gate-lede">
+        결과 페이지를 바로 보여드리고, 임신 주차별 결정 포인트를 정리한 메일을 보내드릴게요. 베이비빌리 외부로 데이터가 공유되지 않아요.
+      </p>
+      <form id="gate-form" autocomplete="on" novalidate>
+        <label class="field">
+          <span>이름</span>
+          <input type="text" name="name" required minlength="2" placeholder="홍길동" />
+        </label>
+        <label class="field">
+          <span>휴대폰 번호</span>
+          <input type="tel" name="phone" required pattern="01[0-9]{1}[0-9]{3,4}[0-9]{4}" placeholder="01012345678" />
+        </label>
+        <label class="field">
+          <span>출산예정일</span>
+          <input type="date" name="dueDate" required />
+        </label>
+        <label class="agree">
+          <input type="checkbox" name="agree" required />
+          <span>개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 휴대폰, 출산예정일, 진단 응답. 이용 목적: 결과 안내 및 1:1 상담 매칭. 보유 기간: 1년)</span>
+        </label>
+        <button class="btn-primary" type="submit">결과 보기</button>
+      </form>
+    </section>
+
+    <!-- RESULT -->
+    <section class="step result" data-step="result" hidden>
+      <p class="result-meta">진단 결과</p>
+      <div class="result-score">
+        <span class="result-score-value" id="score-value">--</span>
+        <span class="result-score-suffix">/ 100</span>
+      </div>
+      <h2 id="result-headline">결과 분석 중</h2>
+      <p id="result-body" class="result-body"></p>
+
+      <div class="result-section">
+        <h3>추천 가입 시기</h3>
+        <p id="result-timing"></p>
+      </div>
+
+      <div class="result-section">
+        <h3>주의해서 보실 특약 3가지</h3>
+        <ul id="result-cautions"></ul>
+      </div>
+
+      <div class="result-cta">
+        <a id="result-kakao" class="btn-primary" href="https://babybilly.co/insurance/baby/talk/v1?utm_source=magazine&utm_medium=fit-check-result">
+          맞춤 1:1 상담받기
+        </a>
+        <a class="btn-secondary" href="/magazine/pregnancy/태아보험-가입-골든타임/">
+          가입 골든타임 글 읽기
+        </a>
+      </div>
+
+      <p class="result-disclaimer">
+        본 진단은 일반 정보를 바탕으로 한 안내이며 보험사의 실제 인수 심사 결과와 다를 수 있어요. 정확한 가입 가능성과 조건은 상담을 통해 확인하시는 게 좋아요.
+      </p>
+    </section>
+
+    <!-- 진행 바 -->
+    <div class="progress" id="progress" hidden>
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- 네비게이션 -->
+    <div class="nav-actions" id="nav-actions" hidden>
+      <button type="button" class="btn-back" data-action="back">← 이전</button>
+      <button type="button" class="btn-next" data-action="next" disabled>다음 →</button>
+    </div>
+
+  </div>
+
+  <style>
+    .breadcrumb { margin: 16px 0; font-size: 13px; color: var(--gray-600); }
+    .breadcrumb a { color: var(--gray-600); }
+    .breadcrumb a:hover { color: var(--blue-700); }
+    .breadcrumb span { margin: 0 6px; }
+
+    .intro { margin: 8px 0 32px; }
+    .intro-label {
+      font-size: 13px;
+      color: var(--blue-700);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .intro h1 {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--gray-900);
+      margin-bottom: 12px;
+    }
+    .intro-lede {
+      font-size: 16px;
+      color: var(--gray-700);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .step { padding: 24px 0 16px; }
+    .step-meta {
+      font-size: 12px;
+      color: var(--blue-700);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .step h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.45;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .step h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+
+    .intro-list { list-style: none; margin: 16px 0 24px; padding: 0; }
+    .intro-list li {
+      padding: 10px 14px;
+      background: var(--blue-50);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+    .intro-list li::before { content: '· '; color: var(--blue-700); font-weight: 700; }
+
+    .options { display: grid; gap: 10px; }
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      background: var(--white);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      font-size: 15px;
+      color: var(--gray-800);
+    }
+    .options label:hover { border-color: var(--blue-300); background: var(--blue-50); }
+    .options input[type="radio"] {
+      width: 18px; height: 18px;
+      accent-color: var(--blue-700);
+      flex-shrink: 0;
+    }
+    .options input[type="radio"]:checked + span { color: var(--blue-700); font-weight: 600; }
+    .options label:has(input:checked) { border-color: var(--blue-700); background: var(--blue-50); }
+
+    .gate-lede {
+      color: var(--gray-700);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    #gate-form { display: grid; gap: 14px; }
+    .field { display: grid; gap: 6px; }
+    .field span {
+      font-size: 13px;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+    .field input {
+      padding: 12px 14px;
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--gray-900);
+    }
+    .field input:focus {
+      outline: none;
+      border-color: var(--blue-700);
+      box-shadow: 0 0 0 3px var(--blue-100);
+    }
+    .agree {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      background: var(--gray-100);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+    .agree input { margin-top: 3px; flex-shrink: 0; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue-700);
+      color: var(--white);
+      padding: 14px 28px;
+      border: none;
+      border-radius: 24px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: opacity 0.15s, background 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.92; }
+    .btn-primary:disabled {
+      background: var(--gray-300);
+      color: var(--gray-500);
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: var(--white);
+      color: var(--blue-700);
+      border: 1px solid var(--blue-300);
+      padding: 12px 24px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { background: var(--blue-50); }
+
+    .btn-back, .btn-next {
+      padding: 10px 18px;
+      border: 1px solid var(--gray-300);
+      border-radius: 20px;
+      font-size: 14px;
+      background: var(--white);
+      color: var(--gray-700);
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-next:disabled {
+      background: var(--gray-100);
+      color: var(--gray-400);
+      cursor: not-allowed;
+    }
+    .btn-next:not(:disabled) {
+      background: var(--blue-700);
+      color: var(--white);
+      border-color: var(--blue-700);
+    }
+    .nav-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .progress {
+      height: 4px;
+      background: var(--gray-200);
+      border-radius: 4px;
+      margin: 24px 0 0;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--blue-700);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* RESULT */
+    .result {
+      padding: 32px 24px;
+      background: linear-gradient(180deg, var(--blue-50) 0%, var(--white) 100%);
+      border-radius: 16px;
+      border: 1px solid var(--blue-100);
+      margin: 24px 0;
+    }
+    .result-meta {
+      font-size: 12px;
+      color: var(--blue-700);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .result-score {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin: 12px 0 16px;
+    }
+    .result-score-value {
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--blue-700);
+      line-height: 1;
+    }
+    .result-score-suffix {
+      font-size: 20px;
+      color: var(--gray-600);
+    }
+    .result h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .result-body {
+      color: var(--gray-700);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .result-section {
+      background: var(--white);
+      border: 1px solid var(--blue-100);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .result-section ul { padding-left: 18px; margin-top: 8px; }
+    .result-section li { padding: 4px 0; color: var(--gray-800); line-height: 1.6; font-size: 14px; }
+    .result-cta { display: flex; flex-direction: column; gap: 4px; margin-top: 20px; }
+    .result-cta a { width: fit-content; }
+    .result-disclaimer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+  </style>
+
+  <script is:inline>
+    (function() {
+      const root = document.getElementById('fit-check-app');
+      const endpoint = root.dataset.endpoint;
+      const steps = root.querySelectorAll('.step');
+      const totalSteps = 12; // 1..11 + 12 게이트
+      const navActions = document.getElementById('nav-actions');
+      const progress = document.getElementById('progress');
+      const progressBar = document.getElementById('progress-bar');
+      const btnNext = navActions.querySelector('[data-action="next"]');
+      const btnBack = navActions.querySelector('[data-action="back"]');
+
+      let currentStep = 0; // 0 = intro
+      const answers = {};
+      let totalScore = 100; // base 100
+
+      function showStep(n) {
+        steps.forEach((s) => { s.hidden = String(s.dataset.step) !== String(n); });
+        currentStep = n;
+
+        if (n === 0) {
+          navActions.hidden = true;
+          progress.hidden = true;
+        } else if (n === 'result') {
+          navActions.hidden = true;
+          progress.hidden = true;
+        } else {
+          navActions.hidden = false;
+          progress.hidden = false;
+          const pct = Math.round((Number(n) / totalSteps) * 100);
+          progressBar.style.width = pct + '%';
+          updateNextEnabled();
+        }
+
+        // 스크롤 위치 맞춤
+        window.scrollTo({ top: root.offsetTop - 60, behavior: 'smooth' });
+      }
+
+      function updateNextEnabled() {
+        const step = root.querySelector(`.step[data-step="${currentStep}"]`);
+        if (!step) return;
+        const isStep12 = currentStep === 12;
+        if (isStep12) {
+          // Step 12 has its own submit button; hide btnNext
+          btnNext.hidden = true;
+          return;
+        }
+        btnNext.hidden = false;
+        const checked = step.querySelector('input[type="radio"]:checked');
+        btnNext.disabled = !checked;
+      }
+
+      // 라디오 선택 시 자동 진행 + 점수 누적
+      root.addEventListener('change', (e) => {
+        if (e.target.matches('input[type="radio"]')) {
+          const step = e.target.closest('.step');
+          const key = step.querySelector('.options').dataset.key;
+          answers[key] = e.target.value;
+          updateNextEnabled();
+        }
+      });
+
+      // 네비게이션
+      navActions.addEventListener('click', (e) => {
+        const action = e.target.dataset.action;
+        if (action === 'next') {
+          // 점수 누적
+          const step = root.querySelector(`.step[data-step="${currentStep}"]`);
+          const checked = step.querySelector('input[type="radio"]:checked');
+          if (checked) {
+            const s = Number(checked.dataset.score || 0);
+            totalScore += s;
+          }
+          showStep(currentStep + 1);
+        } else if (action === 'back') {
+          if (currentStep > 0) {
+            // 점수 되돌리기
+            const prevStep = root.querySelector(`.step[data-step="${currentStep - 1}"]`);
+            if (prevStep) {
+              const checked = prevStep.querySelector('input[type="radio"]:checked');
+              if (checked) {
+                const s = Number(checked.dataset.score || 0);
+                totalScore -= s;
+              }
+            }
+            showStep(currentStep - 1);
+          }
+        }
+      });
+
+      // 인트로 시작 버튼
+      root.querySelector('.step[data-step="0"] [data-action="next"]').addEventListener('click', () => {
+        showStep(1);
+      });
+
+      // 게이트 폼 제출
+      const gateForm = document.getElementById('gate-form');
+      gateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(gateForm);
+        if (!fd.get('agree')) {
+          alert('개인정보 수집·이용 동의가 필요해요.');
+          return;
+        }
+        const lead = {
+          name: fd.get('name'),
+          phone: fd.get('phone'),
+          dueDate: fd.get('dueDate'),
+          answers,
+          score: Math.max(0, Math.min(100, totalScore)),
+          source: 'magazine-fit-check',
+          submittedAt: new Date().toISOString(),
+        };
+
+        // endpoint가 placeholder이면 콘솔에만 기록, 결과는 그대로 표시
+        if (endpoint === 'FORM_ENDPOINT_TODO' || !endpoint) {
+          console.log('[fit-check] lead payload (endpoint not configured):', lead);
+        } else {
+          fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(lead),
+          }).catch((err) => console.error('[fit-check] submit error:', err));
+        }
+
+        renderResult(lead);
+        showStep('result');
+      });
+
+      // 결과 렌더링
+      function renderResult(lead) {
+        const score = lead.score;
+        document.getElementById('score-value').textContent = score;
+
+        let headline, body, timing;
+        if (score >= 80) {
+          headline = '가입 가능성이 높은 상태예요';
+          body = '현재 조건상 대부분의 보험사에서 정상 청약이 가능해 보여요. 보장 우선순위를 정한 뒤 견적 2~3곳을 비교해보시는 흐름을 추천드려요.';
+          timing = '이번 주 안에 견적 받기를 시작해보시는 게 좋아요. 임신 주차가 더 가기 전에 청약을 진행하면 선택지가 가장 넓어요.';
+        } else if (score >= 60) {
+          headline = '가입은 가능하지만 보험사 선택지를 좁히는 게 좋아요';
+          body = '일부 보험사에서는 부담보 조건이 붙거나 특정 보장이 제외될 수 있어요. 후기 가입을 잘 받는 보험사부터 비교하시면 효율적이에요.';
+          timing = '1~2주 안에 견적 받으시는 걸 권장드려요. 임신 주차가 늦어질수록 가입 가능 보험사가 줄어요.';
+        } else if (score >= 40) {
+          headline = '신중한 검토와 상담 후 진행을 권장드려요';
+          body = '검사 결과·합병증·가족력 등 일부 요인이 청약 심사에 영향을 줄 수 있어요. 본인의 케이스에 맞는 보험사·설계 조합을 1:1 상담으로 확인하시는 게 가장 빨라요.';
+          timing = '상담을 먼저 받으시고, 부담보·조건부 가입 가능 여부를 확인한 뒤 결정하시는 흐름을 추천드려요.';
+        } else {
+          headline = '1:1 상담으로 우선순위를 정리하시는 게 좋아요';
+          body = '여러 요인이 청약에 영향을 줄 가능성이 있어 매거진 정보만으로 결정하기 어려운 케이스예요. 부담보 가입·출산 후 어린이보험 등 다양한 선택지를 비교하셔야 해요.';
+          timing = '먼저 1:1 상담으로 본인 케이스를 정리하시고, 그 결과를 바탕으로 보험사 선택지를 좁혀가시는 게 좋아요.';
+        }
+
+        document.getElementById('result-headline').textContent = headline;
+        document.getElementById('result-body').textContent = body;
+        document.getElementById('result-timing').textContent = timing;
+
+        // 주의 특약 3개 — 응답 기반 동적
+        const cautions = computeCautions(lead.answers);
+        const ul = document.getElementById('result-cautions');
+        ul.innerHTML = '';
+        cautions.forEach((c) => {
+          const li = document.createElement('li');
+          li.textContent = c;
+          ul.appendChild(li);
+        });
+
+        // 카톡 CTA에 점수 + 응답 hash 부착
+        const kakaoBtn = document.getElementById('result-kakao');
+        const utm = new URLSearchParams({
+          utm_source: 'magazine',
+          utm_medium: 'fit-check-result',
+          utm_campaign: 'fit-check',
+          score: String(score),
+        });
+        kakaoBtn.href = 'https://babybilly.co/insurance/baby/talk/v1?' + utm.toString();
+      }
+
+      function computeCautions(a) {
+        const out = [];
+        if (a.nt === 'border' || a.nt === 'thick' || a.amnio === 'abnormal' || a.screen === 'highrisk') {
+          out.push('출생 전 진단 관련 특약 — 검사 결과 기반 부담보 조건이 붙는 경우가 많아 약관에서 보장 범위를 꼭 확인하세요.');
+        }
+        if (a.complication && a.complication !== 'none') {
+          out.push('신생아 입원·NICU 보장 — 임신성 합병증 이력이 있으면 신생아 시기 보장 조건이 까다로워질 수 있어요.');
+        }
+        if (a.family === 'cancer' || a.family === 'both') {
+          out.push('어린이 암 진단비 — 가족력이 있다면 보장 금액을 강화 설계로 검토해보세요.');
+        }
+        if (a.family === 'congenital' || a.family === 'both') {
+          out.push('선천성 질환 진단·수술 보장 — 가족력 있는 질환은 부담보 가능성이 있으니 약관에서 명시 제외 항목을 확인하세요.');
+        }
+        if (a.multi === 'twin' || a.multi === 'triplet') {
+          out.push('다태아 가입 특약 — 보험사마다 다태아 인수 기준이 달라 한 명만 가입 가능하거나 보험료 할증 조건이 붙기도 해요.');
+        }
+        if (a.rejection && a.rejection !== 'none') {
+          out.push('고지의무 — 과거 거절·해지 이력은 정확히 고지해야 하며, 보험사별 인수 기준이 달라 재시도 가치가 있어요.');
+        }
+
+        // 부족하면 기본 3개로 채움
+        const defaults = [
+          '신생아 입원일당 — 1일당 보장 금액이 보험사마다 크게 다르니 비교 시 필수 항목으로 두세요.',
+          '선천성 질환 진단비 — 출생 직후 발견 가능한 질환에 대한 진단비 보장 여부를 약관에서 확인하세요.',
+          '어린이 수술비·통원비 — 어린이 시기 잔잔한 의료비를 커버하는 보장으로, 만기·납입 기간과 함께 검토하세요.',
+        ];
+        for (const d of defaults) {
+          if (out.length >= 3) break;
+          out.push(d);
+        }
+        return out.slice(0, 3);
+      }
+
+      // 초기 상태
+      showStep(0);
+    })();
+  </script>
+
+</BaseLayout>

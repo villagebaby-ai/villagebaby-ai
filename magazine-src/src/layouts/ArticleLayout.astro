@@ -1,0 +1,230 @@
+---
+// 글 페이지 레이아웃 — PLAYBOOK 필수 컴포넌트 순서 (Author → TLDR(MDX) → TOC → 본문 → FAQ → Related → CTA)
+// MDX 본문은 <slot />, 메타데이터는 props로
+import BaseLayout from './BaseLayout.astro';
+import AuthorCard from '../components/AuthorCard.astro';
+import TOC from '../components/TOC.astro';
+import FAQ from '../components/FAQ.astro';
+import LeadCTA from '../components/LeadCTA.astro';
+import RelatedCards from '../components/RelatedCards.astro';
+import CaseDisclaimer from '../components/CaseDisclaimer.astro';
+import CoverImage from '../components/CoverImage.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  pillar: string;
+  type: string;
+  author?: string;
+  reviewedBy?: string;
+  publishedAt: Date;
+  reviewedAt?: Date;
+  faq: Array<{ q: string; a: string }>;
+  related: string[];
+  leadTool: 'fit-check' | 'kakao-talk' | 'none';
+  headings: Array<{ depth: number; slug: string; text: string }>;
+  slug: string;
+  cover?: string;
+}
+
+const {
+  title, description, pillar, type,
+  author, reviewedBy, publishedAt, reviewedAt,
+  faq, related, leadTool, headings, slug, cover,
+} = Astro.props;
+
+const ogImage = cover ? new URL(cover, 'https://villagebaby.kr').toString() : 'https://villagebaby.kr/heroimage.jpg';
+
+const pillarName: Record<string, string> = {
+  pregnancy: '임신',
+  newborn: '신생아',
+  toddler: '영유아',
+  school: '학동기',
+  teen: '청소년기',
+  case: '케이스',
+};
+
+// JSON-LD (Article + BreadcrumbList + FAQPage)
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      '@id': `https://villagebaby.kr/magazine/${slug}/#article`,
+      headline: title,
+      description,
+      datePublished: publishedAt.toISOString(),
+      dateModified: (reviewedAt ?? publishedAt).toISOString(),
+      author: {
+        '@type': 'Person',
+        name: author ?? '베이비빌리 매거진 편집팀',
+        worksFor: { '@type': 'Organization', name: '베이비빌리', url: 'https://villagebaby.kr/' },
+      },
+      reviewedBy: {
+        '@type': 'Person',
+        name: reviewedBy ?? '베이비빌리 보험 자문단',
+        description: '10년 이상 태아·어린이보험 분야에 종사한 전문가들이 감수한 콘텐츠입니다.',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: '베이비빌리',
+        url: 'https://villagebaby.kr/',
+        logo: { '@type': 'ImageObject', url: 'https://villagebaby.kr/logo.png' },
+      },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `https://villagebaby.kr/magazine/${slug}/` },
+      image: ogImage,
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.tldr-body'],
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '홈', item: 'https://villagebaby.kr/' },
+        { '@type': 'ListItem', position: 2, name: '보험 매거진', item: 'https://villagebaby.kr/magazine/' },
+        { '@type': 'ListItem', position: 3, name: pillarName[pillar] ?? pillar, item: `https://villagebaby.kr/magazine/${pillar}/` },
+        { '@type': 'ListItem', position: 4, name: title, item: `https://villagebaby.kr/magazine/${slug}/` },
+      ],
+    },
+    ...(faq.length > 0 ? [{
+      '@type': 'FAQPage',
+      mainEntity: faq.map((it) => ({
+        '@type': 'Question',
+        name: it.q,
+        acceptedAnswer: { '@type': 'Answer', text: it.a },
+      })),
+    }] : []),
+  ],
+};
+---
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleJsonLd)} />
+
+  <nav class="breadcrumb">
+    <a href="/magazine/">매거진</a>
+    <span>›</span>
+    <a href={`/magazine/${pillar}/`}>{pillarName[pillar] ?? pillar}</a>
+  </nav>
+
+  <article>
+    <header class="article-header">
+      <p class="article-meta">{pillarName[pillar] ?? pillar} · {type === 'case' ? '케이스 스토리' : type === 'tool' ? '도구' : '가이드'}</p>
+      <h1>{title}</h1>
+      <p class="article-lede">{description}</p>
+    </header>
+
+    <div class="article-cover">
+      <CoverImage cover={cover} title={title} pillar={pillar} aspect="16-9" />
+    </div>
+
+    <AuthorCard
+      author={author}
+      reviewedBy={reviewedBy}
+      publishedAt={publishedAt}
+      reviewedAt={reviewedAt}
+    />
+
+    {type === 'case' && <CaseDisclaimer />}
+
+    <TOC headings={headings} />
+
+    <div class="article-body">
+      <slot />
+    </div>
+
+    <FAQ items={faq} />
+
+    {related.length > 0 && <RelatedCards slugs={related} />}
+
+    <LeadCTA variant={leadTool === 'kakao-talk' ? 'kakao-talk' : 'fit-check'} slug={slug} />
+  </article>
+
+  <style>
+    .breadcrumb {
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--gray-600);
+    }
+    .breadcrumb a { color: var(--gray-600); }
+    .breadcrumb a:hover { color: var(--blue-700); }
+    .breadcrumb span { margin: 0 6px; }
+
+    .article-cover { margin: 16px 0 8px; }
+    .article-header { margin: 16px 0 8px; }
+    .article-meta {
+      font-size: 13px;
+      color: var(--blue-700);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+    .article-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--gray-900);
+      margin-bottom: 14px;
+    }
+    .article-lede {
+      font-size: 17px;
+      color: var(--gray-700);
+      line-height: 1.7;
+    }
+
+    .article-body { margin: 32px 0; }
+    .article-body :global(h2) {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 40px 0 12px;
+      color: var(--gray-900);
+      scroll-margin-top: 80px;
+    }
+    .article-body :global(h3) {
+      font-size: 19px;
+      font-weight: 600;
+      margin: 28px 0 8px;
+      color: var(--gray-900);
+    }
+    .article-body :global(p) {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--gray-800);
+      margin: 12px 0;
+    }
+    .article-body :global(ul), .article-body :global(ol) {
+      padding-left: 24px;
+      margin: 12px 0;
+      color: var(--gray-800);
+    }
+    .article-body :global(li) { margin: 6px 0; line-height: 1.75; }
+    .article-body :global(strong) { color: var(--gray-900); }
+    .article-body :global(blockquote) {
+      border-left: 3px solid var(--blue-300);
+      padding: 8px 18px;
+      margin: 16px 0;
+      background: var(--blue-50);
+      border-radius: 0 8px 8px 0;
+      color: var(--gray-800);
+      font-style: normal;
+    }
+    .article-body :global(table) {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    .article-body :global(th), .article-body :global(td) {
+      padding: 10px 12px;
+      border: 1px solid var(--gray-200);
+      text-align: left;
+    }
+    .article-body :global(th) {
+      background: var(--gray-100);
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+  </style>
+</BaseLayout>

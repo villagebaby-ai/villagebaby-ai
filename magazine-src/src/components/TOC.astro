@@ -1,0 +1,45 @@
+---
+// PLAYBOOK 필수 — 목차 (회색 박스)
+// headings는 Astro의 MDX getHeadings()에서 자동 추출
+export interface Props {
+  headings: Array<{ depth: number; slug: string; text: string }>;
+}
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth === 2);
+---
+{items.length > 0 && (
+  <nav class="toc" aria-label="목차">
+    <p class="toc-label">이 글의 흐름</p>
+    <ol>
+      {items.map((h) => (
+        <li><a href={`#${h.slug}`}>{h.text}</a></li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<style>
+  .toc {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .toc-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-600);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .toc ol {
+    list-style: decimal;
+    padding-left: 22px;
+    color: var(--gray-700);
+  }
+  .toc li { margin: 4px 0; font-size: 15px; line-height: 1.5; }
+  .toc a { color: var(--blue-700); }
+  .toc a:hover { text-decoration: underline; }
+</style>

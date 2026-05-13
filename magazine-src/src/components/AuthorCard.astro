@@ -1,0 +1,69 @@
+---
+// PLAYBOOK 필수 — E-E-A-T 시각 신호 (Author + 감수자 + 발행/검토일)
+export interface Props {
+  author?: string;
+  reviewedBy?: string;
+  publishedAt: Date;
+  reviewedAt?: Date;
+}
+const {
+  author = '베이비빌리 매거진 편집팀',
+  reviewedBy = '베이비빌리 보험 자문단',
+  publishedAt,
+  reviewedAt,
+} = Astro.props;
+
+const fmt = (d: Date) => `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+---
+<aside class="author-card">
+  <div class="author-row">
+    <div class="author-avatar">B</div>
+    <div class="author-meta">
+      <p class="author-name">{author}</p>
+      <p class="author-org">베이비빌리 · villagebaby.kr</p>
+    </div>
+  </div>
+  <div class="author-divider"></div>
+  <dl class="author-stamps">
+    <div>
+      <dt>감수</dt>
+      <dd>{reviewedBy}</dd>
+    </div>
+    <div>
+      <dt>발행</dt>
+      <dd>{fmt(publishedAt)}</dd>
+    </div>
+    {reviewedAt && (
+      <div>
+        <dt>최근 검토</dt>
+        <dd>{fmt(reviewedAt)}</dd>
+      </div>
+    )}
+  </dl>
+</aside>
+
+<style>
+  .author-card {
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: 24px 0 0;
+  }
+  .author-row { display: flex; align-items: center; gap: 14px; }
+  .author-avatar {
+    width: 44px; height: 44px;
+    background: var(--blue-700);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 18px;
+  }
+  .author-name { font-size: 15px; font-weight: 600; color: var(--gray-900); }
+  .author-org { font-size: 13px; color: var(--gray-600); margin-top: 2px; }
+  .author-divider { height: 1px; background: var(--blue-100); margin: 14px 0; }
+  .author-stamps { display: flex; flex-wrap: wrap; gap: 16px 24px; }
+  .author-stamps > div { display: flex; gap: 6px; font-size: 13px; }
+  .author-stamps dt { color: var(--gray-600); }
+  .author-stamps dd { color: var(--gray-800); font-weight: 500; }
+</style>

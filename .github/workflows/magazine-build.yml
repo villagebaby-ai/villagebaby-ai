@@ -1,0 +1,51 @@
+name: Build magazine
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'magazine-src/**'
+      - '.github/workflows/magazine-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: magazine-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: magazine-src/package-lock.json
+
+      - name: Install
+        working-directory: magazine-src
+        run: npm ci
+
+      - name: Build
+        working-directory: magazine-src
+        run: npm run build
+
+      - name: Commit build output
+        run: |
+          git config user.name "villagebaby-magazine-bot"
+          git config user.email "bot@villagebaby.kr"
+          git add magazine/
+          if git diff --cached --quiet; then
+            echo "No changes to /magazine/ build output"
+            exit 0
+          fi
+          git commit -m "build(magazine): auto-rebuild from magazine-src@${GITHUB_SHA::7}"
+          git push

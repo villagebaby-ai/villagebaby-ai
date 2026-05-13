@@ -1,0 +1,595 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CoverImage from '../components/CoverImage.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const all = (await getCollection('articles', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+
+// Hero / pillar / 글 cover 자산 — 사용자가 ChatGPT/DALL-E로 생성한 AI 사진 (cream/ivory 톤)
+// public/covers/ 에 저장, base URL prefix로 dev·prod 모두 정상 로드
+const heroPhoto = `${base}covers/home-hero.jpg`;
+
+const pillars = [
+  { slug: 'pregnancy', label: '임신', sub: 'Pregnancy', desc: '가입 골든타임, 검사 결과별 시나리오, 케이스 스토리', active: true,
+    cover: `${base}covers/pregnancy-card.jpg` },
+  { slug: 'newborn', label: '신생아', sub: 'Newborn', desc: '출산 직후 24시간, 황달·NICU 청구, 미숙아 가입', active: false,
+    cover: `${base}covers/newborn-card.jpg` },
+  { slug: 'toddler', label: '영유아', sub: 'Toddler', desc: '어린이보험 전환, 자녀 실손, 응급실 청구', active: false,
+    cover: undefined },
+  { slug: 'school', label: '학동기', sub: 'School', desc: '학교폭력 특약, 운동·치아, 재설계 시점', active: false,
+    cover: undefined },
+  { slug: 'case', label: '케이스', sub: 'Case', desc: '거절·재가입·청구 — 실제 사례 모음', active: false,
+    cover: undefined },
+];
+
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://villagebaby.kr/magazine/#website',
+      name: '베이비빌리 보험 매거진',
+      url: 'https://villagebaby.kr/magazine/',
+      inLanguage: 'ko-KR',
+      publisher: {
+        '@type': 'Organization',
+        name: '베이비빌리',
+        url: 'https://villagebaby.kr/',
+        logo: { '@type': 'ImageObject', url: 'https://villagebaby.kr/logo.png' },
+      },
+      description: '태아·어린이·실손·여성·간병 — 부모의 보험 결정을 돕는 매거진. 케이스 스토리와 인터랙티브 도구로 의사결정을 도와드려요.',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '홈', item: 'https://villagebaby.kr/' },
+        { '@type': 'ListItem', position: 2, name: '보험 매거진', item: 'https://villagebaby.kr/magazine/' },
+      ],
+    },
+  ],
+};
+---
+<BaseLayout
+  title="베이비빌리 보험 매거진 — 케이스와 이야기로 보는 보험 결정"
+  description="태아·어린이·실손·여성·간병. 부모의 보험 결정을 돕는 매거진. 케이스 스토리와 핏체크 12문항 무료 진단으로 의사결정을 도와드려요.">
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(homeJsonLd)} />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="kicker">
+          <span class="kicker-tag">BABYBILLY MAGAZINE</span>
+          <span class="kicker-sub">— 보험 자문 매거진</span>
+        </p>
+        <h1>
+          부모의 보험 결정을<br/>
+          <em>이야기로 정리해드려요.</em>
+        </h1>
+        <p class="lede">
+          가입 시기, 검사 결과의 영향, 거절과 재가입 — 가입 권유가 아닌<br/>
+          의사결정의 흐름을 정리한 매거진이에요.
+        </p>
+        <div class="hero-cta">
+          <a class="cta primary" href="/magazine/tools/fit-check/">핏체크 12문항 시작</a>
+          <a class="cta ghost" href="/magazine/pregnancy/">임신 pillar 보기</a>
+        </div>
+        <ul class="hero-marks">
+          <li><span>12</span><em>문항 무료 진단</em></li>
+          <li><span>5</span><em>생애주기 카테고리</em></li>
+          <li><span>보험 자문단</span><em>전문가 감수</em></li>
+        </ul>
+      </div>
+      <figure class={`hero-figure ${heroPhoto ? 'hero-figure--photo' : ''}`}>
+        <img src={heroPhoto ?? `${base}assets/img/pregnant-mom.png`} alt="베이비빌리 보험 매거진 — 임신 라이프" loading="eager" decoding="async" />
+        <figcaption>babybilly · insurance magazine</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- FIT-CHECK FEATURE -->
+  <section class="container feature">
+    <a href="/magazine/tools/fit-check/" class="feature-card">
+      <div class="feature-body">
+        <p class="feature-label">1순위 도구 · 2분 진단</p>
+        <h2>태아보험 핏체크 12문항</h2>
+        <p class="feature-desc">
+          임신 주차·검사 결과·가족력 등 12문항에 답하시면 가입 가능성 점수와 추천 시기, 주의 특약 3개를 정리해드려요. 결과는 1:1 상담으로 바로 이어져요.
+        </p>
+        <span class="feature-cta">진단 시작하기 →</span>
+      </div>
+      <div class="feature-illust">
+        <img src={`${base}assets/img/baby-medical.png`} alt="" loading="lazy" />
+      </div>
+    </a>
+  </section>
+
+  <!-- PILLAR GRID -->
+  <section class="container pillars">
+    <div class="section-head">
+      <h2 class="section-h">생애주기로 보기</h2>
+      <p class="section-sub">임신부터 청소년기까지, 시기별로 정리해드려요</p>
+    </div>
+    <ul class="pillar-grid">
+      {pillars.map((p) => (
+        <li>
+          {p.active ? (
+            <a href={`/magazine/${p.slug}/`} class="pillar-card">
+              <CoverImage cover={p.cover} title={p.label} pillar={p.slug} aspect="4-3" />
+              <div class="p-body">
+                <p class="p-sub">{p.sub}</p>
+                <p class="p-label">{p.label}</p>
+                <p class="p-desc">{p.desc}</p>
+                <p class="p-cta">바로가기 →</p>
+              </div>
+            </a>
+          ) : (
+            <div class="pillar-card pillar-card-soon">
+              <CoverImage cover={p.cover} title={p.label} pillar={p.slug} aspect="4-3" />
+              <div class="p-body">
+                <p class="p-sub">{p.sub}</p>
+                <p class="p-label">{p.label}</p>
+                <p class="p-desc">{p.desc}</p>
+                <p class="p-cta soon">준비 중</p>
+              </div>
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- LATEST ARTICLES -->
+  {all.length > 0 && (
+    <section class="container latest">
+      <div class="section-head">
+        <h2 class="section-h">최근 발행 글</h2>
+        <a class="section-link" href="/magazine/pregnancy/">전체 보기 →</a>
+      </div>
+      <ul class="article-list">
+        {all.slice(0, 6).map((a) => (
+          <li>
+            <a href={`/magazine/${a.slug}/`} class="article-card">
+              <CoverImage cover={a.data.cover} title={a.data.title} pillar={a.data.pillar} aspect="16-9" />
+              <div class="a-body">
+                <p class="a-cat">{a.data.pillar} · {a.data.type === 'case' ? '케이스' : a.data.type === 'tool' ? '도구' : '가이드'}</p>
+                <p class="a-title">{a.data.title}</p>
+                <p class="a-desc">{a.data.description}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <!-- CROSS-LINK TO GUIDE HUB -->
+  <section class="container cross-link">
+    <div class="cross-card">
+      <p class="cross-label">함께 보면 좋은 곳</p>
+      <h3>베이비빌리 보험 가이드</h3>
+      <p class="cross-desc">매거진은 케이스와 이야기, 가이드는 보험 종류별 정보 정리. 두 곳을 함께 쓰시면 의사결정이 빨라요.</p>
+      <div class="cross-chips">
+        <a href="/guide/" class="chip">베이비빌리 태아보험 가이드</a>
+        <a href="/child/" class="chip">베이비빌리 어린이보험 가이드</a>
+        <a href="/cancer/" class="chip">베이비빌리 암보험 가이드</a>
+        <a href="/care/" class="chip">베이비빌리 간병보험 가이드</a>
+        <a href="/female/" class="chip">베이비빌리 여성보험 가이드</a>
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    /* magazine page-level overrides */
+    main { max-width: none !important; padding: 0 !important; }
+  </style>
+
+  <style>
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(180deg, #FFF8F0 0%, #FFFFFF 100%);
+      padding: 56px 24px 64px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .hero-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-text { padding: 16px 0; }
+    .kicker { display: inline-flex; align-items: center; margin-bottom: 18px; }
+    .kicker-tag {
+      background: var(--blue-700);
+      color: #fff;
+      letter-spacing: 0.14em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .kicker-sub {
+      color: var(--gray-600);
+      margin-left: 10px;
+      letter-spacing: 0.04em;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.25;
+      margin: 0 0 18px;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue-700);
+      font-weight: 700;
+    }
+    .lede {
+      color: var(--gray-700);
+      font-size: 16px;
+      line-height: 1.85;
+      margin: 0 0 24px;
+      max-width: 42ch;
+    }
+    .hero-cta { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+    .cta {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.15s, background 0.15s;
+    }
+    .cta.primary { background: var(--blue-700); color: #fff; }
+    .cta.primary:hover { background: var(--blue-800); transform: translateY(-1px); }
+    .cta.ghost { background: transparent; color: var(--gray-800); border-color: var(--gray-300); }
+    .cta.ghost:hover { border-color: var(--blue-700); color: var(--blue-700); }
+    .hero-marks {
+      list-style: none;
+      padding: 18px 0 0;
+      margin: 0;
+      display: flex;
+      gap: 32px;
+      border-top: 1px solid var(--gray-200);
+    }
+    .hero-marks li { margin: 0; }
+    .hero-marks span {
+      display: block;
+      font-size: 22px;
+      color: var(--blue-700);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .hero-marks em {
+      display: block;
+      font-style: normal;
+      color: var(--gray-600);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+    .hero-figure {
+      margin: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(135deg, #FFF8F0 0%, #FFE0CC 100%);
+      box-shadow: 0 1px 2px rgba(42, 37, 32, 0.04), 0 16px 40px rgba(42, 37, 32, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .hero-figure img {
+      max-width: 78%;
+      max-height: 78%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 24px rgba(122, 66, 40, 0.08));
+    }
+    .hero-figure--photo {
+      background: var(--gray-100);
+      padding: 0;
+    }
+    .hero-figure--photo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: none;
+    }
+    .hero-figure figcaption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #7A4228;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    /* FEATURE (핏체크) */
+    .feature { padding: 48px 24px 0; }
+    .feature-card {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--blue-50) 0%, var(--blue-100) 100%);
+      border: 1px solid var(--blue-200);
+      border-radius: 24px;
+      padding: 36px 36px 36px 40px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37, 99, 182, 0.12);
+    }
+    .feature-label {
+      font-size: 12px;
+      color: var(--blue-700);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+    .feature-card h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+    .feature-desc {
+      color: var(--gray-700);
+      font-size: 15px;
+      line-height: 1.75;
+      margin: 0 0 16px;
+    }
+    .feature-cta {
+      display: inline-block;
+      background: var(--blue-700);
+      color: var(--white);
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .feature-illust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-illust img {
+      width: 100%;
+      max-width: 200px;
+      filter: drop-shadow(0 8px 16px rgba(37, 99, 182, 0.12));
+    }
+
+    /* SECTION HEAD */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .section-h {
+      font-size: 22px;
+      color: var(--gray-900);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .section-sub { color: var(--gray-600); font-size: 14px; margin: 0; }
+    .section-link {
+      color: var(--blue-700);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* PILLAR GRID */
+    .pillars { padding: 56px 24px 24px; }
+    .pillar-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .pillar-grid li { margin: 0; }
+    .pillar-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .pillar-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue-300);
+      box-shadow: 0 12px 28px rgba(42, 37, 32, 0.06);
+    }
+    .pillar-card-soon { opacity: 0.65; }
+    .p-body { padding: 16px 18px 20px; }
+    .p-sub {
+      font-size: 11px;
+      color: var(--blue-700);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin: 0 0 4px;
+    }
+    .p-label {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .p-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin: 0 0 12px;
+    }
+    .p-cta {
+      font-size: 12px;
+      color: var(--blue-700);
+      font-weight: 600;
+      margin: 0;
+    }
+    .p-cta.soon { color: var(--gray-500); }
+
+    /* LATEST ARTICLES */
+    .latest { padding: 24px 24px 48px; }
+    .article-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .article-list li { margin: 0; }
+    .article-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .article-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue-300);
+      box-shadow: 0 12px 28px rgba(42, 37, 32, 0.06);
+    }
+    .a-body { padding: 16px 18px 20px; }
+    .a-cat {
+      font-size: 11px;
+      color: var(--blue-700);
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    .a-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+    }
+    .a-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* CROSS-LINK */
+    .cross-link { padding: 0 24px 64px; }
+    .cross-card {
+      background: var(--gray-100);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+    }
+    .cross-label {
+      font-size: 11px;
+      color: var(--gray-600);
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    .cross-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .cross-desc {
+      color: var(--gray-700);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 auto 20px;
+      max-width: 540px;
+    }
+    .cross-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .chip {
+      padding: 8px 16px;
+      background: var(--white);
+      color: var(--blue-700);
+      border: 1px solid var(--blue-100);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .chip:hover { border-color: var(--blue-300); background: var(--blue-50); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-figure { aspect-ratio: 16 / 12; order: -1; }
+      .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+      .article-list { grid-template-columns: repeat(2, 1fr); }
+      .feature-card { grid-template-columns: 1fr; padding: 28px; }
+      .feature-illust { display: none; }
+    }
+    @media (max-width: 600px) {
+      .pillar-grid { grid-template-columns: 1fr; }
+      .article-list { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 26px; }
+      .hero-marks { gap: 18px; }
+      .hero-marks span { font-size: 18px; }
+      .hero { padding: 36px 20px 44px; }
+      .feature, .pillars, .latest, .cross-link { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</BaseLayout>

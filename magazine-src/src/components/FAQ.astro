@@ -1,0 +1,62 @@
+---
+// PLAYBOOK 필수 — 본문 FAQ 6~10개 + JSON-LD FAQPage 1:1 매칭
+// 펼친 상태가 기본
+export interface Props {
+  items: Array<{ q: string; a: string }>;
+}
+const { items } = Astro.props;
+---
+{items.length > 0 && (
+  <section class="faq" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">자주 묻는 질문</h2>
+    <dl>
+      {items.map((it) => (
+        <div class="faq-item">
+          <dt>{it.q}</dt>
+          <dd>{it.a}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+)}
+
+<style>
+  .faq { margin: 48px 0 24px; }
+  .faq h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .faq dl { display: grid; gap: 14px; }
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .faq-item dt {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .faq-item dt::before {
+    content: 'Q. ';
+    color: var(--blue-700);
+    font-weight: 700;
+  }
+  .faq-item dd {
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .faq-item dd::before {
+    content: 'A. ';
+    color: var(--gray-500);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+// PLAYBOOK 필수 — 관련 글 4개 카드
+// related는 slug 배열 (예: ['pregnancy/golden-time', 'pregnancy/nt-result'])
+import { getCollection } from 'astro:content';
+
+export interface Props {
+  slugs: string[];
+  fallbackTitle?: string;
+}
+const { slugs, fallbackTitle = '함께 읽으면 좋은 글' } = Astro.props;
+
+const all = await getCollection('articles', ({ data }) => !data.draft);
+const map = new Map(all.map((a) => [a.slug, a]));
+const items = slugs.map((s) => map.get(s)).filter(Boolean) as typeof all;
+---
+{items.length > 0 && (
+  <section class="related">
+    <h2>{fallbackTitle}</h2>
+    <div class="related-grid">
+      {items.map((a) => (
+        <a class="related-card" href={`/magazine/${a!.slug}/`}>
+          <p class="related-pillar">{a!.data.pillar}</p>
+          <p class="related-title">{a!.data.title}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related { margin: 40px 0 24px; }
+  .related h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .related-card {
+    display: block;
+    padding: 16px 18px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .related-card:hover { border-color: var(--blue-300); background: var(--blue-50); }
+  .related-pillar {
+    font-size: 11px;
+    color: var(--blue-700);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .related-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-900);
+    line-height: 1.5;
+  }
+</style>

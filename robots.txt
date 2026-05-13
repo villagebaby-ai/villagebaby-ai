@@ -45,7 +45,9 @@ Disallow: /admin-vb-7k9f2x4a/
 Disallow: /admin/
 Disallow: /control/
 Disallow: /form/
+Disallow: /magazine-src/
 
 # Sitemap & RSS
 Sitemap: https://villagebaby.kr/sitemap.xml
 Sitemap: https://villagebaby.kr/rss.xml
+Sitemap: https://villagebaby.kr/magazine/sitemap-index.xml

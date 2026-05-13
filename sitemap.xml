@@ -569,4 +569,38 @@
       <image:title>태아보험 자가진단 — 5문항으로 내게 맞는 보장구조 찾기 | 베이비빌리</image:title>
     </image:image>
   </url>
+
+  <!-- 보험 매거진 (Astro+MDX, /magazine-src/ 빌드) -->
+  <url>
+    <loc>https://villagebaby.kr/magazine/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/magazine/pregnancy/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.82</priority>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/magazine/tools/fit-check/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
+      <image:title>태아보험 핏체크 — 12문항 가입 가능성 무료 진단 | 베이비빌리 매거진</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/magazine/pregnancy/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85-%EA%B3%A8%EB%93%A0%ED%83%80%EC%9E%84/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.88</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
+      <image:title>태아보험 가입 골든타임 — 임신 12주에서 22주 사이에 결정해야 하는 이유 | 베이비빌리 매거진</image:title>
+    </image:image>
+  </url>
 </urlset>

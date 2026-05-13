@@ -3,6 +3,11 @@ image/
 webBabyBillyDesignSystem/
 .claude/
 
+# Magazine (Astro source — built into /magazine/)
+magazine-src/node_modules/
+magazine-src/.astro/
+magazine-src/dist/
+
 # OS
 .DS_Store
 Thumbs.db

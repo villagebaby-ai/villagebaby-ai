@@ -1,0 +1,11 @@
+node_modules/
+.astro/
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.local
+*.log
+
+# favicon.png is 6MB and we read it from the main site at runtime — keep out of magazine bundle.
+public/favicon.png

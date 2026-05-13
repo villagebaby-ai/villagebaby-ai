@@ -1,0 +1,36 @@
+---
+// PLAYBOOK 필수 — TL;DR 박스 (노란 그라디언트 톤)
+export interface Props {
+  title?: string;
+}
+const { title = '한 줄 정리' } = Astro.props;
+---
+<aside class="tldr">
+  <p class="tldr-label">{title}</p>
+  <div class="tldr-body"><slot /></div>
+</aside>
+
+<style>
+  .tldr {
+    background: linear-gradient(180deg, #FFF8E1 0%, #FFE4B5 100%);
+    border: 1px solid #FFC700;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: 24px 0;
+  }
+  .tldr-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8B6914;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .tldr-body {
+    color: #1F2937;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .tldr-body :global(p) { margin: 0; }
+  .tldr-body :global(p + p) { margin-top: 8px; }
+</style>
