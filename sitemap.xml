@@ -559,4 +559,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%9E%90%EA%B0%80%EC%A7%84%EB%8B%A8/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
+      <image:title>태아보험 자가진단 — 5문항으로 내게 맞는 보장구조 찾기 | 베이비빌리</image:title>
+    </image:image>
+  </url>
 </urlset>
