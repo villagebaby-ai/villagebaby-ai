@@ -695,7 +695,16 @@
       .sec { margin: 44px 0; }
       .cta-full h2 { font-size: 26px; }
     }
-  </style>
+  
+.author-card{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:12px;margin:20px 0 24px;max-width:780px;margin-left:auto;margin-right:auto}
+.author-card .ac-photo{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;display:block}
+.author-card .ac-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.author-card .ac-meta{flex:1;min-width:0}
+.author-card .ac-name{font-size:13.5px;color:#374151;margin:0 0 3px;font-weight:600;line-height:1.4}
+.author-card .ac-name a{color:#2563B6;font-weight:800;text-decoration:none;border-bottom:1px dotted currentColor}
+.author-card .ac-rev{font-size:11.5px;color:#6B7280;margin:0;line-height:1.5}
+@media(max-width:760px){.author-card{padding:12px 14px;gap:11px}.author-card .ac-photo{width:42px;height:42px}.author-card .ac-name{font-size:13px}}
+</style>
 </head>
 <body>
 
@@ -725,6 +734,16 @@
       베이비빌리가 재설계가 필요한 시그널과 갈아타는 절차를 한 번에 정리해 드릴게요.
     </p>
     <p class="hero-meta">✏️ 최초 작성 <time datetime="2026-02-14" itemprop="datePublished">2026.02.14</time> &nbsp;|&nbsp; 최종 수정 <time datetime="2026-05-05" itemprop="dateModified">2026.05.05</time> &nbsp;|&nbsp; 베이비빌리 어린이보험 전문가 팀</p>
+<aside class="author-card">
+  <a href="https://babybilly.co" target="_blank" rel="author noopener" class="ac-photo">
+    <picture><source srcset="/assets/img/billy-author-96.webp" type="image/webp"><img src="/assets/img/billy-author-96.png" srcset="/assets/img/billy-author-96.png 1x, /assets/img/billy-author-256.png 2x" alt="베이비빌리" width="48" height="48"></picture>
+  </a>
+  <div class="ac-meta">
+    <p class="ac-name"><a href="https://babybilly.co" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+    <p class="ac-rev">10년 이상 태아·어린이보험을 소개해온 전문가의 감수를 거쳤습니다.</p>
+  </div>
+</aside>
+
     <div class="hero-img-wrap">
       <!-- TODO: 이미지 새로 제작 예정 (2026-05-10 broken-image 일괄 제거 — was ./img-summary.jpg) -->
     </div>
