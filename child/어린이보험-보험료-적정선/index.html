@@ -255,7 +255,16 @@
     .float-btn { position:fixed;bottom:24px;right:16px;z-index:200;display:flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border-radius:28px;padding:13px 20px;font-size:14px;font-weight:700;box-shadow:0 6px 24px rgba(51,115,186,.45);text-decoration:none;letter-spacing:-.2px; }
     .float-btn:hover { background:var(--blue-d);transform:translateY(-2px); }
     @media(max-width:480px){.float-btn{padding:0;width:54px;height:54px;border-radius:50%;justify-content:center;bottom:20px;right:16px;font-size:20px;}.float-btn span{display:none;}}
-  </style>
+  
+.author-card{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:12px;margin:20px auto 24px;max-width:780px}
+.author-card .ac-photo{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;display:block}
+.author-card .ac-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.author-card .ac-meta{flex:1;min-width:0}
+.author-card .ac-name{font-size:13.5px;color:#374151;margin:0 0 3px;font-weight:600;line-height:1.4}
+.author-card .ac-name a{color:#2563B6;font-weight:800;text-decoration:none;border-bottom:1px dotted currentColor}
+.author-card .ac-rev{font-size:11.5px;color:#6B7280;margin:0;line-height:1.5}
+@media(max-width:760px){.author-card{padding:12px 14px;gap:11px}.author-card .ac-photo{width:42px;height:42px}.author-card .ac-name{font-size:13px}}
+</style>
 </head>
 <body>
 <time datetime="2026-05-05" itemprop="datePublished" hidden>2026-05-05</time><time datetime="2026-05-05" itemprop="dateModified" hidden>2026-05-05</time>
@@ -281,6 +290,16 @@
     <h1>어린이보험 보험료<br>적정선은 얼마일까요?<br>월 5만~15만원 구간 비교</h1>
     <p class="hero-sub">자녀 0~10세 부모님이 가장 많이 묻는 질문이에요. 월 5만/8만/12만/15만원 구간별 보장 차이와 자녀 나이별 시뮬레이션까지 솔직하게 정리했어요.</p>
     <div class="hero-meta">베이비빌리 · 업데이트 2026.05.05</div>
+<aside class="author-card">
+  <a href="https://babybilly.co" target="_blank" rel="author noopener" class="ac-photo">
+    <picture><source srcset="/assets/img/billy-author-96.webp" type="image/webp"><img src="/assets/img/billy-author-96.png" alt="베이비빌리" width="48" height="48"></picture>
+  </a>
+  <div class="ac-meta">
+    <p class="ac-name"><a href="https://babybilly.co" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+    <p class="ac-rev">10년 이상 태아·어린이보험을 소개해온 전문가의 감수를 거쳤습니다.</p>
+  </div>
+</aside>
+
     <!-- TODO: 이미지 새로 제작 예정 (2026-05-10 broken-image 일괄 제거 — was ./img-summary.jpg) -->
     <a href="https://babybilly.co/insurance/child/standard" class="hero-cta">
       💬 자녀 나이별 맞춤 보험료 무료로 확인

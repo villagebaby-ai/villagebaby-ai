@@ -319,7 +319,16 @@
 
     /* DIVIDER */
     .divider { border:none;border-top:2px dashed var(--gray-b);margin:32px 0; }
-  </style>
+  
+.author-card{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:12px;margin:20px auto 24px;max-width:780px}
+.author-card .ac-photo{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;display:block}
+.author-card .ac-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.author-card .ac-meta{flex:1;min-width:0}
+.author-card .ac-name{font-size:13.5px;color:#374151;margin:0 0 3px;font-weight:600;line-height:1.4}
+.author-card .ac-name a{color:#2563B6;font-weight:800;text-decoration:none;border-bottom:1px dotted currentColor}
+.author-card .ac-rev{font-size:11.5px;color:#6B7280;margin:0;line-height:1.5}
+@media(max-width:760px){.author-card{padding:12px 14px;gap:11px}.author-card .ac-photo{width:42px;height:42px}.author-card .ac-name{font-size:13px}}
+</style>
 </head>
 <body>
 <time datetime="2026-05-05" itemprop="datePublished" hidden>2026-05-05</time><time datetime="2026-05-05" itemprop="dateModified" hidden>2026-05-05</time>
@@ -342,6 +351,16 @@
     <h1>태아보험 특약 총정리 2026<br>필수 vs 선택 vs 불필요<br>완전 분류</h1>
     <p class="hero-sub">선천이상 수술비·NICU 입원비·인큐베이터까지 — 절대 빠지면 안 되는 특약과 보험료만 올리는 불필요 특약을 태아보험 전문가 기준으로 완전 분류했어요.</p>
     <div class="hero-meta">베이비빌리 · 업데이트 2026.05.05</div>
+<aside class="author-card">
+  <a href="https://babybilly.co" target="_blank" rel="author noopener" class="ac-photo">
+    <picture><source srcset="/assets/img/billy-author-96.webp" type="image/webp"><img src="/assets/img/billy-author-96.png" alt="베이비빌리" width="48" height="48"></picture>
+  </a>
+  <div class="ac-meta">
+    <p class="ac-name"><a href="https://babybilly.co" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+    <p class="ac-rev">10년 이상 태아·어린이보험을 소개해온 전문가의 감수를 거쳤습니다.</p>
+  </div>
+</aside>
+
     <!-- TODO: 이미지 새로 제작 예정 (2026-05-10 broken-image 일괄 제거 — was ./img-summary.jpg) -->
     <a href="https://babybilly.co/insurance/baby/talk/v1" class="hero-cta">
       📋 특약 설계 전문가 무료 상담

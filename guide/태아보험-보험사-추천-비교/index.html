@@ -255,7 +255,16 @@
     .float-btn { position:fixed;bottom:24px;right:16px;z-index:200;display:flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border-radius:28px;padding:13px 20px;font-size:14px;font-weight:700;box-shadow:0 6px 24px rgba(51,115,186,.45);text-decoration:none;letter-spacing:-.2px; }
     .float-btn:hover { background:var(--blue-d);transform:translateY(-2px); }
     @media(max-width:480px){.float-btn{padding:0;width:54px;height:54px;border-radius:50%;justify-content:center;bottom:20px;right:16px;font-size:20px;}.float-btn span{display:none;}}
-  </style>
+  
+.author-card{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:12px;margin:20px auto 24px;max-width:780px}
+.author-card .ac-photo{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;display:block}
+.author-card .ac-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.author-card .ac-meta{flex:1;min-width:0}
+.author-card .ac-name{font-size:13.5px;color:#374151;margin:0 0 3px;font-weight:600;line-height:1.4}
+.author-card .ac-name a{color:#2563B6;font-weight:800;text-decoration:none;border-bottom:1px dotted currentColor}
+.author-card .ac-rev{font-size:11.5px;color:#6B7280;margin:0;line-height:1.5}
+@media(max-width:760px){.author-card{padding:12px 14px;gap:11px}.author-card .ac-photo{width:42px;height:42px}.author-card .ac-name{font-size:13px}}
+</style>
 </head>
 <body>
 <time datetime="2026-05-05" itemprop="datePublished" hidden>2026-05-05</time><time datetime="2026-05-05" itemprop="dateModified" hidden>2026-05-05</time>
@@ -278,6 +287,16 @@
     <h1>태아보험 보험사 추천 비교<br>삼성·현대해상·DB·메리츠<br>어디가 진짜 좋을까?</h1>
     <p class="hero-sub">태아보험 전문가 200만 상담 데이터 기반으로 4대 보험사를 항목별로 비교했어요. 생명보험 vs 손해보험 차이, 보험사별 장단점, 내 상황에 맞는 선택법까지 한 번에 정리합니다.</p>
     <div class="hero-meta">베이비빌리 · 업데이트 2026.05.05</div>
+<aside class="author-card">
+  <a href="https://babybilly.co" target="_blank" rel="author noopener" class="ac-photo">
+    <picture><source srcset="/assets/img/billy-author-96.webp" type="image/webp"><img src="/assets/img/billy-author-96.png" alt="베이비빌리" width="48" height="48"></picture>
+  </a>
+  <div class="ac-meta">
+    <p class="ac-name"><a href="https://babybilly.co" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+    <p class="ac-rev">10년 이상 태아·어린이보험을 소개해온 전문가의 감수를 거쳤습니다.</p>
+  </div>
+</aside>
+
     <picture><source srcset="./img-summary.webp" type="image/webp"><img src="./img-summary.jpg" alt="태아보험 보험사 추천 비교 2026 — 삼성생명·현대해상·DB손보·메리츠 핵심 정리 인포그래픽 | 베이비빌리" class="hero-img" loading="eager"></picture>
     <a href="https://babybilly.co/insurance/baby/talk/v1" class="hero-cta">
       🍼 내 상황에 맞는 보험사 무료 비교 상담
