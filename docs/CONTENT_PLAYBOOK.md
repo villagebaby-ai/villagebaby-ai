@@ -504,6 +504,18 @@ sitemap·RSS·canonical·og:url 에 한글 URL 박을 때:
 7. **내부 링크**: pillar 글에서 spoke 글로 + spoke 에서 pillar 로 (역방향). 본문 안에 자연스럽게 2~5개
 8. **이미지 alt** 모든 의미 있는 이미지에 작성. 장식용은 `alt=""` + `aria-hidden`
 9. **모바일 검증**: 760px 이하에서 layout 안 깨지는지 — DevTools 시뮬
+10. **`<time datetime="YYYY-MM-DD">` 태그** — visible 날짜 텍스트를 `<time>` 으로 감싸기. Google snippet 의 날짜 노출 신호:
+    ```html
+    <!-- Modern 패턴 -->
+    <span>📅 <time datetime="2026-05-06" itemprop="dateModified">2026-05-06</time></span>
+
+    <!-- Variant 패턴 -->
+    📅 마지막 업데이트 <time datetime="2026-05-04" itemprop="dateModified">2026년 5월</time>
+
+    <!-- 양일자 표시 -->
+    최초 작성 <time datetime="2026-02-14" itemprop="datePublished">2026.02.14</time> | 최종 수정 <time datetime="2026-05-05" itemprop="dateModified">2026.05.05</time>
+    ```
+    JSON-LD `datePublished`/`dateModified` 와 HTML `<time>` 둘 다 있을 때 Google snippet 노출 확률↑
 
 ### GEO (AI 검색) 추가 체크
 - **사실 밀도**: 핵심 수치 본문 텍스트에 명시 (이미지 안에만 두지 말 것)
@@ -618,15 +630,30 @@ console.log('encoded:', encoded);
 
 ## 11. 배포 워크플로우
 
-### 텍스트 파일 (HTML, JSON, MD, XML)
+### ⚠️ 중요: 1MB+ 파일은 Contents API 사용 금지
+
+GitHub Contents API (`PUT /repos/{owner}/{repo}/contents/{path}`) 는 **응답 콘텐츠를 1MB 로 truncate**. 1MB 넘는 파일을 GET 으로 받으면 잘려서 옴 → 그 truncated 내용을 다시 PUT 하면 **파일이 데이터 손실**.
+
+| 파일 크기 | 사용 가능 API |
+|---|---|
+| < 1MB | Contents API (`mcp__github__create_or_update_file`) OK |
+| ≥ 1MB | **반드시 Git Data API** (`POST /git/blobs` → `POST /git/trees` → `POST /git/commits` → `PATCH /git/refs`) |
+
+이 한계로 인한 사고 이력: 2026-05-10 villagebaby.kr 의 2.27MB `index.html` 이 truncate 되어 0 bytes 로 push 됨. raw URL 로 이전 commit 에서 fetch 후 Git Data API blob 으로 복구.
+
+**점검 1줄**: 파일 push 전에 사이즈 확인 → `ls -la file.html` 또는 GitHub API 로 `size` 필드 확인.
+
+### 텍스트 파일 (HTML, JSON, MD, XML — 1MB 미만)
 - `mcp__github__create_or_update_file` 또는 `mcp__github__push_files` 사용 가능
 - 단일 파일: `create_or_update_file`
 - 여러 파일 일괄: tree+commit API (한 커밋에 묶이게)
 
-### Binary (이미지)
-- mcp 의 file tools 는 text 만 지원 → **Git Data API 직접 호출 필요**
+### 1MB+ 텍스트 파일 또는 Binary (이미지)
+- **Git Data API 직접 호출 필수**
 - 절차: blob 생성 → tree 생성 → commit 생성 → ref 업데이트
+- 단일 파일 변경이라도 1MB 넘으면 이 경로 사용
 - PAT 는 `~/.claude/mcp.json` 의 `GITHUB_PERSONAL_ACCESS_TOKEN`
+- raw URL fetch (`https://raw.githubusercontent.com/{owner}/{repo}/{ref}/{path}`) 은 1MB 제한 없음 — 큰 파일 GET 시 raw 사용
 
 ### 신규 글 1편 발행 표준 절차
 
@@ -775,9 +802,13 @@ console.log('encoded:', encoded);
 
 | 이슈 | 상태 | 우선순위 |
 |---|---|---|
-| sitemap.xml 의 64 URL 모두 raw 한글 — Naver Yeti 인덱싱 일부 실패 | 다음 PR 에 percent-encoded 일괄 갱신 예정 | 높음 |
+| sitemap.xml raw 한글 URL | ✅ **해결됨 (2026-05-13 commit `413c3091`)** — 72 URLs percent-encoded | — |
+| 홈페이지 JSON-LD 없음 | ✅ **해결됨 (2026-05-13 commit `58686a72`)** — Organization + WebSite + BreadcrumbList | — |
+| `<time>` 태그 누락 | ✅ **30 페이지 추가** (2026-05-13 commit `bb640d55`). 나머지는 dateModified 없는 hub 페이지 | — |
 | www.villagebaby.kr SSL cert SAN 에 www 누락 | 24h 자동 발급 대기 또는 GitHub Pages 설정 reset | 중 |
 | Variant template 32 페이지에 시각 author card 미적용 | JSON-LD 만 적용됨. 차후 template 통일 시 시각 card | 낮음 |
+| `<img>` width/height 누락 (64 페이지 전부) | CLS 개선 위해 추가 필요 — 다음 PR | 중 |
+| WebP 변환 미적용 | 페이지 무게 ↓ 위해 검토 | 중 |
 | `/medical/liver/` 5 페이지 sitemap·admin 미등록 (의도된 제외) | 사용자가 추후 일괄 처리 예정. 건드리지 말 것 | — |
 
 ---
@@ -787,6 +818,7 @@ console.log('encoded:', encoded);
 본 플레이북은 villagebaby.kr 운영 약 1년의 학습을 정리. 이후 새 패턴·교훈은 같은 .md 에 추가.
 
 - 2026-05-10: v1.0 — Modern template, JSON-LD 3종, E-E-A-T 4종, RSS·sitemap 3대 규칙, 디자인 토큰, 브랜드 규칙 통합
+- 2026-05-13: v1.1 — `<time>` 태그 패턴 추가 (Section 8), 1MB Contents API 한계 경고 추가 (Section 11), 알려진 이슈 일부 해결 표시
 - (이후 갱신은 여기 추가)
 
 ---
