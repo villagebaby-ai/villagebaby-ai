@@ -1,0 +1,232 @@
+---
+// 매거진 글 관리 admin — GitHub PAT 기반 (서버리스)
+// 사용자가 토큰 입력 → localStorage 저장 → GitHub API direct commit
+// 글 생성/수정 시 magazine-src/src/content/articles/{pillar}/{slug}.mdx 푸시 → Actions 자동 빌드
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="매거진 글 관리 — 베이비빌리"
+  description="매거진 글 작성·수정·발행 admin"
+  noindex={true}>
+
+  <style is:global>
+    main { max-width: none !important; padding: 0 !important; }
+  </style>
+
+  <div class="adm">
+    <header class="adm-head">
+      <h1>매거진 글 관리</h1>
+      <p class="adm-sub">GitHub Personal Access Token 으로 글을 작성·수정·발행할 수 있어요. 토큰은 이 브라우저 localStorage에만 저장됩니다.</p>
+    </header>
+
+    <!-- 토큰 패널 -->
+    <section id="token-panel" class="adm-panel">
+      <h2>① GitHub 토큰</h2>
+      <p class="adm-help">
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=villagebaby-magazine-admin" target="_blank" rel="noopener">새 PAT 발급</a> · scope <code>repo</code> 권한 필요. 발급된 토큰을 아래에 붙여넣고 저장하세요.
+      </p>
+      <div class="adm-token-row">
+        <input id="token-input" type="password" placeholder="ghp_ 또는 github_pat_ ..." autocomplete="off" />
+        <button id="token-save" class="adm-btn">저장</button>
+        <button id="token-clear" class="adm-btn adm-btn-ghost">삭제</button>
+      </div>
+      <p id="token-status" class="adm-status"></p>
+    </section>
+
+    <!-- 글 목록 -->
+    <section id="list-panel" class="adm-panel" hidden>
+      <div class="adm-panel-head">
+        <h2>② 글 목록</h2>
+        <button id="new-article" class="adm-btn adm-btn-primary">+ 새 글 작성</button>
+      </div>
+      <div id="list-filters">
+        <label>pillar 필터
+          <select id="filter-pillar">
+            <option value="">전체</option>
+            <option value="pregnancy">임신 (Pregnancy)</option>
+            <option value="newborn">신생아 (Newborn)</option>
+            <option value="toddler">영유아 (Toddler)</option>
+            <option value="school">학동기 (School)</option>
+            <option value="teen">청소년기 (Teen)</option>
+            <option value="case">케이스 (Case)</option>
+          </select>
+        </label>
+        <button id="reload-list" class="adm-btn adm-btn-ghost">새로고침</button>
+      </div>
+      <ul id="article-list" class="adm-list"></ul>
+    </section>
+
+    <!-- 편집 form -->
+    <section id="editor-panel" class="adm-panel" hidden>
+      <div class="adm-panel-head">
+        <h2 id="editor-title">③ 새 글 작성</h2>
+        <button id="cancel-edit" class="adm-btn adm-btn-ghost">취소</button>
+      </div>
+
+      <div class="adm-grid">
+        <label>제목 *
+          <input id="f-title" type="text" placeholder="태아보험 NT 검사 결과별 가입 시나리오" />
+        </label>
+        <label>슬러그 (URL) *
+          <input id="f-slug" type="text" placeholder="태아보험-NT-검사-결과별" />
+          <span class="adm-hint">한글 가능. 공백 대신 -. /magazine/&#123;pillar&#125;/&#123;slug&#125;/</span>
+        </label>
+        <label>Pillar *
+          <select id="f-pillar">
+            <option value="pregnancy">임신 (Pregnancy)</option>
+            <option value="newborn">신생아 (Newborn)</option>
+            <option value="toddler">영유아 (Toddler)</option>
+            <option value="school">학동기 (School)</option>
+            <option value="teen">청소년기 (Teen)</option>
+            <option value="case">케이스 (Case)</option>
+          </select>
+        </label>
+        <label>Type *
+          <select id="f-type">
+            <option value="cluster">cluster (개별 가이드)</option>
+            <option value="pillar">pillar (허브 글)</option>
+            <option value="case">case (케이스 스토리)</option>
+            <option value="tool">tool (도구)</option>
+          </select>
+        </label>
+        <label>Intent (복수 선택, 쉼표로 구분)
+          <input id="f-intent" type="text" placeholder="information, timing, condition" />
+          <span class="adm-hint">information / timing / condition / comparison / rejection / claim / case-story / tool</span>
+        </label>
+        <label>키워드 (쉼표로 구분)
+          <input id="f-keywords" type="text" placeholder="태아보험, NT 검사, 가입" />
+        </label>
+        <label class="adm-full">설명 (description) *
+          <textarea id="f-description" rows="2" placeholder="이 글은 NT 검사 결과 두께별로 가입 가능 보험사가 어떻게 달라지는지 정리해드려요."></textarea>
+        </label>
+        <label>발행일 *
+          <input id="f-publishedAt" type="date" />
+        </label>
+        <label>Cover (선택)
+          <input id="f-cover" type="text" placeholder="/covers/nt-test.jpg 또는 비워두기" />
+          <span class="adm-hint">비우면 일러스트 mock 자동 fallback</span>
+        </label>
+        <label class="adm-full">본문 (Markdown / MDX) *
+          <textarea id="f-body" rows="22" placeholder="## 첫 단락 제목&#10;&#10;본문…&#10;&#10;## 두 번째 단락&#10;&#10;..."></textarea>
+          <span class="adm-hint">## 헤더는 본문 단락. TLDR 박스는 첫 단락 위에 직접 마크다운으로. 친근 존댓말 톤(~요/~해드려요).</span>
+        </label>
+
+        <fieldset class="adm-full">
+          <legend>FAQ (Q&A 6~10개 권장 — 본문 FAQ + JSON-LD FAQPage 자동 매칭)</legend>
+          <div id="faq-list"></div>
+          <button type="button" id="add-faq" class="adm-btn adm-btn-ghost">+ FAQ 추가</button>
+        </fieldset>
+      </div>
+
+      <div class="adm-footer">
+        <button id="save-draft" class="adm-btn adm-btn-ghost">초안으로 저장 (draft: true)</button>
+        <button id="save-publish" class="adm-btn adm-btn-primary">발행 (draft: false)</button>
+      </div>
+      <p id="save-status" class="adm-status"></p>
+      <pre id="save-error" class="adm-error" hidden></pre>
+    </section>
+
+  </div>
+
+  <script is:inline src="/magazine/admin-mg-9c4kv7/admin.js" defer></script>
+
+  <style>
+    .adm {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+      font-family: 'Pretendard', sans-serif;
+    }
+    .adm-head { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--gray-200); }
+    .adm-head h1 { font-size: 24px; font-weight: 700; color: var(--gray-900); margin: 0 0 6px; }
+    .adm-sub { font-size: 14px; color: var(--gray-600); }
+    .adm-panel {
+      margin: 24px 0;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+    }
+    .adm-panel h2 { font-size: 18px; font-weight: 700; color: var(--gray-900); margin: 0 0 12px; }
+    .adm-panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .adm-help { font-size: 13px; color: var(--gray-600); margin-bottom: 12px; line-height: 1.6; }
+    .adm-help code { background: var(--gray-100); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+    .adm-token-row { display: flex; gap: 8px; }
+    .adm-token-row input { flex: 1; padding: 8px 12px; border: 1px solid var(--gray-300); border-radius: 8px; font-size: 14px; font-family: monospace; }
+    .adm-btn {
+      padding: 8px 16px;
+      background: var(--blue-700);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .adm-btn:hover { opacity: 0.9; }
+    .adm-btn-ghost { background: transparent; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .adm-btn-ghost:hover { background: var(--gray-100); }
+    .adm-btn-primary { background: var(--blue-700); }
+    .adm-status { font-size: 13px; margin-top: 8px; }
+    .adm-status-ok { color: var(--green); }
+    .adm-status-err { color: var(--red); }
+    .adm-error { background: var(--red); color: #fff; padding: 12px; border-radius: 8px; font-size: 12px; white-space: pre-wrap; margin-top: 8px; }
+    #list-filters { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    #list-filters select { padding: 6px 10px; border: 1px solid var(--gray-300); border-radius: 6px; }
+    .adm-list { list-style: none; padding: 0; margin: 0; }
+    .adm-list-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: var(--gray-100);
+    }
+    .adm-li-pillar {
+      display: inline-block;
+      padding: 2px 8px;
+      background: var(--blue-700);
+      color: var(--white);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-right: 10px;
+    }
+    .adm-li-slug { font-size: 14px; color: var(--gray-800); }
+    .adm-li-actions { display: flex; gap: 6px; }
+    .adm-empty { padding: 20px; text-align: center; color: var(--gray-600); }
+
+    .adm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .adm-grid label {
+      display: flex; flex-direction: column; gap: 4px;
+      font-size: 13px; color: var(--gray-700); font-weight: 500;
+    }
+    .adm-grid label.adm-full { grid-column: 1 / -1; }
+    .adm-grid input, .adm-grid select, .adm-grid textarea {
+      padding: 8px 10px;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    .adm-grid textarea { font-family: 'SFMono-Regular', Consolas, monospace; font-size: 13px; line-height: 1.6; resize: vertical; }
+    .adm-hint { font-size: 11px; color: var(--gray-500); margin-top: 2px; font-weight: 400; }
+    fieldset.adm-full { grid-column: 1 / -1; border: 1px solid var(--gray-200); border-radius: 8px; padding: 12px; margin-top: 8px; }
+    fieldset legend { font-size: 13px; font-weight: 600; color: var(--gray-700); padding: 0 6px; }
+    .adm-faq-row { display: grid; grid-template-columns: 1fr 2fr auto; gap: 8px; margin-bottom: 8px; align-items: start; }
+    .adm-faq-row input, .adm-faq-row textarea { padding: 6px 8px; border: 1px solid var(--gray-300); border-radius: 4px; font-size: 13px; font-family: inherit; }
+    .adm-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray-200); }
+
+    @media (max-width: 720px) {
+      .adm-grid { grid-template-columns: 1fr; }
+      .adm-faq-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</BaseLayout>
