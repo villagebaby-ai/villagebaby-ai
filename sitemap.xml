@@ -67,14 +67,19 @@
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/5%EC%84%B8%EB%8C%80-%EC%8B%A4%EC%86%90-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>5세대 실손 완전정리 2026 — 4세대와 무엇이 달라졌나 | 베이비빌리</image:title>
     </image:image>
-  </url>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/5%EC%84%B8%EB%8C%80-%EC%8B%A4%EC%86%90-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/img-4vs5-comparison.webp</image:loc>
+      <image:title>4세대 vs 5세대 실손 핵심 비교</image:title>
+      <image:caption>4세대(2021.7~2026.5.5)와 5세대(2026.5.6~) 실손의 핵심 차이 — 비급여 구조 분리, 비중증 자기부담 30%→50%, 한도 5,000만→1,000만, 보험료 21.8% 인하 예시 (현대해상 어린이실손 기준)</image:caption>
+    </image:image>
+    </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EC%96%B4%EB%A6%B0%EC%9D%B4-5%EC%84%B8%EB%8C%80-%EC%8B%A4%EC%86%90/</loc>
     <lastmod>2026-05-06</lastmod>
