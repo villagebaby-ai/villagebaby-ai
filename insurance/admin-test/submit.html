@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<base href="/insurance/admin-test/">
+<title>배서 요청 제출 — 빌리지점</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/mock-data.js"></script>
+<script src="assets/app.js"></script>
+<script>VBE.renderHeader('submit');</script>
+
+<main class="page page-narrow">
+  <div class="page-header">
+    <h1>배서 요청 제출</h1>
+    <p>업무구분에 맞는 필수 정보를 입력해 주세요. 누락이 있으면 진행이 늦어집니다.</p>
+  </div>
+
+  <form id="vbe-submit-form" class="card" novalidate>
+    <section>
+      <h3 style="margin-bottom:14px;color:var(--c-text-sub);font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">신청자 정보 (자동 입력)</h3>
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label">상담원명</label>
+          <input class="input readonly" id="advisorName" readonly>
+        </div>
+        <div class="form-row">
+          <label class="form-label">소속팀</label>
+          <input class="input readonly" id="team" readonly>
+        </div>
+        <div class="form-row full">
+          <label class="form-label">이메일</label>
+          <input class="input readonly" id="advisorEmail" readonly>
+        </div>
+      </div>
+    </section>
+
+    <hr style="border:none;border-top:1px solid var(--c-border);margin:24px 0;">
+
+    <section>
+      <h3 style="margin-bottom:14px;color:var(--c-text-sub);font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">고객 정보</h3>
+      <div class="form-grid">
+        <div class="form-row">
+          <label class="form-label">고객명 <span class="required">*</span></label>
+          <input class="input" name="customerName" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">연락처 <span class="required">*</span></label>
+          <input class="input" name="phone" placeholder="010-XXXX-XXXX" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">증권번호 <span class="required">*</span></label>
+          <input class="input mono" name="policyNumber" placeholder="예: MOCK-A001-2024" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">업무구분 <span class="required">*</span></label>
+          <select class="select" name="workType" id="workType" required>
+            <option value="">선택해 주세요</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section id="dynamicSection" style="display:none;"></section>
+
+    <hr style="border:none;border-top:1px solid var(--c-border);margin:24px 0;">
+
+    <section>
+      <h3 style="margin-bottom:14px;color:var(--c-text-sub);font-size:13px;text-transform:uppercase;letter-spacing:0.04em;">서류 첨부 (선택, 최대 5개)</h3>
+      <div class="dropzone" id="dropzone">
+        <p style="margin:0 0 4px;font-weight:600;">파일을 드래그하거나 클릭하여 선택</p>
+        <p class="muted" style="margin:0;font-size:12px;">목업에서는 파일명만 기록됩니다. 실제 운영 시 Google Drive에 업로드됩니다.</p>
+        <input type="file" id="fileInput" multiple style="display:none;">
+      </div>
+      <ul id="attachmentList" class="attachment-list"></ul>
+    </section>
+
+    <hr style="border:none;border-top:1px solid var(--c-border);margin:24px 0;">
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <a class="btn" href="my.html">취소</a>
+      <button type="submit" class="btn btn-primary">제출하기</button>
+    </div>
+  </form>
+</main>
+
+<footer class="app-footer">빌리지점 배서 보드 목업 · v0.1</footer>
+
+<script>
+(function () {
+  const me = VBE.DB.currentUser();
+  document.getElementById('advisorName').value = me.name;
+  document.getElementById('team').value = me.team;
+  document.getElementById('advisorEmail').value = me.email;
+
+  const workTypeSelect = document.getElementById('workType');
+  window.MOCK_SEED.workTypes.forEach(wt => {
+    const opt = document.createElement('option');
+    opt.value = wt; opt.textContent = wt;
+    workTypeSelect.appendChild(opt);
+  });
+
+  const dynamicSection = document.getElementById('dynamicSection');
+
+  /* ----- 업무구분별 동적 필드 템플릿 ----- */
+  function renderDynamic(workType) {
+    if (!workType) { dynamicSection.style.display = 'none'; dynamicSection.innerHTML = ''; return; }
+    dynamicSection.style.display = 'block';
+    let html = '';
+    switch (workType) {
+      case '태아등재':
+        html = `
+          <div class="dynamic-section">
+            <h3>태아등재 — 추가 정보</h3>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label">출산예정일 <span class="required">*</span></label>
+                <input class="input" type="date" name="due_date" required>
+              </div>
+              <div class="form-row full">
+                <div class="checkbox-row">
+                  <input type="checkbox" id="ck_fr" name="attached_family_register" required>
+                  <label for="ck_fr">등본 첨부 확인 (필수)</label>
+                </div>
+                <div class="checkbox-row">
+                  <input type="checkbox" id="ck_cn" name="attached_consent" required>
+                  <label for="ck_cn">동의서 첨부 확인 (필수)</label>
+                </div>
+                <p class="help-text">등본·동의서 파일은 위 "서류 첨부"에 함께 올려주세요.</p>
+              </div>
+            </div>
+          </div>`;
+        break;
+      case '자동이체변경 또는 카드변경':
+        html = `
+          <div class="dynamic-section">
+            <h3>자동이체변경 또는 카드변경 — 추가 정보</h3>
+            <div class="form-row">
+              <label class="form-label">변경유형 <span class="required">*</span></label>
+              <div class="radio-group" id="changeTypeRG">
+                <label class="radio-card"><input type="radio" name="change_type" value="card" required>💳 카드 변경</label>
+                <label class="radio-card"><input type="radio" name="change_type" value="bank_transfer" required>🏦 자동이체 변경</label>
+              </div>
+            </div>
+            <div id="cardFields" style="display:none;">
+              <div class="form-grid">
+                <div class="form-row">
+                  <label class="form-label">카드사 <span class="required">*</span></label>
+                  <input class="input" name="card_company" placeholder="예: 현대카드">
+                </div>
+                <div class="form-row">
+                  <label class="form-label">카드 끝 4자리 <span class="required">*</span></label>
+                  <input class="input mono" name="card_last4" pattern="\\d{4}" maxlength="4" placeholder="1234">
+                  <p class="help-text">⚠️ 전체 카드번호는 입력하지 마세요. 끝 4자리만 받습니다. (개인정보 보호)</p>
+                </div>
+              </div>
+            </div>
+            <div id="bankFields" style="display:none;">
+              <div class="form-grid">
+                <div class="form-row">
+                  <label class="form-label">은행 <span class="required">*</span></label>
+                  <input class="input" name="bank" placeholder="예: 국민은행">
+                </div>
+                <div class="form-row">
+                  <label class="form-label">예금주 <span class="required">*</span></label>
+                  <input class="input" name="account_holder">
+                </div>
+                <div class="form-row full">
+                  <label class="form-label">계좌번호 <span class="required">*</span></label>
+                  <input class="input mono" name="account_number" placeholder="123-456-789012">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="form-label">변경 사유 <span class="required">*</span></label>
+              <textarea class="textarea" name="reason" required></textarea>
+            </div>
+          </div>`;
+        break;
+      case '담보삭제 및 추가':
+        html = `
+          <div class="dynamic-section">
+            <h3>담보삭제 및 추가 — 추가 정보</h3>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label">추가 담보 (한 줄에 하나)</label>
+                <textarea class="textarea" name="add_coverages" placeholder="예:&#10;암 진단비 5천만원 추가&#10;뇌혈관질환 진단비"></textarea>
+              </div>
+              <div class="form-row">
+                <label class="form-label">삭제 담보 (한 줄에 하나)</label>
+                <textarea class="textarea" name="remove_coverages" placeholder="예:&#10;치과 특약"></textarea>
+              </div>
+              <div class="form-row full">
+                <label class="form-label">사유 <span class="required">*</span></label>
+                <textarea class="textarea" name="reason" required></textarea>
+              </div>
+            </div>
+          </div>`;
+        break;
+      case '이관고객관리':
+        html = `
+          <div class="dynamic-section">
+            <h3>이관고객관리 — 추가 정보</h3>
+            <div class="form-grid">
+              <div class="form-row full">
+                <label class="form-label">이관 사유 <span class="required">*</span></label>
+                <input class="input" name="transfer_reason" required>
+              </div>
+              <div class="form-row">
+                <label class="form-label">이관 전 담당자 <span class="required">*</span></label>
+                <input class="input" name="previous_advisor" required>
+              </div>
+              <div class="form-row">
+                <label class="form-label">이관 후 담당자 <span class="required">*</span></label>
+                <input class="input" name="new_advisor" required>
+              </div>
+            </div>
+          </div>`;
+        break;
+      case '육아 휴직 및 출산 할인':
+        html = `
+          <div class="dynamic-section">
+            <h3>육아 휴직 및 출산 할인 — 추가 정보</h3>
+            <div class="form-row">
+              <label class="form-label">구분 <span class="required">*</span></label>
+              <div class="radio-group" id="parentalTypeRG">
+                <label class="radio-card"><input type="radio" name="type" value="parental_leave" required>👶 육아 휴직</label>
+                <label class="radio-card"><input type="radio" name="type" value="childbirth" required>🍼 출산 할인</label>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label">시작일 <span class="required">*</span></label>
+                <input class="input" type="date" name="start_date" required>
+              </div>
+              <div class="form-row">
+                <label class="form-label">종료일 <span class="required">*</span></label>
+                <input class="input" type="date" name="end_date" required>
+              </div>
+              <div class="form-row full">
+                <div class="checkbox-row">
+                  <input type="checkbox" id="ck_proof" name="attached_proof" required>
+                  <label for="ck_proof">증빙서류 첨부 확인 (휴직증명서 / 출산증명서)</label>
+                </div>
+              </div>
+            </div>
+          </div>`;
+        break;
+      case '계약자변경':
+        html = `
+          <div class="dynamic-section">
+            <h3>계약자변경 — 추가 정보</h3>
+            <h4 style="margin-top:8px;">변경 전 계약자</h4>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label">성명 <span class="required">*</span></label>
+                <input class="input" name="prev_name" required>
+              </div>
+              <div class="form-row">
+                <label class="form-label">피보험자와의 관계 <span class="required">*</span></label>
+                <input class="input" name="prev_relation" placeholder="예: 부, 모, 본인" required>
+              </div>
+              <div class="form-row full">
+                <label class="form-label">생년월일 <span class="required">*</span></label>
+                <input class="input" type="date" name="prev_birth" required>
+              </div>
+            </div>
+            <h4 style="margin-top:14px;">변경 후 계약자</h4>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="form-label">성명 <span class="required">*</span></label>
+                <input class="input" name="new_name" required>
+              </div>
+              <div class="form-row">
+                <label class="form-label">피보험자와의 관계 <span class="required">*</span></label>
+                <input class="input" name="new_relation" required>
+              </div>
+              <div class="form-row full">
+                <label class="form-label">생년월일 <span class="required">*</span></label>
+                <input class="input" type="date" name="new_birth" required>
+              </div>
+            </div>
+          </div>`;
+        break;
+      case '기타':
+        html = `
+          <div class="dynamic-section">
+            <h3>기타 — 요청 내용</h3>
+            <div class="form-row">
+              <label class="form-label">요청 내용 <span class="required">*</span></label>
+              <textarea class="textarea" name="description" minlength="10" rows="4" required placeholder="처리가 필요한 내용을 구체적으로 적어주세요 (최소 10자)"></textarea>
+            </div>
+          </div>`;
+        break;
+    }
+    dynamicSection.innerHTML = html;
+
+    /* 동적 동작 바인딩 */
+    if (workType === '자동이체변경 또는 카드변경') {
+      const rg = document.getElementById('changeTypeRG');
+      rg.addEventListener('change', () => {
+        const v = rg.querySelector('input:checked').value;
+        document.getElementById('cardFields').style.display = (v === 'card') ? 'block' : 'none';
+        document.getElementById('bankFields').style.display = (v === 'bank_transfer') ? 'block' : 'none';
+        rg.querySelectorAll('.radio-card').forEach(rc => rc.classList.toggle('selected', rc.contains(rc.querySelector('input:checked'))));
+      });
+    }
+    if (workType === '육아 휴직 및 출산 할인') {
+      const rg = document.getElementById('parentalTypeRG');
+      rg.addEventListener('change', () => {
+        rg.querySelectorAll('.radio-card').forEach(rc => rc.classList.toggle('selected', rc.contains(rc.querySelector('input:checked'))));
+      });
+    }
+  }
+
+  workTypeSelect.addEventListener('change', e => renderDynamic(e.target.value));
+
+  /* ----- 첨부 ----- */
+  const attachments = [];
+  const fileInput = document.getElementById('fileInput');
+  const dropzone = document.getElementById('dropzone');
+  const attachmentList = document.getElementById('attachmentList');
+
+  function renderAttachments() {
+    attachmentList.innerHTML = attachments.map((f, i) =>
+      `<li>📎 ${VBE.escapeHtml(f)} <button type="button" class="remove-btn" data-i="${i}">×</button></li>`
+    ).join('');
+    attachmentList.querySelectorAll('.remove-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        attachments.splice(parseInt(b.dataset.i), 1);
+        renderAttachments();
+      });
+    });
+  }
+  function addFiles(files) {
+    for (const f of files) {
+      if (attachments.length >= 5) { VBE.toast('최대 5개까지 첨부 가능합니다.', 'warning'); break; }
+      attachments.push(f.name);
+    }
+    renderAttachments();
+  }
+  dropzone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', e => addFiles(e.target.files));
+  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('dragover'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+  dropzone.addEventListener('drop', e => {
+    e.preventDefault(); dropzone.classList.remove('dragover');
+    addFiles(e.dataTransfer.files);
+  });
+
+  /* ----- 제출 ----- */
+  document.getElementById('vbe-submit-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const workType = fd.get('workType');
+    if (!workType) { VBE.toast('업무구분을 선택해 주세요.', 'danger'); return; }
+
+    /* HTML5 검증 */
+    if (!e.target.checkValidity()) {
+      e.target.reportValidity();
+      return;
+    }
+
+    /* 업무구분별 details 구성 */
+    let details = {};
+    switch (workType) {
+      case '태아등재':
+        details = {
+          due_date: fd.get('due_date'),
+          attached_family_register: !!fd.get('attached_family_register'),
+          attached_consent: !!fd.get('attached_consent'),
+        }; break;
+      case '자동이체변경 또는 카드변경':
+        details = { change_type: fd.get('change_type'), reason: fd.get('reason') };
+        if (details.change_type === 'card') {
+          details.card_company = fd.get('card_company');
+          details.card_last4 = fd.get('card_last4');
+        } else {
+          details.bank = fd.get('bank');
+          details.account_holder = fd.get('account_holder');
+          details.account_number = fd.get('account_number');
+        }
+        break;
+      case '담보삭제 및 추가':
+        details = {
+          add_coverages: (fd.get('add_coverages') || '').split('\n').map(s => s.trim()).filter(Boolean),
+          remove_coverages: (fd.get('remove_coverages') || '').split('\n').map(s => s.trim()).filter(Boolean),
+          reason: fd.get('reason'),
+        }; break;
+      case '이관고객관리':
+        details = {
+          transfer_reason: fd.get('transfer_reason'),
+          previous_advisor: fd.get('previous_advisor'),
+          new_advisor: fd.get('new_advisor'),
+        }; break;
+      case '육아 휴직 및 출산 할인':
+        details = {
+          type: fd.get('type'),
+          start_date: fd.get('start_date'),
+          end_date: fd.get('end_date'),
+          attached_proof: !!fd.get('attached_proof'),
+        }; break;
+      case '계약자변경':
+        details = {
+          previous: { name: fd.get('prev_name'), relation_to_insured: fd.get('prev_relation'), birth_date: fd.get('prev_birth') },
+          new: { name: fd.get('new_name'), relation_to_insured: fd.get('new_relation'), birth_date: fd.get('new_birth') },
+        }; break;
+      case '기타':
+        details = { description: fd.get('description') }; break;
+    }
+
+    const me = VBE.DB.currentUser();
+    const newReq = VBE.createRequest({
+      team: me.team,
+      advisorEmail: me.email,
+      advisorName: me.name,
+      customerName: fd.get('customerName'),
+      phone: fd.get('phone'),
+      workType,
+      policyNumber: fd.get('policyNumber'),
+      attachments,
+      details,
+    });
+
+    VBE.toast(`<strong>${newReq.id}</strong> 접수 완료 · 총무에게 알림 메일 발송됨 <span class="muted">(목업)</span>`, 'success', 4500);
+    setTimeout(() => { location.href = 'my.html'; }, 800);
+  });
+})();
+</script>
+</body>
+</html>

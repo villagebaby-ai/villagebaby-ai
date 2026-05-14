@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<base href="/insurance/admin-test/">
+<title>내 요청 — 빌리지점 배서 보드</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<script src="assets/mock-data.js"></script>
+<script src="assets/app.js"></script>
+<script>VBE.renderHeader('my');</script>
+
+<main class="page">
+  <div class="page-header">
+    <h1 id="pageTitle">내 요청</h1>
+    <p id="pageSubtitle" class="muted"></p>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <input class="input" id="searchBox" placeholder="고객명·증권번호로 검색" style="max-width:280px;">
+      <a href="submit.html" class="btn btn-primary" style="margin-left:auto;">+ 새 요청 제출</a>
+    </div>
+  </div>
+
+  <div class="tabs" id="statusTabs"></div>
+
+  <div id="cardList" class="request-cards"></div>
+  <div id="emptyState" class="card" style="display:none;text-align:center;padding:60px 20px;">
+    <p style="font-size:32px;margin:0 0 8px;">📭</p>
+    <p class="muted" style="margin:0;">조건에 맞는 요청이 없습니다.</p>
+  </div>
+</main>
+
+<footer class="app-footer">빌리지점 배서 보드 목업 · v0.1</footer>
+
+<script>
+(function () {
+  const me = VBE.DB.currentUser();
+  document.getElementById('pageTitle').textContent =
+    me.role === '상담사' ? '내 요청' : `${me.name}님이 제출한 요청`;
+  document.getElementById('pageSubtitle').textContent =
+    me.role === '상담사'
+      ? '내가 제출한 배서 요청과 처리 상태를 확인할 수 있습니다.'
+      : `${me.role} 계정 — 본인이 직접 제출한 건만 표시됩니다. 전체 요청은 처리 보드에서 확인하세요.`;
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function getMyRequests() {
+    return VBE.DB.requests().filter(r => r.advisorEmail === me.email);
+  }
+  function getFiltered() {
+    return getMyRequests().filter(r => {
+      if (currentFilter !== 'all' && r.status !== currentFilter) return false;
+      if (currentSearch) {
+        const q = currentSearch.toLowerCase();
+        if (!r.customerName.toLowerCase().includes(q) && !r.policyNumber.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    }).sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
+  }
+
+  function renderTabs() {
+    const all = getMyRequests();
+    const counts = {
+      all: all.length,
+      접수: all.filter(r => r.status === '접수').length,
+      진행중: all.filter(r => r.status === '진행중').length,
+      완료: all.filter(r => r.status === '완료').length,
+      반려: all.filter(r => r.status === '반려').length,
+      보류: all.filter(r => r.status === '보류').length,
+    };
+    const tabsEl = document.getElementById('statusTabs');
+    const keys = ['all', '접수', '진행중', '완료', '반려', '보류'];
+    const labels = { all: '전체', '접수': '접수', '진행중': '진행중', '완료': '완료', '반려': '반려', '보류': '보류' };
+    tabsEl.innerHTML = keys.map(k =>
+      `<button class="tab ${currentFilter === k ? 'active' : ''}" data-k="${k}">${labels[k]}<span class="count">${counts[k]}</span></button>`
+    ).join('');
+    tabsEl.querySelectorAll('.tab').forEach(t => {
+      t.addEventListener('click', () => { currentFilter = t.dataset.k; renderAll(); });
+    });
+  }
+
+  function renderCards() {
+    const list = getFiltered();
+    const el = document.getElementById('cardList');
+    const empty = document.getElementById('emptyState');
+    if (!list.length) {
+      el.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+    el.innerHTML = list.map(r => `
+      <div class="request-card" data-id="${r.id}">
+        <div class="request-card-head">
+          ${VBE.statusBadge(r.status)}
+          <span class="req-id">${r.id}</span>
+          <span class="req-time">${VBE.fmtRelative(r.submittedAt)}</span>
+        </div>
+        <div class="request-card-body">
+          <h3>${VBE.escapeHtml(r.customerName)} · ${VBE.escapeHtml(r.workType)}</h3>
+          <p>증권 ${VBE.escapeHtml(r.policyNumber)} · ${VBE.escapeHtml(r.phone)}</p>
+          ${r.status === '완료' && r.completedAt ? `<p class="muted" style="margin-top:4px;font-size:12px;">✓ ${VBE.fmtDate(r.completedAt)} 처리완료${r.memo ? ' · ' + VBE.escapeHtml(r.memo.slice(0, 30)) + (r.memo.length > 30 ? '…' : '') : ''}</p>` : ''}
+          ${r.status === '반려' && r.memo ? `<p style="margin-top:4px;font-size:12px;color:var(--c-danger);">⚠ 반려사유: ${VBE.escapeHtml(r.memo)}</p>` : ''}
+          ${r.status === '보류' && r.memo ? `<p style="margin-top:4px;font-size:12px;color:var(--c-warning);">⏸ 보류사유: ${VBE.escapeHtml(r.memo)}</p>` : ''}
+        </div>
+      </div>
+    `).join('');
+    el.querySelectorAll('.request-card').forEach(c => {
+      c.addEventListener('click', () => {
+        const req = VBE.DB.requests().find(x => x.id === c.dataset.id);
+        VBE.showRequestDetail(req, { onUpdate: renderAll });
+      });
+    });
+  }
+
+  function renderAll() { renderTabs(); renderCards(); }
+
+  document.getElementById('searchBox').addEventListener('input', e => {
+    currentSearch = e.target.value;
+    renderCards();
+  });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>

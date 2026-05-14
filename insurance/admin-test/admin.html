@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<base href="/insurance/admin-test/">
+<title>관리자 — 빌리지점 배서 보드</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<script src="assets/mock-data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  VBE.renderHeader('admin');
+  VBE.requireRole(['관리자']);
+</script>
+
+<main class="page" id="adminMain" style="display:none;">
+  <div class="page-header">
+    <h1>관리자 대시보드</h1>
+    <p class="muted">처리량·소요시간·반려율 현황과 사용자 관리.</p>
+  </div>
+
+  <section style="margin-bottom:24px;">
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="label">이번 주 처리 건수</div><div class="value" id="kpiWeekDone">-</div><div class="sub" id="kpiWeekRange"></div></div>
+      <div class="kpi-card"><div class="label">평균 처리시간</div><div class="value" id="kpiAvgHours">-</div><div class="sub">접수 → 완료</div></div>
+      <div class="kpi-card"><div class="label">현재 미처리</div><div class="value" id="kpiOpen">-</div><div class="sub">접수 + 진행중</div></div>
+      <div class="kpi-card"><div class="label">반려율</div><div class="value" id="kpiRejectRate">-</div><div class="sub">전체 대비</div></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:24px;">
+    <h2>처리 현황</h2>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>업무구분 분포</h3>
+        <canvas id="chartWorkType"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>최근 14일 일별 제출</h3>
+        <canvas id="chartDaily"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3>총무별 처리량</h3>
+        <canvas id="chartAssignee"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>사용자 관리</h2>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="data-table" style="border:none;">
+        <thead><tr><th>이름</th><th>역할</th><th>소속팀</th><th>이메일</th><th>상태</th></tr></thead>
+        <tbody id="userTbody"></tbody>
+      </table>
+    </div>
+    <p class="muted" style="margin-top:8px;font-size:12px;">⚠ 목업: 사용자 추가·비활성화는 실제로 반영되지 않습니다. 실제 구현 시 `사용자` 시트/테이블을 편집합니다.</p>
+  </section>
+</main>
+
+<footer class="app-footer">빌리지점 배서 보드 목업 · v0.1</footer>
+
+<script>
+(function () {
+  const me = VBE.DB.currentUser();
+  if (me.role !== '관리자') return;
+  document.getElementById('adminMain').style.display = '';
+
+  const all = VBE.DB.requests();
+  const now = new Date('2026-05-14T18:00:00+09:00');
+
+  /* ===== KPI ===== */
+  const weekStart = new Date(now); weekStart.setDate(now.getDate() - 6);
+  const inWeek = all.filter(r => r.completedAt && new Date(r.completedAt) >= weekStart && r.status === '완료');
+  document.getElementById('kpiWeekDone').textContent = inWeek.length + '건';
+  document.getElementById('kpiWeekRange').textContent =
+    `${VBE.fmtDate(weekStart.toISOString(), { dateOnly: true })} ~ ${VBE.fmtDate(now.toISOString(), { dateOnly: true })}`;
+
+  const doneAll = all.filter(r => r.completedAt && r.status === '완료');
+  if (doneAll.length) {
+    const avgMs = doneAll.reduce((s, r) =>
+      s + (new Date(r.completedAt) - new Date(r.submittedAt)), 0) / doneAll.length;
+    const hours = avgMs / 3600000;
+    document.getElementById('kpiAvgHours').textContent = hours.toFixed(1) + 'h';
+  } else {
+    document.getElementById('kpiAvgHours').textContent = '-';
+  }
+
+  document.getElementById('kpiOpen').textContent =
+    all.filter(r => r.status === '접수' || r.status === '진행중').length + '건';
+
+  const rejected = all.filter(r => r.status === '반려').length;
+  document.getElementById('kpiRejectRate').textContent =
+    all.length ? Math.round(rejected / all.length * 100) + '%' : '-';
+
+  /* ===== 차트 1: 업무구분 분포 (도넛) ===== */
+  const wtCounts = {};
+  window.MOCK_SEED.workTypes.forEach(w => wtCounts[w] = 0);
+  all.forEach(r => { wtCounts[r.workType] = (wtCounts[r.workType] || 0) + 1; });
+  new Chart(document.getElementById('chartWorkType'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(wtCounts),
+      datasets: [{
+        data: Object.values(wtCounts),
+        backgroundColor: ['#2563eb', '#0284c7', '#16a34a', '#d97706', '#dc2626', '#7c3aed', '#6b7280'],
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } },
+    },
+  });
+
+  /* ===== 차트 2: 일별 제출 (라인) ===== */
+  const days = [];
+  for (let i = 13; i >= 0; i--) {
+    const d = new Date(now); d.setDate(now.getDate() - i);
+    const key = d.toISOString().slice(0, 10);
+    days.push({ key, label: `${d.getMonth() + 1}/${d.getDate()}`, count: 0 });
+  }
+  all.forEach(r => {
+    const key = r.submittedAt.slice(0, 10);
+    const day = days.find(d => d.key === key);
+    if (day) day.count++;
+  });
+  new Chart(document.getElementById('chartDaily'), {
+    type: 'line',
+    data: {
+      labels: days.map(d => d.label),
+      datasets: [{
+        label: '제출 건수',
+        data: days.map(d => d.count),
+        borderColor: '#2563eb',
+        backgroundColor: 'rgba(37,99,235,0.12)',
+        tension: 0.3, fill: true,
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+    },
+  });
+
+  /* ===== 차트 3: 총무별 처리량 (바) ===== */
+  const assignees = VBE.DB.users().filter(u => u.role === '총무');
+  const aCounts = assignees.map(u => ({
+    name: u.name,
+    done: all.filter(r => r.assigneeEmail === u.email && r.status === '완료').length,
+    inProgress: all.filter(r => r.assigneeEmail === u.email && (r.status === '진행중' || r.status === '보류')).length,
+  }));
+  new Chart(document.getElementById('chartAssignee'), {
+    type: 'bar',
+    data: {
+      labels: aCounts.map(a => a.name),
+      datasets: [
+        { label: '완료', data: aCounts.map(a => a.done), backgroundColor: '#16a34a' },
+        { label: '진행중·보류', data: aCounts.map(a => a.inProgress), backgroundColor: '#0284c7' },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        x: { stacked: true },
+        y: { stacked: true, beginAtZero: true, ticks: { stepSize: 1 } },
+      },
+    },
+  });
+
+  /* ===== 사용자 테이블 ===== */
+  const tbody = document.getElementById('userTbody');
+  tbody.innerHTML = VBE.DB.users().map(u => `
+    <tr>
+      <td><strong>${VBE.escapeHtml(u.name)}</strong></td>
+      <td><span class="badge ${u.role === '관리자' ? 'badge-info' : u.role === '총무' ? 'badge-success' : 'badge-neutral'}">${u.role}</span></td>
+      <td>${VBE.escapeHtml(u.team)}</td>
+      <td class="mono">${VBE.escapeHtml(u.email)}</td>
+      <td>${u.active ? '<span class="badge badge-success">활성</span>' : '<span class="badge badge-neutral">비활성</span>'}</td>
+    </tr>
+  `).join('');
+})();
+</script>
+</body>
+</html>
