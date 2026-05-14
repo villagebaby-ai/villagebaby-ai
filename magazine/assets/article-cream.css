@@ -54,18 +54,18 @@ main {
   margin-bottom: 28px !important;
   border: 1px solid var(--cream-dark) !important;
 }
-.article-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #2563B6;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 999px;
+/* Astro cid 포함 고강도 override */
+.article-meta[data-astro-cid-zm77yjld] {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #2563B6 !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  padding: 4px 14px !important;
+  border-radius: 999px !important;
   margin-bottom: 16px !important;
 }
 article h1 {
@@ -76,7 +76,7 @@ article h1 {
   color: #0D3B6F !important;
   margin-bottom: 14px !important;
 }
-.article-lede {
+.article-lede[data-astro-cid-zm77yjld] {
   font-size: 15px !important;
   color: #4B5563 !important;
   line-height: 1.8 !important;
@@ -243,74 +243,75 @@ article h1 {
   line-height: 1.5 !important;
 }
 
-/* ── 핏체크 리드 CTA ── */
-.lead-cta {
+/* ── 핏체크 리드 CTA (Astro cid 포함 고강도 override) ── */
+.lead-cta[data-astro-cid-uyiggmjf] {
   background: linear-gradient(135deg, #15518F 0%, #0D3B6F 100%) !important;
   border-radius: 20px !important;
   padding: 36px !important;
   margin: 40px 0 !important;
   position: relative !important;
   overflow: hidden !important;
+  border: none !important;
 }
-.lead-cta::before {
+.lead-cta[data-astro-cid-uyiggmjf]::before {
   content: '';
   position: absolute;
   right: -30px; top: -30px;
   width: 160px; height: 160px;
   background: rgba(255,255,255,.06);
   border-radius: 50%;
+  pointer-events: none;
 }
-.lead-cta-label {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(255,255,255,.18);
-  color: #fff;
+.lead-cta-label[data-astro-cid-uyiggmjf] {
+  display: inline-block !important;
+  background: rgba(255,255,255,.2) !important;
+  color: #fff !important;
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: .1em !important;
   padding: 4px 12px !important;
   border-radius: 999px !important;
-  margin-bottom: 12px !important;
+  margin-bottom: 14px !important;
 }
-.lead-cta h3 {
-  font-size: 1.25rem !important;
+.lead-cta[data-astro-cid-uyiggmjf] h3[data-astro-cid-uyiggmjf] {
+  font-size: 1.2rem !important;
   font-weight: 900 !important;
   color: #fff !important;
   letter-spacing: -.02em !important;
-  line-height: 1.35 !important;
+  line-height: 1.4 !important;
   margin-bottom: 10px !important;
 }
-.lead-cta-body {
+.lead-cta-body[data-astro-cid-uyiggmjf] {
+  color: rgba(255,255,255,.82) !important;
   font-size: 14px !important;
-  color: rgba(255,255,255,.8) !important;
   line-height: 1.75 !important;
   margin-bottom: 20px !important;
 }
-.lead-cta-btn {
-  display: inline-flex !important;
-  align-items: center !important;
+/* 버튼: 흰 배경 + 남색 글씨 (Astro !important보다 높은 specificity) */
+.lead-cta[data-astro-cid-uyiggmjf] .lead-cta-btn[data-astro-cid-uyiggmjf] {
   background: #fff !important;
   color: #15518F !important;
-  padding: 12px 24px !important;
+  padding: 13px 26px !important;
   border-radius: 12px !important;
   font-size: 15px !important;
   font-weight: 700 !important;
   text-decoration: none !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18) !important;
   transition: transform .1s, box-shadow .15s !important;
-  box-shadow: 0 4px 16px rgba(0,0,0,.15) !important;
+  display: inline-block !important;
 }
-.lead-cta-btn:hover {
+.lead-cta[data-astro-cid-uyiggmjf] .lead-cta-btn[data-astro-cid-uyiggmjf]:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,.2) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22) !important;
 }
-.lead-cta-fallback {
+.lead-cta-fallback[data-astro-cid-uyiggmjf] {
+  color: rgba(255,255,255,.6) !important;
   font-size: 13px !important;
-  color: rgba(255,255,255,.65) !important;
-  margin-top: 12px !important;
+  margin-top: 14px !important;
   margin-bottom: 0 !important;
 }
-.lead-cta-fallback a {
-  color: rgba(255,255,255,.9) !important;
+.lead-cta-fallback[data-astro-cid-uyiggmjf] a[data-astro-cid-uyiggmjf] {
+  color: rgba(255,255,255,.88) !important;
   text-decoration: underline !important;
 }
 
