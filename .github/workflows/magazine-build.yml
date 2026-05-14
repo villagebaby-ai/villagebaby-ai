@@ -49,3 +49,12 @@ jobs:
           fi
           git commit -m "build(magazine): auto-rebuild from magazine-src@${GITHUB_SHA::7}"
           git push
+
+      # 빌드 완료 후 검색엔진 자동 색인 제출
+      # - IndexNow: Bing + Yandex (변경 URL 즉시 색인 요청)
+      # - Sitemap Ping: Google + Naver (sitemap 갱신 알림)
+      - name: Submit URLs to search engines
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA:  ${{ github.sha }}
+        run: node magazine-src/scripts/submit-urls.mjs
