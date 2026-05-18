@@ -637,12 +637,78 @@
     .site-footer {
       background: var(--gray-900);
       color: var(--gray-400);
-      padding: 32px 20px;
-      text-align: center;
-      font-size: .8rem;
+      padding: 40px 20px 28px;
       margin-top: 80px;
+      font-size: .8rem;
     }
-    .site-footer a { color: var(--gray-400); text-decoration: underline; }
+    .site-footer__inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px 40px;
+      align-items: start;
+    }
+    @media (max-width: 600px) {
+      .site-footer__inner { grid-template-columns: 1fr; }
+    }
+    .site-footer__brand { }
+    .site-footer__logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .site-footer__tagline {
+      font-size: .78rem;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+    .site-footer__app {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 7px;
+      padding: 8px 14px;
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .site-footer__app:hover { background: rgba(255,255,255,.14); }
+    .site-footer__nav { }
+    .site-footer__nav-title {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .site-footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .site-footer__links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: .82rem;
+      transition: color .15s;
+    }
+    .site-footer__links a:hover { color: #fff; }
+    .site-footer__bottom {
+      max-width: 860px;
+      margin: 24px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #1e293b;
+      color: #475569;
+      font-size: .75rem;
+    }
 
     /* ───── UTILS ───── */
     .divider { height: 1px; background: var(--gray-100); margin: 40px 0; }
@@ -1069,8 +1135,28 @@
 </main><!-- /main -->
 
 <footer class="site-footer">
-  <p>© 2026 villagebaby.kr — 육아 보험 정보 가이드</p>
-  <p style="margin-top:8px;"><a href="https://villagebaby.kr/">홈</a> · <a href="https://villagebaby.kr/guide/">보험 가이드</a> · <a href="https://villagebaby.kr/about/">운영자 소개</a></p>
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <div class="site-footer__logo">🍼 villagebaby.kr</div>
+      <div class="site-footer__tagline">임신·육아 보험 정보 가이드<br>특정 보험사 추천 없음 · 정보 제공 목적</div>
+      <a href="https://babybilly.co/ko" class="site-footer__app" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+        베이비빌리 앱 다운로드
+      </a>
+    </div>
+    <div class="site-footer__nav">
+      <div class="site-footer__nav-title">바로가기</div>
+      <div class="site-footer__links">
+        <a href="https://villagebaby.kr/">홈</a>
+        <a href="https://villagebaby.kr/guide/">보험 가이드 전체</a>
+        <a href="https://villagebaby.kr/privacy/">개인정보처리방침</a>
+        <a href="https://villagebaby.kr/terms/">이용약관</a>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    © 2026 villagebaby.kr — 이 페이지의 보험료 예상 범위는 참고용이며 실제 금액과 다를 수 있습니다.
+  </div>
 </footer>
 
 
