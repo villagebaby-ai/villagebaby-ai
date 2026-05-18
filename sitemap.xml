@@ -35,7 +35,7 @@
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B3%B4%ED%97%98%EC%82%AC-%EC%B6%94%EC%B2%9C-%EB%B9%84%EA%B5%90/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -46,7 +46,12 @@
       <image:loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B3%B4%ED%97%98%EC%82%AC-%EC%B6%94%EC%B2%9C-%EB%B9%84%EA%B5%90/img-maturity.png</image:loc>
       <image:title>태아보험 30세 만기 vs 100세 만기 비교 | 베이비빌리</image:title>
     </image:image>
-  </url>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B3%B4%ED%97%98%EC%82%AC-%EC%B6%94%EC%B2%9C-%EB%B9%84%EA%B5%90/img-company-matrix.webp</image:loc>
+      <image:title>2026 태아보험 보험사 비교 매트릭스</image:title>
+      <image:caption>4대 보험사(현대해상·DB·메리츠·삼성생명) 7개 평가 항목 별점 비교. 손해보험 3사 종합 추천도 ★★★, 삼성생명 ★★.</image:caption>
+    </image:image>
+    </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B3%B4%ED%97%98%EB%A3%8C-%EC%96%BC%EB%A7%88%EB%82%98-%EB%93%9C%EB%82%98/</loc>
     <lastmod>2026-05-05</lastmod>
