@@ -696,4 +696,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%8C%8D%EB%91%A5%EC%9D%B4-%EB%8B%A4%ED%83%9C%EC%95%84-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/35%EC%84%B8-%EC%9D%B4%EC%83%81-%EC%9E%84%EC%8B%A0-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%82%B0%EB%AA%A8%ED%8A%B9%EC%95%BD/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/ADHD-%EC%9E%90%ED%8F%90-%EC%A7%84%EB%8B%A8-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>
