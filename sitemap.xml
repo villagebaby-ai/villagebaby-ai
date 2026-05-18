@@ -204,7 +204,7 @@
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%ED%8A%B9%EC%95%BD-%EC%B4%9D%EC%A0%95%EB%A6%AC/</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -215,7 +215,17 @@
       <image:loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%ED%8A%B9%EC%95%BD-%EC%B4%9D%EC%A0%95%EB%A6%AC/img-rider.png</image:loc>
       <image:title>태아보험 필수 특약 vs 불필요 특약 비교표 | 베이비빌리</image:title>
     </image:image>
-  </url>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%ED%8A%B9%EC%95%BD-%EC%B4%9D%EC%A0%95%EB%A6%AC/img-teukyak-classification.webp</image:loc>
+      <image:title>태아보험 특약 분류 — 필수 선택 불필요</image:title>
+      <image:caption>태아보험 특약을 필수·선택·불필요 3 카테고리로 분류한 시각 가이드. 필수 5가지(선천이상·NICU·인큐베이터·태아사망·실손), 선택 4가지(산모특약·쌍둥이·고령임신·가족력), 불필요 4가지.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%ED%8A%B9%EC%95%BD-%EC%B4%9D%EC%A0%95%EB%A6%AC/img-sanmo-coverage.webp</image:loc>
+      <image:title>산모특약 보장 6가지</image:title>
+      <image:caption>산모특약이 보장하는 6가지 — 임신중독증, 임신성 당뇨, 임신·출산 출혈, 합병증 수술, 산후우울증, 제왕절개.</image:caption>
+    </image:image>
+    </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B1%B0%EC%A0%88-%EC%82%AC%EB%A1%80/</loc>
     <lastmod>2026-05-05</lastmod>
