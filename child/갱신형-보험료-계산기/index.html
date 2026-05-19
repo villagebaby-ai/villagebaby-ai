@@ -213,12 +213,13 @@
     .shock-banner{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:16px;padding:24px;margin-bottom:24px;color:#fff;text-align:center}
     .shock-label{font-size:12px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
     .shock-compare{display:flex;flex-direction:column;align-items:center;gap:8px}
-    .shock-current{font-size:14px;color:rgba(255,255,255,.7)}
-    .shock-current strong{color:#fff;font-size:18px}
+    .shock-current{font-size:15px;font-weight:600;color:rgba(255,255,255,.75)}
+    .shock-current strong{color:#fff;font-size:22px;font-weight:800}
     .shock-arrow{font-size:28px;color:var(--orange);line-height:1}
     .shock-next-label{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);background:rgba(249,115,22,.2);padding:4px 12px;border-radius:20px}
-    .shock-big{font-size:48px;font-weight:900;color:#fff;line-height:1.1}
-    .shock-big span{font-size:20px;font-weight:600;opacity:.8}
+    .shock-big{font-size:52px;font-weight:900;color:#fff;line-height:1.1}
+    .shock-big #pv-next{font-size:52px;font-weight:900}
+    .shock-unit{font-size:26px;font-weight:700;opacity:.85}
     .shock-pct{display:inline-flex;background:var(--red);color:#fff;font-size:16px;font-weight:800;padding:5px 14px;border-radius:20px;margin-top:4px}
 
     .gate-tease{font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:20px;text-align:center;padding:12px 16px;background:var(--blue-50);border-radius:10px;border:1px solid var(--blue-100)}
@@ -324,7 +325,9 @@
       .hero-char{width:90px;right:0}
       .hero-inner{padding-right:100px}
       .age-num{font-size:44px}
-      .shock-big{font-size:38px}
+      .shock-big{font-size:40px}
+      .shock-big #pv-next{font-size:40px}
+      .shock-unit{font-size:22px}
       .total-callout .tc-amount{font-size:36px}
       .bar-row{grid-template-columns:64px 1fr 56px}
       .related-grid{grid-template-columns:1fr}
@@ -446,10 +449,10 @@
       <div class="shock-char-row"><img src="./char-insurance.png" class="shock-char" alt="" width="110" loading="lazy"></div>
       <p class="shock-label">다음 갱신 예상 보험료</p>
       <div class="shock-compare">
-        <p class="shock-current">현재 <strong id="pv-current">8만원</strong>/월</p>
+        <p class="shock-current">현재 <strong id="pv-current">8</strong>만원/월</p>
         <p class="shock-arrow">↓</p>
         <p class="shock-next-label" id="pv-next-label">다음 갱신</p>
-        <p class="shock-big"><span id="pv-next">?</span>만원<span>/월</span></p>
+        <p class="shock-big"><span id="pv-next">?</span><span class="shock-unit">만원/월</span></p>
         <span class="shock-pct" id="pv-pct">+??%</span>
       </div>
     </div>
