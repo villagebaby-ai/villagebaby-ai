@@ -326,6 +326,13 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://villagebaby.kr/child/%EA%B0%B1%EC%8B%A0%ED%98%95-%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- 운전자보험 클러스터 (NEW) -->
   <url>
     <loc>https://villagebaby.kr/driver/</loc>
