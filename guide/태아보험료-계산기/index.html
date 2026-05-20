@@ -30,10 +30,10 @@
         "url": "https://villagebaby.kr/guide/태아보험료-계산기/",
         "description": "임신 주차, 성별, 보장 범위에 따른 태아보험 예상 월 보험료를 계산합니다.",
         "applicationCategory": "FinanceApplication",
-        "dateModified": "2026-05-12",
+        "dateModified": "2026-05-19",
         "author": {
           "@type": "Person",
-          "image": "https://villagebaby.kr/assets/img/billy-author-256.png",
+          "image": {"@type":"ImageObject","url":"https://villagebaby.kr/assets/img/billy-author-256.png","width":1200,"height":630},
           "name": "베이비빌리 보험 전문팀",
           "jobTitle": "부모·가족 보험 컨설턴트",
           "worksFor": {
@@ -70,22 +70,22 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "태아보험 가입은 몇 주까지 가능한가요?",
+            "name": "태아보험 가입은 임신 몇 주차까지 가능하고, 언제 가입하는 게 유리한가요?",
             "acceptedAnswer": { "@type": "Answer", "text": "대부분의 보험사는 임신 22주 이전 가입을 권장하며, 일부는 최대 27주까지 가입이 가능합니다. 22주를 넘으면 보험료가 크게 오르거나 일부 특약 가입이 제한될 수 있습니다." }
           },
           {
             "@type": "Question",
-            "name": "태아보험료는 성별에 따라 다른가요?",
+            "name": "태아보험 월 보험료는 아이 성별에 따라 달라지나요?",
             "acceptedAnswer": { "@type": "Answer", "text": "일부 특약의 경우 성별에 따라 보험료 차이가 발생할 수 있습니다. 성별을 모르는 경우 보수적인 기준으로 계산하는 것이 좋습니다." }
           },
           {
             "@type": "Question",
-            "name": "이 계산기의 보험료는 정확한가요?",
+            "name": "이 태아보험료 계산기의 결과는 실제 보험료와 얼마나 정확한가요?",
             "acceptedAnswer": { "@type": "Answer", "text": "이 계산기는 2026년 5월 손해보험사 평균 추정치를 기반으로 한 참고용 시뮬레이션입니다. 실제 보험료는 보험사, 가입 시점, 세부 특약 구성에 따라 달라질 수 있으므로 정확한 견적은 전문가 상담을 통해 확인하세요." }
           },
           {
             "@type": "Question",
-            "name": "기본형과 표준형, 어떤 걸 선택해야 하나요?",
+            "name": "태아보험 기본형과 표준형 중 어떤 걸 선택해야 하나요?",
             "acceptedAnswer": { "@type": "Answer", "text": "첫째 아이이고 가족력이 없다면 표준형을 검토해보세요. 가족 중 특정 질환 이력이 있다면 해당 특약을 중심으로 프리미엄형을 비교해보는 것이 좋습니다." }
           }
         ]
@@ -320,6 +320,11 @@
     .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
     .faq-a{padding:0 20px 16px 46px;font-size:13.5px;color:var(--gray-700);line-height:1.7;display:none}
     .faq-item.open .faq-a{display:block}
+    .faq-a p{margin-bottom:10px}
+    .faq-a p:last-child{margin-bottom:0}
+    .faq-a strong{color:var(--gray-900);font-weight:700}
+    .faq-a ul{margin:8px 0 10px;padding-left:20px}
+    .faq-a li{margin-bottom:4px;line-height:1.7}
 
     /* ── Footer ── */
     footer{padding:32px 24px 60px;text-align:center;background:var(--gray-100);border-top:1px solid var(--gray-200);color:var(--gray-600);font-size:13px}
@@ -368,7 +373,7 @@
     <p class="lead">임신 주차·성별·보장 범위를 선택하면 태아보험 예상 월 보험료를 바로 알 수 있어요.</p>
     <div class="meta">
       <span>📅 2026-05-12</span>
-      <span>👥 작성: <strong><a href="https://babybilly.co" target="_blank" rel="author noopener" style="color:inherit;border-bottom:1px dotted currentColor">베이비빌리</a></strong></span>
+      <span>👥 작성: <strong><a href="https://babybilly.co/insurance/baby/talk/v1" target="_blank" rel="author noopener" style="color:inherit;border-bottom:1px dotted currentColor">베이비빌리</a></strong></span>
       <span>🔗 <a href="/guide/태아보험-완전정리/" style="color:var(--blue-700);font-weight:700">태아보험 완전정리 →</a></span>
     </div>
   </div>
@@ -380,11 +385,11 @@
 
     <!-- Author Card -->
     <aside class="author-card">
-      <a href="https://babybilly.co" target="_blank" rel="author noopener" class="ac-photo">
+      <a href="https://babybilly.co/insurance/baby/talk/v1" target="_blank" rel="author noopener" class="ac-photo">
         <img src="/assets/img/billy-author-96.png" srcset="/assets/img/billy-author-96.png 1x, /assets/img/billy-author-256.png 2x" alt="베이비빌리" width="48" height="48">
       </a>
       <div class="ac-meta">
-        <p class="ac-name"><a href="https://babybilly.co" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+        <p class="ac-name"><a href="https://babybilly.co/insurance/baby/talk/v1" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
         <p class="ac-rev">10년 이상 태아·어린이보험을 전문 상담한 팀이 검수한 콘텐츠입니다.</p>
       </div>
     </aside>
@@ -578,20 +583,51 @@
     <section style="padding:36px 0 8px">
       <h2 style="font-size:24px;font-weight:700;margin-bottom:14px;color:var(--gray-900)">자주 묻는 질문</h2>
       <div class="faq-item">
-        <button class="faq-q" type="button">태아보험 가입은 몇 주까지 가능한가요? <span class="arrow">▾</span></button>
-        <p class="faq-a">대부분의 보험사는 임신 22주 이전 가입을 권장하며, 일부는 최대 27주까지 가입이 가능합니다. 22주를 넘으면 보험료가 크게 오르거나 일부 특약 가입이 제한될 수 있습니다.</p>
+        <button class="faq-q" type="button">태아보험 가입은 임신 몇 주차까지 가능하고, 언제 가입하는 게 유리한가요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>대부분의 보험사는 임신 22주 이전 가입을 권장해요. 일부 보험사는 최대 27주까지 가입이 가능하지만 보장 폭이 줄어들어요.</p>
+          <ul>
+            <li><strong>22주 이전</strong>: 산모특약·선천이상 담보 포함 가장 넓은 보장으로 가입 가능해요.</li>
+            <li><strong>22~27주</strong>: 일부 보험사만 가입 가능, 선천이상 담보 추가가 어렵고 보험료도 오를 수 있어요.</li>
+            <li><strong>28주 이후</strong>: 대부분의 보험사에서 가입을 거절해요.</li>
+            <li>임신 확인 직후 최대한 빨리 가입하는 게 가장 유리해요.</li>
+          </ul>
+        </div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button">태아보험료는 성별에 따라 다른가요? <span class="arrow">▾</span></button>
-        <p class="faq-a">일부 특약의 경우 성별에 따라 보험료 차이가 발생할 수 있습니다. 성별을 모르는 경우 보수적인 기준으로 계산하는 것이 좋습니다.</p>
+        <button class="faq-q" type="button">태아보험 월 보험료는 아이 성별에 따라 달라지나요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>기본 보장 보험료는 성별과 무관하게 동일한 경우가 많지만, 일부 특약에서 성별에 따른 차이가 발생할 수 있어요.</p>
+          <ul>
+            <li><strong>성별 무관 특약</strong>: 대부분의 종합보장·입원·수술 특약은 성별과 보험료가 같아요.</li>
+            <li><strong>성별 차이 특약</strong>: 특정 질환(생식기 관련 등) 특약은 성별에 따라 보험료 차이가 있을 수 있어요.</li>
+            <li><strong>성별 모를 때</strong>: 보수적 기준(높은 쪽)으로 계산해두는 게 안전해요.</li>
+          </ul>
+        </div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button">이 계산기의 보험료는 정확한가요? <span class="arrow">▾</span></button>
-        <p class="faq-a">이 계산기는 2026년 5월 손해보험사 평균 추정치를 기반으로 한 참고용 시뮬레이션입니다. 실제 보험료는 보험사, 가입 시점, 세부 특약 구성에 따라 달라질 수 있으므로 정확한 견적은 전문가 상담을 통해 확인하세요.</p>
+        <button class="faq-q" type="button">이 태아보험료 계산기의 결과는 실제 보험료와 얼마나 정확한가요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>이 계산기는 2026년 5월 손해보험사 평균 추정치를 기반으로 한 <strong>참고용 시뮬레이션</strong>이에요. 실제 가입 시 정확한 보험료는 다를 수 있어요.</p>
+          <ul>
+            <li><strong>계산 기준</strong>: 2026년 5월 현대해상·삼성화재·DB손보·메리츠 평균 추정값이에요.</li>
+            <li><strong>실제 차이 발생 원인</strong>: 보험사별 약관, 가입 시점, 세부 특약 옵션에 따라 달라져요.</li>
+            <li><strong>오차 범위</strong>: 실제 보험료는 ±10~20% 내외 차이가 있을 수 있어요.</li>
+            <li>정확한 견적은 전문가 상담을 통해 2~3개 보험사 설계서를 비교하는 게 가장 정확해요.</li>
+          </ul>
+        </div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button">기본형과 표준형, 어떤 걸 선택해야 하나요? <span class="arrow">▾</span></button>
-        <p class="faq-a">첫째 아이이고 가족력이 없다면 표준형을 검토해보세요. 가족 중 특정 질환 이력이 있다면 해당 특약을 중심으로 프리미엄형을 비교해보는 것이 좋습니다.</p>
+        <button class="faq-q" type="button">태아보험 기본형과 표준형 중 어떤 걸 선택해야 하나요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>가족력과 예산에 따라 달라지지만, 대부분의 경우 <strong>표준형</strong>부터 검토하는 게 좋아요.</p>
+          <ul>
+            <li><strong>기본형</strong>: 예산이 타이트하거나 가족력이 없는 경우 선택 가능해요. 핵심 보장은 포함돼요.</li>
+            <li><strong>표준형</strong>: 일반적인 첫째 가족에게 가장 추천하는 구성이에요. 비용 대비 보장이 균형 있어요.</li>
+            <li><strong>프리미엄형</strong>: 특정 질환 가족력이 있거나 추가 보장이 필요할 때 검토하세요.</li>
+            <li>어떤 구성이 맞는지 모르겠다면 전문가에게 가족 상황을 설명하고 맞춤 설계를 받는 게 가장 확실해요.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
