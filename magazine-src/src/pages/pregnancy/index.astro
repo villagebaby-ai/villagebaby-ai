@@ -1,40 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CoverImage from '../../components/CoverImage.astro';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL;
+const heroPhoto = `${base}covers/pregnancy-hero.jpg`;
 const all = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'pregnancy');
 const articles = all.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
-
-// intent → 서브토픽 매핑
-function subtopic(intent: string[]): string {
-  if (intent.includes('timing')) return 'timing';
-  if (intent.includes('rejection')) return 'rejection';
-  if (intent.includes('condition')) return 'condition';
-  if (intent.includes('comparison')) return 'comparison';
-  if (intent.includes('claim')) return 'claim';
-  return 'general';
-}
-const topicLabel: Record<string, string> = {
-  timing: '가입시기',
-  condition: '검사결과',
-  rejection: '합병증',
-  comparison: '특약분석',
-  claim: '청구·보상',
-  general: '가이드',
-};
-
-// 실제 존재하는 서브토픽만 탭으로 표시
-const usedTopics = [...new Set(articles.map(a => subtopic(a.data.intent)))];
-
-const faqItems = [
-  { q: '태아보험은 임신 몇 주부터 가입할 수 있나요?', a: '보험사마다 다르지만 보통 임신 8–12주부터 신청을 받아요. 일부 보험사는 16주까지만 표준 가입을 허용하고, 그 이후엔 조건부 또는 거절이 늘어납니다.' },
-  { q: '가입 골든타임이 12–22주인 이유가 뭔가요?', a: '12주 이전엔 유산 위험이 높아 보험사가 심사를 꺼리고, 22주를 넘기면 태아 이상 발견 확률이 높아져 조건부·거절 비율이 급격히 오릅니다. 이 구간이 보험사 선택지가 가장 넓어요.' },
-  { q: 'NT 검사 결과가 나쁘면 가입이 안 되나요?', a: '결과 수치에 따라 다릅니다. 2.5mm 미만은 대부분 표준 가입 가능하고, 2.5–3.5mm는 조건부 가입이 일반적이에요. 3.5mm 이상이거나 추가 검사가 권고된 경우에는 양수검사 결과를 기다린 후 재신청하는 것이 좋습니다.' },
-  { q: '임신성 당뇨 진단을 받으면 가입이 거절되나요?', a: '진단 시점과 중증도에 따라 달라요. 식이요법으로 관리 중인 경우 일부 보험사는 가입을 허용하지만, 인슐린 치료가 필요한 경우엔 거절되는 경우가 많습니다. 해당 글에서 보험사별 조건을 확인하세요.' },
-  { q: '양수검사 후에도 가입이 가능한가요?', a: '검사 자체가 거절 사유는 아닙니다. 결과가 정상이라면 대부분의 보험사에서 가입할 수 있어요. 다만 결과가 나오기 전 신청한 경우 심사 보류가 되므로, 결과 확인 후 신청하는 것이 안전합니다.' },
-  { q: '이미 한 보험사에서 거절당했는데 다른 보험사에 신청할 수 있나요?', a: '네, 가능합니다. 보험사마다 심사 기준이 다르기 때문에 한 곳에서 거절당했어도 다른 곳에서 조건부 또는 표준 가입이 되는 경우가 있어요. 28주 거절 후 재가입 케이스 글을 참고하세요.' },
-];
 
 const pregnancyJsonLd = {
   '@context': 'https://schema.org',
@@ -42,9 +14,14 @@ const pregnancyJsonLd = {
     {
       '@type': 'CollectionPage',
       '@id': 'https://villagebaby.kr/magazine/pregnancy/#collection',
-      name: '태아보험 — 가입시기·검사결과·합병증 완전 정리',
+      name: '임신 — 태아보험 가입 골든타임과 케이스',
       description: '임신 주차별 태아보험 가입 시점, 검사 결과별 시나리오, 거절·재가입 케이스를 정리한 임신 pillar 매거진.',
       url: 'https://villagebaby.kr/magazine/pregnancy/',
+      reviewedBy: {
+        '@type': 'Person',
+        name: '베이비빌리 보험 자문단',
+        description: '10년 이상 태아·어린이보험 분야에 종사한 전문가들이 감수한 콘텐츠입니다.',
+      },
       publisher: { '@type': 'Organization', name: '베이비빌리', url: 'https://villagebaby.kr/' },
     },
     {
@@ -52,334 +29,285 @@ const pregnancyJsonLd = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: '홈', item: 'https://villagebaby.kr/' },
         { '@type': 'ListItem', position: 2, name: '보험 매거진', item: 'https://villagebaby.kr/magazine/' },
-        { '@type': 'ListItem', position: 3, name: '태아', item: 'https://villagebaby.kr/magazine/pregnancy/' },
+        { '@type': 'ListItem', position: 3, name: '임신', item: 'https://villagebaby.kr/magazine/pregnancy/' },
       ],
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqItems.map(f => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
+    ...(articles.length > 0 ? [{
+      '@type': 'ItemList',
+      name: '임신 pillar 글 목록',
+      numberOfItems: articles.length,
+      itemListElement: articles.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: a.data.title,
+        url: `https://villagebaby.kr/magazine/${a.slug}/`,
       })),
-    },
+    }] : []),
   ],
 };
 ---
 <BaseLayout
-  title="태아보험 — 가입시기·검사결과·합병증 완전 정리 | 베이비빌리 보험 매거진"
-  description="임신 주차별 가입 골든타임부터 NT·양수검사 결과별 시나리오, 임신성 합병증, 거절 후 재가입까지 — 태아보험의 모든 상황을 정리했습니다.">
+  title="임신 — 태아보험 가입 골든타임과 케이스 | 베이비빌리 보험 매거진"
+  description="임신 주차별 태아보험 가입 시점, 검사 결과별 시나리오, 거절·재가입 케이스를 정리한 임신 pillar 매거진.">
 
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(pregnancyJsonLd)} />
+
+  <!-- HERO -->
+  <section class="pillar-hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <nav class="breadcrumb">
+          <a href="/magazine/">매거진</a>
+          <span>›</span>
+          <span class="current">임신</span>
+        </nav>
+        <p class="kicker">PREGNANCY</p>
+        <h1>임신 중 태아보험,<br/><em>이야기로 정리해드려요.</em></h1>
+        <p class="lede">
+          가입 골든타임(12–22주), 1·2차 기형아 검사 결과별 시나리오,<br/>
+          양수검사·NT 검사 영향, 거절·재가입 케이스를 모아두었어요.
+        </p>
+        <div class="hero-cta">
+          <a class="cta primary" href="/magazine/tools/fit-check/">핏체크 12문항 시작</a>
+          <a class="cta ghost" href="#articles">글 목록 보기</a>
+        </div>
+      </div>
+      <figure class={`hero-figure ${heroPhoto ? 'hero-figure--photo' : ''}`}>
+        <img src={heroPhoto ?? `${base}assets/img/pregnant-mom.png`} alt="임신 매거진 — 베이비빌리" loading="eager" />
+        <figcaption>pregnancy</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section id="articles" class="container articles-section">
+    <div class="section-head">
+      <h2 class="section-h">발행 글</h2>
+      <p class="section-sub">{articles.length}편 · 매주 2~3편 추가 예정</p>
+    </div>
+
+    {articles.length === 0 ? (
+      <p class="empty">매거진 글을 준비 중입니다. 곧 첫 글을 만나보실 수 있어요.</p>
+    ) : (
+      <ul class="article-list">
+        {articles.map((a) => (
+          <li>
+            <a href={`/magazine/${a.slug}/`} class="article-card">
+              <CoverImage cover={a.data.cover} title={a.data.title} pillar={a.data.pillar} aspect="16-9" />
+              <div class="a-body">
+                <p class="a-cat">{a.data.type === 'case' ? '케이스 스토리' : a.data.type === 'tool' ? '도구' : '가이드'}</p>
+                <p class="a-title">{a.data.title}</p>
+                <p class="a-desc">{a.data.description}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
 
   <style is:global>
     main { max-width: none !important; padding: 0 !important; }
   </style>
 
-  <!-- HUB HEADER -->
-  <section class="hub-header">
-    <div class="inner">
-      <nav class="breadcrumb" aria-label="breadcrumb">
-        <a href="https://villagebaby.kr/">홈</a>
-        <span aria-hidden="true">›</span>
-        <a href={`${base}`}>매거진</a>
-        <span aria-hidden="true">›</span>
-        <span class="bc-current">태아</span>
-      </nav>
-      <h1>태아보험</h1>
-      <p class="hub-intro">
-        가입 골든타임(12–22주)부터 NT·양수검사 결과별 시나리오,<br class="br-pc"/>
-        임신성 합병증, 거절 후 재가입까지 — 태아보험의 모든 상황을 정리했습니다.
-      </p>
-    </div>
-  </section>
-
-  <!-- FEATURED CORNERSTONE -->
-  <section class="featured-section">
-    <div class="inner">
-      <a href={`${base}pregnancy/태아보험-가입-골든타임/`} class="featured-card">
-        <div class="featured-label">완전정복 가이드</div>
-        <p class="featured-title">태아보험 가입 골든타임 — 임신 12주에서 22주 사이에 결정해야 하는 이유</p>
-        <p class="featured-desc">보험사 선택지가 가장 넓은 구간, 주차별 가입 가능 여부와 보장 범위 차이를 한 번에 정리했습니다.</p>
-        <span class="featured-arrow">전체 읽기 →</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ARTICLE LIST -->
-  <section class="list-section">
-    <div class="inner">
-      <div class="list-header">
-        <h2 class="list-title">발행 글 <span class="list-count">{articles.length}편</span></h2>
-
-        {usedTopics.length > 1 && (
-          <div class="filter-tabs" role="tablist" aria-label="서브토픽 필터">
-            <button class="ftab active" data-filter="all" role="tab" aria-selected="true">전체</button>
-            {usedTopics.map(t => (
-              <button class="ftab" data-filter={t} role="tab" aria-selected="false">{topicLabel[t]}</button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <ul class="article-rows" id="article-rows">
-        {articles.map((a) => {
-          const st = subtopic(a.data.intent);
-          return (
-            <li class="row-item" data-subtopic={st}>
-              <a href={`${base}${a.slug}/`} class="row-link">
-                <span class="row-topic">{topicLabel[st]}</span>
-                <div class="row-body">
-                  <p class="row-title">{a.data.title}</p>
-                  <p class="row-desc">{a.data.description}</p>
-                </div>
-                <span class="row-arrow" aria-hidden="true">→</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq-section">
-    <div class="inner">
-      <h2 class="faq-title">자주 묻는 질문</h2>
-      <dl class="faq-list">
-        {faqItems.map(f => (
-          <div class="faq-item">
-            <dt>{f.q}</dt>
-            <dd>{f.a}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
-  </section>
-
-  <!-- FITCHECK CTA -->
-  <section class="cta-section">
-    <div class="inner">
-      <div class="cta-box">
-        <div class="cta-text">
-          <p class="cta-label">2분 진단</p>
-          <p class="cta-heading">내 임신 상황에 맞는 가입 시점이 궁금하다면</p>
-          <p class="cta-body">임신 주차·검사 결과·가족력 등 12문항에 답하면 가입 가능성 점수와 추천 시기, 주의해야 할 특약을 정리해드려요.</p>
-        </div>
-        <a href={`${base}tools/fit-check/`} class="cta-btn">태아보험 핏체크 시작 →</a>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    const tabs = document.querySelectorAll<HTMLButtonElement>('.ftab');
-    const rows = document.querySelectorAll<HTMLLIElement>('.row-item');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
-        const filter = tab.dataset.filter ?? 'all';
-        rows.forEach(row => {
-          row.style.display = (filter === 'all' || row.dataset.subtopic === filter) ? '' : 'none';
-        });
-      });
-    });
-  </script>
-
   <style>
-    .inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-    /* HUB HEADER */
-    .hub-header {
-      background: linear-gradient(180deg, #FFF8F0 0%, #FFFCFA 100%);
+    .pillar-hero {
+      background: linear-gradient(180deg, #FFF8F0 0%, #FFFFFF 100%);
+      padding: 32px 24px 56px;
       border-bottom: 1px solid var(--gray-100);
-      padding: 40px 0 36px;
+    }
+    .hero-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
     .breadcrumb {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--gray-500);
-      margin-bottom: 20px;
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-bottom: 18px;
     }
-    .breadcrumb a { color: var(--gray-500); text-decoration: none; }
+    .breadcrumb a { color: var(--gray-600); }
     .breadcrumb a:hover { color: var(--blue-700); }
-    .bc-current { color: var(--gray-800); font-weight: 600; }
-    .hub-header h1 {
-      font-size: clamp(26px, 4vw, 36px);
-      font-weight: 700; letter-spacing: -0.02em;
-      color: var(--gray-900); margin: 0 0 14px;
-    }
-    .hub-intro {
-      font-size: 15px; color: var(--gray-600);
-      line-height: 1.8; margin: 0;
-    }
-    .br-pc { display: block; }
-    @media (max-width: 600px) { .br-pc { display: none; } }
+    .breadcrumb span { margin: 0 6px; }
+    .breadcrumb .current { color: var(--gray-900); font-weight: 600; }
 
-    /* FEATURED */
-    .featured-section { padding: 32px 0 0; }
-    .featured-card {
-      display: block;
-      background: linear-gradient(135deg, var(--blue-50) 0%, #fff 60%);
-      border: 1.5px solid var(--blue-200);
-      border-radius: 16px;
-      padding: 24px 28px;
-      text-decoration: none; color: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s;
+    .kicker {
+      font-size: 11px;
+      color: #7A4228;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      margin: 0 0 10px;
     }
-    .featured-card:hover {
-      border-color: var(--blue-400);
-      box-shadow: 0 4px 20px rgba(37,99,182,0.08);
+    .pillar-hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.3;
+      margin: 0 0 16px;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      color: var(--gray-900);
     }
-    .featured-label {
+    .pillar-hero h1 em {
+      font-style: italic;
+      color: #7A4228;
+    }
+    .lede {
+      color: var(--gray-700);
+      font-size: 16px;
+      line-height: 1.85;
+      margin: 0 0 24px;
+    }
+    .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cta {
       display: inline-block;
-      background: var(--blue-700); color: #fff;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.08em;
-      padding: 3px 10px; border-radius: 99px;
-      margin-bottom: 12px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
     }
-    .featured-title {
-      font-size: 17px; font-weight: 700;
-      color: var(--gray-900); line-height: 1.5;
-      margin: 0 0 8px; letter-spacing: -0.01em;
+    .cta.primary { background: var(--blue-700); color: #fff; }
+    .cta.primary:hover { background: var(--blue-800); }
+    .cta.ghost { background: transparent; color: var(--gray-800); border-color: var(--gray-300); }
+    .cta.ghost:hover { border-color: var(--blue-700); color: var(--blue-700); }
+
+    .hero-figure {
+      margin: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(135deg, #FFF8F0 0%, #FFE0CC 100%);
+      box-shadow: 0 1px 2px rgba(42, 37, 32, 0.04), 0 16px 40px rgba(42, 37, 32, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
     }
-    .featured-desc {
-      font-size: 14px; color: var(--gray-600);
-      line-height: 1.7; margin: 0 0 16px;
+    .hero-figure img {
+      max-width: 78%;
+      max-height: 78%;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 24px rgba(122, 66, 40, 0.08));
     }
-    .featured-arrow {
-      font-size: 13px; font-weight: 600; color: var(--blue-700);
+    .hero-figure--photo {
+      background: var(--gray-100);
+      padding: 0;
+    }
+    .hero-figure--photo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: none;
+    }
+    .hero-figure figcaption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #7A4228;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
     }
 
-    /* ARTICLE LIST */
-    .list-section { padding: 32px 0 0; }
-    .list-header { margin-bottom: 20px; }
-    .list-title {
-      font-size: 18px; font-weight: 700;
-      color: var(--gray-900); margin: 0 0 16px;
-    }
-    .list-count {
-      font-size: 14px; font-weight: 500;
-      color: var(--gray-500); margin-left: 8px;
-    }
-
-    .filter-tabs {
-      display: flex; flex-wrap: wrap; gap: 6px;
-    }
-    .ftab {
-      background: var(--gray-100); border: 1px solid var(--gray-200);
-      color: var(--gray-600); font-size: 13px; font-weight: 500;
-      padding: 5px 14px; border-radius: 99px;
-      cursor: pointer; transition: all 0.15s;
-    }
-    .ftab:hover { border-color: var(--blue-300); color: var(--blue-700); background: var(--blue-50); }
-    .ftab.active {
-      background: var(--blue-700); color: #fff;
-      border-color: var(--blue-700);
-    }
-
-    .article-rows { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--gray-200); }
-    .row-item { border-bottom: 1px solid var(--gray-200); }
-    .row-link {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 4px;
-      text-decoration: none; color: inherit;
-      transition: background 0.12s;
-    }
-    .row-link:hover { background: var(--gray-100); margin: 0 -8px; padding-left: 12px; padding-right: 12px; border-radius: 8px; }
-    .row-topic {
-      flex-shrink: 0;
-      font-size: 11px; font-weight: 700;
-      color: var(--blue-700);
-      background: var(--blue-50);
-      border: 1px solid var(--blue-100);
-      padding: 3px 9px; border-radius: 99px;
-      white-space: nowrap;
-    }
-    .row-body { flex: 1; min-width: 0; }
-    .row-title {
-      font-size: 15px; font-weight: 600;
-      color: var(--gray-900); line-height: 1.5;
-      margin: 0 0 4px; letter-spacing: -0.01em;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .row-desc {
-      font-size: 13px; color: var(--gray-500);
-      line-height: 1.5; margin: 0;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .row-arrow {
-      flex-shrink: 0; color: var(--gray-400);
-      font-size: 16px; transition: color 0.12s;
-    }
-    .row-link:hover .row-arrow { color: var(--blue-600); }
-
-    @media (max-width: 560px) {
-      .row-topic { display: none; }
-      .row-title { white-space: normal; }
-      .row-desc { display: none; }
-    }
-
-    /* FAQ */
-    .faq-section { padding: 48px 0; }
-    .faq-title {
-      font-size: 20px; font-weight: 700;
-      color: var(--gray-900); margin: 0 0 24px;
-      letter-spacing: -0.01em;
-    }
-    .faq-list { display: flex; flex-direction: column; gap: 0; }
-    .faq-item {
-      border-bottom: 1px solid var(--gray-200);
-      padding: 18px 0;
-    }
-    .faq-item:first-child { border-top: 1px solid var(--gray-200); }
-    .faq-item dt {
-      font-size: 15px; font-weight: 600;
-      color: var(--gray-900); margin-bottom: 8px;
-      line-height: 1.5;
-    }
-    .faq-item dt::before { content: 'Q. '; color: var(--blue-700); }
-    .faq-item dd {
-      font-size: 14px; color: var(--gray-600);
-      line-height: 1.75; margin: 0;
-    }
-    .faq-item dd::before { content: 'A. '; color: var(--gray-400); font-weight: 600; }
-
-    /* CTA */
-    .cta-section { padding: 0 0 64px; }
-    .cta-box {
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-      background: linear-gradient(135deg, var(--blue-700) 0%, var(--blue-800) 100%);
-      border-radius: 20px; padding: 32px 36px;
+    .articles-section { padding: 48px 24px 64px; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 24px;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    .cta-label {
-      font-size: 11px; font-weight: 700;
-      color: rgba(255,255,255,0.7); letter-spacing: 0.1em;
-      margin: 0 0 6px;
+    .section-h {
+      font-size: 22px;
+      color: var(--gray-900);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.01em;
     }
-    .cta-heading {
-      font-size: 18px; font-weight: 700;
-      color: #fff; margin: 0 0 8px; line-height: 1.4;
+    .section-sub { color: var(--gray-600); font-size: 13px; margin: 0; }
+
+    .empty {
+      color: var(--gray-600);
+      padding: 32px;
+      text-align: center;
+      background: var(--gray-100);
+      border-radius: 16px;
     }
-    .cta-body {
-      font-size: 13px; color: rgba(255,255,255,0.8);
-      line-height: 1.7; margin: 0;
+
+    .article-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
-    .cta-btn {
-      flex-shrink: 0;
-      background: #fff; color: var(--blue-700);
-      font-size: 14px; font-weight: 700;
-      padding: 13px 22px; border-radius: 999px;
-      text-decoration: none; white-space: nowrap;
-      transition: opacity 0.15s;
+    .article-list li { margin: 0; }
+    .article-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
-    .cta-btn:hover { opacity: 0.92; }
-    @media (max-width: 640px) {
-      .cta-box { flex-direction: column; align-items: flex-start; padding: 24px; }
+    .article-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--blue-300);
+      box-shadow: 0 12px 28px rgba(42, 37, 32, 0.06);
+    }
+    .a-body { padding: 16px 18px 20px; }
+    .a-cat {
+      font-size: 11px;
+      color: var(--blue-700);
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    .a-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      margin: 0 0 8px;
+    }
+    .a-desc {
+      font-size: 13px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-figure { aspect-ratio: 16 / 12; order: -1; }
+      .article-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .article-list { grid-template-columns: 1fr; }
+      .pillar-hero h1 { font-size: 26px; }
     }
   </style>
 </BaseLayout>
