@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CoverImage from '../../components/CoverImage.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const heroPhoto = `${base}covers/school-hero.jpg`;
+const all = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'school');
+const articles = all.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'CollectionPage',
+      '@id': 'https://villagebaby.kr/magazine/school/#collection',
+      name: '학동기 — 초등학생 어린이보험·재설계·특약',
+      description: '초등학생 학교폭력·상해 특약, 입학 전 재설계 체크리스트, 치아·운동 보험 설계를 정리한 학동기 pillar 매거진.',
+      url: 'https://villagebaby.kr/magazine/school/',
+      reviewedBy: {
+        '@type': 'Person',
+        name: '베이비빌리 보험 자문단',
+        description: '10년 이상 태아·어린이보험 분야에 종사한 전문가들이 감수한 콘텐츠입니다.',
+      },
+      publisher: { '@type': 'Organization', name: '베이비빌리', url: 'https://villagebaby.kr/' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '홈', item: 'https://villagebaby.kr/' },
+        { '@type': 'ListItem', position: 2, name: '보험 매거진', item: 'https://villagebaby.kr/magazine/' },
+        { '@type': 'ListItem', position: 3, name: '학동기', item: 'https://villagebaby.kr/magazine/school/' },
+      ],
+    },
+    ...(articles.length > 0 ? [{
+      '@type': 'ItemList',
+      name: '학동기 pillar 글 목록',
+      numberOfItems: articles.length,
+      itemListElement: articles.map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: a.data.title,
+        url: `https://villagebaby.kr/magazine/${a.slug}/`,
+      })),
+    }] : []),
+  ],
+};
+---
+<BaseLayout
+  title="학동기 — 초등학생 어린이보험·재설계·특약 | 베이비빌리 보험 매거진"
+  description="초등학생 학교폭력·상해 특약, 입학 전 재설계 체크리스트, 치아·운동 보험 설계를 정리한 학동기 매거진.">
+
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="pillar-hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <nav class="breadcrumb">
+          <a href="/magazine/">매거진</a>
+          <span>›</span>
+          <span class="current">학동기</span>
+        </nav>
+        <p class="kicker">SCHOOL AGE</p>
+        <h1>초등학생 보험,<br/><em>이야기로 정리해드려요.</em></h1>
+        <p class="lede">
+          학교폭력·상해 특약, 입학 전 재설계 체크리스트,<br/>
+          치아·운동 보험 설계 포인트를 모아두었어요.
+        </p>
+        <div class="hero-cta">
+          <a class="cta primary" href="/magazine/tools/fit-check/">핏체크 12문항 시작</a>
+          <a class="cta ghost" href="#articles">글 목록 보기</a>
+        </div>
+      </div>
+      <figure class={`hero-figure ${heroPhoto ? 'hero-figure--photo' : ''}`}>
+        <img src={heroPhoto ?? `${base}assets/img/baby-bear-study.png`} alt="학동기 매거진 — 베이비빌리" loading="eager" />
+        <figcaption>school age</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="articles" class="container articles-section">
+    <div class="section-head">
+      <h2 class="section-h">발행 글</h2>
+      <p class="section-sub">{articles.length}편 · 매주 2~3편 추가 예정</p>
+    </div>
+    {articles.length === 0 ? (
+      <p class="empty">매거진 글을 준비 중입니다. 곧 첫 글을 만나보실 수 있어요.</p>
+    ) : (
+      <ul class="article-list">
+        {articles.map((a) => (
+          <li>
+            <a href={`/magazine/${a.slug}/`} class="article-card">
+              <CoverImage cover={a.data.cover} title={a.data.title} pillar={a.data.pillar} aspect="16-9" />
+              <div class="a-body">
+                <p class="a-cat">{a.data.type === 'case' ? '케이스 스토리' : a.data.type === 'tool' ? '도구' : '가이드'}</p>
+                <p class="a-title">{a.data.title}</p>
+                <p class="a-desc">{a.data.description}</p>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+
+  <style is:global>
+    main { max-width: none !important; padding: 0 !important; }
+  </style>
+
+  <style>
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .pillar-hero { background: linear-gradient(180deg, #FFFBEB 0%, #FFFFFF 100%); padding: 32px 24px 56px; border-bottom: 1px solid var(--gray-100); }
+    .hero-grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .breadcrumb { font-size: 12px; color: var(--gray-600); margin-bottom: 18px; }
+    .breadcrumb a { color: var(--gray-600); }
+    .breadcrumb a:hover { color: var(--blue-700); }
+    .breadcrumb span { margin: 0 6px; }
+    .breadcrumb .current { color: var(--gray-900); font-weight: 600; }
+    .kicker { font-size: 11px; color: #B45309; letter-spacing: 0.18em; font-weight: 700; margin: 0 0 10px; }
+    .pillar-hero h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.3; margin: 0 0 16px; letter-spacing: -0.025em; font-weight: 700; color: var(--gray-900); }
+    .pillar-hero h1 em { font-style: italic; color: #B45309; }
+    .lede { color: var(--gray-700); font-size: 16px; line-height: 1.85; margin: 0 0 24px; }
+    .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cta { display: inline-block; padding: 12px 22px; border-radius: 999px; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid transparent; }
+    .cta.primary { background: var(--blue-700); color: #fff; }
+    .cta.primary:hover { background: var(--blue-800); }
+    .cta.ghost { background: transparent; color: var(--gray-800); border-color: var(--gray-300); }
+    .cta.ghost:hover { border-color: var(--blue-700); color: var(--blue-700); }
+    .hero-figure { margin: 0; border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 4 / 5; background: linear-gradient(135deg, #FFFBEB 0%, #FFE4B5 100%); box-shadow: 0 1px 2px rgba(180,83,9,0.04), 0 16px 40px rgba(180,83,9,0.08); display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .hero-figure img { max-width: 78%; max-height: 78%; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(180,83,9,0.1)); }
+    .hero-figure--photo { background: var(--gray-100); padding: 0; }
+    .hero-figure--photo img { max-width: 100%; max-height: 100%; width: 100%; height: 100%; object-fit: cover; filter: none; }
+    .hero-figure figcaption { position: absolute; left: 18px; bottom: 18px; background: rgba(255,255,255,0.9); color: #B45309; font-size: 11px; letter-spacing: 0.16em; padding: 6px 12px; border-radius: 999px; font-weight: 700; text-transform: uppercase; backdrop-filter: blur(8px); }
+    .articles-section { padding: 48px 24px 64px; }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
+    .section-h { font-size: 22px; color: var(--gray-900); font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+    .section-sub { color: var(--gray-600); font-size: 13px; margin: 0; }
+    .empty { color: var(--gray-600); padding: 32px; text-align: center; background: var(--gray-100); border-radius: 16px; }
+    .article-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .article-list li { margin: 0; }
+    .article-card { display: block; background: var(--white); border: 1px solid var(--gray-200); border-radius: 18px; overflow: hidden; color: inherit; text-decoration: none; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .article-card:hover { transform: translateY(-2px); border-color: var(--blue-300); box-shadow: 0 12px 28px rgba(42,37,32,0.06); }
+    .a-body { padding: 16px 18px 20px; }
+    .a-cat { font-size: 11px; color: var(--blue-700); letter-spacing: 0.1em; font-weight: 700; text-transform: uppercase; margin: 0 0 8px; }
+    .a-title { font-size: 16px; font-weight: 700; color: var(--gray-900); line-height: 1.5; letter-spacing: -0.01em; margin: 0 0 8px; }
+    .a-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 32px; } .hero-figure { aspect-ratio: 16 / 12; order: -1; } .article-list { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .article-list { grid-template-columns: 1fr; } .pillar-hero h1 { font-size: 26px; } }
+  </style>
+</BaseLayout>

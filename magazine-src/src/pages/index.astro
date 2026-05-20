@@ -15,13 +15,13 @@ const heroPhoto = `${base}covers/home-hero.jpg`;
 const pillars = [
   { slug: 'pregnancy', label: '임신', sub: 'Pregnancy', desc: '가입 골든타임, 검사 결과별 시나리오, 케이스 스토리', active: true,
     cover: `${base}covers/pregnancy-card.jpg` },
-  { slug: 'newborn', label: '신생아', sub: 'Newborn', desc: '출산 직후 24시간, 황달·NICU 청구, 미숙아 가입', active: false,
+  { slug: 'newborn', label: '신생아', sub: 'Newborn', desc: '출산 직후 24시간, 황달·NICU 청구, 미숙아 가입', active: true,
     cover: `${base}covers/newborn-card.jpg` },
-  { slug: 'toddler', label: '영유아', sub: 'Toddler', desc: '어린이보험 전환, 자녀 실손, 응급실 청구', active: false,
+  { slug: 'toddler', label: '영유아', sub: 'Toddler', desc: '어린이보험 전환, 자녀 실손, 응급실 청구', active: true,
     cover: undefined },
-  { slug: 'school', label: '학동기', sub: 'School', desc: '학교폭력 특약, 운동·치아, 재설계 시점', active: false,
+  { slug: 'school', label: '학동기', sub: 'School', desc: '학교폭력 특약, 운동·치아, 재설계 시점', active: true,
     cover: undefined },
-  { slug: 'case', label: '케이스', sub: 'Case', desc: '거절·재가입·청구 — 실제 사례 모음', active: false,
+  { slug: 'case', label: '케이스', sub: 'Case', desc: '거절·재가입·청구 — 실제 사례 모음', active: true,
     cover: undefined },
 ];
 
@@ -172,7 +172,7 @@ const homeJsonLd = {
     <div class="cross-card">
       <p class="cross-label">함께 보면 좋은 곳</p>
       <h3>베이비빌리 보험 가이드</h3>
-      <p class="cross-desc">매거진은 케이스와 이야기, 가이드는 보험 종류별 정보 정리. 두 곳을 함께 쓰시면 의사결정이 빨라요.</p>
+      <p class="cross-desc">개념은 가이드에서, 내 상황은 매거진에서 — 두 곳을 오가면 보험 결정이 훨씬 명확해져요.</p>
       <div class="cross-chips">
         <a href="/guide/" class="chip">베이비빌리 태아보험 가이드</a>
         <a href="/child/" class="chip">베이비빌리 어린이보험 가이드</a>
