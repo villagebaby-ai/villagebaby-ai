@@ -19,9 +19,9 @@ const pillars = [
     cover: `${base}covers/newborn-card.jpg` },
   { slug: 'toddler', label: '영유아', sub: 'Toddler', desc: '어린이보험 전환, 자녀 실손, 응급실 청구', active: true,
     cover: undefined },
-  { slug: 'school', label: '학동기', sub: 'School', desc: '학교폭력 특약, 운동·치아, 재설계 시점', active: true,
+  { slug: 'school', label: '초등기', sub: 'Elementary', desc: '학교폭력 특약, 운동·치아, 재설계 시점', active: true,
     cover: undefined },
-  { slug: 'case', label: '케이스', sub: 'Case', desc: '거절·재가입·청구 — 실제 사례 모음', active: true,
+  { slug: 'case', label: '사례', sub: 'Cases', desc: '거절·재가입·청구 — 실제 사례 모음', active: true,
     cover: undefined },
 ];
 
@@ -76,13 +76,8 @@ const homeJsonLd = {
         </p>
         <div class="hero-cta">
           <a class="cta primary" href="/magazine/tools/fit-check/">핏체크 12문항 시작</a>
-          <a class="cta ghost" href="/magazine/pregnancy/">임신 pillar 보기</a>
+          <a class="cta ghost" href="/magazine/pregnancy/">임신 글 보기</a>
         </div>
-        <ul class="hero-marks">
-          <li><span>12</span><em>문항 무료 진단</em></li>
-          <li><span>5</span><em>생애주기 카테고리</em></li>
-          <li><span>보험 자문단</span><em>전문가 감수</em></li>
-        </ul>
       </div>
       <figure class={`hero-figure ${heroPhoto ? 'hero-figure--photo' : ''}`}>
         <img src={heroPhoto ?? `${base}assets/img/pregnant-mom.png`} alt="베이비빌리 보험 매거진 — 임신 라이프" loading="eager" decoding="async" />
@@ -95,7 +90,7 @@ const homeJsonLd = {
   <section class="container feature">
     <a href="/magazine/tools/fit-check/" class="feature-card">
       <div class="feature-body">
-        <p class="feature-label">1순위 도구 · 2분 진단</p>
+        <p class="feature-label">2분 진단</p>
         <h2>태아보험 핏체크 12문항</h2>
         <p class="feature-desc">
           임신 주차·검사 결과·가족력 등 12문항에 답하시면 가입 가능성 점수와 추천 시기, 주의 특약 3개를 정리해드려요. 결과는 1:1 상담으로 바로 이어져요.
@@ -156,7 +151,7 @@ const homeJsonLd = {
             <a href={`/magazine/${a.slug}/`} class="article-card">
               <CoverImage cover={a.data.cover} title={a.data.title} pillar={a.data.pillar} aspect="16-9" />
               <div class="a-body">
-                <p class="a-cat">{a.data.pillar} · {a.data.type === 'case' ? '케이스' : a.data.type === 'tool' ? '도구' : '가이드'}</p>
+                <p class="a-cat">{a.data.pillar} · {a.data.type === 'case' ? '사례' : a.data.type === 'tool' ? '도구' : '가이드'}</p>
                 <p class="a-title">{a.data.title}</p>
                 <p class="a-desc">{a.data.description}</p>
               </div>
