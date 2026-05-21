@@ -493,6 +493,11 @@
     <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_갱신형-보험료-계산기.png</image:loc>
+      <image:title>갱신형 어린이보험 보험료 폭탄 계산기</image:title>
+    </image:image>
   </url>
 
   <!-- 운전자보험 클러스터 (NEW) -->
@@ -636,6 +641,11 @@
     <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/cancer.png</image:loc>
+      <image:title>암보험 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/cancer/%EC%95%94%EB%B3%B4%ED%97%98-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc>
@@ -646,24 +656,44 @@
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>암보험 완전정리 2026 — 가족력·갱신·소액vs고액·보험사 한 페이지 | 베이비빌리</image:title>
     </image:image>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/cancer_암보험-완전정리.png</image:loc>
+      <image:title>암보험 완전정리 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/cancer/%EA%B0%80%EC%A1%B1%EB%A0%A5-%EC%95%94%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/cancer_가족력-암보험-가입가이드.png</image:loc>
+      <image:title>가족력 암보험 가입 가이드 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/cancer/%EA%B0%B1%EC%8B%A0%ED%98%95-vs-%EB%B9%84%EA%B0%B1%EC%8B%A0%ED%98%95/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/cancer_갱신형-vs-비갱신형.png</image:loc>
+      <image:title>암보험 갱신형 vs 비갱신형 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/cancer/%EC%86%8C%EC%95%A1%EC%95%94-vs-%EA%B3%A0%EC%95%A1%EC%95%94/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/cancer_소액암-vs-고액암.png</image:loc>
+      <image:title>소액암 vs 고액암 2026</image:title>
+    </image:image>
   </url>
 
   <!-- 간병보험 클러스터 (NEW) -->
@@ -672,6 +702,11 @@
     <lastmod>2026-05-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/care.png</image:loc>
+      <image:title>간병보험 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/care/%EA%B0%84%EB%B3%91%EB%B3%B4%ED%97%98-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc>
@@ -682,24 +717,44 @@
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>간병보험 완전정리 2026 — 노인장기요양·치매·뇌졸중·간병인 사용일당 한 페이지 | 베이비빌리</image:title>
     </image:image>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/care_간병보험-완전정리.png</image:loc>
+      <image:title>간병보험 완전정리 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/care/%EB%85%B8%EC%9D%B8%EC%9E%A5%EA%B8%B0%EC%9A%94%EC%96%91%EB%B3%B4%ED%97%98-vs-%EB%AF%BC%EA%B0%84%EA%B0%84%EB%B3%91%EB%B3%B4%ED%97%98/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/care_노인장기요양보험-vs-민간간병보험.png</image:loc>
+      <image:title>노인장기요양보험 vs 민간 간병보험 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/care/%EC%B9%98%EB%A7%A4-%EB%87%8C%EC%A1%B8%EC%A4%91-%EA%B0%84%EB%B3%91-%EB%B3%B4%EC%9E%A5/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/care_치매-뇌졸중-간병-보장.png</image:loc>
+      <image:title>치매·뇌졸중 간병 보장 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/care/%EB%B6%80%EB%AA%A8%EB%8B%98-%EA%B0%84%EB%B3%91%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/care_부모님-간병보험-가입가이드.png</image:loc>
+      <image:title>부모님 간병보험 가입 가이드 2026</image:title>
+    </image:image>
   </url>
 
   <!-- 자녀 교육보험 클러스터 (NEW) -->
@@ -708,6 +763,11 @@
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/education.png</image:loc>
+      <image:title>자녀 교육보험 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/education/%EC%9E%90%EB%85%80-%EA%B5%90%EC%9C%A1%EB%B3%B4%ED%97%98-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc>
@@ -718,24 +778,44 @@
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>자녀 교육보험 완전정리 2026 — 변액·적립식·비과세·30년 시뮬·보험사 한 페이지 | 베이비빌리</image:title>
     </image:image>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/education_자녀-교육보험-완전정리.png</image:loc>
+      <image:title>자녀 교육보험 완전정리 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/education/%EC%9E%90%EB%85%80-%EA%B5%90%EC%9C%A1%EB%B3%B4%ED%97%98-vs-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%B0%A8%EC%9D%B4/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/education_자녀-교육보험-vs-어린이보험-차이.png</image:loc>
+      <image:title>자녀 교육보험 vs 어린이보험 차이 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/education/%EB%B3%80%EC%95%A1-%EC%A0%81%EB%A6%BD%EC%8B%9D-%EC%9E%90%EB%85%80%EB%B3%B4%ED%97%98-%EB%B9%84%EA%B5%90/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/education_변액-적립식-자녀보험-비교.png</image:loc>
+      <image:title>변액 vs 적립식 자녀보험 비교 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/education/%EB%B9%84%EA%B3%BC%EC%84%B8-%ED%95%9C%EB%8F%84-%EC%9E%90%EB%85%80%EB%B3%B4%ED%97%98-%ED%99%9C%EC%9A%A9%EB%B2%95/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/education_비과세-한도-자녀보험-활용법.png</image:loc>
+      <image:title>비과세 한도 자녀보험 활용법 2026</image:title>
+    </image:image>
   </url>
 
   <!-- /ads/ B2B 인바운드 사이트 (NEW 2026-05-08) -->
@@ -748,78 +828,143 @@
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>베이비빌리 광고센터 — 임신부·육아맘 200만 도달 B2B 광고 플랫폼</image:title>
     </image:image>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads.png</image:loc>
+      <image:title>베이비빌리 광고</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/audience/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_audience.png</image:loc>
+      <image:title>베이비빌리 오디언스</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/products/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_products.png</image:loc>
+      <image:title>광고 상품 전체</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/cases/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_cases.png</image:loc>
+      <image:title>광고 집행 사례</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/insights/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_insights.png</image:loc>
+      <image:title>인사이트</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/insights/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%9C%A1%EC%95%84%EB%A7%98-%EB%A7%88%EC%BC%80%ED%8C%85-%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_insights_임산부-육아맘-마케팅-가이드.png</image:loc>
+      <image:title>임산부·육아맘 마케팅 완전 가이드 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/insights/%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B9%8C%EB%A6%AC-%EA%B4%91%EA%B3%A0%EB%B9%84-%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_insights_베이비빌리-광고비-가이드.png</image:loc>
+      <image:title>베이비빌리 광고비 가이드 2026</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/insights/%EC%9E%84%EC%8B%A0%EC%95%B1-%EA%B4%91%EA%B3%A0-vs-%EB%A7%98%EC%B9%B4%ED%8E%98-%EA%B4%91%EA%B3%A0/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_insights_임신앱-광고-vs-맘카페-광고.png</image:loc>
+      <image:title>임신앱 광고 vs 맘카페 광고 vs SNS</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/insights/%EC%9C%A0%EC%95%84-%EB%B8%8C%EB%9E%9C%EB%93%9C-%EC%9D%B8%ED%94%8C%EB%A3%A8%EC%96%B8%EC%84%9C-%EB%A7%88%EC%BC%80%ED%8C%85/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_insights_유아-브랜드-인플루언서-마케팅.png</image:loc>
+      <image:title>유아 브랜드 인플루언서 마케팅</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/insights/%EB%AA%A8%EB%B0%94%EC%9D%BC-%EA%B4%91%EA%B3%A0-CPM-CPC-%EC%9E%84%EC%82%B0%EB%B6%80/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_insights_모바일-광고-CPM-CPC-임산부.png</image:loc>
+      <image:title>모바일 광고 CPM·CPC 임산부 타겟</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/faq/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_faq.png</image:loc>
+      <image:title>광고주 FAQ</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/ads/contact/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/ads_contact.png</image:loc>
+      <image:title>광고 문의</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.92</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험료-계산기.png</image:loc>
+      <image:title>태아보험료 계산기</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%9E%90%EA%B0%80%EC%A7%84%EB%8B%A8/</loc>
@@ -829,6 +974,11 @@
     <image:image>
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>태아보험 자가진단 — 5문항으로 내게 맞는 보장구조 찾기 | 베이비빌리</image:title>
+    </image:image>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험-자가진단.png</image:loc>
+      <image:title>태아보험 자가진단</image:title>
     </image:image>
   </url>
 
@@ -888,36 +1038,66 @@
       <image:loc>https://villagebaby.kr/heroimage.jpg</image:loc>
       <image:title>태아보험 가입 골든타임 — 임신 12주에서 22주 사이에 결정해야 하는 이유 | 베이비빌리 매거진</image:title>
     </image:image>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_pregnancy_태아보험-가입-골든타임.png</image:loc>
+      <image:title>태아보험 가입 골든타임</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/pregnancy/nt-%EA%B2%80%EC%82%AC-%EA%B2%B0%EA%B3%BC%EB%B3%84-%EA%B0%80%EC%9E%85-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_pregnancy_nt-검사-결과별-가입-시나리오.png</image:loc>
+      <image:title>NT 검사 결과 두께별 가입 시나리오</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/pregnancy/%EC%96%91%EC%88%98%EA%B2%80%EC%82%AC-%ED%9B%84-%EA%B0%80%EC%9E%85-%EA%B0%80%EB%8A%A5-%EB%B3%B4%ED%97%98%EC%82%AC/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_pregnancy_양수검사-후-가입-가능-보험사.png</image:loc>
+      <image:title>양수검사·융모막검사 후에도 태아보험 가입할 수 있나요</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/pregnancy/%EC%9E%84%EC%8B%A0%EC%84%B1-%EB%8B%B9%EB%87%A8-%EA%B3%A0%ED%98%88%EC%95%95-%EC%82%B0%EB%AA%A8-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_pregnancy_임신성-당뇨-고혈압-산모-태아보험.png</image:loc>
+      <image:title>임신성 당뇨·고혈압 진단받은 산모의 태아보험 선택지</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/pregnancy/1%EC%B0%A8-%EA%B8%B0%ED%98%95%EC%95%84-%EA%B2%80%EC%82%AC-%EA%B0%80%EC%9E%85%EC%A1%B0%EA%B1%B4/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_pregnancy_1차-기형아-검사-가입조건.png</image:loc>
+      <image:title>1차 기형아 검사 결과가 영향을 주는 가입 조건</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/case/28%EC%A3%BC-%EA%B1%B0%EC%A0%88-%EC%9E%AC%EA%B0%80%EC%9E%85-%EC%BC%80%EC%9D%B4%EC%8A%A4/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_case_28주-거절-재가입-케이스.png</image:loc>
+      <image:title>임신 28주에 거절받았던 ○○님이 다시 가입에 성공한 케이스</image:title>
+    </image:image>
   </url>
   <!-- 매거진 신생아 필라 (2026-05-20 신규) -->
   <url>
@@ -925,18 +1105,33 @@
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_newborn_신생아-황달-nicu-입원-보험금-청구.png</image:loc>
+      <image:title>신생아 황달·NICU 입원</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/newborn/%EC%B6%9C%EC%83%9D-30%EC%9D%BC-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EA%B3%A8%EB%93%A0%ED%83%80%EC%9E%84/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_newborn_출생-30일-어린이보험-골든타임.png</image:loc>
+      <image:title>출생 직후 30일</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/newborn/%EB%AF%B8%EC%88%99%EC%95%84-%EC%A0%80%EC%B2%B4%EC%A4%91%EC%95%84-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_newborn_미숙아-저체중아-태아보험-가입.png</image:loc>
+      <image:title>미숙아·저체중아로 태어났다면</image:title>
+    </image:image>
   </url>
   <!-- 매거진 영유아 필라 (2026-05-20 신규) -->
   <url>
@@ -944,18 +1139,33 @@
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_toddler_태아보험-어린이보험-전환-시점.png</image:loc>
+      <image:title>태아보험에서 어린이보험으로</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/toddler/%EC%9E%90%EB%85%80-%EC%8B%A4%EC%86%90%EB%B3%B4%ED%97%98-%EB%8B%A8%EB%8F%85-vs-%ED%8A%B9%EC%95%BD/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_toddler_자녀-실손보험-단독-vs-특약.png</image:loc>
+      <image:title>자녀 실손보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/toddler/%EC%86%8C%EC%95%84%EA%B3%BC-%EC%9D%91%EA%B8%89%EC%8B%A4-%EC%8B%A4%EC%86%90-%EC%B2%AD%EA%B5%AC/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_toddler_소아과-응급실-실손-청구.png</image:loc>
+      <image:title>영유아 소아과·응급실 실손 청구</image:title>
+    </image:image>
   </url>
   <!-- 매거진 학동기 필라 (2026-05-20 신규) -->
   <url>
@@ -963,18 +1173,33 @@
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_school_어린이보험-학교폭력-상해-특약.png</image:loc>
+      <image:title>초등학생 어린이보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/school/%EC%B4%88%EB%93%B1-%EC%9E%85%ED%95%99%EC%A0%84-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%9E%AC%EC%84%A4%EA%B3%84/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_school_초등-입학전-어린이보험-재설계.png</image:loc>
+      <image:title>초등 입학 전 어린이보험 재설계</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/school/%ED%95%99%EB%8F%99%EA%B8%B0-%EC%B9%98%EC%95%84-%EC%9A%B4%EB%8F%99-%EB%B3%B4%ED%97%98-%EC%84%A4%EA%B3%84/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.86</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_school_학동기-치아-운동-보험-설계.png</image:loc>
+      <image:title>초등학생 치아보험·운동 상해 보장</image:title>
+    </image:image>
   </url>
   <!-- 매거진 케이스 필라 (2026-05-20 신규) -->
   <url>
@@ -982,154 +1207,390 @@
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_case_nt-이상소견-거절-조건부승인-케이스.png</image:loc>
+      <image:title>NT 수치 이상 소견에서 시작된 ○○님의 태아보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/case/%EC%9E%84%EC%8B%A0%EC%84%B1%EB%8B%B9%EB%87%A8-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_case_임신성당뇨-태아보험-시나리오.png</image:loc>
+      <image:title>임신성 당뇨 진단 후 태아보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/magazine/case/%EC%8C%8D%EB%91%A5%EC%9D%B4-%EB%8B%A4%ED%83%9C%EC%95%84-%EB%B3%B4%ED%97%98-%EA%B1%B0%EC%A0%88-%EC%BC%80%EC%9D%B4%EC%8A%A4/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/magazine_case_쌍둥이-다태아-보험-거절-케이스.png</image:loc>
+      <image:title>쌍둥이 임신이라 태아보험 거절받은 △△님</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/privacy/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/privacy.png</image:loc>
+      <image:title>개인정보처리방침</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/terms/</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/terms.png</image:loc>
+      <image:title>이용약관</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/insurance-check/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_insurance-check.png</image:loc>
+      <image:title>우리 아이 보험료 직접 조회</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-vs-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%B0%A8%EC%9D%B4/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험-vs-어린이보험-차이.png</image:loc>
+      <image:title>태아보험 vs 어린이보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/child/%EC%8B%A0%EC%83%9D%EC%95%84-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%B6%9C%EC%83%9D30%EC%9D%BC/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_신생아-어린이보험-출생30일.png</image:loc>
+      <image:title>신생아 어린이보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EC%8C%8D%EB%91%A5%EC%9D%B4-%EB%8B%A4%ED%83%9C%EC%95%84-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_쌍둥이-다태아-태아보험.png</image:loc>
+      <image:title>쌍둥이·다태아 태아보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/35%EC%84%B8-%EC%9D%B4%EC%83%81-%EC%9E%84%EC%8B%A0-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%82%B0%EB%AA%A8%ED%8A%B9%EC%95%BD/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_35세-이상-임신-태아보험-산모특약.png</image:loc>
+      <image:title>35세 이상 임신 태아보험 + 고령 산모특약 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/child/ADHD-%EC%9E%90%ED%8F%90-%EC%A7%84%EB%8B%A8-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_ADHD-자폐-진단-어린이보험.png</image:loc>
+      <image:title>ADHD·자폐 진단 후 어린이보험 가입 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-12%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신-12주-태아보험-가입.png</image:loc>
+      <image:title>임신 12주 태아보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%98%84%EB%8C%80%ED%95%B4%EC%83%81-Hi-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_현대해상-Hi-태아보험-분석.png</image:loc>
+      <image:title>현대해상 Hi 태아보험 완전 분석</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EC%8B%9C%ED%97%98%EA%B4%80-%EC%9E%84%EC%8B%A0-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_시험관-임신-태아보험-가입.png</image:loc>
+      <image:title>시험관·인공수정 임신 태아보험 가입 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/child/5%EC%84%B8-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_5세-어린이보험-가입.png</image:loc>
+      <image:title>5세 어린이보험 가입 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/child/%EC%95%8C%EB%A0%88%EB%A5%B4%EA%B8%B0-%EC%95%84%ED%86%A0%ED%94%BC-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_알레르기-아토피-어린이보험.png</image:loc>
+      <image:title>알레르기·아토피·천식 어린이보험 가입 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-16%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신-16주-태아보험-가입.png</image:loc>
+      <image:title>임신 16주 태아보험</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/DB%EC%86%90%ED%95%B4%EB%B3%B4%ED%97%98-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_DB손해보험-태아보험-분석.png</image:loc>
+      <image:title>DB 손해보험 태아보험 완전 분석</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EC%9D%B8%EA%B3%B5%EC%88%98%EC%A0%95-%EC%9E%84%EC%8B%A0-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_인공수정-임신-태아보험.png</image:loc>
+      <image:title>인공수정(IUI) 임신 태아보험 가입 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/child/%EC%86%8C%EC%95%84%EC%B2%9C%EC%8B%9D-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_소아천식-어린이보험-가입.png</image:loc>
+      <image:title>소아천식 진단 후 어린이보험 가입 가이드</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/child/%EC%9E%90%EB%85%80%EB%B0%B0%EC%83%81%EC%B1%85%EC%9E%84-%ED%8A%B9%EC%95%BD-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_자녀배상책임-특약-완전정리.png</image:loc>
+      <image:title>자녀배상책임 특약 완전 정리</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85-%EC%A0%81%ED%95%A9%EB%8F%84-%EC%A7%84%EB%8B%A8/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
+  
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험-가입-적합도-진단.png</image:loc>
+      <image:title>태아보험 가입 적합도 진단</image:title>
+    </image:image>
   </url>
-  <url><loc>https://villagebaby.kr/guide/5%EC%84%B8%EB%8C%80-%EC%8B%A4%EC%86%90-%EC%86%90%EC%9D%B5-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%82%B0%EB%AA%A8%ED%8A%B9%EC%95%BD-%EC%A0%81%ED%95%A9%EB%8F%84-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://villagebaby.kr/tools/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.95</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EA%B0%B1%EC%8B%A0%ED%98%95-vs-%EB%B9%84%EA%B0%B1%EC%8B%A0%ED%98%95-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://villagebaby.kr/guide/5%EC%84%B8%EB%8C%80-%EA%B0%88%EC%95%84%ED%83%80%EA%B8%B0-%EA%B2%B0%EC%A0%95-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B3%B4%ED%97%98%EC%82%AC-%EB%B9%84%EA%B5%90-%EB%A7%A4%ED%8A%B8%EB%A6%AD%EC%8A%A4/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority></url>
-  <url><loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EB%B3%B4%EC%9E%A5-%EC%A0%81%EC%A0%95%EC%84%B1-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/child/%EC%9E%90%EB%85%80-%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85-%EC%8B%9C%EA%B8%B0-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%A3%BC%EC%B0%A8%EB%B3%84-%EB%B3%B4%ED%97%98-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-6%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-20%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-26%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EB%A9%94%EB%A6%AC%EC%B8%A0%ED%99%94%EC%9E%AC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%82%BC%EC%84%B1%EC%83%9D%EB%AA%85-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%84%A0%EC%B2%9C%EC%9D%B4%EC%83%81-%EC%88%98%EC%88%A0%EB%B9%84-%ED%8A%B9%EC%95%BD/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-NICU-%EC%9E%85%EC%9B%90%EB%B9%84-%ED%8A%B9%EC%95%BD/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0%EC%A4%91%EB%8F%85%EC%A6%9D-%EC%A7%84%EB%8B%A8-%ED%9B%84-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-1%EC%84%B8-3%EC%84%B8-%EC%98%81%EC%9C%A0%EC%95%84/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/guide/KB%EC%86%90%ED%95%B4%EB%B3%B4%ED%97%98-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
-  <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0%EC%84%B1-%EB%8B%B9%EB%87%A8-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-8%EC%84%B8-12%EC%84%B8-%EC%B4%88%EB%93%B1/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url>
+    <loc>https://villagebaby.kr/guide/5%EC%84%B8%EB%8C%80-%EC%8B%A4%EC%86%90-%EC%86%90%EC%9D%B5-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_5세대-실손-손익-시뮬레이터.png</image:loc>
+      <image:title>5세대 실손 손익 시뮬레이터</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%82%B0%EB%AA%A8%ED%8A%B9%EC%95%BD-%EC%A0%81%ED%95%A9%EB%8F%84-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_산모특약-적합도-진단.png</image:loc>
+      <image:title>산모특약 적합도 진단</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/tools/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.95</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/tools.png</image:loc>
+      <image:title>베이비빌리 도구 모음</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EA%B0%B1%EC%8B%A0%ED%98%95-vs-%EB%B9%84%EA%B0%B1%EC%8B%A0%ED%98%95-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%ED%84%B0/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_갱신형-vs-비갱신형-시뮬레이터.png</image:loc>
+      <image:title>갱신형 vs 비갱신형 30년 시뮬레이터</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/5%EC%84%B8%EB%8C%80-%EA%B0%88%EC%95%84%ED%83%80%EA%B8%B0-%EA%B2%B0%EC%A0%95-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_5세대-갈아타기-결정-진단.png</image:loc>
+      <image:title>5세대 실손 갈아타기 결정 진단</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B3%B4%ED%97%98%EC%82%AC-%EB%B9%84%EA%B5%90-%EB%A7%A4%ED%8A%B8%EB%A6%AD%EC%8A%A4/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.90</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험-보험사-비교-매트릭스.png</image:loc>
+      <image:title>태아보험 보험사 비교 매트릭스</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EB%B3%B4%EC%9E%A5-%EC%A0%81%EC%A0%95%EC%84%B1-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_어린이보험-보장-적정성-진단.png</image:loc>
+      <image:title>어린이보험 보장 적정성 진단</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/%EC%9E%90%EB%85%80-%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85-%EC%8B%9C%EA%B8%B0-%EC%A7%84%EB%8B%A8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_자녀-보험-가입-시기-진단.png</image:loc>
+      <image:title>자녀 보험 가입 시기 진단</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%A3%BC%EC%B0%A8%EB%B3%84-%EB%B3%B4%ED%97%98-%ED%83%80%EC%9E%84%EB%9D%BC%EC%9D%B8/</loc><lastmod>2026-05-19</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신-주차별-보험-타임라인.png</image:loc>
+      <image:title>임신 주차별 보험 타임라인</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-6%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신-6주-태아보험-가입.png</image:loc>
+      <image:title>임신 6주 태아보험</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-20%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신-20주-태아보험-가입.png</image:loc>
+      <image:title>임신 20주 태아보험</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-26%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.80</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신-26주-태아보험-가입.png</image:loc>
+      <image:title>임신 26주 태아보험</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EB%A9%94%EB%A6%AC%EC%B8%A0%ED%99%94%EC%9E%AC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_메리츠화재-태아보험-분석.png</image:loc>
+      <image:title>메리츠화재 태아보험 2026 완전 분석</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%82%BC%EC%84%B1%EC%83%9D%EB%AA%85-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_삼성생명-태아보험-분석.png</image:loc>
+      <image:title>삼성생명 태아보험 2026 분석</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%84%A0%EC%B2%9C%EC%9D%B4%EC%83%81-%EC%88%98%EC%88%A0%EB%B9%84-%ED%8A%B9%EC%95%BD/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험-선천이상-수술비-특약.png</image:loc>
+      <image:title>태아보험 선천이상 수술비 특약 완전정리 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-NICU-%EC%9E%85%EC%9B%90%EB%B9%84-%ED%8A%B9%EC%95%BD/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_태아보험-NICU-입원비-특약.png</image:loc>
+      <image:title>태아보험 NICU 입원비 특약 완전정리 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0%EC%A4%91%EB%8F%85%EC%A6%9D-%EC%A7%84%EB%8B%A8-%ED%9B%84-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신중독증-진단-후-태아보험.png</image:loc>
+      <image:title>임신중독증 진단 후 태아보험</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-1%EC%84%B8-3%EC%84%B8-%EC%98%81%EC%9C%A0%EC%95%84/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_어린이보험-1세-3세-영유아.png</image:loc>
+      <image:title>1~3세 영유아 어린이보험 완전 가이드 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/KB%EC%86%90%ED%95%B4%EB%B3%B4%ED%97%98-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_KB손해보험-태아보험-분석.png</image:loc>
+      <image:title>KB손해보험 태아보험 2026 분석</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0%EC%84%B1-%EB%8B%B9%EB%87%A8-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_임신성-당뇨-태아보험.png</image:loc>
+      <image:title>임신성 당뇨 진단 후 태아보험</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-8%EC%84%B8-12%EC%84%B8-%EC%B4%88%EB%93%B1/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/child_어린이보험-8세-12세-초등.png</image:loc>
+      <image:title>초등학생(8~12세) 어린이보험 2026 완전 가이드</image:title>
+    </image:image>
+  </url>
   <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-32%EC%A3%BC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%9D%B8%ED%81%90%EB%B2%A0%EC%9D%B4%ED%84%B0-%EC%9E%85%EC%9B%90%EB%B9%84-%ED%8A%B9%EC%95%BD/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
   <url><loc>https://villagebaby.kr/guide/%ED%95%9C%ED%99%94%EC%83%9D%EB%AA%85-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%B6%84%EC%84%9D/</loc><lastmod>2026-05-20</lastmod><changefreq>monthly</changefreq><priority>0.88</priority></url>
