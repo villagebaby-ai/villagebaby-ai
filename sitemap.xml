@@ -1753,6 +1753,9 @@
     </image:image>
   </url>
   <url>
+    <loc>https://villagebaby.kr/guide/%EC%9A%B0%EC%B2%B4%EA%B5%AD-%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD-%EC%97%84%EB%A7%88%EB%B3%B4%ED%97%98-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc><lastmod>2026-05-21</lastmod><changefreq>monthly</changefreq><priority>0.92</priority>
+  </url>
+  <url>
     <loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EA%B3%A8%EC%A0%88-%ED%8A%B9%EC%95%BD/</loc><lastmod>2026-05-21</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
     <image:image>
       <image:loc>https://villagebaby.kr/assets/og/child_어린이보험-골절-특약.png</image:loc>
@@ -1795,3 +1798,4 @@
     </image:image>
   </url>
 </urlset>
+
