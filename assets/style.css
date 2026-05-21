@@ -29,11 +29,13 @@ img{max-width:100%;height:auto;display:block}
   padding:14px 20px;
   display:flex;align-items:center;justify-content:space-between;gap:20px;
 }
-.nav-inner .logo{
+.nav-inner .logo,.nav-inner .nav-logo{
   font-size:18px;font-weight:800;color:#1a1a2e;
   letter-spacing:-0.02em;
+  display:inline-flex;align-items:center;
 }
-.nav-inner .logo:hover{text-decoration:none}
+.nav-inner .logo:hover,.nav-inner .nav-logo:hover{text-decoration:none}
+.nav-inner .nav-logo img{height:32px;width:auto;display:block}
 .nav-links{
   list-style:none;margin:0;padding:0;
   display:flex;gap:22px;
