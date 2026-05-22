@@ -247,7 +247,9 @@ img{max-width:100%;height:auto;display:block}
   .site-footer{padding:24px 16px;margin-top:36px}
 }
 
-/* === DISCLAIMER NOTE (평가/후기/통계 영역 면책 조항) === */
+/* === DISCLAIMER NOTE — 3종 변형 === */
+
+/* A안 · 회색 인용 (일반 가이드 페이지용) */
 .disclaimer-note{
   font-size:12.5px;
   color:#6B7280;
@@ -259,6 +261,52 @@ img{max-width:100%;height:auto;display:block}
   border-left:3px solid #D1D5DB;
 }
 .disclaimer-note strong{color:#4B5563;font-weight:700}
+
+/* C안 · info 아이콘 박스 (시나리오·후기 페이지용) */
+.disclaimer-info{
+  font-size:12.5px;
+  color:#1E40AF;
+  line-height:1.7;
+  margin:18px 0 8px;
+  padding:11px 15px 11px 42px;
+  background:#EFF6FF;
+  border-radius:6px;
+  border-left:3px solid #93C5FD;
+  position:relative;
+}
+.disclaimer-info::before{
+  content:"ⓘ";
+  position:absolute;
+  left:13px;top:9px;
+  font-size:18px;
+  color:#3B82F6;
+  font-weight:700;
+}
+.disclaimer-info strong{color:#1E3A8A;font-weight:700}
+
+/* D안 · 베동 배지 강조 (보험사 분석 페이지용) */
+.disclaimer-badge{
+  font-size:12.5px;
+  color:#6B7280;
+  line-height:1.75;
+  margin:18px 0 8px;
+  padding:11px 15px;
+  background:#FFFBEB;
+  border-radius:6px;
+  border-left:3px solid #FCD34D;
+}
+.disclaimer-badge .badge-tag{
+  display:inline-block;
+  background:#FEF3C7;
+  color:#92400E;
+  font-size:11px;
+  font-weight:800;
+  padding:2px 8px;
+  border-radius:4px;
+  margin-right:6px;
+  letter-spacing:0.02em;
+}
+.disclaimer-badge strong{color:#78350F;font-weight:700}
 
 /* === 호환: 일부 페이지의 다양한 FAQ 변형 클래스 === */
 .faq-answer p,.faq-body p,.faq-item__answer p{margin:0 0 10px}
