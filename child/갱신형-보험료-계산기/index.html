@@ -476,24 +476,8 @@
 
     <p class="gate-tease">20세까지 전체 갱신 타임라인과 총 추가 납입 예상액을 확인하세요.</p>
 
-    <form id="gate-form" novalidate>
-      <div class="gate-form-fields">
-        <div class="gate-field">
-          <label for="g-name">이름</label>
-          <input type="text" id="g-name" name="name" required minlength="2" placeholder="홍길동" autocomplete="name">
-        </div>
-        <div class="gate-field">
-          <label for="g-phone">연락처</label>
-          <input type="tel" id="g-phone" name="phone" required pattern="01[0-9]{9}" placeholder="01012345678" autocomplete="tel">
-        </div>
-        <label class="agree-row">
-          <input type="checkbox" name="agree" required>
-          <span>개인정보 수집·이용에 동의합니다. (수집 항목: 이름, 연락처, 계산기 입력값. 이용 목적: 1:1 재설계 상담 매칭. 보유 기간: 1년. 제3자 제공 없음)</span>
-        </label>
-      </div>
-      <button type="submit" class="btn-gate">전체 갱신 타임라인 보기</button>
-      <p class="agree-detail">결과 확인 후 상담 요청 여부는 자유롭게 선택하실 수 있어요. 부담 없는 영업은 베이비빌리의 원칙입니다.</p>
-    </form>
+    <button id="show-full-result-btn" type="button" class="btn-gate">전체 갱신 타임라인 보기</button>
+    <p class="agree-detail">개인정보 수집 없이 결과를 바로 보여드려요. 정확한 견적·재설계가 필요하시면 결과 화면의 무료 카톡 상담을 활용해 보세요.</p>
   </section>
 
   <!-- ===== STEP 3: 풀 결과 ===== -->
@@ -605,37 +589,18 @@
     secPrev.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  /* ── 게이트 폼 제출 ── */
-  const ENDPOINT = 'FORM_ENDPOINT_TODO';
-
-  document.getElementById('gate-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name  = this.elements['name'].value.trim();
-    const phone = this.elements['phone'].value.replace(/\D/g, '');
-    const agree = this.elements['agree'].checked;
-
-    if (!name || name.length < 2)      { this.elements['name'].focus();  return; }
-    if (!/^01[0-9]{9}$/.test(phone))   { this.elements['phone'].focus(); return; }
-    if (!agree)                         { this.elements['agree'].focus(); return; }
-
-    const age           = parseInt(secPrev.dataset.calcAge,     10);
-    const currentPremium= parseFloat(secPrev.dataset.calcPremium);
-    const renewalPeriod = parseInt(secPrev.dataset.calcPeriod,  10);
-
-    /* 비동기 전송 (실패해도 결과는 보여줌) */
-    const payload = { name, phone, childAge: age, currentPremium, renewalPeriod, source: 'renewal-calculator', ts: Date.now() };
-    if (ENDPOINT !== 'FORM_ENDPOINT_TODO') {
-      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-        .catch(() => {});
-    }
-
-    /* CTA에 UTM 아이 나이 추가 */
-    const ctaEl = document.getElementById('cta-kakao');
-    ctaEl.href = ctaEl.href + '&child_age=' + age;
-
-    showResult(age, currentPremium, renewalPeriod);
-  });
+  /* ── 결과 보기 버튼 (폼 제출 대신) ── */
+  const showFullResultBtn = document.getElementById('show-full-result-btn');
+  if (showFullResultBtn) {
+    showFullResultBtn.addEventListener('click', () => {
+      const age           = parseInt(secPrev.dataset.calcAge,     10);
+      const currentPremium= parseFloat(secPrev.dataset.calcPremium);
+      const renewalPeriod = parseInt(secPrev.dataset.calcPeriod,  10);
+      const ctaEl = document.getElementById('cta-kakao');
+      if (ctaEl) ctaEl.href = ctaEl.href + '&child_age=' + age;
+      showResult(age, currentPremium, renewalPeriod);
+    });
+  }
 
   /* ── 결과 렌더링 ── */
   const BAR_LVL_CLS  = ['lv0', 'lv1', 'lv2', 'lv3', 'lv4', 'lv5'];
