@@ -247,7 +247,30 @@ img{max-width:100%;height:auto;display:block}
   .site-footer{padding:24px 16px;margin-top:36px}
 }
 
-/* === DISCLAIMER NOTE — 3종 변형 === */
+/* === FOOTER DISCLAIMER — 옅은 텍스트 (개인정보처리방침 수준) === */
+.footer-disclaimer{
+  font-size:11px;
+  color:#9CA3AF;
+  line-height:1.65;
+  margin-top:12px !important;
+  padding-top:12px;
+  border-top:1px solid #E5E7EB;
+  text-align:center;
+  letter-spacing:-0.005em;
+}
+.footer-disclaimer strong{color:#6B7280;font-weight:600}
+.footer-disclaimer .badge-tag{
+  display:inline-block;
+  background:#F3F4F6;
+  color:#9CA3AF;
+  font-size:10px;
+  font-weight:600;
+  padding:1px 6px;
+  border-radius:3px;
+  margin-right:4px;
+}
+
+/* === 기존 DISCLAIMER NOTE 박스형 (deprecated - 본문 영역용 호환) === */
 
 /* A안 · 회색 인용 (일반 가이드 페이지용) */
 .disclaimer-note{
