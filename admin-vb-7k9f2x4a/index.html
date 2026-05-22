@@ -1,801 +1,485 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>관리자 대시보드 — villagebaby.kr</title>
-  <meta name="description" content="villagebaby.kr 관리자 대시보드 (내부 전용)">
-  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 대시보드 v2 — villagebaby.kr</title>
+<meta name="description" content="villagebaby.kr 관리자 대시보드 (내부 전용)">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+--bg:#0F172A;--bg-2:#1E293B;--bg-3:#334155;
+--line:#334155;--line-2:#475569;
+--t1:#F1F5F9;--t2:#CBD5E1;--t3:#94A3B8;--t4:#64748B;
+--blue:#60A5FA;--blue-d:#2563EB;--blue-bg:rgba(96,165,250,.12);
+--green:#34D399;--green-bg:rgba(52,211,153,.12);
+--yellow:#FBBF24;--yellow-bg:rgba(251,191,36,.12);
+--red:#F87171;--red-bg:rgba(248,113,113,.12);
+--purple:#A78BFA;--purple-bg:rgba(167,139,250,.12);
+--pink:#F472B6;--pink-bg:rgba(244,114,182,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard Variable','Pretendard',ui-monospace,'JetBrains Mono',monospace;background:var(--bg);color:var(--t1);font-size:13.5px;line-height:1.5;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;font-family:inherit;border:none;background:none;color:inherit}
+input,select{font-family:inherit}
 
-  <style>
-    :root{
-      --bg:#0F172A; --bg-2:#1E293B; --bg-3:#334155;
-      --line:#334155; --line-2:#475569;
-      --t1:#F1F5F9; --t2:#CBD5E1; --t3:#94A3B8; --t4:#64748B;
-      --blue:#60A5FA; --blue-d:#2563EB; --blue-bg:rgba(96,165,250,.12);
-      --green:#34D399; --green-bg:rgba(52,211,153,.12);
-      --yellow:#FBBF24; --yellow-bg:rgba(251,191,36,.12);
-      --red:#F87171; --red-bg:rgba(248,113,113,.12);
-      --purple:#A78BFA; --purple-bg:rgba(167,139,250,.12);
-      --pink:#F472B6; --pink-bg:rgba(244,114,182,.12);
-    }
-    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html{scroll-behavior:smooth}
-    body{font-family:'Pretendard Variable','Pretendard',ui-monospace,'JetBrains Mono',monospace;background:var(--bg);color:var(--t1);font-size:13.5px;line-height:1.5;-webkit-font-smoothing:antialiased;word-break:keep-all}
-    a{color:inherit;text-decoration:none}
-    button{cursor:pointer;font-family:inherit;border:none;background:none;color:inherit}
+/* PIN gate */
+.pin-gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999}
+.pin-box{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:36px 40px;text-align:center;max-width:360px}
+.pin-box h1{font-size:18px;font-weight:900;margin-bottom:8px;color:var(--t1)}
+.pin-box p{font-size:12.5px;color:var(--t3);margin-bottom:18px}
+.pin-input{width:100%;background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;font-size:18px;color:var(--t1);text-align:center;letter-spacing:0.3em;outline:none}
+.pin-input:focus{border-color:var(--blue)}
+.pin-error{color:var(--red);font-size:11.5px;margin-top:10px;height:14px}
 
-    /* TOPBAR */
-    .topbar{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .topbar .logo{font-weight:900;font-size:15px;color:var(--t1);letter-spacing:-0.01em}
-    .topbar .logo .badge{display:inline-block;background:var(--red-bg);color:var(--red);font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;letter-spacing:0.05em}
-    .topbar-right{display:flex;align-items:center;gap:8px}
-    .search-input{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--t1);width:240px;font-family:inherit}
-    .search-input::placeholder{color:var(--t4)}
-    .search-input:focus{outline:none;border-color:var(--blue)}
-    .pill{background:var(--bg-2);border:1px solid var(--line);padding:6px 11px;border-radius:6px;font-size:11.5px;color:var(--t2);font-weight:600}
-    .pill strong{color:var(--blue);font-weight:700}
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar .logo{font-weight:900;font-size:15px;color:var(--t1);letter-spacing:-0.01em}
+.topbar .logo .badge{display:inline-block;background:var(--red-bg);color:var(--red);font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;margin-left:6px;letter-spacing:0.05em}
+.topbar-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{background:var(--bg-2);border:1px solid var(--line);padding:6px 11px;border-radius:6px;font-size:11.5px;color:var(--t2);font-weight:600}
+.pill strong{color:var(--blue);font-weight:700}
+.btn-refresh{background:var(--blue-d);color:#fff;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700}
+.btn-refresh:hover{background:#1d4ed8}
 
-    /* CONTAINER */
-    .container{max-width:1280px;margin:0 auto;padding:24px 20px 80px}
+.container{max-width:1400px;margin:0 auto;padding:24px 20px 80px}
 
-    /* STATS BAR */
-    .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
-    .stat{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-    .stat .lbl{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;margin-bottom:6px}
-    .stat .val{font-size:22px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
-    .stat .val .unit{font-size:13px;color:var(--t3);font-weight:600;margin-left:3px}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+.stat{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat .lbl{font-size:10.5px;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;margin-bottom:6px}
+.stat .val{font-size:22px;font-weight:900;color:var(--t1);letter-spacing:-0.02em}
+.stat .val .unit{font-size:13px;color:var(--t3);font-weight:600;margin-left:3px}
+.stat.fresh .val{color:var(--green)}
+.stat.recent .val{color:var(--blue)}
 
-    /* QUICK LINKS */
-    .quick-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;padding:14px 16px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px}
-    .quick-links .lbl{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;align-self:center;margin-right:6px}
-    .ql-btn{display:inline-flex;align-items:center;gap:5px;background:var(--bg-3);border:1px solid var(--line-2);padding:6px 11px;border-radius:6px;font-size:12px;color:var(--t2);font-weight:600;transition:.15s}
-    .ql-btn:hover{background:var(--blue-d);color:#fff;border-color:var(--blue)}
-    .ql-btn.gh{background:#0d1117;border-color:#21262d}
-    .ql-btn.gh:hover{background:#21262d}
+/* QUICK LINKS */
+.quick-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding:14px 16px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px}
+.quick-links .lbl{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;font-weight:700;align-self:center;margin-right:6px}
+.ql-btn{display:inline-flex;align-items:center;gap:5px;background:var(--bg-3);border:1px solid var(--line-2);padding:6px 11px;border-radius:6px;font-size:12px;color:var(--t2);font-weight:600;transition:.15s}
+.ql-btn:hover{background:var(--blue-d);color:#fff;border-color:var(--blue)}
 
-    /* SECTION */
-    .section{margin-bottom:32px}
-    .section-head{display:flex;align-items:center;gap:10px;padding:0 4px 12px;margin-bottom:8px;border-bottom:1px solid var(--line)}
-    .section-icon{font-size:18px}
-    .section-title{font-size:15px;font-weight:900;color:var(--t1);letter-spacing:-0.01em}
-    .section-count{background:var(--bg-2);color:var(--t3);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:auto}
-    .section-desc{font-size:11.5px;color:var(--t4);margin-left:6px}
+/* FILTERS */
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px;padding:14px 16px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px}
+.filter-input,.filter-select{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 12px;font-size:12.5px;color:var(--t1)}
+.filter-input{width:280px}
+.filter-input::placeholder{color:var(--t4)}
+.filter-input:focus,.filter-select:focus{outline:none;border-color:var(--blue)}
+.filter-label{font-size:11px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:0.05em}
+.btn-bulk{background:var(--purple);color:#fff;padding:7px 12px;border-radius:6px;font-size:11.5px;font-weight:700;margin-left:auto}
+.btn-bulk:hover{background:#9333ea}
+.btn-bulk:disabled{opacity:.4;cursor:not-allowed}
 
-    /* URL TABLE */
-    .url-table{width:100%;border-collapse:collapse;font-size:12.5px}
-    .url-table tr{border-bottom:1px solid var(--line)}
-    .url-table tr:last-child{border-bottom:none}
-    .url-table tr:hover{background:rgba(255,255,255,.02)}
-    .url-table td{padding:10px 12px;vertical-align:middle}
-    .url-table .col-status{width:60px;text-align:center}
-    .url-table .col-tag{width:90px}
-    .url-table .col-title{font-weight:600;color:var(--t1)}
-    .url-table .col-url{color:var(--t3);font-family:ui-monospace,'JetBrains Mono',monospace;font-size:11.5px}
-    .url-table .col-actions{width:140px;text-align:right;white-space:nowrap}
-    .url-table .col-modified{width:96px;text-align:center;font-family:ui-monospace,'JetBrains Mono',monospace;font-size:11px}
-    .mod-badge{display:inline-block;padding:3px 8px;border-radius:5px;font-weight:700;letter-spacing:0.02em}
-    .mod-badge.mod-fresh{background:rgba(52,211,153,.15);color:var(--green)}
-    .mod-badge.mod-ok{background:rgba(96,165,250,.15);color:var(--blue)}
-    .mod-badge.mod-stale{background:rgba(251,191,36,.15);color:var(--yellow)}
-    .mod-badge.mod-na{background:var(--bg-3);color:var(--t4)}
+/* TABLE */
+.table-wrap{background:var(--bg-2);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.url-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.url-table thead{background:var(--bg-3);border-bottom:1px solid var(--line)}
+.url-table thead th{padding:11px 12px;text-align:left;font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;user-select:none}
+.url-table thead th:hover{color:var(--t1)}
+.url-table thead th .sort-arrow{font-size:10px;color:var(--t4);margin-left:3px}
+.url-table thead th.sorted .sort-arrow{color:var(--blue)}
+.url-table tbody tr{border-bottom:1px solid var(--line)}
+.url-table tbody tr:last-child{border-bottom:none}
+.url-table tbody tr:hover{background:rgba(255,255,255,.025)}
+.url-table td{padding:9px 12px;vertical-align:middle}
+.url-table .col-check{width:32px;text-align:center}
+.url-table .col-cat{width:90px}
+.url-table .col-title{color:var(--t1);font-weight:600}
+.url-table .col-title a{color:var(--t1)}
+.url-table .col-title a:hover{color:var(--blue)}
+.url-table .col-url{color:var(--t3);font-family:ui-monospace,'JetBrains Mono',monospace;font-size:11px;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.url-table .col-date{width:104px;text-align:center;font-family:ui-monospace,'JetBrains Mono',monospace;font-size:11px}
+.url-table .col-actions{width:130px;text-align:right;white-space:nowrap}
 
-    .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 2px var(--green-bg)}
-    .status-dot.draft{background:var(--yellow);box-shadow:0 0 0 2px var(--yellow-bg)}
-    .status-dot.priority{background:var(--red);box-shadow:0 0 0 2px var(--red-bg);animation:pulse 1.5s infinite}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.cat-tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:10.5px;font-weight:700;letter-spacing:0.02em}
+.cat-tag.guide{background:var(--blue-bg);color:var(--blue)}
+.cat-tag.child{background:var(--green-bg);color:var(--green)}
+.cat-tag.senior{background:var(--yellow-bg);color:var(--yellow)}
+.cat-tag.care{background:var(--purple-bg);color:var(--purple)}
+.cat-tag.cancer{background:var(--red-bg);color:var(--red)}
+.cat-tag.magazine{background:var(--pink-bg);color:var(--pink)}
+.cat-tag.hub{background:rgba(255,255,255,.05);color:var(--t2)}
+.cat-tag.tools{background:rgba(96,165,250,.06);color:var(--t2)}
+.cat-tag.other{background:var(--bg-3);color:var(--t3)}
 
-    .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:0.02em;line-height:1}
-    .tag.pillar{background:var(--red-bg);color:var(--red)}
-    .tag.spoke{background:var(--blue-bg);color:var(--blue)}
-    .tag.guide{background:var(--green-bg);color:var(--green)}
-    .tag.child{background:var(--pink-bg);color:var(--pink)}
-    .tag.system{background:var(--purple-bg);color:var(--purple)}
-    .tag.form{background:var(--yellow-bg);color:var(--yellow)}
-    .tag.hub{background:var(--blue-bg);color:var(--blue)}
-    .tag.new{background:var(--red-bg);color:var(--red)}
+.date-badge{display:inline-block;padding:3px 8px;border-radius:5px;font-weight:700;letter-spacing:0.02em}
+.date-badge.fresh{background:rgba(52,211,153,.15);color:var(--green)}
+.date-badge.recent{background:var(--blue-bg);color:var(--blue)}
+.date-badge.old{background:rgba(148,163,184,.1);color:var(--t3)}
 
-    .btn{display:inline-flex;align-items:center;gap:4px;background:var(--bg-3);border:1px solid var(--line-2);padding:5px 9px;border-radius:5px;font-size:11px;color:var(--t2);font-weight:600;margin-left:4px;transition:.12s}
-    .btn:hover{background:var(--blue-d);color:#fff;border-color:var(--blue)}
-    .btn.copy:hover{background:var(--green);color:#000;border-color:var(--green)}
+.btn{display:inline-block;padding:5px 10px;border-radius:5px;font-size:11px;font-weight:600;background:var(--bg-3);color:var(--t2);margin-left:4px;transition:.15s}
+.btn:hover{background:var(--blue-d);color:#fff}
+.btn.copy{background:var(--bg-3)}
 
-    /* SEARCH HIGHLIGHT */
-    tr.hidden{display:none}
+.empty{padding:60px 20px;text-align:center;color:var(--t3);font-size:13px}
+.loading{padding:60px 20px;text-align:center;color:var(--t3);font-size:13px}
+.loading::before{content:'⏳ ';font-size:18px}
 
-    /* MOBILE */
-    @media(max-width:760px){
-      .stats{grid-template-columns:repeat(2,1fr)}
-      .container{padding:16px 14px 60px}
-      .topbar{padding:10px 14px;flex-wrap:wrap}
-      .search-input{width:100%}
-      .url-table .col-url{display:none}
-      .url-table td{padding:8px 6px;font-size:12px}
-      .url-table .col-actions{width:auto}
-      .btn{padding:4px 7px;font-size:10.5px}
-    }
+.toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:10px 16px;border-radius:6px;font-size:12px;font-weight:700;z-index:200;opacity:0;transition:.3s;pointer-events:none}
+.toast.show{opacity:1}
 
-    /* COPY TOAST */
-    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--green);color:#000;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;box-shadow:0 4px 16px rgba(0,0,0,.4);opacity:0;transition:.25s;pointer-events:none;z-index:200}
-    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  </style>
+@media(max-width:1024px){
+.stats{grid-template-columns:repeat(3,1fr)}
+.url-table .col-url{display:none}
+}
+@media(max-width:640px){
+.stats{grid-template-columns:repeat(2,1fr)}
+.filter-input{width:100%}
+.url-table .col-cat{width:auto}
+}
+</style>
 </head>
 <body>
 
-<script>
-  // ───── PIN 게이트 (페이지 렌더링 전 1차 차단) ─────
-  // PIN을 변경하려면 이 값만 수정하세요. 기본값: 7294
-  // 보안 한계: 클라이언트사이드 검증이라 view-source/devtools로 우회 가능. URL 난독화와 함께 "외부 임의 추측 차단" 용도.
-  const ADMIN_PIN = '7294';
-  (function pinGate(){
-    const STORE_KEY = 'vb-admin-auth-v1';
-    if (sessionStorage.getItem(STORE_KEY)) return;
-    const pin = prompt('관리자 PIN 입력');
-    if (pin === ADMIN_PIN) {
-      sessionStorage.setItem(STORE_KEY, '1');
-      return;
-    }
-    document.documentElement.innerHTML = '<title>접근 차단</title>';
-    location.replace('/');
-  })();
-</script>
-
-<div class="topbar">
-  <div class="logo">⚙️ villagebaby.kr <span class="badge">ADMIN</span></div>
-  <div class="topbar-right">
-    <input type="text" class="search-input" id="search" placeholder="🔍 페이지 검색...">
-    <span class="pill" id="visible-count"><strong>—</strong> 페이지</span>
-  </div>
+<!-- PIN GATE -->
+<div class="pin-gate" id="pin-gate">
+<div class="pin-box">
+<h1>🔐 관리자 인증</h1>
+<p>관리자 PIN 4자리를 입력해 주세요</p>
+<input type="password" class="pin-input" id="pin-input" maxlength="4" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+<div class="pin-error" id="pin-error"></div>
+</div>
 </div>
 
-<div class="container">
+<!-- TOPBAR -->
+<div class="topbar" style="display:none" id="topbar">
+<div class="logo">베이비빌리 관리자 <span class="badge">v2 자동화</span></div>
+<div class="topbar-right">
+<span class="pill">마지막 빌드: <strong id="last-build">--</strong></span>
+<button class="btn-refresh" onclick="reload()">🔄 동기화</button>
+</div>
+</div>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat"><div class="lbl">전체 페이지</div><div class="val" id="stat-total">—<span class="unit">개</span></div></div>
-    <div class="stat"><div class="lbl">최근 7일 변경</div><div class="val" id="stat-fresh">—<span class="unit">개</span></div></div>
-    <div class="stat"><div class="lbl">최근 30일 변경</div><div class="val" id="stat-recent">—<span class="unit">개</span></div></div>
-    <div class="stat"><div class="lbl">마지막 빌드</div><div class="val" id="last-build-time" style="font-size:18px">—</div><div style="font-size:10px;color:var(--t4);margin-top:2px" id="last-build-msg">로딩…</div></div>
-    <div class="stat"><div class="lbl">최종 데이터 동기화</div><div class="val" id="last-sync" style="font-size:18px">—</div><div style="font-size:10px;color:var(--t4);margin-top:2px"><button id="btn-refresh" style="background:var(--bg-3);border:1px solid var(--line-2);color:var(--t2);padding:3px 8px;border-radius:4px;font-size:10.5px;font-weight:600;cursor:pointer">🔄 다시 동기화</button></div></div>
-  </div>
+<div class="container" style="display:none" id="main">
 
-  <!-- QUICK LINKS -->
-  <div class="quick-links">
-    <span class="lbl">QUICK</span>
-    <a href="https://github.com/villagebaby-ai/villagebaby-ai" target="_blank" rel="noopener" class="ql-btn gh">📦 GitHub Repo</a>
-    <a href="https://github.com/villagebaby-ai/villagebaby-ai/pulls" target="_blank" rel="noopener" class="ql-btn gh">🔀 Pull Requests</a>
-    <a href="https://github.com/villagebaby-ai/villagebaby-ai/actions" target="_blank" rel="noopener" class="ql-btn gh">⚡ Actions</a>
-    <a href="https://search.google.com/search-console" target="_blank" rel="noopener" class="ql-btn">🔍 Google Search Console</a>
-    <a href="https://searchadvisor.naver.com/" target="_blank" rel="noopener" class="ql-btn">🟢 Naver Search Advisor</a>
-    <a href="https://www.bing.com/webmasters" target="_blank" rel="noopener" class="ql-btn">🟠 Bing Webmaster</a>
-    <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="ql-btn">📊 Google Analytics</a>
-    <a href="https://pf.kakao.com/_bxjJfn" target="_blank" rel="noopener" class="ql-btn">💛 카카오 채널</a>
-    <a href="/admin-vb-7k9f2x4a/seo-audit/" class="ql-btn" style="background:#7C3AED;color:#fff">📊 SEO/GEO 감사 보고서</a>
-  </div>
+<!-- STATS -->
+<div class="stats" id="stats">
+<div class="stat"><div class="lbl">전체 페이지</div><div class="val" id="stat-total">--</div></div>
+<div class="stat fresh"><div class="lbl">7일 이내</div><div class="val" id="stat-fresh">--</div></div>
+<div class="stat recent"><div class="lbl">30일 이내</div><div class="val" id="stat-recent">--</div></div>
+<div class="stat"><div class="lbl">태아보험</div><div class="val" id="stat-guide">--</div></div>
+<div class="stat"><div class="lbl">어린이보험</div><div class="val" id="stat-child">--</div></div>
+<div class="stat"><div class="lbl">기타</div><div class="val" id="stat-other">--</div></div>
+</div>
 
-  <!-- 메인 페이지 -->
-  <section class="section" data-cat="hub">
-    <div class="section-head">
-      <span class="section-icon">🏠</span>
-      <span class="section-title">메인 페이지·허브</span>
-      <span class="section-desc">홈 + 카테고리 랜딩</span>
-      <span class="section-count">11</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">빌리지베이비 — 부모가 되는 여정을, 누구나 쉽고 편하게</td><td class="col-url">/</td><td class="col-actions"><a href="/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">태아보험 가이드 전체 — 가입시기·보험료·특약·청구까지</td><td class="col-url">/guide/</td><td class="col-actions"><a href="/guide/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">어린이보험 가이드 — 재설계·비교·특약·보험료 완전 정리 2026</td><td class="col-url">/child/</td><td class="col-actions"><a href="/child/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">운전자보험 가이드 — 1만원대·자동차보험과 차이·보험사 비교 2026</td><td class="col-url">/driver/</td><td class="col-actions"><a href="/driver/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/driver/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">여성보험 가이드 — 임산부·여성암·출산합병증·산후우울증 2026</td><td class="col-url">/female/</td><td class="col-actions"><a href="/female/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/female/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">암보험 가이드 — 가족력·갱신·소액vs고액 2026</td><td class="col-url">/cancer/</td><td class="col-actions"><a href="/cancer/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/cancer/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">간병보험 가이드 — 노인장기요양·치매·뇌졸중·부모님 가입 2026</td><td class="col-url">/care/</td><td class="col-actions"><a href="/care/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/care/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">자녀 교육보험 가이드 — 변액·적립식·비과세·어린이보험 차이 2026</td><td class="col-url">/education/</td><td class="col-actions"><a href="/education/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/education/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">베이비빌리 광고 — 임신부·육아맘 200만이 모인 1등 임신/육아 플랫폼 광고센터</td><td class="col-url">/ads/</td><td class="col-actions"><a href="/ads/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">베이비빌리 보험 매거진 — 케이스와 이야기로 보는 보험 결정</td><td class="col-url">/magazine/</td><td class="col-actions"><a href="/magazine/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag hub">허브</span></td><td class="col-title">베이비빌리 도구 모음 — 보험 진단·계산기·시뮬레이터 11종</td><td class="col-url">/tools/</td><td class="col-actions"><a href="/tools/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/tools/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
+<!-- QUICK LINKS -->
+<div class="quick-links">
+<span class="lbl">바로가기</span>
+<a class="ql-btn" href="https://github.com/villagebaby-ai/villagebaby-ai" target="_blank">📦 GitHub</a>
+<a class="ql-btn" href="https://search.google.com/search-console" target="_blank">🔍 GSC</a>
+<a class="ql-btn" href="/sitemap.xml" target="_blank">🗺️ sitemap.xml</a>
+<a class="ql-btn" href="/robots.txt" target="_blank">🤖 robots.txt</a>
+<a class="ql-btn" href="/admin-vb-7k9f2x4a/seo-audit/" target="_blank">📊 SEO 감사</a>
+<a class="ql-btn" href="https://villagebaby.kr/" target="_blank">🏠 사이트 홈</a>
+</div>
 
-  <section class="section" data-cat="gen5">
-    <div class="section-head">
-      <span class="section-icon">🩺</span>
-      <span class="section-title">5세대 실손 클러스터</span>
-      <span class="section-desc">guide/5세대-* 그룹</span>
-      <span class="section-count">12</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">어린이 5세대 실손 — 우리 아이에게 유리할까 불리할까 2026</td><td class="col-url">/guide/어린이-5세대-실손/</td><td class="col-actions"><a href="/guide/어린이-5세대-실손/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/어린이-5세대-실손/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">4세대 vs 5세대 실손 보험료 비교 2026 — 30년 누적 얼마나 차이날까</td><td class="col-url">/guide/4세대-5세대-실손-보험료-비교/</td><td class="col-actions"><a href="/guide/4세대-5세대-실손-보험료-비교/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/4세대-5세대-실손-보험료-비교/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">5세대 실손 갈아타기 가이드 2026 — 4세대 가입자 필독 5단계</td><td class="col-url">/guide/5세대-실손-갈아타기-가이드/</td><td class="col-actions"><a href="/guide/5세대-실손-갈아타기-가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-갈아타기-가이드/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">5세대 실손 자기부담률 50% 완전 분석 — 비중증 비급여 변경 의미</td><td class="col-url">/guide/5세대-실손-자기부담률-50/</td><td class="col-actions"><a href="/guide/5세대-실손-자기부담률-50/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-자기부담률-50/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">5세대 실손 비급여 중증 vs 비중증 — 산정특례 기준 완전 정리</td><td class="col-url">/guide/5세대-실손-비급여-중증-비중증/</td><td class="col-actions"><a href="/guide/5세대-실손-비급여-중증-비중증/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-비급여-중증-비중증/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">5세대 실손 청구 시뮬레이션 2026 — 10가지 케이스로 본 실제 보장 차이</td><td class="col-url">/guide/5세대-실손-청구-시뮬레이션/</td><td class="col-actions"><a href="/guide/5세대-실손-청구-시뮬레이션/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-청구-시뮬레이션/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">30대·40대 5세대 실손 보험료 2026 — 연령대별 월 보험료 + 절약 가이드</td><td class="col-url">/guide/30대-40대-5세대-실손-보험료/</td><td class="col-actions"><a href="/guide/30대-40대-5세대-실손-보험료/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/30대-40대-5세대-실손-보험료/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">태아실손보험 vs 일반실손 차이 완벽 정리 2026</td><td class="col-url">/guide/태아실손보험-일반실손-차이/</td><td class="col-actions"><a href="/guide/태아실손보험-일반실손-차이/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아실손보험-일반실손-차이/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">태아실손보험 vs 일반실손 차이 완벽 정리 (2026.05)</td><td class="col-url">/guide/태아실손보험-일반실손-차이-v2/</td><td class="col-actions"><a href="/guide/태아실손보험-일반실손-차이-v2/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아실손보험-일반실손-차이-v2/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">5세대 실손 손익 시뮬레이터 — 4세대 vs 5세대 30년 누적 비교</td><td class="col-url">/guide/5세대-실손-손익-시뮬레이터/</td><td class="col-actions"><a href="/guide/5세대-실손-손익-시뮬레이터/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-손익-시뮬레이터/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">5세대 실손 갈아타기 결정 진단 — 7문항 무료 진단</td><td class="col-url">/guide/5세대-갈아타기-결정-진단/</td><td class="col-actions"><a href="/guide/5세대-갈아타기-결정-진단/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-갈아타기-결정-진단/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">5세대</span></td><td class="col-title">태아보험 출생 직후 실손의료비 특약 완전 정리 2026</td><td class="col-url">/guide/태아보험-출생직후-실손-특약/</td><td class="col-actions"><a href="/guide/태아보험-출생직후-실손-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-출생직후-실손-특약/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
+<!-- FILTERS -->
+<div class="filters">
+<span class="filter-label">검색</span>
+<input class="filter-input" id="q" placeholder="URL·제목 검색 (예: 태아보험)" oninput="render()">
+<span class="filter-label">카테고리</span>
+<select class="filter-select" id="cat-filter" onchange="render()">
+<option value="">전체</option>
+<option value="guide">guide</option>
+<option value="child">child</option>
+<option value="senior">senior</option>
+<option value="care">care</option>
+<option value="cancer">cancer</option>
+<option value="magazine">magazine</option>
+<option value="tools">tools</option>
+<option value="hub">hub</option>
+<option value="other">기타</option>
+</select>
+<span class="filter-label">기간</span>
+<select class="filter-select" id="period-filter" onchange="render()">
+<option value="">전체</option>
+<option value="7">최근 7일</option>
+<option value="30">최근 30일</option>
+<option value="90">최근 90일</option>
+</select>
+<button class="btn-bulk" id="bulk-open" onclick="bulkOpen()" disabled>선택 열기 (0)</button>
+<button class="btn-bulk" id="bulk-copy" onclick="bulkCopy()" disabled style="background:var(--bg-3);color:var(--t2)">URL 복사</button>
+</div>
 
-  <section class="section" data-cat="guide">
-    <div class="section-head">
-      <span class="section-icon">🤰</span>
-      <span class="section-title">태아보험 클러스터</span>
-      <span class="section-desc">guide/태아보험-* 그룹</span>
-      <span class="section-count">40</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">태아보험 완전정리 2026 — 가입시기·보험사·보험료·특약·청구 한 페이지</td><td class="col-url">/guide/태아보험-완전정리/</td><td class="col-actions"><a href="/guide/태아보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 가입 시기·필수 특약 완벽 정리 (2026년)</td><td class="col-url">/guide/태아보험-가입시기-필수특약/</td><td class="col-actions"><a href="/guide/태아보험-가입시기-필수특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-가입시기-필수특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">2026 태아보험 보험사 추천 비교 총정리 (삼성생명·현대해상·DB·메리츠)</td><td class="col-url">/guide/태아보험-보험사-추천-비교/</td><td class="col-actions"><a href="/guide/태아보험-보험사-추천-비교/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-보험사-추천-비교/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 보험료 얼마나 드나요? 2026년 실제 금액 총정리</td><td class="col-url">/guide/태아보험-보험료-얼마나-드나/</td><td class="col-actions"><a href="/guide/태아보험-보험료-얼마나-드나/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-보험료-얼마나-드나/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">5세대 실손 완전정리 2026 — 4세대와 무엇이 달라졌나</td><td class="col-url">/guide/5세대-실손-완전정리/</td><td class="col-actions"><a href="/guide/5세대-실손-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/5세대-실손-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 청구 방법 완전 정리 2026 — 출생 후 서류·절차·팁</td><td class="col-url">/guide/태아보험-청구-방법/</td><td class="col-actions"><a href="/guide/태아보험-청구-방법/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-청구-방법/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 특약 총정리 2026 — 필수 vs 선택 vs 불필요 완전 분류</td><td class="col-url">/guide/태아보험-특약-총정리/</td><td class="col-actions"><a href="/guide/태아보험-특약-총정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-특약-총정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 거절 사례 완전 분석 2026 — 이유·대처법·재가입 방법</td><td class="col-url">/guide/태아보험-거절-사례/</td><td class="col-actions"><a href="/guide/태아보험-거절-사례/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-거절-사례/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">출산 후 보험 체크리스트 2026 — 태아보험 전환·청구·변경 완전 정리</td><td class="col-url">/guide/출산후-보험-체크리스트/</td><td class="col-actions"><a href="/guide/출산후-보험-체크리스트/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/출산후-보험-체크리스트/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 vs 어린이보험 — 무엇이 다를까?</td><td class="col-url">/guide/태아보험-vs-어린이보험-차이/</td><td class="col-actions"><a href="/guide/태아보험-vs-어린이보험-차이/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-vs-어린이보험-차이/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">쌍둥이·다태아 태아보험 — 가입 가능성·보장·산모특약 가이드</td><td class="col-url">/guide/쌍둥이-다태아-태아보험/</td><td class="col-actions"><a href="/guide/쌍둥이-다태아-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/쌍둥이-다태아-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">35세 이상 임신 태아보험 + 고령 산모특약 가이드</td><td class="col-url">/guide/35세-이상-임신-태아보험-산모특약/</td><td class="col-actions"><a href="/guide/35세-이상-임신-태아보험-산모특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/35세-이상-임신-태아보험-산모특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신 12주 태아보험 — 안정기 가입 가이드</td><td class="col-url">/guide/임신-12주-태아보험-가입/</td><td class="col-actions"><a href="/guide/임신-12주-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-12주-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">현대해상 Hi 태아보험 완전 분석 — 보장·특약·보험료</td><td class="col-url">/guide/현대해상-Hi-태아보험-분석/</td><td class="col-actions"><a href="/guide/현대해상-Hi-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/현대해상-Hi-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">시험관·인공수정 임신 태아보험 가입 가이드</td><td class="col-url">/guide/시험관-임신-태아보험-가입/</td><td class="col-actions"><a href="/guide/시험관-임신-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/시험관-임신-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신 16주 태아보험 — 안정기 한복판 가입 가이드</td><td class="col-url">/guide/임신-16주-태아보험-가입/</td><td class="col-actions"><a href="/guide/임신-16주-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-16주-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">DB 손해보험 태아보험 완전 분석 — 보장·특약·보험료</td><td class="col-url">/guide/DB손해보험-태아보험-분석/</td><td class="col-actions"><a href="/guide/DB손해보험-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/DB손해보험-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">인공수정(IUI) 임신 태아보험 가입 가이드</td><td class="col-url">/guide/인공수정-임신-태아보험/</td><td class="col-actions"><a href="/guide/인공수정-임신-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/인공수정-임신-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신 6주 태아보험 — 임신 확인 직후 가입 가이드</td><td class="col-url">/guide/임신-6주-태아보험-가입/</td><td class="col-actions"><a href="/guide/임신-6주-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-6주-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신 20주 태아보험 — 마감 직전 마지막 가입 가이드</td><td class="col-url">/guide/임신-20주-태아보험-가입/</td><td class="col-actions"><a href="/guide/임신-20주-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-20주-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신 26주 태아보험 — 아직 가능할까? 긴급 가입 가이드</td><td class="col-url">/guide/임신-26주-태아보험-가입/</td><td class="col-actions"><a href="/guide/임신-26주-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-26주-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">메리츠화재 태아보험 2026 완전 분석 — 장단점·보험료·보장</td><td class="col-url">/guide/메리츠화재-태아보험-분석/</td><td class="col-actions"><a href="/guide/메리츠화재-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/메리츠화재-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">삼성생명 태아보험 2026 분석 — 생명보험 vs 손해보험 선택</td><td class="col-url">/guide/삼성생명-태아보험-분석/</td><td class="col-actions"><a href="/guide/삼성생명-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/삼성생명-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 선천이상 수술비 특약 완전정리 2026 — Q코드·보장 한도·청구</td><td class="col-url">/guide/태아보험-선천이상-수술비-특약/</td><td class="col-actions"><a href="/guide/태아보험-선천이상-수술비-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-선천이상-수술비-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 NICU 입원비 특약 완전정리 2026 — 신생아 집중치료실 보장</td><td class="col-url">/guide/태아보험-NICU-입원비-특약/</td><td class="col-actions"><a href="/guide/태아보험-NICU-입원비-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-NICU-입원비-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">KB손해보험 태아보험 2026 분석 — 특징·보험료·장단점</td><td class="col-url">/guide/KB손해보험-태아보험-분석/</td><td class="col-actions"><a href="/guide/KB손해보험-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/KB손해보험-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신성 당뇨 진단 후 태아보험 — 가입 전략 2026 완전 가이드</td><td class="col-url">/guide/임신성-당뇨-태아보험/</td><td class="col-actions"><a href="/guide/임신성-당뇨-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신성-당뇨-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신 32주 태아보험 가입 — 막달 직전 마지막 기회 완전 정리</td><td class="col-url">/guide/임신-32주-태아보험-가입/</td><td class="col-actions"><a href="/guide/임신-32주-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-32주-태아보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 인큐베이터(보육기) 입원비 특약 완전 정리 2026</td><td class="col-url">/guide/태아보험-인큐베이터-입원비-특약/</td><td class="col-actions"><a href="/guide/태아보험-인큐베이터-입원비-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-인큐베이터-입원비-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">한화생명 태아보험 2026 완전 분석 — 특약·보험료·장단점</td><td class="col-url">/guide/한화생명-태아보험-분석/</td><td class="col-actions"><a href="/guide/한화생명-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/한화생명-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">롯데손보 태아보험 2026 완전 분석 — 특약·보험료·장단점</td><td class="col-url">/guide/롯데손보-태아보험-분석/</td><td class="col-actions"><a href="/guide/롯데손보-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/롯데손보-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 태아사망 위로금 특약 — 가입 요건·보장 범위·청구 방법</td><td class="col-url">/guide/태아보험-태아사망-위로금-특약/</td><td class="col-actions"><a href="/guide/태아보험-태아사망-위로금-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-태아사망-위로금-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">DGB생명 태아보험 2026 완전 분석 — 특약·보험료·장단점</td><td class="col-url">/guide/DGB생명-태아보험-분석/</td><td class="col-actions"><a href="/guide/DGB생명-태아보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/DGB생명-태아보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 다태아(쌍둥이) 특약 완전 정리 2026</td><td class="col-url">/guide/태아보험-다태아-쌍둥이-특약/</td><td class="col-actions"><a href="/guide/태아보험-다태아-쌍둥이-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-다태아-쌍둥이-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태반조기박리 진단 후 태아보험 — 가입 가능 여부·보장 범위·청구</td><td class="col-url">/guide/태반조기박리-태아보험/</td><td class="col-actions"><a href="/guide/태반조기박리-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태반조기박리-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">전치태반 진단 후 태아보험 — 가입 가능 여부·보장 범위·청구 가이드</td><td class="col-url">/guide/전치태반-태아보험/</td><td class="col-actions"><a href="/guide/전치태반-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/전치태반-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임신성 고혈압 진단 후 태아보험 — 가입 가능 여부·보장·청구 2026</td><td class="col-url">/guide/임신성-고혈압-태아보험/</td><td class="col-actions"><a href="/guide/임신성-고혈압-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신성-고혈압-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">태아보험 산모특약 완전 가이드 — 임신부 보장 항목 총정리 | 빌리지베이비</td><td class="col-url">/guide/태아보험-산모-특약/</td><td class="col-actions"><a href="/guide/태아보험-산모-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-산모-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">guide</span></td><td class="col-title">우체국 대한민국 엄마보험 완전정리 — 임신 22주 무료 가입 조건·보장·신청법 2026 | 빌리지베이비</td><td class="col-url">/guide/우체국-대한민국-엄마보험-완전정리/</td><td class="col-actions"><a href="/guide/우체국-대한민국-엄마보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/우체국-대한민국-엄마보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag guide">태아</span></td><td class="col-title">임산부 우울증 태아보험 가이드 — 산후우울증 보장 특약 총정리 | 빌리지베이비</td><td class="col-url">/guide/임산부-우울증-태아보험/</td><td class="col-actions"><a href="/guide/임산부-우울증-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임산부-우울증-태아보험/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="guide_tools">
-    <div class="section-head">
-      <span class="section-icon">🔧</span>
-      <span class="section-title">태아·실손 도구</span>
-      <span class="section-desc">계산기 / 자가진단 / 시뮬레이터</span>
-      <span class="section-count">9</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">태아보험료 계산기 — 임신 주차·성별·보장범위별 예상 월 보험료 (2026년)</td><td class="col-url">/guide/태아보험료-계산기/</td><td class="col-actions"><a href="/guide/태아보험료-계산기/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험료-계산기/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">태아보험 자가진단 — 5문항으로 내게 맞는 보장구조 찾기 (2026년)</td><td class="col-url">/guide/태아보험-자가진단/</td><td class="col-actions"><a href="/guide/태아보험-자가진단/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-자가진단/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">우리 아이 보험료 직접 조회 — 나이별 비교 그래프</td><td class="col-url">/guide/insurance-check/</td><td class="col-actions"><a href="/guide/insurance-check/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/insurance-check/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">태아보험 가입 적합도 진단 — 7문항 무료 진단</td><td class="col-url">/guide/태아보험-가입-적합도-진단/</td><td class="col-actions"><a href="/guide/태아보험-가입-적합도-진단/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-가입-적합도-진단/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">산모특약 적합도 진단 — 7문항 무료 진단</td><td class="col-url">/guide/산모특약-적합도-진단/</td><td class="col-actions"><a href="/guide/산모특약-적합도-진단/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/산모특약-적합도-진단/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">갱신형 vs 비갱신형 30년 시뮬레이터 — 보험료 누적 비교</td><td class="col-url">/guide/갱신형-vs-비갱신형-시뮬레이터/</td><td class="col-actions"><a href="/guide/갱신형-vs-비갱신형-시뮬레이터/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/갱신형-vs-비갱신형-시뮬레이터/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">태아보험 보험사 비교 매트릭스 — 4대 보험사 7항목 인터랙티브 비교</td><td class="col-url">/guide/태아보험-보험사-비교-매트릭스/</td><td class="col-actions"><a href="/guide/태아보험-보험사-비교-매트릭스/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/태아보험-보험사-비교-매트릭스/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">임신 주차별 보험 타임라인 — 시각화 가이드</td><td class="col-url">/guide/임신-주차별-보험-타임라인/</td><td class="col-actions"><a href="/guide/임신-주차별-보험-타임라인/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신-주차별-보험-타임라인/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">임신중독증 진단 후 태아보험 — 가입 가능한가요? 2026 완전 가이드</td><td class="col-url">/guide/임신중독증-진단-후-태아보험/</td><td class="col-actions"><a href="/guide/임신중독증-진단-후-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/guide/임신중독증-진단-후-태아보험/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="magazine_pregnancy">
-    <div class="section-head">
-      <span class="section-icon">📖</span>
-      <span class="section-title">매거진 — 임신</span>
-      <span class="section-desc">magazine/pregnancy/*</span>
-      <span class="section-count">6</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">임신</span></td><td class="col-title">임신 — 태아보험 가입 골든타임과 케이스</td><td class="col-url">/magazine/pregnancy/</td><td class="col-actions"><a href="/magazine/pregnancy/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/pregnancy/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">임신</span></td><td class="col-title">태아보험 가입 골든타임 — 임신 12주에서 22주 사이에 결정해야 하는 이유</td><td class="col-url">/magazine/pregnancy/태아보험-가입-골든타임/</td><td class="col-actions"><a href="/magazine/pregnancy/태아보험-가입-골든타임/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/pregnancy/태아보험-가입-골든타임/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">임신</span></td><td class="col-title">NT 검사 결과 두께별 가입 시나리오 — 정상·경계·두꺼움 케이스 정리</td><td class="col-url">/magazine/pregnancy/nt-검사-결과별-가입-시나리오/</td><td class="col-actions"><a href="/magazine/pregnancy/nt-검사-결과별-가입-시나리오/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/pregnancy/nt-검사-결과별-가입-시나리오/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">임신</span></td><td class="col-title">양수검사·융모막검사 후에도 태아보험 가입할 수 있나요</td><td class="col-url">/magazine/pregnancy/양수검사-후-가입-가능-보험사/</td><td class="col-actions"><a href="/magazine/pregnancy/양수검사-후-가입-가능-보험사/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/pregnancy/양수검사-후-가입-가능-보험사/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">임신</span></td><td class="col-title">임신성 당뇨·고혈압 진단받은 산모의 태아보험 선택지</td><td class="col-url">/magazine/pregnancy/임신성-당뇨-고혈압-산모-태아보험/</td><td class="col-actions"><a href="/magazine/pregnancy/임신성-당뇨-고혈압-산모-태아보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/pregnancy/임신성-당뇨-고혈압-산모-태아보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">임신</span></td><td class="col-title">1차 기형아 검사 결과가 영향을 주는 가입 조건</td><td class="col-url">/magazine/pregnancy/1차-기형아-검사-가입조건/</td><td class="col-actions"><a href="/magazine/pregnancy/1차-기형아-검사-가입조건/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/pregnancy/1차-기형아-검사-가입조건/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="magazine_newborn">
-    <div class="section-head">
-      <span class="section-icon">👶</span>
-      <span class="section-title">매거진 — 신생아</span>
-      <span class="section-desc">magazine/newborn/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag blue">신생아</span></td><td class="col-title">신생아 — 출생 직후 보험 청구와 어린이보험 골든타임</td><td class="col-url">/magazine/newborn/</td><td class="col-actions"><a href="/magazine/newborn/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/newborn/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag blue">신생아</span></td><td class="col-title">신생아 황달·NICU 입원 — 출생 후 첫 보험금 청구 완전 정리</td><td class="col-url">/magazine/newborn/신생아-황달-nicu-입원-보험금-청구/</td><td class="col-actions"><a href="/magazine/newborn/신생아-황달-nicu-입원-보험금-청구/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/newborn/신생아-황달-nicu-입원-보험금-청구/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag blue">신생아</span></td><td class="col-title">출생 직후 30일 — 어린이보험 가입 골든타임이 왜 중요한가요</td><td class="col-url">/magazine/newborn/출생-30일-어린이보험-골든타임/</td><td class="col-actions"><a href="/magazine/newborn/출생-30일-어린이보험-골든타임/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/newborn/출생-30일-어린이보험-골든타임/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag blue">신생아</span></td><td class="col-title">미숙아·저체중아로 태어났다면 — 태아보험 가입 가능 보험사와 조건</td><td class="col-url">/magazine/newborn/미숙아-저체중아-태아보험-가입/</td><td class="col-actions"><a href="/magazine/newborn/미숙아-저체중아-태아보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/newborn/미숙아-저체중아-태아보험-가입/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="magazine_toddler">
-    <div class="section-head">
-      <span class="section-icon">🧸</span>
-      <span class="section-title">매거진 — 영유아</span>
-      <span class="section-desc">magazine/toddler/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag green">영유아</span></td><td class="col-title">영유아 — 어린이보험 전환·실손·청구 케이스</td><td class="col-url">/magazine/toddler/</td><td class="col-actions"><a href="/magazine/toddler/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/toddler/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag green">영유아</span></td><td class="col-title">태아보험에서 어린이보험으로 — 3세·5세·7세 시점별 보험 점검</td><td class="col-url">/magazine/toddler/태아보험-어린이보험-전환-시점/</td><td class="col-actions"><a href="/magazine/toddler/태아보험-어린이보험-전환-시점/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/toddler/태아보험-어린이보험-전환-시점/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag green">영유아</span></td><td class="col-title">자녀 실손보험 — 단독 실손 vs 어린이보험 특약, 어느 쪽이 유리한가요</td><td class="col-url">/magazine/toddler/자녀-실손보험-단독-vs-특약/</td><td class="col-actions"><a href="/magazine/toddler/자녀-실손보험-단독-vs-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/toddler/자녀-실손보험-단독-vs-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag green">영유아</span></td><td class="col-title">영유아 소아과·응급실 실손 청구 — 놓치기 쉬운 포인트와 절차</td><td class="col-url">/magazine/toddler/소아과-응급실-실손-청구/</td><td class="col-actions"><a href="/magazine/toddler/소아과-응급실-실손-청구/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/toddler/소아과-응급실-실손-청구/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="magazine_school">
-    <div class="section-head">
-      <span class="section-icon">🎒</span>
-      <span class="section-title">매거진 — 학동기</span>
-      <span class="section-desc">magazine/school/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">학동기</span></td><td class="col-title">학동기 — 초등학생 어린이보험·재설계·특약</td><td class="col-url">/magazine/school/</td><td class="col-actions"><a href="/magazine/school/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/school/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">학동기</span></td><td class="col-title">초등학생 어린이보험 — 학교폭력·상해 특약 어떤 게 필요한가요</td><td class="col-url">/magazine/school/어린이보험-학교폭력-상해-특약/</td><td class="col-actions"><a href="/magazine/school/어린이보험-학교폭력-상해-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/school/어린이보험-학교폭력-상해-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">학동기</span></td><td class="col-title">초등 입학 전 어린이보험 재설계 — 6세 시점에 꼭 점검해야 할 것들</td><td class="col-url">/magazine/school/초등-입학전-어린이보험-재설계/</td><td class="col-actions"><a href="/magazine/school/초등-입학전-어린이보험-재설계/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/school/초등-입학전-어린이보험-재설계/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">학동기</span></td><td class="col-title">초등학생 치아보험·운동 상해 보장 — 학동기 보험 설계 포인트</td><td class="col-url">/magazine/school/학동기-치아-운동-보험-설계/</td><td class="col-actions"><a href="/magazine/school/학동기-치아-운동-보험-설계/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/school/학동기-치아-운동-보험-설계/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="magazine_case">
-    <div class="section-head">
-      <span class="section-icon">📂</span>
-      <span class="section-title">매거진 — 케이스</span>
-      <span class="section-desc">실제 사례 시나리오</span>
-      <span class="section-count">5</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">케이스</span></td><td class="col-title">케이스 — 거절·재가입·청구 실제 사례 모음</td><td class="col-url">/magazine/case/</td><td class="col-actions"><a href="/magazine/case/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/case/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">케이스</span></td><td class="col-title">임신 28주에 거절받았던 ○○님이 다시 가입에 성공한 케이스</td><td class="col-url">/magazine/case/28주-거절-재가입-케이스/</td><td class="col-actions"><a href="/magazine/case/28주-거절-재가입-케이스/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/case/28주-거절-재가입-케이스/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">케이스</span></td><td class="col-title">NT 수치 이상 소견에서 시작된 ○○님의 태아보험 — 거절 후 조건부 승인 케이스</td><td class="col-url">/magazine/case/nt-이상소견-거절-조건부승인-케이스/</td><td class="col-actions"><a href="/magazine/case/nt-이상소견-거절-조건부승인-케이스/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/case/nt-이상소견-거절-조건부승인-케이스/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">케이스</span></td><td class="col-title">임신성 당뇨 진단 후 태아보험 — ○○님이 겪은 3가지 시나리오</td><td class="col-url">/magazine/case/임신성당뇨-태아보험-시나리오/</td><td class="col-actions"><a href="/magazine/case/임신성당뇨-태아보험-시나리오/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/case/임신성당뇨-태아보험-시나리오/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">케이스</span></td><td class="col-title">쌍둥이 임신이라 태아보험 거절받은 △△님 — 다태아 재도전 케이스</td><td class="col-url">/magazine/case/쌍둥이-다태아-보험-거절-케이스/</td><td class="col-actions"><a href="/magazine/case/쌍둥이-다태아-보험-거절-케이스/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/case/쌍둥이-다태아-보험-거절-케이스/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="magazine_tools">
-    <div class="section-head">
-      <span class="section-icon">🛠</span>
-      <span class="section-title">매거진 — 도구</span>
-      <span class="section-desc">magazine/tools/*</span>
-      <span class="section-count">1</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">태아보험 핏체크 12문항 — 가입 가능성·추천 시기 무료 진단</td><td class="col-url">/magazine/tools/fit-check/</td><td class="col-actions"><a href="/magazine/tools/fit-check/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/magazine/tools/fit-check/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="driver">
-    <div class="section-head">
-      <span class="section-icon">🚗</span>
-      <span class="section-title">운전자보험 클러스터</span>
-      <span class="section-desc">driver/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">운전자보험 완전정리 2026 — 자동차보험 차이·1만원대·필수특약·보험사 한 페이지</td><td class="col-url">/driver/운전자보험-완전정리/</td><td class="col-actions"><a href="/driver/운전자보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/driver/운전자보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">운전자</span></td><td class="col-title">운전자보험 vs 자동차보험 차이 2026 — 둘 다 들어야 하는 이유</td><td class="col-url">/driver/운전자보험-vs-자동차보험-차이/</td><td class="col-actions"><a href="/driver/운전자보험-vs-자동차보험-차이/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/driver/운전자보험-vs-자동차보험-차이/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">운전자</span></td><td class="col-title">운전자보험 보험사 6개사 비교 2026 — 현대·삼성·KB·메리츠·DB·한화 솔직 분석</td><td class="col-url">/driver/운전자보험-보험사-비교/</td><td class="col-actions"><a href="/driver/운전자보험-보험사-비교/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/driver/운전자보험-보험사-비교/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">운전자</span></td><td class="col-title">부모·자녀동승 안전운전 특약 2026 — 카시트 위반·가족 한정 할인 가이드</td><td class="col-url">/driver/부모-안전운전-특약/</td><td class="col-actions"><a href="/driver/부모-안전운전-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/driver/부모-안전운전-특약/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="female">
-    <div class="section-head">
-      <span class="section-icon">🌷</span>
-      <span class="section-title">여성보험 클러스터</span>
-      <span class="section-desc">female/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">여성보험 완전정리 2026 — 임산부·여성암·출산합병증·산후우울증 한 페이지</td><td class="col-url">/female/여성보험-완전정리/</td><td class="col-actions"><a href="/female/여성보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/female/여성보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">여성</span></td><td class="col-title">임산부 여성보험 가입 가이드 2026 — 22주 데드라인·시기별 인수 전략</td><td class="col-url">/female/임산부-여성보험-가입가이드/</td><td class="col-actions"><a href="/female/임산부-여성보험-가입가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/female/임산부-여성보험-가입가이드/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">여성</span></td><td class="col-title">여성암 보장 가이드 2026 — 유방암·자궁경부암·난소암 진단비 완전정리</td><td class="col-url">/female/여성암-유방암-자궁경부암-보장/</td><td class="col-actions"><a href="/female/여성암-유방암-자궁경부암-보장/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/female/여성암-유방암-자궁경부암-보장/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pink">여성</span></td><td class="col-title">출산합병증·산후우울증 보장 가이드 2026 — 제왕절개·임신중독증·산후우울증</td><td class="col-url">/female/출산합병증-산후우울증-보장/</td><td class="col-actions"><a href="/female/출산합병증-산후우울증-보장/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/female/출산합병증-산후우울증-보장/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="cancer">
-    <div class="section-head">
-      <span class="section-icon">🎗</span>
-      <span class="section-title">암보험 클러스터</span>
-      <span class="section-desc">cancer/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">암보험 완전정리 2026 — 가족력·갱신·소액vs고액·보험사 한 페이지</td><td class="col-url">/cancer/암보험-완전정리/</td><td class="col-actions"><a href="/cancer/암보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/cancer/암보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">암</span></td><td class="col-title">가족력 암보험 가입 가이드 2026 — 부담보 회피·11개사 인수 정책</td><td class="col-url">/cancer/가족력-암보험-가입가이드/</td><td class="col-actions"><a href="/cancer/가족력-암보험-가입가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/cancer/가족력-암보험-가입가이드/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">암</span></td><td class="col-title">암보험 갱신형 vs 비갱신형 2026 — 30년 누적 1.8배 차이 완전분석</td><td class="col-url">/cancer/갱신형-vs-비갱신형/</td><td class="col-actions"><a href="/cancer/갱신형-vs-비갱신형/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/cancer/갱신형-vs-비갱신형/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag purple">암</span></td><td class="col-title">소액암 vs 고액암 2026 — 갑상선·전립선 vs 폐·간·췌장 진단비 차등 완전정리</td><td class="col-url">/cancer/소액암-vs-고액암/</td><td class="col-actions"><a href="/cancer/소액암-vs-고액암/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/cancer/소액암-vs-고액암/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="care">
-    <div class="section-head">
-      <span class="section-icon">🤝</span>
-      <span class="section-title">간병보험 클러스터</span>
-      <span class="section-desc">care/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">간병보험 완전정리 2026 — 노인장기요양·치매·뇌졸중·간병인 사용일당 한 페이지</td><td class="col-url">/care/간병보험-완전정리/</td><td class="col-actions"><a href="/care/간병보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/care/간병보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">간병</span></td><td class="col-title">노인장기요양보험 vs 민간 간병보험 2026 — 등급·보장 영역·둘 다 가입 시뮬</td><td class="col-url">/care/노인장기요양보험-vs-민간간병보험/</td><td class="col-actions"><a href="/care/노인장기요양보험-vs-민간간병보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/care/노인장기요양보험-vs-민간간병보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">간병</span></td><td class="col-title">치매·뇌졸중 간병 보장 2026 — CDR 등급·뇌출혈·뇌경색 진단비 완전정리</td><td class="col-url">/care/치매-뇌졸중-간병-보장/</td><td class="col-actions"><a href="/care/치매-뇌졸중-간병-보장/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/care/치매-뇌졸중-간병-보장/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag yellow">간병</span></td><td class="col-title">부모님 간병보험 가입 가이드 2026 — 60·70대 인수·자녀가 대신 가입 5단계</td><td class="col-url">/care/부모님-간병보험-가입가이드/</td><td class="col-actions"><a href="/care/부모님-간병보험-가입가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/care/부모님-간병보험-가입가이드/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="education">
-    <div class="section-head">
-      <span class="section-icon">🎓</span>
-      <span class="section-title">자녀 교육보험 클러스터</span>
-      <span class="section-desc">education/*</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">자녀 교육보험 완전정리 2026 — 변액·적립식·비과세·30년 시뮬·보험사 한 페이지</td><td class="col-url">/education/자녀-교육보험-완전정리/</td><td class="col-actions"><a href="/education/자녀-교육보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/education/자녀-교육보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">교육</span></td><td class="col-title">자녀 교육보험 vs 어린이보험 차이 2026 — 보장형 vs 저축형 우선순위</td><td class="col-url">/education/자녀-교육보험-vs-어린이보험-차이/</td><td class="col-actions"><a href="/education/자녀-교육보험-vs-어린이보험-차이/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/education/자녀-교육보험-vs-어린이보험-차이/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">교육</span></td><td class="col-title">변액 vs 적립식 자녀보험 비교 2026 — 30년 수익 시뮬·사업비·손실 위험</td><td class="col-url">/education/변액-적립식-자녀보험-비교/</td><td class="col-actions"><a href="/education/변액-적립식-자녀보험-비교/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/education/변액-적립식-자녀보험-비교/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">교육</span></td><td class="col-title">비과세 한도 자녀보험 활용법 2026 — 월 150만·일시납 1억·부부 합산 절세</td><td class="col-url">/education/비과세-한도-자녀보험-활용법/</td><td class="col-actions"><a href="/education/비과세-한도-자녀보험-활용법/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/education/비과세-한도-자녀보험-활용법/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="child">
-    <div class="section-head">
-      <span class="section-icon">🧒</span>
-      <span class="section-title">어린이보험 클러스터</span>
-      <span class="section-desc">child/*</span>
-      <span class="section-count">24</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag pillar">pillar</span></td><td class="col-title">어린이보험 완전정리 2026 — 가입시기·보험사·보험료·특약·재설계 한 페이지</td><td class="col-url">/child/어린이보험-완전정리/</td><td class="col-actions"><a href="/child/어린이보험-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 재설계 언제 필요할까 2026 — 점검 시그널 5가지·재설계 프로세스</td><td class="col-url">/child/어린이보험-재설계-언제-필요할까/</td><td class="col-actions"><a href="/child/어린이보험-재설계-언제-필요할까/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-재설계-언제-필요할까/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 보험사 비교 추천 2026 — 6개사 솔직 분석 (현대·삼성·KB·메리츠·DB·한화)</td><td class="col-url">/child/어린이보험-보험사-비교-추천/</td><td class="col-actions"><a href="/child/어린이보험-보험사-비교-추천/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-보험사-비교-추천/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 필수특약 TOP 10 (2026) — 빼면 후회하는 보장과 빼도 되는 특약</td><td class="col-url">/child/어린이보험-필수특약-TOP10/</td><td class="col-actions"><a href="/child/어린이보험-필수특약-TOP10/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-필수특약-TOP10/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 보험료 적정선 2026 — 월 5만~15만원 구간별 보장 비교</td><td class="col-url">/child/어린이보험-보험료-적정선/</td><td class="col-actions"><a href="/child/어린이보험-보험료-적정선/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-보험료-적정선/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 환급형 vs 순수보장형 2026 — 30년 후 진짜 유리한 선택</td><td class="col-url">/child/어린이보험-환급형-vs-순수보장형/</td><td class="col-actions"><a href="/child/어린이보험-환급형-vs-순수보장형/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-환급형-vs-순수보장형/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">신생아 어린이보험 — 출생 30일 골든타임 가입 가이드</td><td class="col-url">/child/신생아-어린이보험-출생30일/</td><td class="col-actions"><a href="/child/신생아-어린이보험-출생30일/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/신생아-어린이보험-출생30일/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">5세 어린이보험 가입 가이드 — 초등 입학 전 골든타임</td><td class="col-url">/child/5세-어린이보험-가입/</td><td class="col-actions"><a href="/child/5세-어린이보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/5세-어린이보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">알레르기·아토피·천식 어린이보험 가입 가이드</td><td class="col-url">/child/알레르기-아토피-어린이보험/</td><td class="col-actions"><a href="/child/알레르기-아토피-어린이보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/알레르기-아토피-어린이보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">소아천식 진단 후 어린이보험 가입 가이드</td><td class="col-url">/child/소아천식-어린이보험-가입/</td><td class="col-actions"><a href="/child/소아천식-어린이보험-가입/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/소아천식-어린이보험-가입/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">자녀배상책임 특약 완전 정리 — 학교·놀이터 사고 보장</td><td class="col-url">/child/자녀배상책임-특약-완전정리/</td><td class="col-actions"><a href="/child/자녀배상책임-특약-완전정리/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/자녀배상책임-특약-완전정리/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">1~3세 영유아 어린이보험 완전 가이드 2026 — 가입 시기·보장·보험사</td><td class="col-url">/child/어린이보험-1세-3세-영유아/</td><td class="col-actions"><a href="/child/어린이보험-1세-3세-영유아/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-1세-3세-영유아/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">초등학생(8~12세) 어린이보험 2026 완전 가이드 — 가입·재설계·특약</td><td class="col-url">/child/어린이보험-8세-12세-초등/</td><td class="col-actions"><a href="/child/어린이보험-8세-12세-초등/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-8세-12세-초등/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">중학생 어린이보험(13~15세) 완전 가이드 2026 — 핵심 특약·보험료·추천</td><td class="col-url">/child/어린이보험-13세-15세-중학생/</td><td class="col-actions"><a href="/child/어린이보험-13세-15세-중학생/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-13세-15세-중학생/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">현대해상 어린이보험(하이키즈) 2026 완전 분석 — 특약·보험료·장단점</td><td class="col-url">/child/현대해상-어린이보험-분석/</td><td class="col-actions"><a href="/child/현대해상-어린이보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/현대해상-어린이보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">DB손보 어린이보험 2026 완전 분석 — 다이렉트·특약·보험료·장단점</td><td class="col-url">/child/DB손보-어린이보험-분석/</td><td class="col-actions"><a href="/child/DB손보-어린이보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/DB손보-어린이보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 소아암 특약 완전 정리 2026 — 보장 범위·금액·보험사 비교</td><td class="col-url">/child/어린이보험-소아암-특약/</td><td class="col-actions"><a href="/child/어린이보험-소아암-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-소아암-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">메리츠화재 어린이보험 분석 — 보장 내용·보험료 총정리 | 빌리지베이비</td><td class="col-url">/child/메리츠화재-어린이보험-분석/</td><td class="col-actions"><a href="/child/메리츠화재-어린이보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/메리츠화재-어린이보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">삼성화재 어린이보험 분석 — 보장 내용·가입 조건 총정리 | 빌리지베이비</td><td class="col-url">/child/삼성화재-어린이보험-분석/</td><td class="col-actions"><a href="/child/삼성화재-어린이보험-분석/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/삼성화재-어린이보험-분석/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 골절 특약 완전 가이드 — 보장 범위·청구 방법 총정리 | 빌리지베이비</td><td class="col-url">/child/어린이보험-골절-특약/</td><td class="col-actions"><a href="/child/어린이보험-골절-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-골절-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 화상 특약 완전 가이드 — 보장 등급·치료비 총정리 | 빌리지베이비</td><td class="col-url">/child/어린이보험-화상-특약/</td><td class="col-actions"><a href="/child/어린이보험-화상-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-화상-특약/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">미숙아 어린이보험 가입 가이드 — 보장 내용·주의사항 총정리 | 빌리지베이비</td><td class="col-url">/child/미숙아-어린이보험/</td><td class="col-actions"><a href="/child/미숙아-어린이보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/미숙아-어린이보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">소아당뇨 어린이보험 가입 가이드 — 1형 당뇨 보장·인싐린 치료비 총정리 | 빌리지베이비</td><td class="col-url">/child/소아당뇨-어린이보험/</td><td class="col-actions"><a href="/child/소아당뇨-어린이보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/소아당뇨-어린이보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag child">어린이</span></td><td class="col-title">어린이보험 통원 특약 완전 가이드 — 외래 비용 보장·청구 방법 총정리 | 빌리지베이비</td><td class="col-url">/child/어린이보험-통원-특약/</td><td class="col-actions"><a href="/child/어린이보험-통원-특약/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-통원-특약/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="child_tools">
-    <div class="section-head">
-      <span class="section-icon">🔧</span>
-      <span class="section-title">어린이 도구</span>
-      <span class="section-desc">갱신형 계산기 등</span>
-      <span class="section-count">4</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">갱신형 어린이보험 보험료 폭탄 계산기 — 갱신 시 예상 보험료 즉시 확인 (2026)</td><td class="col-url">/child/갱신형-보험료-계산기/</td><td class="col-actions"><a href="/child/갱신형-보험료-계산기/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/갱신형-보험료-계산기/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">ADHD·자폐 진단 후 어린이보험 가입 가이드</td><td class="col-url">/child/ADHD-자폐-진단-어린이보험/</td><td class="col-actions"><a href="/child/ADHD-자폐-진단-어린이보험/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/ADHD-자폐-진단-어린이보험/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">어린이보험 보장 적정성 진단 — 7문항 무료 진단</td><td class="col-url">/child/어린이보험-보장-적정성-진단/</td><td class="col-actions"><a href="/child/어린이보험-보장-적정성-진단/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/어린이보험-보장-적정성-진단/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag spoke">도구</span></td><td class="col-title">자녀 보험 가입 시기 진단 — 0~15세 최적 시점 7문항 무료 진단</td><td class="col-url">/child/자녀-보험-가입-시기-진단/</td><td class="col-actions"><a href="/child/자녀-보험-가입-시기-진단/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/child/자녀-보험-가입-시기-진단/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="ads">
-    <div class="section-head">
-      <span class="section-icon">📢</span>
-      <span class="section-title">B2B 광고센터</span>
-      <span class="section-desc">ads/*</span>
-      <span class="section-count">11</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">베이비빌리 오디언스 — 임신부·육아맘 200만 데이터 한눈에</td><td class="col-url">/ads/audience/</td><td class="col-actions"><a href="/ads/audience/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/audience/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">광고 상품 전체 — 메인 배너·푸시·콘텐츠 협찬·CRM·캠페인 패키지</td><td class="col-url">/ads/products/</td><td class="col-actions"><a href="/ads/products/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/products/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">광고 집행 사례 — 식음료·교육·금융·뷰티 12개 업종</td><td class="col-url">/ads/cases/</td><td class="col-actions"><a href="/ads/cases/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/cases/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">인사이트 — 임산부·육아맘 마케팅 가이드 모음</td><td class="col-url">/ads/insights/</td><td class="col-actions"><a href="/ads/insights/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/insights/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">임산부·육아맘 마케팅 완전 가이드 2026 — 어디서·어떻게·얼마부터</td><td class="col-url">/ads/insights/임산부-육아맘-마케팅-가이드/</td><td class="col-actions"><a href="/ads/insights/임산부-육아맘-마케팅-가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/insights/임산부-육아맘-마케팅-가이드/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">베이비빌리 광고비 가이드 2026 — 상품별·예산 구간별 견적 가이드</td><td class="col-url">/ads/insights/베이비빌리-광고비-가이드/</td><td class="col-actions"><a href="/ads/insights/베이비빌리-광고비-가이드/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/insights/베이비빌리-광고비-가이드/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">임신앱 광고 vs 맘카페 광고 vs SNS — 채널별 정밀 비교 2026</td><td class="col-url">/ads/insights/임신앱-광고-vs-맘카페-광고/</td><td class="col-actions"><a href="/ads/insights/임신앱-광고-vs-맘카페-광고/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/insights/임신앱-광고-vs-맘카페-광고/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">유아 브랜드 인플루언서 마케팅 — 앱 광고와 어떻게 결합할까</td><td class="col-url">/ads/insights/유아-브랜드-인플루언서-마케팅/</td><td class="col-actions"><a href="/ads/insights/유아-브랜드-인플루언서-마케팅/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/insights/유아-브랜드-인플루언서-마케팅/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">모바일 광고 CPM·CPC 임산부 타겟 — 2026 채널별 벤치마크</td><td class="col-url">/ads/insights/모바일-광고-CPM-CPC-임산부/</td><td class="col-actions"><a href="/ads/insights/모바일-광고-CPM-CPC-임산부/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/insights/모바일-광고-CPM-CPC-임산부/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">광고주 FAQ — 자주 묻는 18가지 질문</td><td class="col-url">/ads/faq/</td><td class="col-actions"><a href="/ads/faq/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/faq/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag form">광고</span></td><td class="col-title">광고 문의 — 1영업일 내 미디어 제안서·견적 발송</td><td class="col-url">/ads/contact/</td><td class="col-actions"><a href="/ads/contact/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/ads/contact/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section" data-cat="system">
-    <div class="section-head">
-      <span class="section-icon">⚙</span>
-      <span class="section-title">시스템 페이지</span>
-      <span class="section-desc">privacy / terms</span>
-      <span class="section-count">2</span>
-    </div>
-    <table class="url-table">
-      <tbody>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag system">시스템</span></td><td class="col-title">개인정보처리방침</td><td class="col-url">/privacy/</td><td class="col-actions"><a href="/privacy/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/privacy/">복사</button></td></tr>
-        <tr><td class="col-status"><span class="status-dot " title="Live"></span></td><td class="col-tag"><span class="tag system">시스템</span></td><td class="col-title">이용약관</td><td class="col-url">/terms/</td><td class="col-actions"><a href="/terms/" target="_blank" rel="noopener" class="btn">열기</a><button class="btn copy" data-url="https://villagebaby.kr/terms/">복사</button></td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section">
-    <div class="section-head">
-      <span class="section-icon">💡</span>
-      <h2 class="section-title">관리 TIPS</h2>
-    </div>
-    <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:18px 20px;font-size:13px;line-height:1.85;color:var(--t2)">
-      <p style="margin-bottom:8px"><strong style="color:var(--blue)">📍 Search Console 색인 요청 항상 3종 셋트:</strong> Google + Naver Search Advisor + Bing Webmaster. 한 곳만 하면 트래픽 절반 손해.</p>
-      <p style="margin-bottom:8px"><strong style="color:var(--green)">✅ 새 페이지 배포 후 체크리스트:</strong> ① sitemap.xml 갱신 → ② rss.xml 갱신 → ③ Pillar/허브 내부 링크 → ④ 3종 색인 요청.</p>
-      <p style="margin-bottom:8px"><strong style="color:var(--yellow)">⚠️ 카톡 OG 캐시:</strong> 1~3일 캐싱됨. 빠른 갱신은 <a href="https://developers.kakao.com/tool/clear/og" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Kakao 디버거</a>에서 URL 캐시 삭제.</p>
-      <p style="margin-bottom:8px"><strong style="color:var(--purple)">🔀 PR 워크플로우:</strong> <code style="background:var(--bg-3);padding:2px 6px;border-radius:4px;font-size:12px">git checkout -b feature/이름</code> → 작업 → push → PR 생성. 검토 후 머지.</p>
-      <p><strong style="color:var(--pink)">🎯 Cluster 전략:</strong> 새 카테고리는 Pillar 1 + Spokes 5~7 형태로. 양방향 인바운드 링크가 토픽 권위도의 핵심.</p>
-    </div>
-  </section>
+<!-- TABLE -->
+<div class="table-wrap">
+<table class="url-table" id="url-table">
+<thead>
+<tr>
+<th class="col-check"><input type="checkbox" id="check-all" onchange="toggleAll(this.checked)"></th>
+<th class="col-cat sortable" data-sort="category">카테고리 <span class="sort-arrow">↕</span></th>
+<th class="col-title sortable" data-sort="title">제목 <span class="sort-arrow">↕</span></th>
+<th class="col-url">URL</th>
+<th class="col-date sortable" data-sort="date">발행일 <span class="sort-arrow">↓</span></th>
+<th class="col-actions">액션</th>
+</tr>
+</thead>
+<tbody id="tbody">
+<tr><td colspan="6" class="loading">sitemap.xml 로딩 중...</td></tr>
+</tbody>
+</table>
+</div>
 
 </div>
 
-<div class="toast" id="toast">URL 복사됨 ✓</div>
+<div class="toast" id="toast"></div>
 
 <script>
-  // 검색 필터
-  const searchInput = document.getElementById('search');
-  const visibleCount = document.getElementById('visible-count').querySelector('strong');
-  const allRows = document.querySelectorAll('.url-table tr');
+// ===== PIN GATE =====
+const ADMIN_PIN = '7294';
+const pinInput = document.getElementById('pin-input');
+const pinError = document.getElementById('pin-error');
 
-  function applyFilter() {
-    const q = searchInput.value.trim().toLowerCase();
-    let visible = 0;
-    allRows.forEach(row => {
-      const text = row.textContent.toLowerCase();
-      if (!q || text.includes(q)) {
-        row.classList.remove('hidden');
-        visible++;
+function authed(){
+  document.getElementById('pin-gate').style.display = 'none';
+  document.getElementById('topbar').style.display = 'flex';
+  document.getElementById('main').style.display = 'block';
+  loadData();
+}
+
+if (sessionStorage.getItem('vb-admin-ok') === '1') {
+  authed();
+} else {
+  pinInput.focus();
+  pinInput.addEventListener('input', () => {
+    pinError.textContent = '';
+    if (pinInput.value.length === 4) {
+      if (pinInput.value === ADMIN_PIN) {
+        sessionStorage.setItem('vb-admin-ok', '1');
+        authed();
       } else {
-        row.classList.add('hidden');
+        pinError.textContent = 'PIN이 일치하지 않아요';
+        pinInput.value = '';
       }
-    });
-    visibleCount.textContent = visible;
-
-    // 빈 섹션 숨기기
-    document.querySelectorAll('.section').forEach(sec => {
-      const visibleRows = sec.querySelectorAll('.url-table tr:not(.hidden)');
-      const hasTable = sec.querySelector('.url-table');
-      if (hasTable && q && visibleRows.length === 0) {
-        sec.style.display = 'none';
-      } else {
-        sec.style.display = '';
-      }
-    });
-  }
-  searchInput.addEventListener('input', applyFilter);
-  applyFilter();
-
-  // 단축키 / 로 검색 포커스
-  document.addEventListener('keydown', e => {
-    if (e.key === '/' && document.activeElement !== searchInput) {
-      e.preventDefault();
-      searchInput.focus();
-      searchInput.select();
-    }
-    if (e.key === 'Escape' && document.activeElement === searchInput) {
-      searchInput.value = '';
-      applyFilter();
-      searchInput.blur();
     }
   });
+}
 
-  // URL 복사
-  const toast = document.getElementById('toast');
-  let toastTimer;
-  document.querySelectorAll('.btn.copy').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      const url = btn.dataset.url;
-      try {
-        await navigator.clipboard.writeText(url);
-        toast.textContent = '✓ ' + url;
-        toast.classList.add('show');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
-      } catch (e) {
-        alert('복사 실패: ' + url);
-      }
-    });
-  });
+// ===== DATA =====
+let pages = [];
+let sortKey = 'date';
+let sortDir = 'desc';
 
-  // ──────────────────────────────────────────────
-  // 자동화: sitemap.xml + GitHub API에서 최신 데이터 fetch
-  // ──────────────────────────────────────────────
-  const REPO = 'villagebaby-ai/villagebaby-ai';
+const CAT_MAP = {
+  'guide': '태아보험',
+  'child': '어린이',
+  'senior': '5세대',
+  'care': '간병',
+  'cancer': '암',
+  'magazine': '매거진',
+  'tools': '도구',
+  'education': '교육',
+  'female': '여성',
+  'driver': '운전',
+  'ads': '광고',
+  'medical': '의료'
+};
 
-  function diffDays(dateStr) {
-    if (!dateStr) return null;
-    const d = new Date(dateStr);
-    if (isNaN(d)) return null;
-    return Math.floor((Date.now() - d) / 86400000);
-  }
-  function relTime(dateStr) {
-    if (!dateStr) return '—';
-    const d = new Date(dateStr);
-    if (isNaN(d)) return '—';
-    const min = Math.floor((Date.now() - d) / 60000);
-    if (min < 1) return '방금 전';
-    if (min < 60) return min + '분 전';
-    if (min < 1440) return Math.floor(min/60) + '시간 전';
-    return Math.floor(min/1440) + '일 전';
-  }
-  function modBadge(lastmod) {
-    const days = diffDays(lastmod);
-    if (days === null) return '<span class="mod-badge mod-na">—</span>';
-    let cls = 'mod-stale';
-    if (days <= 7) cls = 'mod-fresh';
-    else if (days <= 30) cls = 'mod-ok';
-    return '<span class="mod-badge ' + cls + '" title="' + days + '일 전">' + lastmod + '</span>';
-  }
+function getCategory(url) {
+  const m = url.match(/villagebaby\.kr\/([^\/]+)\//);
+  if (!m) return 'hub';
+  const seg = m[1];
+  if (CAT_MAP[seg]) return seg;
+  return seg === '' ? 'hub' : 'other';
+}
 
-  async function fetchSitemap() {
-    try {
-      const res = await fetch('/sitemap.xml?_=' + Date.now());
-      if (!res.ok) throw new Error(res.status);
-      const text = await res.text();
-      const xml = new DOMParser().parseFromString(text, 'application/xml');
-      const map = {};
-      xml.querySelectorAll('url').forEach(u => {
-        const loc = u.querySelector('loc')?.textContent?.trim();
-        const lastmod = u.querySelector('lastmod')?.textContent?.trim();
-        if (loc) {
-          map[loc] = lastmod || '';
-          map[loc.replace(/\/$/, '')] = lastmod || '';
-        }
-      });
-      return map;
-    } catch (e) {
-      console.warn('sitemap fetch 실패:', e);
-      return {};
-    }
-  }
+function slugToTitle(url) {
+  // URL slug → 사람 읽는 제목
+  try {
+    const path = new URL(url).pathname;
+    const seg = path.split('/').filter(s => s).pop() || '홈';
+    return decodeURIComponent(seg).replace(/-/g, ' ');
+  } catch (e) { return url; }
+}
 
-  async function fetchLastCommit() {
-    try {
-      const res = await fetch('https://api.github.com/repos/' + REPO + '/commits?per_page=1');
-      if (!res.ok) throw new Error(res.status);
-      const data = await res.json();
-      const c = data[0];
+function dateBadgeClass(lastmod) {
+  if (!lastmod) return 'old';
+  const days = Math.floor((Date.now() - new Date(lastmod).getTime()) / 86400000);
+  if (days <= 7) return 'fresh';
+  if (days <= 30) return 'recent';
+  return 'old';
+}
+
+async function loadData() {
+  try {
+    const resp = await fetch('/sitemap.xml?_=' + Date.now());
+    const xml = await resp.text();
+    const doc = new DOMParser().parseFromString(xml, 'text/xml');
+    const urls = [...doc.querySelectorAll('url')];
+    pages = urls.map(u => {
+      const loc = u.querySelector('loc')?.textContent || '';
+      const lastmod = u.querySelector('lastmod')?.textContent || '';
       return {
-        date: c.commit.committer.date,
-        msg: c.commit.message.split('\n')[0],
-        sha: c.sha.slice(0, 7),
-        url: c.html_url,
+        url: loc,
+        lastmod: lastmod,
+        category: getCategory(loc),
+        title: slugToTitle(loc),
+        checked: false
       };
-    } catch (e) {
-      console.warn('GitHub API fetch 실패:', e);
-      return null;
+    }).filter(p => p.url && !p.url.includes('admin-')); // admin 페이지 제외
+
+    // 마지막 빌드 시각 (GitHub commits API)
+    try {
+      const ghResp = await fetch('https://api.github.com/repos/villagebaby-ai/villagebaby-ai/commits?per_page=1');
+      const ghData = await ghResp.json();
+      if (ghData[0]) {
+        const d = new Date(ghData[0].commit.committer.date);
+        document.getElementById('last-build').textContent =
+          d.getMonth()+1 + '/' + d.getDate() + ' ' +
+          String(d.getHours()).padStart(2,'0') + ':' +
+          String(d.getMinutes()).padStart(2,'0');
+      }
+    } catch(e) {}
+
+    updateStats();
+    render();
+  } catch(e) {
+    document.getElementById('tbody').innerHTML =
+      '<tr><td colspan="6" class="empty">⚠️ sitemap.xml 로딩 실패: ' + e.message + '</td></tr>';
+  }
+}
+
+function updateStats() {
+  document.getElementById('stat-total').textContent = pages.length;
+  const fresh = pages.filter(p => dateBadgeClass(p.lastmod) === 'fresh').length;
+  const recent = pages.filter(p => {
+    const c = dateBadgeClass(p.lastmod);
+    return c === 'fresh' || c === 'recent';
+  }).length;
+  document.getElementById('stat-fresh').textContent = fresh;
+  document.getElementById('stat-recent').textContent = recent;
+  document.getElementById('stat-guide').textContent = pages.filter(p => p.category === 'guide').length;
+  document.getElementById('stat-child').textContent = pages.filter(p => p.category === 'child').length;
+  document.getElementById('stat-other').textContent = pages.filter(p => !['guide','child'].includes(p.category)).length;
+}
+
+// ===== RENDER =====
+function render() {
+  const q = document.getElementById('q').value.toLowerCase();
+  const cat = document.getElementById('cat-filter').value;
+  const period = document.getElementById('period-filter').value;
+  const periodDays = parseInt(period);
+
+  let filtered = pages.filter(p => {
+    if (q && !(p.title.toLowerCase().includes(q) || p.url.toLowerCase().includes(q))) return false;
+    if (cat && p.category !== cat) return false;
+    if (periodDays && p.lastmod) {
+      const days = Math.floor((Date.now() - new Date(p.lastmod).getTime()) / 86400000);
+      if (days > periodDays) return false;
     }
+    return true;
+  });
+
+  // 정렬
+  filtered.sort((a,b) => {
+    let v = 0;
+    if (sortKey === 'date') v = (a.lastmod||'').localeCompare(b.lastmod||'');
+    else if (sortKey === 'category') v = a.category.localeCompare(b.category);
+    else if (sortKey === 'title') v = a.title.localeCompare(b.title);
+    return sortDir === 'desc' ? -v : v;
+  });
+
+  const tbody = document.getElementById('tbody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">조건에 맞는 페이지가 없어요.</td></tr>';
+    return;
   }
 
-  function injectModifiedColumn(map) {
-    let total = 0, fresh = 0, recent = 0;
-    document.querySelectorAll('.url-table tr').forEach(row => {
-      const copyBtn = row.querySelector('.btn.copy');
-      if (!copyBtn) return;
-      // 이미 col-modified가 있으면 갱신만
-      let cell = row.querySelector('.col-modified');
-      const url = copyBtn.dataset.url;
-      const lastmod = map[url] || map[url.replace(/\/$/, '')] || '';
-      if (!cell) {
-        const actionsCell = row.querySelector('.col-actions');
-        if (!actionsCell) return;
-        cell = document.createElement('td');
-        cell.className = 'col-modified';
-        row.insertBefore(cell, actionsCell);
-      }
-      cell.innerHTML = modBadge(lastmod);
+  tbody.innerHTML = filtered.map((p, i) => {
+    const dateClass = dateBadgeClass(p.lastmod);
+    const dateText = p.lastmod || '-';
+    const catLabel = CAT_MAP[p.category] || p.category;
+    return `<tr>
+<td class="col-check"><input type="checkbox" class="page-check" data-url="${p.url}" ${p.checked?'checked':''} onchange="onCheck(this, '${p.url}')"></td>
+<td class="col-cat"><span class="cat-tag ${p.category}">${catLabel}</span></td>
+<td class="col-title"><a href="${p.url}" target="_blank">${p.title}</a></td>
+<td class="col-url" title="${p.url}">${p.url.replace('https://villagebaby.kr','')}</td>
+<td class="col-date"><span class="date-badge ${dateClass}">${dateText}</span></td>
+<td class="col-actions">
+<a class="btn" href="${p.url}" target="_blank">열기</a>
+<button class="btn copy" onclick="copyUrl('${p.url}')">복사</button>
+</td>
+</tr>`;
+  }).join('');
 
-      total++;
-      const days = diffDays(lastmod);
-      if (days !== null) {
-        if (days <= 7) fresh++;
-        if (days <= 30) recent++;
-      }
+  updateBulkCount();
+}
+
+function copyUrl(url) {
+  navigator.clipboard.writeText(url).then(() => showToast('URL 복사됨'));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1500);
+}
+
+// ===== BULK =====
+function onCheck(el, url) {
+  const p = pages.find(x => x.url === url);
+  if (p) p.checked = el.checked;
+  updateBulkCount();
+}
+
+function toggleAll(checked) {
+  document.querySelectorAll('.page-check').forEach(c => {
+    c.checked = checked;
+    const url = c.dataset.url;
+    const p = pages.find(x => x.url === url);
+    if (p) p.checked = checked;
+  });
+  updateBulkCount();
+}
+
+function updateBulkCount() {
+  const n = pages.filter(p => p.checked).length;
+  document.getElementById('bulk-open').textContent = `선택 열기 (${n})`;
+  document.getElementById('bulk-open').disabled = n === 0;
+  document.getElementById('bulk-copy').disabled = n === 0;
+  document.getElementById('bulk-copy').textContent = n > 0 ? `URL ${n}개 복사` : 'URL 복사';
+}
+
+function bulkOpen() {
+  const sel = pages.filter(p => p.checked);
+  if (sel.length > 20 && !confirm(sel.length + '개 탭을 한 번에 열까요? (팝업 차단 주의)')) return;
+  sel.forEach(p => window.open(p.url, '_blank'));
+}
+
+function bulkCopy() {
+  const urls = pages.filter(p => p.checked).map(p => p.url).join('\n');
+  navigator.clipboard.writeText(urls).then(() => showToast(pages.filter(p => p.checked).length + '개 URL 복사됨'));
+}
+
+function reload() {
+  document.getElementById('tbody').innerHTML = '<tr><td colspan="6" class="loading">동기화 중...</td></tr>';
+  loadData();
+}
+
+// ===== SORT =====
+document.querySelectorAll('th.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (sortKey === key) {
+      sortDir = sortDir === 'desc' ? 'asc' : 'desc';
+    } else {
+      sortKey = key;
+      sortDir = 'desc';
+    }
+    document.querySelectorAll('th.sortable').forEach(t => {
+      t.classList.remove('sorted');
+      t.querySelector('.sort-arrow').textContent = '↕';
     });
-    document.getElementById('stat-total').firstChild.nodeValue = total;
-    document.getElementById('stat-fresh').firstChild.nodeValue = fresh;
-    document.getElementById('stat-recent').firstChild.nodeValue = recent;
-  }
-
-  function setLastBuild(commit) {
-    const tEl = document.getElementById('last-build-time');
-    const mEl = document.getElementById('last-build-msg');
-    if (!commit) {
-      tEl.textContent = '—';
-      mEl.textContent = 'GitHub API 실패 (rate limit?)';
-      return;
-    }
-    tEl.textContent = relTime(commit.date);
-    tEl.title = new Date(commit.date).toLocaleString('ko-KR');
-    mEl.innerHTML = '<a href="' + commit.url + '" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none" title="' + commit.msg + '">' + commit.sha + ' · ' + commit.msg.slice(0, 24) + (commit.msg.length > 24 ? '…' : '') + '</a>';
-  }
-
-  function setLastSync() {
-    const el = document.getElementById('last-sync');
-    const now = new Date();
-    el.textContent = now.toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
-    el.title = now.toLocaleString('ko-KR');
-  }
-
-  async function syncAll() {
-    document.getElementById('last-sync').textContent = '동기화 중…';
-    const [map, commit] = await Promise.all([fetchSitemap(), fetchLastCommit()]);
-    injectModifiedColumn(map);
-    setLastBuild(commit);
-    setLastSync();
-    // 검색 필터 카운터 재계산 (행 변경 시 col-modified가 추가됨)
-    applyFilter();
-  }
-
-  document.getElementById('btn-refresh').addEventListener('click', syncAll);
-  syncAll();
+    th.classList.add('sorted');
+    th.querySelector('.sort-arrow').textContent = sortDir === 'desc' ? '↓' : '↑';
+    render();
+  });
+});
 </script>
-
 </body>
 </html>
