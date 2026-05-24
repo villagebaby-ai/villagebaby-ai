@@ -194,10 +194,108 @@ footer .ftop{font-weight:600;margin-bottom:6px}footer a{color:var(--gray-700)}
 
   <div id="result-area" style="display:none"></div>
 </div>
-<a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=tool&utm_medium=fit-check&utm_campaign='+normalized+'" target="_blank" rel="author noopener">전문가 무료 상담 →</a></div>'+
+<script>
+const links=[
+  '<a href="/guide/태아보험-완전정리/">태아보험 완전정리 가이드</a>',
+  '<a href="/guide/태아보험-22주-마감-12주-권장/">22주 마감·12주 권장 가입 시기</a>',
+  '<a href="/guide/태아보험-특약-총정리/">필수 특약 총정리</a>',
+  '<a href="/guide/태아보험-가격-비교-월-보험료/">월 보험료 비교</a>',
+  '<a href="/tools/">전체 도구 모음</a>'
+];
+const questions=[
+  {q:'현재 임신 주차는 어떻게 되나요?',opts:[
+    {l:'6~12주 (가장 유리)',s:3},
+    {l:'13~22주 (가입 가능)',s:3},
+    {l:'23~25주 (마감 임박)',s:1},
+    {l:'26주 이후 (가입 거절 가능)',s:0}
+  ]},
+  {q:'산모 연령은 어떻게 되나요?',opts:[
+    {l:'20대',s:3},
+    {l:'30~34세',s:3},
+    {l:'35~39세 (고령)',s:2},
+    {l:'40세 이상 (초고령)',s:1}
+  ]},
+  {q:'어떤 방식의 임신인가요?',opts:[
+    {l:'자연 임신',s:3},
+    {l:'인공수정 임신',s:2},
+    {l:'시험관(IVF) 임신',s:1},
+    {l:'기타 보조 생식 시술',s:1}
+  ]},
+  {q:'다태아 여부는 어떻게 되나요?',opts:[
+    {l:'단태아 (1명)',s:3},
+    {l:'쌍둥이',s:2},
+    {l:'세쌍둥이 이상',s:1},
+    {l:'아직 확인 안 됨',s:2}
+  ]},
+  {q:'산모 건강 상태는 어떤가요?',opts:[
+    {l:'특별한 이슈 없음',s:3},
+    {l:'고혈압·당뇨 등 경증 만성질환',s:2},
+    {l:'임신성 합병증 진단 (임신중독·당뇨)',s:1},
+    {l:'중증 합병증 또는 입원 이력',s:0}
+  ]},
+  {q:'산전 검사 결과는 어땠나요?',opts:[
+    {l:'모두 정상',s:3},
+    {l:'경계선 결과 일부 (재검 권유)',s:2},
+    {l:'이상 소견 있음 (NIPT·양수검사 권유)',s:1},
+    {l:'태아 진단 확정 (선천 이상)',s:0}
+  ]},
+  {q:'태아보험 가입 시 우선순위는 무엇인가요?',opts:[
+    {l:'NICU·인큐베이터 입원비',s:3},
+    {l:'선천이상·수술비 보장',s:3},
+    {l:'어린이 단독 보장 (출생 후)',s:2},
+    {l:'산모 특약·태아 사망 위로금',s:2}
+  ]}
+];
+let cur=0,ans=[];
+function renderQ(){
+  const q=questions[cur];
+  document.getElementById('progress').style.width=((cur+1)/questions.length*100)+'%';
+  let h='<div class="q-num">Q'+(cur+1)+' / '+questions.length+'</div>';
+  h+='<div class="q-text">'+q.q+'</div><div class="q-options">';
+  q.opts.forEach((o,i)=>{
+    const sel=ans[cur]===i?' selected':'';
+    h+='<button class="q-option'+sel+'" type="button" onclick="selectOpt('+i+')">'+o.l+'</button>';
+  });
+  h+='</div>';
+  document.getElementById('question-container').innerHTML=h;
+  document.getElementById('btn-back').disabled=cur===0;
+  document.getElementById('btn-next').disabled=ans[cur]===undefined;
+  document.getElementById('btn-next').textContent=cur===questions.length-1?'결과 보기 →':'다음 →';
+}
+function selectOpt(i){ans[cur]=i;renderQ();}
+function nextQ(){
+  if(ans[cur]===undefined)return;
+  if(cur===questions.length-1){showResult();}
+  else{cur++;renderQ();}
+}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+function showResult(){
+  const total=ans.reduce((s,a,i)=>s+questions[i].opts[a].s,0);
+  const max=questions.reduce((s,q)=>s+Math.max.apply(null,q.opts.map(o=>o.s)),0);
+  const normalized=Math.round(total/max*100);
+  let verdict,summary;
+  if(normalized>=75){
+    verdict='✅ 가입 가능성이 매우 높아요';
+    summary='임신 주차·연령·건강 모두 가입에 유리한 조건이에요. 베이비빌리 베동에서도 같은 조건의 가족이 평균 5~7개 보험사 비교 후 무리 없이 가입했어요.';
+  }else if(normalized>=45){
+    verdict='🤔 부분 보장 또는 인수 심사 가능성';
+    summary='일부 조건이 까다로워서 보험사별로 인수 심사 결과가 다를 수 있어요. 5~7개 보험사 비교 후 가능성 높은 보험사를 골라 신청하시는 게 안전해요.';
+  }else{
+    verdict='🛡️ 가입 거절 가능성이 있어요';
+    summary='주차·건강 조건이 까다로운 구간이에요. 무리하게 진행하기보다 전문가 상담을 통해 가입 가능한 보험사·보장 구조를 먼저 확인해 보세요.';
+  }
+  document.getElementById('quiz-area').style.display='none';
+  const r=document.getElementById('result-area');
+  r.style.display='block';
+  r.innerHTML='<div class="result-card show"><div class="result-hero-quiz">'+
+    '<div class="score-circle">'+normalized+'</div>'+
+    '<div class="result-title">'+verdict+'</div>'+
+    '<div class="result-summary">'+summary+'</div></div>'+
+    '<div class="cta-result"><div class="ct">베이비빌리 태아보험 무료 상담</div>'+
+    '<div class="cd">10년 이상 태아보험 상담 경험으로 가입 가능한 보험사·보장 구조를 짚어드려요.</div>'+
+    '<a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=tool&utm_medium=fit-check&utm_campaign='+normalized+'" target="_blank" rel="author noopener">전문가 무료 상담 →</a></div>'+
     '<div class="result-detail"><h3>📚 자세히 알아보기</h3><ul>'+links.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
-    '<button class="retry-btn" onclick="restart()">↻ 진단 다시 시작</button>';
-  // analytics-friendly URL update
+    '<button class="retry-btn" type="button" onclick="restart()">↻ 진단 다시 시작</button></div>';
   if(window.history&&window.history.replaceState){window.history.replaceState(null,'',window.location.pathname+'?score='+normalized);}
   window.scrollTo({top:0,behavior:'smooth'});
 }
