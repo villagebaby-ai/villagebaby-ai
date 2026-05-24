@@ -567,59 +567,133 @@
   </section>
 
 </main>
-';
-      secPrev.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
+
+<script>
+(function(){
+  /* ── 갱신 인상률 모델 ──
+     베이비빌리 200만 부모 데이터 + 금감원 갱신형 어린이보험 통계 기반 추정.
+     실제 보험사·상품별 인상률은 다를 수 있어 참고용입니다. */
+  function annualRate(a){
+    if(a < 6)  return 0.05;   // 0~5세: 5%/년
+    if(a < 10) return 0.07;   // 6~9세: 7%/년
+    if(a < 15) return 0.09;   // 10~14세: 9%/년
+    return 0.11;              // 15~20세: 11%/년
+  }
+
+  function getRenewalPoints(age, currentPremium, renewalPeriod){
+    const points = [{age: age, premium: currentPremium, isCurrent: true}];
+    let curAge = age;
+    let curPremium = currentPremium;
+    while(curAge + renewalPeriod <= 20){
+      let factor = 1;
+      for(let y = 0; y < renewalPeriod; y++){
+        factor *= (1 + annualRate(curAge + y));
+      }
+      curAge += renewalPeriod;
+      curPremium = curPremium * factor;
+      points.push({age: curAge, premium: Math.round(curPremium * 10) / 10, isCurrent: false});
     }
+    return points;
+  }
 
-    const firstRenewal = points[1];
-    const pct = Math.round((firstRenewal.premium / premiumInput - 1) * 100);
+  function calcTotalExtra(age, currentPremium, renewalPeriod, points){
+    let total = 0;
+    for(let i = 1; i < points.length; i++){
+      const yearsAtThisPremium = Math.min(renewalPeriod, 20 - points[i].age + renewalPeriod);
+      const extraPerMonth = points[i].premium - currentPremium;
+      if(extraPerMonth > 0) total += extraPerMonth * 12 * renewalPeriod;
+    }
+    return Math.round(total);
+  }
 
-    document.getElementById('pv-current').textContent   = premiumInput % 1 === 0 ? premiumInput : premiumInput.toFixed(1);
-    document.getElementById('pv-next-label').textContent = firstRenewal.age + '세 갱신';
-    document.getElementById('pv-next').textContent       = firstRenewal.premium % 1 === 0 ? firstRenewal.premium : firstRenewal.premium.toFixed(1);
-    document.getElementById('pv-pct').textContent        = '+' + pct + '%';
+  /* ── Age slider ── */
+  const ageSlider = document.getElementById('age-slider');
+  const ageDisp   = document.getElementById('age-display');
+  const ageMsg    = document.getElementById('age-msg');
+  function updateAge(a){
+    ageDisp.textContent = a;
+    if(a <= 3){
+      ageMsg.textContent = '갱신 전 여유 있어요';
+      ageMsg.className = 'age-msg early';
+    } else if(a <= 9){
+      ageMsg.textContent = '곧 첫 갱신 시점이에요';
+      ageMsg.className = 'age-msg mid';
+    } else {
+      ageMsg.textContent = '갱신 인상 본격 구간';
+      ageMsg.className = 'age-msg late';
+    }
+  }
+  if(ageSlider){
+    ageSlider.addEventListener('input', () => updateAge(parseInt(ageSlider.value, 10)));
+    updateAge(parseInt(ageSlider.value, 10));
+  }
 
-    /* 게이트에 계산 데이터 저장 */
-    secPrev.dataset.calcAge     = age;
-    secPrev.dataset.calcPremium = premiumInput;
-    secPrev.dataset.calcPeriod  = renewalPeriod;
+  /* ── Calc 버튼 ── */
+  const secPrev = document.getElementById('sec-preview');
+  const btnCalc = document.getElementById('btn-calc');
+  if(btnCalc){
+    btnCalc.addEventListener('click', () => {
+      const age = parseInt(document.getElementById('age-slider').value, 10);
+      const premiumInput = parseFloat(document.getElementById('premium-input').value) || 8;
+      const renewalRadio = document.querySelector('input[name="renewal"]:checked');
+      const renewalPeriod = renewalRadio ? parseInt(renewalRadio.value, 10) : 5;
 
-    secPrev.hidden = false;
-    secPrev.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+      const points = getRenewalPoints(age, premiumInput, renewalPeriod);
+      if(points.length < 2){
+        secPrev.innerHTML = '<p class="step-badge">갱신 없음</p><p style="padding:18px;text-align:center">선택하신 조건에서는 20세까지 추가 갱신 시점이 없어요. 현재 보험료가 그대로 유지될 가능성이 높아요.</p>';
+        secPrev.hidden = false;
+        secPrev.scrollIntoView({behavior:'smooth', block:'center'});
+        return;
+      }
 
-  /* ── 결과 보기 버튼 (폼 제출 대신) ── */
+      const firstRenewal = points[1];
+      const pct = Math.round((firstRenewal.premium / premiumInput - 1) * 100);
+
+      document.getElementById('pv-current').textContent   = premiumInput % 1 === 0 ? premiumInput : premiumInput.toFixed(1);
+      document.getElementById('pv-next-label').textContent = firstRenewal.age + '세 갱신';
+      document.getElementById('pv-next').textContent       = firstRenewal.premium % 1 === 0 ? firstRenewal.premium : firstRenewal.premium.toFixed(1);
+      document.getElementById('pv-pct').textContent        = '+' + pct + '%';
+
+      secPrev.dataset.calcAge     = age;
+      secPrev.dataset.calcPremium = premiumInput;
+      secPrev.dataset.calcPeriod  = renewalPeriod;
+
+      secPrev.hidden = false;
+      secPrev.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+
+  /* ── 전체 결과 보기 버튼 ── */
   const showFullResultBtn = document.getElementById('show-full-result-btn');
-  if (showFullResultBtn) {
+  if(showFullResultBtn){
     showFullResultBtn.addEventListener('click', () => {
       const age           = parseInt(secPrev.dataset.calcAge,     10);
       const currentPremium= parseFloat(secPrev.dataset.calcPremium);
       const renewalPeriod = parseInt(secPrev.dataset.calcPeriod,  10);
       const ctaEl = document.getElementById('cta-kakao');
-      if (ctaEl) ctaEl.href = ctaEl.href + '&child_age=' + age;
+      if(ctaEl && ctaEl.href.indexOf('&child_age=') === -1) ctaEl.href = ctaEl.href + '&child_age=' + age;
       showResult(age, currentPremium, renewalPeriod);
     });
   }
 
   /* ── 결과 렌더링 ── */
-  const BAR_LVL_CLS  = ['lv0', 'lv1', 'lv2', 'lv3', 'lv4', 'lv5'];
-  const PCT_BADGE_CLS = ['current', 'up1', 'up2', 'up3', 'up4', 'up5'];
+  const BAR_LVL_CLS   = ['lv0','lv1','lv2','lv3','lv4','lv5'];
+  const PCT_BADGE_CLS = ['current','up1','up2','up3','up4','up5'];
 
-  function lvIdx(rank, total) {
-    if (rank === 0) return 0;
+  function lvIdx(rank, total){
+    if(rank === 0) return 0;
     const ratio = rank / Math.max(total - 1, 1);
-    if (ratio < 0.25) return 1;
-    if (ratio < 0.50) return 2;
-    if (ratio < 0.75) return 3;
-    if (ratio < 0.90) return 4;
+    if(ratio < 0.25) return 1;
+    if(ratio < 0.50) return 2;
+    if(ratio < 0.75) return 3;
+    if(ratio < 0.90) return 4;
     return 5;
   }
 
-  function showResult(age, currentPremium, renewalPeriod) {
-    const points    = getRenewalPoints(age, currentPremium, renewalPeriod);
-    const maxPremium = Math.max(...points.map(p => p.premium));
-    const chart     = document.getElementById('bar-chart');
+  function showResult(age, currentPremium, renewalPeriod){
+    const points     = getRenewalPoints(age, currentPremium, renewalPeriod);
+    const maxPremium = Math.max.apply(null, points.map(p => p.premium));
+    const chart      = document.getElementById('bar-chart');
     chart.innerHTML = '';
 
     points.forEach((pt, i) => {
@@ -643,7 +717,6 @@
       chart.appendChild(row);
     });
 
-    /* 애니메이션 */
     requestAnimationFrame(() => {
       chart.querySelectorAll('.bar-fill').forEach(el => {
         const t = el.dataset.target;
@@ -651,36 +724,34 @@
       });
     });
 
-    /* 총 추가 납입 */
     const totalExtra = calcTotalExtra(age, currentPremium, renewalPeriod, points);
     const amtEl = document.getElementById('tc-amount');
     const subEl = document.getElementById('tc-sub');
-    if (totalExtra > 0) {
+    if(totalExtra > 0){
       amtEl.textContent = totalExtra.toLocaleString() + '만원';
-      subEl.textContent = '현재 보험료(' + currentPremium + '만원)가 고정된다고 가정했을 때 대비, 20세까지 갱신 인상으로 인해 추가로 납입하게 되는 예상 누적 금액이에요.';
+      subEl.textContent = '현재 보험료(' + currentPremium + '만원)가 고정된다고 가정했을 때 대비, 20세까지 갱신 인상으로 추가 납입하게 되는 예상 누적 금액이에요.';
     } else {
       document.getElementById('total-callout').style.display = 'none';
     }
 
     document.getElementById('result-sub').textContent =
-      '아이 ' + age + '세 기준, ' + renewalPeriod + '년 갱신 주기로 20세까지의 예상 보험료예요.';
+      '아이 ' + age + '세 기준, ' + renewalPeriod + '년 갱신 주기로 20세까지의 예상 보험료예요. (인상률은 베이비빌리 베동 데이터 기반 추정치)';
 
     const secResult = document.getElementById('sec-result');
     secResult.hidden = false;
     secPrev.hidden   = true;
-    secResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    secResult.scrollIntoView({behavior:'smooth', block:'start'});
   }
 
   /* ── FAQ 토글 ── */
   document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(){
       const item = this.closest('.faq-item');
       const wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-      if (!wasOpen) item.classList.add('open');
+      if(!wasOpen) item.classList.add('open');
     });
   });
-
 })();
 </script>
 
