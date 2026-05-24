@@ -90,9 +90,22 @@
   <meta property="og:locale" content="ko_KR">
   <meta name="twitter:image" content="https://villagebaby.kr/assets/og/guide_갱신형-vs-비갱신형-시뮬레이터.png">
   <meta name="twitter:image:alt" content="갱신형 vs 비갱신형 30년 시뮬레이터 — 보험료 누적 비교 | 베이비빌리">
+<style>
+.vb-nav{border-bottom:1px solid #E5E7EB;background:#fff;position:sticky;top:0;z-index:50}
+.vb-nav-inner{max-width:880px;margin:0 auto;padding:12px 24px;display:flex;align-items:center}
+.vb-nav-logo{display:inline-flex;align-items:center}
+.vb-nav-logo img{height:36px;width:auto;display:block}
+.vb-footer{border-top:1px solid #E5E7EB;background:#fff;padding:32px 24px 44px;text-align:center;color:#6B7280;font-size:13px;margin-top:40px}
+.vb-footer .vb-ftop{font-weight:700;color:#374151;font-size:13.5px;margin-bottom:6px}
+.vb-footer .vb-fdesc{font-size:11.5px;color:#9CA3AF;line-height:1.65;max-width:540px;margin:0 auto}
+.vb-footer .vb-fmenu{margin-top:12px;font-size:11.5px;color:#9CA3AF}
+.vb-footer .vb-fmenu a{color:inherit;text-decoration:none}
+.vb-footer .vb-fmenu a:hover{text-decoration:underline}
+@media(max-width:760px){.vb-nav-inner{padding:10px 16px}.vb-nav-logo img{height:32px}}
+</style>
 </head>
 <body>
-<nav><div class="nav-inner"><a href="/">베이비빌리</a><a href="/tools/">도구 모음 →</a></div></nav>
+<nav class="vb-nav"><div class="vb-nav-inner"><a href="/" class="vb-nav-logo" aria-label="베이비빌리 홈"><img src="/logo.png" alt="베이비빌리" width="99" height="74"></a></div></nav>
 <header class="hero"><div class="hero-inner">
   <p class="breadcrumb" style="text-align:left"><a href="/">홈</a> · <a href="/tools/">도구</a> · 갱신형 vs 비갱신형 시뮬레이터</p>
   <span class="badge">📊 30년 시뮬레이션</span>
@@ -182,9 +195,6 @@
     </ul>
     <p>자세한 비교는 <a href="/cancer/갱신형-vs-비갱신형/">갱신형 vs 비갱신형 30년</a> 가이드에서 정리해두었어요.</p>
   </div>
-    <p class="footer-disclaimer">본 페이지의 평가·보험료·통계는 <strong>베이비빌리 베동 커뮤니티 후기와 보험사 공시자료</strong>를 기반으로 정리한 일반 안내이며, 정확한 가입 조건·보장 내용은 가입 시점 약관을 확인하세요.</p>
-  </div>
-</footer>
 <script>
 function fmt(n){return Math.round(n).toLocaleString('ko-KR');}
 function t1calc(){
@@ -240,4 +250,11 @@ function t1calc(){
   setTimeout(()=>{r.scrollIntoView({behavior:'smooth',block:'start'});},100);
 }
 </script>
+<footer class="vb-footer">
+  <p class="vb-ftop">부모를 위한 모든 보험 연구소</p>
+  <p class="vb-fdesc">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요.</p>
+  <p class="vb-fmenu">
+    <a href="/">홈</a> · <a href="/guide/">가이드</a> · <a href="/child/">어린이보험</a> · <a href="/tools/">도구</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/terms/">이용약관</a>
+  </p>
+</footer>
 </body></html>
