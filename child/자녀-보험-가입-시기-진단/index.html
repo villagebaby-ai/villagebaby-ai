@@ -118,9 +118,108 @@
   </div>
   <div id="result-area" style="display:none"></div>
 </div>
-<a href="https://babybilly.co/insurance/child/standard?utm_source=tool&utm_medium=child-timing&utm_campaign='+normalized+'" target="_blank" rel="author noopener">전문가 무료 상담 →</a></div>'+
-    '<div class="result-detail"><h3>📚 자세히 알아보기</h3><ul><li><a href="/child/신생아-어린이보험-출생30일/">신생아 어린이보험 30일 가이드</a></li><li><a href="/child/5세-어린이보험-가입/">5세 어린이보험 가입</a></li><li><a href="/guide/태아보험-vs-어린이보험-차이/">태아보험 vs 어린이보험</a></li><li><a href="/child/어린이보험-완전정리/">어린이보험 완전정리</a></li><li><a href="/tools/">전체 도구 모음</a></li></ul></div>'+
-    '<button class="retry-btn" onclick="restart()">↻ 진단 다시 시작</button>';
+<script>
+const links=[
+  '<a href="/child/신생아-어린이보험-출생30일/">신생아 어린이보험 30일 가이드</a>',
+  '<a href="/child/5세-어린이보험-가입/">5세 어린이보험 가입</a>',
+  '<a href="/guide/태아보험-vs-어린이보험-차이/">태아보험 vs 어린이보험</a>',
+  '<a href="/child/어린이보험-완전정리/">어린이보험 완전정리</a>',
+  '<a href="/tools/">전체 도구 모음</a>'
+];
+const questions=[
+  {q:'자녀(또는 태아) 현재 나이는 어떻게 되나요?',opts:[
+    {l:'아직 임신 중',s:3},
+    {l:'생후 30일 이내 (신생아)',s:3},
+    {l:'1세~3세',s:3},
+    {l:'4세 이상',s:2}
+  ]},
+  {q:'어린이보험 가입 여부는?',opts:[
+    {l:'아직 미가입',s:3},
+    {l:'기본형만 가입 (특약 부족)',s:2},
+    {l:'표준형 가입 완료',s:1},
+    {l:'풀커버 가입 완료',s:0}
+  ]},
+  {q:'자녀 출생 시 또는 영유아기 진단·치료 이력이 있나요?',opts:[
+    {l:'없어요',s:3},
+    {l:'경증 (감기·중이염 정도)',s:3},
+    {l:'중증 (입원·수술 이력)',s:1},
+    {l:'만성질환 진단',s:0}
+  ]},
+  {q:'가족(부모) 건강력은 어떤가요?',opts:[
+    {l:'특별한 가족력 없음',s:3},
+    {l:'경증 가족력 1~2개',s:2},
+    {l:'중증 가족력(암·심혈관) 1개 이상',s:1},
+    {l:'복수의 중증 가족력',s:0}
+  ]},
+  {q:'월 보험료 예산은 어느 정도인가요?',opts:[
+    {l:'월 10만원 이상',s:3},
+    {l:'월 5~10만원',s:3},
+    {l:'월 3~5만원',s:2},
+    {l:'월 3만원 미만',s:1}
+  ]},
+  {q:'어떤 보장이 가장 필요한가요?',opts:[
+    {l:'진단비 + 실손 풀커버',s:3},
+    {l:'진단비 중심 (실손은 별도)',s:2},
+    {l:'특약 위주 (골절·화상·자녀배상)',s:2},
+    {l:'아직 정하지 못했어요',s:1}
+  ]},
+  {q:'다른 보험(태아보험·암보험 등)이 이미 가족에게 있나요?',opts:[
+    {l:'태아보험으로 어린이까지 자동 전환',s:2},
+    {l:'태아보험 없음 — 처음부터 어린이보험',s:3},
+    {l:'부모 보험만 있음',s:3},
+    {l:'잘 모르겠어요',s:2}
+  ]}
+];
+let cur=0,ans=[];
+function renderQ(){
+  const q=questions[cur];
+  document.getElementById('progress').style.width=((cur+1)/questions.length*100)+'%';
+  let h='<div class="q-num">Q'+(cur+1)+' / '+questions.length+'</div>';
+  h+='<div class="q-text">'+q.q+'</div><div class="q-options">';
+  q.opts.forEach((o,i)=>{
+    const sel=ans[cur]===i?' selected':'';
+    h+='<button class="q-option'+sel+'" type="button" onclick="selectOpt('+i+')">'+o.l+'</button>';
+  });
+  h+='</div>';
+  document.getElementById('qc').innerHTML=h;
+  document.getElementById('bb').disabled=cur===0;
+  document.getElementById('bn').disabled=ans[cur]===undefined;
+  document.getElementById('bn').textContent=cur===questions.length-1?'결과 보기 →':'다음 →';
+}
+function selectOpt(i){ans[cur]=i;renderQ();}
+function nextQ(){
+  if(ans[cur]===undefined)return;
+  if(cur===questions.length-1){showResult();}
+  else{cur++;renderQ();}
+}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+function showResult(){
+  const total=ans.reduce((s,a,i)=>s+questions[i].opts[a].s,0);
+  const max=questions.reduce((s,q)=>s+Math.max.apply(null,q.opts.map(o=>o.s)),0);
+  const normalized=Math.round(total/max*100);
+  let verdict,summary;
+  if(normalized>=75){
+    verdict='✅ 지금이 가입 최적 시점';
+    summary='연령·건강·예산 모두 가입에 매우 유리해요. 신생아·1~3세 구간은 보험료가 가장 낮고 인수도 수월합니다. 지금 시작하시면 후회가 적어요.';
+  }else if(normalized>=45){
+    verdict='🤔 적절한 시점 — 빠른 결정 권장';
+    summary='가입 가능한 시점이지만 보장 구조를 잘 짜야 해요. 베이비빌리 보험 전문팀과 함께 가족 우선순위를 맞춰서 결정하시는 게 좋아요.';
+  }else{
+    verdict='⚠️ 가입 신중 — 전문가 상담 필수';
+    summary='연령이나 건강 이력 때문에 가입 조건이 까다로워질 수 있어요. 무리하게 진행하지 마시고 가능한 보험사를 먼저 확인해 보세요.';
+  }
+  document.getElementById('quiz-area').style.display='none';
+  const r=document.getElementById('result-area');
+  r.style.display='block';
+  r.innerHTML='<div class="result-card show"><div class="result-hero-quiz">'+
+    '<div class="score-circle">'+normalized+'</div>'+
+    '<div class="result-title">'+verdict+'</div>'+
+    '<div class="result-summary">'+summary+'</div></div>'+
+    '<div class="cta-result"><div class="ct">베이비빌리 어린이보험 무료 상담</div>'+
+    '<div class="cd">10년 이상 어린이보험 상담 경험으로 가족 상황 맞춤 시점을 짚어드려요.</div>'+
+    '<a href="https://babybilly.co/insurance/child/standard?utm_source=tool&utm_medium=child-timing&utm_campaign='+normalized+'" target="_blank" rel="author noopener">전문가 무료 상담 →</a></div>'+
+    '<div class="result-detail"><h3>📚 자세히 알아보기</h3><ul>'+links.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+    '<button class="retry-btn" type="button" onclick="restart()">↻ 진단 다시 시작</button></div>';
   if(window.history&&window.history.replaceState){window.history.replaceState(null,'',window.location.pathname+'?score='+normalized);}
   window.scrollTo({top:0,behavior:'smooth'});
 }
