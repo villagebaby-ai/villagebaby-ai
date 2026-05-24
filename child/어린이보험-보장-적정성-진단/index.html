@@ -118,9 +118,108 @@
   </div>
   <div id="result-area" style="display:none"></div>
 </div>
-<a href="https://babybilly.co/insurance/child/standard?utm_source=tool&utm_medium=child-coverage-fit&utm_campaign='+normalized+'" target="_blank" rel="author noopener">전문가 무료 상담 →</a></div>'+
-    '<div class="result-detail"><h3>📚 자세히 알아보기</h3><ul><li><a href="/child/어린이보험-완전정리/">어린이보험 완전정리 가이드</a></li><li><a href="/child/어린이보험-필수특약-TOP10/">어린이보험 필수특약 TOP 10</a></li><li><a href="/child/어린이보험-재설계-언제-필요할까/">어린이보험 재설계 시점</a></li><li><a href="/child/자녀배상책임-특약-완전정리/">자녀배상책임 특약</a></li><li><a href="/tools/">전체 도구 모음</a></li></ul></div>'+
-    '<button class="retry-btn" onclick="restart()">↻ 진단 다시 시작</button>';
+<script>
+const links=[
+  '<a href="/child/어린이보험-완전정리/">어린이보험 완전정리 가이드</a>',
+  '<a href="/child/어린이보험-필수특약-TOP10/">어린이보험 필수특약 TOP 10</a>',
+  '<a href="/child/어린이보험-재설계-언제-필요할까/">어린이보험 재설계 시점</a>',
+  '<a href="/child/자녀배상책임-특약-완전정리/">자녀배상책임 특약</a>',
+  '<a href="/tools/">전체 도구 모음</a>'
+];
+const questions=[
+  {q:'자녀 현재 연령은 어떻게 되나요?',opts:[
+    {l:'영유아 (0~3세)',s:2},
+    {l:'유아 (4~6세)',s:3},
+    {l:'초등 (7~12세)',s:3},
+    {l:'중·고등 (13~17세)',s:2}
+  ]},
+  {q:'어린이보험을 처음 가입했을 때 자녀 연령은?',opts:[
+    {l:'생후 30일 이내',s:3},
+    {l:'1~3세',s:3},
+    {l:'4세 이후',s:2},
+    {l:'아직 미가입',s:0}
+  ]},
+  {q:'현재 자녀 어린이보험의 진단비 한도는 어느 수준인가요?',opts:[
+    {l:'1억원 이상 풀커버',s:3},
+    {l:'5천만~1억원',s:2},
+    {l:'3천만~5천만원',s:1},
+    {l:'3천만원 미만 또는 미가입',s:0}
+  ]},
+  {q:'실손 의료비 특약(통원·입원 의료비)을 포함하고 있나요?',opts:[
+    {l:'네, 5세대 또는 4세대 실손 포함',s:3},
+    {l:'1·2·3세대 실손 포함',s:2},
+    {l:'실손은 따로 가입',s:2},
+    {l:'실손 미가입',s:0}
+  ]},
+  {q:'골절·화상·자녀배상책임·통원치료 같은 핵심 특약을 얼마나 보유하고 있나요?',opts:[
+    {l:'4개 이상 모두 포함',s:3},
+    {l:'2~3개',s:2},
+    {l:'1개',s:1},
+    {l:'없음 또는 잘 모름',s:0}
+  ]},
+  {q:'자녀 활동 수준은 어떻게 되나요? (외부 활동·스포츠 빈도)',opts:[
+    {l:'매우 활발 (축구·태권도·자전거 등 주 3회+)',s:0},
+    {l:'활발 (주 1~2회 스포츠)',s:1},
+    {l:'보통 (학원·놀이 중심)',s:2},
+    {l:'정적 (실내 활동 위주)',s:3}
+  ]},
+  {q:'어린이보험 보험료가 갱신될 때 변동을 확인해 보셨나요?',opts:[
+    {l:'정기적으로 확인하고 재설계 검토',s:3},
+    {l:'갱신 알림 받으면 확인',s:2},
+    {l:'한 번도 확인 안 함',s:1},
+    {l:'갱신 주기 자체를 모름',s:0}
+  ]}
+];
+let cur=0,ans=[];
+function renderQ(){
+  const q=questions[cur];
+  document.getElementById('progress').style.width=((cur+1)/questions.length*100)+'%';
+  let h='<div class="q-num">Q'+(cur+1)+' / '+questions.length+'</div>';
+  h+='<div class="q-text">'+q.q+'</div><div class="q-options">';
+  q.opts.forEach((o,i)=>{
+    const sel=ans[cur]===i?' selected':'';
+    h+='<button class="q-option'+sel+'" type="button" onclick="selectOpt('+i+')">'+o.l+'</button>';
+  });
+  h+='</div>';
+  document.getElementById('qc').innerHTML=h;
+  document.getElementById('bb').disabled=cur===0;
+  document.getElementById('bn').disabled=ans[cur]===undefined;
+  document.getElementById('bn').textContent=cur===questions.length-1?'결과 보기 →':'다음 →';
+}
+function selectOpt(i){ans[cur]=i;renderQ();}
+function nextQ(){
+  if(ans[cur]===undefined)return;
+  if(cur===questions.length-1){showResult();}
+  else{cur++;renderQ();}
+}
+function prevQ(){if(cur>0){cur--;renderQ();}}
+function showResult(){
+  const total=ans.reduce((s,a,i)=>s+questions[i].opts[a].s,0);
+  const max=questions.reduce((s,q)=>s+Math.max.apply(null,q.opts.map(o=>o.s)),0);
+  const normalized=Math.round(total/max*100);
+  let verdict,summary;
+  if(normalized>=75){
+    verdict='✅ 보장이 충분해요';
+    summary='현재 어린이보험 구성이 자녀 연령·활동 수준에 비해 잘 갖춰져 있어요. 보험료 갱신 주기마다 한 번씩 점검만 해주시면 안전해요.';
+  }else if(normalized>=45){
+    verdict='🤔 일부 보강이 필요해요';
+    summary='진단비 한도나 핵심 특약 중 일부가 부족할 수 있어요. 베이비빌리 보험 전문팀과 재설계를 검토해 보시는 게 좋아요.';
+  }else{
+    verdict='🛡️ 보장 사각지대가 큽니다';
+    summary='자녀 활동 수준이나 연령에 비해 보장이 많이 부족해요. 진단비·실손·자녀배상책임 특약을 우선 보강해 보세요.';
+  }
+  document.getElementById('quiz-area').style.display='none';
+  const r=document.getElementById('result-area');
+  r.style.display='block';
+  r.innerHTML='<div class="result-card show"><div class="result-hero-quiz">'+
+    '<div class="score-circle">'+normalized+'</div>'+
+    '<div class="result-title">'+verdict+'</div>'+
+    '<div class="result-summary">'+summary+'</div></div>'+
+    '<div class="cta-result"><div class="ct">베이비빌리 어린이보험 무료 상담</div>'+
+    '<div class="cd">10년 이상 어린이보험 상담 경험을 바탕으로 보장 사각지대를 짚어드려요.</div>'+
+    '<a href="https://babybilly.co/insurance/child/standard?utm_source=tool&utm_medium=child-coverage-fit&utm_campaign='+normalized+'" target="_blank" rel="author noopener">전문가 무료 상담 →</a></div>'+
+    '<div class="result-detail"><h3>📚 자세히 알아보기</h3><ul>'+links.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>'+
+    '<button class="retry-btn" type="button" onclick="restart()">↻ 진단 다시 시작</button></div>';
   if(window.history&&window.history.replaceState){window.history.replaceState(null,'',window.location.pathname+'?score='+normalized);}
   window.scrollTo({top:0,behavior:'smooth'});
 }
