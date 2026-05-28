@@ -4,6 +4,7 @@ import CoverImage from '../components/CoverImage.astro';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL;
+const heroPhoto = `${base}covers/home-hero.jpg`;
 const all = (await getCollection('articles', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
 );
@@ -75,6 +76,9 @@ const homeJsonLd = {
           <a class="cta ghost" href="/magazine/pregnancy/">임신 글 보기</a>
         </div>
       </div>
+      <figure class="hero-figure hero-figure--photo">
+        <img src={heroPhoto} alt="베이비빌리 보험 매거진" loading="eager" decoding="async" />
+      </figure>
     </div>
   </section>
 
@@ -182,8 +186,25 @@ const homeJsonLd = {
       border-bottom: 1px solid var(--gray-100);
     }
     .hero-grid {
-      max-width: 720px;
+      max-width: 1080px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-figure {
+      margin: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      box-shadow: 0 1px 2px rgba(42,37,32,0.04), 0 16px 40px rgba(42,37,32,0.06);
+    }
+    .hero-figure--photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .hero-text { padding: 16px 0; }
     .kicker { display: inline-flex; align-items: center; margin-bottom: 18px; }
@@ -493,6 +514,8 @@ const homeJsonLd = {
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-figure { aspect-ratio: 16 / 9; order: -1; }
       .pillar-grid { grid-template-columns: repeat(2, 1fr); }
       .article-list { grid-template-columns: repeat(2, 1fr); }
       .feature-card { padding: 28px; }
