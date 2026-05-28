@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL;
-const heroPhoto = undefined;
+const heroPhoto = `${base}covers/school-card.png`;
 const all = await getCollection('articles', ({ data }) => !data.draft && data.pillar === 'school');
 const articles = all.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 
