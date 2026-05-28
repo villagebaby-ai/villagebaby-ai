@@ -8,10 +8,6 @@ const all = (await getCollection('articles', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
 );
 
-// Hero / pillar / 글 cover 자산 — 사용자가 ChatGPT/DALL-E로 생성한 AI 사진 (cream/ivory 톤)
-// public/covers/ 에 저장, base URL prefix로 dev·prod 모두 정상 로드
-const heroPhoto = `${base}covers/home-hero.jpg`;
-
 const pillars = [
   { slug: 'pregnancy', label: '임신', sub: 'Pregnancy', desc: '가입 골든타임, 검사 결과별 시나리오, 케이스 스토리', active: true,
     cover: `${base}covers/pregnancy-card.jpg` },
@@ -79,10 +75,6 @@ const homeJsonLd = {
           <a class="cta ghost" href="/magazine/pregnancy/">임신 글 보기</a>
         </div>
       </div>
-      <figure class={`hero-figure ${heroPhoto ? 'hero-figure--photo' : ''}`}>
-        <img src={heroPhoto ?? `${base}assets/img/pregnant-mom.png`} alt="베이비빌리 보험 매거진 — 임신 라이프" loading="eager" decoding="async" />
-        <figcaption>babybilly · insurance magazine</figcaption>
-      </figure>
     </div>
   </section>
 
@@ -96,9 +88,6 @@ const homeJsonLd = {
           임신 주차·검사 결과·가족력 등 12문항에 답하시면 가입 가능성 점수와 추천 시기, 주의 특약 3개를 정리해드려요. 결과는 1:1 상담으로 바로 이어져요.
         </p>
         <span class="feature-cta">진단 시작하기 →</span>
-      </div>
-      <div class="feature-illust">
-        <img src={`${base}assets/img/baby-medical.png`} alt="" loading="lazy" />
       </div>
     </a>
   </section>
@@ -193,12 +182,8 @@ const homeJsonLd = {
       border-bottom: 1px solid var(--gray-100);
     }
     .hero-grid {
-      max-width: 1080px;
+      max-width: 720px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
     }
     .hero-text { padding: 16px 0; }
     .kicker { display: inline-flex; align-items: center; margin-bottom: 18px; }
@@ -278,61 +263,10 @@ const homeJsonLd = {
       letter-spacing: 0.04em;
       margin-top: 4px;
     }
-    .hero-figure {
-      margin: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4 / 5;
-      background: linear-gradient(135deg, #FFF8F0 0%, #FFE0CC 100%);
-      box-shadow: 0 1px 2px rgba(42, 37, 32, 0.04), 0 16px 40px rgba(42, 37, 32, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .hero-figure img {
-      max-width: 78%;
-      max-height: 78%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 24px rgba(122, 66, 40, 0.08));
-    }
-    .hero-figure--photo {
-      background: var(--gray-100);
-      padding: 0;
-    }
-    .hero-figure--photo img {
-      max-width: 100%;
-      max-height: 100%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: none;
-    }
-    .hero-figure figcaption {
-      position: absolute;
-      left: 18px;
-      bottom: 18px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #7A4228;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      text-transform: uppercase;
-      backdrop-filter: blur(8px);
-    }
-
     /* FEATURE (핏체크) */
     .feature { padding: 48px 24px 0; }
     .feature-card {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 24px;
-      align-items: center;
+      display: block;
       background: linear-gradient(135deg, var(--blue-50) 0%, var(--blue-100) 100%);
       border: 1px solid var(--blue-200);
       border-radius: 24px;
@@ -374,17 +308,6 @@ const homeJsonLd = {
       font-size: 14px;
       font-weight: 600;
     }
-    .feature-illust {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .feature-illust img {
-      width: 100%;
-      max-width: 200px;
-      filter: drop-shadow(0 8px 16px rgba(37, 99, 182, 0.12));
-    }
-
     /* SECTION HEAD */
     .section-head {
       display: flex;
@@ -570,19 +493,14 @@ const homeJsonLd = {
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-figure { aspect-ratio: 16 / 12; order: -1; }
       .pillar-grid { grid-template-columns: repeat(2, 1fr); }
       .article-list { grid-template-columns: repeat(2, 1fr); }
-      .feature-card { grid-template-columns: 1fr; padding: 28px; }
-      .feature-illust { display: none; }
+      .feature-card { padding: 28px; }
     }
     @media (max-width: 600px) {
       .pillar-grid { grid-template-columns: 1fr; }
       .article-list { grid-template-columns: 1fr; }
       .hero h1 { font-size: 26px; }
-      .hero-marks { gap: 18px; }
-      .hero-marks span { font-size: 18px; }
       .hero { padding: 36px 20px 44px; }
       .feature, .pillars, .latest, .cross-link { padding-left: 20px; padding-right: 20px; }
     }

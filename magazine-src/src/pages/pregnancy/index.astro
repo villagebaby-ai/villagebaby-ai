@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CoverImage from '../../components/CoverImage.astro';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL;
@@ -93,7 +92,6 @@ const pregnancyJsonLd = {
         {articles.map((a) => (
           <li>
             <a href={`/magazine/${a.slug}/`} class="article-card">
-              <CoverImage cover={a.data.cover} title={a.data.title} pillar={a.data.pillar} aspect="16-9" />
               <div class="a-body">
                 <p class="a-cat">{a.data.type === 'case' ? '케이스 스토리' : a.data.type === 'tool' ? '도구' : '가이드'}</p>
                 <p class="a-title">{a.data.title}</p>
