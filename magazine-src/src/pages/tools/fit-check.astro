@@ -43,25 +43,39 @@ const toolJsonLd = {
     <span>핏체크</span>
   </nav>
 
-  <section class="intro">
-    <p class="intro-label">2분 진단</p>
-    <h1>태아보험 핏체크</h1>
-    <p class="intro-lede">
-      임신 주차·검사 결과·가족력 등 12문항에 답하시면 가입 가능성 점수와 추천 시기, 주의 특약 3개를 정리해드려요. 가입 권유가 아닌 의사결정 도움 목적이에요.
-    </p>
+  <!-- HERO -->
+  <section class="fc-hero">
+    <div class="fc-hero-inner">
+      <div class="fc-hero-text">
+        <div class="fc-chips">
+          <span class="fc-chip fc-chip-pink">🩺 12문항</span>
+          <span class="fc-chip fc-chip-blue">⏱ 약 2분</span>
+          <span class="fc-chip fc-chip-green">✨ 무료</span>
+        </div>
+        <h1>태아보험<br/><em>핏체크</em></h1>
+        <p class="fc-lede">
+          임신 주차·검사 결과·가족력 등 12문항에 답하면<br/>
+          <strong>가입 가능성 점수 + 추천 시기 + 주의 특약 3가지</strong>를<br/>
+          바로 정리해드려요.
+        </p>
+      </div>
+      <div class="fc-hero-illust">
+        <img src="/magazine/assets/img/baby-medical.png" alt="" loading="eager" />
+      </div>
+    </div>
   </section>
 
   <div id="fit-check-app" data-endpoint={FORM_ENDPOINT}>
 
     <!-- STEP 0: 시작 안내 -->
     <section class="step" data-step="0">
-      <h2>시작 전 안내</h2>
+      <h2>시작 전 안내 👶</h2>
       <ul class="intro-list">
-        <li>객관식 11문항과 마지막 1단계로 구성돼요</li>
-        <li>모든 답변은 브라우저에만 저장되며, 마지막 단계에서 결과 받기를 위한 연락처를 입력하시기 전까지 외부로 전송되지 않아요</li>
-        <li>결과는 보험사 가입을 권유하기 위함이 아니라 본인의 의사결정 흐름을 정리해드리기 위한 안내예요</li>
+        <li>📋 객관식 11문항과 마지막 1단계로 구성돼요</li>
+        <li>🔒 모든 답변은 브라우저에만 저장되며, 마지막 단계에서 연락처를 입력하시기 전까지 외부로 전송되지 않아요</li>
+        <li>💡 결과는 가입 권유가 아닌 의사결정 흐름을 정리해드리기 위한 안내예요</li>
       </ul>
-      <button class="btn-primary" type="button" data-action="next">시작하기</button>
+      <button class="btn-primary" type="button" data-action="next">🚀 시작하기</button>
     </section>
 
     <!-- STEP 1-11: 객관식 문항 -->
@@ -268,30 +282,74 @@ const toolJsonLd = {
   </div>
 
   <style>
-    .breadcrumb { margin: 16px 0; font-size: 13px; color: var(--gray-600); }
+    .breadcrumb { margin: 16px 0 0; font-size: 13px; color: var(--gray-600); }
     .breadcrumb a { color: var(--gray-600); }
     .breadcrumb a:hover { color: var(--blue-700); }
     .breadcrumb span { margin: 0 6px; }
 
-    .intro { margin: 8px 0 32px; }
-    .intro-label {
-      font-size: 13px;
-      color: var(--blue-700);
-      font-weight: 500;
-      margin-bottom: 10px;
+    /* HERO */
+    .fc-hero {
+      background: linear-gradient(135deg, #FFF0F5 0%, #EEF4FF 60%, #F0FDF9 100%);
+      border-radius: 24px;
+      margin: 16px 0 28px;
+      padding: 36px 36px 28px;
+      overflow: hidden;
+      position: relative;
     }
-    .intro h1 {
-      font-size: 34px;
+    .fc-hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .fc-hero-text { flex: 1; }
+    .fc-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .fc-chip {
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--gray-900);
-      margin-bottom: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
     }
-    .intro-lede {
-      font-size: 16px;
+    .fc-chip-pink  { background: #FFE4F0; color: #C0185C; }
+    .fc-chip-blue  { background: #E4EEFF; color: #2563B6; }
+    .fc-chip-green { background: #E0FAF0; color: #0E7A4E; }
+    .fc-hero-text h1 {
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--gray-900);
+      margin: 0 0 14px;
+    }
+    .fc-hero-text h1 em {
+      font-style: normal;
+      color: var(--blue-700);
+      display: block;
+    }
+    .fc-lede {
+      font-size: 15px;
       color: var(--gray-700);
-      line-height: 1.7;
-      max-width: 560px;
+      line-height: 1.75;
+      margin: 0;
+    }
+    .fc-lede strong { color: var(--blue-700); font-weight: 600; }
+    .fc-hero-illust {
+      flex-shrink: 0;
+      width: 130px;
+    }
+    .fc-hero-illust img {
+      width: 100%;
+      filter: drop-shadow(0 8px 20px rgba(37,99,182,0.15));
+    }
+    @media (max-width: 520px) {
+      .fc-hero { padding: 24px 20px 20px; }
+      .fc-hero-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .fc-hero-illust { width: 90px; align-self: flex-end; margin-top: -40px; }
     }
 
     .step { padding: 24px 0 16px; }
