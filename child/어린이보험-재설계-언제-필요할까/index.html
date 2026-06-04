@@ -194,7 +194,7 @@
       font-size: 13px;
       font-weight: 700;
       padding: 7px 14px;
-      border-radius: 20px;
+      border-radius:16px;
       text-decoration: none;
       transition: background .2s;
     }
@@ -219,7 +219,7 @@
       display: inline-block;
       background: rgba(255,255,255,.18);
       border: 1px solid rgba(255,255,255,.35);
-      border-radius: 20px;
+      border-radius:16px;
       padding: 4px 12px;
       font-size: 12px;
       font-weight: 700;
@@ -251,7 +251,7 @@
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 14px 14px 0 0;
+      border-radius:12px 14px 0 0;
     }
 
     /* ── LAYOUT ── */
@@ -292,7 +292,7 @@
       font-size: 11px;
       font-weight: 700;
       padding: 4px 10px;
-      border-radius: 20px;
+      border-radius:16px;
       margin-bottom: 8px;
       letter-spacing: .06em;
     }
@@ -300,28 +300,28 @@
     /* ── BOXES ── */
     .box, .box-blue {
       background: var(--blue-l);
-      border-left: 4px solid var(--blue);
+      border:none(--blue);
       border-radius: var(--radius);
       padding: 16px 18px;
       margin: 14px 0;
     }
     .box-green {
       background: var(--green-l);
-      border-left: 4px solid var(--green);
+      border:none(--green);
       border-radius: var(--radius);
       padding: 16px 18px;
       margin: 14px 0;
     }
     .box-amber {
       background: var(--amber-l);
-      border-left: 4px solid #F4A724;
+      border:none;
       border-radius: var(--radius);
       padding: 16px 18px;
       margin: 14px 0;
     }
     .box-red {
       background: var(--red-l);
-      border-left: 4px solid #D32F2F;
+      border:none;
       border-radius: var(--radius);
       padding: 16px 18px;
       margin: 14px 0;
@@ -339,7 +339,7 @@
     .answer-box, .geo {
       background: linear-gradient(135deg, #EBF2FA, #F4F9FF);
       border: 1.5px solid var(--blue-mid);
-      border-radius: 14px;
+      border-radius:12px;
       padding: 20px;
       margin: 24px 0;
     }
@@ -369,7 +369,7 @@
     /* ── CTA INLINE ── */
     .cta-inline {
       background: linear-gradient(135deg, #235A96, #3373BA);
-      border-radius: 14px;
+      border-radius:12px;
       padding: 22px 20px;
       text-align: center;
       margin: 28px 0;
@@ -385,7 +385,7 @@
       color: var(--blue);
       font-weight: 700;
       font-size: 15px;
-      border-radius: 28px;
+      border-radius:16px;
       padding: 13px 28px;
       text-decoration: none;
       transition: transform .15s, box-shadow .15s;
@@ -477,7 +477,7 @@
     .signal-list { display: grid; gap: 14px; margin: 18px 0; }
     .signal-card {
       border: 1.5px solid var(--border);
-      border-radius: 14px;
+      border-radius:12px;
       padding: 18px 18px 16px;
       background: #fff;
       position: relative;
@@ -493,7 +493,7 @@
       font-weight: 900;
       font-size: 12px;
       padding: 4px 12px;
-      border-radius: 20px;
+      border-radius:16px;
       letter-spacing: .04em;
     }
     .signal-card h4 {
@@ -510,7 +510,7 @@
       font-size: 11px;
       font-weight: 700;
       padding: 3px 8px;
-      border-radius: 8px;
+      border-radius:8px;
       margin-top: 8px;
     }
 
@@ -519,7 +519,7 @@
     @media (min-width: 560px) { .compare-grid { grid-template-columns: repeat(3, 1fr); } }
     .compare-card {
       border: 1.5px solid var(--border);
-      border-radius: 12px;
+      border-radius:12px;
       padding: 16px 14px;
       background: #fff;
     }
@@ -543,7 +543,7 @@
     .process-icon {
       min-width: 42px;
       height: 42px;
-      border-radius: 12px;
+      border-radius:12px;
       background: linear-gradient(135deg, var(--blue-d), var(--blue));
       color: #fff;
       display: flex;
@@ -562,7 +562,7 @@
     .review-card {
       background: #FAFBFF;
       border: 1px solid var(--gray-b);
-      border-radius: 12px;
+      border-radius:12px;
       padding: 16px;
     }
     .review-head {
@@ -588,7 +588,7 @@
     .review-text { font-size: 13.5px; line-height: 1.7; color: #444; }
     .review-result {
       background: var(--green-l);
-      border-radius: 8px;
+      border-radius:8px;
       padding: 8px 12px;
       margin-top: 10px;
       font-size: 12.5px;
@@ -601,7 +601,7 @@
     .faq-list { margin: 16px 0; }
     details {
       border: 1px solid var(--gray-b);
-      border-radius: 10px;
+      border-radius:8px;
       margin-bottom: 10px;
       overflow: hidden;
     }
@@ -635,7 +635,7 @@
     /* ── TOC ── */
     .toc {
       background: var(--blue-l);
-      border-radius: 12px;
+      border-radius:12px;
       padding: 18px 20px;
       margin: 20px 0 28px;
     }
@@ -669,7 +669,7 @@
       font-weight: 700;
       font-size: 14px;
       padding: 12px 18px;
-      border-radius: 28px;
+      border-radius:16px;
       text-decoration: none;
       box-shadow: 0 4px 20px rgba(51,115,186,.4);
       transition: transform .15s;
