@@ -66,10 +66,37 @@ td.good{color:#16a34a;font-weight:600}td.bad{color:#dc2626;font-weight:600}
 .vb-footer .vb-fmenu a{color:inherit;text-decoration:none}.vb-footer .vb-fmenu a:hover{text-decoration:underline}
 @media(max-width:760px){.vb-nav-inner{padding:10px 16px;gap:8px}.vb-nav-logo img{height:32px}.vb-nav-cta{font-size:12px;padding:8px 13px}.hero{padding:38px 16px 28px}.hero-deco{width:90px;opacity:.5}}
 
-.body-img{margin:32px auto;max-width:440px;text-align:center}
-.body-img picture,.body-img img{display:block;width:100%;height:auto;border-radius:20px}
-.body-img figcaption{font-size:13px;color:#6B7280;line-height:1.7;margin-top:12px;padding:0 8px}
-@media(max-width:600px){.body-img{max-width:88%}}
+
+.vb-diag{margin:36px auto;max-width:720px;background:linear-gradient(180deg,#FFFBEA,#FEF9E0);border-radius:18px;padding:26px 22px;border:1px solid #FDE68A}
+.vb-diag .diag-title{font-size:16px;color:#92400E;margin:0 0 20px;text-align:center;font-weight:800;line-height:1.5;letter-spacing:-.01em}
+.vb-diag .flow{display:flex;flex-direction:column;gap:6px}
+.vb-diag .flow-step{display:flex;gap:14px;background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.vb-diag .flow-step .num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.vb-diag .flow-step .body strong{display:block;color:#111827;margin-bottom:6px;font-size:15px}
+.vb-diag .flow-step .body p{font-size:13.5px;color:#4B5563;line-height:1.7;margin:0}
+.vb-diag .arrow{text-align:center;font-size:20px;color:#D97706;font-weight:700;margin:2px 0 2px 23px}
+.vb-diag .matrix-4q{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vb-diag .matrix-4q .cell{background:#fff;border-radius:14px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.vb-diag .matrix-4q .cell-tag{font-size:12.5px;font-weight:700;margin-bottom:8px;color:#374151}
+.vb-diag .matrix-4q strong{display:block;font-size:14px;color:#111827;margin-bottom:6px}
+.vb-diag .matrix-4q p{font-size:13px;color:#4B5563;line-height:1.65;margin:0}
+.vb-diag .comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vb-diag .comm-card{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.vb-diag .comm-name{font-size:14px;font-weight:800;color:#111827;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #F3F4F6}
+.vb-diag .comm-trait{font-size:13px;color:#4B5563;line-height:1.6;margin:4px 0}
+.vb-diag .comm-trait span{display:inline-block;width:42px;color:#9CA3AF;font-weight:700;font-size:12px}
+.vb-diag .top5-list{display:flex;flex-direction:column;gap:8px}
+.vb-diag .t5-row{display:grid;grid-template-columns:32px 1.4fr 1.6fr 1fr;gap:10px;align-items:center;background:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.vb-diag .t5-rank{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.vb-diag .t5-name{font-size:13.5px;font-weight:700;color:#111827;line-height:1.4}
+.vb-diag .t5-pros{font-size:12.5px;color:#4B5563;line-height:1.5}
+.vb-diag .t5-fit{font-size:12px;color:#92400E;background:#FEF3C7;padding:4px 8px;border-radius:6px;text-align:center;font-weight:700}
+.vb-diag .prio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vb-diag .prio-card{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05);text-align:center}
+.vb-diag .prio-tag{font-size:12.5px;font-weight:700;color:#92400E;margin-bottom:6px}
+.vb-diag .prio-card strong{display:block;font-size:14.5px;color:#111827;margin-bottom:6px}
+.vb-diag .prio-card p{font-size:12.5px;color:#4B5563;line-height:1.55;margin:0}
+@media(max-width:600px){.vb-diag .matrix-4q,.vb-diag .comm-grid,.vb-diag .prio-grid{grid-template-columns:1fr}.vb-diag .t5-row{grid-template-columns:28px 1fr 1fr;font-size:12.5px}.vb-diag .t5-fit{grid-column:2/4}}
 </style>
 </head>
 <body>
@@ -86,13 +113,16 @@ td.good{color:#16a34a;font-weight:600}td.bad{color:#dc2626;font-weight:600}
 <main><div class="container">
 <div class="answer-box"><div class="lab">한 줄 요약</div><p class="text">베동·디시·클리앙·뽐뿌·맘카페 200만 부모 종합 추천 TOP 5는 — <strong>1위 현대해상 Hi (실손+산모특약 6종), 2위 DB손해보험 (보장 한도), 3위 메리츠화재 (가성비+자녀배상), 4위 한화생명 (32주+CI), 5위 롯데손보 (32주+가성비)</strong>. 가족 우선순위에 맞춰 선택하세요.</p></div>
 
-<figure class="body-img">
-  <picture>
-    <source srcset="/assets/img/baby-gift.webp" type="image/webp">
-    <img src="/assets/img/baby-gift.png" alt="부모 커뮤니티에서 추천하는 태아보험을 검토하는 모습 일러스트" loading="lazy" width="440" height="440">
-  </picture>
-  <figcaption>베동·맘카페·디시·클리앙·뽐뿌 다섯 커뮤니티가 추천하는 보험사 패턴은 모두 달라요. 우리집 우선순위에 맞는 곳부터 보세요.</figcaption>
-</figure>
+<div class="vb-diag">
+  <h3 class="diag-title">부모 커뮤니티 추천 TOP5 — 한 줄 비교</h3>
+  <div class="top5-list">
+    <div class="t5-row"><div class="t5-rank">1</div><div class="t5-name">현대해상 Hi 굿앤굿</div><div class="t5-pros">한방·NICU·중환자실 강점</div><div class="t5-fit">통합형 1위</div></div>
+    <div class="t5-row"><div class="t5-rank">2</div><div class="t5-name">DB손보 굿앤굿</div><div class="t5-pros">100세 비갱신 안정</div><div class="t5-fit">장기 안정형</div></div>
+    <div class="t5-row"><div class="t5-rank">3</div><div class="t5-name">메리츠화재 내사랑</div><div class="t5-pros">특약 종류 가장 다양</div><div class="t5-fit">맞춤 설계형</div></div>
+    <div class="t5-row"><div class="t5-rank">4</div><div class="t5-name">한화생명 아이사랑</div><div class="t5-pros">사망·CI 결합 가능</div><div class="t5-fit">종신 결합형</div></div>
+    <div class="t5-row"><div class="t5-rank">5</div><div class="t5-name">롯데손해보험</div><div class="t5-pros">보험료 가장 저렴</div><div class="t5-fit">가성비형</div></div>
+  </div>
+</div>
       <section><h2>1위 — 현대해상 Hi 굿앤굿 어린이보험</h2>
 <h3>왜 1위인가요?</h3>
 <ul>
@@ -192,13 +222,17 @@ td.good{color:#16a34a;font-weight:600}td.bad{color:#dc2626;font-weight:600}
 </ul>
 <p>자세한 분석: <a href="/guide/롯데손보-태아보험-분석/">롯데손보 태아보험 분석</a></p></section>
 
-<figure class="body-img">
-  <picture>
-    <source srcset="/assets/img/baby-magnifier.webp" type="image/webp">
-    <img src="/assets/img/baby-magnifier.png" alt="보험사별 보장 항목을 자세히 비교하는 모습 일러스트" loading="lazy" width="440" height="440">
-  </picture>
-  <figcaption>커뮤니티 후기를 참고하시되, 같은 회사라도 가입 시점·특약 조합에 따라 보험료가 달라져요. 견적 2~3곳은 꼭 받아보시는 걸 추천드려요.</figcaption>
-</figure>
+<div class="vb-diag">
+  <h3 class="diag-title">우리집 우선순위별 추천 매핑</h3>
+  <div class="prio-grid">
+    <div class="prio-card"><div class="prio-tag">💰 가성비 우선</div><strong>롯데손보</strong><p>월 보험료 부담이 큰 가족에게</p></div>
+    <div class="prio-card"><div class="prio-tag">🛡️ 안정성 우선</div><strong>DB손보</strong><p>100세 비갱신 + 보장 균형</p></div>
+    <div class="prio-card"><div class="prio-tag">🏥 응급·중환자 강점</div><strong>현대해상</strong><p>한방·NICU 강점, 통합형</p></div>
+    <div class="prio-card"><div class="prio-tag">🌟 특약 다양</div><strong>메리츠화재</strong><p>맞춤형 설계 폭이 가장 넓음</p></div>
+    <div class="prio-card"><div class="prio-tag">📈 종신 결합</div><strong>한화생명</strong><p>장기 사망·CI까지 한 번에</p></div>
+    <div class="prio-card"><div class="prio-tag">⚖️ 균형형 1순위</div><strong>현대해상</strong><p>고민 길어진다면 1순위 검토</p></div>
+  </div>
+</div>
       <section><h2>케이스별 추천 매트릭스</h2>
 <div class="tbl-wrap"><table><thead><tr><th>본인 상황</th><th>1순위</th><th>2순위</th></tr></thead><tbody>
 <tr><td>가장 보편적 안전 선택</td><td>현대해상</td><td>DB손해보험</td></tr>
