@@ -148,12 +148,12 @@
     nav.site-nav .nav-links { display: flex; gap: 0.4rem; align-items: center; }
     .nav-link {
       font-size: 13px; font-weight: 500; padding: 0.45rem 0.8rem;
-      border-radius: 6px; color: #444;
+      border-radius:8px; color: #444;
     }
     .nav-link:hover { background: var(--blue-light); color: var(--blue); text-decoration: none; }
     .nav-cta {
       background: var(--blue); color: #fff !important;
-      padding: 0.5rem 0.95rem; border-radius: 6px; font-size: 13px; font-weight: 700;
+      padding: 0.5rem 0.95rem; border-radius:8px; font-size: 13px; font-weight: 700;
     }
     .nav-cta:hover { background: var(--blue-dark); text-decoration: none; }
 
@@ -165,7 +165,7 @@
     .hero .cat-label {
       display: inline-block; background: rgba(255,255,255,0.18);
       color: #fff; font-size: 12.5px; font-weight: 700;
-      padding: 0.35rem 0.8rem; border-radius: 999px; margin-bottom: 1rem;
+      padding: 0.35rem 0.8rem; border-radius:999px; margin-bottom: 1rem;
       letter-spacing: 0.02em;
     }
     .hero h1 {
@@ -182,8 +182,8 @@
     }
 
     .answer-box {
-      background: #fff; border: 1px solid var(--blue-mid); border-left: 5px solid var(--blue);
-      border-radius: 10px; padding: 1.2rem 1.3rem;
+      background: #fff; border: 1px solid var(--blue-mid); border:none(--blue);
+      border-radius:8px; padding: 1.2rem 1.3rem;
       margin: 1.5rem 0 2.2rem; box-shadow: 0 4px 12px rgba(51,115,186,0.06);
     }
     .answer-box .a-label {
@@ -196,7 +196,7 @@
     }
 
     .toc {
-      background: var(--gray-1); border-radius: 10px; padding: 1.2rem 1.4rem;
+      background: var(--gray-1); border-radius:8px; padding: 1.2rem 1.4rem;
       margin: 0 0 2.5rem;
     }
     .toc-title {
@@ -223,8 +223,8 @@
     section.block li { margin: 0.3rem 0; }
 
     .callout {
-      background: var(--blue-light); border-left: 3px solid var(--blue);
-      padding: 0.95rem 1.1rem; border-radius: 4px;
+      background: var(--blue-light); border:none(--blue);
+      padding: 0.95rem 1.1rem; border-radius:4px;
       margin: 1.2rem 0; font-size: 14.5px;
     }
     .callout strong { font-weight: 700; color: var(--blue-dark); }
@@ -234,7 +234,7 @@
     .callout.ok strong { color: var(--ok); }
 
     .top10-card {
-      background: #fff; border: 1px solid var(--gray-2); border-radius: 12px;
+      background: #fff; border: 1px solid var(--gray-2); border-radius:12px;
       padding: 1.4rem 1.4rem 1.2rem; margin: 1.1rem 0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
       position: relative;
@@ -242,7 +242,7 @@
     .top10-card .rank {
       position: absolute; top: -12px; left: 18px;
       background: var(--blue); color: #fff; font-weight: 800;
-      font-size: 12px; padding: 0.3rem 0.7rem; border-radius: 999px;
+      font-size: 12px; padding: 0.3rem 0.7rem; border-radius:999px;
       letter-spacing: 0.04em;
     }
     .top10-card h3 {
@@ -257,7 +257,7 @@
     }
     @media (max-width: 600px) { .top10-grid { grid-template-columns: 1fr; } }
     .stat {
-      background: var(--gray-1); border-radius: 8px; padding: 0.65rem 0.8rem;
+      background: var(--gray-1); border-radius:8px; padding: 0.65rem 0.8rem;
     }
     .stat-label {
       font-size: 11px; font-weight: 700; color: var(--gray-4);
@@ -269,13 +269,13 @@
     .top10-card .who {
       margin-top: 0.9rem; font-size: 13.5px; color: #333;
       background: var(--blue-light); padding: 0.6rem 0.85rem;
-      border-radius: 6px; line-height: 1.55;
+      border-radius:8px; line-height: 1.55;
     }
     .top10-card .who strong { color: var(--blue-dark); }
 
     table.compare {
       width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 1rem 0;
-      background: #fff; border-radius: 10px; overflow: hidden;
+      background: #fff; border-radius:8px; overflow: hidden;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     table.compare th {
@@ -291,7 +291,7 @@
     table.compare .tot { background: #FFF8E1; font-weight: 700; }
 
     .skip-card {
-      background: #fff; border: 1px dashed var(--gray-3); border-radius: 10px;
+      background: #fff; border: 1px dashed var(--gray-3); border-radius:8px;
       padding: 1rem 1.2rem; margin: 0.9rem 0;
     }
     .skip-card h4 {
@@ -301,14 +301,14 @@
     .skip-card p { font-size: 14px; margin: 0; color: #444; }
 
     .pattern-card {
-      background: var(--warn-light); border-left: 3px solid var(--warn);
-      padding: 0.85rem 1.1rem; border-radius: 4px;
+      background: var(--warn-light); border:none(--warn);
+      padding: 0.85rem 1.1rem; border-radius:4px;
       margin: 0.7rem 0; font-size: 14px;
     }
     .pattern-card strong { color: var(--warn); }
 
     .review-card {
-      background: #fff; border: 1px solid var(--blue-mid); border-radius: 10px;
+      background: #fff; border: 1px solid var(--blue-mid); border-radius:8px;
       padding: 1.1rem 1.2rem; margin: 0.9rem 0;
     }
     .review-card .rev-head {
@@ -324,7 +324,7 @@
     .review-card .meta-line { font-size: 11.5px; color: var(--gray-4); }
     .review-card blockquote {
       margin: 0; font-size: 14px; line-height: 1.7; color: #2a2a2a;
-      border-left: 3px solid var(--blue-mid);
+      border:none(--blue-mid);
       padding-left: 0.8rem;
     }
     .review-card .got {
@@ -334,7 +334,7 @@
 
     .soft-cta {
       background: var(--blue-light); border: 1px solid var(--blue-mid);
-      border-radius: 10px; padding: 1.4rem 1.4rem;
+      border-radius:8px; padding: 1.4rem 1.4rem;
       text-align: center; margin: 2.5rem 0;
     }
     .soft-cta h3 {
@@ -343,13 +343,13 @@
     .soft-cta p { font-size: 14px; color: #333; margin: 0 0 1rem; }
     .soft-cta-btn {
       display: inline-block; background: var(--blue); color: #fff;
-      padding: 0.75rem 1.6rem; border-radius: 8px;
+      padding: 0.75rem 1.6rem; border-radius:8px;
       font-weight: 700; font-size: 14.5px;
     }
     .soft-cta-btn:hover { background: var(--blue-dark); text-decoration: none; }
 
     .faq-item {
-      background: #fff; border: 1px solid var(--gray-2); border-radius: 10px;
+      background: #fff; border: 1px solid var(--gray-2); border-radius:8px;
       margin: 0.7rem 0; overflow: hidden;
     }
     .faq-q {
@@ -375,7 +375,7 @@
     }
     @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
     .related-card {
-      background: #fff; border: 1px solid var(--gray-2); border-radius: 10px;
+      background: #fff; border: 1px solid var(--gray-2); border-radius:8px;
       padding: 1rem 1.1rem;
     }
     .related-card:hover { border-color: var(--blue-mid); text-decoration: none; }
@@ -390,7 +390,7 @@
 
     .final-cta {
       background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
-      color: #fff; border-radius: 14px; padding: 2.4rem 1.6rem;
+      color: #fff; border-radius:12px; padding: 2.4rem 1.6rem;
       text-align: center; margin: 3rem 0 0;
     }
     .final-cta h2 {
@@ -399,7 +399,7 @@
     .final-cta p { color: rgba(255,255,255,0.9); font-size: 14.5px; margin: 0 0 1.3rem; }
     .final-cta-btn {
       display: inline-block; background: #fff; color: var(--blue-dark) !important;
-      padding: 0.85rem 2rem; border-radius: 8px;
+      padding: 0.85rem 2rem; border-radius:8px;
       font-weight: 800; font-size: 15px;
     }
     .final-cta-btn:hover { background: var(--blue-light); text-decoration: none; }
