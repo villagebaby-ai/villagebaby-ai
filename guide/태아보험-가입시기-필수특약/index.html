@@ -205,12 +205,12 @@
     .nav-tag {
       font-size: 11px; font-weight: 500;
       background: var(--blue-light); color: var(--blue);
-      padding: 3px 10px; border-radius: 20px;
+      padding: 3px 10px; border-radius:16px;
     }
     .nav-cta {
       font-size: 13px; font-weight: 700;
       background: var(--blue); color: #fff;
-      padding: 7px 16px; border-radius: 50px;
+      padding: 7px 16px; border-radius:999px;
       text-decoration: none; transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--blue-dark); }
@@ -236,7 +236,7 @@
       background: rgba(255,255,255,0.15);
       border: 1px solid rgba(255,255,255,0.25);
       color: #fff; font-size: 12px; font-weight: 500;
-      padding: 4px 12px; border-radius: 20px;
+      padding: 4px 12px; border-radius:16px;
       margin-bottom: 0.9rem;
     }
     .hero h1 {
@@ -280,7 +280,7 @@
     .sidebar-box {
       background: var(--white);
       border: 1px solid var(--gray-border);
-      border-radius: 16px; padding: 1.15rem;
+      border-radius:16px; padding: 1.15rem;
       margin-bottom: 1rem;
     }
     .sidebar-label {
@@ -306,7 +306,7 @@
     .sidebar-cta-box {
       background: var(--blue-light);
       border: 1px solid var(--blue-mid);
-      border-radius: 16px; padding: 1.15rem;
+      border-radius:16px; padding: 1.15rem;
       text-align: center;
     }
     .sidebar-mascot {
@@ -324,7 +324,7 @@
     .sidebar-btn {
       display: block; background: var(--blue); color: #fff;
       font-size: 13px; font-weight: 700;
-      padding: 0.6rem 1rem; border-radius: 50px;
+      padding: 0.6rem 1rem; border-radius:999px;
       text-decoration: none; text-align: center;
       transition: background 0.2s;
     }
@@ -345,7 +345,7 @@
     }
     .article-header .lead {
       font-size: 15px; color: var(--text-secondary);
-      line-height: 1.75; border-left: 3px solid var(--blue-mid);
+      line-height: 1.75; border:none(--blue-mid);
       padding-left: 1rem; margin-top: 0.75rem;
     }
 
@@ -370,19 +370,19 @@
     .card-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1rem 0; }
     .info-card {
       background: var(--white); border: 1px solid var(--gray-border);
-      border-radius: 12px; padding: 1rem;
+      border-radius:12px; padding: 1rem;
     }
     .info-card-tag {
       display: inline-block; font-size: 11px; font-weight: 700;
       background: var(--blue-light); color: var(--blue);
-      padding: 2px 8px; border-radius: 10px; margin-bottom: 0.5rem;
+      padding: 2px 8px; border-radius:8px; margin-bottom: 0.5rem;
     }
     .info-card-tag.peach { background: var(--peach-light); color: var(--peach-dark); }
     .info-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
 
     /* HIGHLIGHT */
     .callout {
-      background: var(--blue-light); border-left: 3px solid var(--blue);
+      background: var(--blue-light); border:none(--blue);
       border-radius: 0 10px 10px 0; padding: 0.9rem 1.1rem; margin: 1.1rem 0;
     }
     .callout p { font-size: 14px; color: #1A3660; line-height: 1.72; }
@@ -441,7 +441,7 @@
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1rem 0; }
     .grid-card {
       background: var(--white); border: 1px solid var(--gray-border);
-      border-radius: 12px; padding: 1rem; transition: border-color 0.2s;
+      border-radius:12px; padding: 1rem; transition: border-color 0.2s;
     }
     .grid-card:hover { border-color: var(--blue-mid); }
     .grid-icon { font-size: 20px; margin-bottom: 0.45rem; }
@@ -452,7 +452,7 @@
     .data-table {
       width: 100%; border-collapse: collapse; font-size: 13px;
       margin: 1rem 0; border: 1px solid var(--gray-border);
-      border-radius: 12px; overflow: hidden;
+      border-radius:12px; overflow: hidden;
     }
     .data-table th {
       background: var(--blue-light); color: var(--blue-dark); font-weight: 700;
@@ -468,7 +468,7 @@
 
     /* INSIGHT BOX */
     .insight {
-      background: var(--gray-light); border-radius: 12px;
+      background: var(--gray-light); border-radius:12px;
       padding: 0.9rem 1.1rem; margin: 1rem 0;
       display: flex; gap: 10px; align-items: flex-start;
     }
@@ -490,7 +490,7 @@
     .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .related-card {
       background: var(--white); border: 1px solid var(--gray-border);
-      border-radius: 12px; padding: 1rem; text-decoration: none;
+      border-radius:12px; padding: 1rem; text-decoration: none;
       transition: border-color 0.2s;
     }
     .related-card:hover { border-color: var(--blue-mid); }
@@ -504,7 +504,7 @@
     .soft-cta {
       background: var(--blue-light);
       border: 1px solid var(--blue-mid);
-      border-radius: 16px; padding: 1.5rem 1.75rem;
+      border-radius:16px; padding: 1.5rem 1.75rem;
       display: flex; gap: 1.25rem; align-items: center;
       margin-top: 2.5rem;
     }
@@ -523,7 +523,7 @@
     .soft-cta-btn {
       display: inline-block; background: var(--blue); color: #fff;
       font-size: 14px; font-weight: 700; padding: 0.65rem 1.5rem;
-      border-radius: 50px; text-decoration: none; transition: background 0.2s;
+      border-radius:999px; text-decoration: none; transition: background 0.2s;
     }
     .soft-cta-btn:hover { background: var(--blue-dark); }
 
@@ -556,7 +556,7 @@
   .faq-list { margin: 1rem 0; }
   .faq-item {
     border: 1px solid var(--gray-border);
-    border-radius: 12px; margin-bottom: 10px;
+    border-radius:12px; margin-bottom: 10px;
     overflow: hidden; background: var(--white);
   }
   .faq-q {
@@ -602,7 +602,7 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin: 1rem 0;
-    border-radius: 12px;
+    border-radius:12px;
     border: 1px solid var(--gray-border);
   }
   .table-wrap .data-table {
@@ -622,7 +622,7 @@
     width: 100%;
     background: var(--blue-light);
     border: 1px solid var(--blue-mid);
-    border-radius: 12px;
+    border-radius:12px;
     padding: 0.85rem 1.1rem;
     font-size: 14px; font-weight: 700;
     color: var(--blue-dark);
@@ -640,7 +640,7 @@
     display: none;
     background: var(--white);
     border: 1px solid var(--blue-mid);
-    border-radius: 12px;
+    border-radius:12px;
     padding: 0.75rem 1rem;
     margin-bottom: 1.5rem;
   }
@@ -1472,7 +1472,7 @@
   color: #fff;
   display: flex; align-items: center; gap: 9px;
   padding: 11px 20px 11px 12px;
-  border-radius: 50px;
+  border-radius:999px;
   text-decoration: none;
   font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
   font-size: 14px; font-weight: 700;
