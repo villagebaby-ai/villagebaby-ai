@@ -215,7 +215,7 @@ footer{border-top:1px solid var(--gray-200);padding:32px 24px;text-align:center;
   <div class="cta">
     <h2>📊 표 분석 + 전문가 상담으로 정확한 견적</h2>
     <p>위 매트릭스는 일반적 평가예요. 보험사 상품·시점·가족 건강에 따라 정확한 인수·보험료는 다를 수 있습니다. 4-6개 보험사 동시 견적은 베이비빌리 전문가 상담으로.</p>
-    <a id="cta-link" href="https://babybilly.co/insurance/baby/talk/v1?utm_source=tool&utm_medium=company-matrix" target="_blank" rel="author noopener">전문가 무료 상담 →</a>
+    <a id="cta-link" href="https://babybilly.co/insurance/general/v2?utm_source=tool&utm_medium=company-matrix" target="_blank" rel="author noopener">전문가 무료 상담 →</a>
   </div>
 
   <div class="about-tool">
@@ -322,7 +322,7 @@ function render(){
 
   // CTA UTM
   const cta=document.getElementById('cta-link');
-  cta.href='https://babybilly.co/insurance/baby/talk/v1?utm_source=tool&utm_medium=company-matrix&utm_campaign='+top+'_'+Array.from(activeTags).join('-');
+  cta.href='https://babybilly.co/insurance/general/v2?utm_source=tool&utm_medium=company-matrix&utm_campaign='+top+'_'+Array.from(activeTags).join('-');
 }
 
 function sortBy(key){
