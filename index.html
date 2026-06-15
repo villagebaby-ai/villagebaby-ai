@@ -347,6 +347,28 @@ footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px
 .reveal-s{opacity:0; transform:scale(.92); transition:opacity .65s var(--ease-out), transform .65s var(--ease-out)}
 .reveal-s.in{opacity:1; transform:none}
 
+/* ========== LENIS SMOOTH SCROLL ========== */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ========== JOURNEY ========== */
+#journey{background:linear-gradient(170deg,var(--blue-50),var(--peach-50)); overflow:hidden}
+#journey .title{text-align:center}
+.journey-wrap{max-width:600px; margin:48px auto 0; position:relative}
+.journey-svg{width:100%; height:auto; display:block; overflow:visible}
+.journey-svg text{font-family:var(--font)}
+.j-title{font-size:25px; font-weight:700; fill:var(--ink)}
+.j-sub{font-size:15px; fill:var(--gray)}
+.journey-draw{stroke-dasharray:1}
+.journey-svg .ms{opacity:0; transition:opacity .55s var(--ease)}
+.journey-svg .ms.on{opacity:1}
+.j-node{fill:#fff; stroke:var(--blue); stroke-width:3}
+.journey-billy{filter:drop-shadow(0 8px 10px rgba(45,102,163,.28))}
+.journey-close{text-align:center; font-size:clamp(19px,2.6vw,26px); font-weight:800; letter-spacing:-.02em; color:var(--ink); margin-top:28px}
+.journey-close em{font-style:normal; color:var(--blue)}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width:920px){
   .nav-links{display:none}
@@ -567,6 +589,33 @@ footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px
   </div>
 </section>
 
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow">Journey · 부모가 되는 여정</span>
+      <h2 class="title">설렘과 불안이 교차하는<br><span class="hl">그 길 위에서</span></h2>
+    </div>
+    <div class="journey-wrap reveal">
+      <svg class="journey-svg" viewBox="0 0 600 1080" role="img" aria-label="임신 준비부터 육아까지, 부모가 되는 여정을 그린 곡선과 단계별 이정표">
+        <defs>
+          <linearGradient id="jgrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3373BA"/><stop offset="0.55" stop-color="#4A89CC"/><stop offset="1" stop-color="#E0A684"/>
+          </linearGradient>
+        </defs>
+        <path class="journey-track" d="M300,40 C 120,190 480,360 300,530 C 120,700 480,860 300,1030" fill="none" stroke="#E4E4DC" stroke-width="5" stroke-linecap="round"/>
+        <path class="journey-draw" pathLength="1" d="M300,40 C 120,190 480,360 300,530 C 120,700 480,860 300,1030" fill="none" stroke="url(#jgrad)" stroke-width="5" stroke-linecap="round"/>
+        <g class="ms" data-t="0.07"><circle class="j-node" r="9"/><text class="j-title" y="-4">임신 준비</text><text class="j-sub" y="18">설렘 반 불안 반의 시작</text></g>
+        <g class="ms" data-t="0.38"><circle class="j-node" r="9"/><text class="j-title" y="-4">두 줄 확인</text><text class="j-sub" y="18">세상이 바뀌는 순간</text></g>
+        <g class="ms" data-t="0.66"><circle class="j-node" r="9"/><text class="j-title" y="-4">처음 만난 아기</text><text class="j-sub" y="18">작고 따뜻한 첫 인사</text></g>
+        <g class="ms" data-t="0.93"><circle class="j-node" r="9"/><text class="j-title" y="-4">함께 자라는 매일</text><text class="j-sub" y="18">매 순간이 처음인 육아</text></g>
+        <image class="journey-billy" href="assets/img/baby-wink.webp" width="72" height="51" preserveAspectRatio="xMidYMid meet"/>
+      </svg>
+      <p class="journey-close">이 모든 여정에, <em>베이비빌리</em>가 함께해요.</p>
+    </div>
+  </div>
+</section>
+
 <!-- CULTURE -->
 <section id="culture">
   <div class="wrap">
@@ -719,6 +768,7 @@ footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px
 
 <a href="https://www.wanted.co.kr/company/24899" target="_blank" rel="noopener" class="fab" id="fab">채용 공고 보기 →</a>
 
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
 <script>
 (function(){
   "use strict";
@@ -768,6 +818,32 @@ footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px
   var navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
   var mq = document.getElementById('missionQuote');
   var mqWords = mq ? mq.querySelectorAll('.w') : [];
+  var lenis = null;
+
+  // journey path draw + billy walker
+  var jDraw=document.querySelector('.journey-draw'), jBilly=document.querySelector('.journey-billy'),
+      jMs=document.querySelectorAll('#journey .ms'), jSec=document.getElementById('journey'), jLen=0;
+  if(jDraw){
+    jLen=jDraw.getTotalLength();
+    jMs.forEach(function(g){
+      var t=parseFloat(g.getAttribute('data-t')), pt=jDraw.getPointAtLength(t*jLen), right=pt.x<300;
+      g.setAttribute('transform','translate('+pt.x+','+pt.y+')');
+      g.querySelectorAll('text').forEach(function(tx){ tx.setAttribute('x',right?26:-26); tx.setAttribute('text-anchor',right?'start':'end'); });
+      if(rm) g.classList.add('on');
+    });
+    if(rm){ jDraw.style.strokeDashoffset=0; if(jBilly) jBilly.style.display='none'; }
+    else { jDraw.style.strokeDashoffset=1; var p0=jDraw.getPointAtLength(0); if(jBilly){ jBilly.setAttribute('x',p0.x-36); jBilly.setAttribute('y',p0.y-26); } }
+  }
+  function updateJourney(){
+    if(!jDraw||rm) return;
+    var r=jSec.getBoundingClientRect(), vh=window.innerHeight;
+    var p=Math.max(0,Math.min(1,(vh*0.72 - r.top)/(r.height*0.78)));
+    jDraw.style.strokeDashoffset=1-p;
+    var pt=jDraw.getPointAtLength(p*jLen);
+    if(jBilly){ jBilly.setAttribute('x',pt.x-36); jBilly.setAttribute('y',pt.y-26); }
+    for(var i=0;i<jMs.length;i++){ jMs[i].classList.toggle('on', p>=parseFloat(jMs[i].getAttribute('data-t'))-0.03); }
+  }
+
   function onScroll(){
     var y = window.scrollY || window.pageYOffset;
     var h = document.documentElement.scrollHeight - window.innerHeight;
@@ -783,6 +859,7 @@ footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px
       var n = Math.round(p * mqWords.length);
       for(var i=0;i<mqWords.length;i++){ mqWords[i].classList.toggle('lit', i < n); }
     }
+    updateJourney();
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
@@ -838,10 +915,25 @@ footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px
     burger.classList.toggle('open', open);
     burger.setAttribute('aria-expanded', open ? 'true':'false');
     document.body.style.overflow = open ? 'hidden' : '';
+    if(lenis){ open ? lenis.stop() : lenis.start(); }
   }
   burger.addEventListener('click', function(){ toggleDrawer(!drawer.classList.contains('open')); });
   drawer.addEventListener('click', function(e){ if(e.target === drawer || e.target.tagName === 'A') toggleDrawer(false); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') toggleDrawer(false); });
+
+  // smooth inertia scroll (Lenis) — progressive enhancement
+  if(!rm && typeof Lenis !== 'undefined'){
+    lenis = new Lenis({ lerp:0.09, smoothWheel:true });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    lenis.on('scroll', onScroll);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id=a.getAttribute('href');
+        if(id.length>1){ var el=document.querySelector(id); if(el){ e.preventDefault(); lenis.scrollTo(el,{offset:-58}); } }
+      });
+    });
+  }
 })();
 </script>
 </body>
