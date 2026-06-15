@@ -197,8 +197,10 @@ section{padding:clamp(72px,11vw,128px) clamp(20px,5vw,48px); position:relative}
 .trust{padding:34px 0; background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden}
 .trust-label{text-align:center; font-size:12px; letter-spacing:.12em; color:var(--gray); text-transform:uppercase; margin-bottom:20px; font-weight:700}
 .marquee{display:flex; gap:0; overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee-track{display:flex; align-items:center; gap:18px; padding-right:18px; animation:scroll 28s linear infinite; flex-shrink:0}
+.marquee-track{display:flex; align-items:center; gap:18px; padding-right:18px; animation:scroll 55s linear infinite; flex-shrink:0}
 .trust:hover .marquee-track{animation-play-state:paused}
+.marquee + .marquee{margin-top:14px}
+.marquee-rev .marquee-track{animation-duration:66s; animation-direction:reverse}
 @keyframes scroll{to{transform:translateX(-100%)}}
 .m-item{display:inline-flex; align-items:center; gap:9px; white-space:nowrap; font-size:15px; font-weight:700; color:var(--ink-2); background:var(--bg); border:1px solid var(--border); padding:11px 22px; border-radius:var(--r-pill)}
 .m-item .emo{font-size:17px}
@@ -252,6 +254,7 @@ section{padding:clamp(72px,11vw,128px) clamp(20px,5vw,48px); position:relative}
 #culture{background:var(--surface)}
 .cv{margin-top:52px; display:flex; flex-direction:column}
 .cv-step{display:grid; grid-template-columns:240px 1fr; gap:44px}
+.cv-step + .cv-step{padding-top:40px}
 .cv-left{display:flex; flex-direction:column; align-items:flex-start}
 .cv-badge{display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:700; padding:9px 17px; border-radius:var(--r-pill); white-space:nowrap; letter-spacing:-.01em}
 .cv-badge .em{font-size:15px}
@@ -475,7 +478,7 @@ html.lenis,html.lenis body{height:auto}
 <div class="trust" aria-label="빌리지베이비가 일하는 방식">
   <div class="trust-label">빌리지베이비는 이렇게 일해요!</div>
   <div class="marquee">
-    <div class="marquee-track" aria-hidden="false">
+    <div class="marquee-track">
       <span class="m-item"><span class="emo">🎯</span>Customer-centric</span>
       <span class="m-item"><span class="emo">🤝</span>One Team</span>
       <span class="m-item"><span class="emo">🔥</span>헌신</span>
@@ -483,13 +486,6 @@ html.lenis,html.lenis body{height:auto}
       <span class="m-item"><span class="emo">🪴</span>책임감</span>
       <span class="m-item"><span class="emo">🙋</span>주도적 의견</span>
       <span class="m-item"><span class="emo">😊</span>긍정적 에너지</span>
-      <span class="m-item"><span class="emo">💙</span>원팀</span>
-      <span class="m-item"><span class="emo">⚡</span>Proactive</span>
-      <span class="m-item"><span class="emo">🏃</span>속도</span>
-      <span class="m-item"><span class="emo">🌟</span>Own Your Impact</span>
-      <span class="m-item"><span class="emo">🤍</span>고객 중심</span>
-      <span class="m-item"><span class="emo">✊</span>Commit</span>
-      <span class="m-item"><span class="emo">⏱️</span>실행력</span>
     </div>
     <div class="marquee-track" aria-hidden="true">
       <span class="m-item"><span class="emo">🎯</span>Customer-centric</span>
@@ -499,6 +495,19 @@ html.lenis,html.lenis body{height:auto}
       <span class="m-item"><span class="emo">🪴</span>책임감</span>
       <span class="m-item"><span class="emo">🙋</span>주도적 의견</span>
       <span class="m-item"><span class="emo">😊</span>긍정적 에너지</span>
+    </div>
+  </div>
+  <div class="marquee marquee-rev">
+    <div class="marquee-track">
+      <span class="m-item"><span class="emo">💙</span>원팀</span>
+      <span class="m-item"><span class="emo">⚡</span>Proactive</span>
+      <span class="m-item"><span class="emo">🏃</span>속도</span>
+      <span class="m-item"><span class="emo">🌟</span>Own Your Impact</span>
+      <span class="m-item"><span class="emo">🤍</span>고객 중심</span>
+      <span class="m-item"><span class="emo">✊</span>Commit</span>
+      <span class="m-item"><span class="emo">⏱️</span>실행력</span>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
       <span class="m-item"><span class="emo">💙</span>원팀</span>
       <span class="m-item"><span class="emo">⚡</span>Proactive</span>
       <span class="m-item"><span class="emo">🏃</span>속도</span>
@@ -518,8 +527,35 @@ html.lenis,html.lenis body{height:auto}
     <div class="stat-grid">
       <div class="reveal"><div class="stat-num"><span data-count="200" data-suffix="">0</span><span class="u">만+</span></div><div class="stat-label">베이비빌리 누적 엄빠 유저</div></div>
       <div class="reveal"><div class="stat-num"><span data-count="800" data-suffix="">0</span><span class="u">억+</span></div><div class="stat-label">누적 거래액</div></div>
-      <div class="reveal"><div class="stat-num"><span data-count="6000" data-suffix="">0</span><span class="u">만+</span></div><div class="stat-label">콘텐츠 누적 조회수</div></div>
+      <div class="reveal"><div class="stat-num"><span>1</span><span class="u">억+</span></div><div class="stat-label">콘텐츠 누적 조회수</div></div>
       <div class="reveal"><div class="stat-num"><span data-count="70" data-suffix="">0</span><span class="u">억+</span></div><div class="stat-label">누적 투자유치</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="eyebrow">Journey · 부모가 되는 여정</span>
+      <h2 class="title">설렘과 불안이 교차하는<br><span class="hl">그 길 위에서</span></h2>
+    </div>
+    <div class="journey-wrap reveal">
+      <svg class="journey-svg" viewBox="0 0 600 1080" role="img" aria-label="임신 준비부터 육아까지, 부모가 되는 여정을 그린 곡선과 단계별 이정표">
+        <defs>
+          <linearGradient id="jgrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3373BA"/><stop offset="0.55" stop-color="#4A89CC"/><stop offset="1" stop-color="#E0A684"/>
+          </linearGradient>
+        </defs>
+        <path class="journey-track" d="M300,40 C 120,190 480,360 300,530 C 120,700 480,860 300,1030" fill="none" stroke="#E4E4DC" stroke-width="5" stroke-linecap="round"/>
+        <path class="journey-draw" pathLength="1" d="M300,40 C 120,190 480,360 300,530 C 120,700 480,860 300,1030" fill="none" stroke="url(#jgrad)" stroke-width="5" stroke-linecap="round"/>
+        <g class="ms" data-t="0.07"><circle class="j-node" r="9"/><text class="j-title" y="-4">임신 준비</text><text class="j-sub" y="18">설렘 반 불안 반의 시작</text></g>
+        <g class="ms" data-t="0.38"><circle class="j-node" r="9"/><text class="j-title" y="-4">두 줄 확인</text><text class="j-sub" y="18">세상이 바뀌는 순간</text></g>
+        <g class="ms" data-t="0.66"><circle class="j-node" r="9"/><text class="j-title" y="-4">처음 만난 아기</text><text class="j-sub" y="18">작고 따뜻한 첫 인사</text></g>
+        <g class="ms" data-t="0.93"><circle class="j-node" r="9"/><text class="j-title" y="-4">함께 자라는 매일</text><text class="j-sub" y="18">매 순간이 처음인 육아</text></g>
+        <image class="journey-billy" href="assets/img/baby-wink.webp" width="72" height="51" preserveAspectRatio="xMidYMid meet"/>
+      </svg>
+      <p class="journey-close">이 모든 여정에, <em>베이비빌리</em>가 함께해요.</p>
     </div>
   </div>
 </section>
@@ -538,7 +574,7 @@ html.lenis,html.lenis body{height:auto}
         <p class="prod-eng">BabyBilly · Content &amp; Commerce Platform</p>
         <p class="prod-body">임신 준비부터 육아까지, 시기별 맞춤 정보·커뮤니티·쇼핑을 한 앱에서. 200만 엄빠가 함께하는 No.1 임신·육아 플랫폼이에요.</p>
         <div class="prod-stats">
-          <div><b>6,000만+</b><span>콘텐츠 조회수</span></div>
+          <div><b>1억+</b><span>콘텐츠 조회수</span></div>
           <div><b>800억+</b><span>누적 거래액</span></div>
         </div>
         <span class="chip chip-blue">Core Product</span>
@@ -585,33 +621,6 @@ html.lenis,html.lenis body{height:auto}
         <div class="mi reveal" style="transition-delay:.12s"><div class="mi-num">우리가 만드는 것 ②</div><div class="mi-title">귀엽고 감동적인 모먼트</div><div class="mi-body">힘든 하루 끝 집에 가는 길, 베이비빌리 말풍선 하나에 눈시울이 붉어지는 경험. 이게 우리의 고유한 경쟁력이에요.</div></div>
         <div class="mi reveal" style="transition-delay:.19s"><div class="mi-num">우리가 향하는 곳</div><div class="mi-title">든든한 글로벌 육아 파트너</div><div class="mi-body">200만 엄빠 데이터와 동료 커뮤니티로, AI도 대체할 수 없는 부모 여정의 든든한 파트너가 되는 것.</div></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- JOURNEY -->
-<section id="journey">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center">
-      <span class="eyebrow">Journey · 부모가 되는 여정</span>
-      <h2 class="title">설렘과 불안이 교차하는<br><span class="hl">그 길 위에서</span></h2>
-    </div>
-    <div class="journey-wrap reveal">
-      <svg class="journey-svg" viewBox="0 0 600 1080" role="img" aria-label="임신 준비부터 육아까지, 부모가 되는 여정을 그린 곡선과 단계별 이정표">
-        <defs>
-          <linearGradient id="jgrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#3373BA"/><stop offset="0.55" stop-color="#4A89CC"/><stop offset="1" stop-color="#E0A684"/>
-          </linearGradient>
-        </defs>
-        <path class="journey-track" d="M300,40 C 120,190 480,360 300,530 C 120,700 480,860 300,1030" fill="none" stroke="#E4E4DC" stroke-width="5" stroke-linecap="round"/>
-        <path class="journey-draw" pathLength="1" d="M300,40 C 120,190 480,360 300,530 C 120,700 480,860 300,1030" fill="none" stroke="url(#jgrad)" stroke-width="5" stroke-linecap="round"/>
-        <g class="ms" data-t="0.07"><circle class="j-node" r="9"/><text class="j-title" y="-4">임신 준비</text><text class="j-sub" y="18">설렘 반 불안 반의 시작</text></g>
-        <g class="ms" data-t="0.38"><circle class="j-node" r="9"/><text class="j-title" y="-4">두 줄 확인</text><text class="j-sub" y="18">세상이 바뀌는 순간</text></g>
-        <g class="ms" data-t="0.66"><circle class="j-node" r="9"/><text class="j-title" y="-4">처음 만난 아기</text><text class="j-sub" y="18">작고 따뜻한 첫 인사</text></g>
-        <g class="ms" data-t="0.93"><circle class="j-node" r="9"/><text class="j-title" y="-4">함께 자라는 매일</text><text class="j-sub" y="18">매 순간이 처음인 육아</text></g>
-        <image class="journey-billy" href="assets/img/baby-wink.webp" width="72" height="51" preserveAspectRatio="xMidYMid meet"/>
-      </svg>
-      <p class="journey-close">이 모든 여정에, <em>베이비빌리</em>가 함께해요.</p>
     </div>
   </div>
 </section>
