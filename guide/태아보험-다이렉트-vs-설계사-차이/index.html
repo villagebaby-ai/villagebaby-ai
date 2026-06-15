@@ -61,23 +61,34 @@ th{background:#F9FAFB;font-weight:700}
 .vb-footer{background:#F9FAFB;border-top:1px solid #E5E7EB;padding:30px 20px;margin-top:60px;text-align:center;font-size:13px;color:#6B7280}
 .vb-footer a{color:#6B7280;margin:0 6px}
 
-.vb-diag{margin:32px auto;max-width:720px;background:linear-gradient(180deg,#FFFBEA,#FEF9E0);border-radius:16px;padding:24px 22px;border:1px solid #FDE68A}
+.vb-diag{margin:32px auto;max-width:760px;background:linear-gradient(180deg,#FFFBEA,#FEF9E0);border-radius:16px;padding:24px 22px;border:1px solid #FDE68A}
 .vb-diag .diag-title{font-size:16px;color:#92400E;margin:0 0 18px;text-align:center;font-weight:800;line-height:1.5;letter-spacing:-.01em}
-.vb-diag .flow{display:flex;flex-direction:column;gap:6px}
+.vb-diag .flow{display:flex;flex-direction:column;gap:8px}
 .vb-diag .flow-step{display:flex;gap:14px;background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 1px 6px rgba(0,0,0,.08)}
 .vb-diag .flow-step .num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
 .vb-diag .flow-step .body strong{display:block;color:#111827;margin-bottom:6px;font-size:15px}
 .vb-diag .flow-step .body p{font-size:13.5px;color:#4B5563;line-height:1.7;margin:0}
 .vb-diag .arrow{text-align:center;font-size:20px;color:#D97706;font-weight:700;margin:0 0 0 23px}
-.vb-diag .ph-grid{display:flex;flex-direction:column;gap:6px}
+.vb-diag .ph-grid{display:flex;flex-direction:column;gap:8px}
 .vb-diag .ph-row{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px;background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 1px 6px rgba(0,0,0,.06);font-size:13px;color:#374151;align-items:center}
 .vb-diag .ph-hd{background:#FEF3C7;color:#92400E;font-weight:800;font-size:12.5px;text-align:center}
 .vb-diag .ph-hd>div{text-align:center}
 .vb-diag .ph-row>div:not(:first-child){text-align:center;font-weight:700}
+.vb-diag .ph-row .ph-label{display:none}
 .vb-diag .ph-ok{color:#15803D}
 .vb-diag .ph-warn{color:#B45309}
 .vb-diag .ph-no{color:#B91C1C}
-@media(max-width:600px){.vb-diag .ph-row{grid-template-columns:1fr;gap:4px;text-align:left}.vb-diag .ph-row>div{text-align:left!important}.vb-diag .ph-hd{display:none}.vb-diag .ph-row>div:not(:first-child){text-align:left}.vb-diag .ph-row>div:not(:first-child)::before{content:attr(data-label) " · ";font-weight:400;color:#9CA3AF}}
+@media(max-width:600px){
+  .vb-diag{padding:18px 14px}
+  .vb-diag .flow-step{padding:14px 14px;gap:10px}
+  .vb-diag .flow-step .body strong{font-size:14.5px}
+  .vb-diag .flow-step .body p{font-size:13px}
+  .vb-diag .ph-row{grid-template-columns:1fr;gap:6px;padding:14px 14px}
+  .vb-diag .ph-row>div:first-child{font-weight:800;color:#111827;font-size:14px;border-bottom:1px solid #F3F4F6;padding-bottom:6px;margin-bottom:2px}
+  .vb-diag .ph-row .ph-label{display:inline;font-weight:700;color:#9CA3AF;margin-right:6px;font-size:12px}
+  .vb-diag .ph-row>div:not(:first-child){text-align:left}
+  .vb-diag .ph-hd{display:none}
+}
 </style>
 </head>
 <body>
@@ -126,7 +137,7 @@ th{background:#F9FAFB;font-weight:700}
 
     <p class="billy-desc-box"><strong>중요 포인트</strong>: 실비(실손보험)는 2025년 4월부터 모든 보험사가 5세대 실손으로 통일됐어요. 즉 어디 다이렉트로 가입하시든 보장 내용은 100% 동일해요. 다이렉트와 설계사 가입의 차이는 "보장 내용"이 아닌 "청구 편의·고지 방식·산모특약·사은품 혜택"이에요.</p>
 
-  <div class="vb-diag">
+  <div class="vb-diag" role="img" aria-label="다이렉트 vs 설계사 가입 방식 3단계 셀프 진단 플로우">
     <h3 class="diag-title">우리집은 다이렉트 vs 설계사 — 3단계 셀프 진단</h3>
     <div class="flow">
       <div class="flow-step"><div class="num">1</div><div class="body"><strong>5년 내 입원·수술·진단 이력</strong><p>1건이라도 있으시면 <strong>설계사 통한 간편고지</strong>가 안전해요. 다이렉트(일반고지)는 가입 거절 위험이 커요.</p></div></div>
@@ -209,16 +220,16 @@ th{background:#F9FAFB;font-weight:700}
     </div>
 
     
-    <div class="vb-diag">
+    <div class="vb-diag" role="img" aria-label="5년 진료이력별 가입 가능성 매트릭스">
       <h3 class="diag-title">5년 진료이력별 가입 가능성 매트릭스</h3>
       <div class="ph-grid">
         <div class="ph-row ph-hd"><div>진료 이력 유형</div><div>다이렉트 (일반고지)</div><div>설계사 (간편고지)</div></div>
-        <div class="ph-row"><div>가벼운 외래·감기·예방접종</div><div class="ph-ok">✅ 가능</div><div class="ph-ok">✅ 가능</div></div>
-        <div class="ph-row"><div>만성 비염·아토피·피부과 반복</div><div class="ph-warn">⚠️ 심사 영향</div><div class="ph-ok">✅ 무영향</div></div>
-        <div class="ph-row"><div>도수치료·정형외과 반복</div><div class="ph-no">❌ 거절 위험</div><div class="ph-ok">✅ 가입 가능</div></div>
-        <div class="ph-row"><div>정신과 진료 (우울·불안·수면)</div><div class="ph-no">❌ 매우 어려움</div><div class="ph-warn">⚠️ 산모특약 제외</div></div>
-        <div class="ph-row"><div>질염·자궁근종 치료</div><div class="ph-warn">⚠️ 심사 영향</div><div class="ph-ok">✅ 가입 가능</div></div>
-        <div class="ph-row"><div>5년 내 입원·수술</div><div class="ph-no">❌ 거절 위험</div><div class="ph-warn">⚠️ 간편고지 검토</div></div>
+        <div class="ph-row"><div>가벼운 외래·감기·예방접종</div><div class="ph-ok"><span class="ph-label">다이렉트</span>✅ 가능</div><div class="ph-ok"><span class="ph-label">설계사</span>✅ 가능</div></div>
+        <div class="ph-row"><div>만성 비염·아토피·피부과 반복</div><div class="ph-warn"><span class="ph-label">다이렉트</span>⚠️ 심사 영향</div><div class="ph-ok"><span class="ph-label">설계사</span>✅ 무영향</div></div>
+        <div class="ph-row"><div>도수치료·정형외과 반복</div><div class="ph-no"><span class="ph-label">다이렉트</span>❌ 거절 위험</div><div class="ph-ok"><span class="ph-label">설계사</span>✅ 가입 가능</div></div>
+        <div class="ph-row"><div>정신과 진료 (우울·불안·수면)</div><div class="ph-no"><span class="ph-label">다이렉트</span>❌ 매우 어려움</div><div class="ph-warn"><span class="ph-label">설계사</span>⚠️ 산모특약 제외</div></div>
+        <div class="ph-row"><div>질염·자궁근종 치료</div><div class="ph-warn"><span class="ph-label">다이렉트</span>⚠️ 심사 영향</div><div class="ph-ok"><span class="ph-label">설계사</span>✅ 가입 가능</div></div>
+        <div class="ph-row"><div>5년 내 입원·수술</div><div class="ph-no"><span class="ph-label">다이렉트</span>❌ 거절 위험</div><div class="ph-warn"><span class="ph-label">설계사</span>⚠️ 간편고지 검토</div></div>
       </div>
     </div>
 
