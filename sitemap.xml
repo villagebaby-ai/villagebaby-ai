@@ -1893,5 +1893,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/child/%EC%88%98%EC%A1%B1%EA%B5%AC-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%B2%AD%EA%B5%AC-%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
 
