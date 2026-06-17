@@ -191,6 +191,7 @@ img{display:block;max-width:100%}
 .ms .when{font-size:13px; font-weight:900; letter-spacing:.04em; color:var(--blue); margin-bottom:6px}
 .ms .goal{font-size:clamp(16px,2.1vw,20px); font-weight:900; letter-spacing:-.02em; margin-bottom:16px; line-height:1.25}
 .ms .metric{position:absolute; top:24px; right:22px; font-size:12px; font-weight:900; color:var(--peach-deep)}
+.climber{position:absolute; left:0; top:0; width:48px; height:auto; z-index:3; opacity:0; pointer-events:none; will-change:transform; transform:translate(-50%,-62%); filter:drop-shadow(0 6px 9px rgba(0,0,0,.2))}
 
 /* decorative floating mascot */
 .deco-billy{position:absolute; z-index:0; height:auto; opacity:.95; filter:drop-shadow(0 16px 26px rgba(0,0,0,.12)); animation:float 6.5s var(--ease) infinite; pointer-events:none}
@@ -202,6 +203,8 @@ img{display:block;max-width:100%}
   .ms.s1,.ms.s2,.ms.s3{margin-top:0}
   .ms .peak{display:none}
   .climb-path{display:none}
+  .climber{display:none}
+  .brk{display:none}
   .deco-billy{opacity:.16!important}
   .val-grid{grid-template-columns:1fr; gap:28px}
   .toc-d{display:none}
@@ -283,7 +286,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Mission</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 여정을,<br><span class="hl">누구나 쉽고 편하게.</span></h2>
-      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br>마음이 놓이는 것일 수도,<br>따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도,<br>두 줄을 처음 확인한 예비 부모도,<br>처음 아기를 안아본 초보 부모도 —<br>누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,<br>빌리지베이비는 그 여정을 함께 걷는 동반자가 되고자 해요.</p>
+      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br class="brk">마음이 놓이는 것일 수도,<br class="brk">따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도,<br class="brk">두 줄을 처음 확인한 예비 부모도,<br class="brk">처음 아기를 안아본 초보 부모도 —<br class="brk">누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,<br class="brk">빌리지베이비는 그 여정을 함께 걷는 동반자가 되고자 해요.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -347,7 +350,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Vision</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 과정에서<br>꼭 찾게 되는 <span class="hl">Must-have</span>가 되고,<br>글로벌로 나아갑니다.</h2>
-      <p class="lead" data-r style="--d:.18s">부모가 되는 과정마다 꼭 만나게 되는,<br>안 만날 수가 없는 Must-have가 됩니다.<br><br>그리고 그 경험을 글로벌로 넓혀가는 것 —<br>그것이 우리가 향하는 곳입니다.</p>
+      <p class="lead" data-r style="--d:.18s">부모가 되는 과정마다 꼭 만나게 되는,<br class="brk">안 만날 수가 없는 Must-have가 됩니다.<br><br>그리고 그 경험을 글로벌로 넓혀가는 것 —<br class="brk">그것이 우리가 향하는 곳입니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
   </section>
@@ -357,7 +360,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>우리는 지금, 중요한 갈림길에 서 있습니다</span>
       <h2 class="h2" data-r style="--d:.06s">'잘 자리 잡았다'는 것이<br><span class="hl">곧 '안전하다'는 뜻은 아닙니다.</span></h2>
-      <p class="lead" data-r style="--d:.1s; color:rgba(255,255,255,.72); max-width:920px">출시 후 지난 5년 간, 감사하게도 베이비빌리는 우리나라에서 임신한 가정이면 대부분이 한 번쯤은 다운받고 사랑에 빠지는 서비스로 성장했어요. 지금 빌리지베이비는 세 가지 과제를 마주하고 있습니다.</p>
+      <p class="lead" data-r style="--d:.1s; color:rgba(255,255,255,.72); max-width:920px">출시 후 지난 5년 간, 감사하게도 베이비빌리는 우리나라에서 임신한 가정이면 대부분이 한 번쯤은 다운받고 사랑에 빠지는 서비스로 성장했어요.<br class="brk">지금 빌리지베이비는 세 가지 과제를 마주하고 있습니다.</p>
       <div class="cards c3" data-r style="--d:.16s">
         <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">01</div><h4 style="color:#fff">25만 명의 아이로는 부족해요.</h4><p style="color:rgba(255,255,255,.6)">높은 시장 침투율을 이뤘지만, 출생아 수가 줄어드는 국내 시장만으로는 서비스 지표의 성장이 정체될 수밖에 없습니다.</p></div>
         <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">02</div><h4 style="color:#fff">언제든 대체될 수 있습니다.</h4><p style="color:rgba(255,255,255,.6)">더 깔끔하고, 광고 없이, 더 큰 감동을 주는 단순한 서비스가 나타난다면 엄빠의 선택은 얼마든지 옮겨갈 수 있습니다.</p></div>
@@ -385,7 +388,7 @@ img{display:block;max-width:100%}
   <section class="slide bg-peach">
     <div class="inner">
       <p class="big-quote" data-r style="--d:.08s">"귀염뽀짝한 베이비빌리가 잘 되길 바라"는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 1,000명의 엄빠</span>가 있었습니다.</p>
-      <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요. 그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을 모든 엄빠에게 꾸준히 심어가는 것. 우리가 '육아의 Must-have 기준'이 되고 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
+      <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요.<br class="brk">그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을 모든 엄빠에게 꾸준히 심어가는 것.<br class="brk">우리가 '육아의 Must-have 기준'이 되고 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
   </section>
@@ -397,6 +400,7 @@ img{display:block;max-width:100%}
       <h2 class="h2" data-r style="--d:.06s">우리는 이렇게<br><span class="hl">나아갑니다.</span></h2>
       <div class="climb">
         <svg class="climb-path" viewBox="0 0 1000 280" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M55,238 C250,232 320,170 500,152 S760,72 945,52"/></svg>
+        <img class="climber" src="/assets/img/baby-wink.webp" alt="" aria-hidden="true" width="615" height="432">
         <div class="ms s1" data-r style="--d:.16s"><div class="peak">📍</div><div class="when">오늘</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU 10만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지 접점을 넓히고 더 오래 만나는 구조로, '부모의 습관'이 됩니다.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 브랜드로서의 생존 가능성을 입증합니다.</div></div></div>
         <div class="ms s2" data-r style="--d:.28s"><div class="peak">⛰️</div><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>지금 무엇을 해야 할지 먼저 알려주는 '필수앱'. 데이터로 커뮤니티·커머스·핀테크 전 영역에서 Lifecycle 확장.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로. 아이의 성장 루틴과 엄마의 웰니스를 함께.</div></div></div>
         <div class="ms s3" data-r style="--d:.4s"><div class="peak">🏔️</div><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게로</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 확장을 완성한 뒤, '필수앱'의 경험을 해외 고객으로 확장.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본을 포함한 글로벌 아이·부모 웰니스 브랜드로 성장.</div></div></div>
@@ -614,8 +618,24 @@ img{display:block;max-width:100%}
   var total=slides.length, idx=0;
   function pad(n){return (n<10?'0':'')+n;}
   function ui(){ counter.textContent=pad(idx+1)+' / '+pad(total); bar.style.width=(total>1?idx/(total-1)*100:0)+'%'; }
+  var climbEl=document.querySelector('.climb');
+  var climbSlide=climbEl?climbEl.closest('.slide'):null;
+  var climbStarted=false;
+  function startClimb(){
+    if(climbStarted||!climbSlide)return;
+    var svg=climbSlide.querySelector('.climb-path'), path=svg&&svg.querySelector('path'), billy=climbSlide.querySelector('.climber');
+    if(!svg||!path||!billy||!svg.clientWidth)return;
+    climbStarted=true;
+    var L=path.getTotalLength();
+    function place(t){ var pt=path.getPointAtLength(t*L); billy.style.transform='translate('+(pt.x*svg.clientWidth/1000)+'px,'+(pt.y*svg.clientHeight/280)+'px) translate(-50%,-62%)'; }
+    billy.style.opacity='1';
+    if(reduce){ place(1); return; }
+    var dur=2600, delay=380, start=null;
+    function step(ts){ if(start===null)start=ts; var p=(ts-start-delay)/dur; if(p<0){requestAnimationFrame(step);return;} if(p>1)p=1; place(1-Math.pow(1-p,3)); if(p<1)requestAnimationFrame(step); }
+    place(0); requestAnimationFrame(step);
+  }
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); idx=slides.indexOf(e.target); ui(); } });
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); idx=slides.indexOf(e.target); ui(); if(e.target===climbSlide) startClimb(); } });
   },{threshold:.55});
   slides.forEach(function(s){ io.observe(s); });
   slides[0].classList.add('active'); ui();
