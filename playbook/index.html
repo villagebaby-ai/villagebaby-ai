@@ -107,13 +107,14 @@ img{display:block;max-width:100%}
 .mcols p{font-size:clamp(15px,1.7vw,18px); line-height:1.6; color:var(--ink-2)}
 .mcols p b{color:var(--ink); font-weight:700}
 
-/* app feature cards (user inserts screenshots into .shot) */
-.feats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:34px}
-.feat{display:flex; flex-direction:column; gap:13px}
-.feat .shot{aspect-ratio:3/4; border-radius:16px; background:linear-gradient(160deg,var(--blue-50),var(--peach-50)); border:1px dashed var(--blue-200); display:flex; align-items:center; justify-content:center; color:var(--blue); font-size:12.5px; font-weight:700; text-align:center; overflow:hidden}
-.feat img.shot{border:none; object-fit:cover; width:100%; height:auto; display:block}
-.feat .cap{font-size:clamp(14px,1.55vw,16px); line-height:1.5; font-weight:500; color:var(--ink)}
-.feat .cap .n{display:inline-flex; width:22px; height:22px; border-radius:50%; background:var(--blue); color:#fff; font-size:12px; font-weight:900; align-items:center; justify-content:center; margin-right:7px; vertical-align:1px}
+/* app feature screens — flowing staggered phones */
+.feats{display:grid; grid-template-columns:repeat(5,1fr); gap:clamp(9px,1.2vw,15px); margin-top:30px; align-items:start; max-width:830px}
+.feat{display:flex; flex-direction:column; gap:11px}
+.feat:nth-child(2),.feat:nth-child(4){margin-top:clamp(12px,3vh,28px)}
+.feat .shot{width:100%; height:auto; border-radius:16px; box-shadow:0 16px 38px rgba(45,102,163,.18); border:1px solid var(--border); display:block; background:var(--blue-50)}
+.feat:nth-child(odd) .shot{transform:rotate(-1.3deg)} .feat:nth-child(even) .shot{transform:rotate(1.3deg)}
+.feat .cap{font-size:clamp(12px,1.3vw,14px); line-height:1.45; font-weight:600; color:var(--ink); text-align:center}
+.feat .cap .n{width:23px; height:23px; border-radius:50%; background:var(--blue); color:#fff; font-size:12px; font-weight:900; display:flex; align-items:center; justify-content:center; margin:0 auto 7px}
 
 /* roadmap */
 .road{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px}
@@ -253,6 +254,9 @@ img{display:block;max-width:100%}
   .cards.c3, .road, .vdd, .feats{display:flex; grid-template-columns:none; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:12px}
   .cards.c3::-webkit-scrollbar, .road::-webkit-scrollbar, .vdd::-webkit-scrollbar, .feats::-webkit-scrollbar{display:none}
   .cards.c3>*, .road>*, .vdd>*, .feats>*{flex:0 0 84%; scroll-snap-align:center}
+  .feats>*{flex:0 0 70%}
+  .feat:nth-child(2),.feat:nth-child(4){margin-top:0}
+  .feat:nth-child(odd) .shot,.feat:nth-child(even) .shot{transform:none}
   .mcols{grid-template-columns:1fr; gap:18px}
   .deco-billy{opacity:.16!important}
   .val-grid{grid-template-columns:1fr; gap:28px}
@@ -368,10 +372,11 @@ img{display:block;max-width:100%}
       <span class="kicker" data-r>베이비빌리 앱</span>
       <h2 class="h2" data-r style="--d:.06s">한 앱에서,<br><span class="hl">엄빠의 매일을 함께해요.</span></h2>
       <div class="feats" data-r style="--d:.12s">
-        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">1</span>주차마다 자라나는 빌리를 만나고,</div></div>
-        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">2</span>나와 같은 시기의 베동 커뮤니티를 사귀고,</div></div>
-        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">3</span>꼭 필요한 정보를 얻어요.</div></div>
-        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">4</span>엄마와 아기의 건강을 관리하죠.</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-1.webp" alt="베이비빌리 홈 화면" width="560" height="1152"><div class="cap"><span class="n">1</span>주차마다 자라나는<br>빌리를 만나고</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-2.webp" alt="베동 동기모임 커뮤니티" width="560" height="1017"><div class="cap"><span class="n">2</span>나와 같은 시기의<br>베동을 사귀고</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-3.webp" alt="오늘 우리는 정보 콘텐츠" width="560" height="1146"><div class="cap"><span class="n">3</span>꼭 필요한<br>정보를 얻고</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-4.webp" alt="임산부 혜택 지도" width="560" height="1148"><div class="cap"><span class="n">4</span>임산부 혜택까지<br>챙기고</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-5.webp" alt="산모수첩 건강관리" width="560" height="1149"><div class="cap"><span class="n">5</span>엄마와 아기의<br>건강을 관리해요</div></div>
       </div>
     </div>
     <div class="mark lt">01 · Mission</div>
