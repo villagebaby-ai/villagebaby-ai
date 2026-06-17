@@ -129,17 +129,31 @@ img{display:block;max-width:100%}
 .v-head{margin-bottom:20px}
 .v-title{font-weight:900; letter-spacing:-.03em; line-height:1.2; font-size:clamp(24px,3.2vw,38px); margin-top:6px}
 .vdd{display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,44px)}
-.vcol h5{font-size:12.5px; font-weight:900; letter-spacing:.05em; margin-bottom:12px}
+.vcol h5{font-size:13.5px; font-weight:900; letter-spacing:.05em; margin-bottom:12px}
 .vcol.do h5{color:var(--mint-text)} .vcol.dont h5{color:#C0563E}
 .vcol ul{list-style:none; display:flex; flex-direction:column; gap:11px}
-.vcol li{font-size:14px; line-height:1.5; padding-left:20px; position:relative; color:var(--ink); font-weight:500}
+.vcol li{font-size:15.5px; line-height:1.55; padding-left:20px; position:relative; color:var(--ink); font-weight:500}
 .vcol.do li::before{content:"✓"; position:absolute; left:0; color:var(--mint-text); font-weight:900}
 .vcol.dont li::before{content:"✕"; position:absolute; left:0; color:#C0563E; font-weight:900}
-.vcol li .sub{display:block; font-size:12.5px; color:var(--gray); margin-top:3px; line-height:1.45; font-weight:400}
+.vcol li .sub{display:block; font-size:13.5px; color:var(--gray); margin-top:3px; line-height:1.5; font-weight:400}
 .v-says{margin-top:24px}
 .v-says .lbl{font-size:12.5px; font-weight:900; color:var(--blue); letter-spacing:.05em; margin-bottom:12px}
 .v-says .bubbles{flex-direction:row; flex-wrap:wrap; gap:12px}
 .v-says .bubble{font-size:15px; padding:11px 17px; max-width:none}
+/* cleaner 이런 말 bubbles (no vertical stagger) */
+.v-says .bubbles{align-items:flex-start}
+.v-says .bubble,.v-says .bubble.b-peach{align-self:flex-start}
+/* moat english subtitle */
+.card h4 .en{display:block; font-size:12px; font-weight:700; color:var(--blue); opacity:.62; letter-spacing:.03em; margin-top:5px}
+/* mission statement — emphasized closing line */
+.lead.emph{font-weight:700; color:var(--ink); font-size:clamp(17px,2.3vw,24px); line-height:1.5}
+/* love — colored quote + floating customer voices */
+.q-em{color:var(--blue-700)}
+.voices{position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+.voice{position:absolute; background:#fff; color:var(--peach-text); font-weight:700; font-size:clamp(11px,1.4vw,14px); padding:8px 14px; border-radius:16px 16px 16px 4px; box-shadow:0 8px 20px rgba(140,90,60,.14); opacity:0; white-space:nowrap; transform:scale(.55)}
+.slide.active .voice{animation:voicePop .7s var(--ease) var(--vd,0s) both, voiceFloat 7s ease-in-out var(--vd,0s) infinite}
+@keyframes voicePop{from{opacity:0; transform:scale(.55)} to{opacity:.6; transform:scale(1)}}
+@keyframes voiceFloat{0%,100%{translate:0 0}50%{translate:0 -11px}}
 
 /* cover */
 .cover-logo{font-size:clamp(13px,1.8vw,16px); font-weight:700; letter-spacing:.3em; opacity:.8; margin-bottom:18px}
@@ -205,7 +219,7 @@ img{display:block;max-width:100%}
 .ms .when{font-size:13px; font-weight:900; letter-spacing:.04em; color:var(--blue); margin-bottom:6px}
 .ms .goal{font-size:clamp(16px,2.1vw,20px); font-weight:900; letter-spacing:-.02em; margin-bottom:16px; line-height:1.25}
 .ms .metric{position:absolute; top:24px; right:22px; font-size:12px; font-weight:900; color:var(--peach-deep)}
-.climber{position:absolute; left:0; top:0; width:48px; height:auto; z-index:3; opacity:0; pointer-events:none; will-change:transform; transform:translate(-50%,-62%); filter:drop-shadow(0 6px 9px rgba(0,0,0,.2))}
+.climber{position:absolute; left:0; top:0; width:54px; height:auto; z-index:3; opacity:0; pointer-events:none; will-change:transform; transform:translate(-50%,-62%); filter:drop-shadow(0 6px 9px rgba(0,0,0,.2))}
 
 /* decorative floating mascot */
 .deco-billy{position:absolute; z-index:0; height:auto; opacity:.95; filter:drop-shadow(0 16px 26px rgba(0,0,0,.12)); animation:float 6.5s var(--ease) infinite; pointer-events:none}
@@ -234,6 +248,7 @@ img{display:block;max-width:100%}
   .toc-d{display:none}
   .cover-billy{opacity:.5; right:-4%}
   .nav{display:none}
+  .voices{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   .deck{scroll-behavior:auto}
@@ -241,6 +256,7 @@ img{display:block;max-width:100%}
   [data-r]{opacity:1!important; transform:none!important; filter:none!important; transition:none!important}
   .cover-title[data-r],.stmt[data-r]{clip-path:none!important}
   .vdd .vcol,.cvflow li{opacity:1!important; transform:none!important}
+  .voice{opacity:.5!important; transform:none!important}
 }
 </style>
 </head>
@@ -300,7 +316,7 @@ img{display:block;max-width:100%}
       <span class="kicker" data-r>왜 우리는</span>
       <p class="lead" data-r style="--d:.06s; max-width:860px">엄빠가 되는 길에는 고민과 어려움이 참 많습니다. 어느 분야에서 어떤 전문성이 있는 사람으로 살아왔든지 상관없이, 누구나 초보가 되어 헤매는 과정을 겪게 되죠. 그리고 그 과정을 지켜본 사람들은 이렇게 생각하곤 합니다.</p>
       <div class="bubbles" data-r style="--d:.12s; margin:16px 0; max-width:860px"><div class="bubble b-white">저렇게 힘들 바에야, 나는 아이를 낳지 말아야지.</div></div>
-      <p class="lead" data-r style="--d:.18s; max-width:860px; margin-top:0">반면, 누군가 조금이라도 쉽고 편하게, 행복하게 육아를 하는 모습을 보면, 그 행복함이 전염되어 이런 생각을 하기도 해요.</p>
+      <p class="lead" data-r style="--d:.22s; max-width:860px; margin-top:40px">반면, 누군가 조금이라도 쉽고 편하게, 행복하게 육아를 하는 모습을 보면, 그 행복함이 전염되어 이런 생각을 하기도 해요.</p>
       <div class="bubbles" data-r style="--d:.24s; margin:16px 0; max-width:860px"><div class="bubble b-peach">나도 이런 행복을 느껴보고 싶다!</div></div>
       <p class="lead" data-r style="--d:.3s; max-width:860px; margin-top:0"><span class="hl">우리는 그렇게 쉽고 편하게 육아하는 부모가 한 사람이라도 더 많아지는 세상을 꿈꿉니다.</span></p>
     </div>
@@ -313,7 +329,8 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Mission</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 여정을,<br><span class="hl">누구나 쉽고 편하게.</span></h2>
-      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br class="brk">마음이 놓이는 것일 수도,<br class="brk">따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도,<br class="brk">두 줄을 처음 확인한 예비 부모도,<br class="brk">처음 아기를 안아본 초보 부모도 —<br class="brk">누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,<br class="brk">빌리지베이비는 그 여정을 함께 걷는 동반자가 되고자 해요.</p>
+      <p class="lead" data-r style="--d:.18s; font-size:clamp(14px,1.7vw,18px); line-height:1.62">그 '편함'은 몸이 편해지는 것일 수도,<br class="brk">마음이 놓이는 것일 수도,<br class="brk">따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도,<br class="brk">두 줄을 처음 확인한 예비 부모도,<br class="brk">처음 아기를 안아본 초보 부모도 —<br class="brk">누구도 혼자 검색하며 불안해하지 않도록,<br class="brk">"이렇게 해도 괜찮은 걸까?"를<br class="brk">끝없이 걱정하지 않도록,</p>
+      <p class="lead emph" data-r style="--d:.34s; margin-top:22px">빌리지베이비는 그 여정을 함께 걷는 <span class="hl">동반자</span>가 되고자 해요.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -403,9 +420,9 @@ img{display:block;max-width:100%}
       <span class="kicker" data-r>그래서 우리는</span>
       <h2 class="h2" data-r style="--d:.06s">오직 우리만이 줄 수 있는<br><span class="hl">가치</span>를 더 깊이 고민합니다.</h2>
       <div class="cards c3">
-        <div class="card" data-r style="--d:.12s"><div class="ico">🫂</div><h4>소속감 (Sense of Community)</h4><p>나와 비슷한 시기를 지나는 베동 엄빠가 곁에 있다는 든든함.</p></div>
-        <div class="card" data-r style="--d:.18s"><div class="ico">💗</div><h4>빌리의 위로</h4><p>귀염뽀짝한 빌리에게서 얻는, 눈시울이 붉어지는 위로.</p></div>
-        <div class="card" data-r style="--d:.24s"><div class="ico">📊</div><h4>데이터의 혜자</h4><p>200만 엄빠가 함께 쌓아 올린, 누구도 흉내 낼 수 없는 데이터.</p></div>
+        <div class="card" data-r style="--d:.12s"><div class="ico">🫂</div><h4>소속감 <span class="en">Sense of Community</span></h4><p>나와 비슷한 시기를 지나는 베동 엄빠가 곁에 있다는 든든함.</p></div>
+        <div class="card" data-r style="--d:.18s"><div class="ico">💗</div><h4>귀염뽀짝 빌리 <span class="en">Emotional Bond</span></h4><p>귀염뽀짝한 빌리에게서 얻는, 눈시울이 붉어지는 위로와 교감.</p></div>
+        <div class="card" data-r style="--d:.24s"><div class="ico">📊</div><h4>데이터의 해자 <span class="en">Data Assets</span></h4><p>200만 엄빠가 함께 쌓아 올린, 누구도 흉내 낼 수 없는 데이터.</p></div>
       </div>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -413,8 +430,16 @@ img{display:block;max-width:100%}
 
   <!-- 12 VISION LOVE -->
   <section class="slide bg-peach">
+    <div class="voices" aria-hidden="true">
+      <span class="voice" style="--vd:.3s; top:12%; left:5%">너무 귀여워요</span>
+      <span class="voice" style="--vd:.6s; top:21%; right:6%">위로가 되었어요</span>
+      <span class="voice" style="--vd:.9s; top:72%; left:6%">다들 베이비빌리 쓰세요</span>
+      <span class="voice" style="--vd:1.2s; bottom:13%; right:8%">베이비빌리가 더 알려지길</span>
+      <span class="voice" style="--vd:1.5s; top:49%; right:4%">임신 시기의 동반자였어요</span>
+      <span class="voice" style="--vd:1.8s; bottom:8%; left:31%">없었으면 큰일날뻔</span>
+    </div>
     <div class="inner">
-      <p class="big-quote" data-r style="--d:.08s">"귀염뽀짝한 베이비빌리가 잘 되길 바라"는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 1,000명의 엄빠</span>가 있었습니다.</p>
+      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 베이비빌리가 잘 되길 바라"</span>는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 1,000명의 엄빠</span>가 있었습니다.</p>
       <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요.<br class="brk">그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을 모든 엄빠에게 꾸준히 심어가는 것.<br class="brk">우리가 '육아의 Must-have 기준'이 되고 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -429,8 +454,8 @@ img{display:block;max-width:100%}
         <svg class="climb-path" viewBox="0 0 1000 280" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M55,238 C250,232 320,170 500,152 S760,72 945,52"/></svg>
         <img class="climber" src="/assets/img/baby-wink.webp" alt="" aria-hidden="true" width="615" height="432">
         <div class="ms s1" data-r style="--d:.16s"><div class="peak">📍</div><div class="when">오늘</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU 10만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지 접점을 넓히고 더 오래 만나는 구조로, '부모의 습관'이 됩니다.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 브랜드로서의 생존 가능성을 입증합니다.</div></div></div>
-        <div class="ms s2" data-r style="--d:.28s"><div class="peak">⛰️</div><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>지금 무엇을 해야 할지 먼저 알려주는 '필수앱'. 데이터로 커뮤니티·커머스·핀테크 전 영역에서 Lifecycle 확장.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로. 아이의 성장 루틴과 엄마의 웰니스를 함께.</div></div></div>
-        <div class="ms s3" data-r style="--d:.4s"><div class="peak">🏔️</div><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게로</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 확장을 완성한 뒤, '필수앱'의 경험을 해외 고객으로 확장.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본을 포함한 글로벌 아이·부모 웰니스 브랜드로 성장.</div></div></div>
+        <div class="ms s2" data-r style="--d:.28s"><div class="peak">⛰️</div><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>지금 무엇을 해야 할지 먼저 알려주는 '필수앱'이 됩니다. 데이터로 커뮤니티·커머스·핀테크 전 영역에서 Lifecycle을 확장합니다.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로, 아이의 성장 루틴과 엄마의 웰니스를 함께 만듭니다.</div></div></div>
+        <div class="ms s3" data-r style="--d:.4s"><div class="peak">🏔️</div><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게로</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 확장을 완성한 뒤, '필수앱'의 경험을 해외 고객으로 확장합니다.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본을 포함한 글로벌 아이·부모 웰니스 브랜드로 성장합니다.</div></div></div>
       </div>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -648,19 +673,20 @@ img{display:block;max-width:100%}
   function ui(){ counter.textContent=pad(idx+1)+' / '+pad(total); bar.style.width=(total>1?idx/(total-1)*100:0)+'%'; }
   var climbEl=document.querySelector('.climb');
   var climbSlide=climbEl?climbEl.closest('.slide'):null;
-  var climbStarted=false;
+  var climbRAF=null;
   function startClimb(){
-    if(climbStarted||!climbSlide)return;
+    if(!climbSlide)return;
     var svg=climbSlide.querySelector('.climb-path'), path=svg&&svg.querySelector('path'), billy=climbSlide.querySelector('.climber');
-    if(!svg||!path||!billy||!svg.clientWidth)return;
-    climbStarted=true;
+    if(!svg||!path||!billy)return;
+    if(!svg.clientWidth){ requestAnimationFrame(startClimb); return; } // wait for layout
     var L=path.getTotalLength();
     function place(t){ var pt=path.getPointAtLength(t*L); billy.style.transform='translate('+(pt.x*svg.clientWidth/1000)+'px,'+(pt.y*svg.clientHeight/280)+'px) translate(-50%,-62%)'; }
     billy.style.opacity='1';
     if(reduce){ place(1); return; }
-    var dur=2600, delay=380, start=null;
-    function step(ts){ if(start===null)start=ts; var p=(ts-start-delay)/dur; if(p<0){requestAnimationFrame(step);return;} if(p>1)p=1; place(1-Math.pow(1-p,3)); if(p<1)requestAnimationFrame(step); }
-    place(0); requestAnimationFrame(step);
+    if(climbRAF) cancelAnimationFrame(climbRAF);
+    var dur=2600, delay=250, t0=null;
+    function step(ts){ if(t0===null)t0=ts; var p=(ts-t0-delay)/dur; if(p<0){ place(0); climbRAF=requestAnimationFrame(step); return; } if(p>1)p=1; place(1-Math.pow(1-p,3)); if(p<1)climbRAF=requestAnimationFrame(step); }
+    place(0); climbRAF=requestAnimationFrame(step);
   }
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); idx=slides.indexOf(e.target); ui(); if(chip)chip.textContent=chapterOf(e.target); if(e.target===climbSlide) startClimb(); } });
