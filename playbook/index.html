@@ -154,9 +154,10 @@ img{display:block;max-width:100%}
 .v-says .lbl{font-size:12.5px; font-weight:900; color:var(--blue); letter-spacing:.05em; margin-bottom:12px}
 .v-says .bubbles{flex-direction:row; flex-wrap:wrap; gap:12px}
 .v-says .bubble{font-size:15px; padding:11px 17px; max-width:none}
-/* cleaner 이런 말 bubbles (no vertical stagger) */
+/* cleaner 이런 말 bubbles — uniform pills, no tails (was looking broken) */
 .v-says .bubbles{align-items:flex-start}
-.v-says .bubble,.v-says .bubble.b-peach{align-self:flex-start}
+.v-says .bubble,.v-says .bubble.b-peach{align-self:flex-start; border-radius:18px}
+.v-says .bubble::after{display:none}
 /* moat english subtitle */
 .card h4 .en{display:block; font-size:12px; font-weight:700; color:var(--blue); opacity:.62; letter-spacing:.03em; margin-top:5px}
 /* mission statement — emphasized closing line */
@@ -178,6 +179,20 @@ img{display:block;max-width:100%}
 
 /* closing */
 .close-billy{width:clamp(120px,16vw,180px); height:auto; margin:0 auto 24px; filter:drop-shadow(0 16px 24px rgba(0,0,0,.2)); animation:float 5.5s var(--ease) infinite}
+
+/* finale — 진정한 빌베인 connector */
+.finale-line{display:flex; align-items:center; gap:clamp(16px,3vw,40px); width:100%}
+.finale-line .t{font-weight:900; font-size:clamp(22px,3.6vw,44px); letter-spacing:-.025em; line-height:1.2; white-space:nowrap}
+.finale-line .bar{flex:1; height:1.5px; background:rgba(255,255,255,.42); min-width:24px}
+.finale-thanks{text-align:center; margin-top:clamp(28px,6vh,56px); font-size:clamp(15px,1.9vw,20px); color:rgba(255,255,255,.72); font-weight:500}
+/* finale — manifesto */
+.mf-title{font-weight:900; font-size:clamp(42px,8.5vw,116px); line-height:.94; letter-spacing:-.04em; margin-bottom:clamp(22px,4.5vh,48px)}
+.mf-cols{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,72px)}
+.mf-col{font-size:clamp(13.5px,1.5vw,16.5px); line-height:1.75; color:rgba(255,255,255,.78)}
+.mf-col b{color:#fff; font-weight:700} .mf-col .em{color:var(--peach); font-weight:700}
+.mf-col p{margin-bottom:15px} .mf-col p:last-child{margin-bottom:0}
+/* finale — two stanza */
+.finale-stanza+.finale-stanza{margin-top:clamp(26px,5vh,46px)}
 
 /* footer mark + page */
 .mark{position:absolute; left:clamp(24px,5vw,48px); bottom:22px; font-size:12px; font-weight:700; letter-spacing:.04em; opacity:.5; z-index:3}
@@ -258,6 +273,9 @@ img{display:block;max-width:100%}
   .feat:nth-child(2),.feat:nth-child(4){margin-top:0}
   .feat:nth-child(odd) .shot,.feat:nth-child(even) .shot{transform:none}
   .mcols{grid-template-columns:1fr; gap:18px}
+  .finale-line{flex-direction:column; align-items:flex-start; gap:12px}
+  .finale-line .bar{width:56%; flex:none; height:2px}
+  .mf-cols{grid-template-columns:1fr; gap:22px}
   .deco-billy{opacity:.16!important}
   .val-grid{grid-template-columns:1fr; gap:28px}
   .toc-d{display:none}
@@ -369,14 +387,13 @@ img{display:block;max-width:100%}
   <!-- 06b MISSION 1 — APP FEATURES (스크린샷은 .shot 자리에 <img class="shot" src="..."> 로 교체) -->
   <section class="slide bg-light">
     <div class="inner">
-      <span class="kicker" data-r>베이비빌리 앱</span>
-      <h2 class="h2" data-r style="--d:.06s">한 앱에서,<br><span class="hl">엄빠의 매일을 함께해요.</span></h2>
+      <h2 class="h2" data-r>부모가 되는 과정 속,<br><span class="hl">엄빠의 매일을 함께 해요.</span></h2>
       <div class="feats" data-r style="--d:.12s">
-        <div class="feat"><img class="shot" src="/assets/img/app-1.webp" alt="베이비빌리 홈 화면" width="560" height="1152"><div class="cap"><span class="n">1</span>주차마다 자라나는<br>빌리를 만나고</div></div>
-        <div class="feat"><img class="shot" src="/assets/img/app-2.webp" alt="베동 동기모임 커뮤니티" width="560" height="1017"><div class="cap"><span class="n">2</span>나와 같은 시기의<br>베동을 사귀고</div></div>
-        <div class="feat"><img class="shot" src="/assets/img/app-3.webp" alt="오늘 우리는 정보 콘텐츠" width="560" height="1146"><div class="cap"><span class="n">3</span>꼭 필요한<br>정보를 얻고</div></div>
-        <div class="feat"><img class="shot" src="/assets/img/app-4.webp" alt="임산부 혜택 지도" width="560" height="1148"><div class="cap"><span class="n">4</span>임산부 혜택까지<br>챙기고</div></div>
-        <div class="feat"><img class="shot" src="/assets/img/app-5.webp" alt="산모수첩 건강관리" width="560" height="1149"><div class="cap"><span class="n">5</span>엄마와 아기의<br>건강을 관리해요</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-1.webp" alt="베이비빌리 홈 화면" width="560" height="1152"><div class="cap">주차마다 자라나는<br>빌리를 만나고,</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-2.webp" alt="베동 동기모임 커뮤니티" width="560" height="1017"><div class="cap">나와 같은 시기의<br>베동을 사귀고,</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-3.webp" alt="오늘 우리는 정보 콘텐츠" width="560" height="1146"><div class="cap">꼭 필요한<br>정보를 얻고,</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-4.webp" alt="임산부 혜택 지도" width="560" height="1148"><div class="cap">임산부 혜택까지<br>챙기고,</div></div>
+        <div class="feat"><img class="shot" src="/assets/img/app-5.webp" alt="산모수첩 건강관리" width="560" height="1149"><div class="cap">엄마와 아기의<br>건강을 관리해요.</div></div>
       </div>
     </div>
     <div class="mark lt">01 · Mission</div>
@@ -682,13 +699,49 @@ img{display:block;max-width:100%}
     <div class="mark lt">03 · Core Value</div>
   </section>
 
-  <!-- 21 CLOSING -->
+  <!-- 21 FINALE A — 진정한 빌베인 -->
+  <section class="slide bg-ink">
+    <div class="inner">
+      <div class="finale-line" data-r>
+        <span class="t">여기까지 오셨다면</span>
+        <span class="bar"></span>
+        <span class="t">당신은 <span class="hl">진정한 빌베인</span></span>
+      </div>
+      <p class="finale-thanks" data-r style="--d:.25s">빌베의 문화를 소중히 여겨주셔서 감사합니다.</p>
+    </div>
+    <div class="mark dk">빌리지베이비 PLAYBOOK</div>
+  </section>
+
+  <!-- 22 FINALE B — manifesto -->
+  <section class="slide bg-ink">
+    <div class="blob" style="width:560px;height:560px;background:var(--blue);bottom:-200px;left:50%;transform:translateX(-50%);opacity:.22"></div>
+    <div class="inner">
+      <div class="mf-title" data-r>그 다음으로.</div>
+      <div class="mf-cols">
+        <div class="mf-col" data-r style="--d:.12s">
+          <p><b>임신 &amp; 임신 준비 1위,<br>사랑받는 육아 앱,<br>흑자 육아 버티컬 앱.</b></p>
+          <p>작은 성공들을 소중히 여긴<br>빌베인들이 만들어낸 성과입니다.<br>앱을 런칭하고 단 5년 만에.</p>
+        </div>
+        <div class="mf-col" data-r style="--d:.2s">
+          <p>이제는 그 다음을 준비합니다.</p>
+          <p>엄빠의 고민에서부터 시작하는 초심으로,<br>국내를 넘어 글로벌로,<br>서비스를 넘어 제품으로,</p>
+          <p>안되는 것을 주도적으로 되게 하고,<br>그 과정에서 <span class="em">Cheerful</span>함도 잊지 않는.</p>
+          <p>스스로에게 떳떳하고,<br>서로가 최고의 자랑이 되는.</p>
+          <p><b>그런 빌리지베이비를<br>함께 만들어요!</b></p>
+        </div>
+      </div>
+    </div>
+    <div class="mark dk">빌리지베이비 PLAYBOOK</div>
+  </section>
+
+  <!-- 23 FINALE C — 여정 -->
   <section class="slide bg-blue">
     <div class="blob" style="width:480px;height:480px;background:var(--blue-300);top:-160px;right:-120px"></div>
     <div class="blob" style="width:360px;height:360px;background:var(--peach);bottom:-140px;left:-80px;opacity:.4"></div>
     <div class="inner" style="text-align:center">
       <img class="close-billy" data-r src="/assets/img/baby-wave.webp" alt="손을 흔드는 베이비빌리 마스코트 빌리" width="279" height="331">
-      <h2 class="stmt" data-r style="--d:.1s">함께, 부모가 되는 여정을<br><span class="hl">쉽고 편하게.</span></h2>
+      <h2 class="stmt finale-stanza" data-r style="--d:.1s; font-size:clamp(24px,4.4vw,48px)">부모가 되는 여정을<br><span class="hl">누구나 쉽고 편하게.</span></h2>
+      <h2 class="stmt finale-stanza" data-r style="--d:.24s; font-size:clamp(24px,4.4vw,48px)">빌베인이 되는 여정을<br><span class="hl">누구나 명확히 알 수 있게.</span></h2>
     </div>
     <div class="mark dk">빌리지베이비 PLAYBOOK</div>
   </section>
