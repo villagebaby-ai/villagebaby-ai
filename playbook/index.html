@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>빌리지베이비 PLAYBOOK — Mission · Vision · Core Value</title>
 <meta name="robots" content="noindex">
+<link rel="icon" type="image/webp" href="/assets/img/favicon.webp">
+<link rel="apple-touch-icon" href="/assets/img/billy-author-256.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -168,9 +170,39 @@ img{display:block;max-width:100%}
 [data-r]{opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); transition-delay:var(--d,0s)}
 .slide.active [data-r]{opacity:1; transform:none}
 
+/* core-value flow — 고객에서 임팩트까지의 여정 */
+.cvflow{list-style:none; display:flex; flex-direction:column; margin-top:22px; max-width:880px}
+.cvflow li{display:flex; gap:16px; align-items:flex-start; position:relative; padding-bottom:14px}
+.cvflow li:last-child{padding-bottom:0}
+.cvflow li:not(:last-child)::before{content:""; position:absolute; left:17px; top:30px; bottom:-2px; width:2px; background:linear-gradient(var(--blue-300),var(--blue-100))}
+.cvflow .cvn{flex-shrink:0; width:36px; height:36px; border-radius:50%; background:var(--blue); color:#fff; font-weight:900; font-size:14px; display:flex; align-items:center; justify-content:center; z-index:1; box-shadow:0 6px 14px rgba(45,102,163,.28)}
+.cvflow .cvt{padding-top:4px}
+.cvflow .cvt b{display:block; font-size:clamp(15px,2vw,18px); font-weight:900; letter-spacing:-.01em; color:var(--ink)}
+.cvflow .cvt span{display:block; font-size:14px; line-height:1.55; color:var(--ink-2); margin-top:3px}
+
+/* roadmap as a climbing journey */
+.climb{position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:start; margin-top:44px; padding-top:36px}
+.climb-path{position:absolute; left:0; top:0; width:100%; height:100%; z-index:0; pointer-events:none; overflow:visible}
+.climb-path path{fill:none; stroke:var(--blue-200); stroke-width:3; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.7s var(--ease) .25s}
+.slide.active .climb-path path{stroke-dashoffset:0}
+.ms{position:relative; z-index:1; background:#fff; border:1px solid var(--border); border-radius:18px; padding:24px 22px; box-shadow:0 12px 30px rgba(45,102,163,.08)}
+.ms .peak{position:absolute; top:-30px; left:22px; font-size:25px; filter:drop-shadow(0 4px 6px rgba(0,0,0,.12))}
+.ms.s1{margin-top:58px} .ms.s2{margin-top:28px} .ms.s3{margin-top:0}
+.ms .when{font-size:13px; font-weight:900; letter-spacing:.04em; color:var(--blue); margin-bottom:6px}
+.ms .goal{font-size:clamp(16px,2.1vw,20px); font-weight:900; letter-spacing:-.02em; margin-bottom:16px; line-height:1.25}
+.ms .metric{position:absolute; top:24px; right:22px; font-size:12px; font-weight:900; color:var(--peach-deep)}
+
+/* decorative floating mascot */
+.deco-billy{position:absolute; z-index:0; height:auto; opacity:.95; filter:drop-shadow(0 16px 26px rgba(0,0,0,.12)); animation:float 6.5s var(--ease) infinite; pointer-events:none}
+
 @media (max-width:820px){
   .chap{flex-direction:column; gap:8px; align-items:flex-start}
   .road,.cards.c3{grid-template-columns:1fr}
+  .climb{grid-template-columns:1fr; padding-top:30px}
+  .ms.s1,.ms.s2,.ms.s3{margin-top:0}
+  .ms .peak{display:none}
+  .climb-path{display:none}
+  .deco-billy{opacity:.16!important}
   .val-grid{grid-template-columns:1fr; gap:28px}
   .toc-d{display:none}
   .cover-billy{opacity:.5; right:-4%}
@@ -251,7 +283,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Mission</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 여정을,<br><span class="hl">누구나 쉽고 편하게.</span></h2>
-      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br>마음이 놓이는 것일 수도,<br>따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도, 두 줄을 처음 확인한 예비 부모도, 처음 아기를 안아본 초보 부모도 —<br>누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,<br>빌리지베이비는 그 여정을 함께 걷는 동반자가 되고자 해요.</p>
+      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br>마음이 놓이는 것일 수도,<br>따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도,<br>두 줄을 처음 확인한 예비 부모도,<br>처음 아기를 안아본 초보 부모도 —<br>누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,<br>빌리지베이비는 그 여정을 함께 걷는 동반자가 되고자 해요.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -311,6 +343,7 @@ img{display:block;max-width:100%}
   <!-- 09 VISION STATEMENT -->
   <section class="slide bg-light">
     <div class="blob" style="width:400px;height:400px;background:var(--peach);bottom:-140px;right:-60px;opacity:.4"></div>
+    <img class="deco-billy" src="/assets/img/baby-cloud.webp" alt="구름 위에 앉은 베이비빌리 마스코트 빌리" width="290" height="365" style="right:5%; bottom:7%; width:clamp(120px,15vw,196px)">
     <div class="inner">
       <span class="kicker" data-r>Our Vision</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 과정에서<br>꼭 찾게 되는 <span class="hl">Must-have</span>가 되고,<br>글로벌로 나아갑니다.</h2>
@@ -351,7 +384,6 @@ img{display:block;max-width:100%}
   <!-- 12 VISION LOVE -->
   <section class="slide bg-peach">
     <div class="inner">
-      <span class="kicker" data-r>그리고, 그 뿌리에는 '사랑'이 있습니다</span>
       <p class="big-quote" data-r style="--d:.08s">"귀염뽀짝한 베이비빌리가 잘 되길 바라"는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 1,000명의 엄빠</span>가 있었습니다.</p>
       <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요. 그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을 모든 엄빠에게 꾸준히 심어가는 것. 우리가 '육아의 Must-have 기준'이 되고 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
@@ -363,10 +395,11 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>이 경쟁력을 바탕으로</span>
       <h2 class="h2" data-r style="--d:.06s">우리는 이렇게<br><span class="hl">나아갑니다.</span></h2>
-      <div class="road">
-        <div class="road-col" data-r style="--d:.12s"><div class="when">오늘</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU 10만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지 접점을 넓히고 더 오래 만나는 구조로, '부모의 습관'이 됩니다.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 브랜드로서의 생존 가능성을 입증합니다.</div></div></div>
-        <div class="road-col" data-r style="--d:.18s"><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>지금 무엇을 해야 할지 먼저 알려주는 '필수앱'. 데이터로 커뮤니티·커머스·핀테크 전 영역에서 Lifecycle 확장.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로. 아이의 성장 루틴과 엄마의 웰니스를 함께.</div></div></div>
-        <div class="road-col" data-r style="--d:.24s"><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게로</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 확장을 완성한 뒤, '필수앱'의 경험을 해외 고객으로 확장.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본을 포함한 글로벌 아이·부모 웰니스 브랜드로 성장.</div></div></div>
+      <div class="climb">
+        <svg class="climb-path" viewBox="0 0 1000 280" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M55,238 C250,232 320,170 500,152 S760,72 945,52"/></svg>
+        <div class="ms s1" data-r style="--d:.16s"><div class="peak">📍</div><div class="when">오늘</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU 10만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지 접점을 넓히고 더 오래 만나는 구조로, '부모의 습관'이 됩니다.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 브랜드로서의 생존 가능성을 입증합니다.</div></div></div>
+        <div class="ms s2" data-r style="--d:.28s"><div class="peak">⛰️</div><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>지금 무엇을 해야 할지 먼저 알려주는 '필수앱'. 데이터로 커뮤니티·커머스·핀테크 전 영역에서 Lifecycle 확장.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로. 아이의 성장 루틴과 엄마의 웰니스를 함께.</div></div></div>
+        <div class="ms s3" data-r style="--d:.4s"><div class="peak">🏔️</div><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게로</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 확장을 완성한 뒤, '필수앱'의 경험을 해외 고객으로 확장.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본을 포함한 글로벌 아이·부모 웰니스 브랜드로 성장.</div></div></div>
       </div>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -387,18 +420,19 @@ img{display:block;max-width:100%}
     <div class="mark dk">03 · Core Value</div>
   </section>
 
-  <!-- 15 VALUE OVERVIEW -->
+  <!-- 15 VALUE OVERVIEW — 고객에서 임팩트까지의 여정 -->
   <section class="slide bg-light">
     <div class="inner">
       <span class="kicker" data-r>고객에서 임팩트까지의 여정</span>
-      <h2 class="h2" data-r style="--d:.06s">다섯 가지 약속으로<br>일합니다.</h2>
-      <div class="cards c3" style="margin-top:36px">
-        <div class="card" data-r style="--d:.1s"><div class="num">01</div><h4>Customer-centric</h4><p>최종 보스는 결국 하나 — 엄빠. 모든 시작은 엄빠의 목소리에서.</p></div>
-        <div class="card" data-r style="--d:.15s"><div class="num">02</div><h4>One Team</h4><p>프로덕트·마케팅·커머스로 나뉘지 않는, 하나의 팀.</p></div>
-        <div class="card" data-r style="--d:.2s"><div class="num">03</div><h4>Proactive</h4><p>치열한 주도적 의견, 그리고 주도적 헌신.</p></div>
-        <div class="card" data-r style="--d:.25s"><div class="num">04</div><h4>Today not tomorrow</h4><p>'One more step'이 만드는, 한 끝 다른 경쟁력.</p></div>
-        <div class="card" data-r style="--d:.3s"><div class="num">05</div><h4>Own Your Impact</h4><p>최고의 복지는 멋진 동료. 어떤 터널에서도 Stay cheerful.</p></div>
-      </div>
+      <h2 class="stmt" data-r style="--d:.06s; font-size:clamp(20px,3.2vw,33px); line-height:1.18">우리가 일하며 만족시켜야 하는<br>최종 보스는 결국 하나 — <span class="hl">엄빠</span>입니다.</h2>
+      <p class="lead" data-r style="--d:.12s; margin-top:10px; max-width:880px; font-size:clamp(13.5px,1.6vw,16px)">모든 시작은 'Customer-centric'입니다. 기존의 기획이나 개인의 선호보다 '엄빠의 목소리'가 우선하며, 판단이 어려울 땐 언제나 엄빠에게서 답을 구합니다.</p>
+      <ol class="cvflow" data-r style="--d:.2s">
+        <li><span class="cvn">①</span><div class="cvt"><b>Customer-centric</b><span>모든 시작은 'Customer-centric'입니다.</span></div></li>
+        <li><span class="cvn">②</span><div class="cvt"><b>One Team</b><span>'엄빠 가치=고객 가치'를 실제로 실현하기 위해, 우리는 'One Team'으로 존재합니다.</span></div></li>
+        <li><span class="cvn">③</span><div class="cvt"><b>Proactive</b><span>하나의 팀으로서 최고의 성과와 효율을 내기 위해, 구성원 각자는 'Proactive'해야 합니다.</span></div></li>
+        <li><span class="cvn">④</span><div class="cvt"><b>Today not tomorrow</b><span>이러한 주도성은 구체적인 행동, 즉 'Today not tomorrow'로 증명됩니다.</span></div></li>
+        <li><span class="cvn">⑤</span><div class="cvt"><b>Own Your Impact</b><span>이 모든 행동의 끝에는 'Own Your Impact'가 있습니다.</span></div></li>
+      </ol>
     </div>
     <div class="mark lt">03 · Core Value</div>
   </section>
@@ -562,9 +596,8 @@ img{display:block;max-width:100%}
     <div class="blob" style="width:480px;height:480px;background:var(--blue-300);top:-160px;right:-120px"></div>
     <div class="blob" style="width:360px;height:360px;background:var(--peach);bottom:-140px;left:-80px;opacity:.4"></div>
     <div class="inner" style="text-align:center">
-      <img class="close-billy" data-r src="/assets/img/baby-graduate.webp" alt="졸업모자를 쓴 베이비빌리 마스코트 빌리" width="308" height="324">
+      <img class="close-billy" data-r src="/assets/img/baby-wave.webp" alt="손을 흔드는 베이비빌리 마스코트 빌리" width="279" height="331">
       <h2 class="stmt" data-r style="--d:.1s">함께, 부모가 되는 여정을<br><span class="hl">쉽고 편하게.</span></h2>
-      <p class="cover-sub" data-r style="--d:.2s">We are VillageBaby.</p>
     </div>
     <div class="mark dk">빌리지베이비 PLAYBOOK</div>
   </section>
