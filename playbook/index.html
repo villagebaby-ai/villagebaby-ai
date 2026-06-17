@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>빌리지베이비 PLAYBOOK — Mission · Vision · Core Value</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue-50:#EAF1F9; --blue-100:#D6E4F4; --blue-200:#A8C4E0; --blue-300:#7AA6D2;
+  --blue-500:#4A89CC; --blue:#3373BA; --blue-700:#2D66A3; --blue-800:#244F80; --blue-900:#19385C;
+  --peach-50:#FDF6F1; --peach-100:#FBEADF; --peach:#F6D5C3; --peach-300:#EFBFA6; --peach-deep:#E0A684; --peach-text:#8A4A2C;
+  --mint:#CDEBDD; --mint-text:#2C7A58; --lemon:#FBE6A2; --lemon-text:#8A6A1E; --violet:#E1D7F4; --violet-text:#5E4A99;
+  --ink:#16161A; --ink-2:#46463F; --gray:#898989; --bg:#F8F8F6; --surface:#fff; --border:#EAEAE3;
+  --font:'Noto Sans KR',-apple-system,sans-serif; --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--font); background:var(--ink); color:var(--ink); -webkit-font-smoothing:antialiased; overflow:hidden}
+::selection{background:var(--blue-200);color:var(--blue-900)}
+img{display:block;max-width:100%}
+
+/* DECK */
+.deck{height:100svh; overflow-y:scroll; scroll-snap-type:y mandatory; scroll-behavior:smooth; scrollbar-width:none}
+.deck::-webkit-scrollbar{display:none}
+.slide{min-height:100svh; scroll-snap-align:start; scroll-snap-stop:always; position:relative; display:flex; align-items:center; justify-content:center; padding:clamp(40px,7vh,96px) clamp(28px,7vw,120px); overflow:hidden}
+.inner{width:100%; max-width:1100px; position:relative; z-index:2}
+
+/* backgrounds */
+.bg-light{background:var(--bg); color:var(--ink)}
+.bg-white{background:var(--surface); color:var(--ink)}
+.bg-blue{background:linear-gradient(150deg,var(--blue-800),var(--blue) 60%,var(--blue-500)); color:#fff}
+.bg-peach{background:linear-gradient(150deg,var(--peach-50),var(--peach)); color:var(--ink)}
+.bg-ink{background:radial-gradient(120% 120% at 80% 10%, #25252c, var(--ink) 60%); color:#fff}
+
+/* deco blobs */
+.blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; pointer-events:none; z-index:0}
+
+/* typography */
+.kicker{display:inline-flex; align-items:center; gap:8px; font-size:clamp(11px,1.4vw,13px); font-weight:700; letter-spacing:.18em; text-transform:uppercase; margin-bottom:24px}
+.bg-light .kicker,.bg-white .kicker{color:var(--blue)}
+.bg-peach .kicker{color:var(--peach-text)}
+.bg-blue .kicker,.bg-ink .kicker{color:var(--peach)}
+.kicker::before{content:""; width:26px; height:2px; background:currentColor; opacity:.6}
+.display{font-weight:900; line-height:1.04; letter-spacing:-.04em; font-size:clamp(46px,11vw,140px)}
+.stmt{font-weight:900; line-height:1.18; letter-spacing:-.035em; font-size:clamp(30px,6vw,68px)}
+.h2{font-weight:900; line-height:1.2; letter-spacing:-.03em; font-size:clamp(28px,4.6vw,52px)}
+.lead{font-size:clamp(15px,2vw,21px); line-height:1.7; max-width:680px; margin-top:24px; font-weight:400}
+.bg-blue .lead,.bg-ink .lead{color:rgba(255,255,255,.82)}
+.bg-light .lead,.bg-white .lead,.bg-peach .lead{color:var(--ink-2)}
+.hl{color:var(--blue)} .bg-blue .hl,.bg-ink .hl{color:var(--peach)} .bg-peach .hl{color:var(--peach-text)}
+.em-pe{color:var(--peach-deep)}
+.big-quote{font-weight:900; letter-spacing:-.03em; line-height:1.3; font-size:clamp(26px,4.4vw,50px)}
+
+/* chapter number */
+.chap{display:flex; align-items:baseline; gap:clamp(20px,4vw,56px)}
+.chap-num{font-weight:900; font-size:clamp(120px,30vw,360px); line-height:.8; letter-spacing:-.05em; opacity:.16}
+.bg-blue .chap-num,.bg-ink .chap-num{color:#fff} .bg-peach .chap-num{color:var(--peach-deep); opacity:.4}
+.chap-meta .kicker{margin-bottom:14px}
+.chap-title{font-weight:900; font-size:clamp(34px,6vw,72px); letter-spacing:-.035em; line-height:1.1}
+
+/* index */
+.toc{display:flex; flex-direction:column; gap:4px; margin-top:40px}
+.toc-row{display:flex; align-items:center; gap:24px; padding:22px 6px; border-top:1px solid var(--border)}
+.toc-row:last-child{border-bottom:1px solid var(--border)}
+.toc-n{font-weight:900; font-size:clamp(20px,3vw,30px); color:var(--blue); width:54px; flex-shrink:0; letter-spacing:-.02em}
+.toc-t{font-weight:700; font-size:clamp(18px,2.6vw,26px); letter-spacing:-.02em}
+.toc-d{margin-left:auto; font-size:14px; color:var(--gray); text-align:right}
+
+/* bubbles */
+.bubbles{display:flex; flex-direction:column; gap:16px; margin-top:8px}
+.bubble{position:relative; align-self:flex-start; max-width:90%; padding:16px 22px; border-radius:20px 20px 20px 5px; font-weight:700; font-size:clamp(16px,2.2vw,22px); line-height:1.4; box-shadow:0 10px 26px rgba(45,102,163,.18)}
+.bubble.b-blue{background:var(--blue); color:#fff} .bubble.b-blue::after{border-top-color:var(--blue)}
+.bubble.b-peach{background:var(--peach); color:var(--peach-text); align-self:flex-end; border-radius:20px 20px 5px 20px}
+.bubble.b-white{background:#fff; color:var(--ink); border:1px solid var(--border)}
+.bubble::after{content:""; position:absolute; left:14px; bottom:-8px; border:8px solid transparent; border-top-color:var(--peach); border-bottom:0}
+.bubble.b-peach::after{left:auto; right:14px}
+
+/* generic cards */
+.cards{display:grid; gap:16px; margin-top:40px}
+.c3{grid-template-columns:repeat(3,1fr)} .c2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:30px 26px}
+.bg-light .card{background:#fff}
+.card .ico{font-size:30px; margin-bottom:16px}
+.card h4{font-size:clamp(17px,2.2vw,21px); font-weight:900; letter-spacing:-.02em; margin-bottom:10px}
+.card p{font-size:14.5px; line-height:1.65; color:var(--ink-2)}
+.card .num{font-size:13px; font-weight:900; color:var(--blue); letter-spacing:.05em; margin-bottom:14px}
+
+/* mission points list */
+.plist{display:flex; flex-direction:column; gap:14px; margin-top:32px; max-width:760px}
+.plist li{list-style:none; display:flex; gap:14px; align-items:flex-start; font-size:clamp(15px,1.9vw,18px); line-height:1.6; color:var(--ink-2)}
+.plist li b{color:var(--ink); font-weight:700}
+.plist .dot{flex-shrink:0; width:26px; height:26px; border-radius:8px; background:var(--blue-50); display:flex; align-items:center; justify-content:center; font-size:15px; margin-top:1px}
+
+/* roadmap */
+.road{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px}
+.road-col{background:#fff; border:1px solid var(--border); border-radius:18px; padding:28px 24px; position:relative}
+.road-col .when{font-size:13px; font-weight:900; letter-spacing:.04em; color:var(--blue); margin-bottom:6px}
+.road-col .goal{font-size:clamp(17px,2.2vw,21px); font-weight:900; letter-spacing:-.02em; margin-bottom:20px; line-height:1.25}
+.road-track{display:flex; flex-direction:column; gap:14px}
+.road-track .t{font-size:14px; line-height:1.55; color:var(--ink-2)}
+.road-track .t .tag{display:inline-block; font-size:11px; font-weight:900; padding:2px 9px; border-radius:99px; margin-bottom:5px}
+.tag.tb{background:var(--blue-50); color:var(--blue)} .tag.tp{background:var(--peach-100); color:var(--peach-text)}
+.road-col .metric{position:absolute; top:24px; right:24px; font-size:12px; font-weight:900; color:var(--peach-deep)}
+
+/* value slide */
+.val-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(32px,5vw,64px); align-items:center}
+.badge{display:inline-flex; align-items:center; gap:8px; font-weight:900; font-size:clamp(15px,2vw,19px); padding:10px 20px; border-radius:99px; letter-spacing:-.01em; margin-bottom:22px}
+.b-cc{background:var(--blue-50);color:var(--blue)} .b-ot{background:var(--peach-100);color:var(--peach-text)}
+.b-pa{background:var(--mint);color:var(--mint-text)} .b-tt{background:var(--lemon);color:var(--lemon-text)} .b-oi{background:var(--violet);color:var(--violet-text)}
+.dd{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:26px}
+.dd .col h5{font-size:13px; font-weight:900; letter-spacing:.04em; margin-bottom:10px}
+.dd .do h5{color:var(--mint-text)} .dd .dont h5{color:#C0563E}
+.dd ul{list-style:none; display:flex; flex-direction:column; gap:8px}
+.dd li{font-size:14px; line-height:1.5; color:var(--ink-2); padding-left:18px; position:relative}
+.dd .do li::before{content:"✓"; position:absolute; left:0; color:var(--mint-text); font-weight:900}
+.dd .dont li::before{content:"✕"; position:absolute; left:0; color:#C0563E; font-weight:900}
+/* value slide v2 (full wording) */
+.v-head{margin-bottom:20px}
+.v-title{font-weight:900; letter-spacing:-.03em; line-height:1.2; font-size:clamp(24px,3.2vw,38px); margin-top:6px}
+.vdd{display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,44px)}
+.vcol h5{font-size:12.5px; font-weight:900; letter-spacing:.05em; margin-bottom:12px}
+.vcol.do h5{color:var(--mint-text)} .vcol.dont h5{color:#C0563E}
+.vcol ul{list-style:none; display:flex; flex-direction:column; gap:11px}
+.vcol li{font-size:14px; line-height:1.5; padding-left:20px; position:relative; color:var(--ink); font-weight:500}
+.vcol.do li::before{content:"✓"; position:absolute; left:0; color:var(--mint-text); font-weight:900}
+.vcol.dont li::before{content:"✕"; position:absolute; left:0; color:#C0563E; font-weight:900}
+.vcol li .sub{display:block; font-size:12.5px; color:var(--gray); margin-top:3px; line-height:1.45; font-weight:400}
+.v-says{margin-top:24px}
+.v-says .lbl{font-size:12.5px; font-weight:900; color:var(--blue); letter-spacing:.05em; margin-bottom:12px}
+.v-says .bubbles{flex-direction:row; flex-wrap:wrap; gap:12px}
+.v-says .bubble{font-size:15px; padding:11px 17px; max-width:none}
+
+/* cover */
+.cover-logo{font-size:clamp(13px,1.8vw,16px); font-weight:700; letter-spacing:.3em; opacity:.8; margin-bottom:18px}
+.cover-title{font-weight:900; line-height:.92; letter-spacing:-.05em; font-size:clamp(64px,17vw,200px)}
+.cover-sub{margin-top:28px; font-size:clamp(14px,2vw,19px); opacity:.85; font-weight:500; letter-spacing:.02em}
+.cover-billy{position:absolute; right:6%; bottom:8%; width:clamp(120px,20vw,260px); height:auto; z-index:1; filter:drop-shadow(0 20px 30px rgba(0,0,0,.25)); animation:float 6s var(--ease) infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* closing */
+.close-billy{width:clamp(120px,16vw,180px); height:auto; margin:0 auto 24px; filter:drop-shadow(0 16px 24px rgba(0,0,0,.2)); animation:float 5.5s var(--ease) infinite}
+
+/* footer mark + page */
+.mark{position:absolute; left:clamp(24px,5vw,48px); bottom:22px; font-size:12px; font-weight:700; letter-spacing:.04em; opacity:.5; z-index:3}
+.mark.lt{color:var(--ink)} .mark.dk{color:#fff}
+
+/* UI: progress, counter, nav, hint */
+.bar{position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--peach-deep),var(--blue)); width:0; z-index:50; transition:width .35s var(--ease)}
+.counter{position:fixed; right:clamp(20px,4vw,40px); bottom:22px; font-size:13px; font-weight:700; color:var(--gray); z-index:50; letter-spacing:.05em; mix-blend-mode:difference; color:#fff}
+.nav{position:fixed; right:clamp(20px,4vw,40px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px; z-index:50}
+.nav button{width:42px; height:42px; border-radius:50%; border:none; background:rgba(127,127,127,.18); backdrop-filter:blur(6px); color:inherit; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; transition:background .2s, transform .2s; mix-blend-mode:difference; color:#fff}
+.nav button:hover{background:rgba(127,127,127,.4); transform:scale(1.08)}
+.hint{position:fixed; left:50%; bottom:20px; transform:translateX(-50%); font-size:12.5px; color:var(--gray); z-index:50; display:flex; align-items:center; gap:8px; transition:opacity .4s; mix-blend-mode:difference; color:#fff}
+.hint.hide{opacity:0}
+.hint .key{font-weight:900; animation:nudge 1.6s var(--ease) infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* reveal */
+[data-r]{opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); transition-delay:var(--d,0s)}
+.slide.active [data-r]{opacity:1; transform:none}
+
+@media (max-width:820px){
+  .chap{flex-direction:column; gap:8px; align-items:flex-start}
+  .road,.cards.c3{grid-template-columns:1fr}
+  .val-grid{grid-template-columns:1fr; gap:28px}
+  .toc-d{display:none}
+  .cover-billy{opacity:.5; right:-4%}
+  .nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .deck{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important}
+  [data-r]{opacity:1!important; transform:none!important; transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="counter" id="counter">01 / 21</div>
+<div class="nav"><button id="prev" aria-label="이전">↑</button><button id="next" aria-label="다음">↓</button></div>
+<div class="hint" id="hint"><span class="key">↓</span> 스크롤 또는 방향키로 넘기세요</div>
+
+<main class="deck" id="deck">
+
+  <!-- 01 COVER -->
+  <section class="slide bg-blue">
+    <div class="blob" style="width:520px;height:520px;background:var(--blue-300);top:-160px;left:-120px"></div>
+    <div class="blob" style="width:420px;height:420px;background:var(--peach);bottom:-160px;right:-80px;opacity:.4"></div>
+    <div class="inner">
+      <div class="cover-logo" data-r>VILLAGEBABY</div>
+      <h1 class="cover-title" data-r style="--d:.08s">PLAY<br>BOOK</h1>
+      <div class="cover-sub" data-r style="--d:.18s">Mission · Vision · Core Value · 2026</div>
+    </div>
+    <img class="cover-billy" src="/assets/img/baby-wink.webp" alt="베이비빌리 마스코트 빌리" width="615" height="432">
+    <div class="mark dk">빌리지베이비</div>
+  </section>
+
+  <!-- 02 INDEX -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <span class="kicker" data-r>Contents</span>
+      <h2 class="h2" data-r style="--d:.06s">우리가 누구이고,<br><span class="hl">어떻게 일하는지</span>에 대하여.</h2>
+      <div class="toc">
+        <div class="toc-row" data-r style="--d:.12s"><div class="toc-n">01</div><div class="toc-t">Mission</div><div class="toc-d">우리가 존재하는 이유</div></div>
+        <div class="toc-row" data-r style="--d:.18s"><div class="toc-n">02</div><div class="toc-t">Vision</div><div class="toc-d">우리가 향하는 곳</div></div>
+        <div class="toc-row" data-r style="--d:.24s"><div class="toc-n">03</div><div class="toc-t">Core Value</div><div class="toc-d">우리가 일하는 방식</div></div>
+      </div>
+    </div>
+    <div class="mark lt">빌리지베이비 PLAYBOOK</div>
+  </section>
+
+  <!-- 03 CHAPTER 01 -->
+  <section class="slide bg-peach">
+    <div class="inner">
+      <div class="chap">
+        <div class="chap-num" data-r>01</div>
+        <div class="chap-meta">
+          <span class="kicker" data-r style="--d:.1s">Mission</span>
+          <div class="chap-title" data-r style="--d:.16s">우리가<br>존재하는 이유</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark lt">01 · Mission</div>
+  </section>
+
+  <!-- 04 MISSION WHY -->
+  <section class="slide bg-ink">
+    <div class="inner">
+      <span class="kicker" data-r>왜 우리는</span>
+      <p class="lead" data-r style="--d:.06s; max-width:860px">엄빠가 되는 길에는 고민과 어려움이 참 많습니다. 어느 분야에서 어떤 전문성이 있는 사람으로 살아왔든지 상관없이, 누구나 초보가 되어 헤매는 과정을 겪게 되죠. 그리고 그 과정을 지켜본 사람들은 이렇게 생각하곤 합니다.</p>
+      <div class="bubbles" data-r style="--d:.12s; margin:16px 0; max-width:860px"><div class="bubble b-white">저렇게 힘들 바에야, 나는 아이를 낳지 말아야지.</div></div>
+      <p class="lead" data-r style="--d:.18s; max-width:860px; margin-top:0">반면, 누군가 조금이라도 쉽고 편하게, 행복하게 육아를 하는 모습을 보면, 그 행복함이 전염되어 이런 생각을 하기도 해요.</p>
+      <div class="bubbles" data-r style="--d:.24s; margin:16px 0; max-width:860px"><div class="bubble b-peach">나도 이런 행복을 느껴보고 싶다!</div></div>
+      <p class="lead" data-r style="--d:.3s; max-width:860px; margin-top:0"><span class="hl">우리는 그렇게 쉽고 편하게 육아하는 부모가 한 사람이라도 더 많아지는 세상을 꿈꿉니다.</span></p>
+    </div>
+    <div class="mark dk">01 · Mission</div>
+  </section>
+
+  <!-- 05 MISSION STATEMENT -->
+  <section class="slide bg-light">
+    <div class="blob" style="width:420px;height:420px;background:var(--blue-100);top:-120px;right:-80px"></div>
+    <div class="inner">
+      <span class="kicker" data-r>Our Mission</span>
+      <h2 class="stmt" data-r style="--d:.08s">부모가 되는 여정을,<br><span class="hl">누구나 쉽고 편하게.</span></h2>
+      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도, 마음이 놓이는 것일 수도, 따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.</p>
+    </div>
+    <div class="mark lt">01 · Mission</div>
+  </section>
+
+  <!-- 06 MISSION 1 -->
+  <section class="slide bg-white">
+    <div class="inner">
+      <span class="kicker" data-r>우리가 만드는 것 ①</span>
+      <h2 class="h2" data-r style="--d:.06s">베이비빌리를 통해,<br><span class="hl">엄빠의 불안이 줄어듭니다.</span></h2>
+      <ul class="plist">
+        <li data-r style="--d:.12s"><span class="dot">🔍</span><span>선택을 고민하는 시간과 잘못된 정보·물건으로 겪는 <b>시행착오가 줄어듭니다.</b></span></li>
+        <li data-r style="--d:.17s"><span class="dot">🤝</span><span>"지금 내가 정상일까?" 걱정하던 부모가 <b>베동 엄빠들에게 조언을 얻고 안심</b>합니다.</span></li>
+        <li data-r style="--d:.22s"><span class="dot">💌</span><span>지친 하루 끝, <b>위로가 담긴 말풍선 하나</b>에 눈시울이 붉어지기도 합니다.</span></li>
+        <li data-r style="--d:.27s"><span class="dot">👶</span><span>막막하던 아빠는 태담과 '이시기엔'으로 <b>아빠의 역할을 배워갑니다.</b></span></li>
+      </ul>
+    </div>
+    <div class="mark lt">01 · Mission</div>
+  </section>
+
+  <!-- 07 MISSION 2 -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <span class="kicker" data-r>우리가 만드는 것 ②</span>
+      <h2 class="h2" data-r style="--d:.06s">우리가 만드는 브랜드를 통해,<br><span class="hl">엄빠가 안심합니다.</span></h2>
+      <p class="lead" data-r style="--d:.14s">"이 제품, 정말 안전할까?" "지금 우리 아이에게 맞는 걸까?" 더 이상 매번 고민하고 비교하지 않아도 되도록, <b>안전하고 검증된 기준</b>을 먼저 제시합니다.</p>
+      <p class="lead" data-r style="--d:.2s">우리는 단지 제품을 만드는 것이 아니라, <span class="hl">부모의 걱정을 덜어주는 선택지</span>를 만듭니다.</p>
+    </div>
+    <div class="mark lt">01 · Mission</div>
+  </section>
+
+  <!-- 08 CHAPTER 02 -->
+  <section class="slide bg-blue">
+    <div class="blob" style="width:460px;height:460px;background:var(--blue-300);bottom:-160px;left:-100px"></div>
+    <div class="inner">
+      <div class="chap">
+        <div class="chap-num" data-r>02</div>
+        <div class="chap-meta">
+          <span class="kicker" data-r style="--d:.1s">Vision</span>
+          <div class="chap-title" data-r style="--d:.16s">우리가<br>향하는 곳</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark dk">02 · Vision</div>
+  </section>
+
+  <!-- 09 VISION STATEMENT -->
+  <section class="slide bg-light">
+    <div class="blob" style="width:400px;height:400px;background:var(--peach);bottom:-140px;right:-60px;opacity:.4"></div>
+    <div class="inner">
+      <span class="kicker" data-r>Our Vision</span>
+      <h2 class="stmt" data-r style="--d:.08s"><span class="hl">'육아의 기준'</span>이 되고,<br>글로벌로 확장합니다.</h2>
+      <p class="lead" data-r style="--d:.18s">부모가 되는 길목마다 누구나 가장 먼저 찾는 Must-have가 되어, 더 많은 사람이 기꺼이 부모가 되기를 택하는 세상으로. 그리고 그 경험을 국경 너머로.</p>
+    </div>
+    <div class="mark lt">02 · Vision</div>
+  </section>
+
+  <!-- 10 VISION CRISIS -->
+  <section class="slide bg-ink">
+    <div class="inner">
+      <span class="kicker" data-r>하지만</span>
+      <h2 class="h2" data-r style="--d:.06s">'잘 자리 잡았다'는 것이<br><span class="hl">곧 '안전하다'는 뜻은 아닙니다.</span></h2>
+      <div class="cards c3" data-r style="--d:.14s">
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);color:#fff"><div class="num" style="color:var(--peach)">01</div><h4 style="color:#fff">내수 성장의 한계</h4><p style="color:rgba(255,255,255,.6)">출생아 수가 줄어드는 국내 시장만으로는 지표 성장이 정체됩니다.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">02</div><h4 style="color:#fff">대체 가능성</h4><p style="color:rgba(255,255,255,.6)">더 깔끔하고 감동적인 서비스가 나오면 선택은 언제든 옮겨갑니다.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">03</div><h4 style="color:#fff">AI의 장벽 붕괴</h4><p style="color:rgba(255,255,255,.6)">누구나 손끝에서 전문가 조언을 얻습니다. '정보 제공'만으론 부족합니다.</p></div>
+      </div>
+    </div>
+    <div class="mark dk">02 · Vision</div>
+  </section>
+
+  <!-- 11 VISION MOAT -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <span class="kicker" data-r>그래서 우리는</span>
+      <h2 class="h2" data-r style="--d:.06s">오직 우리만이 줄 수 있는<br><span class="hl">세 가지 무기</span>에 집중합니다.</h2>
+      <div class="cards c3">
+        <div class="card" data-r style="--d:.12s"><div class="ico">🫂</div><h4>소속감</h4><p>나와 비슷한 시기를 지나는 동료 엄빠가 곁에 있다는 든든함.</p></div>
+        <div class="card" data-r style="--d:.18s"><div class="ico">💗</div><h4>감동의 순간</h4><p>지친 하루 끝, 말풍선 하나에 눈시울이 붉어지는 경험.</p></div>
+        <div class="card" data-r style="--d:.24s"><div class="ico">📊</div><h4>데이터</h4><p>200만 엄빠가 함께 쌓아 올린, 누구도 흉내 낼 수 없는 데이터.</p></div>
+      </div>
+    </div>
+    <div class="mark lt">02 · Vision</div>
+  </section>
+
+  <!-- 12 ROADMAP -->
+  <section class="slide bg-white">
+    <div class="inner">
+      <span class="kicker" data-r>The Roadmap</span>
+      <h2 class="h2" data-r style="--d:.06s">'도움'을 넘어 '기준'으로,<br><span class="hl">그리고 세계로.</span></h2>
+      <div class="road">
+        <div class="road-col" data-r style="--d:.12s"><div class="when">2026</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU 10만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지, '부모의 습관'이 되는 구조.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 생존 가능성 입증.</div></div></div>
+        <div class="road-col" data-r style="--d:.18s"><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>먼저 알려주는 '필수앱'. 데이터로 커뮤니티·커머스·핀테크 확장.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로. 아이 성장 루틴 + 엄마 웰니스.</div></div></div>
+        <div class="road-col" data-r style="--d:.24s"><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 완성 후 해외 고객으로 확장.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본 포함 글로벌 아이·부모 웰니스 브랜드로.</div></div></div>
+      </div>
+    </div>
+    <div class="mark lt">02 · Vision</div>
+  </section>
+
+  <!-- 13 VISION LOVE -->
+  <section class="slide bg-peach">
+    <div class="inner">
+      <span class="kicker" data-r>그리고, 그 뿌리에는</span>
+      <p class="big-quote" data-r style="--d:.08s">"우리를 사랑한다"는 이유만으로<br>한 시간짜리 서베이에 응해준<br><span class="em-pe">1,000명의 엄빠</span>가 있었습니다.</p>
+      <p class="lead" data-r style="--d:.2s">그 <b>'베이비빌리를 사랑하고 싶은 마음'</b>을 모든 엄빠에게 꾸준히 심어가는 것. 우리가 '육아의 기준'이 되고 세계로 나아가는 힘은 바로 거기서 나옵니다.</p>
+    </div>
+    <div class="mark lt">02 · Vision</div>
+  </section>
+
+  <!-- 14 CHAPTER 03 -->
+  <section class="slide bg-ink">
+    <div class="blob" style="width:420px;height:420px;background:var(--blue);bottom:-140px;right:-80px;opacity:.3"></div>
+    <div class="inner">
+      <div class="chap">
+        <div class="chap-num" data-r>03</div>
+        <div class="chap-meta">
+          <span class="kicker" data-r style="--d:.1s">Core Value</span>
+          <div class="chap-title" data-r style="--d:.16s">우리가<br>일하는 방식</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark dk">03 · Core Value</div>
+  </section>
+
+  <!-- 15 VALUE OVERVIEW -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <span class="kicker" data-r>고객에서 임팩트까지의 여정</span>
+      <h2 class="h2" data-r style="--d:.06s">다섯 가지 약속으로<br>일합니다.</h2>
+      <div class="cards c3" style="margin-top:36px">
+        <div class="card" data-r style="--d:.1s"><div class="num">01</div><h4>Customer-centric</h4><p>모든 시작은 고객입니다.</p></div>
+        <div class="card" data-r style="--d:.15s"><div class="num">02</div><h4>One Team</h4><p>고객 가치를 실현하는 하나의 팀.</p></div>
+        <div class="card" data-r style="--d:.2s"><div class="num">03</div><h4>Proactive</h4><p>주도적 의견, 주도적 헌신.</p></div>
+        <div class="card" data-r style="--d:.25s"><div class="num">04</div><h4>Today not tomorrow</h4><p>속도와 실행력이 유일한 경쟁력.</p></div>
+        <div class="card" data-r style="--d:.3s"><div class="num">05</div><h4>Own Your Impact</h4><p>내 임팩트를 책임지고, 끝까지 cheerful하게.</p></div>
+      </div>
+    </div>
+    <div class="mark lt">03 · Core Value</div>
+  </section>
+
+  <!-- 16 VALUE: Customer-centric -->
+  <section class="slide bg-white">
+    <div class="inner">
+      <div class="v-head">
+        <span class="badge b-cc" data-r>① Customer-centric · 엄빠 중심</span>
+        <h3 class="v-title" data-r style="--d:.05s">모든 시작은 고객입니다.</h3>
+      </div>
+      <div class="vdd" data-r style="--d:.12s">
+        <div class="vcol do"><h5>DO's</h5><ul>
+          <li>기능에 꽂히기보단 '불안과 불편'에서 출발해요.<span class="sub">"지금 이 엄빠는 무엇이 가장 불편할까?"를 먼저 묻고 시작해요.</span></li>
+          <li>작은 디테일도 엄빠 입장에서 고민해요.<span class="sub">어색한 한 문장, 1초 늦은 로딩, 깨진 이미지 하나까지 주도적으로 손보는 디테일이 우리의 완성도를 높여요.</span></li>
+          <li>고민이 될 때는 고객의 목소리와 데이터로 결론을 내요.<span class="sub">모든 가설의 근거를 '우리의 추측'이 아닌 '고객의 데이터와 목소리'에서 찾아요.</span></li>
+        </ul></div>
+        <div class="vcol dont"><h5>DON'Ts</h5><ul>
+          <li>"고객으로서의 나"도 한 사람일 뿐임을 이해하고, 여러 고객의 고민을 바탕으로 결정해요.</li>
+          <li>내부 편의나 일정 때문에 고객의 불편을 "이 정도는 괜찮겠지"로 넘기지 않아요.</li>
+          <li>고객의 불편이 오랜 기간 해결되지 않는 것은 [비상 비상] 버튼이 눌러질 중대한 문제로 간주합니다.</li>
+        </ul></div>
+      </div>
+      <div class="v-says" data-r style="--d:.2s">
+        <div class="lbl">이런 말을 해요</div>
+        <div class="bubbles">
+          <div class="bubble b-blue">이게 엄빠가 원하는게 맞나?</div>
+          <div class="bubble b-peach">주변에 임산부를 보면 달려가서, "두유노우 베이비빌리?"</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark lt">03 · Core Value</div>
+  </section>
+
+  <!-- 17 VALUE: One Team -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <div class="v-head">
+        <span class="badge b-ot" data-r>② One Team</span>
+        <h3 class="v-title" data-r style="--d:.05s">고객 가치를 실현하는 하나의 팀.</h3>
+      </div>
+      <div class="vdd" data-r style="--d:.12s">
+        <div class="vcol do"><h5>DO's</h5><ul>
+          <li>'우리 팀 편의'보다 '전사 목표'에 미칠 영향을 먼저 고려해요.</li>
+          <li>알게 된 맥락·노하우는 묻어두지 않고 먼저 공유해 다른 사람의 학습을 돕고, 팀의 Align에 기여해요.</li>
+          <li>내 담당이 아니어도 동료의 결과물에서 이상한 점을 발견하면 그냥 지나치지 않고 알려주세요.</li>
+        </ul></div>
+        <div class="vcol dont"><h5>DON'Ts</h5><ul>
+          <li>당장의 해결이 필요하지 않아도, 혼자 끙끙 앓지 말고 이슈를 팀에게 공유해주세요.</li>
+          <li>"내 일"이나 "우리 팀의 목표"가 아니라는 말로 다른 팀원을 도울 수 있는 기회를 흘려보내지 않아요.</li>
+          <li>방향에 공감하지 못하면 미리 말하고 이해하고 넘어가요. 앞에선 침묵하고 뒤에서 반목하는 분위기를 조성하지 않아요.</li>
+        </ul></div>
+      </div>
+      <div class="v-says" data-r style="--d:.2s">
+        <div class="lbl">이런 말을 해요</div>
+        <div class="bubbles">
+          <div class="bubble b-blue">이런 문제가 있는데 도움이 필요해요!</div>
+          <div class="bubble b-peach">그거 제가 도와드릴 수 있을 것 같아요!</div>
+          <div class="bubble b-blue">우리가 남이가!</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark lt">03 · Core Value</div>
+  </section>
+
+  <!-- 18 VALUE: Proactive -->
+  <section class="slide bg-white">
+    <div class="inner">
+      <div class="v-head">
+        <span class="badge b-pa" data-r>③ Proactive · 주도적 의견과 헌신</span>
+        <h3 class="v-title" data-r style="--d:.05s">주도적 의견, 주도적 헌신.</h3>
+      </div>
+      <div class="vdd" data-r style="--d:.12s">
+        <div class="vcol do"><h5>DO's</h5><ul>
+          <li>누가 물어보기 전에 내가 먼저 발견해요.<span class="sub">요청이 들어오기 전에 개선점·리스크를 먼저 찾아 제안해요.</span></li>
+          <li>단순 보고나 선택지 나열이 아니라 미리 고민한 '대안'과 근거 있는 '추천'을 말해요.</li>
+          <li>논의를 거쳐 방향이 정해지면 설령 내 첫 의견과 다르더라도 팀 목표 달성을 위해 200% 몰입해요.</li>
+        </ul></div>
+        <div class="vcol dont"><h5>DON'Ts</h5><ul>
+          <li>회의 중에는 침묵하다가 결정된 이후에, 또는 일이 끝난 후에 "사실 나는 반대였다" "안될 것 같았다"고 말하지 않아요.</li>
+          <li>누군가 시키는 일만 기계적으로 처리하며 그 이상의 가치를 고민하지 않는 모습을 보이지 않아요.</li>
+          <li>내 의견대로 되지 않았다고 해서 소극적이거나 방관하는, 프로페셔널하지 못한 태도를 보이지 않아요.</li>
+        </ul></div>
+      </div>
+      <div class="v-says" data-r style="--d:.2s">
+        <div class="lbl">이런 말을 해요</div>
+        <div class="bubbles">
+          <div class="bubble b-blue">제 생각에는 이게 나을 것 같아요.</div>
+          <div class="bubble b-peach">이건 제가 직접 해볼게요.</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark lt">03 · Core Value</div>
+  </section>
+
+  <!-- 19 VALUE: Today not tomorrow -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <div class="v-head">
+        <span class="badge b-tt" data-r>④ Today not tomorrow · 속도와 실행력</span>
+        <h3 class="v-title" data-r style="--d:.05s">속도와 실행력이 유일한 경쟁력.</h3>
+      </div>
+      <div class="vdd" data-r style="--d:.12s">
+        <div class="vcol do"><h5>DO's</h5><ul>
+          <li>내일의 완벽함(100%)보다 오늘의 60%의 실행이 더 큰 임팩트를 만듭니다.</li>
+          <li>자원이 부족한 상황에서도 '안 되는 이유'보다 '어떻게든 실행할 방법'을 먼저 찾아요.</li>
+          <li>정해진 일정은 프로페셔널하게, 자부심을 갖고 실행해내요.</li>
+        </ul></div>
+        <div class="vcol dont"><h5>DON'Ts</h5><ul>
+          <li>리스크를 지나치게 고민하며 결정도, 실행도 못하는 시간이 더 아까워요.</li>
+          <li>회의 후 "좀 더 검토해보자"고 끝나기보다는 작더라도 Action Item들을 도출해내요.</li>
+          <li>실패할까봐 주저하기보다는 '해보면 알지'라는 생각으로 실행에 옮겨봐요.</li>
+        </ul></div>
+      </div>
+      <div class="v-says" data-r style="--d:.2s">
+        <div class="lbl">이런 말을 해요</div>
+        <div class="bubbles">
+          <div class="bubble b-blue">해보면 되지!</div>
+          <div class="bubble b-peach">일단 한 번 해보자!</div>
+          <div class="bubble b-blue">이거 했으니 두발 뻗고 잘 수 있다!</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark lt">03 · Core Value</div>
+  </section>
+
+  <!-- 20 VALUE: Own Your Impact -->
+  <section class="slide bg-white">
+    <div class="inner">
+      <div class="v-head">
+        <span class="badge b-oi" data-r>⑤ Own Your Impact · 책임감과 긍정적 에너지</span>
+        <h3 class="v-title" data-r style="--d:.05s">내 임팩트를 책임지고, 끝까지 cheerful하게.</h3>
+      </div>
+      <div class="vdd" data-r style="--d:.12s">
+        <div class="vcol do"><h5>DO's</h5><ul>
+          <li>일을 쳐내기에 급급하기보다는 내 일을 내가 책임감 있게 마무리한다는 생각으로 최종 확인해요.</li>
+          <li>힘든 하루에도 팀원들에게 긍정적인 에너지를 건네요. ('Stay cheerful')</li>
+          <li>동료에 대한 선의를 가지고, 잘 되길 바라는 마음과 신뢰를 바탕으로 서로를 대해요.</li>
+        </ul></div>
+        <div class="vcol dont"><h5>DON'Ts</h5><ul>
+          <li>결과가 좋지 않을 때 서로 탓하기보다는 다같이 개선점을 찾아 기여해요.</li>
+          <li>팀의 사기를 꺾는 불평불만도 습관이 될 수 있어요.</li>
+          <li>팀 문화에 부정적인 기여를 하지 않아요.</li>
+        </ul></div>
+      </div>
+      <div class="v-says" data-r style="--d:.2s">
+        <div class="lbl">이런 말을 해요</div>
+        <div class="bubbles">
+          <div class="bubble b-blue">나에게 저 사람이 좋은 자극을 주었어!</div>
+          <div class="bubble b-peach">우리는 너에게 이정도를 기대하고 있어!</div>
+          <div class="bubble b-blue">나는 팀에 이런 기여 중이구나!</div>
+        </div>
+      </div>
+    </div>
+    <div class="mark lt">03 · Core Value</div>
+  </section>
+
+  <!-- 21 CLOSING -->
+  <section class="slide bg-blue">
+    <div class="blob" style="width:480px;height:480px;background:var(--blue-300);top:-160px;right:-120px"></div>
+    <div class="blob" style="width:360px;height:360px;background:var(--peach);bottom:-140px;left:-80px;opacity:.4"></div>
+    <div class="inner" style="text-align:center">
+      <img class="close-billy" data-r src="/assets/img/baby-graduate.webp" alt="졸업모자를 쓴 베이비빌리 마스코트 빌리" width="308" height="324">
+      <h2 class="stmt" data-r style="--d:.1s">함께, 부모가 되는 여정을<br><span class="hl">쉽고 편하게.</span></h2>
+      <p class="cover-sub" data-r style="--d:.2s">We are VillageBaby.</p>
+    </div>
+    <div class="mark dk">빌리지베이비 PLAYBOOK</div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var bar=document.getElementById('bar'), counter=document.getElementById('counter'), hint=document.getElementById('hint');
+  var total=slides.length, idx=0;
+  function pad(n){return (n<10?'0':'')+n;}
+  function ui(){ counter.textContent=pad(idx+1)+' / '+pad(total); bar.style.width=(total>1?idx/(total-1)*100:0)+'%'; }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); idx=slides.indexOf(e.target); ui(); } });
+  },{threshold:.55});
+  slides.forEach(function(s){ io.observe(s); });
+  slides[0].classList.add('active'); ui();
+
+  function go(i){ i=Math.max(0,Math.min(total-1,i)); slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'}); }
+  document.getElementById('next').addEventListener('click',function(){ go(idx+1); });
+  document.getElementById('prev').addEventListener('click',function(){ go(idx-1); });
+
+  var nextKeys={'ArrowDown':1,'ArrowRight':1,'PageDown':1,' ':1,'Spacebar':1};
+  var prevKeys={'ArrowUp':1,'ArrowLeft':1,'PageUp':1};
+  document.addEventListener('keydown',function(e){
+    if(nextKeys[e.key]){ e.preventDefault(); go(idx+1); }
+    else if(prevKeys[e.key]){ e.preventDefault(); go(idx-1); }
+    else if(e.key==='Home'){ e.preventDefault(); go(0); }
+    else if(e.key==='End'){ e.preventDefault(); go(total-1); }
+  });
+
+  var hid=false;
+  deck.addEventListener('scroll',function(){ if(!hid){ hint.classList.add('hide'); hid=true; } },{passive:true});
+})();
+</script>
+</body>
+</html>
