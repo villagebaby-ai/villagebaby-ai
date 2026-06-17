@@ -102,6 +102,19 @@ img{display:block;max-width:100%}
 .prodlist li b{color:var(--ink); font-weight:700}
 .prodlist .e{flex-shrink:0; width:34px; height:34px; border-radius:10px; background:var(--peach-50); display:flex; align-items:center; justify-content:center; font-size:17px}
 
+/* mission① parallel columns */
+.mcols{display:grid; grid-template-columns:1fr 1fr; gap:clamp(14px,2.2vw,26px) clamp(34px,5vw,64px); margin-top:32px; max-width:980px}
+.mcols p{font-size:clamp(15px,1.7vw,18px); line-height:1.6; color:var(--ink-2)}
+.mcols p b{color:var(--ink); font-weight:700}
+
+/* app feature cards (user inserts screenshots into .shot) */
+.feats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:34px}
+.feat{display:flex; flex-direction:column; gap:13px}
+.feat .shot{aspect-ratio:3/4; border-radius:16px; background:linear-gradient(160deg,var(--blue-50),var(--peach-50)); border:1px dashed var(--blue-200); display:flex; align-items:center; justify-content:center; color:var(--blue); font-size:12.5px; font-weight:700; text-align:center; overflow:hidden}
+.feat img.shot{border:none; object-fit:cover; width:100%; height:auto; display:block}
+.feat .cap{font-size:clamp(14px,1.55vw,16px); line-height:1.5; font-weight:500; color:var(--ink)}
+.feat .cap .n{display:inline-flex; width:22px; height:22px; border-radius:50%; background:var(--blue); color:#fff; font-size:12px; font-weight:900; align-items:center; justify-content:center; margin-right:7px; vertical-align:1px}
+
 /* roadmap */
 .road{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px}
 .road-col{background:#fff; border:1px solid var(--border); border-radius:18px; padding:28px 24px; position:relative}
@@ -237,9 +250,10 @@ img{display:block;max-width:100%}
 @media (max-width:820px){
   .chap{flex-direction:column; gap:8px; align-items:flex-start}
   /* multi-box sections → horizontal swipe carousel (한 슬라이드 내 여러 box) */
-  .cards.c3, .road, .vdd{display:flex; grid-template-columns:none; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:12px}
-  .cards.c3::-webkit-scrollbar, .road::-webkit-scrollbar, .vdd::-webkit-scrollbar{display:none}
-  .cards.c3>*, .road>*, .vdd>*{flex:0 0 84%; scroll-snap-align:center}
+  .cards.c3, .road, .vdd, .feats{display:flex; grid-template-columns:none; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:12px}
+  .cards.c3::-webkit-scrollbar, .road::-webkit-scrollbar, .vdd::-webkit-scrollbar, .feats::-webkit-scrollbar{display:none}
+  .cards.c3>*, .road>*, .vdd>*, .feats>*{flex:0 0 84%; scroll-snap-align:center}
+  .mcols{grid-template-columns:1fr; gap:18px}
   .deco-billy{opacity:.16!important}
   .val-grid{grid-template-columns:1fr; gap:28px}
   .toc-d{display:none}
@@ -337,7 +351,28 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>우리가 만드는 것 ①</span>
       <h2 class="h2" data-r style="--d:.06s">베이비빌리를 통해,<br><span class="hl">엄빠의 불안이 줄어듭니다.</span></h2>
-      <p class="lead" data-r style="--d:.12s; max-width:820px; font-size:clamp(13.5px,1.55vw,16px); line-height:1.65">우리의 콘텐츠들을 통해 엄빠들은 무엇을 선택해야 할지 고민하는 시간이 줄고, 잘못된 정보로 겪는 시행착오도 줄일 수 있어요.<br>"이게 정상일까?" 걱정하던 엄빠가 비슷한 시기를 함께하는 베동 엄빠들에게 조언을 얻고 안심합니다.<br>지친 하루 끝에, 위로가 담긴 말풍선 하나에 눈시울이 붉어지기도 합니다.<br>무엇을 해줘야 할지 막막하던 아빠는 태담을 읽어주고 '이시기엔'에서 정보를 확인하며 아빠의 역할을 배워갑니다.<br>과제처럼 막막하던 출산 준비도, 다른 엄빠들의 리뷰와 함께 빌리쇼핑에서 합리적으로 완성해갑니다.</p>
+      <div class="mcols" data-r style="--d:.12s">
+        <p>우리의 콘텐츠들을 통해 엄빠들은 무엇을 선택해야 할지<br>고민하는 시간이 줄고,<br>잘못된 정보로 겪는 시행착오도 줄일 수 있어요.</p>
+        <p>"이게 정상일까?" 걱정하던 엄빠가<br>비슷한 시기를 함께하는 베동 엄빠들에게<br>조언을 얻고 안심합니다.</p>
+        <p>지친 하루 끝에,<br>위로가 담긴 말풍선 하나에<br>눈시울이 붉어지기도 합니다.</p>
+        <p>무엇을 해줘야 할지 막막하던 아빠는<br>태담을 읽어주고 '이시기엔'에서 정보를 확인하며<br>아빠의 역할을 배워갑니다.</p>
+        <p>과제처럼 막막하던 출산 준비도,<br>다른 엄빠들의 리뷰와 함께<br>빌리쇼핑에서 합리적으로 완성해갑니다.</p>
+      </div>
+    </div>
+    <div class="mark lt">01 · Mission</div>
+  </section>
+
+  <!-- 06b MISSION 1 — APP FEATURES (스크린샷은 .shot 자리에 <img class="shot" src="..."> 로 교체) -->
+  <section class="slide bg-light">
+    <div class="inner">
+      <span class="kicker" data-r>베이비빌리 앱</span>
+      <h2 class="h2" data-r style="--d:.06s">한 앱에서,<br><span class="hl">엄빠의 매일을 함께해요.</span></h2>
+      <div class="feats" data-r style="--d:.12s">
+        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">1</span>주차마다 자라나는 빌리를 만나고,</div></div>
+        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">2</span>나와 같은 시기의 베동 커뮤니티를 사귀고,</div></div>
+        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">3</span>꼭 필요한 정보를 얻어요.</div></div>
+        <div class="feat"><div class="shot">📱 앱 화면</div><div class="cap"><span class="n">4</span>엄마와 아기의 건강을 관리하죠.</div></div>
+      </div>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -347,7 +382,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>우리가 만드는 것 ②</span>
       <h2 class="h2" data-r style="--d:.06s">우리가 만드는 브랜드를 통해,<br><span class="hl">엄빠가 안심합니다.</span></h2>
-      <p class="lead" data-r style="--d:.14s; max-width:820px; font-size:clamp(13.5px,1.55vw,16px); line-height:1.65">"이 제품, 정말 안전할까?" "지금 우리 아이에게 맞는 걸까?"<br>매번 고민하고 비교하지 않도록, 안전하고 검증된 기준을 우리가 먼저 제시합니다.<br>단지 제품을 만드는 것이 아니라, <span class="hl">부모의 걱정을 덜어주는 선택지</span>를 만듭니다.</p>
+      <p class="lead" data-r style="--d:.14s; max-width:820px">"이 제품, 정말 안전할까?"<br>"지금 우리 아이에게 맞는 걸까?"<br><br>매번 고민하고 비교하지 않도록,<br>안전하고 검증된 기준을 우리가 먼저 제시합니다.<br><br>단지 제품을 만드는 것이 아니라,<br><span class="hl">부모의 걱정을 덜어주는 선택지</span>를 만듭니다.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -364,7 +399,7 @@ img{display:block;max-width:100%}
         <li data-r style="--d:.24s"><span class="e">🛁</span><span>씻기 싫어하는 아이들가 먼저 목욕을 하고 싶게 만드는 <b>버블 배쓰</b>를,</span></li>
         <li data-r style="--d:.28s"><span class="e">👕</span><span>상하의를 셋트로 맞춰서 이쁘게 일상 사진을 찍고 싶은 엄빠의 마음을 이해하여, <b>믹스매치가 가능한 실내복</b>을.</span></li>
       </ul>
-      <p class="lead" data-r style="--d:.34s; max-width:820px; font-size:clamp(13.5px,1.55vw,16px); line-height:1.6">아기의 성장 단계와 엄빠의 시기별 고민에 맞는 선택지들을 꾸준히 고민하여, <span class="hl">엄빠의 고민을 대신합니다.</span></p>
+      <p class="lead" data-r style="--d:.34s; max-width:820px; font-size:clamp(15px,1.7vw,18px)">아기의 성장 단계와 엄빠의 시기별 고민에 맞는 선택지들을 꾸준히 고민하여, <span class="hl">엄빠의 고민을 대신합니다.</span></p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -437,7 +472,7 @@ img{display:block;max-width:100%}
     </div>
     <div class="inner">
       <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 베이비빌리가 잘 되길 바라"</span>는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 1,000명의 엄빠</span>가 있었습니다.</p>
-      <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요.<br>그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 '육아의 Must-have 기준'이 되고<br>세계로 나아가는 힘은<br>바로 여기서 나옵니다.</p>
+      <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요.<br>그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 '육아의 Must-have 기준'이 되고<br>세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
   </section>
@@ -542,8 +577,8 @@ img{display:block;max-width:100%}
         <div class="lbl">이런 말을 해요</div>
         <div class="bubbles">
           <div class="bubble b-blue">이런 문제가 있는데 도움을 주실 수 있는 분?</div>
-          <div class="bubble b-peach">제가 도와드릴 수 있을 것 같아요!</div>
-          <div class="bubble b-blue">이 경험이 다른 분들에게도 도움이 될 것 같아서요!</div>
+          <div class="bubble b-peach">제 경험이 다른 분들에게도 도움이 될 것 같아 공유해요!</div>
+          <div class="bubble b-blue">그건 저도 도와드릴 수 있을 것 같아요!</div>
         </div>
       </div>
     </div>
