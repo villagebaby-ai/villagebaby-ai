@@ -74,6 +74,7 @@ img{display:block;max-width:100%}
 .bubbles{display:flex; flex-direction:column; gap:16px; margin-top:8px}
 .bubble{position:relative; align-self:flex-start; max-width:90%; padding:16px 22px; border-radius:20px 20px 20px 5px; font-weight:700; font-size:clamp(16px,2.2vw,22px); line-height:1.4; box-shadow:0 10px 26px rgba(45,102,163,.18)}
 .bubble.b-blue{background:var(--blue); color:#fff} .bubble.b-blue::after{border-top-color:var(--blue)}
+.bubble.b-white::after{border-top-color:#fff}
 .bubble.b-peach{background:var(--peach); color:var(--peach-text); align-self:flex-end; border-radius:20px 20px 5px 20px}
 .bubble.b-white{background:#fff; color:var(--ink); border:1px solid var(--border)}
 .bubble::after{content:""; position:absolute; left:14px; bottom:-8px; border:8px solid transparent; border-top-color:var(--peach); border-bottom:0}
@@ -94,6 +95,10 @@ img{display:block;max-width:100%}
 .plist li{list-style:none; display:flex; gap:14px; align-items:flex-start; font-size:clamp(15px,1.9vw,18px); line-height:1.6; color:var(--ink-2)}
 .plist li b{color:var(--ink); font-weight:700}
 .plist .dot{flex-shrink:0; width:26px; height:26px; border-radius:8px; background:var(--blue-50); display:flex; align-items:center; justify-content:center; font-size:15px; margin-top:1px}
+.prodlist{list-style:none; display:flex; flex-direction:column; gap:12px; margin:28px 0 22px; max-width:900px}
+.prodlist li{display:flex; gap:13px; align-items:flex-start; font-size:clamp(14px,1.7vw,17px); line-height:1.55; color:var(--ink-2)}
+.prodlist li b{color:var(--ink); font-weight:700}
+.prodlist .e{flex-shrink:0; width:34px; height:34px; border-radius:10px; background:var(--peach-50); display:flex; align-items:center; justify-content:center; font-size:17px}
 
 /* roadmap */
 .road{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:44px}
@@ -246,7 +251,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Mission</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 여정을,<br><span class="hl">누구나 쉽고 편하게.</span></h2>
-      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도, 마음이 놓이는 것일 수도, 따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.</p>
+      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br>마음이 놓이는 것일 수도,<br>따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도, 두 줄을 처음 확인한 예비 부모도, 처음 아기를 안아본 초보 부모도 —<br>누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,<br>빌리지베이비는 그 여정을 함께 걷는 동반자가 되고자 해요.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -256,12 +261,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>우리가 만드는 것 ①</span>
       <h2 class="h2" data-r style="--d:.06s">베이비빌리를 통해,<br><span class="hl">엄빠의 불안이 줄어듭니다.</span></h2>
-      <ul class="plist">
-        <li data-r style="--d:.12s"><span class="dot">🔍</span><span>선택을 고민하는 시간과 잘못된 정보·물건으로 겪는 <b>시행착오가 줄어듭니다.</b></span></li>
-        <li data-r style="--d:.17s"><span class="dot">🤝</span><span>"지금 내가 정상일까?" 걱정하던 부모가 <b>베동 엄빠들에게 조언을 얻고 안심</b>합니다.</span></li>
-        <li data-r style="--d:.22s"><span class="dot">💌</span><span>지친 하루 끝, <b>위로가 담긴 말풍선 하나</b>에 눈시울이 붉어지기도 합니다.</span></li>
-        <li data-r style="--d:.27s"><span class="dot">👶</span><span>막막하던 아빠는 태담과 '이시기엔'으로 <b>아빠의 역할을 배워갑니다.</b></span></li>
-      </ul>
+      <p class="lead" data-r style="--d:.12s; max-width:860px">우리의 콘텐츠들을 통해 엄빠들은 무엇을 선택해야 할지 고민하는 시간이 줄고, 잘못된 정보로 겪는 시행착오도 줄일 수 있어요.<br>"이게 정상일까?" 걱정하던 엄빠가 비슷한 시기를 함께하는 베동 엄빠들에게 조언을 얻고 안심합니다.<br>지친 하루 끝에, 위로가 담긴 말풍선 하나에 눈시울이 붉어지기도 합니다.<br>무엇을 해줘야 할지 막막하던 아빠는 태담을 읽어주고 '이시기엔'에서 정보를 확인하며 아빠의 역할을 배워갑니다.<br>과제처럼 막막하던 출산 준비도, 다른 엄빠들의 리뷰와 함께 빌리쇼핑에서 합리적으로 완성해갑니다.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -271,8 +271,24 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>우리가 만드는 것 ②</span>
       <h2 class="h2" data-r style="--d:.06s">우리가 만드는 브랜드를 통해,<br><span class="hl">엄빠가 안심합니다.</span></h2>
-      <p class="lead" data-r style="--d:.14s">"이 제품, 정말 안전할까?" "지금 우리 아이에게 맞는 걸까?" 더 이상 매번 고민하고 비교하지 않아도 되도록, <b>안전하고 검증된 기준</b>을 먼저 제시합니다.</p>
-      <p class="lead" data-r style="--d:.2s">우리는 단지 제품을 만드는 것이 아니라, <span class="hl">부모의 걱정을 덜어주는 선택지</span>를 만듭니다.</p>
+      <p class="lead" data-r style="--d:.14s; max-width:860px">"이 제품, 정말 안전할까?" "지금 우리 아이에게 맞는 걸까?"<br>매번 고민하고 비교하지 않도록, 안전하고 검증된 기준을 우리가 먼저 제시합니다.<br>단지 제품을 만드는 것이 아니라, <span class="hl">부모의 걱정을 덜어주는 선택지</span>를 만듭니다.</p>
+    </div>
+    <div class="mark lt">01 · Mission</div>
+  </section>
+
+  <!-- 07b MISSION 2 — PRODUCTS -->
+  <section class="slide bg-white">
+    <div class="inner">
+      <span class="kicker" data-r>부모의 걱정을 덜어주는 선택지</span>
+      <h2 class="h2" data-r style="--d:.06s">엄빠의 고민에 맞는<br><span class="hl">선택지를 직접 만들어요.</span></h2>
+      <ul class="prodlist">
+        <li data-r style="--d:.12s"><span class="e">🥬</span><span>젖몸살에 힘든 엄마들을 위한 <b>양배추 가슴팩</b>을,</span></li>
+        <li data-r style="--d:.16s"><span class="e">🧴</span><span>요로감염에 걸리기 쉬운 돌 내외 아이들을 위한 <b>전용 클렌저</b>를,</span></li>
+        <li data-r style="--d:.2s"><span class="e">💧</span><span>로션을 자주 발라주기 힘든 아기들에게 <b>100시간 보습이 검증된 크림</b>을,</span></li>
+        <li data-r style="--d:.24s"><span class="e">🛁</span><span>씻기 싫어하는 아이들가 먼저 목욕을 하고 싶게 만드는 <b>버블 배쓰</b>를,</span></li>
+        <li data-r style="--d:.28s"><span class="e">👕</span><span>상하의를 셋트로 맞춰서 이쁘게 일상 사진을 찍고 싶은 엄빠의 마음을 이해하여, <b>믹스매치가 가능한 실내복</b>을.</span></li>
+      </ul>
+      <p class="lead" data-r style="--d:.34s; max-width:860px">아기의 성장 단계와 엄빠의 시기별 고민에 맞는 선택지들을 꾸준히 고민하여, <span class="hl">엄빠의 고민을 대신합니다.</span></p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -298,7 +314,7 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Vision</span>
       <h2 class="stmt" data-r style="--d:.08s"><span class="hl">'육아의 기준'</span>이 되고,<br>글로벌로 확장합니다.</h2>
-      <p class="lead" data-r style="--d:.18s">부모가 되는 길목마다 누구나 가장 먼저 찾는 Must-have가 되어, 더 많은 사람이 기꺼이 부모가 되기를 택하는 세상으로. 그리고 그 경험을 국경 너머로.</p>
+      <p class="lead" data-r style="--d:.18s">부모가 되는 길목마다<br>누구나 가장 먼저 찾는 Must-have가 되어,<br>더 많은 사람이 기꺼이 부모가 되기를 택하는 세상으로.<br><br>그리고 그 경험을 국경 너머로.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
   </section>
