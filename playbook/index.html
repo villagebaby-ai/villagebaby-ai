@@ -262,8 +262,22 @@ img{display:block;max-width:100%}
 /* live chapter indicator */
 .chip{position:fixed; left:50%; top:16px; transform:translateX(-50%); z-index:50; font-size:11px; font-weight:900; letter-spacing:.18em; padding:7px 15px; border-radius:99px; background:rgba(140,140,140,.16); backdrop-filter:blur(7px); color:#fff; mix-blend-mode:difference; pointer-events:none; transition:opacity .4s}
 
+/* count-up numbers */
+.cu{font-variant-numeric:tabular-nums; font-feature-settings:"tnum"}
+/* slide background bloom on entrance (배경 전환) */
+.bg-blue{--glow:rgba(122,166,210,.40)} .bg-ink{--glow:rgba(74,137,204,.30)} .bg-peach{--glow:rgba(224,166,132,.42)} .bg-light{--glow:rgba(122,166,210,.18)} .bg-white{--glow:rgba(122,166,210,.14)}
+.slide::after{content:""; position:absolute; z-index:0; inset:0; background:radial-gradient(72% 55% at 50% 10%, var(--glow,transparent), transparent 72%); opacity:0; transition:opacity 1.2s var(--ease); pointer-events:none}
+.slide.active::after{opacity:1}
+/* chapter dot rail */
+.dots{position:fixed; left:clamp(12px,2.4vw,26px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:7px; z-index:50}
+.dot{width:7px; height:7px; padding:0; border:none; border-radius:50%; background:rgba(137,137,137,.45); cursor:pointer; transition:transform .25s var(--ease), background .25s; mix-blend-mode:difference}
+.dot:hover{transform:scale(1.3)}
+.dot.on{background:#fff; transform:scale(1.7)}
+.dot.chap-start{margin-top:13px}
+
 @media (max-width:820px){
   .chap{flex-direction:column; gap:8px; align-items:flex-start}
+  .dots{display:none}
   /* multi-box sections → horizontal swipe carousel (한 슬라이드 내 여러 box) */
   .cards.c3, .road, .vdd{display:flex; grid-template-columns:none; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; gap:12px}
   .cards.c3::-webkit-scrollbar, .road::-webkit-scrollbar, .vdd::-webkit-scrollbar{display:none}
@@ -290,6 +304,7 @@ img{display:block;max-width:100%}
   .cover-title[data-r],.stmt[data-r]{clip-path:none!important}
   .vdd .vcol,.cvflow li{opacity:1!important; transform:none!important}
   .voice{opacity:.5!important; transform:none!important}
+  .slide::after{transition:none!important}
 }
 </style>
 </head>
@@ -298,6 +313,7 @@ img{display:block;max-width:100%}
 <div class="counter" id="counter">01 / 21</div>
 <div class="chip" id="chip" aria-hidden="true">PLAYBOOK</div>
 <div class="nav"><button id="prev" aria-label="이전">↑</button><button id="next" aria-label="다음">↓</button></div>
+<nav class="dots" id="dots" aria-label="슬라이드로 이동"></nav>
 <div class="hint" id="hint"><span class="key">↓</span> 스크롤 또는 방향키로 넘기세요</div>
 
 <main class="deck" id="deck">
@@ -467,7 +483,7 @@ img{display:block;max-width:100%}
       <h2 class="h2" data-r style="--d:.06s">'잘 자리 잡았다'는 것이<br><span class="hl">곧 '안전하다'는 뜻은 아닙니다.</span></h2>
       <p class="lead" data-r style="--d:.1s; color:rgba(255,255,255,.72); max-width:920px">출시 후 지난 5년 간, 감사하게도 베이비빌리는 우리나라에서 임신한 가정이면 대부분이 한 번쯤은 다운받고 사랑에 빠지는 서비스로 성장했어요.<br>지금 빌리지베이비는 세 가지 과제를 마주하고 있습니다.</p>
       <div class="cards c3" data-r style="--d:.16s">
-        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">01</div><h4 style="color:#fff">25만 명의 아기들, 그 다음은?</h4><p style="color:rgba(255,255,255,.6)">높은 시장 침투율을 이뤘지만, 출생아 수가 줄어드는 국내 시장만으로는 서비스 지표의 성장이 정체될 수밖에 없습니다.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">01</div><h4 style="color:#fff"><span class="cu" data-to="25">25</span>만 명의 아기들, 그 다음은?</h4><p style="color:rgba(255,255,255,.6)">높은 시장 침투율을 이뤘지만, 출생아 수가 줄어드는 국내 시장만으로는 서비스 지표의 성장이 정체될 수밖에 없습니다.</p></div>
         <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">02</div><h4 style="color:#fff">언제든 대체될 수 있습니다.</h4><p style="color:rgba(255,255,255,.6)">더 깔끔하고, 광고 없이, 더 큰 감동을 주는 단순한 서비스가 나타난다면 엄빠의 선택은 얼마든지 옮겨갈 수 있습니다.</p></div>
         <div class="card" style="background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)"><div class="num" style="color:var(--peach)">03</div><h4 style="color:#fff">AI가 기술의 장벽마저 허물어요.</h4><p style="color:rgba(255,255,255,.6)">누구나 손끝에서 전문가 수준의 조언을 얻고, 자신만의 육아 서비스를 개발하기까지 합니다. '좋은 콘텐츠 제공'만으로는 더 이상 특별하지 못해요.</p></div>
       </div>
@@ -483,7 +499,7 @@ img{display:block;max-width:100%}
       <div class="cards c3">
         <div class="card" data-r style="--d:.12s"><div class="ico">🫂</div><h4>소속감 <span class="en">Sense of Community</span></h4><p>나와 비슷한 시기를 지나는 베동 엄빠가 곁에 있다는 든든함.</p></div>
         <div class="card" data-r style="--d:.18s"><div class="ico">💗</div><h4>귀염뽀짝 빌리 <span class="en">Emotional Bond</span></h4><p>귀염뽀짝한 빌리에게서 얻는, 눈시울이 붉어지는 위로와 교감.</p></div>
-        <div class="card" data-r style="--d:.24s"><div class="ico">📊</div><h4>데이터의 해자 <span class="en">Data Assets</span></h4><p>200만 엄빠가 함께 쌓아 올린, 누구도 흉내 낼 수 없는 데이터.</p></div>
+        <div class="card" data-r style="--d:.24s"><div class="ico">📊</div><h4>데이터의 해자 <span class="en">Data Assets</span></h4><p><span class="cu" data-to="200">200</span>만 엄빠가 함께 쌓아 올린, 누구도 흉내 낼 수 없는 데이터.</p></div>
       </div>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -500,7 +516,7 @@ img{display:block;max-width:100%}
       <span class="voice" style="--vd:1.8s; bottom:8%; left:31%">없었으면 큰일날뻔</span>
     </div>
     <div class="inner">
-      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 베이비빌리가 잘 되길 바라"</span>는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 1,000명의 엄빠</span>가 있었습니다.</p>
+      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 베이비빌리가 잘 되길 바라"</span>는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>가 있었습니다.</p>
       <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요.<br>그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 '육아의 Must-have 기준'이 되고<br>세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -512,7 +528,7 @@ img{display:block;max-width:100%}
       <span class="kicker" data-r>이 경쟁력을 바탕으로</span>
       <h2 class="h2" data-r style="--d:.06s">우리는 이렇게<br><span class="hl">나아갑니다.</span></h2>
       <div class="road">
-        <div class="road-col" data-r style="--d:.12s"><div class="when">오늘</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU 10만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지 접점을 넓히고 더 오래 만나는 구조로, '부모의 습관'이 됩니다.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 브랜드로서의 생존 가능성을 입증합니다.</div></div></div>
+        <div class="road-col" data-r style="--d:.12s"><div class="when">오늘</div><div class="goal">기반을 단단히 다집니다</div><div class="metric">DAU <span class="cu" data-to="10">10</span>만</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>임신 준비부터 육아까지 접점을 넓히고 더 오래 만나는 구조로, '부모의 습관'이 됩니다.</div><div class="t"><span class="tag tp">브랜드</span>전년 대비 2배 성장으로 브랜드로서의 생존 가능성을 입증합니다.</div></div></div>
         <div class="road-col" data-r style="--d:.2s"><div class="when">3년 후</div><div class="goal">'도움'이 아니라 '기준'이 됩니다</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>지금 무엇을 해야 할지 먼저 알려주는 '필수앱'이 됩니다. 데이터로 커뮤니티·커머스·핀테크 전 영역에서 Lifecycle을 확장합니다.</div><div class="t"><span class="tag tp">브랜드</span>'있어야 마음이 놓이는 브랜드'로, 아이의 성장 루틴과 엄마의 웰니스를 함께 만듭니다.</div></div></div>
         <div class="road-col" data-r style="--d:.28s"><div class="when">5년 후</div><div class="goal">한국을 넘어, 전 세계 부모에게로</div><div class="metric">1천억</div><div class="road-track"><div class="t"><span class="tag tb">베이비빌리</span>국내 Lifecycle 확장을 완성한 뒤, '필수앱'의 경험을 해외 고객으로 확장합니다.</div><div class="t"><span class="tag tp">브랜드</span>미국·일본을 포함한 글로벌 아이·부모 웰니스 브랜드로 성장합니다.</div></div></div>
       </div>
@@ -727,7 +743,7 @@ img{display:block;max-width:100%}
       <div class="mf-cols">
         <div class="mf-col" data-r style="--d:.12s">
           <p><b>임신 &amp; 임신 준비 1위,<br>사랑받는 육아 앱,<br>흑자 육아 버티컬 앱.</b></p>
-          <p>작은 성공들을 소중히 여긴<br>빌베인들이 만들어낸 성과입니다.<br>앱을 런칭하고 단 5년 만에.</p>
+          <p>작은 성공들을 소중히 여긴<br>빌베인들이 만들어낸 성과입니다.<br>앱을 런칭하고 단 <span class="cu" data-to="5">5</span>년 만에.</p>
         </div>
         <div class="mf-col" data-r style="--d:.2s">
           <p>이제는 그 다음을 준비합니다.</p>
@@ -766,11 +782,22 @@ img{display:block;max-width:100%}
   var total=slides.length, idx=0;
   function pad(n){return (n<10?'0':'')+n;}
   function ui(){ counter.textContent=pad(idx+1)+' / '+pad(total); bar.style.width=(total>1?idx/(total-1)*100:0)+'%'; }
+  function countUp(el){
+    if(el._cud) return; el._cud=1;
+    var to=parseInt(el.getAttribute('data-to'),10);
+    if(reduce||isNaN(to)) return;
+    var dur=1100, t0=null;
+    function step(ts){ if(t0===null)t0=ts; var p=Math.min(1,(ts-t0)/dur); el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('en-US'); if(p<1)requestAnimationFrame(step); }
+    el.textContent='0'; requestAnimationFrame(step);
+  }
+  var dotsWrap=document.getElementById('dots'), dots=[];
+  if(dotsWrap){ var pc=null; slides.forEach(function(s,i){ var b=document.createElement('button'); b.className='dot'; b.type='button'; b.setAttribute('aria-label',(i+1)+' / '+total); var ch=chapterOf(s); if(pc!==null&&ch!==pc) b.className+=' chap-start'; pc=ch; b.addEventListener('click',function(){ go(i); }); dotsWrap.appendChild(b); dots.push(b); }); }
+  function setDot(){ for(var j=0;j<dots.length;j++) dots[j].classList.toggle('on', j===idx); }
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); idx=slides.indexOf(e.target); ui(); if(chip)chip.textContent=chapterOf(e.target); } });
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('active'); idx=slides.indexOf(e.target); ui(); setDot(); if(chip)chip.textContent=chapterOf(e.target); [].forEach.call(e.target.querySelectorAll('.cu'),countUp); } });
   },{threshold:.55});
   slides.forEach(function(s){ io.observe(s); });
-  slides[0].classList.add('active'); ui(); if(chip)chip.textContent=chapterOf(slides[0]);
+  slides[0].classList.add('active'); ui(); setDot(); if(chip)chip.textContent=chapterOf(slides[0]);
 
   function go(i){ i=Math.max(0,Math.min(total-1,i)); slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'}); }
   document.getElementById('next').addEventListener('click',function(){ go(idx+1); });
