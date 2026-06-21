@@ -159,6 +159,14 @@ img{display:block;max-width:100%}
 .v-says .bubbles{align-items:flex-start}
 .v-says .bubble,.v-says .bubble.b-peach{align-self:flex-start; border-radius:18px}
 .v-says .bubble::after{display:none}
+/* 이런 말을 해요 — 1개만 노출, 누르면 다음 말풍선으로 순환 */
+.v-says.says-tap{cursor:pointer; user-select:none; -webkit-tap-highlight-color:transparent}
+.v-says.says-tap .bubbles{position:relative; min-height:48px}
+.v-says.says-tap .bubble{display:none}
+.v-says.says-tap .bubble.on{display:inline-block; animation:saysPop .42s var(--ease)}
+@keyframes saysPop{from{opacity:0; transform:translateY(9px) scale(.93)} to{opacity:1; transform:none}}
+.says-hint{display:inline-block; margin-left:9px; font-size:11px; font-weight:700; color:var(--gray); letter-spacing:0; vertical-align:middle}
+.v-says.says-tap:hover .says-hint{color:var(--blue)}
 /* value-slide journey rail — fill/knob shoot forward on entry (슉) */
 .vrail{position:relative; height:3px; border-radius:3px; background:var(--border); max-width:360px; margin:0 0 26px; --w:calc(var(--step,1)/5*100%)}
 .vrail::after{content:""; position:absolute; top:0; left:0; bottom:0; width:0; border-radius:3px; background:linear-gradient(90deg,var(--blue),var(--peach-deep)); transition:width 1s var(--ease)}
@@ -271,7 +279,7 @@ img{display:block;max-width:100%}
   }
 }
 /* live chapter indicator */
-.chip{position:fixed; left:50%; top:16px; transform:translateX(-50%); z-index:50; font-size:11px; font-weight:900; letter-spacing:.18em; padding:7px 15px; border-radius:99px; background:rgba(140,140,140,.16); backdrop-filter:blur(7px); color:#fff; mix-blend-mode:difference; pointer-events:none; transition:opacity .4s}
+.chip{position:fixed; left:50%; top:16px; transform:translateX(-50%); z-index:50; font-size:11px; font-weight:900; letter-spacing:.18em; padding:7px 15px; border-radius:99px; background:rgba(22,22,26,.55); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.14); pointer-events:none; transition:opacity .4s}
 
 /* count-up numbers */
 .cu{font-variant-numeric:tabular-nums; font-feature-settings:"tnum"}
@@ -294,10 +302,13 @@ img{display:block;max-width:100%}
   .cards.c3::-webkit-scrollbar, .road::-webkit-scrollbar, .vdd::-webkit-scrollbar{display:none}
   .cards.c3>*, .road>*, .vdd>*{flex:0 0 84%; scroll-snap-align:center}
   .mcols{grid-template-columns:1fr; gap:18px}
-  .cvflow{overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; margin-top:34px}
-  .cvflow::before{display:none}
-  .cvflow li{flex:0 0 44%; scroll-snap-align:center}
-  .cvflow::-webkit-scrollbar{display:none}
+  /* cvflow → 세로 연결 타임라인 (듬성한 가로 스크롤 대체) */
+  .cvflow{flex-direction:column; align-items:stretch; gap:0; margin-top:24px; overflow:visible; padding-left:0}
+  .cvflow::before{display:block; left:18px; right:auto; top:25px; bottom:25px; width:2px; height:auto; background:linear-gradient(180deg,var(--blue),var(--peach-deep)); transform-origin:top center; transform:scaleY(0); transition:transform 1.1s var(--ease) .15s}
+  .slide.active .cvflow::before{transform:scaleY(1)}
+  .cvflow li{flex:none; flex-direction:row; align-items:center; text-align:left; gap:14px; padding:8px 0; width:auto}
+  .cvflow .cvn{width:38px; height:38px; font-size:15px}
+  .cvflow b{font-size:16px}
   .finale-line{flex-direction:column; align-items:flex-start; gap:12px}
   .finale-line .bar{width:56%; flex:none; height:2px}
   .mf-cols{grid-template-columns:1fr; gap:22px}
@@ -315,7 +326,8 @@ img{display:block;max-width:100%}
   .cover-title[data-r],.stmt[data-r]{clip-path:none!important}
   .vdd .vcol,.cvflow li{opacity:1!important; transform:none!important}
   .voice{opacity:.5!important; transform:none!important}
-  .slide::after,.vrail::after,.vrail .knob{transition:none!important}
+  .slide::after,.vrail::after,.vrail .knob,.cvflow::before{transition:none!important}
+  .cvflow::before{transform:none!important}
 }
 </style>
 </head>
@@ -526,8 +538,8 @@ img{display:block;max-width:100%}
       <span class="voice" style="--vd:1.8s; bottom:8%; left:31%">없었으면 큰일날뻔</span>
     </div>
     <div class="inner">
-      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 베이비빌리가 잘 되길 바라"</span>는<br>이유만으로 한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>가 있었습니다.</p>
-      <p class="lead" data-r style="--d:.2s">2020년, 서비스 출시 후 100일 만의 일이에요.<br>그 마음 — <b>'베이비빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 '육아의 Must-have 기준'이 되고<br>세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
+      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 빌리가 잘되길 바라"</span>는<br>마음으로 한 시간짜리 서베이에<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>가<br>응해주었던 마음을 기억해요.</p>
+      <p class="lead" data-r style="--d:.2s">그 마음 — <b>'빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
   </section>
@@ -849,6 +861,19 @@ img{display:block;max-width:100%}
   },{threshold:.55});
   slides.forEach(function(s){ io.observe(s); });
   slides[0].classList.add('active'); ui(); setDot(); if(chip)chip.textContent=chapterOf(slides[0]);
+
+  /* 이런 말을 해요 — 말풍선 1개만 노출, 누르면 다음 말로 순환 */
+  [].forEach.call(document.querySelectorAll('.v-says'),function(box){
+    var bubs=[].slice.call(box.querySelectorAll('.bubble'));
+    if(!bubs.length) return;
+    box.classList.add('says-tap'); bubs[0].classList.add('on');
+    if(bubs.length<2) return;
+    var lbl=box.querySelector('.lbl'), cur=0;
+    if(lbl){ var h=document.createElement('span'); h.className='says-hint'; h.textContent='눌러서 더 보기'; lbl.appendChild(h); }
+    box.addEventListener('click',function(){
+      bubs[cur].classList.remove('on'); cur=(cur+1)%bubs.length; bubs[cur].classList.add('on');
+    });
+  });
 
   function go(i){ i=Math.max(0,Math.min(total-1,i)); slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'}); }
   document.getElementById('next').addEventListener('click',function(){ go(idx+1); });
