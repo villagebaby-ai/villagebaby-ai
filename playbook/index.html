@@ -26,7 +26,7 @@ body{font-family:var(--font); background:var(--ink); color:var(--ink); -webkit-f
 img{display:block;max-width:100%}
 
 /* DECK */
-.deck{height:100dvh; overflow-y:scroll; scroll-snap-type:y mandatory; scroll-behavior:smooth; scrollbar-width:none; overscroll-behavior:none; background:var(--bg)}
+.deck{height:100dvh; overflow-y:scroll; scroll-snap-type:y mandatory; scroll-behavior:smooth; scrollbar-width:none; overscroll-behavior:none; background:var(--blue-900)}
 .deck::-webkit-scrollbar{display:none}
 .slide{min-height:100dvh; scroll-snap-align:start; scroll-snap-stop:always; position:relative; display:flex; align-items:center; justify-content:center; padding:clamp(40px,7vh,96px) clamp(28px,7vw,120px); overflow:hidden}
 .inner{width:100%; max-width:1100px; position:relative; z-index:2}
@@ -107,6 +107,14 @@ img{display:block;max-width:100%}
 .mcols p{font-size:clamp(16px,1.7vw,18px); line-height:1.6; color:var(--ink-2)}
 .mcols p b{color:var(--ink); font-weight:700}
 
+/* mission① — 불안→안심 컴팩트 행 (밀집 5문단 대체) */
+.relief{list-style:none; display:flex; flex-direction:column; gap:clamp(13px,2.2vh,20px); margin-top:clamp(28px,5vh,40px); max-width:780px}
+.relief li{display:flex; gap:15px; align-items:center}
+.relief .ri{flex-shrink:0; width:46px; height:46px; border-radius:13px; background:var(--blue-50); display:flex; align-items:center; justify-content:center; font-size:22px}
+.relief li>div{display:flex; flex-direction:column; gap:3px}
+.relief b{font-size:clamp(15px,1.9vw,18px); font-weight:900; color:var(--ink); letter-spacing:-.01em; line-height:1.3}
+.relief .sub{font-size:clamp(13px,1.5vw,15px); line-height:1.5; color:var(--ink-2)}
+
 /* app feature screens — auto-rolling marquee */
 .feats{overflow:hidden; margin-top:30px; width:100%; -webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 .feat-track{display:flex; align-items:center; gap:clamp(14px,2vw,26px); width:max-content; animation:feat-roll 38s linear infinite}
@@ -124,7 +132,7 @@ img{display:block;max-width:100%}
 .road-col .goal{font-size:clamp(17px,2.2vw,21px); font-weight:900; letter-spacing:-.02em; margin-bottom:20px; line-height:1.25}
 .road-track{display:flex; flex-direction:column; gap:14px}
 .road-track .t{font-size:14px; line-height:1.55; color:var(--ink-2)}
-.road-track .t .tag{display:inline-block; font-size:11px; font-weight:900; padding:2px 9px; border-radius:99px; margin-bottom:5px}
+.road-track .t .tag{display:inline-block; font-size:11px; font-weight:900; padding:2px 9px; border-radius:99px; margin-bottom:5px; margin-right:8px}
 .tag.tb{background:var(--blue-50); color:var(--blue)} .tag.tp{background:var(--peach-100); color:var(--peach-text)}
 .road-col .metric{position:absolute; top:24px; right:24px; font-size:12px; font-weight:900; color:var(--peach-deep)}
 
@@ -243,10 +251,17 @@ img{display:block;max-width:100%}
 .slide.active .vdd .vcol{opacity:1; transform:none}
 
 /* core-value flow — 고객에서 임팩트까지의 여정 */
-.cvflow{list-style:none; display:flex; flex-direction:row; align-items:flex-start; margin-top:42px; position:relative}
-.cvflow::before{content:""; position:absolute; top:18px; left:10%; right:10%; height:2px; background:linear-gradient(90deg,var(--blue-200),var(--blue-100)); z-index:0}
+/* 데스크톱 = 오르막 계단(climbing storyline): ①낮음→⑤높음, 라인 draw + 노드 순차 점등 */
+.cvwrap{position:relative; margin-top:clamp(34px,6vh,52px)}
+.cv-asc{position:absolute; left:10%; width:80%; top:20px; height:80px; z-index:0; overflow:visible; pointer-events:none}
+.cv-asc line{stroke-width:2.5; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.2s var(--ease) .25s}
+.slide.active .cv-asc line{stroke-dashoffset:0}
+.cvflow{list-style:none; display:flex; flex-direction:row; align-items:flex-start; position:relative; margin:0}
+.cvflow::before{display:none}
 .cvflow li{flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:13px; padding:0 6px; position:relative; z-index:1}
+.cvflow li:nth-child(1){margin-top:80px} .cvflow li:nth-child(2){margin-top:60px} .cvflow li:nth-child(3){margin-top:40px} .cvflow li:nth-child(4){margin-top:20px} .cvflow li:nth-child(5){margin-top:0}
 .cvflow .cvn{width:40px; height:40px; border-radius:50%; background:var(--blue); color:#fff; font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(45,102,163,.28)}
+.cvflow li:nth-child(5) .cvn{background:var(--peach-deep); box-shadow:0 6px 14px rgba(224,166,132,.45)}
 .cvflow b{font-size:clamp(13.5px,1.7vw,18px); font-weight:900; letter-spacing:-.02em; color:var(--ink); line-height:1.25}
 /* core-value connecting narrative pages */
 .narr{display:flex; flex-direction:column; gap:clamp(22px,4.5vh,40px); margin-top:30px; max-width:920px}
@@ -309,6 +324,8 @@ img{display:block;max-width:100%}
   .cvflow li{flex:none; flex-direction:row; align-items:center; text-align:left; gap:14px; padding:8px 0; width:auto}
   .cvflow .cvn{width:38px; height:38px; font-size:15px}
   .cvflow b{font-size:16px}
+  .cv-asc{display:none}
+  .cvflow li{margin-top:0!important}
   .finale-line{flex-direction:column; align-items:flex-start; gap:12px}
   .finale-line .bar{width:56%; flex:none; height:2px}
   .mf-cols{grid-template-columns:1fr; gap:22px}
@@ -326,8 +343,9 @@ img{display:block;max-width:100%}
   .cover-title[data-r],.stmt[data-r]{clip-path:none!important}
   .vdd .vcol,.cvflow li{opacity:1!important; transform:none!important}
   .voice{opacity:.5!important; transform:none!important}
-  .slide::after,.vrail::after,.vrail .knob,.cvflow::before{transition:none!important}
+  .slide::after,.vrail::after,.vrail .knob,.cvflow::before,.cv-asc line{transition:none!important}
   .cvflow::before{transform:none!important}
+  .cv-asc line{stroke-dashoffset:0!important}
 }
 </style>
 </head>
@@ -412,13 +430,13 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>우리가 만드는 것 ①</span>
       <h2 class="h2" data-r style="--d:.06s">베이비빌리를 통해,<br><span class="hl">엄빠의 불안이 줄어듭니다.</span></h2>
-      <div class="mcols" data-r style="--d:.12s">
-        <p>우리의 콘텐츠들을 통해 엄빠들은 무엇을 선택해야 할지<br>고민하는 시간이 줄고,<br>잘못된 정보로 겪는 시행착오도 줄일 수 있어요.</p>
-        <p>"이게 정상일까?" 걱정하던 엄빠가<br>비슷한 시기를 함께하는 베동 엄빠들에게<br>조언을 얻고 안심합니다.</p>
-        <p>지친 하루 끝에,<br>위로가 담긴 말풍선 하나에<br>눈시울이 붉어지기도 합니다.</p>
-        <p>무엇을 해줘야 할지 막막하던 아빠는<br>태담을 읽어주고 '이시기엔'에서 정보를 확인하며<br>아빠의 역할을 배워갑니다.</p>
-        <p>과제처럼 막막하던 출산 준비도,<br>다른 엄빠들의 리뷰와 함께<br>빌리쇼핑에서 합리적으로 완성해갑니다.</p>
-      </div>
+      <ul class="relief">
+        <li data-r style="--d:.12s"><span class="ri">🧭</span><div><b>무엇을 고를지 막막할 때</b><span class="sub">검증된 콘텐츠로, 고민도 시행착오도 줄어요.</span></div></li>
+        <li data-r style="--d:.17s"><span class="ri">🫶</span><div><b>"이게 정상일까?" 싶을 때</b><span class="sub">같은 시기를 지나는 베동에게 묻고 안심해요.</span></div></li>
+        <li data-r style="--d:.22s"><span class="ri">💌</span><div><b>하루가 유난히 지친 날</b><span class="sub">위로 담긴 말풍선 하나에 눈시울이 붉어져요.</span></div></li>
+        <li data-r style="--d:.27s"><span class="ri">🍼</span><div><b>무얼 해줘야 할지 모를 때</b><span class="sub">태담과 '이시기엔'으로 아빠의 역할을 배워가요.</span></div></li>
+        <li data-r style="--d:.32s"><span class="ri">🛒</span><div><b>출산 준비가 과제 같을 때</b><span class="sub">엄빠 리뷰와 빌리쇼핑으로 합리적으로 완성해요.</span></div></li>
+      </ul>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -538,7 +556,7 @@ img{display:block;max-width:100%}
       <span class="voice" style="--vd:1.8s; bottom:8%; left:31%">없었으면 큰일날뻔</span>
     </div>
     <div class="inner">
-      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 빌리가 잘되길 바라"</span>는<br>마음으로 한 시간짜리 서베이에<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>가<br>응해주었던 마음을 기억해요.</p>
+      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 빌리가 잘되길 바라"</span>는 마음 하나로,<br>한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>.</p>
       <p class="lead" data-r style="--d:.2s">그 마음 — <b>'빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
@@ -579,13 +597,19 @@ img{display:block;max-width:100%}
       <span class="kicker" data-r>고객에서 임팩트까지의 여정</span>
       <h2 class="stmt" data-r style="--d:.06s; font-size:clamp(20px,3.2vw,33px); line-height:1.18">우리가 일하며 만족시켜야 하는<br>최종 보스는 결국 하나 — <span class="hl">엄빠</span>입니다.</h2>
       <p class="lead" data-r style="--d:.12s; margin-top:10px; max-width:880px">모든 시작은 'Customer-centric'입니다. 기존의 기획이나 개인의 선호보다 '엄빠의 목소리'가 우선하며, 판단이 어려울 땐 언제나 엄빠에게서 답을 구합니다.</p>
-      <ol class="cvflow" style="--d:.2s">
-        <li><span class="cvn">①</span><b>Customer-centric</b></li>
-        <li><span class="cvn">②</span><b>One Team</b></li>
-        <li><span class="cvn">③</span><b>Proactive</b></li>
-        <li><span class="cvn">④</span><b>Today not tomorrow</b></li>
-        <li><span class="cvn">⑤</span><b>Own Your Impact</b></li>
-      </ol>
+      <div class="cvwrap">
+        <svg class="cv-asc" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="cvg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3373BA"/><stop offset="1" stop-color="#E0A684"/></linearGradient></defs>
+          <line x1="0" y1="100" x2="100" y2="0" pathLength="1" stroke="url(#cvg)" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <ol class="cvflow">
+          <li><span class="cvn">①</span><b>Customer-centric</b></li>
+          <li><span class="cvn">②</span><b>One Team</b></li>
+          <li><span class="cvn">③</span><b>Proactive</b></li>
+          <li><span class="cvn">④</span><b>Today not tomorrow</b></li>
+          <li><span class="cvn">⑤</span><b>Own Your Impact</b></li>
+        </ol>
+      </div>
     </div>
     <div class="mark lt">03 · Core Value</div>
   </section>
