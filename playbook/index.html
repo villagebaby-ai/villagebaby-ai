@@ -275,7 +275,14 @@ img{display:block;max-width:100%}
 .cvflow li{flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:13px; padding:0 6px; position:relative; z-index:1}
 .cvflow li:nth-child(1){margin-top:80px} .cvflow li:nth-child(2){margin-top:60px} .cvflow li:nth-child(3){margin-top:40px} .cvflow li:nth-child(4){margin-top:20px} .cvflow li:nth-child(5){margin-top:0}
 .cvflow .cvn{width:40px; height:40px; border-radius:50%; background:var(--blue); color:#fff; font-weight:900; font-size:15px; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(45,102,163,.28)}
-.cvflow li:nth-child(5) .cvn{background:var(--peach-deep); box-shadow:0 6px 14px rgba(224,166,132,.45)}
+/* 노드가 ①→⑤ 차례로 '불 켜지듯' 밝아짐(밝기 플래시 + 잔물결 링), 라인 드로우와 동기화 */
+@keyframes cvPulse{0%{background:var(--blue); box-shadow:0 6px 14px rgba(45,102,163,.28), 0 0 0 0 rgba(74,137,204,.6)} 45%{background:var(--blue-500); box-shadow:0 9px 20px rgba(45,102,163,.42), 0 0 0 9px rgba(122,166,210,.4)} 100%{background:var(--blue); box-shadow:0 6px 14px rgba(45,102,163,.28), 0 0 0 16px rgba(74,137,204,0)}}
+.slide.active .cvflow .cvn{animation:cvPulse 1s var(--ease) both}
+.slide.active .cvflow li:nth-child(1) .cvn{animation-delay:.25s}
+.slide.active .cvflow li:nth-child(2) .cvn{animation-delay:.42s}
+.slide.active .cvflow li:nth-child(3) .cvn{animation-delay:.59s}
+.slide.active .cvflow li:nth-child(4) .cvn{animation-delay:.76s}
+.slide.active .cvflow li:nth-child(5) .cvn{animation-delay:.93s}
 .cvflow b{font-size:clamp(13.5px,1.7vw,18px); font-weight:900; letter-spacing:-.02em; color:var(--ink); line-height:1.25}
 /* core-value connecting narrative pages */
 .narr{display:flex; flex-direction:column; gap:clamp(22px,4.5vh,40px); margin-top:30px; max-width:920px}
