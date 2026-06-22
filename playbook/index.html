@@ -21,7 +21,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{font-family:var(--font); background:var(--ink); color:var(--ink); -webkit-font-smoothing:antialiased; overflow:hidden}
+body{font-family:var(--font); background:var(--ink); color:var(--ink); -webkit-font-smoothing:antialiased; overflow:hidden; word-break:keep-all}
 ::selection{background:var(--blue-200);color:var(--blue-900)}
 img{display:block;max-width:100%}
 
@@ -419,8 +419,9 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>Our Mission</span>
       <h2 class="stmt" data-r style="--d:.08s">부모가 되는 여정을,<br><span class="hl">누구나 쉽고 편하게.</span></h2>
-      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도,<br>마음이 놓이는 것일 수도,<br>따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.<br><br>임신을 준비하는 사람도,<br>두 줄을 처음 확인한 예비 부모도,<br>처음 아기를 안아본 초보 부모도 —<br>누구도 혼자 검색하며 불안해하지 않도록,<br>"이렇게 해도 괜찮은 걸까?"를<br>끝없이 걱정하지 않도록,</p>
-      <p class="lead emph" data-r style="--d:.34s; margin-top:22px">빌리지베이비는 그 여정을 함께 걷는 <span class="hl">동반자</span>가 되고자 해요.</p>
+      <p class="lead" data-r style="--d:.18s">그 '편함'은 몸이 편해지는 것일 수도, 마음이 놓이는 것일 수도, 따뜻한 위로 한마디에 긴장됐던 하루가 풀어지는 것일 수도 있습니다.</p>
+      <p class="lead" data-r style="--d:.26s; margin-top:18px">임신을 준비하는 사람도, 두 줄을 처음 확인한 예비 부모도, 처음 아기를 안아본 초보 부모도 — 누구도 혼자 검색하며 불안해하지 않도록, "이렇게 해도 괜찮은 걸까?"를 끝없이 걱정하지 않도록,</p>
+      <p class="lead emph" data-r style="--d:.34s; margin-top:18px">빌리지베이비는 그 여정을 함께 걷는 <span class="hl">동반자</span>가 되고자 해요.</p>
     </div>
     <div class="mark lt">01 · Mission</div>
   </section>
@@ -556,8 +557,8 @@ img{display:block;max-width:100%}
       <span class="voice" style="--vd:1.8s; bottom:8%; left:31%">없었으면 큰일날뻔</span>
     </div>
     <div class="inner">
-      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀염뽀짝한 빌리가 잘되길 바라"</span>는 마음 하나로,<br>한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>.</p>
-      <p class="lead" data-r style="--d:.2s">그 마음 — <b>'빌리를 사랑해주고 키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
+      <p class="big-quote" data-r style="--d:.08s"><span class="q-em">"귀여운 빌리가 잘되길 바라"</span><br>이 마음 하나로,<br>한 시간짜리 서베이에 응해준<br><span class="em-pe">첫 <span class="cu" data-to="1000">1,000</span>명의 엄빠</span>.</p>
+      <p class="lead" data-r style="--d:.2s">그 마음 — <b>'빌리를 사랑해주고<br>키워주고 싶은 마음'</b> — 을<br>모든 엄빠에게 꾸준히 심어가는 것.<br>우리가 세계로 나아가는 힘은 바로 여기서 나옵니다.</p>
     </div>
     <div class="mark lt">02 · Vision</div>
   </section>
@@ -596,7 +597,6 @@ img{display:block;max-width:100%}
     <div class="inner">
       <span class="kicker" data-r>고객에서 임팩트까지의 여정</span>
       <h2 class="stmt" data-r style="--d:.06s; font-size:clamp(20px,3.2vw,33px); line-height:1.18">우리가 일하며 만족시켜야 하는<br>최종 보스는 결국 하나 — <span class="hl">엄빠</span>입니다.</h2>
-      <p class="lead" data-r style="--d:.12s; margin-top:10px; max-width:880px">모든 시작은 'Customer-centric'입니다. 기존의 기획이나 개인의 선호보다 '엄빠의 목소리'가 우선하며, 판단이 어려울 땐 언제나 엄빠에게서 답을 구합니다.</p>
       <div class="cvwrap">
         <svg class="cv-asc" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <defs><linearGradient id="cvg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3373BA"/><stop offset="1" stop-color="#E0A684"/></linearGradient></defs>
@@ -610,6 +610,7 @@ img{display:block;max-width:100%}
           <li><span class="cvn">⑤</span><b>Own Your Impact</b></li>
         </ol>
       </div>
+      <p class="lead" data-r style="--d:.55s; margin-top:clamp(20px,4vh,34px); max-width:880px">모든 시작은 <span class="hl">'Customer-centric'</span>입니다. 기존의 기획이나 개인의 선호보다 '엄빠의 목소리'가 우선하며, 판단이 어려울 땐 언제나 엄빠에게서 답을 구합니다.</p>
     </div>
     <div class="mark lt">03 · Core Value</div>
   </section>
