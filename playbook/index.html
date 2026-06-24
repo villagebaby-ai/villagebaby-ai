@@ -256,8 +256,8 @@ img{display:block;max-width:100%}
 .chap-num[data-r]{transform:translateY(28px) scale(.64); filter:blur(4px); transform-origin:left bottom}
 .slide.active .chap-num[data-r]{transform:none; filter:none}
 /* core-value flow nodes slide in sequentially */
-.cvflow li{opacity:0; transform:translateX(-26px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
-.slide.active .cvflow li{opacity:1; transform:none}
+.cvflow li{opacity:0; transition:opacity .55s var(--ease)}
+.slide.active .cvflow li{opacity:1}
 .slide.active .cvflow li:nth-child(1){transition-delay:.16s}.slide.active .cvflow li:nth-child(2){transition-delay:.27s}.slide.active .cvflow li:nth-child(3){transition-delay:.38s}.slide.active .cvflow li:nth-child(4){transition-delay:.49s}.slide.active .cvflow li:nth-child(5){transition-delay:.6s}
 /* value Do/Don't enter from opposite sides */
 .vdd .vcol{opacity:0; transition:opacity .75s var(--ease) .12s, transform .75s var(--ease) .12s}
@@ -832,7 +832,7 @@ img{display:block;max-width:100%}
       <div class="vrail" style="--step:5" data-r><i class="knob"></i></div>
       <div class="v-head">
         <span class="badge b-oi" data-r>⑤ Own Your Impact · 책임감과 긍정적 에너지</span>
-        <h3 class="v-title" data-r style="--d:.05s">내 임팩트를 책임지고, 끝까지 cheerful하게.</h3>
+        <h3 class="v-title" data-r style="--d:.05s">내 임팩트를 책임지고, 끝까지 Cheerful하게.</h3>
       </div>
       <div class="vdd">
         <div class="vcol do"><h5>DO's</h5><ul>
