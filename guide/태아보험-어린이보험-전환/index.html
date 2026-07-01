@@ -662,13 +662,23 @@
     .char-figure {
       margin: 36px auto;
       text-align: center;
+      max-width: 480px;
+    }
+    .char-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--blue-50);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
     .char-figure img {
-      max-width: 280px;
       width: 100%;
-      height: auto;
-      border-radius: 20px;
-      background: var(--blue-50);
+      height: 100%;
+      object-fit: contain;
+      padding: 16px;
     }
     .char-figure figcaption {
       margin-top: 10px;
@@ -905,7 +915,9 @@
 
     <!-- 캐릭터 이미지 01 -->
     <figure class="char-figure">
-      <img src="/assets/img/baby-magnifier.webp" alt="빌리 캐릭터가 돋보기로 태아보험과 어린이보험을 비교하는 모습">
+      <div class="char-img-wrap">
+        <img src="/assets/img/baby-magnifier.webp" alt="빌리 캐릭터가 돋보기로 태아보험과 어린이보험을 비교하는 모습">
+      </div>
       <figcaption>태아보험과 어린이보험, 차이부터 짚어봐요</figcaption>
     </figure>
 
@@ -985,7 +997,9 @@
 
     <!-- 캐릭터 이미지 02 -->
     <figure class="char-figure">
-      <img src="/assets/img/baby-gift.webp" alt="빌리 캐릭터가 선물을 들고 최적의 전환 시기를 알려주는 모습">
+      <div class="char-img-wrap">
+        <img src="/assets/img/baby-gift.webp" alt="빌리 캐릭터가 선물을 들고 최적의 전환 시기를 알려주는 모습">
+      </div>
       <figcaption>언제가 가장 좋은 타이밍일까요?</figcaption>
     </figure>
 
@@ -1058,7 +1072,9 @@
 
     <!-- 캐릭터 이미지 03 -->
     <figure class="char-figure">
-      <img src="/assets/img/baby-bear-study.webp" alt="빌리 캐릭터가 책을 보며 계약전환과 신규가입을 꼼꼼히 비교하는 모습">
+      <div class="char-img-wrap">
+        <img src="/assets/img/baby-bear-study.webp" alt="빌리 캐릭터가 책을 보며 계약전환과 신규가입을 꼼꼼히 비교하는 모습">
+      </div>
       <figcaption>계약전환 vs 신규 가입, 어떤 선택이 맞을까요?</figcaption>
     </figure>
 
@@ -1205,7 +1221,9 @@
 
     <!-- 캐릭터 이미지 04 -->
     <figure class="char-figure">
-      <img src="/assets/img/baby-medical.webp" alt="빌리 캐릭터가 보험증서와 지갑을 들고 실손 중복 문제를 설명하는 모습">
+      <div class="char-img-wrap">
+        <img src="/assets/img/baby-medical.webp" alt="빌리 캐릭터가 보험증서와 지갑을 들고 실손 중복 문제를 설명하는 모습">
+      </div>
       <figcaption>실손 중복은 이렇게 해결해요</figcaption>
     </figure>
 
