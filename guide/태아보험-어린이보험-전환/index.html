@@ -749,6 +749,73 @@
       line-height: 1.7;
     }
 
+    /* ── PAGE LAYOUT (사이드바 목차) ── */
+    .page-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .page-main {
+      flex: 1;
+      min-width: 0;
+    }
+    .toc-sidebar {
+      display: none;
+    }
+    @media (min-width: 1100px) {
+      .container { max-width: 1200px; }
+      .toc-sidebar {
+        display: block;
+        width: 220px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 80px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        background: var(--gray-100);
+        border-radius: 12px;
+        padding: 18px 18px;
+        font-size: 0.83rem;
+      }
+      .toc-sidebar .toc-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--gray-500);
+        letter-spacing: 0.06em;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .toc-sidebar ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: toc-counter;
+      }
+      .toc-sidebar ol li {
+        counter-increment: toc-counter;
+        display: flex;
+        gap: 6px;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+      .toc-sidebar ol li::before {
+        content: counter(toc-counter) ".";
+        color: var(--blue-600);
+        font-weight: 700;
+        flex-shrink: 0;
+        font-size: 0.78rem;
+        padding-top: 1px;
+      }
+      .toc-sidebar a {
+        color: var(--gray-700);
+        text-decoration: none;
+        font-size: 0.82rem;
+        transition: color 0.15s;
+      }
+      .toc-sidebar a:hover { color: var(--blue-700); }
+      .toc-sidebar a.active { color: var(--blue-700); font-weight: 700; }
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .hero { padding: 40px 16px 36px; }
@@ -785,7 +852,7 @@
   <!-- AUTHOR CARD -->
   <aside class="author-card">
     <div class="author-avatar">
-      <img src="/img/author-team.png" alt="베이비빌리 태아보험팀">
+      <img src="/assets/img/billy-author-96.webp" alt="베이비빌리 태아보험팀">
     </div>
     <div class="author-info">
       <p class="author-name">베이비빌리 태아보험팀</p>
@@ -794,7 +861,7 @@
     </div>
   </aside>
 
-  <!-- TOC -->
+  <!-- TOC (인라인 — 모바일/태블릿) -->
   <nav class="toc" aria-label="목차">
     <p class="toc-title">목차</p>
     <ol>
@@ -810,12 +877,32 @@
     </ol>
   </nav>
 
-  <!-- BODY -->
+  <!-- PAGE LAYOUT: 사이드바(데스크탑) + 본문 -->
+  <div class="page-layout">
+
+  <!-- SIDEBAR TOC (데스크탑 1100px+) -->
+  <aside class="toc-sidebar" aria-label="목차 사이드바">
+    <p class="toc-title">목차</p>
+    <ol>
+      <li><a href="#difference">태아보험과 어린이보험, 무엇이 다른가</a></li>
+      <li><a href="#why-convert">전환이 필요한 3가지 케이스</a></li>
+      <li><a href="#timing">전환 최적 시기</a></li>
+      <li><a href="#contract-renewal">계약전환제도란 무엇인가</a></li>
+      <li><a href="#compare">계약전환 vs 신규 가입</a></li>
+      <li><a href="#health-disclosure">건강고지 의무 범위</a></li>
+      <li><a href="#insurer-table">보험사별 조건 비교</a></li>
+      <li><a href="#loss-duplicate">실손 중복 해결법</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </aside>
+
+  <!-- MAIN BODY -->
+  <div class="page-main">
   <article class="article-body">
 
     <!-- 캐릭터 이미지 01 -->
     <figure class="char-figure">
-      <img src="/villagebaby-ai/assets/img/baby-magnifier.webp" alt="빌리 캐릭터가 돋보기로 태아보험과 어린이보험을 비교하는 모습">
+      <img src="/assets/img/baby-magnifier.webp" alt="빌리 캐릭터가 돋보기로 태아보험과 어린이보험을 비교하는 모습">
       <figcaption>태아보험과 어린이보험, 차이부터 짚어봐요</figcaption>
     </figure>
 
@@ -895,7 +982,7 @@
 
     <!-- 캐릭터 이미지 02 -->
     <figure class="char-figure">
-      <img src="/villagebaby-ai/assets/img/baby-gift.webp" alt="빌리 캐릭터가 선물을 들고 최적의 전환 시기를 알려주는 모습">
+      <img src="/assets/img/baby-gift.webp" alt="빌리 캐릭터가 선물을 들고 최적의 전환 시기를 알려주는 모습">
       <figcaption>언제가 가장 좋은 타이밍일까요?</figcaption>
     </figure>
 
@@ -968,7 +1055,7 @@
 
     <!-- 캐릭터 이미지 03 -->
     <figure class="char-figure">
-      <img src="/villagebaby-ai/assets/img/baby-bear-study.webp" alt="빌리 캐릭터가 책을 보며 계약전환과 신규가입을 꼼꼼히 비교하는 모습">
+      <img src="/assets/img/baby-bear-study.webp" alt="빌리 캐릭터가 책을 보며 계약전환과 신규가입을 꼼꼼히 비교하는 모습">
       <figcaption>계약전환 vs 신규 가입, 어떤 선택이 맞을까요?</figcaption>
     </figure>
 
@@ -1115,7 +1202,7 @@
 
     <!-- 캐릭터 이미지 04 -->
     <figure class="char-figure">
-      <img src="/villagebaby-ai/assets/img/baby-medical.webp" alt="빌리 캐릭터가 보험증서와 지갑을 들고 실손 중복 문제를 설명하는 모습">
+      <img src="/assets/img/baby-medical.webp" alt="빌리 캐릭터가 보험증서와 지갑을 들고 실손 중복 문제를 설명하는 모습">
       <figcaption>실손 중복은 이렇게 해결해요</figcaption>
     </figure>
 
@@ -1217,7 +1304,7 @@
   <!-- BABYBILLY BAND -->
   <div class="bb-band">
     <div class="bb-band-char">
-      <img src="/villagebaby-ai/assets/img/billy-author-256.webp" alt="베이비빌리 캐릭터 빌리">
+      <img src="/assets/img/billy-author-256.webp" alt="베이비빌리 캐릭터 빌리">
     </div>
     <div class="bb-band-text">
       <p class="bb-band-eyebrow">우리 아기 보험 관리는?</p>
@@ -1259,8 +1346,30 @@
   <footer class="article-footer">
     <p>발행일: 2026.07.01 · 베이비빌리 태아보험팀 · <a href="https://villagebaby.kr" style="color:var(--blue-700);">villagebaby.kr</a></p>
   </footer>
+  </div><!-- /page-main -->
+  </div><!-- /page-layout -->
 
 </div><!-- /container -->
 
+<script>
+(function(){
+  var sidebar = document.querySelector('.toc-sidebar');
+  if (!sidebar) return;
+  var links = sidebar.querySelectorAll('a');
+  var headings = Array.from(links).map(function(a){
+    return document.getElementById(a.getAttribute('href').slice(1));
+  }).filter(Boolean);
+  function update(){
+    var scrollY = window.scrollY + 100;
+    var active = headings[0];
+    headings.forEach(function(h){ if(h.offsetTop <= scrollY) active = h; });
+    links.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + (active && active.id));
+    });
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+</script>
 </body>
 </html>
