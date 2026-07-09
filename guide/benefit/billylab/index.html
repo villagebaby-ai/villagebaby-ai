@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>빌리랩 기질검사 · 베이비빌리 멤버십 | 이수진 임상심리전문가 감수</title>
+<meta name="description" content="임상심리전문가가 감수한 우리 아이 기질검사. 베이비빌리 멤버십 고객을 위한 성장 단계별 전문가 리포트.">
+<link rel="icon" href="/favicon.png">
+<meta property="og:title" content="빌리랩 기질검사 · 베이비빌리 멤버십">
+<meta property="og:description" content="임상심리전문가가 감수한 우리 아이 기질검사. 멤버십 고객 대상 전문가 리포트.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#3373BA;
+  --main-deep:#28598F;
+  --main-100:#EAF1F8;
+  --main-200:#D3E2F1;
+  --side:#f6d5c3;
+  --side-deep:#E8B598;
+  --side-soft:#FCEFE7;
+  --gray:#898989;
+  --gray-100:#F5F5F5;
+  --gray-200:#EDEDED;
+  --gray-300:#DDDDDD;
+  --ink:#333333;
+  --white:#FFFFFF;
+  --green:#6CD871;
+  --red:#F94B4B;
+  --shadow:0 4px 16px rgba(51,115,186,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Noto Sans KR',-apple-system,sans-serif;
+  background:#EFF3F8;color:var(--ink);
+  font-size:15px;line-height:1.65;letter-spacing:-0.01em;
+}
+#app{max-width:520px;margin:0 auto;min-height:100vh;background:var(--white);position:relative;box-shadow:0 0 32px rgba(0,0,0,.06)}
+
+/* ---------- common ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--gray-200);padding:14px 20px;display:flex;align-items:center;gap:10px}
+.topbar .logo{font-weight:900;color:var(--main);font-size:16px;letter-spacing:-0.02em}
+.topbar .badge-mem{font-size:11px;font-weight:700;color:var(--main-deep);background:var(--main-100);border-radius:999px;padding:3px 10px}
+.topbar .back{border:0;background:none;font-size:20px;color:var(--gray);cursor:pointer;line-height:1;padding:2px 6px 2px 0}
+.auth-btn{margin-left:auto;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--main);background:#fff;border:1.5px solid var(--main-200);border-radius:999px;padding:5px 14px;cursor:pointer}
+.auth-btn:hover{background:var(--main-100)}
+.auth-btn.in{color:var(--gray);border-color:var(--gray-300)}
+.view{display:none;padding-bottom:56px}
+.view.on{display:block}
+.section{padding:20px}
+h2.sec{font-size:18px;font-weight:900;margin-bottom:4px;letter-spacing:-0.02em}
+p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;cursor:pointer;font-family:inherit;font-weight:700;border-radius:999px;transition:.15s;text-decoration:none}
+.btn-pri{background:var(--main);color:#fff}
+.btn-pri:hover{background:var(--main-deep)}
+.btn-pri:disabled{background:var(--gray-300);color:#fff;cursor:default}
+.btn-line{background:#fff;color:var(--main);border:1.5px solid var(--main)}
+.btn-sec{background:var(--gray-100);color:var(--ink);border:1px solid var(--gray-300)}
+.btn-lg{width:100%;padding:15px 20px;font-size:16px}
+.btn-md{padding:10px 20px;font-size:14px}
+.btn-sm{padding:6px 14px;font-size:12.5px}
+
+.card{background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px;margin-bottom:12px}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 10px}
+.chip-blue{background:var(--main-100);color:var(--main-deep)}
+.chip-side{background:var(--side-soft);color:#B4672F}
+.chip-gray{background:var(--gray-100);color:var(--gray)}
+.chip-green{background:#EAF9EB;color:#2E9634}
+
+/* ---------- home ---------- */
+.hero{background:linear-gradient(160deg,var(--main-100) 0%,#fff 70%);padding:28px 20px 20px}
+.hero .hero-flex{display:flex;align-items:center;gap:14px}
+.hero img{width:92px;height:92px;object-fit:contain;flex-shrink:0}
+.hero h1{font-size:21px;font-weight:900;line-height:1.4;letter-spacing:-0.02em}
+.hero h1 em{font-style:normal;color:var(--main)}
+.hero p{font-size:13px;color:var(--gray);margin-top:6px}
+.trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+
+.profile-box{background:var(--side-soft);border:1px solid var(--side);border-radius:16px;padding:16px 18px;margin:16px 20px 0}
+.profile-box .row{display:flex;gap:8px;margin-top:10px}
+.profile-box label{font-size:12px;font-weight:700;color:#B4672F}
+.profile-box input,.profile-box select{font-family:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--gray-300);border-radius:12px;width:100%;background:#fff;color:var(--ink)}
+.resp-toggle{display:flex;gap:8px;margin-top:10px}
+.resp-toggle button{flex:1;padding:10px;border-radius:12px;border:1.5px solid var(--gray-300);background:#fff;font-family:inherit;font-size:14px;font-weight:700;color:var(--gray);cursor:pointer}
+.resp-toggle button.on{border-color:var(--main);color:var(--main);background:var(--main-100)}
+.profile-note{font-size:12px;color:var(--gray);margin-top:8px}
+
+.suite-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:16px;margin-bottom:10px;cursor:pointer;transition:.15s}
+.suite-card:hover{box-shadow:var(--shadow)}
+.suite-card.locked{opacity:.72;cursor:default}
+.suite-card .icon{width:48px;height:48px;border-radius:14px;background:var(--main-100);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.suite-card.locked .icon{background:var(--gray-100)}
+.suite-card .tit{font-size:15px;font-weight:700}
+.suite-card .desc{font-size:12px;color:var(--gray)}
+.suite-card .go{margin-left:auto;color:var(--main);font-weight:700;font-size:13px;flex-shrink:0}
+.cycle-note{background:var(--main-100);border-radius:14px;padding:14px 16px;font-size:12.5px;color:var(--main-deep);margin-top:14px;line-height:1.6}
+
+/* ---------- supervisor credit ---------- */
+.supervisor{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:15px 16px;margin:16px 20px 0}
+.supervisor img{width:58px;height:58px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--main-100)}
+.supervisor .sv-role{font-size:11px;font-weight:700;color:var(--main-deep);letter-spacing:.02em}
+.supervisor .sv-name{font-size:15px;font-weight:800;margin:1px 0 3px}
+.supervisor .sv-name span{font-size:11.5px;font-weight:600;color:var(--gray);margin-left:4px}
+.supervisor .sv-cred{font-size:11px;color:var(--muted);line-height:1.5}
+.supervisor .sv-more{font-size:12px;font-weight:700;color:var(--main);margin-top:7px}
+.sv-mini{display:inline-flex;align-items:center;gap:7px;margin-top:6px}
+.sv-mini img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.sv-mini span{font-size:12px;color:rgba(255,255,255,.92);font-weight:600}
+
+/* ---------- about (전문가 소개·인터뷰) ---------- */
+.about-hero{position:relative;text-align:center;padding:0}
+.about-hero .cover{width:100%;aspect-ratio:1/1;max-height:420px;object-fit:cover;object-position:center 22%;display:block}
+.about-hero .cover-grad{position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(to top,var(--white),transparent)}
+.about-id{padding:0 24px;margin-top:-40px;position:relative;text-align:center}
+.about-id .badge-cert{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--main);border-radius:999px;padding:5px 15px;box-shadow:var(--shadow)}
+.about-id h2{font-size:24px;font-weight:900;margin-top:12px;letter-spacing:-0.02em}
+.about-id h2 span{font-size:14px;font-weight:600;color:var(--gray);margin-left:6px}
+.about-id .tagline{font-size:14px;color:var(--muted);margin-top:8px;max-width:30ch;margin-left:auto;margin-right:auto;line-height:1.6}
+.cred-list{margin:22px 20px 0;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px 20px}
+.cred-list h3{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--main-deep);margin-bottom:12px}
+.cred-list .cr{display:flex;gap:11px;font-size:13.5px;padding:7px 0;border-top:1px solid var(--gray-100)}
+.cred-list .cr:first-of-type{border-top:0}
+.cred-list .cr .yr{flex-shrink:0;width:78px;font-weight:700;color:var(--main);font-variant-numeric:tabular-nums;font-size:12.5px}
+.cred-list .cr .desc{flex:1;color:#444}
+.about-msg{margin:22px 20px 0;background:linear-gradient(155deg,var(--main-100),#fff 75%);border:1px solid var(--main-200);border-radius:18px;padding:24px 22px}
+.about-msg .quote{font-size:16.5px;font-weight:800;line-height:1.6;letter-spacing:-0.015em;color:var(--main-deep);margin-bottom:14px;text-wrap:balance}
+.about-msg p{font-size:14px;line-height:1.85;color:#3a4653;margin-bottom:12px}
+.about-msg p:last-child{margin-bottom:0}
+.about-msg .sign{text-align:right;font-size:13px;color:var(--muted);margin-top:16px}
+.about-msg .sign b{color:var(--ink);font-weight:700;font-size:15px}
+.iv{margin:16px 20px 0}
+.iv .iv-q{display:flex;gap:10px;margin-bottom:8px}
+.iv .iv-q .qmark{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--side);color:#fff;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center}
+.iv .iv-q p{font-size:14.5px;font-weight:700;padding-top:1px}
+.iv .iv-a{font-size:14px;line-height:1.85;color:#444;padding:0 4px 20px 34px;border-bottom:1px solid var(--gray-100);margin-bottom:16px}
+.iv .iv-a:last-child{border-bottom:0}
+.about-cta{margin:8px 20px 0}
+
+/* ---------- login modal ---------- */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(20,30,45,.5);z-index:100;align-items:flex-end;justify-content:center}
+.modal-overlay.on{display:flex}
+.modal-box{background:#fff;width:100%;max-width:520px;border-radius:22px 22px 0 0;padding:26px 24px 30px;position:relative;text-align:center;animation:slideUp .28s ease}
+@keyframes slideUp{from{transform:translateY(40px);opacity:.4}to{transform:translateY(0);opacity:1}}
+.modal-x{position:absolute;top:16px;right:18px;border:0;background:none;font-size:24px;color:var(--gray);cursor:pointer;line-height:1}
+.modal-emoji{font-size:36px}
+.modal-tit{font-size:19px;font-weight:900;margin-top:8px}
+.modal-desc{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.6}
+.modal-input{width:100%;font-family:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--gray-300);border-radius:14px;margin:18px 0 12px;text-align:center}
+.modal-input:focus{outline:none;border-color:var(--main)}
+.modal-fine{font-size:11px;color:var(--gray);margin-top:12px;line-height:1.5}
+.admin-stat{display:flex;gap:10px;margin-bottom:14px}
+.admin-stat .box{flex:1;background:#fff;border:1px solid var(--gray-200);border-radius:14px;padding:16px;text-align:center}
+.admin-stat .box b{display:block;font-size:24px;font-weight:900;color:var(--main-deep)}
+.admin-stat .box span{font-size:11.5px;color:var(--gray)}
+.admin-row{display:flex;justify-content:space-between;padding:11px 14px;background:#fff;border:1px solid var(--gray-200);border-radius:12px;margin-bottom:8px;font-size:13.5px}
+.admin-row b{color:var(--main-deep)}
+
+/* ---------- intro ---------- */
+.intro-hero{text-align:center;padding:34px 24px 10px}
+.intro-hero img{width:110px;height:110px;object-fit:contain}
+.intro-hero h2{font-size:20px;font-weight:900;margin-top:12px}
+.intro-hero p{font-size:13px;color:var(--gray);margin-top:6px}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:18px 20px 4px}
+.spec-grid .sp{background:var(--gray-100);border-radius:14px;padding:12px 8px;text-align:center}
+.spec-grid .sp b{display:block;font-size:16px;color:var(--main);font-weight:900}
+.spec-grid .sp span{font-size:11px;color:var(--gray)}
+.guide-list{padding:8px 24px 0;font-size:13.5px;color:#555}
+.guide-list li{margin-bottom:8px;list-style:none;padding-left:24px;position:relative}
+.guide-list li::before{content:"✓";position:absolute;left:2px;color:var(--main);font-weight:900}
+
+/* ---------- survey ---------- */
+.progress-wrap{position:sticky;top:49px;z-index:40;background:#fff;padding:10px 20px 8px;border-bottom:1px solid var(--gray-200)}
+.progress-info{display:flex;justify-content:space-between;font-size:11.5px;color:var(--gray);margin-bottom:6px}
+.pbar{height:6px;background:var(--gray-200);border-radius:999px;overflow:hidden}
+.pbar>div{height:100%;background:var(--main);border-radius:999px;transition:width .3s}
+.ch-intro{background:linear-gradient(150deg,var(--side-soft),#fff);border:1px solid var(--side);border-radius:18px;margin:16px 20px;padding:20px;text-align:center}
+.ch-intro .ch-num{font-size:11px;font-weight:900;color:#B4672F;letter-spacing:.08em}
+.ch-intro h3{font-size:17px;font-weight:900;margin-top:4px}
+.ch-intro p{font-size:12.5px;color:var(--gray);margin-top:4px}
+.q-card{margin:0 20px 14px;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:16px}
+.q-card .q-no{font-size:11px;font-weight:900;color:var(--main);margin-bottom:4px}
+.q-card .q-text{font-size:15px;font-weight:500;line-height:1.6}
+.likert{display:flex;justify-content:space-between;gap:4px;margin-top:14px}
+.likert button{flex:1;aspect-ratio:1;max-width:44px;border-radius:50%;border:1.5px solid var(--gray-300);background:#fff;font-family:inherit;font-size:12px;font-weight:700;color:var(--gray);cursor:pointer;transition:.12s}
+.likert button:hover{border-color:var(--main)}
+.likert button.on{background:var(--main);border-color:var(--main);color:#fff}
+.likert-label{display:flex;justify-content:space-between;font-size:10.5px;color:var(--gray);margin-top:4px;padding:0 2px}
+.na-btn{margin-top:10px;font-size:12px;color:var(--gray);background:none;border:0;text-decoration:underline;cursor:pointer;font-family:inherit}
+.na-btn.on{color:var(--main);font-weight:700}
+.survey-nav{display:flex;gap:10px;padding:8px 20px 24px}
+
+/* ---------- analyzing ---------- */
+.analyzing{text-align:center;padding:80px 30px}
+.analyzing img{width:96px;height:96px;object-fit:contain;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.analyzing h3{font-size:17px;font-weight:900;margin-top:18px}
+.analyzing .step{font-size:13px;color:var(--gray);margin-top:10px;min-height:20px}
+.dots::after{content:"";animation:dots 1.2s steps(4,end) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+
+/* ---------- report ---------- */
+.rep-head{background:linear-gradient(160deg,var(--main) 0%,var(--main-deep) 100%);color:#fff;padding:24px 20px 20px}
+.rep-head .rh-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;opacity:.92}
+.rep-head h2{font-size:19px;font-weight:900;margin-top:10px}
+.rep-head .meta{font-size:12px;opacity:.85;margin-top:4px}
+.trust-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.trust-strip .t{font-size:11px;font-weight:700;background:rgba(255,255,255,.16);border-radius:999px;padding:4px 11px}
+.trust-strip .t.ok{background:#fff;color:var(--main-deep)}
+
+.type-card{margin:18px 20px;background:#fff;border:1.5px solid var(--main-200);border-radius:18px;padding:26px 20px;text-align:center;position:relative;overflow:hidden}
+.type-card .t-mono{width:62px;height:62px;border-radius:50%;background:var(--main);color:#fff;font-size:26px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto;box-shadow:0 4px 12px rgba(51,115,186,.28)}
+.type-card .t-label{font-size:11.5px;font-weight:900;color:var(--main-deep);letter-spacing:.06em;margin-top:12px}
+.type-card h3{font-size:23px;font-weight:900;margin-top:2px;letter-spacing:-0.02em}
+.type-card .t-one{font-size:13.5px;color:#666;margin-top:6px}
+.type-card .t-badges{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+.type-card .share-note{font-size:11px;color:var(--gray);margin-top:14px}
+.mix-note{margin:0 20px 6px;font-size:12.5px;color:var(--main-deep);background:var(--main-100);border-radius:12px;padding:10px 14px}
+
+.factor-gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 20px 8px}
+.fg{background:var(--gray-100);border-radius:14px;padding:12px 10px;text-align:center}
+.fg .fg-name{font-size:11.5px;font-weight:700;color:var(--gray)}
+.fg .fg-band{font-size:14px;font-weight:900;color:var(--main);margin-top:2px}
+
+.scale-row{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.scale-row .sname{width:96px;flex-shrink:0;font-size:12.5px;font-weight:700;text-align:right}
+.scale-row .sbar{flex:1;height:22px;background:var(--gray-100);border-radius:999px;position:relative;overflow:hidden}
+.scale-row .sbar>i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--main-200)}
+.scale-row .sbar>b{position:absolute;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--main);border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.scale-row .sband{width:52px;flex-shrink:0;font-size:11px;font-weight:900;color:var(--main-deep)}
+.factor-title{font-size:12px;font-weight:900;color:var(--gray);margin:16px 0 10px;letter-spacing:.04em}
+.factor-title:first-child{margin-top:0}
+.compare-legend{display:flex;gap:14px;font-size:11.5px;color:var(--gray);margin-bottom:12px}
+.compare-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:-1px}
+.scale-row .sbar>b.dad{background:#E8955C}
+
+/* PBCG-style summary quotes */
+.sum-box{margin:18px 20px 0;background:var(--gray-100);border-radius:16px;padding:18px 20px}
+.sum-box .sum-label{font-size:11px;font-weight:900;color:var(--main-deep);letter-spacing:.08em;margin-bottom:10px}
+.sum-box p{font-size:14px;line-height:1.8;margin-bottom:10px}
+.sum-box p:last-child{margin-bottom:0}
+.sum-box p b{color:var(--main-deep)}
+/* CS-style top traits */
+.trait-card{display:flex;gap:14px;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:16px;margin-bottom:10px}
+.trait-card .rank{width:30px;height:30px;border-radius:50%;background:var(--main);color:#fff;font-size:14px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trait-card.r2 .rank{background:#5A92CB}
+.trait-card.r3 .rank{background:#89AFD9}
+.trait-card h4{font-size:15px;font-weight:900;margin-bottom:3px}
+.trait-card h4 small{font-size:11px;font-weight:700;color:var(--gray);margin-left:6px}
+.trait-card p{font-size:13px;color:#555;line-height:1.7}
+/* science section */
+.sci{margin:0 20px;background:var(--gray-100);border-radius:16px;padding:18px 20px;font-size:12.5px;color:#555;line-height:1.75}
+.sci h4{font-size:13px;font-weight:900;color:var(--ink);margin-bottom:8px}
+.sci li{margin-bottom:6px;margin-left:16px}
+.sci-sv{display:flex;align-items:center;gap:11px;margin-top:14px;padding-top:13px;border-top:1px solid var(--gray-300)}
+.sci-sv img{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--gray-200)}
+.sci-sv b{color:var(--ink)}
+.sci-sv span{font-size:11px;color:var(--gray)}
+
+/* TCI-style factor table */
+.ftable{width:100%;border-collapse:collapse;font-size:12.5px}
+.ftable th{font-size:10.5px;color:var(--gray);font-weight:700;text-align:left;padding:7px 6px;border-bottom:1.5px solid var(--gray-300);white-space:nowrap}
+.ftable td{padding:9px 6px;border-bottom:1px solid var(--gray-200);font-variant-numeric:tabular-nums;vertical-align:middle}
+.ftable td.fname{font-weight:700;white-space:nowrap}
+.ftable td.fnum{color:var(--main-deep);font-weight:700;text-align:center}
+.fgraph{position:relative;height:15px;background:var(--gray-100);border-radius:4px;min-width:104px}
+.fgraph .ref{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--gray-300)}
+.fgraph .fbar{position:absolute;left:0;top:0;bottom:0;background:var(--main);border-radius:4px 0 0 4px;opacity:.9}
+/* bipolar subscale chart */
+.bi-name{font-size:12px;font-weight:700;margin:0 0 3px}
+.bi-row{display:flex;align-items:center;gap:7px;margin-bottom:12px}
+.bi-pole{width:84px;flex-shrink:0;font-size:10px;color:var(--gray);line-height:1.35}
+.bi-pole.l{text-align:right}
+.bi-track{flex:1;height:22px;position:relative;background:var(--gray-100);border-radius:6px}
+.bi-track .band{position:absolute;left:33.3%;right:33.3%;top:0;bottom:0;background:var(--main-100)}
+.bi-track .mid{position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--gray-300)}
+.bi-track .dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:var(--main);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.25);z-index:2}
+.bi-track .dot.dad{background:#E8955C;z-index:1}
+.fnote{font-size:10.5px;color:var(--gray);line-height:1.75;margin-top:12px;border-top:1px dashed var(--gray-300);padding-top:10px}
+.fnote b{color:#666}
+
+.scene{background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:16px;margin-bottom:12px}
+.scene .s-tag{font-size:11px;font-weight:900;color:#B4672F}
+.scene h4{font-size:15px;font-weight:700;margin-top:3px}
+.scene .fix{display:flex;gap:10px;background:var(--side-soft);border-radius:12px;padding:11px 13px;margin-top:10px;font-size:13px}
+.scene .fix .sw{flex-shrink:0;font-size:16px}
+.r3{display:flex;gap:6px;margin-top:8px}
+.r3 span{font-size:10.5px;font-weight:700;background:var(--main-100);color:var(--main-deep);border-radius:6px;padding:2px 8px}
+
+.next-card{display:flex;gap:12px;align-items:center;background:var(--main-100);border-radius:16px;padding:16px;margin-bottom:10px}
+.next-card .n-emoji{font-size:26px}
+.next-card .tit{font-size:14px;font-weight:700}
+.next-card .desc{font-size:12px;color:var(--gray)}
+.next-card .btn{margin-left:auto;flex-shrink:0}
+
+.disclaim{font-size:11px;color:var(--gray);line-height:1.7;padding:16px 24px 30px;border-top:1px solid var(--gray-200);margin-top:10px}
+
+/* ---------- stress report ---------- */
+.slikert{display:flex;gap:6px;margin-top:14px}
+.slikert button{flex:1;padding:12px 4px;border-radius:12px;border:1.5px solid var(--gray-300);background:#fff;font-family:inherit;font-size:11.5px;font-weight:700;color:var(--gray);cursor:pointer;transition:.12s;line-height:1.3}
+.slikert button:hover{border-color:var(--main)}
+.slikert button.on{background:var(--main);border-color:var(--main);color:#fff}
+.gauge{margin-bottom:16px}
+.gauge .g-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.gauge .g-name{font-size:14px;font-weight:700}
+.gauge .g-level{font-size:12px;font-weight:900}
+.gauge .g-track{height:12px;background:var(--gray-200);border-radius:999px;overflow:hidden}
+.gauge .g-track>i{display:block;height:100%;border-radius:999px;transition:width .5s}
+.lv-low{color:#2E9634}   .fill-low{background:var(--green)}
+.lv-mid{color:#B4672F}   .fill-mid{background:var(--side-deep)}
+.lv-high{color:#C4551F}  .fill-high{background:#E5893F}
+.lv-alert{color:var(--red)} .fill-alert{background:var(--red)}
+.overall-card{margin:18px 20px;background:#fff;border:1.5px solid var(--main-200);border-radius:18px;padding:24px 20px;text-align:center}
+.overall-card .o-temp{font-size:44px;font-weight:900;line-height:1}
+.overall-card .o-cap{font-size:13px;color:var(--gray);margin-top:8px}
+.rx-card{background:var(--side-soft);border-radius:16px;padding:16px;margin-bottom:10px}
+.rx-card .rx-tag{font-size:11px;font-weight:900;color:#B4672F;margin-bottom:4px}
+.rx-card h4{font-size:14.5px;font-weight:700;margin-bottom:4px}
+.rx-card p{font-size:13px;color:#555;line-height:1.65}
+.care-box{background:#FFF4F4;border:1px solid #F6C9C9;border-radius:16px;padding:18px 20px;margin:0 20px 14px}
+.care-box .c-tag{font-size:12px;font-weight:900;color:var(--red);margin-bottom:6px}
+.care-box p{font-size:13px;color:#7A3535;line-height:1.7}
+.care-box a{color:var(--red);font-weight:700}
+.trend{margin:0 20px 14px;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px}
+.trend h4{font-size:13px;font-weight:900;margin-bottom:14px}
+.trend-graph{display:flex;align-items:flex-end;gap:10px;height:110px;padding-top:10px}
+.trend-graph .tb{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.trend-graph .tb .bar{width:70%;max-width:36px;border-radius:8px 8px 0 0;background:var(--main-200);position:relative}
+.trend-graph .tb.now .bar{background:var(--main)}
+.trend-graph .tb .val{font-size:11px;font-weight:900;color:var(--main-deep)}
+.trend-graph .tb .lbl{font-size:10px;color:var(--gray)}
+.trend .t-note{font-size:11.5px;color:var(--gray);margin-top:10px;text-align:center}
+
+/* ---------- type dex ---------- */
+.dex-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px}
+.dex{background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:14px;text-align:center}
+.dex .d-mono{width:44px;height:44px;border-radius:50%;background:var(--main);color:#fff;font-size:19px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto}
+.dex h4{font-size:14px;font-weight:900;margin-top:6px}
+.dex p{font-size:11px;color:var(--gray);margin-top:3px;min-height:30px}
+.dex .axes{display:flex;justify-content:center;gap:3px;margin-top:8px;flex-wrap:wrap}
+.dex .axes span{font-size:9.5px;font-weight:700;border-radius:5px;padding:1px 6px;background:var(--gray-100);color:var(--gray)}
+.dex .axes span.hi{background:var(--main-100);color:var(--main-deep)}
+
+@media (max-width:380px){ .scale-row .sname{width:84px;font-size:11.5px} }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ═══════════ HOME ═══════════ -->
+  <div class="view on" id="v-home">
+    <div class="topbar"><span class="logo">베이비빌리</span><span class="badge-mem">멤버십 혜택</span>
+      <button class="auth-btn" id="authBtn" onclick="authClick()">로그인</button>
+    </div>
+    <div class="hero">
+      <div class="hero-flex">
+        <img src="assets/baby-magnifier.png" alt="빌리" onerror="this.style.display='none'">
+        <div>
+          <h1>우리 아이 기질,<br><em>전문 검사</em>로 만나보세요</h1>
+          <p>임상심리전문가가 감수한 기질·양육 검사 — 보험 멤버십 혜택</p>
+        </div>
+      </div>
+      <div class="trust">
+        <span class="chip chip-blue">12개 하위척도 정밀 분석</span>
+        <span class="chip chip-blue">임상심리전문가 감수</span>
+        <span class="chip chip-side">베이비빌리 멤버십 유지 시 성장 단계별 전문가 리포트 제공</span>
+      </div>
+    </div>
+
+    <div class="supervisor" onclick="go('v-about')" style="cursor:pointer">
+      <img src="assets/sujin-avatar.jpg" alt="이수진 임상심리전문가" onerror="this.style.display='none'">
+      <div>
+        <div class="sv-role">문항·해석 감수</div>
+        <div class="sv-name">이수진 <span>임상심리전문가</span></div>
+        <div class="sv-cred">한국임상심리학회 임상심리전문가 · 정신보건임상심리사 1급 · 연세대학교 임상심리 석사 · 前 삼성서울병원 정신건강의학과 임상심리 수련</div>
+        <div class="sv-more">인사말·인터뷰 보기 ›</div>
+      </div>
+    </div>
+
+    <div class="profile-box">
+      <label>아이 정보 · 응답하는 사람</label>
+      <div class="row">
+        <input id="childName" type="text" placeholder="아이 이름(태명)" maxlength="10">
+        <input id="childBirth" type="month" title="출생 년월">
+      </div>
+      <div class="resp-toggle" id="respToggle">
+        <button data-r="mom" class="on">👩 엄마가 응답</button>
+        <button data-r="dad">👨 아빠가 응답</button>
+      </div>
+      <div class="profile-note" id="ageNote">출생 년월을 입력하면 월령에 맞는 검사 세트를 안내해 드려요.</div>
+    </div>
+
+    <div class="section">
+      <h2 class="sec">검사 프로그램</h2>
+      <p class="sub">검사를 완료할수록 연계 리포트가 열려요</p>
+
+      <div class="suite-card" onclick="go('v-intro')">
+        <div class="icon">🧸</div>
+        <div><div class="tit">아이 기질검사 <span class="chip chip-side">대표 검사</span></div>
+        <div class="desc">78문항 · 13~15분 · 12개 하위척도 리포트</div></div>
+        <div class="go" id="test1State">시작 ›</div>
+      </div>
+
+      <div class="suite-card" onclick="go('v-pintro')">
+        <div class="icon">🌿</div>
+        <div><div class="tit">양육기질 검사</div>
+        <div class="desc">32문항 · 5~6분 · 나의 기질과 양육 스타일</div></div>
+        <div class="go" id="test2State">시작 ›</div>
+      </div>
+
+      <div class="suite-card" onclick="go('v-sintro')">
+        <div class="icon">☕</div>
+        <div><div class="tit">양육 스트레스 체크</div>
+        <div class="desc">24문항 · 5분 · 분기마다 나의 컨디션 추적</div></div>
+        <div class="go" id="test3State">시작 ›</div>
+      </div>
+
+      <div class="suite-card locked" id="fitCard" onclick="openFit()">
+        <div class="icon">🔓</div>
+        <div><div class="tit">우리 아이 × 나의 궁합 리포트</div>
+        <div class="desc">기질검사 + 양육기질 검사를 마치면 열려요</div></div>
+        <div class="go" id="fitState" style="color:var(--gray)">잠김</div>
+      </div>
+
+      <div class="cycle-note">💡 <b>이렇게 순환해요</b> — 기질검사(오늘) → 양육기질 검사 → 궁합 리포트 → 6개월 뒤 재검사로 아이의 변화 그래프까지. 멤버십을 유지하는 동안 계속 새 리포트를 받아요.</div>
+
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <button class="btn btn-line btn-md" style="flex:1" onclick="go('v-dex')">기질 유형 도감</button>
+        <button class="btn btn-sec btn-md" style="flex:1" onclick="mockRun()">샘플 결과 미리보기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ INTRO ═══════════ -->
+  <div class="view" id="v-intro">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">아이 기질검사</span></div>
+    <div class="intro-hero">
+      <img src="assets/baby-laughing.png" alt="빌리" onerror="this.style.display='none'">
+      <h2 id="introTitle">우리 아이는 어떤 기질을 타고났을까요?</h2>
+      <p id="introAge">하루의 흐름을 따라 10개 장면 속 아이의 모습을 여쭤볼게요</p>
+    </div>
+    <div class="spec-grid">
+      <div class="sp"><b>78</b><span>문항</span></div>
+      <div class="sp"><b>13~15</b><span>분</span></div>
+      <div class="sp"><b>12</b><span>하위척도</span></div>
+    </div>
+    <ul class="guide-list">
+      <li><b>지난 2주</b> 아이의 실제 모습을 떠올리며 답해 주세요. 정답은 없어요.</li>
+      <li>겪지 않은 상황은 <b>"해당 없음"</b>을 눌러 주세요. 더 정확한 리포트가 돼요.</li>
+      <li>중간에 나가도 응답은 저장돼요.</li>
+      <li>엄마·아빠가 각자 응답하면 <b>부부 시선 비교</b>도 볼 수 있어요.</li>
+    </ul>
+    <div class="section">
+      <button class="btn btn-pri btn-lg" onclick="startSurvey()">검사 시작하기</button>
+      <p style="font-size:11.5px;color:var(--gray);text-align:center;margin-top:10px">본 검사의 문항과 해석은 이수진 임상심리전문가의 감수를 거칩니다</p>
+    </div>
+  </div>
+
+  <!-- ═══════════ SURVEY ═══════════ -->
+  <div class="view" id="v-survey">
+    <div class="topbar"><button class="back" onclick="confirmExit()">‹</button><span class="logo">아이 기질검사</span></div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="pChapter">챕터 1/10</span><span id="pCount">0/78</span></div>
+      <div class="pbar"><div id="pFill" style="width:0%"></div></div>
+    </div>
+    <div id="surveyBody"></div>
+    <div class="survey-nav">
+      <button class="btn btn-sec btn-md" id="btnPrev" onclick="prevCh()">이전</button>
+      <button class="btn btn-pri btn-md" id="btnNext" style="flex:1" onclick="nextCh()">다음 장면으로</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ ANALYZING ═══════════ -->
+  <div class="view" id="v-analyzing">
+    <div class="analyzing">
+      <img src="assets/baby-cloud.png" alt="분석 중" onerror="this.style.display='none'">
+      <h3>리포트를 만들고 있어요<span class="dots"></span></h3>
+      <div class="step" id="anStep">응답을 확인하고 있어요</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ REPORT ═══════════ -->
+  <div class="view" id="v-report">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">기질 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div id="reportBody"></div>
+  </div>
+
+  <!-- ═══════════ PARENT INTRO ═══════════ -->
+  <div class="view" id="v-pintro">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">양육기질 검사</span></div>
+    <div class="intro-hero">
+      <img src="assets/baby-wink.png" alt="빌리" onerror="this.style.display='none'">
+      <h2>이번엔 부모님 차례예요</h2>
+      <p>나의 기질과 양육 스타일을 알면, 아이와의 궁합 리포트가 열려요</p>
+    </div>
+    <div class="spec-grid">
+      <div class="sp"><b>32</b><span>문항</span></div>
+      <div class="sp"><b>5~6</b><span>분</span></div>
+      <div class="sp"><b>5</b><span>측정 축</span></div>
+    </div>
+    <ul class="guide-list">
+      <li><b>지난 2주</b> 나의 실제 모습을 떠올리며 답해 주세요. 좋은 양육자 시험이 아니에요.</li>
+      <li>양육 스타일에는 <b>우열이 없어요</b> — 통제도 자율도 각자의 강점이 있는 스타일이에요.</li>
+      <li>배우자도 각자 응답하면 <b>부부 비교</b>가 열려요.</li>
+    </ul>
+    <div class="section">
+      <button class="btn btn-pri btn-lg" onclick="startPSurvey()">검사 시작하기</button>
+      <button class="na-btn" style="display:block;margin:10px auto 0" onclick="mockPRun()">샘플 결과 미리보기</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ PARENT SURVEY ═══════════ -->
+  <div class="view" id="v-psurvey">
+    <div class="topbar"><button class="back" onclick="if(confirm('검사를 중단할까요?'))go('v-home')">‹</button><span class="logo">양육기질 검사</span></div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="ppChapter">파트 1/5</span><span id="ppCount">0/32</span></div>
+      <div class="pbar"><div id="ppFill" style="width:0%"></div></div>
+    </div>
+    <div id="pSurveyBody"></div>
+    <div class="survey-nav">
+      <button class="btn btn-sec btn-md" id="pbtnPrev" onclick="prevPCh()">이전</button>
+      <button class="btn btn-pri btn-md" id="pbtnNext" style="flex:1" onclick="nextPCh()">다음으로</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ PARENT REPORT ═══════════ -->
+  <div class="view" id="v-preport">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">양육기질 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div id="pReportBody"></div>
+  </div>
+
+  <!-- ═══════════ FIT REPORT ═══════════ -->
+  <div class="view" id="v-fit">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">궁합 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div id="fitBody"></div>
+  </div>
+
+  <!-- ═══════════ STRESS INTRO ═══════════ -->
+  <div class="view" id="v-sintro">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">양육 스트레스 체크</span></div>
+    <div class="intro-hero">
+      <img src="assets/baby-cloud.png" alt="빌리" onerror="this.style.display='none'">
+      <h2>오늘, 부모님은 어떠세요?</h2>
+      <p>아이 말고 나. 지난 2주 나의 마음 컨디션을 5분 안에 살펴봐요</p>
+    </div>
+    <div class="spec-grid">
+      <div class="sp"><b>24</b><span>문항</span></div>
+      <div class="sp"><b>5</b><span>분</span></div>
+      <div class="sp"><b>3</b><span>영역</span></div>
+    </div>
+    <ul class="guide-list">
+      <li>지난 <b>2주 동안</b> 얼마나 자주 그랬는지 편하게 골라 주세요.</li>
+      <li>점수를 매기는 시험이 아니에요. <b>지금의 나를 알아차리는</b> 시간이에요.</li>
+      <li>3개월마다 다시 체크하면 <b>나의 컨디션 흐름</b>이 그래프로 쌓여요.</li>
+    </ul>
+    <div class="section">
+      <button class="btn btn-pri btn-lg" onclick="startSSurvey()">체크 시작하기</button>
+      <button class="na-btn" style="display:block;margin:10px auto 0" onclick="mockSRun()">샘플 결과 미리보기</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ STRESS SURVEY ═══════════ -->
+  <div class="view" id="v-ssurvey">
+    <div class="topbar"><button class="back" onclick="if(confirm('체크를 중단할까요?'))go('v-home')">‹</button><span class="logo">양육 스트레스 체크</span></div>
+    <div class="progress-wrap">
+      <div class="progress-info"><span id="spChapter">영역 1/3</span><span id="spCount">0/24</span></div>
+      <div class="pbar"><div id="spFill" style="width:0%"></div></div>
+    </div>
+    <div id="sSurveyBody"></div>
+    <div class="survey-nav">
+      <button class="btn btn-sec btn-md" id="sbtnPrev" onclick="prevSCh()">이전</button>
+      <button class="btn btn-pri btn-md" id="sbtnNext" style="flex:1" onclick="nextSCh()">다음으로</button>
+    </div>
+  </div>
+
+  <!-- ═══════════ STRESS REPORT ═══════════ -->
+  <div class="view" id="v-sreport">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">스트레스 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div id="sReportBody"></div>
+  </div>
+
+  <!-- ═══════════ ABOUT (전문가 소개·인터뷰) ═══════════ -->
+  <div class="view" id="v-about">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">감수 전문가 소개</span></div>
+    <div class="about-hero">
+      <img class="cover" src="assets/sujin-portrait.jpg" alt="이수진 임상심리전문가" onerror="this.style.display='none'">
+      <div class="cover-grad"></div>
+    </div>
+    <div class="about-id">
+      <span class="badge-cert">임상심리전문가</span>
+      <h2>이수진 <span>Lee Sujin</span></h2>
+      <p class="tagline">아이의 타고난 결을 부모가 이해하도록 돕는 것, 그것이 제가 이 검사를 감수하는 이유입니다.</p>
+    </div>
+
+    <div class="cred-list">
+      <h3>자격 · 경력</h3>
+      <div class="cr"><span class="yr">자격</span><span class="desc">한국임상심리학회 <b>임상심리전문가</b> (제1426호)</span></div>
+      <div class="cr"><span class="yr">자격</span><span class="desc">보건복지부 <b>정신보건임상심리사 1급</b> (제1287호)</span></div>
+      <div class="cr"><span class="yr">학력</span><span class="desc">연세대학교 대학원 임상심리 석사 · 이화여자대학교 심리학 학사</span></div>
+      <div class="cr"><span class="yr">2015–18</span><span class="desc">삼성서울병원 정신건강의학과 임상심리 수련 (레지던트)</span></div>
+      <div class="cr"><span class="yr">2018–22</span><span class="desc">해수상담클리닉 임상심리사</span></div>
+    </div>
+
+    <div class="about-msg">
+      <div class="quote">"고쳐야 할 아이는 없습니다.<br>이해받아야 할 아이가 있을 뿐이에요."</div>
+      <p>상담실에서 만난 수많은 부모님들은 늘 같은 질문을 안고 오셨습니다. "우리 아이는 왜 이럴까요?" 그런데 이야기를 나누다 보면, 아이가 문제가 아니라 <b>아이의 기질과 부모의 기대가 어긋나 있던 경우</b>가 많았습니다.</p>
+      <p>기질은 옳고 그름이 아니라 타고난 방식입니다. 조심성이 많은 아이도, 에너지가 넘치는 아이도 각자의 속도와 강점이 있습니다. 그 결을 부모가 먼저 알아차릴 때, 아이는 "고쳐지는" 대신 <b>있는 그대로 자라납니다.</b></p>
+      <p>이 검사가 유행처럼 소비되는 성격 테스트가 아니라, 부모님이 아이를 조금 더 깊이 이해하는 <b>믿을 수 있는 출발점</b>이 되도록 문항 하나하나와 결과지의 표현까지 함께 살피고 있습니다.</p>
+      <div class="sign">감수 임상심리전문가 <b>이수진</b></div>
+    </div>
+
+    <div class="section" style="padding-bottom:6px"><h2 class="sec">인터뷰</h2><p class="sub">감수를 맡으며 나눈 이야기</p></div>
+    <div class="iv">
+      <div class="iv-q"><span class="qmark">Q</span><p>이 검사를 감수하기로 하신 이유가 있나요?</p></div>
+      <div class="iv-a">시중의 아이 기질 검사 중에는 재미 위주이거나, 아이에게 꼬리표를 붙이는 방식이 적지 않았어요. 부모님이 "우리 아이는 이런 유형이니까"라고 단정 지어 버리면 오히려 아이를 좁게 보게 됩니다. 이 검사는 처음부터 <b>과잉 라벨링을 경계</b>하고, 기질을 연속된 스펙트럼으로 다루겠다는 원칙이 분명했어요. 그 방향이라면 제가 도울 수 있겠다고 생각했습니다.</div>
+
+      <div class="iv-q"><span class="qmark">Q</span><p>부모님들이 결과지를 볼 때 가장 조심해야 할 점은요?</p></div>
+      <div class="iv-a">점수의 높고 낮음을 성적표처럼 읽지 않으셨으면 해요. 예를 들어 '조심성이 높다'는 건 겁이 많다는 뜻이 아니라 <b>위험을 신중하게 감지하는 능력</b>이에요. 그래서 결과지의 모든 표현을 '부족함'이 아니라 '그 아이만의 방식'으로 읽히도록 문구를 여러 번 다듬었습니다.</div>
+
+      <div class="iv-q"><span class="qmark">Q</span><p>부모님께 전하고 싶은 말이 있다면요?</p></div>
+      <div class="iv-a">검사 결과가 아이를 규정하는 게 아니라, <b>대화의 시작점</b>이 되었으면 합니다. "너는 이런 걸 좋아하는 아이구나" 하고 알아봐 주는 그 한마디가, 어떤 육아법보다 아이에게 큰 힘이 됩니다. 그 첫걸음을 이 검사가 함께하길 바랍니다.</div>
+    </div>
+
+    <div class="about-cta">
+      <button class="btn btn-pri btn-lg" onclick="go('v-home')">검사 시작하러 가기</button>
+    </div>
+    <div class="disclaim">감수 전문가의 자격 사항은 관련 학회·기관 발급 자격을 근거로 하며, 인터뷰 내용은 검사 설계 취지를 전하기 위한 것입니다. · 베이비빌리</div>
+  </div>
+
+  <!-- ═══════════ TYPE DEX ═══════════ -->
+  <div class="view" id="v-dex">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">기질 유형 도감</span></div>
+    <div class="section" style="padding-bottom:8px">
+      <h2 class="sec">8가지 기질 유형</h2>
+      <p class="sub">접근·활력 × 정서 표현 × 자기조절 세 축의 조합이에요. 어느 유형이든 '좋고 나쁨'은 없어요 — 서로 다른 강점이 있을 뿐이에요.</p>
+    </div>
+    <div class="dex-grid" id="dexGrid"></div>
+    <div class="section">
+      <div class="cycle-note"><b>감각 민감성 표기</b> — 사회·감각 민감성이 높은 아이는 어느 유형이든 '감각 민감성 높음' 표시가 함께 붙어요. 세 축의 경계에 있는 아이는 <b>혼합형</b>으로, 가까운 두 유형을 함께 안내해 드려요. 기질은 딱 떨어지는 유형이라기보다 연속된 스펙트럼이니까요.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ ADMIN (스텁) ═══════════ -->
+  <div class="view" id="v-admin">
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">관리자</span><span class="badge-mem">STUB</span></div>
+    <div class="section">
+      <h2 class="sec">관리자 대시보드</h2>
+      <p class="sub">기능 골격만 구현된 상태예요. 추후 서버 연동 시 실데이터로 대체됩니다.</p>
+      <div id="adminBody"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════ LOGIN MODAL ═══════════ -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeLogin()">×</button>
+    <div class="modal-emoji">🔑</div>
+    <h3 class="modal-tit">멤버십 로그인</h3>
+    <p class="modal-desc">베이비빌리 멤버십 고객님을 위한 혜택이에요.<br>가입하신 연락처로 간편하게 시작하세요.</p>
+    <input id="loginPhone" class="modal-input" type="tel" placeholder="휴대폰 번호 (- 없이)" inputmode="numeric">
+    <button class="btn btn-pri btn-lg" onclick="doLogin()">로그인</button>
+    <p class="modal-fine">* 데모 버전입니다. 실제 인증 없이 입력한 번호로 세션이 생성돼요. 추후 문자 인증·멤버십 조회가 연동됩니다.</p>
+  </div>
+</div>
+
+<script>
+/* ═══════════ DATA — 12 subscales, 78 items ═══════════ */
+const SCALES = {
+  AC:{name:'활동수준', factor:'E'}, AP:{name:'접근·기대', factor:'E'}, HP:{name:'고강도 즐거움', factor:'E'},
+  FE:{name:'공포·경계', factor:'N'}, FR:{name:'분노·좌절', factor:'N'}, SO:{name:'진정·회복력', factor:'N', revInFactor:true},
+  AT:{name:'주의 집중·전환', factor:'R'}, IC:{name:'억제 조절', factor:'R'},
+  SC:{name:'사회적 접근', factor:'S'}, SH:{name:'낯가림·수줍음', factor:'S', revInFactor:true},
+  SS:{name:'감각 민감', factor:'X'}, SA:{name:'감각 회피·과부하', factor:'X'}
+};
+const FACTORS = {E:'접근·활력', N:'정서 표현', R:'자기조절', S:'사회적 민감성', X:'감각 민감성'};
+
+const CHAPTERS = [
+  {t:'아침, 하루의 시작', d:'눈 뜨고 나갈 준비까지, 아침의 아이 모습이에요'},
+  {t:'식사 시간', d:'먹고, 기다리고, 흘리는 — 식탁 위의 아이예요'},
+  {t:'집에서 놀 때', d:'가장 편안한 공간에서 아이는 어떻게 노나요?'},
+  {t:'바깥 놀이', d:'놀이터와 바깥세상에서의 아이예요'},
+  {t:'낯선 곳, 새로운 것', d:'처음 보는 것 앞에서 아이의 첫 반응이에요'},
+  {t:'사람들과 만날 때', d:'가족, 또래, 낯선 사람 — 관계 속 아이예요'},
+  {t:'떼와 속상함', d:'뜻대로 되지 않는 순간의 아이예요'},
+  {t:'달램과 회복', d:'속상한 마음이 풀리기까지의 모습이에요'},
+  {t:'감각의 세계', d:'소리·촉감·빛에 아이가 어떻게 반응하나요?'},
+  {t:'잠자리', d:'하루를 마무리하는 시간이에요. 거의 다 왔어요!'}
+];
+
+/* items: [scale, chapter(1-10), text, reverse] — 72 scale items + 6 validity */
+const ITEMS = [
+ ['AC',1,'옷을 입히는 동안 가만히 있지 못하고 몸을 움직였다',0],
+ ['AP',1,'외출 준비를 하는 것을 보면 신이 나서 현관으로 달려갔다',0],
+ ['FR',1,'옷 입히기·기저귀 갈기·손 씻기를 거부하며 몸부림쳤다',0],
+ ['AT',1,'하던 놀이를 멈추고 나갈 준비를 하자고 하면 다음 활동으로 주의를 옮길 수 있었다',0],
+ ['AC',2,'식사 의자나 카시트에 앉히면 몸을 비틀며 빠져나가려 했다',0],
+ ['AP',2,'좋아하는 간식 봉지를 보면 소리를 내거나 손을 뻗으며 기대감을 표현했다',0],
+ ['AP',2,'처음 보는 음식도 일단 입에 넣어 보려고 했다',0],
+ ['IC',2,'간식을 앞에 두고 "이따가 먹자"라고 하면 따를 수 있었다',0],
+ ['IC',2,'"잠깐만 기다려"라고 하면 짧게라도 기다릴 수 있었다',0],
+ ['SS',2,'손이나 얼굴에 음식이 묻으면 바로 닦아 달라고 했다',0],
+ ['V4',2,'지난 2주 동안 하라는 말을 한 번도 어긴 적이 없다',0],
+ ['AC',3,'집 안에서 놀 때, 한자리에 앉아서 놀기보다 뛰거나 기어오르며 놀았다',0],
+ ['AC',3,'한 곳에 앉아 20분 이상 조용히 놀 수 있었다',1],
+ ['AP',3,'새 장난감을 주면 머뭇거리지 않고 바로 만지며 탐색했다',0],
+ ['HP',3,'높이 안아 올리거나 빙글 돌려 주는 놀이를 하면 더 해 달라고 했다',0],
+ ['HP',3,'몸으로 거칠게 놀아 줄 때(비행기 태우기, 이불 씨름) 크게 웃었다',0],
+ ['HP',3,'간지럽히기 놀이를 하면 자지러지게 웃으며 더 하자고 했다',0],
+ ['AT',3,'좋아하는 놀이(블록·그림책 등)를 10분 이상 이어서 했다',0],
+ ['AT',3,'주변에서 다른 소리가 나도 하던 놀이를 계속했다',0],
+ ['AT',3,'퍼즐이나 끼우기 장난감을 완성할 때까지 붙들고 있었다',0],
+ ['AT',3,'어떤 놀이든 1~2분 만에 흥미를 잃고 다른 것을 찾았다',1],
+ ['IC',3,'위험하다고 알려 준 물건(콘센트 등)에 손을 대지 않았다',0],
+ ['SC',3,'좋아하는 것이 생기면 부모에게 가져와 보여 줬다',0],
+ ['AC',4,'놀이터나 넓은 공간에 가면 쉬지 않고 돌아다녔다',0],
+ ['AP',4,'놀이터에서 처음 보는 기구가 있으면 먼저 다가가 시도해 봤다',0],
+ ['HP',4,'미끄럼틀처럼 빠르게 내려오는 놀이기구를 무서워하기보다 즐거워했다',0],
+ ['HP',4,'시끄럽고 사람 많은 곳(키즈카페 등)에서 위축되기보다 신나 했다',0],
+ ['HP',4,'과격한 놀이(소파에서 뛰어내리기 등)를 하려고 해서 말려야 했다',0],
+ ['FE',4,'새로운 놀이기구 앞에서 한참 지켜보기만 하고 시도하지 않았다',0],
+ ['IC',4,'순서를 기다려야 하는 상황(미끄럼틀 줄)에서 차례를 기다렸다',0],
+ ['FE',5,'낯선 어른이 말을 걸면 부모 뒤로 숨거나 몸을 웅크렸다',0],
+ ['FE',5,'갑작스러운 큰 소리(청소기, 사이렌)에 울거나 얼어붙었다',0],
+ ['FE',5,'처음 가는 장소에서 한동안 부모 곁에서 떨어지지 않았다',0],
+ ['FE',5,'개 등 동물이 다가오면 무서워하며 안아 달라고 했다',0],
+ ['FE',5,'처음 보는 것 앞에서도 겁내는 기색 없이 다가갔다',1],
+ ['AP',5,'새로운 물건을 줘도 별 관심 없이 하던 놀이를 계속했다',1],
+ ['SH',5,'낯선 사람이 안으려고 하면 거부했다',0],
+ ['SH',5,'처음 보는 사람에게도 스스럼없이 다가가 웃어 보였다',1],
+ ['V2',5,'낯선 사람이 안으려고 해도 스스럼없이 안겼다',0],
+ ['SC',6,'부모의 표정이 안 좋으면 다가와 얼굴을 살폈다',0],
+ ['SC',6,'또래를 보면 관심을 보이며 다가갔다',0],
+ ['SC',6,'뽀뽀나 포옹 같은 애정 표현을 스스로 먼저 했다',0],
+ ['SC',6,'혼자 노는 것을 사람들과 함께 있는 것보다 더 좋아했다',1],
+ ['SH',6,'처음 만나는 또래 옆에서 한동안 지켜보기만 했다',0],
+ ['SH',6,'친척 모임 등 사람이 많은 자리에서 익숙해지는 데 30분 이상 걸렸다',0],
+ ['SH',6,'아는 사람이어도 오랜만에 만나면 처음엔 부모 뒤로 숨었다',0],
+ ['SH',6,'밖에서는 집에서보다 말수나 소리가 눈에 띄게 줄었다',0],
+ ['FR',6,'형제나 또래가 자기 장난감을 가져가면 때리거나 소리를 질렀다',0],
+ ['SA',6,'사람이 많은 곳에서 안아 달라고 하며 얼굴을 묻었다',0],
+ ['FR',7,'하고 싶은 것을 못 하게 막으면 소리를 지르거나 몸을 뒤로 젖혔다',0],
+ ['FR',7,'장난감이 뜻대로 되지 않으면(블록이 안 끼워짐 등) 던지거나 화를 냈다',0],
+ ['FR',7,'재미있게 하던 놀이를 중단시키면(귀가·목욕 등) 강하게 떼를 썼다',0],
+ ['FR',7,'뜻대로 안 되는 일이 있어도 크게 화내지 않고 넘어갔다',1],
+ ['IC',7,'"안 돼"라고 하면 하려던 행동을 멈췄다',0],
+ ['IC',7,'하지 말라고 여러 번 말해도 같은 행동을 반복했다',1],
+ ['V1',7,'장난감이 뜻대로 되지 않아도 화내는 일이 거의 없었다',0],
+ ['SO',8,'울다가도 안아 주면 1~2분 안에 진정됐다',0],
+ ['SO',8,'떼를 쓰다가도 다른 놀잇감을 보여 주면 금방 관심을 옮겼다',0],
+ ['SO',8,'넘어져서 울어도 잠시 달래 주면 다시 놀이로 돌아갔다',0],
+ ['SO',8,'무서워했던 상황이 끝나면 평소 기분으로 빨리 돌아왔다',0],
+ ['SO',8,'한번 울음이 터지면 무엇을 해 줘도 30분 이상 달래지지 않았다',1],
+ ['SC',8,'안아 주거나 무릎에 앉히면 좋아하며 몸을 기댔다',0],
+ ['V3',8,'지난 2주 동안 아이가 한 번도 운 적이 없다',0],
+ ['SS',9,'옷의 상표(태그)나 특정 소재를 불편해하며 벗으려 했다',0],
+ ['SS',9,'머리 감기기·손톱 깎기를 유난히 힘들어했다',0],
+ ['SS',9,'모래·풀·점토 같은 특정 촉감을 만지기 싫어했다',0],
+ ['SS',9,'집 안의 작은 변화(가구 위치, 부모의 새 안경)를 금방 알아차렸다',0],
+ ['SA',9,'시끄러운 장소(마트·키즈카페)에 오래 있으면 칭얼거리거나 지쳐 했다',0],
+ ['SA',9,'여러 소리가 동시에 나면(TV+대화) 귀를 막거나 짜증을 냈다',0],
+ ['SA',9,'흥분되는 상황이 지나면 스스로 조용한 곳으로 가려고 했다',0],
+ ['SA',9,'자극이 많은 곳에서도 지치는 기색 없이 잘 지냈다',1],
+ ['AC',10,'잠자리에 누운 뒤에도 몸을 뒤척이거나 일어나 움직였다',0],
+ ['SO',10,'잠투정이 시작돼도 정해진 잠자리 루틴을 하면 수그러들었다',0],
+ ['AT',10,'그림책을 읽어 줄 때 여러 장을 끝까지 집중해서 봤다',0],
+ ['SS',10,'작은 소리(냉장고 소리, 문 여닫는 소리)에도 반응하거나 잠에서 깼다',0],
+ ['SA',10,'자극이 많았던 날(외출·손님 방문)은 잠들기 힘들어하거나 밤에 깼다',0],
+ ['V5',10,'집 안에서 놀 때, 한자리에 앉아서 놀기보다 뛰거나 기어오르며 놀았다',0]
+];
+
+/* ═══════════ 12 subscale bipolar descriptors (TCI 형식) ═══════════ */
+const BIPOLAR = {
+  AC:['정적인 놀이 선호','활동적 에너지'], AP:['신중한 관망','적극적 다가감'], HP:['잔잔한 자극 선호','강한 자극 즐김'],
+  FE:['두려움 적음','높은 경계·조심성'], FR:['순한 수용','강한 좌절 표현'], SO:['진정에 시간 필요','빠른 회복'],
+  AT:['짧은 주의·빠른 전환','긴 몰입 유지'], IC:['즉각 행동','멈춤·기다림 가능'],
+  SC:['혼자 놀이 선호','사람 지향'], SH:['빠른 친화','천천히 데워짐'],
+  SS:['감각 자극에 둔감','예리한 감각 포착'], SA:['자극 속에서도 활발','자극 후 휴식 필요']
+};
+
+/* ═══════════ 24 pole narratives (CliftonStrengths 문법: 대표 특성 개인화 서술) ═══════════ */
+const POLE_NARR = {
+ AC_hi:['활동적 에너지','{n}는 몸을 움직일 때 가장 살아나는 아이예요. 에너지가 큰 만큼, 마음껏 움직일 수 있는 시간과 공간이 하루에 꼭 필요해요.'],
+ AC_lo:['정적인 놀이 선호','{n}는 몸으로 발산하기보다 앉아서 깊이 노는 쪽을 좋아해요. 조용하다고 심심한 게 아니라, 그 안에서 충분히 몰입하고 있는 거예요.'],
+ AP_hi:['적극적 다가감','새로운 것을 보면 일단 다가가 만져 보는 탐색가예요. 낯선 것이 {n}에게는 위협이 아니라 초대장이에요.'],
+ AP_lo:['신중한 관망','{n}는 새로운 것 앞에서 먼저 살펴보는 시간이 필요해요. 느린 게 아니라, 정보를 모은 뒤 움직이는 신중한 방식이에요.'],
+ HP_hi:['강한 자극 즐김','빠르고 높고 짜릿한 놀이가 {n}의 웃음 버튼이에요. 강한 자극을 즐기는 만큼, 안전 규칙을 놀이처럼 함께 정해 두면 좋아요.'],
+ HP_lo:['잔잔한 즐거움 선호','{n}는 요란한 자극보다 잔잔한 즐거움에서 만족을 얻어요. 소란한 놀이판보다 아늑한 놀이가 이 아이의 충전 방식이에요.'],
+ FE_hi:['정교한 위험 감지','{n}는 세상을 한 번 더 확인하고 움직이는 아이예요. 겁이 많은 게 아니라 위험 감지 센서가 정교한 것 — 예고와 준비가 큰 힘이 돼요.'],
+ FE_lo:['담대한 마음','낯선 상황에서도 크게 움츠러들지 않는 담대함이 있어요. 다만 위험 신호도 작게 느낄 수 있으니, 안전 약속은 구체적으로 해 두는 게 좋아요.'],
+ FR_hi:['선명한 의사 표현','원하는 게 막히면 {n}는 온몸으로 알려요. 감정의 크기가 큰 만큼, 감정에 이름을 붙여 주는 연습이 성장의 지렛대가 돼요.'],
+ FR_lo:['순한 수용','뜻대로 안 되는 순간에도 {n}는 비교적 순하게 받아들여요. 그만큼 속마음을 놓치기 쉬우니, 가끔 먼저 물어봐 주세요.'],
+ SO_hi:['빠른 회복 탄력','속상해도 금방 제자리로 돌아오는 회복 탄력이 {n}의 큰 자산이에요. 달램이 잘 통하는 아이라 위로의 효과가 커요.'],
+ SO_lo:['깊이 느끼는 마음','{n}는 한번 흔들린 마음이 가라앉는 데 시간이 걸려요. 빨리 달래려 서두르기보다 곁에 있어 주는 것이 가장 빠른 길이에요.'],
+ AT_hi:['긴 몰입 유지','좋아하는 것에 오래 머무는 집중력이 돋보여요. 몰입을 끊지 않는 환경이 {n}의 재능을 키우는 토양이에요.'],
+ AT_lo:['넓은 탐색 주의','{n}의 주의는 빠르게 옮겨 다니며 세상을 폭넓게 살펴요. 산만함이 아니라 넓게 탐색하는 방식이라, 짧은 단위로 나눈 활동이 잘 맞아요.'],
+ IC_hi:['멈춤과 기다림','"잠깐만"이 통하는 아이예요. 이 시기에 귀한 자기조절의 싹이니, 기다려 준 순간을 알아봐 주면 더 단단해져요.'],
+ IC_lo:['즉각 행동력','{n}는 생각과 동시에 몸이 움직이는 실행파예요. 브레이크는 발달과 함께 자라니, 지금은 환경을 안전하게 만들고 선택지를 주는 게 효과적이에요.'],
+ SC_hi:['사람을 향한 마음','{n}는 사람에게서 에너지를 얻는 아이예요. 표정을 살피고 마음을 나누는 힘이 관계의 재능으로 자라고 있어요.'],
+ SC_lo:['단단한 혼자 놀이','{n}는 혼자만의 놀이 세계가 단단한 아이예요. 사교성이 부족한 게 아니라 혼자의 시간으로 충전하는 방식이에요.'],
+ SH_hi:['천천히 데워지는 관계','낯선 사람 앞에서 {n}는 워밍업 시간이 필요해요. 억지로 인사시키기보다 곁에서 지켜볼 시간을 주면 스스로 다가가요.'],
+ SH_lo:['빠른 친화력','처음 보는 사람과도 금방 가까워지는 친화력이 있어요. 다만 낯선 사람에 대한 경계는 별도로 가르쳐 둘 필요가 있어요.'],
+ SS_hi:['예리한 감각 포착','{n}는 남들이 못 느끼는 작은 자극까지 잡아내는 정밀한 센서를 가졌어요. 예민함이 아니라 세상을 자세히 느끼는 능력이에요.'],
+ SS_lo:['편안한 감각 수용','웬만한 자극에는 흔들리지 않는 무던함이 있어요. 어디서든 잘 적응하는 큰 장점이에요.'],
+ SA_hi:['회복 시간의 필요','자극이 많은 날엔 {n}만의 조용한 회복 시간이 필요해요. 외출 뒤 쿨다운 루틴이 이 아이의 컨디션을 지켜 줘요.'],
+ SA_lo:['자극 속의 활력','북적이는 곳에서도 지치지 않고 잘 지내요. 새로운 환경에 데려가기 좋은 씩씩한 체질이에요.']
+};
+
+/* PBCG 문법: 결과 요약 3문장 */
+function summaryLines(f,name){
+  const eTxt = f.E>=4.6?'새로운 세상에 성큼 다가가 온몸으로 부딪히며 배우는':f.E<=3.4?'충분히 살펴본 뒤 자기만의 속도로 다가가는':'상황에 따라 다가감과 관망을 오가며 배우는';
+  const nTxt = f.N>=4.6?'감정을 크고 선명하게 느끼고 표현하는':f.N<=3.4?'감정의 물결이 잔잔해 쉽게 흔들리지 않는':'감정을 상황에 맞게 오르내리며 표현하는';
+  const rTxt = f.R>=4.6?'하고 싶은 마음에 스스로 브레이크를 걸 줄 아는':f.R<=3.4?'마음이 곧 행동이 되는, 브레이크가 자라는 중인':'멈춤과 돌진 사이에서 조절을 연습하는 중인';
+  return [
+    `${name}는 세상을 만날 때 「${eTxt}」 아이입니다.`,
+    `감정이 찾아올 때는 「${nTxt}」 스타일입니다.`,
+    `그리고 지금은 「${rTxt}」 시기를 지나고 있습니다.`
+  ];
+}
+
+/* ═══════════ 8 TYPES (E×N×R high/low) + 민감 배지 ═══════════ */
+const TYPES = {
+  'HLH':{mono:'추',name:'안정 추진가',one:'높은 에너지와 안정된 정서, 규칙을 따르는 힘을 함께 가진 기질',
+    shine:['새로운 환경에 금방 적응하고 분위기를 밝게 만들어요','규칙을 알려 주면 스스로 지키려는 힘이 있어요'],
+    scenes:[
+      {t:'뜻대로 이끌고 싶은 순간',d:'주도성이 강해 놀이를 자기 방식대로 이끌려다 친구와 부딪힐 수 있어요',fix:'"네가 정하는 놀이 하나, 친구가 정하는 놀이 하나" — 역할을 나누는 규칙으로 리더십을 존중하며 조율해요'},
+      {t:'심심함을 못 견딜 때',d:'에너지가 남으면 장난이 커지고 위험한 시도로 이어질 수 있어요',fix:'하루 한 번 몸을 크게 쓰는 놀이 시간을 미리 확보해 에너지의 출구를 만들어 줘요'},
+      {t:'항상 잘하던 아이가 무너질 때',d:'평소 의젓해서 힘든 티를 늦게 내는 편이라 신호를 놓치기 쉬워요',fix:'"오늘 힘든 거 하나만 말해 줄래?" — 잘할 때가 아니라 아무 때나 마음을 물어봐 주세요'}]},
+  'HLL':{mono:'탐',name:'자유 탐험가',one:'세상을 겁 없이 탐색하는 높은 접근성, 조절력은 지금 자라는 중',
+    shine:['처음 보는 것에도 겁 없이 뛰어드는 탐험가예요','웃음이 많아 주변까지 즐겁게 만들어요'],
+    scenes:[
+      {t:'놀이를 끝내야 할 때',d:'재미에 풀브레이크가 없어 전환(귀가·목욕·잠자리)마다 실랑이가 생겨요',fix:'"5번 미끄럼 타면 끝!" — 숫자 카운트다운 예고로 전환을 게임처럼 만들어요'},
+      {t:'차례를 기다려야 할 때',d:'몸이 먼저 나가는 아이라 줄 서기·순서 기다리기가 유난히 힘들어요',fix:'기다리는 동안 할 미션("빨간 신발 몇 개인지 세어 보자")을 줘서 기다림 자체를 놀이로 바꿔요'},
+      {t:'위험을 못 보고 달릴 때',d:'호기심이 안전 감각보다 빨라 아슬아슬한 순간이 잦아요',fix:'금지 대신 짧은 안전 약속 하나("계단에선 손잡기")를 정하고, 지킬 때마다 크게 인정해 줘요'}]},
+  'HHH':{mono:'성',name:'열정 성취가',one:'강한 동기와 풍부한 정서, 이를 다루는 조절력까지 갖춘 기질',
+    shine:['하고 싶은 게 분명하고 끝까지 해내려는 힘이 있어요','감정이 풍부해 표현력·공감력이 빨리 자라요'],
+    scenes:[
+      {t:'뜻대로 안 돼서 폭발할 때',d:'목표가 분명한 만큼 실패의 좌절도 커요. 잘 안 되면 확 무너져요',fix:'"속상하지, 거의 다 됐는데" — 감정에 이름을 먼저 붙여 주고, 진정된 뒤에 방법을 함께 찾아요'},
+      {t:'과몰입 후 지쳤을 때',d:'좋아하는 일에 에너지를 다 써서 갑자기 짜증이 늘어나는 날이 있어요',fix:'몰입 사이에 간식·물 마시기 같은 중간 쉼표 신호를 정해 두세요'},
+      {t:'완벽하게 안 되면 안 하려 할 때',d:'잘하고 싶은 마음이 커서 서툰 모습을 보이기 싫어해요',fix:'결과 대신 시도를 칭찬하는 말("다시 해 본 게 멋지다")로 도전의 문턱을 낮춰 줘요'}]},
+  'HHL':{mono:'표',name:'정열 표현가',one:'에너지와 감정 모두 강하게 표현하는 기질, 조절력은 자라는 중',
+    shine:['좋아하는 것에 누구보다 뜨겁게 반응하는 열정가예요','감정 표현이 커서 마음을 읽기 쉬워요'],
+    scenes:[
+      {t:'"안 돼"에 폭발할 때',d:'제지당하는 순간 감정이 크게 터지고, 스스로 브레이크를 걸기 어려워요',fix:'금지 대신 선택지 2개("지금 정리할래, 한 번 더 하고 정리할래?")로 통제감을 돌려줘요'},
+      {t:'흥분이 안 가라앉을 때',d:'신나게 논 뒤에도 엔진이 계속 돌아 잠들기까지 오래 걸려요',fix:'끄는 스위치 루틴 — 조명 낮추기 → 조용한 노래 → 꼭 안아 주기 순서를 매일 똑같이 반복해요'},
+      {t:'친구와 부딪힐 때',d:'감정이 몸으로 먼저 나가 밀치거나 소리 지르는 일이 생길 수 있어요',fix:'화날 때 할 행동을 미리 정해요("화나면 쿵쿵 발 구르기 3번") — 감정을 부정하지 않으면서 출구만 바꿔 줘요'}]},
+  'LLH':{mono:'관',name:'몰입 관찰가',one:'차분한 에너지로 오래 관찰하고 깊게 몰입하는 기질',
+    shine:['한 가지에 오래 몰입하는 힘이 남달라요','신중해서 위험한 행동이 적고 규칙을 잘 지켜요'],
+    scenes:[
+      {t:'새 활동 앞에서 멈칫할 때',d:'바로 뛰어들지 않고 오래 관찰해요. 소극적인 게 아니라 신중한 거예요',fix:'"천천히 봐도 돼" — 관찰 시간을 인정해 주면 스스로 준비됐을 때 움직여요. 등 떠밀지 않기!'},
+      {t:'재촉당하면 닫혀 버릴 때',d:'"빨리빨리"를 들으면 오히려 마음의 문을 닫아요',fix:'시간 여유를 두고 미리 예고("10분 뒤에 나갈 거야")하면 자기 속도로 준비해요'},
+      {t:'조용해서 놓치기 쉬울 때',d:'요구를 크게 표현하지 않아 필요한 걸 못 받고 지나갈 수 있어요',fix:'하루 한 번 먼저 물어봐 주세요 — "오늘 제일 재밌던 거 뭐야?" 조용한 아이일수록 먼저 여는 질문이 필요해요'}]},
+  'LLL':{mono:'안',name:'온화한 안정가',one:'감정 기복이 적고 자기 속도를 지키는 평온한 기질',
+    shine:['어디서든 순하게 적응하는 평화주의자예요','감정 기복이 적어 일상이 안정적이에요'],
+    scenes:[
+      {t:'준비와 전환이 느릴 때',d:'아이만의 속도가 있어 어른의 시계와 자주 어긋나요',fix:'일정에 쿠션 시간을 넣고, "먼저 신발 신는 사람 승리!" 같은 작은 게임으로 속도를 올려요'},
+      {t:'자극이 없으면 늘어질 때',d:'스스로 새로운 자극을 찾기보다 익숙한 것에 머무르는 편이에요',fix:'하루 하나 아주 작은 새로움(새 그림책 한 권, 새 산책길)을 부모가 먼저 놓아 줘요'},
+      {t:'원하는 걸 말하지 않을 때',d:'불만이 없어 보여도 표현을 안 하는 것일 수 있어요',fix:'예/아니오 대신 선택 질문("바나나 줄까, 딸기 줄까?")으로 의사 표현의 기회를 자주 만들어요'}]},
+  'LHH':{mono:'노',name:'신중한 노력가',one:'천천히 데워지지만 익숙해지면 깊고 성실하게 해내는 기질',
+    shine:['익숙해지면 누구보다 성실하고 깊게 해내요','위험을 잘 감지해 스스로를 지키는 힘이 있어요'],
+    scenes:[
+      {t:'낯선 상황을 피하고 싶을 때',d:'새로운 곳·사람 앞에서 몸이 굳어요. 시간이 필요한 기질이에요',fix:'미리 보여주기 — 사진·영상·이야기로 내일 갈 곳을 예습하면 낯섦이 절반으로 줄어요'},
+      {t:'실수에 오래 속상해할 때',d:'작은 실수도 마음에 오래 남겨 두는 아이예요',fix:'"실수해도 괜찮아, 엄마아빠도 그래" — 부모의 실수담을 들려주는 게 백 마디 위로보다 효과적이에요'},
+      {t:'도전 앞에서 불안해할 때',d:'해 보기 전에 걱정이 먼저 커져요',fix:'작은 성공의 계단 — 목표를 잘게 쪼개 첫 계단만 함께 올라 주면, 다음 계단은 스스로 올라가요'}]},
+  'LHL':{mono:'공',name:'섬세한 공감가',one:'감정을 깊게 느끼고 타인의 마음을 빨리 알아채는 기질',
+    shine:['다른 사람 마음을 빨리 알아채는 공감 능력자예요','좋아하는 사람에게 애정이 깊고 다정해요'],
+    scenes:[
+      {t:'헤어질 때 눈물이 날 때',d:'분리(등원·헤어짐)의 순간이 유난히 힘들어요',fix:'짧고 똑같은 이별 의식(포옹 → 손키스 → "이따 만나!")을 매일 반복하면 예측 가능한 안심이 돼요'},
+      {t:'감정이 넘쳐 무너질 때',d:'슬픔·서운함이 크게 밀려오면 스스로 감당하기 어려워요',fix:'달래려 서두르기보다 곁에 있어 주세요. 회복의 신호는 아이가 먼저 보내요 — 그때 꼭 안아 주면 돼요'},
+      {t:'낯선 사람을 거부할 때',d:'마음을 여는 데 시간이 걸리는 것뿐, 무례한 게 아니에요',fix:'"인사해야지" 대신 부모 곁에서 지켜볼 시간을 주고, 아이가 먼저 다가갈 때까지 기다려 줘요'}]}
+};
+const BADGE_SCENE = {t:'자극 많은 날의 저녁',d:'감각 민감성이 높은 아이는 소리·촉감·사람 자극이 쌓인 날 저녁에 무너지기 쉬워요',fix:'외출 후에는 조명·소리를 낮춘 쿨다운 시간 20분을 루틴으로 — 예민함이 아니라 세상을 자세히 느끼는 능력이에요'};
+
+/* ═══════════ STATE ═══════════ */
+const LS='billyTemp1';
+let S = JSON.parse(localStorage.getItem(LS)||'{}');
+if(!S.results) S.results={};
+let resp='mom', curCh=1, answers={};
+const $=id=>document.getElementById(id);
+const save=()=>localStorage.setItem(LS,JSON.stringify(S));
+
+function go(v){document.querySelectorAll('.view').forEach(e=>e.classList.remove('on'));$(v).classList.add('on');window.scrollTo(0,0);}
+
+/* profile */
+$('respToggle').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  document.querySelectorAll('#respToggle button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); resp=b.dataset.r;
+  if(typeof refreshHome==='function')refreshHome();
+});
+$('childBirth').addEventListener('change',()=>{
+  const m=monthAge(); if(m==null)return;
+  let set = m<6?'아직 이르어요 (생후 6개월부터)': m<18?'6~17개월 세트 — 반응 성향 리포트': m<36?'18~35개월 세트': m<72?'3~5세 세트':'6~7세 세트';
+  $('ageNote').textContent = `현재 ${m}개월 · ${set}`;
+});
+function monthAge(){
+  const v=$('childBirth').value; if(!v)return null;
+  const [y,mo]=v.split('-').map(Number);
+  const now=new Date(2026,6,1); /* 목업 기준월 */
+  return Math.max(0,(now.getFullYear()-y)*12+(now.getMonth()+1-mo));
+}
+
+/* ═══════════ SURVEY ═══════════ */
+function startSurvey(){
+  answers={}; curCh=1; renderCh(); go('v-survey');
+}
+function confirmExit(){ if(confirm('검사를 중단할까요? 응답은 저장돼요.')) go('v-home'); }
+function itemsOf(ch){ return ITEMS.map((it,i)=>({i,sc:it[0],ch:it[1],text:it[2],rev:it[3]})).filter(x=>x.ch===ch); }
+function renderCh(){
+  const list=itemsOf(curCh), c=CHAPTERS[curCh-1];
+  let h=`<div class="ch-intro"><div class="ch-num">SCENE ${curCh} / 10</div><h3>${c.t}</h3><p>${c.d}</p></div>`;
+  list.forEach((q,idx)=>{
+    h+=`<div class="q-card" id="qc${q.i}">
+      <div class="q-no">Q${q.i+1}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="likert">${[1,2,3,4,5,6,7].map(v=>`<button onclick="pick(${q.i},${v})" id="q${q.i}v${v}" ${answers[q.i]===v?'class="on"':''}>${v}</button>`).join('')}</div>
+      <div class="likert-label"><span>전혀 없었다</span><span>절반 정도</span><span>항상 그랬다</span></div>
+      <button class="na-btn ${answers[q.i]===0?'on':''}" id="q${q.i}na" onclick="pick(${q.i},0)">해당 상황이 없었어요</button>
+    </div>`;
+  });
+  $('surveyBody').innerHTML=h;
+  $('pChapter').textContent=`챕터 ${curCh}/10 · ${c.t}`;
+  $('btnPrev').style.visibility=curCh===1?'hidden':'visible';
+  $('btnNext').textContent=curCh===10?'응답 완료':'다음 장면으로';
+  updateProgress(); window.scrollTo(0,0);
+}
+function pick(i,v){
+  answers[i]=v;
+  for(let k=1;k<=7;k++){const b=$('q'+i+'v'+k); if(b)b.classList.toggle('on',k===v);}
+  const na=$('q'+i+'na'); if(na)na.classList.toggle('on',v===0);
+  updateProgress();
+}
+function updateProgress(){
+  const n=Object.keys(answers).length;
+  $('pCount').textContent=`${n}/78`;
+  $('pFill').style.width=(n/78*100)+'%';
+}
+function prevCh(){ if(curCh>1){curCh--;renderCh();} }
+function nextCh(){
+  const miss=itemsOf(curCh).filter(q=>answers[q.i]===undefined);
+  if(miss.length){ alert(`아직 ${miss.length}개 문항이 남았어요!`); const el=$('qc'+miss[0].i); if(el)el.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+  if(curCh<10){curCh++;renderCh();}
+  else finish();
+}
+
+/* ═══════════ SCORING ═══════════ */
+function score(ans){
+  const sums={},cnts={};
+  ITEMS.forEach((it,i)=>{
+    const [sc,,,rev]=it, v=ans[i];
+    if(sc.startsWith('V'))return;
+    if(v===undefined||v===0)return;
+    const val=rev?8-v:v;
+    sums[sc]=(sums[sc]||0)+val; cnts[sc]=(cnts[sc]||0)+1;
+  });
+  const sub={}; Object.keys(SCALES).forEach(sc=>{ sub[sc]=cnts[sc]?+(sums[sc]/cnts[sc]).toFixed(2):4; });
+  const f={
+    E:(sub.AC+sub.AP+sub.HP)/3,
+    N:(sub.FE+sub.FR+(8-sub.SO))/3,
+    R:(sub.AT+sub.IC)/2,
+    S:(sub.SC+sub.SH)/2,
+    X:(sub.SS+sub.SA)/2
+  };
+  /* validity */
+  let flags=0;
+  const g=i=>ans[i];
+  ITEMS.forEach((it,i)=>{
+    if(it[0]==='V1'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2].includes('던지거나 화를'));if(g(p)&&Math.abs((8-g(i))-g(p))>=4)flags++;}
+    if(it[0]==='V2'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2]==='낯선 사람이 안으려고 하면 거부했다');if(g(p)&&Math.abs((8-g(i))-g(p))>=4)flags++;}
+    if((it[0]==='V3'||it[0]==='V4')&&g(i)>=5)flags++;
+    if(it[0]==='V5'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2]===it[2]);if(p!==i&&g(p)&&Math.abs(g(i)-g(p))>=3)flags++;}
+  });
+  return {sub,f,flags};
+}
+const bandName=v=> v<2.2?'낮음':v<3.4?'다소 낮음':v<4.6?'중간':v<5.8?'다소 높음':'높음';
+function typeOf(f){
+  const hi=v=>v>=4.3, lo=v=>v<=3.7;
+  const axes=['E','N','R'].map(k=>hi(f[k])?'H':lo(f[k])?'L':'M');
+  const key=axes.map((a,i)=>a==='M'?(f[['E','N','R'][i]]>=4?'H':'L'):a).join('');
+  const mixed=axes.filter(a=>a==='M').length;
+  let second=null;
+  if(mixed>=1){
+    const mi=axes.indexOf('M');
+    const alt=key.split(''); alt[mi]=alt[mi]==='H'?'L':'H';
+    second=alt.join('');
+  }
+  return {key,second,mixed,badge:f.X>=4.3||f.S>=5.0};
+}
+
+/* ═══════════ FINISH & REPORT ═══════════ */
+function finish(){
+  go('v-analyzing');
+  const steps=['응답 신뢰도를 확인하고 있어요','12개 하위척도 점수를 계산하고 있어요','또래 응답 패턴과 비교하고 있어요','기질 유형과 맞춤 가이드를 고르고 있어요'];
+  let si=0; $('anStep').textContent=steps[0];
+  const iv=setInterval(()=>{ si++; if(si<steps.length)$('anStep').textContent=steps[si]; },900);
+  setTimeout(()=>{
+    clearInterval(iv);
+    const r=score(answers);
+    S.results[resp]={r,name:$('childName').value||'우리 아이',month:monthAge(),date:'2026-07-09'};
+    save(); renderReport(resp); go('v-report');
+  },3800);
+}
+
+function mockRun(){
+  /* 샘플: 씩씩한 여우 + 섬세 배지 프로파일 */
+  const mock={};
+  ITEMS.forEach((it,i)=>{
+    const base={AC:5.5,AP:5.8,HP:5.2,FE:4.8,FR:5.4,SO:3.4,AT:5.0,IC:4.6,SC:5.6,SH:4.4,SS:5.4,SA:4.9}[it[0]]||2;
+    let v=Math.round(base+(Math.random()*1.6-0.8)); if(it[3])v=8-v;
+    mock[i]=Math.min(7,Math.max(1,v));
+    if(it[0]==='V3'||it[0]==='V4')mock[i]=1;
+    if(it[0]==='V1')mock[i]=8-mock[ITEMS.findIndex(x=>x[2].includes('던지거나 화를'))];
+    if(it[0]==='V2')mock[i]=8-mock[ITEMS.findIndex(x=>x[2]==='낯선 사람이 안으려고 하면 거부했다')];
+    if(it[0]==='V5')mock[i]=mock[ITEMS.findIndex(x=>x[2]===it[2])];
+  });
+  const r=score(mock);
+  S.results[resp]={r,name:$('childName').value||'빌리',month:monthAge()||26,date:'2026-07-09',sample:true};
+  save(); renderReport(resp); go('v-report');
+}
+
+function renderReport(who){
+  const res=S.results[who]; if(!res)return;
+  /* 받침 있는 이름에 '이' 붙이기: 도담→도담이 */
+  const nm=(function(n){const c=n[n.length-1];return (/[가-힣]/.test(c)&&(c.charCodeAt(0)-0xAC00)%28!==0)?n+'이':n;})(res.name);
+  const {r}=res, other=who==='mom'?'dad':'mom', otherRes=S.results[other];
+  const t=typeOf(r.f), T=TYPES[t.key], T2=t.second?TYPES[t.second]:null;
+  const isInfant=res.month!=null&&res.month<18;
+  const relLabel=who==='mom'?'엄마':'아빠', otherLabel=other==='mom'?'엄마':'아빠';
+  const trust=r.flags<=1?'양호':r.flags===2?'일부 재확인 권장':'주의';
+
+  let h=`
+  <div class="rep-head">
+    <div class="rh-top"><span>${res.name} · ${res.month!=null?res.month+'개월':''} · ${relLabel} 응답</span><span>${res.date}${res.sample?' · 샘플':''}</span></div>
+    <h2>${nm}의 기질 리포트</h2>
+    <div class="meta">78문항 · 12하위척도 정밀 분석</div>
+    <div class="trust-strip">
+      <span class="t ok">✓ 응답 신뢰도 ${trust}</span>
+      <span class="t">국내 부모 베타 응답 기준*</span>
+      <span class="t">이수진 임상심리전문가 감수</span>
+    </div>
+  </div>`;
+
+  /* S1a 결과 요약 (PBCG 문법) */
+  h+=`<div class="sum-box"><div class="sum-label">나의 결과 요약</div>
+    ${summaryLines(r.f,nm).map(s=>`<p>${s.replace(/「(.+?)」/,'「<b>$1</b>」')}</p>`).join('')}
+  </div>`;
+
+  /* S1 type — 기질 유형 */
+  if(isInfant){
+    h+=`<div class="type-card"><div class="t-mono">🌱</div>
+      <div class="t-label">지금은 성향이 자라는 시기</div>
+      <h3>반응 성향 리포트</h3>
+      <div class="t-one">18개월 미만은 기질이 자리 잡는 중이라 유형을 정하지 않아요.<br>지금의 반응 성향을 보고, <b>돌 이후 재검사</b>에서 유형을 만나 보세요!</div></div>`;
+  } else {
+    h+=`<div class="type-card">
+      <div class="t-mono">${T.mono}</div>
+      <div class="t-label">${nm}의 기질 유형</div>
+      <h3>${T.name}</h3>
+      <div class="t-one">${T.one}</div>
+      <div class="t-badges">
+        ${['E','N','R'].map(k=>`<span class="chip chip-blue">${FACTORS[k]} ${bandName(r.f[k])}</span>`).join('')}
+        ${t.badge?'<span class="chip chip-side">감각 민감성 높음</span>':''}
+      </div>
+      <div class="share-note">유형은 8가지, 대표 특성 조합까지 더하면 결과는 1,320가지 — 공유 시 이 카드만 보여요 (점수 비공개)</div>
+    </div>`;
+    if(t.mixed>=1&&T2) h+=`<div class="mix-note">${nm}는 두 유형의 경계에 있어요 — <b>${T.name}</b>에 가장 가깝지만 <b>${T2.name}</b>의 특성도 함께 나타나요. 기질은 딱 떨어지는 유형이라기보다 연속된 스펙트럼이라 자연스러운 결과예요.</div>`;
+    h+=`<div class="section" style="padding-top:4px;padding-bottom:8px">
+      <h2 class="sec" style="font-size:15px">이런 순간에 반짝여요</h2>
+      ${T.shine.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--gray-100);border-radius:12px;margin-bottom:6px">✨ ${s}</div>`).join('')}
+    </div>`;
+  }
+
+  /* S1c 대표 기질 특성 Top 3 (CliftonStrengths 문법) */
+  const traits=Object.keys(SCALES).map(sc=>({sc,v:r.sub[sc],d:Math.abs(r.sub[sc]-4)}))
+    .sort((a,b)=>b.d-a.d).slice(0,3)
+    .map(t=>({...t,pole:POLE_NARR[t.sc+(t.v>=4?'_hi':'_lo')]}));
+  h+=`<div class="section" style="padding-top:8px;padding-bottom:8px">
+    <h2 class="sec">${nm}의 대표 기질 특성</h2>
+    <p class="sub">12개 하위척도 중 가장 뚜렷한 3가지 — 이 조합과 순서가 ${nm}만의 고유함이에요 (1,320가지 조합 중 하나)</p>
+    ${traits.map((t,i)=>`<div class="trait-card r${i+1}"><div class="rank">${i+1}</div><div>
+      <h4>${t.pole[0]}<small>${SCALES[t.sc].name} · ${bandName(t.v)}${t.d<0.8?' · 자라는 중':''}</small></h4>
+      <p>${t.pole[1].replaceAll('{n}',nm)}</p>
+    </div></div>`).join('')}
+  </div>`;
+
+  /* S2 profile — TCI 형식: 요인 표 + 하위척도 양극 차트 */
+  h+=`<div class="section"><h2 class="sec">기질 프로파일</h2><p class="sub">광역 5요인과 12개 하위척도 — 모든 척도는 낮은 쪽과 높은 쪽 모두 고유한 의미가 있어요</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="ftable"><thead><tr><th>요인</th><th style="text-align:center">평균 점수</th><th style="text-align:center">위치*</th><th style="min-width:104px">프로파일 그래프</th></tr></thead><tbody>
+    ${['E','N','R','S','X'].map(k=>{const v=r.f[k],pct=((v-1)/6*100).toFixed(1);
+      return `<tr><td class="fname">${FACTORS[k]}</td><td class="fnum">${v.toFixed(1)}</td><td class="fnum">${bandName(v)}</td><td><div class="fgraph"><div class="fbar" style="width:${pct}%"></div><div class="ref" style="left:33.3%"></div><div class="ref" style="left:66.7%"></div></div></td></tr>`;}).join('')}
+    </tbody></table>
+    <div class="fnote"><b>*</b> 평균 점수는 1~7점 빈도 척도의 원점수 평균이며, 위치는 베타 응답 분포 기반 5구간 밴드입니다. 정식 규준(연령군별 300명 이상) 확보 후 T점수·백분위 점수로 전환됩니다.</div>
+  </div>
+  <div class="card">`;
+  if(otherRes) h+=`<div class="compare-legend"><span><i style="background:var(--main)"></i>${relLabel} 응답</span><span><i style="background:#E8955C"></i>${otherLabel} 응답</span></div>`;
+  const factorOrder=[['E',['AC','AP','HP']],['N',['FE','FR','SO']],['R',['AT','IC']],['S',['SC','SH']],['X',['SS','SA']]];
+  factorOrder.forEach(([fk,scs])=>{
+    h+=`<div class="factor-title">${FACTORS[fk]}</div>`;
+    scs.forEach(sc=>{
+      const v=r.sub[sc],pct=((v-1)/6*100).toFixed(1);
+      h+=`<div class="bi-name">${SCALES[sc].name}</div>
+      <div class="bi-row">
+        <div class="bi-pole l">${BIPOLAR[sc][0]}</div>
+        <div class="bi-track"><div class="band"></div><div class="mid"></div>
+          ${otherRes?`<div class="dot dad" style="left:${((otherRes.r.sub[sc]-1)/6*100).toFixed(1)}%"></div>`:''}
+          <div class="dot" style="left:${pct}%"></div>
+        </div>
+        <div class="bi-pole">${BIPOLAR[sc][1]}</div>
+      </div>`;
+    });
+  });
+  h+=`<div class="fnote">음영 구간은 또래 중간 범위이며, 점이 구간 밖에 있을수록 해당 특성이 뚜렷하다는 뜻입니다. 하위척도는 포함 문항 수가 적으므로 참고 자료로 활용해 주세요. '해당 없음' 응답은 계산에서 제외되었습니다.</div>
+  </div></div>`;
+
+  /* couple compare callout */
+  if(otherRes){
+    const diffs=Object.keys(SCALES).map(sc=>({sc,d:Math.abs(r.sub[sc]-otherRes.r.sub[sc])})).sort((a,b)=>b.d-a.d);
+    if(diffs[0].d>=1.2) h+=`<div class="section" style="padding-top:0"><div class="cycle-note">👀 <b>부부 시선 비교</b> — ${relLabel}와 ${otherLabel}의 응답이 가장 다른 곳은 <b>‘${SCALES[diffs[0].sc].name}’</b>이에요. 틀린 게 아니라, 아이가 두 분에게 다른 모습을 보여주는 것일 수 있어요. 오늘 저녁 이 척도 이야기를 나눠 보세요!</div></div>`;
+  }
+
+  /* S3 playbook */
+  if(!isInfant){
+    h+=`<div class="section"><h2 class="sec">힘든 순간 예보 & 회복 스위치</h2><p class="sub">${T.name}에게 자주 오는 순간과, 그때 켤 스위치예요</p>`;
+    const scenes=[...T.scenes]; if(t.badge)scenes.push(BADGE_SCENE);
+    scenes.forEach(s=>{
+      h+=`<div class="scene"><div class="s-tag">${s.t}</div><h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s.d}</h4>
+      <div class="fix"><span class="sw">🔄</span><div><b style="font-size:12px;color:#B4672F">회복 스위치</b><br>${s.fix}</div></div>
+      <div class="r3"><span>① 알아채기</span><span>② 다르게 보기</span><span>③ 맞춰 반응하기</span></div></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  /* S4 next */
+  h+=`<div class="section"><h2 class="sec">다음은 이거예요</h2>
+    ${S.parent&&S.parent[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">${nm}의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
+    :`<div class="next-card"><div class="n-emoji">🌿</div><div><div class="tit">양육기질 검사 (5분)</div><div class="desc">${relLabel}의 기질을 알면 <b>궁합 리포트</b>가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-pintro')">시작</button></div>`}
+    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">6개월 뒤 재검사</div><div class="desc">2027년 1월, ${nm}의 기질 변화 그래프가 생겨요</div></div><button class="btn btn-line btn-sm">알림 신청</button></div>
+    ${!otherRes?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">같은 아이, 다른 시선 — 부부 비교 리포트가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
+  </div>
+  <div class="sci">
+    <h4>이 검사의 과학적 근거</h4>
+    <li>본 검사의 차원 구조는 아동 기질 연구의 표준인 <b>Thomas & Chess의 행동 스타일 이론</b>과 <b>Rothbart의 반응성·자기조절 모델</b>(외향성·부정 정서성·의도적 통제 3요인)이 공통으로 확인해 온 기질 차원에 기반합니다.</li>
+    <li>문항은 "지난 2주 동안의 구체적인 행동 빈도"를 묻는 방식으로 설계됐습니다 — 추상적 판단("활발한 편이다")을 배제해 부모 보고의 편향을 줄이는, 국제 기질 연구에서 확립된 문항 작성 원칙입니다.</li>
+    <li>응답 신뢰도 문항(일관성·저빈도 문항)이 포함되어 결과의 신뢰 수준을 함께 제공합니다.</li>
+    <li>베타 기간에는 응답 분포 기반 밴드로, 연령군별 300명 이상의 국내 규준 확보 후 T점수·백분위 체계로 전환됩니다.</li>
+    <div class="sci-sv">
+      <img src="assets/sujin-avatar.jpg" alt="이수진 임상심리전문가" onerror="this.style.display='none'">
+      <div><b>이수진 임상심리전문가</b> 감수<br><span>한국임상심리학회 임상심리전문가 · 정신보건임상심리사 1급 · 연세대학교 임상심리 석사</span></div>
+    </div>
+  </div>
+  <div class="disclaim">본 리포트는 부모님 응답을 바탕으로 아이의 기질적 성향을 안내하는 참고 자료이며, 의학적·심리학적 진단이 아닙니다. 기질에는 좋고 나쁨이 없으며, 결과는 아이의 발달과 환경에 따라 변할 수 있습니다. 발달이 궁금하거나 걱정되는 점이 있다면 소아청소년과 전문의 또는 발달 전문가와 상담하세요. · 베이비빌리 멤버십 혜택 · 문항·해석 체계 ⓒ 베이비빌리</div>`;
+
+  $('reportBody').innerHTML=h;
+}
+
+/* ═══════════ PARENT TEST (검사 ②) ═══════════ */
+const PSCALES={P1:'활력·접근',P2:'정서 반응성',P3:'자기조절',R1:'개입 스타일',R2:'보호–도전'};
+const PBIPOLAR={P1:['차분한 에너지','활동적 에너지'],P2:['잔잔한 정서','민감한 정서 반응'],P3:['즉흥적 유연함','계획적 조절'],R1:['자율 지지','적극 구조화'],R2:['도전 허용','세심한 보호']};
+const PCHAPTERS=[
+ {t:'나의 에너지',d:'육아 이전에, 나라는 사람의 에너지예요'},
+ {t:'나의 감정 결',d:'스트레스와 돌발 상황에서 내 마음의 움직임이에요'},
+ {t:'나의 조절 스위치',d:'감정과 할 일을 다루는 나만의 방식이에요'},
+ {t:'아이와 나 ① 개입의 정도',d:'아이가 무언가 할 때, 나는 얼마나 개입하나요? (우열 없는 스타일이에요)'},
+ {t:'아이와 나 ② 안전과 도전',d:'위험과 도전 앞에서 나의 반응이에요. 거의 다 왔어요!'}
+];
+const PITEMS=[
+ ['P1',1,'주말에 집에서 쉬기보다 나갈 계획을 먼저 세웠다',0],
+ ['P1',1,'처음 해 보는 일(새 메뉴, 새 장소)을 망설임 없이 시도했다',0],
+ ['P1',1,'사람들을 만나고 나면 에너지가 차오르는 편이었다',0],
+ ['P1',1,'새로운 육아 정보나 프로그램을 보면 일단 해 보고 싶었다',0],
+ ['P1',1,'하루 일과가 빠듯해도 활력이 유지됐다',0],
+ ['P1',1,'조용히 혼자 보내는 시간이 사람들과 있는 시간보다 좋았다',1],
+ ['P2',2,'사소한 일에도 마음이 쉽게 흔들렸다',0],
+ ['P2',2,'아이가 울기 시작하면 나도 금세 초조해졌다',0],
+ ['P2',2,'계획이 어긋나면 짜증이 먼저 올라왔다',0],
+ ['P2',2,'한 번 기분이 상하면 오래 갔다',0],
+ ['P2',2,'몸이 피곤한 날에는 감정 조절이 눈에 띄게 어려워졌다',0],
+ ['P2',2,'스트레스 상황에서도 감정이 크게 요동치지 않았다',1],
+ ['PV2',2,'계획이 어긋나도 전혀 동요하지 않았다',0],
+ ['P3',3,'화가 올라와도 한 박자 멈추고 반응할 수 있었다',0],
+ ['P3',3,'아이에게 소리치고 싶은 순간에 목소리를 낮출 수 있었다',0],
+ ['P3',3,'감정이 상해도 아이 앞에서는 표현 방식을 조절했다',0],
+ ['P3',3,'여러 일이 겹쳐도 우선순위를 정해 하나씩 처리했다',0],
+ ['P3',3,'그날의 기분에 따라 육아 방식이 달라졌다',1],
+ ['P3',3,'피곤한 날에도 정해 둔 루틴(그림책 읽기, 정리)을 지켰다',0],
+ ['R1',4,'아이가 스스로 하게 두기보다 내가 먼저 해결해 줬다',0],
+ ['R1',4,'아이 놀이에 끼어들어 "이렇게 해 봐"라고 방법을 알려 줬다',0],
+ ['R1',4,'아이가 느리게 해도 끝까지 기다려 줬다',1],
+ ['R1',4,'아이의 선택(옷, 놀이)을 내 기준에 맞게 바꾸게 했다',0],
+ ['R1',4,'아이의 하루 활동 순서를 대부분 내가 정했다',0],
+ ['R1',4,'아이가 스스로 해낼 때까지 개입을 참았다',1],
+ ['R2',5,'아이가 다칠까 봐 놀이터 기구 이용을 제한했다',0],
+ ['R2',5,'아이가 무서워하면 그 상황에서 바로 벗어나게 해 줬다',0],
+ ['R2',5,'조금 어려워 보이는 놀이도 일단 시도하게 뒀다',1],
+ ['R2',5,'아이가 울 것 같으면 원인을 미리 차단했다',0],
+ ['R2',5,'새로운 환경(모임, 장소)에 아이를 자주 노출시켰다',1],
+ ['R2',5,'아이 근처에서 늘 손이 닿는 거리를 유지했다',0],
+ ['PV1',5,'지난 2주 동안 아이에게 짜증이 난 적이 한 번도 없다',0]
+];
+const PSTYLES={
+ CP:{mono:'설',name:'세심한 안전 설계자',one:'아이의 하루에 구조와 안전망을 촘촘히 놓아 주는 스타일',
+   shine:['일과가 예측 가능해 아이가 안정감을 느껴요','위험 신호를 빨리 알아채는 보호 감각이 있어요'],
+   care:['아이가 스스로 해 볼 기회가 줄어들 수 있어요 — 하루 한 번 "지켜보기만" 미션을 가져 보세요','아이의 도전 욕구가 자랄 때, 울타리를 한 뼘씩 넓혀 주세요']},
+ CD:{mono:'코',name:'든든한 성장 코치',one:'방향은 잡아 주되 도전은 밀어주는 스타일',
+   shine:['규칙과 도전이 함께 있어 아이의 실행력이 자라요','아이가 해낼 때까지 지켜보는 코칭 감각이 있어요'],
+   care:['아이의 속도가 코치의 계획보다 느릴 수 있어요 — 목표를 아이 기준으로 잘게 나눠 보세요','성취에 집중하다 보면 감정 읽기를 놓치기 쉬워요 — 결과보다 마음을 먼저 물어봐 주세요']},
+ AP:{mono:'둥',name:'따뜻한 둥지',one:'아이 주도를 존중하며 필요할 때 품어 주는 스타일',
+   shine:['아이의 선택을 기다려 주는 힘이 있어요','아이의 정서적 안전기지 역할을 잘해요'],
+   care:['보호가 앞서는 순간, 아이의 작은 도전 기회까지 대신 막을 수 있어요','적당한 좌절은 성장의 재료예요 — 한 발 뒤에서 지켜보는 연습을 해 보세요']},
+ AD:{mono:'응',name:'자유로운 응원가',one:'아이의 주도와 도전을 믿고 응원하는 스타일',
+   shine:['아이의 자율성과 문제 해결력이 자랄 토양을 줘요','새로운 시도에 관대해 탐색 기질의 아이와 합이 좋아요'],
+   care:['경계가 필요한 순간을 놓칠 수 있어요 — 안전 규칙 딱 3개만 명확히 정해 두세요','조용한 아이의 도움 요청 신호를 한 번 더 살펴봐 주세요']}
+};
+
+let pCurCh=1, pAnswers={};
+function startPSurvey(){pAnswers={};pCurCh=1;renderPCh();go('v-psurvey');}
+function pItemsOf(ch){return PITEMS.map((it,i)=>({i,sc:it[0],ch:it[1],text:it[2],rev:it[3]})).filter(x=>x.ch===ch);}
+function renderPCh(){
+  const list=pItemsOf(pCurCh),c=PCHAPTERS[pCurCh-1];
+  let h=`<div class="ch-intro"><div class="ch-num">PART ${pCurCh} / 5</div><h3>${c.t}</h3><p>${c.d}</p></div>`;
+  list.forEach(q=>{
+    h+=`<div class="q-card" id="pqc${q.i}"><div class="q-no">Q${q.i+1}</div><div class="q-text">${q.text}</div>
+    <div class="likert">${[1,2,3,4,5,6,7].map(v=>`<button onclick="ppick(${q.i},${v})" id="pq${q.i}v${v}" ${pAnswers[q.i]===v?'class="on"':''}>${v}</button>`).join('')}</div>
+    <div class="likert-label"><span>전혀 없었다</span><span>절반 정도</span><span>항상 그랬다</span></div></div>`;
+  });
+  $('pSurveyBody').innerHTML=h;
+  $('ppChapter').textContent=`파트 ${pCurCh}/5 · ${c.t}`;
+  $('pbtnPrev').style.visibility=pCurCh===1?'hidden':'visible';
+  $('pbtnNext').textContent=pCurCh===5?'응답 완료':'다음으로';
+  updatePProgress();window.scrollTo(0,0);
+}
+function ppick(i,v){pAnswers[i]=v;for(let k=1;k<=7;k++){const b=$('pq'+i+'v'+k);if(b)b.classList.toggle('on',k===v);}updatePProgress();}
+function updatePProgress(){const n=Object.keys(pAnswers).length;$('ppCount').textContent=`${n}/32`;$('ppFill').style.width=(n/32*100)+'%';}
+function prevPCh(){if(pCurCh>1){pCurCh--;renderPCh();}}
+function nextPCh(){
+  const miss=pItemsOf(pCurCh).filter(q=>pAnswers[q.i]===undefined);
+  if(miss.length){alert(`아직 ${miss.length}개 문항이 남았어요!`);const el=$('pqc'+miss[0].i);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  if(pCurCh<5){pCurCh++;renderPCh();}else finishP();
+}
+function scoreP(ans){
+  const sums={},cnts={};
+  PITEMS.forEach((it,i)=>{const [sc,,,rev]=it,v=ans[i];if(sc.startsWith('PV')||v===undefined)return;const val=rev?8-v:v;sums[sc]=(sums[sc]||0)+val;cnts[sc]=(cnts[sc]||0)+1;});
+  const sub={};Object.keys(PSCALES).forEach(sc=>{sub[sc]=cnts[sc]?+(sums[sc]/cnts[sc]).toFixed(2):4;});
+  let flags=0;
+  PITEMS.forEach((it,i)=>{
+    if(it[0]==='PV1'&&ans[i]>=5)flags++;
+    if(it[0]==='PV2'&&ans[i]!==undefined){const p=PITEMS.findIndex(x=>x[2]==='계획이 어긋나면 짜증이 먼저 올라왔다');if(ans[p]&&Math.abs((8-ans[i])-ans[p])>=4)flags++;}
+  });
+  return {sub,flags};
+}
+function pStyleOf(sub){
+  const c=sub.R1>=4.3?'C':sub.R1<=3.7?'A':(sub.R1>=4?'C':'A');
+  const p=sub.R2>=4.3?'P':sub.R2<=3.7?'D':(sub.R2>=4?'P':'D');
+  const mixed=(sub.R1>3.7&&sub.R1<4.3)||(sub.R2>3.7&&sub.R2<4.3);
+  return {key:c+p,mixed};
+}
+function finishP(){
+  go('v-analyzing');
+  const steps=['응답을 확인하고 있어요','나의 기질 축을 계산하고 있어요','양육 스타일을 분석하고 있어요'];
+  let si=0;$('anStep').textContent=steps[0];
+  const iv=setInterval(()=>{si++;if(si<steps.length)$('anStep').textContent=steps[si];},900);
+  setTimeout(()=>{clearInterval(iv);
+    const r=scoreP(pAnswers);
+    if(!S.parent)S.parent={};
+    S.parent[resp]={r,style:pStyleOf(r.sub),date:'2026-07-09'};
+    save();renderPReport(resp);go('v-preport');
+  },3000);
+}
+function mockPRun(){
+  const base={P1:3.2,P2:5.2,P3:4.8,R1:3.2,R2:5.4};
+  const mock={};
+  PITEMS.forEach((it,i)=>{let v=Math.round((base[it[0]]||2)+(Math.random()*1.2-0.6));if(it[3])v=8-v;mock[i]=Math.min(7,Math.max(1,v));
+    if(it[0]==='PV1')mock[i]=1;
+    if(it[0]==='PV2')mock[i]=8-mock[PITEMS.findIndex(x=>x[2]==='계획이 어긋나면 짜증이 먼저 올라왔다')];
+  });
+  const r=scoreP(mock);
+  if(!S.parent)S.parent={};
+  S.parent[resp]={r,style:pStyleOf(r.sub),date:'2026-07-09',sample:true};
+  save();renderPReport(resp);go('v-preport');
+}
+function renderPReport(who){
+  const pr=S.parent&&S.parent[who];if(!pr)return;
+  const ST=PSTYLES[pr.style.key],relLabel=who==='mom'?'엄마':'아빠';
+  const other=who==='mom'?'dad':'mom',otherP=S.parent&&S.parent[other],otherLabel=other==='mom'?'엄마':'아빠';
+  const trust=pr.r.flags===0?'양호':'일부 재확인 권장';
+  const eTxt=pr.r.sub.P1>=4.6?'활동적인 에너지로':pr.r.sub.P1<=3.4?'차분한 에너지로':'상황에 맞는 에너지로';
+  const nTxt=pr.r.sub.P2>=4.6?'감정이 크게 반응하는 편이라, 나를 돌보는 일이 곧 육아의 체력이 됩니다':pr.r.sub.P2<=3.4?'감정이 잔잔하게 흐르는 편이라, 아이의 큰 감정을 받아 줄 여유가 있습니다':'감정이 상황에 따라 오르내리는 편입니다';
+  let h=`
+  <div class="rep-head"><div class="rh-top"><span>${relLabel} 응답</span><span>${pr.date}${pr.sample?' · 샘플':''}</span></div>
+    <h2>${relLabel}의 양육기질 리포트</h2><div class="meta">32문항 · 기질 3축 + 양육 스타일 2축</div>
+    <div class="trust-strip"><span class="t ok">✓ 응답 신뢰도 ${trust}</span><span class="t">스타일에는 우열이 없어요</span></div>
+  </div>
+  <div class="sum-box"><div class="sum-label">나의 결과 요약</div>
+    <p>${relLabel}는 「<b>${eTxt} 아이를 만나는</b>」 양육자입니다.</p>
+    <p>그리고 「<b>${nTxt}</b>」.</p>
+    <p>아이와 함께할 때는 「<b>${ST.name}</b>」 스타일로 반응합니다.</p>
+  </div>
+  <div class="type-card"><div class="t-mono">${ST.mono}</div>
+    <div class="t-label">${relLabel}의 양육 스타일</div><h3>${ST.name}</h3><div class="t-one">${ST.one}</div>
+    <div class="t-badges">
+      <span class="chip chip-blue">개입: ${pr.r.sub.R1>=4?'구조화':'자율 지지'}</span>
+      <span class="chip chip-blue">안전: ${pr.r.sub.R2>=4?'보호 중시':'도전 허용'}</span>
+    </div>
+    ${pr.style.mixed?'<div class="share-note">두 스타일의 경계에 있어요 — 상황에 따라 유연하게 오가는 것도 강점이에요</div>':''}
+  </div>
+  <div class="section" style="padding-bottom:8px"><h2 class="sec">나의 프로파일</h2><p class="sub">기질 3축 + 양육 반응 2축 — 모든 축의 양쪽 끝은 각자의 강점이에요</p>
+  <div class="card">`;
+  if(otherP)h+=`<div class="compare-legend"><span><i style="background:var(--main)"></i>${relLabel}</span><span><i style="background:#E8955C"></i>${otherLabel}</span></div>`;
+  Object.keys(PSCALES).forEach(sc=>{
+    const v=pr.r.sub[sc],pct=((v-1)/6*100).toFixed(1);
+    h+=`<div class="bi-name">${PSCALES[sc]}</div><div class="bi-row">
+      <div class="bi-pole l">${PBIPOLAR[sc][0]}</div>
+      <div class="bi-track"><div class="band"></div><div class="mid"></div>
+      ${otherP?`<div class="dot dad" style="left:${((otherP.r.sub[sc]-1)/6*100).toFixed(1)}%"></div>`:''}
+      <div class="dot" style="left:${pct}%"></div></div>
+      <div class="bi-pole">${PBIPOLAR[sc][1]}</div></div>`;
+  });
+  h+=`<div class="fnote">음영 구간은 중간 범위입니다. 개입·보호 축은 높낮이가 아니라 방향이 다른 두 강점을 나타냅니다.</div></div></div>
+  <div class="section" style="padding-top:0"><h2 class="sec" style="font-size:15px">내 스타일이 빛나는 순간</h2>
+    ${ST.shine.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--gray-100);border-radius:12px;margin-bottom:6px">✨ ${s}</div>`).join('')}
+    <h2 class="sec" style="font-size:15px;margin-top:16px">걸릴 수 있는 순간</h2>
+    ${ST.care.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--side-soft);border-radius:12px;margin-bottom:6px">🔄 ${s}</div>`).join('')}
+  </div>
+  <div class="section"><h2 class="sec">다음은 이거예요</h2>
+    ${S.results[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">아이의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
+    :`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">마치면 궁합 리포트가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`}
+    ${!otherP?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">부부의 양육 스타일 비교가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
+  </div>
+  <div class="disclaim">본 리포트는 자기보고 응답 기반의 참고 자료이며 심리학적 진단이 아닙니다. 양육 스타일에는 우열이 없으며, 아이의 기질·발달 단계에 따라 어울리는 반응이 달라질 수 있습니다.</div>`;
+  $('pReportBody').innerHTML=h;
+}
+
+/* ═══════════ FIT REPORT (궁합) ═══════════ */
+function fitRules(cs,ps){
+  const R=[];
+  if(cs.FE>=4.6&&ps.R2>=4.6)R.push({k:'주의',t:'조심성 높은 아이 × 세심한 보호',d:'아이의 경계심을 보호로 감싸면 당장은 편안하지만, 새로운 상황을 피하는 습관이 굳어질 수 있다는 것이 기질 연구의 일관된 결과예요.',f:'"무섭지 않은 아주 작은 도전 → 곁에서 지켜보기 → 성공 축하" 3단계로 안전한 도전을 매주 하나씩 연습해요.'});
+  if(cs.FR>=4.6&&ps.P2>=4.6)R.push({k:'주의',t:'큰 감정의 아이 × 민감한 정서의 부모',d:'아이의 떼와 나의 초조함이 서로를 키우는 맞불이 되기 쉬운 조합이에요.',f:'아이보다 내가 먼저 — 6초 호흡 뒤에 반응하기를 규칙으로 정해요. 내 감정에 먼저 이름을 붙이면 아이의 폭풍이 절반이 돼요.'});
+  if(cs.AC>=4.6&&ps.P1<=3.4)R.push({k:'주의',t:'고활력 아이 × 차분한 에너지의 부모',d:'아이의 에너지를 내 몸으로 다 받아 내려 하면 방전이 빨라져요. 기질 차이지, 누구의 잘못도 아니에요.',f:'에너지를 아웃소싱해요 — 바깥 놀이 정기 루틴, 몸놀이 담당을 배우자·기관과 나누고, 나는 조용한 놀이 시간을 맡아요.'});
+  if(cs.SH>=4.6&&ps.R1>=4.6)R.push({k:'주의',t:'천천히 데워지는 아이 × 빠른 개입',d:'아이가 워밍업하는 동안 개입이 먼저 들어가면 마음의 문이 닫힐 수 있어요.',f:'"10초 기다림" 규칙 — 도와주기 전에 속으로 열을 세요. 아이가 먼저 움직이는 순간이 늘어나요.'});
+  if(cs.SS>=4.6&&ps.R2<=3.4)R.push({k:'주의',t:'예리한 감각의 아이 × 도전 허용 스타일',d:'도전을 밀어주는 좋은 스타일이지만, 감각 과부하 신호를 지나칠 수 있어요.',f:'외출 전 자극 체크(소음·조명·인파) 한 번, 외출 후 쿨다운 20분을 루틴으로 챙겨요.'});
+  if(cs.SO<=3.4&&ps.P3>=4.6)R.push({k:'강점',t:'천천히 진정되는 아이 × 계획적 조절의 부모',d:'회복에 시간이 필요한 아이에게, 매일 똑같이 반복되는 부모의 루틴은 최고의 안정 장치예요. 이 조합의 큰 강점이에요.',f:'지금의 잠자리·달램 루틴을 그대로 유지하세요. 예측 가능성이 이 아이의 회복 속도를 올려 줘요.'});
+  if(cs.AP>=4.6&&ps.R2<=3.7)R.push({k:'강점',t:'탐험가 아이 × 도전을 허용하는 부모',d:'새로움에 다가가는 아이와 그것을 막지 않는 부모 — 탐색 기질이 재능으로 자라기 좋은 조합이에요.',f:'안전 규칙 3개만 명확히 하고, 나머지는 지금처럼 열어 두세요.'});
+  if(cs.FE>=4.6&&ps.P3>=4.6)R.push({k:'강점',t:'조심성 높은 아이 × 계획적인 부모',d:'예고와 준비가 힘이 되는 아이에게, 미리 계획하는 부모의 기질이 그대로 약이 되는 조합이에요.',f:'내일 갈 곳을 사진·이야기로 예습시켜 주는 "미리 보기"를 계속 활용하세요.'});
+  if(cs.SC>=4.6&&ps.P1>=4.6)R.push({k:'강점',t:'사람 지향 아이 × 활동적인 부모',d:'함께 나가고, 함께 만나고, 함께 노는 것이 둘 다에게 충전이 되는 에너지 단짝이에요.',f:'주 1회 새로운 사람·장소를 함께 만나는 나들이를 정례화해 보세요.'});
+  const cau=R.filter(x=>x.k==='주의').slice(0,3), str=R.filter(x=>x.k==='강점').slice(0,2);
+  if(!str.length)str.push({k:'강점',t:'이미 알고 있다는 것',d:'아이의 기질과 나의 스타일을 데이터로 아는 것 자체가 조화적합도의 절반이에요.',f:'이 리포트의 주의 조합 하나만 골라 2주간 실험해 보세요.'});
+  if(!cau.length)cau.push({k:'주의',t:'컨디션 변수',d:'기질 조합이 순해도, 피곤한 날엔 누구나 마찰이 커져요.',f:'나의 방전 신호(한숨·말수 감소)를 배우자와 공유하고 교대 신호로 써요.'});
+  return {cau,str};
+}
+function openFit(){
+  const has=S.results[resp]&&S.parent&&S.parent[resp];
+  if(!has){alert('아이 기질검사와 양육기질 검사를 모두 마치면 열려요!');return;}
+  renderFit(resp);go('v-fit');
+}
+function renderFit(who){
+  const res=S.results[who],pr=S.parent[who];
+  const nm=(function(n){const c=n[n.length-1];return (/[가-힣]/.test(c)&&(c.charCodeAt(0)-0xAC00)%28!==0)?n+'이':n;})(res.name);
+  const t=typeOf(res.r.f),T=TYPES[t.key],ST=PSTYLES[pr.style.key],relLabel=who==='mom'?'엄마':'아빠';
+  const typeName=(res.month!=null&&res.month<18)?'자라나는 성향':T.name;
+  const {cau,str}=fitRules(res.r.sub,pr.r.sub);
+  let h=`
+  <div class="rep-head"><div class="rh-top"><span>${nm} × ${relLabel}</span><span>2026-07-09</span></div>
+    <h2>${nm} × ${relLabel}의 궁합 리포트</h2><div class="meta">기질 조화적합도(Goodness-of-Fit) 분석</div>
+    <div class="trust-strip"><span class="t ok">아이 기질검사 ✓</span><span class="t ok">양육기질 검사 ✓</span></div>
+  </div>
+  <div class="sum-box"><div class="sum-label">우리 조합 요약</div>
+    <p>「<b>${typeName}</b>」 기질의 ${nm}와 「<b>${ST.name}</b>」 스타일의 ${relLabel} —</p>
+    <p>이 조합의 강점 ${str.length}가지와 미리 알아 둘 마찰 지점 ${cau.length}가지를 찾았어요. <b>fit은 바꾸는 게 아니라 맞춰 가는 것</b> — 아래 가이드는 모두 '아이를 고치는 법'이 아니라 '내 반응을 조율하는 법'이에요.</p>
+  </div>
+  <div class="section" style="padding-bottom:8px"><h2 class="sec">우리의 강점 조합</h2>
+  ${str.map(s=>`<div class="scene" style="border-color:var(--main-200)"><div class="s-tag" style="color:var(--main-deep)">강점 ✦ ${s.t}</div>
+    <h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s.d}</h4>
+    <div class="fix" style="background:var(--main-100)"><span class="sw">💙</span><div><b style="font-size:12px;color:var(--main-deep)">이렇게 살려요</b><br>${s.f}</div></div></div>`).join('')}
+  </div>
+  <div class="section" style="padding-top:8px"><h2 class="sec">마찰 예보 & 조율 스위치</h2><p class="sub">비난이 아니라 예보예요 — 미리 알면 절반은 피해 가요</p>
+  ${cau.map(s=>`<div class="scene"><div class="s-tag">예보 ⚡ ${s.t}</div>
+    <h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s.d}</h4>
+    <div class="fix"><span class="sw">🔄</span><div><b style="font-size:12px;color:#B4672F">조율 스위치</b><br>${s.f}</div></div>
+    <div class="r3"><span>① 알아채기</span><span>② 다르게 보기</span><span>③ 맞춰 반응하기</span></div></div>`).join('')}
+  </div>
+  <div class="sci"><h4>이 리포트의 근거</h4>
+    <li>조화적합도(Goodness-of-Fit)는 Thomas & Chess가 제안한 개념으로, 발달을 결정하는 것은 아이의 기질 자체가 아니라 <b>기질과 환경(양육)의 맞물림</b>이라는 이론이에요.</li>
+    <li>기질에 맞춰 부모의 반응을 조율하는 개입 프로그램(INSIGHTS 등)은 무작위 대조 연구에서 아동 문제행동 감소 효과가 확인되어 있어요.</li>
+  </div>
+  <div class="section"><h2 class="sec">다음은 이거예요</h2>
+    <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 궁합도 있어요</div><div class="desc">같은 아이라도 부모마다 fit이 달라요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>
+    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">6개월 뒤 재검사</div><div class="desc">${nm}의 기질 변화에 맞춰 궁합도 업데이트돼요</div></div><button class="btn btn-line btn-sm">알림 신청</button></div>
+  </div>
+  <div class="disclaim">본 리포트는 두 검사의 응답을 조합한 참고 자료이며 진단이 아닙니다. 조합 해석은 부모의 잘잘못이 아닌 '기질 간 상호작용'에 대한 안내입니다.</div>`;
+  $('fitBody').innerHTML=h;
+}
+
+/* ═══════════ STRESS TEST (검사 ③) ═══════════ */
+const SDOMAINS={S1:'부모 소진',S2:'돌봄 부담',S3:'관계 스트레스'};
+const SITEMS=[
+ ['S1',1,'아침에 눈을 떴을 때 이미 지쳐 있다고 느꼈다'],
+ ['S1',1,'나를 위한 시간이 전혀 없다고 느꼈다'],
+ ['S1',1,'육아 외의 일(취미, 친구)이 남의 이야기처럼 느껴졌다'],
+ ['S1',1,'예전의 나를 잃어버린 것 같다고 느꼈다'],
+ ['S1',1,'잠을 자도 피로가 풀리지 않았다'],
+ ['S1',1,'사소한 일에도 눈물이 나거나 울컥했다'],
+ ['S1',1,'하루가 끝나면 아무것도 할 힘이 남지 않았다'],
+ ['S1',1,'육아를 도와줄 사람이 없다고 느꼈다'],
+ ['S2',2,'아이를 돌보는 일이 예상보다 훨씬 힘들다고 느꼈다'],
+ ['S2',2,'아이가 잠들기 전까지 한시도 쉴 수 없다고 느꼈다'],
+ ['S2',2,'아이의 떼나 울음에 어떻게 해야 할지 몰랐다'],
+ ['S2',2,'아이의 식사·수면 문제로 하루 계획이 계속 흔들렸다'],
+ ['S2',2,'외출 한 번이 큰일처럼 느껴졌다'],
+ ['S2',2,'아이가 아프면 모든 것이 멈추는 느낌이었다'],
+ ['S2',2,'아이의 요구가 끝이 없다고 느꼈다'],
+ ['S2',2,'아이와 단둘이 보내는 시간이 길게 느껴졌다'],
+ ['S3',3,'아이에게 화를 낸 뒤 죄책감이 들었다'],
+ ['S3',3,'아이와 함께 있어도 즐겁지 않은 순간이 있었다'],
+ ['S3',3,'아이의 마음을 모르겠다고 느꼈다'],
+ ['S3',3,'아이에게 좋은 부모가 아니라는 생각이 들었다'],
+ ['S3',3,'배우자와 육아 방식 때문에 다퉜다'],
+ ['S3',3,'아이의 행동이 나를 일부러 힘들게 하려는 것처럼 느껴졌다'],
+ ['S3',3,'아이와 놀아 주는 시간이 의무처럼 느껴졌다'],
+ ['S3',3,'육아에 대한 주변의 말(가족, SNS)에 위축됐다']
+];
+const SCH=[
+ {t:'나의 컨디션',d:'아이 말고, 부모님 자신의 요즘 상태예요'},
+ {t:'돌봄의 무게',d:'아이를 돌보는 일 자체의 무게감이에요'},
+ {t:'마음의 거리',d:'아이·가족과의 관계에서 느끼는 마음이에요'}
+];
+const SLABELS=['전혀 없었다','가끔','종종','자주','거의 항상'];
+const SRX={
+ S1:{tag:'부모 소진 회복',h:'나를 위한 15분, 죄책감 없이',p:'하루 딱 15분, 아이와 무관한 나만의 시간을 "약속"으로 캘린더에 넣어 보세요. 소진은 의지가 아니라 회복 시간의 부족에서 와요. 배우자·가족에게 이 15분을 요청하는 것부터가 회복의 시작이에요.'},
+ S2:{tag:'돌봄 부담 덜기',h:'모든 걸 잘할 필요는 없어요',p:'오늘 꼭 해야 할 돌봄 한 가지만 남기고, 나머지는 "안 해도 되는 일" 목록으로 옮겨 보세요. 완벽한 하루가 아니라 넘어가는 하루도 충분히 좋은 육아예요.'},
+ S3:{tag:'관계 회복',h:'하루 3분, 아이와 눈 맞추기',p:'가르치거나 훈육하지 않고, 그저 아이가 노는 걸 3분간 따라가며 함께해 보세요("스페셜 타임"). 관계의 거리감은 큰 이벤트가 아니라 이런 짧은 순간들이 좁혀 줘요. 나에게 향하던 죄책감도 조금 옅어질 거예요.'}
+};
+
+let sCurCh=1,sAnswers={};
+function startSSurvey(){sAnswers={};sCurCh=1;renderSCh();go('v-ssurvey');}
+function sItemsOf(ch){return SITEMS.map((it,i)=>({i,dm:it[0],ch:it[1],text:it[2]})).filter(x=>x.ch===ch);}
+function renderSCh(){
+  const list=sItemsOf(sCurCh),c=SCH[sCurCh-1];
+  let h=`<div class="ch-intro"><div class="ch-num">영역 ${sCurCh} / 3</div><h3>${c.t}</h3><p>${c.d}</p></div>`;
+  list.forEach(q=>{
+    h+=`<div class="q-card" id="sqc${q.i}"><div class="q-no">Q${q.i+1}</div><div class="q-text">${q.text}</div>
+    <div class="slikert">${SLABELS.map((lb,v)=>`<button onclick="spick(${q.i},${v+1})" id="sq${q.i}v${v+1}" ${sAnswers[q.i]===v+1?'class="on"':''}>${lb}</button>`).join('')}</div></div>`;
+  });
+  $('sSurveyBody').innerHTML=h;
+  $('spChapter').textContent=`영역 ${sCurCh}/3 · ${c.t}`;
+  $('sbtnPrev').style.visibility=sCurCh===1?'hidden':'visible';
+  $('sbtnNext').textContent=sCurCh===3?'응답 완료':'다음으로';
+  updateSProgress();window.scrollTo(0,0);
+}
+function spick(i,v){sAnswers[i]=v;for(let k=1;k<=5;k++){const b=$('sq'+i+'v'+k);if(b)b.classList.toggle('on',k===v);}updateSProgress();}
+function updateSProgress(){const n=Object.keys(sAnswers).length;$('spCount').textContent=`${n}/24`;$('spFill').style.width=(n/24*100)+'%';}
+function prevSCh(){if(sCurCh>1){sCurCh--;renderSCh();}}
+function nextSCh(){
+  const miss=sItemsOf(sCurCh).filter(q=>sAnswers[q.i]===undefined);
+  if(miss.length){alert(`아직 ${miss.length}개 문항이 남았어요!`);const el=$('sqc'+miss[0].i);if(el)el.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  if(sCurCh<3){sCurCh++;renderSCh();}else finishS();
+}
+function scoreS(ans){
+  const sums={},cnts={};
+  SITEMS.forEach((it,i)=>{const dm=it[0],v=ans[i];if(v===undefined)return;sums[dm]=(sums[dm]||0)+v;cnts[dm]=(cnts[dm]||0)+1;});
+  const dom={};Object.keys(SDOMAINS).forEach(dm=>{dom[dm]=cnts[dm]?+(sums[dm]/cnts[dm]).toFixed(2):1;});
+  const overall=+((dom.S1+dom.S2+dom.S3)/3).toFixed(2);
+  return {dom,overall};
+}
+/* 1~5 → level */
+const sLevel=v=>v<2?'low':v<3?'mid':v<4?'high':'alert';
+const sLevelName={low:'여유',mid:'주의',high:'높음',alert:'많이 지침'};
+function finishS(){
+  go('v-analyzing');
+  const steps=['응답을 확인하고 있어요','세 영역의 스트레스를 계산하고 있어요','나에게 맞는 회복 처방을 고르고 있어요'];
+  let si=0;$('anStep').textContent=steps[0];
+  const iv=setInterval(()=>{si++;if(si<steps.length)$('anStep').textContent=steps[si];},850);
+  setTimeout(()=>{clearInterval(iv);
+    const r=scoreS(sAnswers);
+    if(!S.stress)S.stress={};
+    if(!S.stress[resp])S.stress[resp]=[];
+    S.stress[resp].push({r,date:'2026-07-09'});
+    save();renderSReport(resp);go('v-sreport');
+  },2900);
+}
+function mockSRun(){
+  /* 샘플: 소진 높음 프로파일 + 과거 이력 2회 주입 */
+  const mock={};
+  SITEMS.forEach((it,i)=>{const base={S1:3.6,S2:3.0,S3:2.4}[it[0]];mock[i]=Math.min(5,Math.max(1,Math.round(base+(Math.random()*1.2-0.6))));});
+  const r=scoreS(mock);
+  if(!S.stress)S.stress={};
+  S.stress[resp]=[
+    {r:{dom:{S1:4.0,S2:3.4,S3:3.0},overall:3.47},date:'2026-01-10',sample:true},
+    {r:{dom:{S1:3.5,S2:3.1,S3:2.6},overall:3.07},date:'2026-04-12',sample:true},
+    {r,date:'2026-07-09',sample:true}
+  ];
+  save();renderSReport(resp);go('v-sreport');
+}
+function renderSReport(who){
+  const hist=S.stress&&S.stress[who];if(!hist||!hist.length)return;
+  const cur=hist[hist.length-1],{dom,overall}=cur.r;
+  const relLabel=who==='mom'?'엄마':'아빠';
+  const oLv=sLevel(overall),oPct=Math.round((overall-1)/4*100);
+  const tempWord={low:'여유로운 편',mid:'조금 지친',high:'많이 지친',alert:'돌봄이 필요한'}[oLv];
+  const childName=S.results[who]?S.results[who].name:'';
+  const hasChild=!!S.results[who];
+  /* 스트레스×기질 연동 문장 */
+  let linkLine='';
+  if(hasChild){
+    const cf=S.results[who].r.f;
+    if(dom.S2>=3&&cf.N>=4.6)linkLine=`${childName}는 감정을 크고 선명하게 표현하는 아이예요. 돌봄 부담이 높게 나온 건 부모의 부족이 아니라, 큰 감정을 매일 받아 내는 일이 실제로 고된 노동이기 때문이에요.`;
+    else if(dom.S1>=3&&cf.E>=4.6)linkLine=`${childName}의 높은 에너지를 온몸으로 받아 내다 보면 소진이 빨리 와요. 에너지 담당을 나누는 것이 회복의 열쇠예요.`;
+    else if(dom.S3>=3&&cf.S>=4.6)linkLine=`${childName}는 사람과의 교감을 원하는 아이라 요구가 많게 느껴질 수 있어요. 관계 피로는 애정이 부족해서가 아니에요.`;
+  }
+  let h=`
+  <div class="rep-head"><div class="rh-top"><span>${relLabel} · ${cur.date}</span><span>${cur.sample?'샘플':(hist.length>1?hist.length+'회차':'첫 체크')}</span></div>
+    <h2>${relLabel}의 마음 컨디션</h2><div class="meta">양육 스트레스 3영역 체크</div>
+  </div>
+  <div class="overall-card">
+    <div class="o-temp ${'lv-'+oLv}">${overall.toFixed(1)}<span style="font-size:18px;color:var(--gray)">/5</span></div>
+    <div class="g-level ${'lv-'+oLv}" style="font-size:16px;margin-top:6px">지금 ${relLabel}는 <b>${tempWord}</b> 상태예요</div>
+    <div class="o-cap">${oLv==='low'?'지금의 균형을 잘 지키고 있어요':oLv==='mid'?'무리하지 않도록 나를 살펴 줄 때예요':'나를 먼저 돌봐야 할 신호예요. 혼자 견디지 않으셔도 돼요'}</div>
+  </div>`;
+  /* 고위험 케어 박스 */
+  if(oLv==='alert'||dom.S1>=4){
+    h+=`<div class="care-box"><div class="c-tag">잠깐, 이 이야기를 꼭 전하고 싶어요</div>
+    <p>요즘 많이 지치셨네요. 이건 ${relLabel}가 약해서가 아니라, 그만큼 오래 애써 왔다는 신호예요. 혼자 버티지 마시고 곁의 사람이나 전문가에게 마음을 나눠 보세요.<br><br>· 육아종합지원센터 (거주지 검색)<br>· 보건복지상담센터 <a href="tel:129">☎ 129</a> (24시간)<br>· 정신건강상담전화 <a href="tel:1577-0199">☎ 1577-0199</a></p></div>`;
+  }
+  /* 3영역 게이지 */
+  h+=`<div class="section" style="padding-bottom:8px"><h2 class="sec">영역별로 살펴보면</h2><p class="sub">지난 2주 기준 · 어느 영역이 나를 가장 누르고 있는지 봐요</p><div class="card">`;
+  Object.keys(SDOMAINS).forEach(dm=>{
+    const v=dom[dm],lv=sLevel(v),pct=Math.round((v-1)/4*100);
+    h+=`<div class="gauge"><div class="g-top"><span class="g-name">${SDOMAINS[dm]}</span><span class="g-level ${'lv-'+lv}">${sLevelName[lv]} · ${v.toFixed(1)}</span></div>
+      <div class="g-track"><i class="${'fill-'+lv}" style="width:${Math.max(6,pct)}%"></i></div></div>`;
+  });
+  h+=`</div>`;
+  if(linkLine)h+=`<div class="cycle-note" style="margin-top:0">🧩 <b>기질검사와 함께 보면</b> — ${linkLine}</div>`;
+  h+=`</div>`;
+  /* 추이 그래프 */
+  if(hist.length>1){
+    const max=5;
+    h+=`<div class="trend"><h4>나의 컨디션 흐름</h4><div class="trend-graph">`;
+    hist.slice(-4).forEach((e,i,arr)=>{
+      const isNow=i===arr.length-1,pct=Math.round(e.r.overall/max*100);
+      h+=`<div class="tb ${isNow?'now':''}"><div class="val">${e.r.overall.toFixed(1)}</div><div class="bar" style="height:${pct}%"></div><div class="lbl">${e.date.slice(5).replace('-','.')}</div></div>`;
+    });
+    h+=`</div><div class="t-note">${hist[hist.length-1].r.overall<hist[hist.length-2].r.overall?'지난번보다 나아지고 있어요. 잘 하고 계세요 👏':'지난번보다 조금 힘들어졌어요. 나를 위한 시간을 늘려 봐요'}</div></div>`;
+  }
+  /* 회복 처방 (상위 2영역) */
+  const top=Object.keys(SDOMAINS).map(dm=>({dm,v:dom[dm]})).sort((a,b)=>b.v-a.v).slice(0,2).filter(x=>x.v>=2);
+  h+=`<div class="section"><h2 class="sec">${relLabel}를 위한 회복 처방</h2><p class="sub">${top.length?'가장 무거운 영역부터, 오늘 할 수 있는 작은 것':'지금의 균형을 지키는 습관'}</p>`;
+  (top.length?top:[{dm:'S1'}]).forEach(t=>{const rx=SRX[t.dm];
+    h+=`<div class="rx-card"><div class="rx-tag">${rx.tag}</div><h4>${rx.h}</h4><p>${rx.p}</p></div>`;
+  });
+  h+=`</div>`;
+  /* 다음 */
+  h+=`<div class="section"><h2 class="sec">다음은 이거예요</h2>
+    <div class="next-card"><div class="n-emoji">📅</div><div><div class="tit">3개월 뒤 다시 체크</div><div class="desc">2026년 10월, ${relLabel}의 컨디션 흐름이 이어져요</div></div><button class="btn btn-line btn-sm">알림 신청</button></div>
+    ${!hasChild?`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">아이 기질과 함께 보면 해석이 깊어져요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`:''}
+  </div>
+  <div class="disclaim">본 체크는 양육 스트레스 정도를 스스로 살펴보기 위한 참고 자료이며, 의학적 진단이나 우울·불안 선별검사가 아닙니다. 마음이 계속 힘들다면 전문기관의 도움을 받으시길 권합니다. · 보건복지상담센터 129</div>`;
+  $('sReportBody').innerHTML=h;
+}
+
+/* ═══════════ HOME STATE ═══════════ */
+function refreshHome(){
+  const done1=!!S.results[resp],done2=!!(S.parent&&S.parent[resp]);
+  const t1=$('test1State');if(t1)t1.textContent=done1?'리포트 ›':'시작 ›';
+  const t2=$('test2State');if(t2)t2.textContent=done2?'리포트 ›':'시작 ›';
+  const done3=!!(S.stress&&S.stress[resp]&&S.stress[resp].length);
+  const t3=$('test3State');if(t3)t3.textContent=done3?'리포트 ›':'시작 ›';
+  const fc=$('fitCard'),fs=$('fitState');
+  if(fc&&fs){if(done1&&done2){fc.classList.remove('locked');fs.textContent='보기 ›';fs.style.color='var(--main)';fc.querySelector('.icon').textContent='💙';}
+  else{fc.classList.add('locked');fs.textContent='잠김';fs.style.color='var(--gray)';}}
+}
+const _go=go;
+go=function(v){_go(v);if(v==='v-home')refreshHome();};
+refreshHome();
+
+/* ═══════════ AUTH (스텁) ═══════════ */
+function session(){ try{return JSON.parse(localStorage.getItem('billyAuth')||'null');}catch(e){return null;} }
+function authClick(){
+  const s=session();
+  if(s){ if(confirm(`${s.phone} 로그인 상태예요. 로그아웃할까요?`)){ localStorage.removeItem('billyAuth'); updateAuth(); } }
+  else openLogin();
+}
+function openLogin(){ $('loginModal').classList.add('on'); setTimeout(()=>$('loginPhone').focus(),100); }
+function closeLogin(){ $('loginModal').classList.remove('on'); }
+function doLogin(){
+  const v=$('loginPhone').value.replace(/[^0-9]/g,'');
+  if(v==='0000'){ closeLogin(); renderAdmin(); go('v-admin'); return; } /* 관리자 진입(데모) */
+  if(v.length<10){ alert('휴대폰 번호를 정확히 입력해 주세요.'); return; }
+  localStorage.setItem('billyAuth',JSON.stringify({phone:v.slice(0,3)+'-****-'+v.slice(-4),at:'2026-07-09'}));
+  closeLogin(); updateAuth();
+}
+function updateAuth(){
+  const s=session(),b=$('authBtn'); if(!b)return;
+  if(s){ b.textContent=s.phone; b.classList.add('in'); } else { b.textContent='로그인'; b.classList.remove('in'); }
+}
+function renderAdmin(){
+  const childN=Object.keys(S.results||{}).length;
+  const parentN=Object.keys(S.parent||{}).length;
+  const stressN=Object.values(S.stress||{}).reduce((a,arr)=>a+(arr?arr.length:0),0);
+  $('adminBody').innerHTML=`
+    <div class="admin-stat">
+      <div class="box"><b>${childN}</b><span>아이 기질검사</span></div>
+      <div class="box"><b>${parentN}</b><span>양육기질</span></div>
+      <div class="box"><b>${stressN}</b><span>스트레스 체크</span></div>
+    </div>
+    <div class="admin-row"><span>로그인 세션</span><b>${session()?session().phone:'없음'}</b></div>
+    <div class="admin-row"><span>저장 위치</span><b>브라우저 localStorage</b></div>
+    <div class="admin-row"><span>서버 연동</span><b>추후 예정</b></div>
+    <p style="font-size:12px;color:var(--gray);margin-top:14px;line-height:1.6">이 화면은 관리자 기능의 자리표시자예요. 추후 로그인 인증·멤버십 조회·응답 데이터 집계·감수 리포트 관리 기능이 서버와 연동됩니다. (데모 진입: 로그인에서 <b>0000</b> 입력)</p>`;
+}
+updateAuth();
+
+/* ═══════════ TYPE DEX ═══════════ */
+(function(){
+  const axisChip=(k,on,label)=>`<span class="${on?'hi':''}">${label}</span>`;
+  let h='';
+  Object.entries(TYPES).forEach(([k,T])=>{
+    h+=`<div class="dex"><div class="d-mono">${T.mono}</div><h4>${T.name}</h4><p>${T.one}</p>
+    <div class="axes">
+      ${axisChip(k,k[0]==='H','활력 '+(k[0]==='H'?'높':'낮'))}
+      ${axisChip(k,k[1]==='H','감정 '+(k[1]==='H'?'큼':'잔잔'))}
+      ${axisChip(k,k[2]==='H','조절 '+(k[2]==='H'?'높':'자람 중'))}
+    </div></div>`;
+  });
+  $('dexGrid').innerHTML=h;
+})();
+</script>
+</body>
+</html>
