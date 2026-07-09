@@ -127,14 +127,12 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 .sv-mini span{font-size:12px;color:rgba(255,255,255,.92);font-weight:600}
 
 /* ---------- about (전문가 소개·인터뷰) ---------- */
-.about-hero{position:relative;text-align:center;padding:0}
-.about-hero .cover{width:100%;aspect-ratio:4/5;max-height:500px;object-fit:cover;object-position:center 14%;display:block}
-.about-hero .cover-grad{position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(to top,var(--white),transparent)}
-.about-id{padding:0 24px;margin-top:-40px;position:relative;text-align:center}
-.about-id .badge-cert{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--main);border-radius:999px;padding:5px 15px;box-shadow:var(--shadow)}
-.about-id h2{font-size:24px;font-weight:900;margin-top:12px;letter-spacing:-0.02em}
-.about-id h2 span{font-size:14px;font-weight:600;color:var(--gray);margin-left:6px}
-.about-id .tagline{font-size:14px;color:var(--muted);margin-top:8px;max-width:30ch;margin-left:auto;margin-right:auto;line-height:1.6}
+.about-hero{text-align:center;padding:32px 24px 0}
+.about-hero .cover{width:112px;height:112px;border-radius:50%;object-fit:cover;object-position:center 22%;display:block;margin:0 auto;border:3px solid var(--main-100);box-shadow:var(--shadow)}
+.about-hero .badge-cert{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.04em;color:#fff;background:var(--main);border-radius:999px;padding:5px 15px;margin-top:14px}
+.about-hero h2{font-size:22px;font-weight:900;margin-top:10px;letter-spacing:-0.02em}
+.about-hero h2 span{font-size:13.5px;font-weight:600;color:var(--gray);margin-left:6px}
+.about-hero .tagline{font-size:13.5px;color:var(--muted);margin-top:8px;max-width:30ch;margin-left:auto;margin-right:auto;line-height:1.6}
 .cred-list{margin:22px 20px 0;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:18px 20px}
 .cred-list h3{font-size:12px;font-weight:900;letter-spacing:.06em;color:var(--main-deep);margin-bottom:12px}
 .cred-list .cr{display:flex;gap:11px;font-size:13.5px;padding:7px 0;border-top:1px solid var(--gray-100)}
@@ -624,9 +622,6 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
     <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">감수 전문가 소개</span></div>
     <div class="about-hero">
       <img class="cover" src="assets/sujin-portrait.jpg" alt="이수진 임상심리전문가" onerror="this.style.display='none'">
-      <div class="cover-grad"></div>
-    </div>
-    <div class="about-id">
       <span class="badge-cert">임상심리전문가</span>
       <h2>이수진 <span>Lee Sujin</span></h2>
       <p class="tagline">아이의 타고난 결을 부모가 이해하도록 돕는 것, 그것이 제가 이 검사를 감수하는 이유입니다.</p>
@@ -1147,17 +1142,82 @@ const BADGE_SCENE = {t:'자극 많은 날의 저녁',
   say:'오늘 시끌시끌한 하루였지? 우리 조용한 데서 잠깐 쉬자. 아무것도 안 해도 돼 — 그냥 엄마아빠 옆에 있기만 해도 충분해.'};
 
 /* ═══════════ 추천 도서 — 실존 도서만, 기질 축 기반 매칭 ═══════════ */
-const BOOKS_BASE=[
- {t:'어떻게 말해줘야 할까',a:'오은영',w:'아이에게 건네는 말 한마디를 일상 장면별로 알려 주는 책이에요. 이 리포트의 "이런 말을 건네 보세요"를 일상에서 더 깊게 연습하고 싶을 때 곁에 두기 좋아요.'},
- {t:'아이는 언제나 옳다',a:'천근아',w:'세브란스 소아정신과 진료실에서 만난 아이들의 이야기예요. 아이의 행동 뒤에 숨어 있는 마음을 읽는 눈을 길러 줍니다.'}
+/* 육아서 51권 — 전부 실존 도서(제목·저자·출판사 확인됨). 태그로 아이 기질·부모 기질에 맞춰 자동 추천 */
+const BOOKS=[
+ {t:'어떻게 말해줘야 할까',a:'오은영 · 김영사',w:'상황별로 아이에게 건넬 말 130가지를 알려 주는 책이에요. 이 리포트의 "건네 보세요" 문장을 일상에서 더 깊게 연습하고 싶을 때 곁에 두면 좋아요.',tags:['core']},
+ {t:'못 참는 아이 욱하는 부모',a:'오은영 · 코리아닷컴',w:'충동이 큰 아이 앞에서 자꾸 욱하게 되는 부모의 감정까지 함께 다루는 책이에요. 에너지 넘치고 조절이 아직 서툰 아이를 키운다면 도움이 됩니다.',tags:['E-hi','P2-hi']},
+ {t:'불안한 엄마 무관심한 아빠',a:'오은영 · 웅진리빙하우스',w:'부모 자신의 불안이 양육에 어떻게 스며드는지 짚어 주는 책이에요. 아이의 정서에 민감하게 반응하는 부모에게 자기 이해의 계기가 됩니다.',tags:['self','P2-hi']},
+ {t:'금쪽이들의 진짜 마음속',a:'오은영 · 오은라이프사이언스',w:'다양한 문제행동 사례 뒤에 숨은 아이의 진짜 마음을 짚어 주는 책이에요. 어떤 기질의 아이를 키우든 폭넓게 참고할 수 있어요.',tags:['core']},
+ {t:'아이는 언제나 옳다',a:'천근아 · 위즈덤하우스',w:'세브란스 소아정신과 진료실에서 만난 아이들의 이야기예요. 아이의 행동 뒤에 숨어 있는 마음을 읽는 눈을 길러 줍니다.',tags:['core']},
+ {t:'천근아의 두뇌 육아',a:'천근아 · 위즈덤하우스',w:'0~3세 두뇌발달과 애착형성을 함께 다루는 책이에요. 영아기 아이를 키우는 부모에게 특히 도움이 됩니다.',tags:['attachment']},
+ {t:'그림책으로 읽는 아이들 마음',a:'서천석 · 창비',w:'감정별 그림책으로 아이 마음에 다가가는 법을 알려 줘요. 감정을 크게 느끼거나 낯가림이 있는 아이와 마음을 나누고 싶을 때 좋아요.',tags:['N-hi','shy-hi']},
+ {t:'세상에서 가장 쉬운 본질육아',a:'지나영 · 21세기북스',w:'기법보다 방향이 필요할 때 — 아이를 어떤 사람으로 키울 것인지 육아의 본질을 다시 잡아 주는 존스홉킨스 소아정신과 교수의 책이에요.',tags:['core']},
+ {t:'산만한 아이를 위한 본질육아',a:'지나영 · 21세기북스',w:'산만하고 활동적인 기질의 아이가 집중력을 키우도록 돕는 책이에요. 에너지가 크고 자기조절이 자라는 중인 아이에게 잘 맞아요.',tags:['adhd','E-hi','R-lo']},
+ {t:'아이의 뇌',a:'김붕년 · 포레스트북스',w:'뇌과학을 바탕으로 생각·정서·실행지능을 키우는 양육 원칙을 알려 줘요. 차분하고 신중한 기질의 아이를 깊이 이해하고 싶을 때 좋아요.',tags:['R-hi','self']},
+ {t:'최민준의 아들코칭 백과',a:'최민준 · 위즈덤하우스',w:'에너지 넘치는 아이의 기질을 파악하고 말과 감정을 코칭하는 법을 담았어요. 활동적인 아이를 키우는 부모에게 실전 팁이 많습니다.',tags:['E-hi']},
+ {t:'예민한 아이를 위한 부모 수업',a:'일레인 N. 아론 · 웅진지식하우스',w:'고도민감성(HSC) 이론의 원조가 쓴 책이에요. 감각·정서에 예민한 아이를 키우는 부모의 필독서로 꼽혀요.',tags:['sensory','core']},
+ {t:'기질 양육의 뇌과학',a:'릴리아나 렝구아·마리아 가르스틴 · 현대지성',w:'기질 연구 석학 2인이 8가지 기질 유형과 4대 양육 원칙을 정리한 책이에요. 우리 아이의 기질 프로파일을 더 깊이 이해하고 싶을 때 권해요.',tags:['core']},
+ {t:'육아 고민? 기질 육아가 답이다!',a:'최은정 · 소울하우스',w:'아이의 기질을 진단·분석하고 기질에 맞는 코칭법을 정리한 책이에요. 이 검사 결과를 더 깊이 확장해 보고 싶을 때 좋아요.',tags:['core']},
+ {t:'예민한 아이 잘 키우는 법',a:'최치현 · 유노라이프',w:'섬세한 기질의 아이를 위한 13가지 구체적 처방을 담았어요. 감각 민감성이 높게 나온 아이의 부모에게 실용적이에요.',tags:['sensory']},
+ {t:'모든 아이는 예민하다',a:'김효원 · 글항아리',w:'초예민 기질을 감각·인지·정서 특징별로 나눠 설명하는 책이에요. 우리 아이의 예민함이 어느 결인지 자세히 알고 싶을 때 좋아요.',tags:['sensory']},
+ {t:'나는 예민한 엄마입니다',a:'송희재 · 북드림',w:'부모 자신의 예민한 기질이 육아에 미치는 영향을 다룬 책이에요. 정서 반응이 큰 편인 부모의 자기 이해에 도움이 됩니다.',tags:['self','P2-hi']},
+ {t:'비폭력대화',a:'마셜 B. 로젠버그 · 한국NVC출판사',w:'관찰-느낌-욕구-부탁으로 이어지는 대화법의 원전이에요. 아이든 배우자든, 감정이 크게 오가는 관계에서 소통의 기본기가 됩니다.',tags:['nvc','N-hi']},
+ {t:'부모와 자녀 사이',a:'수라 하트·빅토리아 킨들 호드슨 · 한국NVC출판사',w:'비폭력대화를 부모 자녀 관계에 적용한 책이에요. 고집이 센 아이와의 힘겨루기를 대화로 풀고 싶은 부모, 특히 구조화된 개입을 선호하는 부모에게 권해요.',tags:['nvc','stubborn','R1-hi']},
+ {t:'내 아이를 위한 비폭력 대화',a:'군디·프랑크 가슐러 · 양철북',w:'짜증과 떼쓰기 상황에서 공감으로 대화하는 법을 알려 줘요. 어떤 기질의 아이에게든 적용할 수 있는 실전서예요.',tags:['nvc']},
+ {t:'비폭력대화 워크북',a:'루시 루 · 한국NVC출판사',w:'부모 자신이 비폭력대화를 훈련할 수 있는 워크북이에요. 나의 말투와 반응 패턴을 바꾸고 싶은 부모에게 좋아요.',tags:['nvc','self']},
+ {t:'비폭력대화와 교육',a:'마셜 B. 로젠버그 · 한국NVC출판사',w:'처벌 대신 공감으로 문제행동을 다루는 법을 담았어요. 규칙과 통제를 중시하는 양육 스타일에 새로운 관점을 더해 줍니다.',tags:['nvc','stubborn','R1-hi']},
+ {t:'내 아이를 위한 브레인 코칭',a:'대니얼 J. 시겔·티나 페인 브라이슨 · RHK',w:'좌뇌·우뇌 통합 개념으로 감정 기복이 큰 아이를 이해하는 법을 알려 줘요. 정서 표현이 큰 아이의 부모에게 특히 유용해요.',tags:['N-hi']},
+ {t:'하루 10분 자존감을 높이는 기적의 대화',a:'아델 페이버·일레인 마즐리시 · 푸른육아',w:'감정을 먼저 인정해 주는 대화법을 알려 주는 세계적 스테디셀러예요. 어떤 기질의 아이에게든 두루 통하는 기본기예요.',tags:['core','classic']},
+ {t:'싸우지 않고 배려하는 형제자매 사이',a:'아델 페이버·일레인 마즐리시 · 푸른육아',w:'기질이 다른 형제자매 사이의 갈등을 다루는 법을 알려 줘요. 사회적 접근이 높은 아이나 형제가 있는 집에 특히 좋아요.',tags:['social-hi']},
+ {t:'긍정의 훈육: 4~7세 편',a:'제인 넬슨 외 · 에듀니티',w:'존중을 바탕으로 한 훈육법을 유아기에 맞게 정리한 책이에요. 고집이 세거나 반항이 잦은 시기의 아이를 구조 있게 이끌고 싶은 부모에게 좋아요.',tags:['stubborn','R1-hi']},
+ {t:'내 아이를 위한 감정코칭',a:'존 가트맨·최성애·조벽 · 해냄',w:'감정을 크게 느끼는 아이의 마음을 읽고 다루는 법을 단계별로 알려 주는 감정코칭의 고전이에요. 정서 표현이 큰 아이의 부모에게 특히 권해요.',tags:['N-hi','core']},
+ {t:'당신의 아이는 잘못이 없다',a:'토머스 보이스 · 시공사',w:'민감한 기질의 아이(난초형)가 왜 약점이 아니라 잠재력인지 보여 주는 소아과 의사의 연구 이야기예요. 감각 민감성이 높게 나온 아이의 부모에게 권해요.',tags:['sensory','core']},
+ {t:'부모의 내면이 아이의 세상이 된다',a:'대니얼 J. 시겔·메리 하첼 · 페이지2',w:'부모 자신의 애착 경험이 양육 태도에 어떻게 이어지는지 다루는 책이에요. 나의 양육 패턴이 어디서 왔는지 궁금한 부모에게 권해요.',tags:['self','attachment']},
+ {t:'아이의 손을 놓지 마라',a:'고든 뉴펠드·가보 마테 · 북섬',w:'또래 지향이 강해지는 시기에 부모와의 애착을 다시 다지는 법을 알려 줘요. 사회적 접근이 큰 아이를 키우는 부모에게 유용해요.',tags:['social-hi','attachment']},
+ {t:'엄마의 자존감 공부',a:'김미경 · 21세기북스',w:'죄책감을 자주 느끼는 부모의 자존감을 회복하는 법을 다뤄요. 정서적으로 예민한 편인 부모에게 위로가 되는 책이에요.',tags:['self','P2-hi']},
+ {t:'엄마 심리 수업',a:'윤우상 · 심플라이프',w:'부모 자신의 무의식과 성장 배경이 양육에 미치는 영향을 다뤄요. 나를 더 깊이 이해하고 싶은 부모에게 권해요.',tags:['self']},
+ {t:'엄마의 말 공부',a:'이임숙 · 카시오페아',w:'욱하기 쉬운 부모의 말투를 다듬는 법을 알려 줘요. 감정 반응이 크거나 고집 센 아이 앞에서 자주 목소리가 커진다면 도움이 됩니다.',tags:['self','P2-hi','stubborn']},
+ {t:'엄마의 첫 심리 공부',a:'강현식 · 유노북스',w:'자녀·부부 관계와 자존감을 아우르는 심리학 입문서예요. 육아 심리학을 처음 체계적으로 공부하고 싶은 부모에게 좋아요.',tags:['self']},
+ {t:'기질을 알면 자녀가 보인다',a:'데이빗 스툽 · 미션월드라이브러리',w:'전통적인 4기질론으로 부모와 자녀의 기질 궁합을 살펴보는 책이에요. 이 검사의 궁합 리포트를 더 깊게 읽고 싶을 때 권해요.',tags:['self','core']},
+ {t:'조선미의 현실 육아 상담소',a:'조선미 · 북하우스',w:'부모의 불안·죄책감·기대치를 현실적으로 점검하는 책이에요. 육아서를 읽을수록 오히려 불안해지는 부모에게 권해요.',tags:['self']},
+ {t:'존 볼비의 안전기지',a:'존 볼비 · 학지사',w:'애착이론을 만든 저자가 직접 임상에 적용한 사례를 정리한 책이에요. 애착 이론을 제대로 배우고 싶은 부모에게 좋아요.',tags:['attachment']},
+ {t:'존 볼비와 애착이론',a:'제레미 홈즈 · 학지사',w:'애착이론을 처음 접하는 사람도 이해하기 쉽게 풀어낸 입문서예요. 원전보다 가볍게 애착이론을 알고 싶을 때 좋아요.',tags:['attachment']},
+ {t:'0~5세 애착 육아의 기적',a:'이보연 · 끌레마',w:'애착의 관점에서 아이의 문제행동을 이해하고 개선하는 실전 가이드예요. 사람을 좋아하고 애착이 깊은 아이를 키우는 부모에게 좋아요.',tags:['attachment','social-hi']},
+ {t:'신의진의 아이심리백과',a:'신의진 · 걷는나무',w:'연령별 정서·심리 발달을 폭넓게 다루는 스테디셀러 백과예요. 어떤 기질의 아이든 발달 단계별로 참고하기 좋아요.',tags:['core','classic']},
+ {t:'가장 완벽한 ADHD 양육 가이드',a:'박소영 외 소아정신과 전문의 4인 · 카시오페아',w:'진단부터 훈육, 생활습관까지 다루는 전문의 4인의 종합 가이드예요. 산만하고 충동이 큰 기질의 아이를 키운다면 참고할 만해요.',tags:['adhd','E-hi','R-lo']},
+ {t:'산만한 우리 아이 초1이 중요합니다',a:'정진희 · 소울하우스',w:'산만한 기질의 아이가 초등학교 1학년에 적응하는 법을 다뤄요. 학교 진입을 앞둔 활동적인 아이의 부모에게 특히 좋아요.',tags:['adhd','E-hi','R-lo']},
+ {t:'우리 아이가 ADHD라고요?',a:'이사비나 · 빈티지하우스',w:'교사이자 부모인 저자의 경험을 담은 책이에요. 산만함이 걱정될 때 현실적인 시선을 얻을 수 있어요.',tags:['adhd']},
+ {t:'내 아이 고집 이기는 대화법',a:'박혜원 · 아주좋은날',w:'고집이 센 기질의 아이에게 짧고 단호하게 말하는 법을 알려 줘요. 뜻을 잘 굽히지 않는 아이를 키우는 부모에게 실용적이에요.',tags:['stubborn','R1-hi']},
+ {t:'4~7세 느린 아이 강점 양육',a:'이슬기 · 위즈덤하우스',w:'천천히 데워지는 기질의 두뇌발달 특성과 강점을 알려 줘요. 신중하고 낯가림이 있는 아이를 키우는 부모에게 좋아요.',tags:['E-lo','shy-hi']},
+ {t:'영혼이 강한 아이로 키워라',a:'조선미 · 북하우스',w:'10년 넘게 사랑받아 온 자녀교육 스테디셀러예요. 아이를 어떤 사람으로 키울지 큰 그림을 잡고 싶을 때 좋아요.',tags:['core','classic']},
+ {t:'믿는 만큼 자라는 아이들',a:'박혜란 · 나무를심는사람들',w:'30만 부 넘게 팔린 육아서의 고전이에요. 아이를 믿고 기다려 주는 육아의 원형을 보여 줍니다.',tags:['core','classic']},
+ {t:'베싸육아',a:'박정은 · 래디시',w:'0~4세 과학적 육아 지식을 54가지로 정리한 책이에요. 정보를 체계적으로 훑고 싶은 부모에게 좋아요.',tags:['core','classic']},
+ {t:'아이도 부모도 기분좋은 원칙 연결 육아',a:'베키 케네디 · 코리아닷컴',w:'뉴욕타임스 베스트셀러 1위. 훈육보다 연결을 중심에 두는 육아법을 담았어요. 관계 중심의 새로운 시각을 원하는 부모에게 권해요.',tags:['self','classic']}
 ];
-function pickBooks(f,badge){
-  const list=[...BOOKS_BASE];
-  if(f.N>=4.3)list.push({t:'내 아이를 위한 감정코칭',a:'존 가트맨·최성애·조벽',w:'감정을 크게 느끼는 아이의 마음을 읽고 다루는 법을 단계별로 알려 주는 감정코칭의 고전이에요. 정서 표현이 큰 아이의 부모에게 특히 권해요.'});
-  if(badge)list.push({t:'난초와 민들레',a:'토머스 보이스',w:'민감한 기질의 아이(난초형)가 왜 약점이 아니라 잠재력인지 보여 주는 소아과 의사의 연구 이야기예요. 감각 민감성이 높게 나온 아이의 부모에게 권해요.'});
-  if(f.E>=4.3&&f.R<=3.7)list.push({t:'못 참는 아이 욱하는 부모',a:'오은영',w:'에너지와 충동이 큰 아이, 그리고 그 앞에서 자꾸 욱하게 되는 부모의 감정 조절을 함께 다루는 책이에요.'});
-  if(list.length<3)list.push({t:'세상에서 가장 쉬운 본질육아',a:'지나영',w:'기법보다 방향이 필요할 때 — 아이를 어떤 사람으로 키울 것인지, 육아의 본질을 다시 잡아 주는 존스홉킨스 소아정신과 교수의 책이에요.'});
-  return list.slice(0,4);
+function pickBooksFor(activeTags,count){
+  const scored=BOOKS.map((b,i)=>({b,i,s:b.tags.reduce((acc,tg)=>acc+(activeTags.includes(tg)?(tg==='core'||tg==='self'?1:2):0),0)}));
+  scored.sort((x,y)=>y.s-x.s||x.i-y.i);
+  return scored.slice(0,count||4).map(x=>x.b);
+}
+function pickBooksChild(f,sub,badge){
+  const tags=['core'];
+  if(f.E>=4.3)tags.push('E-hi'); else if(f.E<=3.7)tags.push('E-lo');
+  if(f.N>=4.3)tags.push('N-hi'); else if(f.N<=3.7)tags.push('N-lo');
+  if(f.R>=4.3)tags.push('R-hi'); else if(f.R<=3.7)tags.push('R-lo');
+  if(badge)tags.push('sensory');
+  if(sub.FR>=4.6)tags.push('stubborn');
+  if(sub.SH>=4.6)tags.push('shy-hi');
+  if(sub.SC>=4.6)tags.push('social-hi');
+  return pickBooksFor(tags,4);
+}
+function pickBooksParent(sub){
+  const tags=['self'];
+  if(sub.P1>=4.3)tags.push('P1-hi'); else if(sub.P1<=3.7)tags.push('P1-lo');
+  if(sub.P2>=4.3)tags.push('P2-hi');
+  if(sub.P3>=4.3)tags.push('P3-hi'); else if(sub.P3<=3.7)tags.push('P3-lo');
+  if(sub.R1>=4.3)tags.push('R1-hi'); else if(sub.R1<=3.7)tags.push('R1-lo');
+  if(sub.R2>=4.3)tags.push('R2-hi'); else if(sub.R2<=3.7)tags.push('R2-lo');
+  return pickBooksFor(tags,4);
 }
 
 /* ═══════════ STATE ═══════════ */
@@ -1444,9 +1504,9 @@ function renderReport(who){
   }
 
   /* 추천 도서 */
-  const books=pickBooks(r.f,t.badge);
+  const books=pickBooksChild(r.f,r.sub,t.badge);
   h+=`<div class="section" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${nm}의 기질 결과에 맞춰 골라 본 육아서예요</p>
-    ${books.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a} 지음</span><p>${b.w}</p></div></div>`).join('')}
+    ${books.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
     <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
   </div>`;
 
@@ -1640,6 +1700,10 @@ function renderPReport(who){
     ${ST.shine.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--gray-100);border-radius:12px;margin-bottom:6px">✨ ${s}</div>`).join('')}
     <h2 class="sec" style="font-size:15px;margin-top:16px">걸릴 수 있는 순간</h2>
     ${ST.care.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--side-soft);border-radius:12px;margin-bottom:6px">🔄 ${s}</div>`).join('')}
+  </div>
+  <div class="section" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${relLabel}의 양육기질 결과에 맞춰 골라 본 책이에요</p>
+    ${pickBooksParent(pr.r.sub).map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
+    <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
   </div>
   <div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
     ${S.results[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">아이의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
