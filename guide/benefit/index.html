@@ -169,9 +169,9 @@
   .ms-card .gift { font-weight: 700; font-size: 15px; line-height: 1.45; }
   .ms-card .desc { font-size: 12.5px; color: var(--gray); margin-top: 6px; line-height: 1.5; }
   .ms-card.new::after {
-    content: "NEW";
+    content: "HOT";
     position: absolute; top: 12px; right: 12px;
-    background: var(--main);
+    background: #EF5B4C;
     color: #fff; font-size: 10px; font-weight: 900;
     padding: 3px 8px; border-radius: 999px;
     letter-spacing: .5px;
@@ -286,8 +286,44 @@
     margin-bottom: 4px;
   }
   .test-card p { font-size: 14px; color: var(--gray); }
+  .test-supervisor {
+    margin-top: 28px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 22px 24px;
+    display: flex; gap: 20px; align-items: center;
+    box-shadow: 0 6px 20px rgba(51,115,186,.07);
+  }
+  .test-supervisor img {
+    width: 96px; height: 96px; flex: 0 0 96px;
+    border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--main-tint);
+  }
+  .test-supervisor .ts-role {
+    font-size: 12.5px; font-weight: 800; color: var(--main);
+    letter-spacing: .02em;
+  }
+  .test-supervisor .ts-name {
+    font-size: 19px; font-weight: 800; margin: 2px 0 6px;
+  }
+  .test-supervisor .ts-name em {
+    font-style: normal; font-size: 13px; font-weight: 600;
+    color: var(--gray); margin-left: 5px;
+  }
+  .test-supervisor .ts-cred {
+    font-size: 12.5px; color: var(--gray); line-height: 1.55;
+  }
+  .test-supervisor .ts-quote {
+    font-size: 13.5px; font-weight: 700; color: var(--main-dark, var(--main));
+    margin-top: 10px; line-height: 1.5;
+  }
+  @media (max-width: 560px) {
+    .test-supervisor { flex-direction: column; text-align: center; gap: 14px; padding: 22px 20px; }
+    .test-supervisor img { width: 82px; height: 82px; flex-basis: 82px; }
+  }
   .test-benefits {
-    margin-top: 24px;
+    margin-top: 20px;
     background: #fff;
     border: 2px dashed var(--main);
     border-radius: var(--r-md);
@@ -602,7 +638,7 @@
   <section class="test-sec" id="test">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow" style="background:#fff;">NEW 혜택</span>
+        <span class="eyebrow" style="background:#fff;color:#EF5B4C;">HOT 혜택</span>
         <h2>24개월부터, <span class="blue">우리 가족 마음 검사</span>를 선물해요</h2>
         <p>임상심리사와 함께하는 전문 검사로, 아이의 기질과 우리 가족의 마음을 24개월부터 주기적으로 살펴봐요.</p>
       </div>
@@ -631,9 +667,19 @@
         </div>
       </div>
 
+      <div class="test-supervisor">
+        <img src="/assets/img/sujin-clinical.jpg" alt="이수진 임상심리전문가" loading="lazy">
+        <div class="ts-body">
+          <span class="ts-role">검사 문항·해석 감수</span>
+          <div class="ts-name">이수진 <em>임상심리전문가</em></div>
+          <p class="ts-cred">한국임상심리학회 임상심리전문가 · 정신보건임상심리사 1급 · 연세대학교 임상심리 석사 · 前 삼성서울병원 정신건강의학과 임상심리 수련</p>
+          <p class="ts-quote">“고쳐야 할 아이는 없습니다. 이해받아야 할 아이가 있을 뿐이에요.”</p>
+        </div>
+      </div>
+
       <div class="test-benefits">
         <span class="item"><span class="chk">✓</span> 검사권 3종 이상 제공</span>
-        <span class="item"><span class="chk">✓</span> 임상심리사와 함께하는 전문 검사</span>
+        <span class="item"><span class="chk">✓</span> 임상심리전문가가 감수한 전문 검사</span>
         <span class="item"><span class="chk">✓</span> 발달 보고서 제공</span>
         <span class="item"><span class="chk">✓</span> 24개월부터 주기적으로, 비용 없이 무료</span>
       </div>
