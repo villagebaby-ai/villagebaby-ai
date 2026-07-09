@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>베이비빌리 — 빌리지베이비가 만드는 200만 부모의 1등 임신·육아 앱</title>
-<meta name="description" content="베이비빌리는 빌리지베이비가 운영하는 200만 부모의 1등 임신·육아 앱이에요. 임신·출산·태아보험·어린이보험·정책 지원금까지 한 번에 챙기실 수 있어요.">
+<title>빌리지베이비 — 부모가 되는 여정을, 누구나 쉽고 편하게</title>
+<meta name="description" content="빌리지베이비는 200만 엄빠와 함께하는 임신·육아 플랫폼 '베이비빌리'를 만드는 팀입니다. 문제를 먼저 발견하고 전력으로 달리는 임팩트 플레이어를 찾고 있어요.">
 <meta name="keywords" content="빌리지베이비, 베이비빌리, 임신 육아 플랫폼, 빌리지베이비 채용, 베이비빌리 채용, 빌리지베이비 인재상">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://villagebaby.kr/">
@@ -12,8 +12,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://villagebaby.kr/">
-<meta property="og:title" content="베이비빌리 — 빌리지베이비가 만드는 200만 부모의 1등 임신·육아 앱">
-<meta property="og:description" content="베이비빌리는 빌리지베이비가 운영하는 200만 부모의 1등 임신·육아 앱이에요. 임신·출산·태아보험·어린이보험·정책 지원금까지 한 번에 챙기실 수 있어요.">
+<meta property="og:title" content="빌리지베이비 — 부모가 되는 여정을, 누구나 쉽고 편하게">
+<meta property="og:description" content="200만 엄빠와 함께하는 임신·육아 플랫폼 베이비빌리. 부모가 되는 여정을 누구나 쉽고 편하게 만드는 팀에 합류하세요.">
 <meta property="og:image" content="https://villagebaby.kr/assets/img/baby-wink.png">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
@@ -202,6 +202,19 @@ section{padding:clamp(72px,11vw,128px) clamp(20px,5vw,48px); position:relative}
 .marquee + .marquee{margin-top:14px}
 .marquee-rev .marquee-track{animation-duration:66s; animation-direction:reverse}
 @keyframes scroll{to{transform:translateX(-100%)}}
+/* 빌베인 책장 teaser marquee */
+#bookshelf-teaser{padding-top:clamp(56px,8vw,92px)}
+.book-marq-link{display:block; text-decoration:none; margin-top:38px}
+.book-marq{display:flex; gap:0; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.book-marq-track{display:flex; align-items:stretch; gap:16px; padding-right:16px; animation:scroll 62s linear infinite; flex-shrink:0}
+.book-marq-link:hover .book-marq-track{animation-play-state:paused}
+.bm-card{flex-shrink:0; width:134px; border-radius:var(--r); overflow:hidden; background:var(--surface); border:1px solid var(--border); box-shadow:var(--sh-s); transition:transform .2s var(--ease), box-shadow .2s}
+.book-marq-link:hover .bm-card{transform:translateY(-4px); box-shadow:var(--sh-m)}
+.bm-cov{height:98px; display:flex; align-items:center; justify-content:center; padding:14px 12px; text-align:center; position:relative}
+.bm-cov::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:rgba(0,0,0,.16)}
+.bm-cov b{color:#fff; font-weight:700; font-size:12.5px; line-height:1.32; letter-spacing:-.02em; text-shadow:0 1px 6px rgba(0,0,0,.18)}
+.bm-by{padding:9px 11px 11px; font-size:11.5px; font-weight:700; color:var(--ink-2)}
+.bm-by span{color:var(--gray); font-weight:400}
 .m-item{display:inline-flex; align-items:center; gap:9px; white-space:nowrap; font-size:15px; font-weight:700; color:var(--ink-2); background:var(--bg); border:1px solid var(--border); padding:11px 22px; border-radius:var(--r-pill)}
 .m-item .emo{font-size:17px}
 
@@ -325,7 +338,7 @@ section{padding:clamp(72px,11vw,128px) clamp(20px,5vw,48px); position:relative}
 /* ========== FOOTER ========== */
 footer{background:var(--ink); color:#fff; padding:56px clamp(20px,5vw,48px) 40px}
 .foot{max-width:1120px; margin:0 auto; display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start}
-.foot-logo img{height:24px; filter:brightness(0) invert(1); opacity:.92; margin-bottom:14px}
+.foot-logo img{height:24px; width:auto; filter:brightness(0) invert(1); opacity:.92; margin-bottom:14px}
 .foot-desc{font-size:13.5px; color:rgba(255,255,255,.5); line-height:1.7; max-width:300px}
 .foot-links{display:flex; gap:48px; flex-wrap:wrap}
 .foot-col h4{font-size:12px; color:rgba(255,255,255,.4); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px; font-weight:700}
@@ -673,6 +686,40 @@ html.lenis,html.lenis body{height:auto}
       <div class="life-card reveal"><div class="life-ic">🌱</div><div class="life-t">빠른 성장 기회</div><div class="life-b">32명 규모에서 내가 만든 것이 200만 유저에게 닿아요. 빠르게 배우고 성장하는 환경이에요.</div></div>
     </div>
   </div>
+</section>
+
+<!-- 빌베인 책장 teaser -->
+<section id="bookshelf-teaser">
+  <div class="wrap" style="text-align:center">
+    <div class="reveal">
+      <span class="eyebrow">📚 Team Book-it · 책잇기</span>
+      <h2 class="title">빌베인들의 <span class="hl">책장 속으로</span></h2>
+      <p class="lead" style="margin:18px auto 0">한 사람이 읽고 다음 사람에게 잇는 릴레이 — 빌베인이 서로에게 건넨 책과 한 줄의 마음을 구경해보세요.</p>
+    </div>
+  </div>
+  <a class="book-marq-link reveal" href="/bookshelf/" aria-label="빌베인 책장 구경하러 가기">
+    <div class="book-marq">
+      <div class="book-marq-track">
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#C97B4E,#E0A684)"><b>나의 인생이 당신의 지혜가 된다면</b></div><div class="bm-by">로지님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#2D66A3,#4A89CC)"><b>실리콘밸리의 팀장들</b></div><div class="bm-by">쭈님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#B0503A,#D2795E)"><b>스토너</b></div><div class="bm-by">지원님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#2C7A58,#57A882)"><b>마음의 지혜</b></div><div class="bm-by">선우님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#5E4A99,#8A7BC0)"><b>대논쟁! 철학배틀</b></div><div class="bm-by">우리님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#8A6A1E,#C9A94A)"><b>딸은 엄마의 감정을 먹고 자란다</b></div><div class="bm-by">대니님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#2D66A3,#4A89CC)"><b>원칙 (Principles)</b></div><div class="bm-by">아써님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#B0503A,#D2795E)"><b>모순</b></div><div class="bm-by">지현님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#2C7A58,#57A882)"><b>노이즈: 생각의 잡음</b></div><div class="bm-by">이슬님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#5E4A99,#8A7BC0)"><b>논어</b></div><div class="bm-by">수민님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#2C7A58,#57A882)"><b>다정한 사람이 이긴다</b></div><div class="bm-by">찬주님 <span>추천</span></div></div>
+        <div class="bm-card"><div class="bm-cov" style="background:linear-gradient(135deg,#B0503A,#D2795E)"><b>한 뼘의 계절에서 배운 것</b></div><div class="bm-by">유리님 <span>추천</span></div></div>
+      </div>
+      <div class="book-marq-track" data-clone aria-hidden="true"></div>
+    </div>
+  </a>
+  <div class="wrap" style="text-align:center; margin-top:34px">
+    <a href="/bookshelf/" class="btn btn-ghost reveal">책장 전체 구경하기 <span class="ar">→</span></a>
+  </div>
+  <script>(function(){[].forEach.call(document.querySelectorAll('.book-marq-track[data-clone]'),function(x){x.innerHTML=x.previousElementSibling.innerHTML;});})();</script>
 </section>
 
 <!-- NEWS -->
