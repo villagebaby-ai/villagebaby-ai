@@ -50,6 +50,19 @@ body{
 .auth-btn{margin-left:auto;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--main);background:#fff;border:1.5px solid var(--main-200);border-radius:999px;padding:5px 14px;cursor:pointer}
 .auth-btn:hover{background:var(--main-100)}
 .auth-btn.in{color:var(--gray);border-color:var(--gray-300)}
+.pdf-btn{margin-left:auto;font-family:inherit;font-size:12px;font-weight:700;color:var(--main);background:var(--main-100);border:0;border-radius:999px;padding:6px 13px;cursor:pointer}
+.pdf-btn:hover{background:var(--main-200)}
+
+/* ---------- print (PDF 저장) ---------- */
+@media print{
+  body{background:#fff}
+  #app{max-width:100%;box-shadow:none}
+  .topbar,.survey-nav,.na-btn,.pdf-btn,.auth-btn,.no-print,.modal-overlay{display:none!important}
+  .view{display:none!important}
+  .view.on{display:block!important;padding-bottom:0}
+  .rep-head{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .scene,.card,.trait-card,.type-card,.sum-box,.sci,.rx-card{break-inside:avoid}
+}
 .view{display:none;padding-bottom:56px}
 .view.on{display:block}
 .section{padding:20px}
@@ -291,6 +304,13 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 .scene .fix .sw{flex-shrink:0;font-size:16px}
 .r3{display:flex;gap:6px;margin-top:8px}
 .r3 span{font-size:10.5px;font-weight:700;background:var(--main-100);color:var(--main-deep);border-radius:6px;padding:2px 8px}
+.scene .s-desc{font-size:13.5px;color:#555;line-height:1.75;margin:7px 0 12px}
+.r3s{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--gray-100)}
+.r3s .r3n{flex-shrink:0;width:88px;font-size:11.5px;font-weight:900;color:var(--main-deep);padding-top:2px}
+.r3s p{flex:1;font-size:13px;color:#444;line-height:1.7;margin:0}
+.say{margin-top:12px;background:var(--side-soft);border-radius:14px;padding:12px 15px}
+.say .say-tag{display:block;font-size:11px;font-weight:900;color:#B4672F;margin-bottom:4px}
+.say p{font-size:13.5px;font-weight:500;color:#5a4636;line-height:1.7;margin:0}
 
 .next-card{display:flex;gap:12px;align-items:center;background:var(--main-100);border-radius:16px;padding:16px;margin-bottom:10px}
 .next-card .n-emoji{font-size:26px}
@@ -399,11 +419,18 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
       <h2 class="sec">검사 프로그램</h2>
       <p class="sub">검사를 완료할수록 연계 리포트가 열려요</p>
 
-      <div class="suite-card" onclick="go('v-intro')">
-        <div class="icon">🧸</div>
-        <div><div class="tit">아이 기질검사 <span class="chip chip-side">대표 검사</span></div>
-        <div class="desc">78문항 · 13~15분 · 12개 하위척도 리포트</div></div>
+      <div class="suite-card" onclick="openIntro('I')">
+        <div class="icon">🍼</div>
+        <div><div class="tit">영아 기질검사 <span class="chip chip-side">6~35개월</span></div>
+        <div class="desc">78문항 · 13~15분 · 아기의 하루 10개 장면</div></div>
         <div class="go" id="test1State">시작 ›</div>
+      </div>
+
+      <div class="suite-card" onclick="openIntro('C')">
+        <div class="icon">🧒</div>
+        <div><div class="tit">유아 기질검사 <span class="chip chip-side">3~6세</span></div>
+        <div class="desc">78문항 · 13~15분 · 유치원·또래·규칙 장면</div></div>
+        <div class="go" id="test1cState">시작 ›</div>
       </div>
 
       <div class="suite-card" onclick="go('v-pintro')">
@@ -427,7 +454,7 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
         <div class="go" id="fitState" style="color:var(--gray)">잠김</div>
       </div>
 
-      <div class="cycle-note">💡 <b>이렇게 순환해요</b> — 기질검사(오늘) → 양육기질 검사 → 궁합 리포트 → 6개월 뒤 재검사로 아이의 변화 그래프까지. 멤버십을 유지하는 동안 계속 새 리포트를 받아요.</div>
+      <div class="cycle-note">💡 <b>아이의 시기마다 다른 검사를 만나요</b> — 영아 때는 영아 기질검사로, 3세부터는 유치원·또래 장면으로 새로 설계된 유아 기질검사로. 여기에 양육기질 검사를 더하면 궁합 리포트가 열려요. 멤버십을 유지하는 동안 성장 단계별 리포트가 계속 쌓입니다.</div>
 
       <div style="display:flex;gap:8px;margin-top:16px">
         <button class="btn btn-line btn-md" style="flex:1" onclick="go('v-dex')">기질 유형 도감</button>
@@ -438,11 +465,13 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
   <!-- ═══════════ INTRO ═══════════ -->
   <div class="view" id="v-intro">
-    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">아이 기질검사</span></div>
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">기질검사</span></div>
     <div class="intro-hero">
       <img src="assets/baby-laughing.png" alt="빌리" onerror="this.style.display='none'">
-      <h2 id="introTitle">우리 아이는 어떤 기질을 타고났을까요?</h2>
+      <div><span class="chip chip-blue" id="introSetName">영아 기질검사</span></div>
+      <h2 id="introTitle" style="margin-top:10px">우리 아기는 어떤 기질을 타고났을까요?</h2>
       <p id="introAge">하루의 흐름을 따라 10개 장면 속 아이의 모습을 여쭤볼게요</p>
+      <p id="introWarn" style="display:none;margin-top:10px;font-size:12.5px;color:#B4672F;background:var(--side-soft);border-radius:10px;padding:8px 14px"></p>
     </div>
     <div class="spec-grid">
       <div class="sp"><b>78</b><span>문항</span></div>
@@ -486,7 +515,7 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
   <!-- ═══════════ REPORT ═══════════ -->
   <div class="view" id="v-report">
-    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">기질 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">기질 리포트</span><span class="badge-mem">멤버십</span><button class="pdf-btn" onclick="window.print()">PDF 저장</button></div>
     <div id="reportBody"></div>
   </div>
 
@@ -530,13 +559,13 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
   <!-- ═══════════ PARENT REPORT ═══════════ -->
   <div class="view" id="v-preport">
-    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">양육기질 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">양육기질 리포트</span><span class="badge-mem">멤버십</span><button class="pdf-btn" onclick="window.print()">PDF 저장</button></div>
     <div id="pReportBody"></div>
   </div>
 
   <!-- ═══════════ FIT REPORT ═══════════ -->
   <div class="view" id="v-fit">
-    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">궁합 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">궁합 리포트</span><span class="badge-mem">멤버십</span><button class="pdf-btn" onclick="window.print()">PDF 저장</button></div>
     <div id="fitBody"></div>
   </div>
 
@@ -580,7 +609,7 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
   <!-- ═══════════ STRESS REPORT ═══════════ -->
   <div class="view" id="v-sreport">
-    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">스트레스 리포트</span><span class="badge-mem">멤버십</span></div>
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">스트레스 리포트</span><span class="badge-mem">멤버십</span><button class="pdf-btn" onclick="window.print()">PDF 저장</button></div>
     <div id="sReportBody"></div>
   </div>
 
@@ -681,7 +710,13 @@ const SCALES = {
 };
 const FACTORS = {E:'접근·활력', N:'정서 표현', R:'자기조절', S:'사회적 민감성', X:'감각 민감성'};
 
-const CHAPTERS = [
+/* ═══ 검사 세트 2종: I=영아(6~35개월, ECBQ 대응) · C=유아(3~6세, CBQ 대응) ═══ */
+const SETMETA={
+  I:{name:'영아 기질검사',range:'6~35개월',intro:'아기의 하루를 따라가며, 지금 이 시기의 기질을 살펴봐요',hint:'아기가 유아(3세)가 되면 유아 기질검사로 다시 만나요'},
+  C:{name:'유아 기질검사',range:'3~6세',intro:'유치원·놀이터·친구들 — 커진 세상 속 아이의 기질을 살펴봐요',hint:'영아 때 검사했다면, 달라진 프로파일을 비교해 보세요'}
+};
+
+const CHAPTERS_I = [
   {t:'아침, 하루의 시작', d:'눈 뜨고 나갈 준비까지, 아침의 아이 모습이에요'},
   {t:'식사 시간', d:'먹고, 기다리고, 흘리는 — 식탁 위의 아이예요'},
   {t:'집에서 놀 때', d:'가장 편안한 공간에서 아이는 어떻게 노나요?'},
@@ -693,9 +728,21 @@ const CHAPTERS = [
   {t:'감각의 세계', d:'소리·촉감·빛에 아이가 어떻게 반응하나요?'},
   {t:'잠자리', d:'하루를 마무리하는 시간이에요. 거의 다 왔어요!'}
 ];
+const CHAPTERS_C = [
+  {t:'아침과 등원 준비', d:'일어나서 집을 나서기까지, 아침의 아이 모습이에요'},
+  {t:'식사 시간', d:'먹기, 기다리기, 골라내기 — 식탁 위의 아이예요'},
+  {t:'놀이와 몰입', d:'그리기·만들기·블록 — 아이가 집중하는 시간이에요'},
+  {t:'바깥 놀이와 신체 활동', d:'놀이터·자전거·달리기, 몸으로 노는 아이예요'},
+  {t:'새로운 것과 도전', d:'처음 해 보는 활동 앞에서 아이의 반응이에요'},
+  {t:'친구들과 만날 때', d:'또래·선생님·어른들 — 관계 속 아이예요'},
+  {t:'뜻대로 안 될 때', d:'지고, 막히고, 금지당하는 순간의 아이예요'},
+  {t:'속상한 마음과 회복', d:'속상함이 풀리기까지의 모습이에요'},
+  {t:'감각의 세계', d:'소리·촉감·맛에 아이가 어떻게 반응하나요?'},
+  {t:'잠자리와 하루 마무리', d:'하루를 정리하는 시간이에요. 거의 다 왔어요!'}
+];
 
-/* items: [scale, chapter(1-10), text, reverse] — 72 scale items + 6 validity */
-const ITEMS = [
+/* items: [scale, chapter(1-10), text, reverse] — 세트별 72 + 신뢰도 6 */
+const ITEMS_I = [
  ['AC',1,'옷을 입히는 동안 가만히 있지 못하고 몸을 움직였다',0],
  ['AP',1,'외출 준비를 하는 것을 보면 신이 나서 현관으로 달려갔다',0],
  ['FR',1,'옷 입히기·기저귀 갈기·손 씻기를 거부하며 몸부림쳤다',0],
@@ -772,8 +819,99 @@ const ITEMS = [
  ['AT',10,'그림책을 읽어 줄 때 여러 장을 끝까지 집중해서 봤다',0],
  ['SS',10,'작은 소리(냉장고 소리, 문 여닫는 소리)에도 반응하거나 잠에서 깼다',0],
  ['SA',10,'자극이 많았던 날(외출·손님 방문)은 잠들기 힘들어하거나 밤에 깼다',0],
- ['V5',10,'집 안에서 놀 때, 한자리에 앉아서 놀기보다 뛰거나 기어오르며 놀았다',0]
+ ['V5',10,'집 안에서 놀 때, 한자리에 앉아서 놀기보다 뛰거나 기어오르며 놀았다',0],
+ ['V6',10,'울다가도 안아 주면 1~2분 안에 진정됐다',0]
 ];
+
+/* 유아 기질검사 (3~6세) — 유치원·또래·규칙·게임 등 유아기 장면 기반 */
+const ITEMS_C = [
+ ['AC',1,'등원 준비를 하는 동안 가만히 있지 못하고 돌아다녔다',0],
+ ['AP',1,'소풍·나들이 같은 새로운 일정이 있으면 아침부터 들떠 있었다',0],
+ ['FR',1,'등원·옷 입기 등 해야 할 일을 거부하며 강하게 버텼다',0],
+ ['AT',1,'"이제 나갈 시간이야"라고 하면 하던 놀이를 멈추고 준비로 넘어갈 수 있었다',0],
+ ['SA',1,'하원 직후에는 말을 걸면 짜증을 내다가, 쉬고 나면 풀렸다',0],
+ ['AC',2,'식사 시간에 자리에서 일어나거나 몸을 계속 움직였다',0],
+ ['AP',2,'처음 보는 음식도 한 입은 먹어 보겠다고 했다',0],
+ ['IC',2,'"간식은 밥 먹고 나서"라고 하면 기다릴 수 있었다',0],
+ ['SS',2,'음식의 맛·냄새·식감의 작은 차이에 민감하게 반응했다',0],
+ ['V4',2,'지난 2주 동안 하라는 말을 한 번도 어긴 적이 없다',0],
+ ['AC',3,'집 안에서도 소파나 침대에 오르내리며 몸으로 놀았다',0],
+ ['AC',3,'앉아서 하는 활동(그리기·책 읽기)을 30분 이상 이어 갔다',1],
+ ['HP',3,'조용한 놀이보다 시끄럽고 신나는 놀이를 좋아했다',0],
+ ['AT',3,'한 가지 만들기나 그리기를 30분 이상 이어서 했다',0],
+ ['AT',3,'퍼즐이나 블록을 완성할 때까지 붙들고 있었다',0],
+ ['AT',3,'주변이 시끄러워도 하던 놀이에 계속 집중했다',0],
+ ['AT',3,'어떤 놀이든 몇 분 만에 흥미를 잃고 다른 것을 찾았다',1],
+ ['SC',3,'재미있는 것이 생기면 가족에게 가져와 보여 주고 싶어 했다',0],
+ ['FE',3,'무서운 장면이 나오는 영상이나 책을 보지 않으려 했다',0],
+ ['AC',4,'놀이터에서 앉아서 하는 놀이보다 뛰고 오르는 놀이를 골랐다',0],
+ ['AP',4,'놀이터에서 처음 보는 기구에 먼저 다가가 시도했다',0],
+ ['HP',4,'높은 미끄럼틀이나 그네를 세게 타는 것을 즐거워했다',0],
+ ['HP',4,'몸으로 부딪히는 거친 놀이(레슬링·이불싸움)를 하면 크게 웃었다',0],
+ ['HP',4,'자전거·킥보드를 빠르게 타는 것을 좋아했다',0],
+ ['HP',4,'소파나 놀이기구에서 뛰어내리는 놀이를 하려고 해서 말려야 했다',0],
+ ['HP',4,'놀이기구를 탈 때 빠르고 높은 것보다 순한 것을 골랐다',1],
+ ['IC',4,'순서를 기다려야 하는 상황에서 차례를 지켰다',0],
+ ['AP',5,'처음 보는 놀이나 활동에 "나도 해 볼래!"라며 먼저 나섰다',0],
+ ['AP',5,'새 장난감·교구를 받으면 설명을 듣기 전에 먼저 만져 보며 탐색했다',0],
+ ['AP',5,'새로운 것을 봐도 별 관심 없이 하던 놀이를 계속했다',1],
+ ['FE',5,'새로운 활동 앞에서 "무서워" 혹은 "안 할래"라며 망설였다',0],
+ ['FE',5,'처음 가는 장소에서 한동안 부모 곁을 떠나지 않았다',0],
+ ['FE',5,'겁내는 기색 없이 새로운 것에 다가갔다',1],
+ ['SH',5,'새 선생님·새 반에 적응하는 데 또래보다 오래 걸렸다',0],
+ ['SC',6,'놀이터에서 모르는 또래에게 먼저 "같이 놀자"고 했다',0],
+ ['SC',6,'친구가 속상해하면 다가가 위로하려고 했다',0],
+ ['SC',6,'혼자 노는 것을 친구들과 노는 것보다 더 좋아했다',1],
+ ['SC',6,'뽀뽀나 포옹 같은 애정 표현을 스스로 먼저 했다',0],
+ ['SH',6,'처음 만나는 친구 옆에서 한동안 지켜보기만 했다',0],
+ ['SH',6,'여러 사람 앞에서 노래·발표를 시키면 하지 않으려 했다',0],
+ ['SH',6,'어른들이 말을 걸면 부모 뒤로 숨거나 대답을 피했다',0],
+ ['SH',6,'처음 보는 사람에게도 스스럼없이 다가가 말을 걸었다',1],
+ ['SH',6,'밖에서는 집에서보다 말수가 눈에 띄게 줄었다',0],
+ ['FE',6,'개 등 동물이 다가오면 무서워하며 피했다',0],
+ ['FR',6,'친구가 장난감을 가져가면 소리를 지르거나 몸싸움이 됐다',0],
+ ['IC',6,'조용히 해야 하는 곳(도서관·병원)에서 목소리를 낮출 수 있었다',0],
+ ['V2',6,'처음 만나는 사람에게도 전혀 낯가림 없이 바로 어울렸다',0],
+ ['FR',7,'게임이나 시합에서 지면 화를 내거나 판을 엎었다',0],
+ ['FR',7,'하고 싶은 것을 못 하게 하면 소리를 지르거나 떼를 썼다',0],
+ ['FR',7,'만들기·그리기가 뜻대로 안 되면 던지거나 포기하며 화냈다',0],
+ ['FR',7,'뜻대로 안 되는 일이 있어도 크게 화내지 않고 넘어갔다',1],
+ ['IC',7,'게임 규칙("한 번씩 번갈아 하기")을 지켰다',0],
+ ['IC',7,'"잠깐만"이라고 하면 하고 싶은 행동을 멈추고 기다렸다',0],
+ ['IC',7,'하지 말라고 여러 번 말해도 같은 행동을 반복했다',1],
+ ['V1',7,'만들기나 놀이가 뜻대로 되지 않아도 화내는 일이 거의 없었다',0],
+ ['SO',8,'속상해 울다가도 달래 주면 10분 안에 평소 모습으로 돌아왔다',0],
+ ['SO',8,'속상한 일을 말로 표현하고 나면 금세 진정됐다',0],
+ ['SO',8,'화가 났다가도 좋아하는 놀이가 시작되면 기분을 바꿨다',0],
+ ['SO',8,'한번 삐지거나 울면 오랫동안 풀리지 않았다',1],
+ ['SO',8,'넘어지거나 다쳐도 잠깐 위로받으면 다시 놀이로 돌아갔다',0],
+ ['SC',8,'부모의 표정이 안 좋으면 다가와 "왜 그래?"라고 물었다',0],
+ ['SA',8,'신나게 논 뒤에는 스스로 조용한 곳에서 쉬려고 했다',0],
+ ['V3',8,'지난 2주 동안 아이가 한 번도 운 적이 없다',0],
+ ['SS',9,'옷의 상표(태그)나 양말 솔기를 불편해하며 다시 입거나 벗었다',0],
+ ['SS',9,'모래·풀·점토 같은 특정 촉감을 만지기 싫어했다',0],
+ ['SS',9,'머리 감기기·손톱 깎기를 유난히 힘들어했다',0],
+ ['SS',9,'주변의 작은 변화(엄마의 새 안경, 가구 위치)를 금방 알아차렸다',0],
+ ['SA',9,'시끄럽고 사람 많은 곳(마트·키즈카페)에서 지치거나 짜증을 냈다',0],
+ ['SA',9,'여러 소리가 동시에 나면 귀를 막거나 힘들어했다',0],
+ ['SA',9,'자극이 많은 곳에서도 지치는 기색 없이 잘 지냈다',1],
+ ['AC',10,'잠자리에 누워서도 몸을 뒤척이거나 장난을 쳤다',0],
+ ['SO',10,'속상한 일이 있었던 날에도 잠들기 전에는 기분이 풀렸다',0],
+ ['AT',10,'그림책을 읽어 줄 때 끝까지 집중해서 들었다',0],
+ ['SS',10,'작은 소리에도 잠에서 깨거나 뒤척였다',0],
+ ['SA',10,'자극이 많았던 날(나들이·행사)은 잠들기 힘들어했다',0],
+ ['FE',10,'어두운 방에 혼자 들어가기를 무서워했다',0],
+ ['V5',10,'놀이터에서 앉아서 하는 놀이보다 뛰고 오르는 놀이를 골랐다',0],
+ ['V6',10,'속상해 울다가도 달래 주면 10분 안에 평소 모습으로 돌아왔다',0]
+];
+
+/* 활성 세트 */
+let curSet='I', ITEMS=ITEMS_I, CHAPTERS_A=CHAPTERS_I;
+function selectSet(s){ curSet=s; ITEMS=(s==='C')?ITEMS_C:ITEMS_I; CHAPTERS_A=(s==='C')?CHAPTERS_C:CHAPTERS_I; }
+const VPAIR={
+  I:{v1:'던지거나 화를',v2:'낯선 사람이 안으려고 하면 거부했다'},
+  C:{v1:'던지거나 포기하며',v2:'처음 만나는 친구 옆에서 한동안 지켜보기만 했다'}
+};
 
 /* ═══════════ 12 subscale bipolar descriptors (TCI 형식) ═══════════ */
 const BIPOLAR = {
@@ -812,11 +950,11 @@ const POLE_NARR = {
  SA_lo:['자극 속의 활력','북적이는 곳에서도 지치지 않고 잘 지내요. 새로운 환경에 데려가기 좋은 씩씩한 체질이에요.']
 };
 
-/* PBCG 문법: 결과 요약 3문장 */
+/* PBCG 문법: 결과 요약 3문장 — 유형 판정(4.3/3.7)과 동일 기준 */
 function summaryLines(f,name){
-  const eTxt = f.E>=4.6?'새로운 세상에 성큼 다가가 온몸으로 부딪히며 배우는':f.E<=3.4?'충분히 살펴본 뒤 자기만의 속도로 다가가는':'상황에 따라 다가감과 관망을 오가며 배우는';
-  const nTxt = f.N>=4.6?'감정을 크고 선명하게 느끼고 표현하는':f.N<=3.4?'감정의 물결이 잔잔해 쉽게 흔들리지 않는':'감정을 상황에 맞게 오르내리며 표현하는';
-  const rTxt = f.R>=4.6?'하고 싶은 마음에 스스로 브레이크를 걸 줄 아는':f.R<=3.4?'마음이 곧 행동이 되는, 브레이크가 자라는 중인':'멈춤과 돌진 사이에서 조절을 연습하는 중인';
+  const eTxt = f.E>=4.3?'새로운 세상에 성큼 다가가 온몸으로 부딪히며 배우는':f.E<=3.7?'충분히 살펴본 뒤 자기만의 속도로 다가가는':'상황에 따라 다가감과 관망을 오가며 배우는';
+  const nTxt = f.N>=4.3?'감정을 크고 선명하게 느끼고 표현하는':f.N<=3.7?'감정의 물결이 잔잔해 쉽게 흔들리지 않는':'감정을 상황에 맞게 오르내리며 표현하는';
+  const rTxt = f.R>=4.3?'하고 싶은 마음에 스스로 브레이크를 걸 줄 아는':f.R<=3.7?'마음이 곧 행동이 되는, 브레이크가 자라는 중인':'멈춤과 돌진 사이에서 조절을 연습하는 중인';
   return [
     `${name}는 세상을 만날 때 「${eTxt}」 아이입니다.`,
     `감정이 찾아올 때는 「${nTxt}」 스타일입니다.`,
@@ -829,53 +967,178 @@ const TYPES = {
   'HLH':{mono:'추',name:'안정 추진가',one:'높은 에너지와 안정된 정서, 규칙을 따르는 힘을 함께 가진 기질',
     shine:['새로운 환경에 금방 적응하고 분위기를 밝게 만들어요','규칙을 알려 주면 스스로 지키려는 힘이 있어요'],
     scenes:[
-      {t:'뜻대로 이끌고 싶은 순간',d:'주도성이 강해 놀이를 자기 방식대로 이끌려다 친구와 부딪힐 수 있어요',fix:'"네가 정하는 놀이 하나, 친구가 정하는 놀이 하나" — 역할을 나누는 규칙으로 리더십을 존중하며 조율해요'},
-      {t:'심심함을 못 견딜 때',d:'에너지가 남으면 장난이 커지고 위험한 시도로 이어질 수 있어요',fix:'하루 한 번 몸을 크게 쓰는 놀이 시간을 미리 확보해 에너지의 출구를 만들어 줘요'},
-      {t:'항상 잘하던 아이가 무너질 때',d:'평소 의젓해서 힘든 티를 늦게 내는 편이라 신호를 놓치기 쉬워요',fix:'"오늘 힘든 거 하나만 말해 줄래?" — 잘할 때가 아니라 아무 때나 마음을 물어봐 주세요'}]},
+      {t:'뜻대로 이끌고 싶은 순간',
+       d:'주도성이 강한 아이라 놀이의 규칙과 순서를 자기 방식대로 정하려 해요. "내가 정한 대로 해야 해"가 강해지면 또래와의 놀이에서 갈등이 생기기 쉽습니다.',
+       notice:'놀이 중 목소리가 커지고 친구의 제안을 자르기 시작하면, 갈등 신호가 켜진 거예요.',
+       reframe:'고집이 아니라 계획을 세우고 이끄는 힘이 벌써 자라고 있다는 뜻이에요. 방향만 다듬어 주면 리더십이 됩니다.',
+       fix:'"네가 정하는 놀이 하나, 친구가 정하는 놀이 하나" — 역할을 나누는 규칙으로 주도성을 존중하면서 조율을 가르쳐 주세요.',
+       say:'네가 이끌어 주니까 놀이가 재밌었어. 다음엔 친구 생각도 하나 넣어 볼까?'},
+      {t:'심심함을 못 견딜 때',
+       d:'에너지가 크고 안정적인 아이는 자극이 부족하면 스스로 자극을 만들어요. 장난이 커지고 위험한 시도로 이어지는 배경에는 대부분 \'남은 에너지\'가 있습니다.',
+       notice:'괜히 형제를 건드리거나 높은 곳에 오르기 시작하면, 심심하다는 신호일 가능성이 커요.',
+       reframe:'문제 행동이 아니라 에너지의 출구를 찾는 중이에요. 출구를 부모가 먼저 만들어 주면 사고가 줄어듭니다.',
+       fix:'하루 한 번, 몸을 크게 쓰는 놀이 시간을 일과에 미리 넣어 에너지의 출구를 만들어 주세요.',
+       say:'몸이 근질근질하구나! 우리 나가서 신나게 뛰고 오자.'},
+      {t:'항상 잘하던 아이가 무너질 때',
+       d:'평소 의젓한 아이일수록 힘든 마음을 늦게 드러내요. 어른들이 "얘는 손이 안 가"라고 할수록, 아이는 힘들다는 말을 꺼낼 기회를 놓치기 쉽습니다.',
+       notice:'평소답지 않게 사소한 일에 짜증을 내거나 잠들기를 힘들어하면, 쌓인 게 있다는 신호예요.',
+       reframe:'갑자기 이상해진 게 아니라, 그동안 참아 온 마음이 이제야 보이는 것뿐이에요.',
+       fix:'잘했을 때만이 아니라 아무 일 없는 평범한 순간에 마음을 물어봐 주세요. 의젓한 아이일수록 물어봐 줘야 말합니다.',
+       say:'다 잘하지 않아도 괜찮아. 힘든 날엔 힘들다고 말해 줘, 엄마아빠가 듣고 싶어.'}]},
   'HLL':{mono:'탐',name:'자유 탐험가',one:'세상을 겁 없이 탐색하는 높은 접근성, 조절력은 지금 자라는 중',
     shine:['처음 보는 것에도 겁 없이 뛰어드는 탐험가예요','웃음이 많아 주변까지 즐겁게 만들어요'],
     scenes:[
-      {t:'놀이를 끝내야 할 때',d:'재미에 풀브레이크가 없어 전환(귀가·목욕·잠자리)마다 실랑이가 생겨요',fix:'"5번 미끄럼 타면 끝!" — 숫자 카운트다운 예고로 전환을 게임처럼 만들어요'},
-      {t:'차례를 기다려야 할 때',d:'몸이 먼저 나가는 아이라 줄 서기·순서 기다리기가 유난히 힘들어요',fix:'기다리는 동안 할 미션("빨간 신발 몇 개인지 세어 보자")을 줘서 기다림 자체를 놀이로 바꿔요'},
-      {t:'위험을 못 보고 달릴 때',d:'호기심이 안전 감각보다 빨라 아슬아슬한 순간이 잦아요',fix:'금지 대신 짧은 안전 약속 하나("계단에선 손잡기")를 정하고, 지킬 때마다 크게 인정해 줘요'}]},
+      {t:'놀이를 끝내야 할 때',
+       d:'재미에 브레이크가 없는 아이는 전환(귀가·목욕·잠자리)마다 실랑이가 생겨요. 놀이를 끊는 일이 아이에게는 세상에서 제일 재미있는 걸 빼앗기는 일이기 때문입니다.',
+       notice:'"5분만!"이 반복되고 몸이 먼저 도망가면, 전환이 버거운 순간이에요.',
+       reframe:'말을 안 듣는 게 아니라 몰입과 즐거움의 강도가 큰 것뿐이에요. 예고만 있으면 따라올 수 있는 아이예요.',
+       fix:'"미끄럼틀 5번 타면 끝!" — 숫자 카운트다운으로 예고하고, 마지막 횟수를 아이가 직접 세게 해 주세요.',
+       say:'딱 5번 더! 네가 세어 줄래? 다 세면 우리 손잡고 가는 거야.'},
+      {t:'차례를 기다려야 할 때',
+       d:'몸이 생각보다 빨리 움직이는 아이라 줄 서기, 순서 기다리기가 유난히 어렵습니다. 기다림 자체가 이 아이에게는 큰 과제예요.',
+       notice:'줄에서 몸이 배배 꼬이고 앞 친구를 밀려고 하면, 기다림 에너지가 바닥난 거예요.',
+       reframe:'참을성이 없는 게 아니라, 기다림이라는 근육이 아직 자라는 중이에요.',
+       fix:'기다리는 동안 할 미션을 주세요 — 기다림을 관찰 놀이로 바꿔 주면 버틸 수 있는 시간이 길어집니다.',
+       say:'기다리는 동안 미션! 노란 옷 입은 사람 찾으면 엄마아빠한테 알려 줘.'},
+      {t:'위험을 못 보고 달릴 때',
+       d:'호기심이 안전 감각보다 빠른 아이예요. 새로움에 대한 접근성이 높고 두려움이 낮은 조합이라, 아슬아슬한 순간이 잦은 것이 자연스럽습니다.',
+       notice:'새로운 장소에 도착하자마자 손을 놓고 달려 나가면, 안전 약속을 다시 켜야 할 타이밍이에요.',
+       reframe:'겁이 없다는 건 세상을 신뢰한다는 뜻이기도 해요. 용기는 지켜 주고 규칙만 얹어 주면 됩니다.',
+       fix:'긴 금지 목록 대신 짧은 안전 약속 하나("계단에선 손잡기")를 정하고, 지킨 순간마다 크게 인정해 주세요.',
+       say:'우리 약속 기억하지? 계단에서는 손! 잘 지켜 줘서 고마워.'}]},
   'HHH':{mono:'성',name:'열정 성취가',one:'강한 동기와 풍부한 정서, 이를 다루는 조절력까지 갖춘 기질',
     shine:['하고 싶은 게 분명하고 끝까지 해내려는 힘이 있어요','감정이 풍부해 표현력·공감력이 빨리 자라요'],
     scenes:[
-      {t:'뜻대로 안 돼서 폭발할 때',d:'목표가 분명한 만큼 실패의 좌절도 커요. 잘 안 되면 확 무너져요',fix:'"속상하지, 거의 다 됐는데" — 감정에 이름을 먼저 붙여 주고, 진정된 뒤에 방법을 함께 찾아요'},
-      {t:'과몰입 후 지쳤을 때',d:'좋아하는 일에 에너지를 다 써서 갑자기 짜증이 늘어나는 날이 있어요',fix:'몰입 사이에 간식·물 마시기 같은 중간 쉼표 신호를 정해 두세요'},
-      {t:'완벽하게 안 되면 안 하려 할 때',d:'잘하고 싶은 마음이 커서 서툰 모습을 보이기 싫어해요',fix:'결과 대신 시도를 칭찬하는 말("다시 해 본 게 멋지다")로 도전의 문턱을 낮춰 줘요'}]},
+      {t:'뜻대로 안 돼서 폭발할 때',
+       d:'목표가 분명한 아이는 실패의 좌절도 그만큼 커요. 블록이 무너지거나 그림이 마음대로 안 되면 감정이 한꺼번에 터질 수 있습니다.',
+       notice:'입술을 깨물고 손에 힘이 들어가면 폭발 직전의 신호예요. 터지기 전에 다가가 주세요.',
+       reframe:'떼가 아니라 잘하고 싶은 마음이 큰 거예요. 성취 동기는 이 아이의 귀한 자원입니다.',
+       fix:'감정에 이름을 먼저 붙여 주고, 진정된 뒤에 방법을 함께 찾아 주세요. 순서가 중요해요 — 감정이 먼저, 해결은 나중에.',
+       say:'속상했구나, 거의 다 됐었는데. 조금 쉬었다가 같이 다시 해 볼까?'},
+      {t:'과몰입 후 지쳤을 때',
+       d:'좋아하는 일에 에너지를 다 써 버리는 아이예요. 몰입이 끝난 저녁에 갑자기 짜증이 늘어난다면, 에너지 계좌가 바닥난 것입니다.',
+       notice:'몰입하던 아이가 갑자기 칭얼대거나 멍해지면, 쉼표가 필요하다는 몸의 신호예요.',
+       reframe:'변덕이 아니라 연료가 떨어진 상태예요. 어른도 몰입한 뒤에는 방전되잖아요.',
+       fix:'몰입 활동 사이에 간식·물 마시기 같은 중간 쉼표 신호를 정해 두고, 부모가 먼저 쉼표를 불러 주세요.',
+       say:'우와, 여기까지 했어? 대단한데! 이제 물 한 잔 마시고 쉬는 시간이야.'},
+      {t:'완벽하게 안 되면 안 하려 할 때',
+       d:'잘하고 싶은 마음이 커서 서툰 모습을 보이기 싫어해요. 새 활동 앞에서 "안 해"라고 한다면, 하기 싫은 게 아니라 못할까 봐 두려운 경우가 많습니다.',
+       notice:'"안 해"·"못 해"가 새로운 과제 앞에서만 나온다면, 거부가 아니라 두려움이에요.',
+       reframe:'기준이 높다는 뜻이에요. 기준은 그대로 두고 실패의 무게만 줄여 주면 됩니다.',
+       fix:'결과가 아니라 시도를 칭찬해 주세요. 부모의 실수담을 들려주는 것도 도전의 문턱을 크게 낮춰 줍니다.',
+       say:'엄마아빠도 처음엔 다 못했어. 다시 해 본 것, 그게 제일 멋진 거야.'}]},
   'HHL':{mono:'표',name:'정열 표현가',one:'에너지와 감정 모두 강하게 표현하는 기질, 조절력은 자라는 중',
     shine:['좋아하는 것에 누구보다 뜨겁게 반응하는 열정가예요','감정 표현이 커서 마음을 읽기 쉬워요'],
     scenes:[
-      {t:'"안 돼"에 폭발할 때',d:'제지당하는 순간 감정이 크게 터지고, 스스로 브레이크를 걸기 어려워요',fix:'금지 대신 선택지 2개("지금 정리할래, 한 번 더 하고 정리할래?")로 통제감을 돌려줘요'},
-      {t:'흥분이 안 가라앉을 때',d:'신나게 논 뒤에도 엔진이 계속 돌아 잠들기까지 오래 걸려요',fix:'끄는 스위치 루틴 — 조명 낮추기 → 조용한 노래 → 꼭 안아 주기 순서를 매일 똑같이 반복해요'},
-      {t:'친구와 부딪힐 때',d:'감정이 몸으로 먼저 나가 밀치거나 소리 지르는 일이 생길 수 있어요',fix:'화날 때 할 행동을 미리 정해요("화나면 쿵쿵 발 구르기 3번") — 감정을 부정하지 않으면서 출구만 바꿔 줘요'}]},
+      {t:'"안 돼"에 폭발할 때',
+       d:'감정의 볼륨이 크고 브레이크는 아직 자라는 중인 아이예요. 제지당하는 순간 감정이 크게 터지는 건 이 기질에서 자연스러운 반응입니다.',
+       notice:'"안 돼"를 듣는 순간 몸이 굳거나 소리가 커지면, 이미 감정의 파도가 시작된 거예요.',
+       reframe:'부모를 이기려는 게 아니라, 큰 감정을 담을 그릇이 아직 자라는 중이에요.',
+       fix:'금지 대신 선택지 2개를 주세요. 통제감을 돌려주면 파도가 눈에 띄게 작아집니다.',
+       say:'소리 지르고 싶을 만큼 속상했구나. 네가 골라 봐 — 지금 정리할까, 한 번 더 하고 할까?'},
+      {t:'흥분이 안 가라앉을 때',
+       d:'신나게 논 뒤에도 엔진이 계속 도는 아이예요. 각성이 높게 유지되는 기질이라 잠들기까지 오래 걸리는 밤이 많고, 피곤할수록 오히려 더 흥분하기도 합니다.',
+       notice:'저녁이 될수록 더 크게 웃고 뛰기 시작하면, 과각성 신호예요. 피곤하다는 뜻일 수 있어요.',
+       reframe:'잠투정이 아니라 스스로 끄는 스위치가 아직 없는 것뿐이에요. 스위치는 루틴이 만들어 줍니다.',
+       fix:'매일 똑같은 순서의 \'끄는 루틴\'을 만들어 주세요 — 조명 낮추기 → 조용한 노래 → 꼭 안아 주기. 순서가 같을수록 효과가 커져요.',
+       say:'이제 우리 조용조용 시간이야. 불 끄고, 노래 부르고, 꼭 안아 줄게.'},
+      {t:'친구와 부딪힐 때',
+       d:'감정이 말보다 몸으로 먼저 나가는 시기예요. 밀치거나 소리 지르는 행동은 공격성이라기보다, 표현 수단이 아직 몸밖에 없다는 뜻입니다.',
+       notice:'놀이 중 아이의 몸짓이 갑자기 빨라지고 표정이 굳으면, 개입할 타이밍이에요.',
+       reframe:'나쁜 아이가 아니라 감정 어휘가 자라는 중이에요. 감정은 인정하고 출구만 바꿔 주면 됩니다.',
+       fix:'화날 때 할 행동을 미리 정해 두세요 — "화나면 발 쿵쿵 3번". 그다음에 말로 표현하도록 이어 줍니다.',
+       say:'화가 났구나. 때리는 대신 쿵쿵 세 번! 그다음에 뭐가 속상했는지 말해 줘.'}]},
   'LLH':{mono:'관',name:'몰입 관찰가',one:'차분한 에너지로 오래 관찰하고 깊게 몰입하는 기질',
     shine:['한 가지에 오래 몰입하는 힘이 남달라요','신중해서 위험한 행동이 적고 규칙을 잘 지켜요'],
     scenes:[
-      {t:'새 활동 앞에서 멈칫할 때',d:'바로 뛰어들지 않고 오래 관찰해요. 소극적인 게 아니라 신중한 거예요',fix:'"천천히 봐도 돼" — 관찰 시간을 인정해 주면 스스로 준비됐을 때 움직여요. 등 떠밀지 않기!'},
-      {t:'재촉당하면 닫혀 버릴 때',d:'"빨리빨리"를 들으면 오히려 마음의 문을 닫아요',fix:'시간 여유를 두고 미리 예고("10분 뒤에 나갈 거야")하면 자기 속도로 준비해요'},
-      {t:'조용해서 놓치기 쉬울 때',d:'요구를 크게 표현하지 않아 필요한 걸 못 받고 지나갈 수 있어요',fix:'하루 한 번 먼저 물어봐 주세요 — "오늘 제일 재밌던 거 뭐야?" 조용한 아이일수록 먼저 여는 질문이 필요해요'}]},
+      {t:'새 활동 앞에서 멈칫할 때',
+       d:'바로 뛰어들지 않고 오래 관찰하는 아이예요. 소극적인 게 아니라 정보를 충분히 모은 뒤 움직이는, 이 기질 고유의 신중한 방식입니다.',
+       notice:'새 활동 앞에서 다른 아이들을 물끄러미 보고 있다면, 참여를 준비하는 중이에요.',
+       reframe:'늦는 게 아니라 관찰이라는 자기만의 준비 단계를 거치는 중이에요.',
+       fix:'관찰 시간을 인정해 주세요. 등을 떠밀면 오히려 준비 시간이 길어집니다.',
+       say:'천천히 봐도 돼. 준비되면 말해 줘, 같이 가 줄게.'},
+      {t:'재촉당하면 닫혀 버릴 때',
+       d:'자기 속도가 분명한 아이라 "빨리빨리"를 들으면 오히려 마음의 문을 닫아요. 재촉은 이 기질에는 액셀이 아니라 브레이크로 작동합니다.',
+       notice:'재촉한 뒤 아이의 말수가 줄고 눈을 피하면, 문이 닫히기 시작한 거예요.',
+       reframe:'느린 게 아니라 깊은 거예요. 이 아이의 몰입력은 자기 속도에서 나옵니다.',
+       fix:'시간 여유를 두고 미리 예고해 주세요 — 예고만 있으면 스스로 준비하는 아이예요.',
+       say:'10분 뒤에 나갈 거야. 네 속도로 준비하면 돼, 기다릴게.'},
+      {t:'조용해서 놓치기 쉬울 때',
+       d:'요구를 크게 표현하지 않는 아이는 필요한 것을 못 받고 지나가기 쉬워요. 표현이 큰 형제가 있다면 더욱 그렇습니다.',
+       notice:'혼자 노는 시간이 길어지고 부모를 부르는 횟수가 줄었다면, 먼저 다가갈 때예요.',
+       reframe:'손이 안 가는 아이가 아니라 표현의 볼륨이 작은 아이예요. 마음의 크기는 똑같습니다.',
+       fix:'하루 한 번, 부모가 먼저 여는 질문을 건네 주세요. 조용한 아이일수록 먼저 열어 주는 문이 필요해요.',
+       say:'오늘 네가 만든 것 중에 제일 마음에 드는 거 보여 줄래?'}]},
   'LLL':{mono:'안',name:'온화한 안정가',one:'감정 기복이 적고 자기 속도를 지키는 평온한 기질',
     shine:['어디서든 순하게 적응하는 평화주의자예요','감정 기복이 적어 일상이 안정적이에요'],
     scenes:[
-      {t:'준비와 전환이 느릴 때',d:'아이만의 속도가 있어 어른의 시계와 자주 어긋나요',fix:'일정에 쿠션 시간을 넣고, "먼저 신발 신는 사람 승리!" 같은 작은 게임으로 속도를 올려요'},
-      {t:'자극이 없으면 늘어질 때',d:'스스로 새로운 자극을 찾기보다 익숙한 것에 머무르는 편이에요',fix:'하루 하나 아주 작은 새로움(새 그림책 한 권, 새 산책길)을 부모가 먼저 놓아 줘요'},
-      {t:'원하는 걸 말하지 않을 때',d:'불만이 없어 보여도 표현을 안 하는 것일 수 있어요',fix:'예/아니오 대신 선택 질문("바나나 줄까, 딸기 줄까?")으로 의사 표현의 기회를 자주 만들어요'}]},
+      {t:'준비와 전환이 느릴 때',
+       d:'아이만의 잔잔한 속도가 있어 어른의 시계와 자주 어긋나요. 아침 등원 준비가 매일 전쟁이라면, 대부분 속도 차이가 원인입니다.',
+       notice:'재촉해도 속도가 그대로라면, 반항이 아니라 이것이 이 아이의 기본 속도예요.',
+       reframe:'굼뜬 게 아니라 서두를 이유를 못 느끼는 평온함이에요. 세상이 급한 것이지 아이가 느린 게 아닐 수도 있어요.',
+       fix:'일정에 쿠션 시간을 넣고, 작은 게임으로 속도를 올려 주세요. 다그침보다 놀이가 빠릅니다.',
+       say:'누가 먼저 신발 신나 볼까? 준비 다 되면 네가 문을 열어 줘!'},
+      {t:'자극이 없으면 늘어질 때',
+       d:'스스로 새로운 자극을 찾기보다 익숙한 것에 머무르는 아이예요. 편안함은 큰 강점이지만, 새로운 경험의 폭이 좁아질 수 있습니다.',
+       notice:'며칠째 같은 놀이만 반복하고 있다면, 새로운 씨앗을 심어 줄 타이밍이에요.',
+       reframe:'게으른 게 아니라 익숙함에서 안정을 얻는 기질이에요. 새로움은 부모가 조금씩 놓아 주면 됩니다.',
+       fix:'하루 하나, 아주 작은 새로움을 부모가 먼저 놓아 주세요 — 새 그림책 한 권, 처음 가 보는 산책길처럼요.',
+       say:'오늘은 새로운 길로 가 볼까? 뭐가 있는지 같이 찾아보자.'},
+      {t:'원하는 걸 말하지 않을 때',
+       d:'불만이 없어 보여도 표현을 안 하는 것일 수 있어요. 순한 아이일수록 자기 욕구가 뒤로 밀리기 쉽습니다.',
+       notice:'"아무거나 괜찮아"가 반복된다면, 진짜 괜찮은 게 아니라 고르는 연습이 부족한 것일 수 있어요.',
+       reframe:'욕심이 없는 게 아니라 표현 근육이 아직 덜 자란 거예요.',
+       fix:'예/아니오 대신 선택 질문을 자주 건네 주세요. 고르는 경험이 쌓일수록 표현이 자랍니다.',
+       say:'바나나랑 딸기 중에 오늘은 뭐가 먹고 싶어? 네가 골라 줘.'}]},
   'LHH':{mono:'노',name:'신중한 노력가',one:'천천히 데워지지만 익숙해지면 깊고 성실하게 해내는 기질',
     shine:['익숙해지면 누구보다 성실하고 깊게 해내요','위험을 잘 감지해 스스로를 지키는 힘이 있어요'],
     scenes:[
-      {t:'낯선 상황을 피하고 싶을 때',d:'새로운 곳·사람 앞에서 몸이 굳어요. 시간이 필요한 기질이에요',fix:'미리 보여주기 — 사진·영상·이야기로 내일 갈 곳을 예습하면 낯섦이 절반으로 줄어요'},
-      {t:'실수에 오래 속상해할 때',d:'작은 실수도 마음에 오래 남겨 두는 아이예요',fix:'"실수해도 괜찮아, 엄마아빠도 그래" — 부모의 실수담을 들려주는 게 백 마디 위로보다 효과적이에요'},
-      {t:'도전 앞에서 불안해할 때',d:'해 보기 전에 걱정이 먼저 커져요',fix:'작은 성공의 계단 — 목표를 잘게 쪼개 첫 계단만 함께 올라 주면, 다음 계단은 스스로 올라가요'}]},
+      {t:'낯선 상황을 피하고 싶을 때',
+       d:'새로운 곳·사람 앞에서 몸이 굳는 아이예요. 위험 감지 센서가 정교한 기질이라, 낯섦을 충분히 확인할 시간이 필요합니다.',
+       notice:'입구에서 걸음이 느려지고 부모 손을 꽉 잡으면, 마음의 준비 시간이 필요하다는 신호예요.',
+       reframe:'겁쟁이가 아니라 신중한 거예요. 이 신중함은 자라서 아이를 지켜 주는 힘이 됩니다.',
+       fix:'\'미리 보여주기\'가 특효약이에요 — 내일 갈 곳을 사진·영상·이야기로 예습하면 낯섦이 절반으로 줄어듭니다.',
+       say:'내일 갈 곳 사진 같이 볼까? 도착하면 엄마아빠랑 천천히 둘러보자.'},
+      {t:'실수에 오래 속상해할 때',
+       d:'작은 실수도 마음에 오래 남겨 두는 아이예요. 감정이 깊고 성실한 기질의 조합이라, 자기 기준에 못 미친 순간을 계속 되새깁니다.',
+       notice:'실수한 지 한참 지났는데도 시무룩하다면, 아직 그 순간에 머물러 있는 거예요.',
+       reframe:'예민한 게 아니라 잘하고 싶은 마음이 깊은 거예요. 그 마음이 성실함의 뿌리입니다.',
+       fix:'위로의 말보다 부모의 실수담이 효과적이에요. 실수가 \'누구에게나 있는 일\'이 되면 무게가 줄어듭니다.',
+       say:'엄마아빠도 맨날 실수해. 실수해도 너는 그대로 소중한 우리 아이야.'},
+      {t:'도전 앞에서 불안해할 때',
+       d:'해 보기 전에 걱정이 먼저 커지는 아이예요. 상상력이 좋고 감정이 깊을수록, 아직 오지 않은 실패를 미리 겪습니다.',
+       notice:'"만약에 안 되면?" 같은 질문이 많아지면, 불안이 커지고 있다는 신호예요.',
+       reframe:'걱정이 많은 게 아니라 마음속 시뮬레이션이 정교한 거예요. 계단만 잘게 나눠 주면 됩니다.',
+       fix:'목표를 아주 작은 계단으로 나누고 첫 계단만 함께 올라 주세요. 다음 계단부터는 스스로 올라가는 아이예요.',
+       say:'한꺼번에 다 안 해도 돼. 오늘은 여기까지만, 첫 계단은 같이 가자.'}]},
   'LHL':{mono:'공',name:'섬세한 공감가',one:'감정을 깊게 느끼고 타인의 마음을 빨리 알아채는 기질',
     shine:['다른 사람 마음을 빨리 알아채는 공감 능력자예요','좋아하는 사람에게 애정이 깊고 다정해요'],
     scenes:[
-      {t:'헤어질 때 눈물이 날 때',d:'분리(등원·헤어짐)의 순간이 유난히 힘들어요',fix:'짧고 똑같은 이별 의식(포옹 → 손키스 → "이따 만나!")을 매일 반복하면 예측 가능한 안심이 돼요'},
-      {t:'감정이 넘쳐 무너질 때',d:'슬픔·서운함이 크게 밀려오면 스스로 감당하기 어려워요',fix:'달래려 서두르기보다 곁에 있어 주세요. 회복의 신호는 아이가 먼저 보내요 — 그때 꼭 안아 주면 돼요'},
-      {t:'낯선 사람을 거부할 때',d:'마음을 여는 데 시간이 걸리는 것뿐, 무례한 게 아니에요',fix:'"인사해야지" 대신 부모 곁에서 지켜볼 시간을 주고, 아이가 먼저 다가갈 때까지 기다려 줘요'}]}
+      {t:'헤어질 때 눈물이 날 때',
+       d:'분리(등원·헤어짐)의 순간이 유난히 힘든 아이예요. 애착이 깊고 감정이 큰 기질이라, 이별이 매번 큰 사건으로 다가옵니다.',
+       notice:'등원길에 말수가 줄고 손을 더 꽉 잡으면, 이별 준비가 아직 안 됐다는 신호예요.',
+       reframe:'떨어지기 싫어하는 건 애착이 건강하게 자랐다는 증거이기도 해요.',
+       fix:'짧고 똑같은 이별 의식을 매일 반복해 주세요 — 포옹 → 손키스 → "이따 만나!". 예측 가능함이 곧 안심입니다.',
+       say:'우리 약속 의식 하자 — 꼭 안고, 손키스, 이따 만나! 엄마아빠는 꼭 데리러 와.'},
+      {t:'감정이 넘쳐 무너질 때',
+       d:'슬픔·서운함이 크게 밀려오면 스스로 감당하기 어려운 시기예요. 이때 아이에게 필요한 건 해결이 아니라 곁입니다.',
+       notice:'울음이 말을 삼켜 버리면, 설명을 요구할 때가 아니라 곁에 있어 줄 때예요.',
+       reframe:'유난스러운 게 아니라 감정의 해상도가 높은 거예요. 이 감수성은 공감 능력의 재료입니다.',
+       fix:'서둘러 달래려 하지 말고 곁에 앉아 기다려 주세요. 회복 신호는 아이가 먼저 보냅니다 — 그때 꼭 안아 주면 돼요.',
+       say:'실컷 울어도 돼. 엄마아빠 여기 있을게. 준비되면 안아 줄게.'},
+      {t:'낯선 사람을 거부할 때',
+       d:'마음을 여는 데 시간이 걸리는 아이예요. 인사를 안 한다고 무례한 게 아니라, 관계의 문을 신중하게 여는 것뿐입니다.',
+       notice:'인사를 시키려는 순간 부모 뒤로 숨는다면, 아직 마음의 문이 열리지 않은 거예요.',
+       reframe:'사교성이 부족한 게 아니라 관계를 깊게 맺는 스타일이에요. 한번 열리면 오래갑니다.',
+       fix:'"인사해야지" 대신 곁에서 지켜볼 시간을 주고, 아이가 먼저 다가갈 때까지 기다려 주세요.',
+       say:'지금은 엄마아빠 옆에서 봐도 돼. 인사하고 싶어지면 그때 해도 늦지 않아.'}]}
 };
-const BADGE_SCENE = {t:'자극 많은 날의 저녁',d:'감각 민감성이 높은 아이는 소리·촉감·사람 자극이 쌓인 날 저녁에 무너지기 쉬워요',fix:'외출 후에는 조명·소리를 낮춘 쿨다운 시간 20분을 루틴으로 — 예민함이 아니라 세상을 자세히 느끼는 능력이에요'};
+const BADGE_SCENE = {t:'자극 많은 날의 저녁',
+  d:'감각 민감성이 높은 아이는 소리·촉감·사람의 자극이 종일 쌓여요. 자극이 많았던 날 저녁에 무너지는 건 버릇이 아니라 과부하입니다.',
+  notice:'외출에서 돌아온 뒤 사소한 일에 짜증이 급증하면, 감각 계좌가 초과됐다는 신호예요.',
+  reframe:'예민한 게 아니라 세상을 남들보다 자세히 느끼는 능력이에요. 관리만 배우면 재능이 됩니다.',
+  fix:'자극이 많은 일정 뒤에는 조명·소리를 낮춘 쿨다운 20분을 루틴으로 만들어 주세요.',
+  say:'오늘 시끌시끌했지? 우리 조용한 데서 잠깐 쉬자. 아무것도 안 해도 돼.'};
 
 /* ═══════════ STATE ═══════════ */
 const LS='billyTemp1';
@@ -896,7 +1159,7 @@ $('respToggle').addEventListener('click',e=>{
 });
 $('childBirth').addEventListener('change',()=>{
   const m=monthAge(); if(m==null)return;
-  let set = m<6?'아직 이르어요 (생후 6개월부터)': m<18?'6~17개월 세트 — 반응 성향 리포트': m<36?'18~35개월 세트': m<72?'3~5세 세트':'6~7세 세트';
+  let set = m<6?'아직 이르어요 (생후 6개월부터 가능해요)': m<18?'영아 기질검사 권장 · 반응 성향 리포트로 제공돼요': m<36?'영아 기질검사(6~35개월)를 권해요': m<84?'유아 기질검사(3~6세)를 권해요':'유아 기질검사 상한 연령을 넘었어요';
   $('ageNote').textContent = `현재 ${m}개월 · ${set}`;
 });
 function monthAge(){
@@ -907,13 +1170,28 @@ function monthAge(){
 }
 
 /* ═══════════ SURVEY ═══════════ */
+function openIntro(set){
+  selectSet(set);
+  const M=SETMETA[set];
+  $('introTitle').textContent = set==='I' ? '우리 아기는 어떤 기질을 타고났을까요?' : '커진 세상 속, 우리 아이의 기질은요?';
+  $('introAge').textContent = M.intro;
+  $('introSetName').textContent = `${M.name} (${M.range})`;
+  const m=monthAge();
+  const warn=$('introWarn');
+  if(m!=null){
+    if(set==='I'&&m>=36){ warn.textContent='지금 월령에는 유아 기질검사를 권해요. 이 검사는 6~35개월용이에요.'; warn.style.display='block'; }
+    else if(set==='C'&&m<36){ warn.textContent='지금 월령에는 영아 기질검사를 권해요. 이 검사는 3~6세용이에요.'; warn.style.display='block'; }
+    else warn.style.display='none';
+  } else warn.style.display='none';
+  go('v-intro');
+}
 function startSurvey(){
   answers={}; curCh=1; renderCh(); go('v-survey');
 }
 function confirmExit(){ if(confirm('검사를 중단할까요? 응답은 저장돼요.')) go('v-home'); }
 function itemsOf(ch){ return ITEMS.map((it,i)=>({i,sc:it[0],ch:it[1],text:it[2],rev:it[3]})).filter(x=>x.ch===ch); }
 function renderCh(){
-  const list=itemsOf(curCh), c=CHAPTERS[curCh-1];
+  const list=itemsOf(curCh), c=CHAPTERS_A[curCh-1];
   let h=`<div class="ch-intro"><div class="ch-num">SCENE ${curCh} / 10</div><h3>${c.t}</h3><p>${c.d}</p></div>`;
   list.forEach((q,idx)=>{
     h+=`<div class="q-card" id="qc${q.i}">
@@ -970,11 +1248,12 @@ function score(ans){
   /* validity */
   let flags=0;
   const g=i=>ans[i];
+  const VP=VPAIR[curSet];
   ITEMS.forEach((it,i)=>{
-    if(it[0]==='V1'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2].includes('던지거나 화를'));if(g(p)&&Math.abs((8-g(i))-g(p))>=4)flags++;}
-    if(it[0]==='V2'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2]==='낯선 사람이 안으려고 하면 거부했다');if(g(p)&&Math.abs((8-g(i))-g(p))>=4)flags++;}
+    if(it[0]==='V1'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2].includes(VP.v1));if(g(p)&&Math.abs((8-g(i))-g(p))>=4)flags++;}
+    if(it[0]==='V2'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2].includes(VP.v2));if(g(p)&&Math.abs((8-g(i))-g(p))>=4)flags++;}
     if((it[0]==='V3'||it[0]==='V4')&&g(i)>=5)flags++;
-    if(it[0]==='V5'&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2]===it[2]);if(p!==i&&g(p)&&Math.abs(g(i)-g(p))>=3)flags++;}
+    if((it[0]==='V5'||it[0]==='V6')&&g(i)!==undefined&&g(i)!==0){const p=ITEMS.findIndex(x=>x[2]===it[2]);if(p!==i&&g(p)&&Math.abs(g(i)-g(p))>=3)flags++;}
   });
   return {sub,f,flags};
 }
@@ -1002,25 +1281,29 @@ function finish(){
   setTimeout(()=>{
     clearInterval(iv);
     const r=score(answers);
-    S.results[resp]={r,name:$('childName').value||'우리 아이',month:monthAge(),date:'2026-07-09'};
+    S.results[resp]={r,name:$('childName').value||'우리 아이',month:monthAge(),date:'2026-07-09',set:curSet,setName:SETMETA[curSet].name};
     save(); renderReport(resp); go('v-report');
   },3800);
 }
 
 function mockRun(){
-  /* 샘플: 씩씩한 여우 + 섬세 배지 프로파일 */
+  /* 샘플 프로파일 — 월령에 맞는 세트 자동 선택, 프로파일도 매번 랜덤 */
+  const m=monthAge(); selectSet(m!=null&&m>=36?'C':'I');
+  const VP=VPAIR[curSet];
+  /* 아이마다 다른 잠재 기질: 척도별 평균을 2.2~5.8 사이에서 랜덤 생성 */
+  const base={};
+  Object.keys(SCALES).forEach(sc=>{ base[sc]=2.2+Math.random()*3.6; });
   const mock={};
   ITEMS.forEach((it,i)=>{
-    const base={AC:5.5,AP:5.8,HP:5.2,FE:4.8,FR:5.4,SO:3.4,AT:5.0,IC:4.6,SC:5.6,SH:4.4,SS:5.4,SA:4.9}[it[0]]||2;
-    let v=Math.round(base+(Math.random()*1.6-0.8)); if(it[3])v=8-v;
+    let v=Math.round((base[it[0]]||2)+(Math.random()*1.6-0.8)); if(it[3])v=8-v;
     mock[i]=Math.min(7,Math.max(1,v));
     if(it[0]==='V3'||it[0]==='V4')mock[i]=1;
-    if(it[0]==='V1')mock[i]=8-mock[ITEMS.findIndex(x=>x[2].includes('던지거나 화를'))];
-    if(it[0]==='V2')mock[i]=8-mock[ITEMS.findIndex(x=>x[2]==='낯선 사람이 안으려고 하면 거부했다')];
-    if(it[0]==='V5')mock[i]=mock[ITEMS.findIndex(x=>x[2]===it[2])];
+    if(it[0]==='V1'){const p=ITEMS.findIndex(x=>x[2].includes(VP.v1)); if(p>=0)mock[i]=8-mock[p];}
+    if(it[0]==='V2'){const p=ITEMS.findIndex(x=>x[2].includes(VP.v2)); if(p>=0)mock[i]=8-mock[p];}
+    if((it[0]==='V5'||it[0]==='V6')){const p=ITEMS.findIndex(x=>x[2]===it[2]); if(p>=0&&p!==i)mock[i]=mock[p];}
   });
   const r=score(mock);
-  S.results[resp]={r,name:$('childName').value||'빌리',month:monthAge()||26,date:'2026-07-09',sample:true};
+  S.results[resp]={r,name:$('childName').value||'빌리',month:monthAge()||26,date:'2026-07-09',sample:true,set:curSet,setName:SETMETA[curSet].name};
   save(); renderReport(resp); go('v-report');
 }
 
@@ -1038,7 +1321,7 @@ function renderReport(who){
   <div class="rep-head">
     <div class="rh-top"><span>${res.name} · ${res.month!=null?res.month+'개월':''} · ${relLabel} 응답</span><span>${res.date}${res.sample?' · 샘플':''}</span></div>
     <h2>${nm}의 기질 리포트</h2>
-    <div class="meta">78문항 · 12하위척도 정밀 분석</div>
+    <div class="meta">${res.setName||'기질검사'} · 78문항 · 12하위척도 정밀 분석</div>
     <div class="trust-strip">
       <span class="t ok">✓ 응답 신뢰도 ${trust}</span>
       <span class="t">국내 부모 베타 응답 기준*</span>
@@ -1127,21 +1410,24 @@ function renderReport(who){
 
   /* S3 playbook */
   if(!isInfant){
-    h+=`<div class="section"><h2 class="sec">힘든 순간 예보 & 회복 스위치</h2><p class="sub">${T.name}에게 자주 오는 순간과, 그때 켤 스위치예요</p>`;
+    h+=`<div class="section"><h2 class="sec">힘든 순간 예보 & 양육 가이드</h2><p class="sub">${T.name}에게 자주 오는 순간마다, 알아채기 → 다르게 보기 → 맞춰 반응하기 3단계로 안내해 드려요</p>`;
     const scenes=[...T.scenes]; if(t.badge)scenes.push(BADGE_SCENE);
     scenes.forEach(s=>{
-      h+=`<div class="scene"><div class="s-tag">${s.t}</div><h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s.d}</h4>
-      <div class="fix"><span class="sw">🔄</span><div><b style="font-size:12px;color:#B4672F">회복 스위치</b><br>${s.fix}</div></div>
-      <div class="r3"><span>① 알아채기</span><span>② 다르게 보기</span><span>③ 맞춰 반응하기</span></div></div>`;
+      h+=`<div class="scene"><div class="s-tag">${s.t}</div>
+      <p class="s-desc">${s.d}</p>
+      <div class="r3s"><span class="r3n">① 알아채기</span><p>${s.notice}</p></div>
+      <div class="r3s"><span class="r3n">② 다르게 보기</span><p>${s.reframe}</p></div>
+      <div class="r3s"><span class="r3n">③ 맞춰 반응하기</span><p>${s.fix}</p></div>
+      <div class="say"><span class="say-tag">💬 이런 말을 건네 보세요</span><p>“${s.say}”</p></div></div>`;
     });
     h+=`</div>`;
   }
 
   /* S4 next */
-  h+=`<div class="section"><h2 class="sec">다음은 이거예요</h2>
+  h+=`<div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
     ${S.parent&&S.parent[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">${nm}의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
     :`<div class="next-card"><div class="n-emoji">🌿</div><div><div class="tit">양육기질 검사 (5분)</div><div class="desc">${relLabel}의 기질을 알면 <b>궁합 리포트</b>가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-pintro')">시작</button></div>`}
-    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">6개월 뒤 재검사</div><div class="desc">2027년 1월, ${nm}의 기질 변화 그래프가 생겨요</div></div><button class="btn btn-line btn-sm">알림 신청</button></div>
+    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">${res.set==='C'?'6개월 뒤, 다시 만나요':'다음 검사 예고'}</div><div class="desc">${res.set==='C'?`6개월 뒤 다시 검사하면 ${nm}의 기질 변화 그래프가 생겨요`:`${nm}가 3세가 되면, 유치원·또래 장면으로 새로 설계된 유아 기질검사가 기다려요`}</div></div></div>
     ${!otherRes?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">같은 아이, 다른 시선 — 부부 비교 리포트가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
   </div>
   <div class="sci">
@@ -1328,7 +1614,7 @@ function renderPReport(who){
     <h2 class="sec" style="font-size:15px;margin-top:16px">걸릴 수 있는 순간</h2>
     ${ST.care.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--side-soft);border-radius:12px;margin-bottom:6px">🔄 ${s}</div>`).join('')}
   </div>
-  <div class="section"><h2 class="sec">다음은 이거예요</h2>
+  <div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
     ${S.results[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">아이의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
     :`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">마치면 궁합 리포트가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`}
     ${!otherP?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">부부의 양육 스타일 비교가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
@@ -1383,15 +1669,15 @@ function renderFit(who){
   ${cau.map(s=>`<div class="scene"><div class="s-tag">예보 ⚡ ${s.t}</div>
     <h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s.d}</h4>
     <div class="fix"><span class="sw">🔄</span><div><b style="font-size:12px;color:#B4672F">조율 스위치</b><br>${s.f}</div></div>
-    <div class="r3"><span>① 알아채기</span><span>② 다르게 보기</span><span>③ 맞춰 반응하기</span></div></div>`).join('')}
+    </div>`).join('')}
   </div>
   <div class="sci"><h4>이 리포트의 근거</h4>
     <li>조화적합도(Goodness-of-Fit)는 Thomas & Chess가 제안한 개념으로, 발달을 결정하는 것은 아이의 기질 자체가 아니라 <b>기질과 환경(양육)의 맞물림</b>이라는 이론이에요.</li>
     <li>기질에 맞춰 부모의 반응을 조율하는 개입 프로그램(INSIGHTS 등)은 무작위 대조 연구에서 아동 문제행동 감소 효과가 확인되어 있어요.</li>
   </div>
-  <div class="section"><h2 class="sec">다음은 이거예요</h2>
+  <div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
     <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 궁합도 있어요</div><div class="desc">같은 아이라도 부모마다 fit이 달라요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>
-    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">6개월 뒤 재검사</div><div class="desc">${nm}의 기질 변화에 맞춰 궁합도 업데이트돼요</div></div><button class="btn btn-line btn-sm">알림 신청</button></div>
+    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">아이가 자라면 궁합도 자라요</div><div class="desc">다음 시기의 기질검사를 마치면 궁합 리포트도 새로 업데이트돼요</div></div></div>
   </div>
   <div class="disclaim">본 리포트는 두 검사의 응답을 조합한 참고 자료이며 진단이 아닙니다. 조합 해석은 부모의 잘잘못이 아닌 '기질 간 상호작용'에 대한 안내입니다.</div>`;
   $('fitBody').innerHTML=h;
@@ -1555,8 +1841,8 @@ function renderSReport(who){
   });
   h+=`</div>`;
   /* 다음 */
-  h+=`<div class="section"><h2 class="sec">다음은 이거예요</h2>
-    <div class="next-card"><div class="n-emoji">📅</div><div><div class="tit">3개월 뒤 다시 체크</div><div class="desc">2026년 10월, ${relLabel}의 컨디션 흐름이 이어져요</div></div><button class="btn btn-line btn-sm">알림 신청</button></div>
+  h+=`<div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
+    <div class="next-card"><div class="n-emoji">📅</div><div><div class="tit">3개월 뒤 다시 체크해 보세요</div><div class="desc">분기마다 체크하면 ${relLabel}의 컨디션 흐름이 그래프로 쌓여요</div></div></div>
     ${!hasChild?`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">아이 기질과 함께 보면 해석이 깊어져요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`:''}
   </div>
   <div class="disclaim">본 체크는 양육 스트레스 정도를 스스로 살펴보기 위한 참고 자료이며, 의학적 진단이나 우울·불안 선별검사가 아닙니다. 마음이 계속 힘들다면 전문기관의 도움을 받으시길 권합니다. · 보건복지상담센터 129</div>`;
@@ -1566,7 +1852,9 @@ function renderSReport(who){
 /* ═══════════ HOME STATE ═══════════ */
 function refreshHome(){
   const done1=!!S.results[resp],done2=!!(S.parent&&S.parent[resp]);
-  const t1=$('test1State');if(t1)t1.textContent=done1?'리포트 ›':'시작 ›';
+  const doneSet=done1?(S.results[resp].set||'I'):null;
+  const t1=$('test1State');if(t1)t1.textContent=doneSet==='I'?'리포트 ›':'시작 ›';
+  const t1c=$('test1cState');if(t1c)t1c.textContent=doneSet==='C'?'리포트 ›':'시작 ›';
   const t2=$('test2State');if(t2)t2.textContent=done2?'리포트 ›':'시작 ›';
   const done3=!!(S.stress&&S.stress[resp]&&S.stress[resp].length);
   const t3=$('test3State');if(t3)t3.textContent=done3?'리포트 ›':'시작 ›';
