@@ -260,14 +260,14 @@
   .test-sec { background: var(--main-tint); }
   .test-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   .test-card {
     background: #fff;
     border-radius: var(--r-lg);
-    padding: 36px 32px;
-    display: flex; gap: 24px; align-items: center;
+    padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 16px; align-items: flex-start;
     box-shadow: 0 6px 20px rgba(51,115,186,.08);
   }
   .test-card .t-img {
@@ -348,6 +348,13 @@
   }
   .ins-card .i-img { flex: 0 0 160px; width: 160px; }
   .ins-card .i-body { flex: 1; min-width: 0; }
+  .ins-card .lifetime-badge {
+    display: inline-block;
+    background: var(--side); color: #a05c3b;
+    font-size: 12.5px; font-weight: 700;
+    padding: 5px 14px; border-radius: 999px;
+    margin-bottom: 10px;
+  }
   .ins-card h3 { font-size: clamp(19px, 2.4vw, 23px); font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
   .ins-card h3 .blue { color: var(--main); }
   .ins-card ul { list-style: none; margin: 14px 0 20px; display: flex; flex-wrap: wrap; gap: 8px 10px; }
@@ -429,6 +436,10 @@
   /* ── Responsive ─────────────────────── */
   @media (max-width: 960px) {
     .timeline { grid-template-columns: repeat(3, 1fr); }
+    .test-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .test-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
     section { padding: 56px 0; }
@@ -509,9 +520,9 @@
         </div>
         <div class="ms-card new">
           <div class="thumb"><img src="/assets/img/baby-magnifier.webp" alt="돋보기를 든 아기 일러스트" loading="lazy"></div>
-          <span class="stage">36개월</span>
-          <div class="gift">발달 기질 검사<br>+ 양육 스트레스 검사</div>
-          <div class="desc">검사권과 분석 리포트 제공</div>
+          <span class="stage">24개월~</span>
+          <div class="gift">우리 가족 마음 검사<br>3종 (주기적 제공)</div>
+          <div class="desc">임상심리사 검사·발달 보고서 제공</div>
         </div>
         <div class="ms-card">
           <div class="thumb"><img src="/assets/img/baby-graduate.webp" alt="학사모를 쓴 아이 일러스트" loading="lazy"></div>
@@ -587,13 +598,13 @@
     </div>
   </section>
 
-  <!-- 36개월 검사 -->
+  <!-- 24개월~ 검사 -->
   <section class="test-sec" id="test">
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow" style="background:#fff;">NEW 혜택</span>
-        <h2>36개월, <span class="blue">우리 가족 마음 검사</span>를 선물해요</h2>
-        <p>아이의 기질을 이해하고 엄빠의 마음도 돌보는 시간, 베이비빌리가 준비했어요.</p>
+        <h2>24개월부터, <span class="blue">우리 가족 마음 검사</span>를 선물해요</h2>
+        <p>임상심리사와 함께하는 전문 검사로, 아이의 기질과 우리 가족의 마음을 24개월부터 주기적으로 살펴봐요.</p>
       </div>
 
       <div class="test-grid">
@@ -601,7 +612,14 @@
           <div class="t-img"><img src="/assets/img/baby-bear-study.webp" alt="공부하는 아기 일러스트" loading="lazy"></div>
           <div>
             <h3><span class="who">우리 아이를 위한</span>아이 발달 기질 검사</h3>
-            <p>우리 아이는 어떤 기질을 가졌을까요? 36개월 시기에 아이의 발달과 타고난 기질을 확인하고, 아이에게 꼭 맞는 양육 방향을 찾도록 도와드려요.</p>
+            <p>우리 아이는 어떤 기질을 가졌을까요? 아이의 발달과 타고난 기질을 확인하고, 아이에게 꼭 맞는 양육 방향을 찾도록 도와드려요.</p>
+          </div>
+        </div>
+        <div class="test-card">
+          <div class="t-img"><img src="/assets/img/pregnant-mom.webp" alt="엄마 일러스트" loading="lazy"></div>
+          <div>
+            <h3><span class="who">엄마 아빠를 위한</span>양육 기질 검사</h3>
+            <p>나는 어떤 양육자일까요? 부모의 양육 기질을 파악해서, 아이와 더 잘 맞는 양육 방식을 찾도록 도와드려요.</p>
           </div>
         </div>
         <div class="test-card">
@@ -614,9 +632,10 @@
       </div>
 
       <div class="test-benefits">
-        <span class="item"><span class="chk">✓</span> 검사권 2종 제공</span>
-        <span class="item"><span class="chk">✓</span> 검사 분석 결과 리포트 제공</span>
-        <span class="item"><span class="chk">✓</span> 별도 비용 없이 무료</span>
+        <span class="item"><span class="chk">✓</span> 검사권 3종 이상 제공</span>
+        <span class="item"><span class="chk">✓</span> 임상심리사와 함께하는 전문 검사</span>
+        <span class="item"><span class="chk">✓</span> 발달 보고서 제공</span>
+        <span class="item"><span class="chk">✓</span> 24개월부터 주기적으로, 비용 없이 무료</span>
       </div>
       <p class="test-cond">* 베이비빌리를 통해 보험 가입 후 <strong>계약을 유지 중인 엄빠님</strong>에 한하여 제공됩니다.</p>
     </div>
@@ -655,15 +674,17 @@
       <div class="ins-card">
         <div class="i-img"><img src="/assets/img/billy-smart.png" alt="의료 서류와 보험카드를 든 아기 일러스트" loading="lazy"></div>
         <div class="i-body">
-          <h3>보험 상담이 <span class="blue">추가로 필요</span>하신가요?</h3>
+          <span class="lifetime-badge">🔒 평생 무료</span>
+          <h3>부모님 보험도, <span class="blue">평생 무료</span>로 분석해드려요</h3>
           <ul>
-            <li>아기 교육보험</li>
-            <li>저축 보험</li>
-            <li>아빠를 위한 보험</li>
+            <li>교육보험</li>
+            <li>보장보험</li>
+            <li>부모님 암보험</li>
+            <li>여성보험</li>
             <li>할머니 할아버지를 위한 간병인 보험</li>
           </ul>
-          <p class="exp">10년 이상 전문가들이 직접 전문 상담을 제공해요!</p>
-          <a class="ins-btn" href="https://babybilly.co/insurance/general?utm_source=villagebaby&utm_medium=content&utm_campaign=benefit&utm_content=pos1" target="_blank" rel="noopener">💬 무료 상담 신청하기</a>
+          <p class="exp">아가 보험 하나로 끝나는 게 아니라, 온 가족의 보험을 10년 이상 전문가가 몇 번이고 무료로 분석해드려요!</p>
+          <a class="ins-btn" href="https://babybilly.co/insurance/general?utm_source=villagebaby&utm_medium=content&utm_campaign=benefit&utm_content=pos1" target="_blank" rel="noopener">💬 부모님 보험 무료 분석 받기</a>
         </div>
       </div>
     </div>
