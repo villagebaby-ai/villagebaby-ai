@@ -70,25 +70,28 @@ h1 .hl{background:linear-gradient(120deg,var(--blue),var(--blue-500)); -webkit-b
 
 /* grid */
 .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(248px,1fr)); gap:20px; padding-bottom:20px}
-.book{height:300px; perspective:1300px; cursor:pointer; -webkit-tap-highlight-color:transparent; outline:none}
+.book{height:322px; perspective:1300px; cursor:pointer; -webkit-tap-highlight-color:transparent; outline:none}
 .book:focus-visible .face{box-shadow:0 0 0 3px var(--blue-300)}
 .book-in{position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .62s var(--ease)}
 .book.flipped .book-in{transform:rotateY(180deg)}
 .face{position:absolute; inset:0; -webkit-backface-visibility:hidden; backface-visibility:hidden; border-radius:var(--r); overflow:hidden; background:var(--surface); border:1px solid var(--border); box-shadow:var(--sh-xs); display:flex; flex-direction:column; transition:box-shadow .2s}
 .book:hover .face{box-shadow:var(--sh-l)}
-.cov{position:relative; min-height:150px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; padding:22px; text-align:center}
+.cov{position:relative; min-height:128px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; padding:18px 20px; text-align:center}
 .cov::before{content:""; position:absolute; left:0; top:0; bottom:0; width:7px; background:rgba(0,0,0,.16)}
 .cov .ct{color:#fff; font-weight:900; font-size:clamp(17px,2vw,20px); letter-spacing:-.02em; line-height:1.32; text-shadow:0 2px 10px rgba(0,0,0,.18)}
 .fbody{padding:15px 16px 14px; display:flex; flex-direction:column; gap:9px; flex:1}
 .pill{align-self:flex-start; font-size:11.5px; font-weight:700; padding:4px 11px; border-radius:var(--r-pill)}
 .by{font-size:13px; font-weight:700; color:var(--ink)}
 .by span{color:var(--gray); font-weight:400}
+.frec{font-size:12.5px; line-height:1.55; color:var(--ink-2)}
 .hint{margin-top:auto; display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:var(--blue)}
 .hint .ic{display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--blue-50); align-items:center; justify-content:center; font-size:12px}
-.face.back{transform:rotateY(180deg); background:var(--surface-2); padding:22px 20px 16px}
-.bk-mark{font-size:12px; font-weight:700; color:var(--peach-text); background:var(--peach-100); align-self:flex-start; padding:4px 11px; border-radius:var(--r-pill); margin-bottom:13px}
-.bk-rec{font-size:clamp(14px,1.7vw,16px); line-height:1.68; color:var(--ink); font-weight:500; flex:1}
-.bk-by{font-size:12.5px; color:var(--gray); font-weight:700; margin-top:8px}
+.face.back{transform:rotateY(180deg); background:var(--surface-2); padding:20px 18px 15px; overflow-y:auto}
+.bk-mark{font-size:11.5px; font-weight:700; color:var(--peach-text); background:var(--peach-100); align-self:flex-start; padding:4px 11px; border-radius:var(--r-pill); margin-bottom:12px}
+.bk-q{font-size:clamp(14px,1.7vw,16px); line-height:1.72; color:var(--ink); font-weight:500; flex:1}
+.bk-q .uline{background:linear-gradient(transparent 58%, var(--peach) 58%); padding:0 1px; -webkit-box-decoration-break:clone; box-decoration-break:clone}
+.bk-src{font-size:11.5px; color:var(--gray); font-weight:700; margin-top:10px}
+.bk-empty{font-size:14px; line-height:1.7; color:var(--gray-2); font-weight:500; flex:1; display:flex; align-items:center}
 .bk-go{display:inline-flex; align-items:center; gap:5px; align-self:flex-start; margin-top:10px; font-size:12.5px; font-weight:700; color:var(--blue); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s}
 .bk-go:hover{border-color:var(--blue)}
 .bk-back{position:absolute; top:13px; right:15px; font-size:11px; font-weight:700; color:var(--gray-2)}
@@ -105,10 +108,10 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
 
 @media (max-width:520px){
   .grid{grid-template-columns:1fr 1fr; gap:13px}
-  .book{height:302px}
-  .cov{min-height:124px; padding:16px 12px} .cov .ct{font-size:15px}
-  .fbody{padding:12px 13px 13px; gap:7px}
-  .face.back{padding:17px 15px 13px; overflow-y:auto} .bk-rec{font-size:13px; line-height:1.55}
+  .book{height:346px}
+  .cov{min-height:106px; padding:14px 11px} .cov .ct{font-size:14.5px}
+  .fbody{padding:11px 12px 12px; gap:6px} .frec{font-size:12px; line-height:1.5}
+  .face.back{padding:16px 14px 12px} .bk-q{font-size:13px; line-height:1.6}
   .nav-logo .tag{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
@@ -162,35 +165,35 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
     family:{n:"육아·가족", c:"linear-gradient(135deg,#8A6A1E,#C9A94A)", pb:"#FBEDBD", pc:"#7A5A12"}
   };
   var BOOKS=[
-    {t:"나의 인생이 당신의 지혜가 된다면",by:"로지",g:"self",r:"“어떻게 살 것인가는 내 중심에 달려 있다.” 다양한 삶의 경험이 궁금한 분께."},
-    {t:"경복궁 환상 여행",by:"채영",g:"philo",r:"근정전·경회루에 숨은 73가지 동물 찾기. 궁궐을 새롭게 보고 싶은 분께."},
-    {t:"나는 매주 시체를 보러 간다",by:"한나",g:"sci",r:"범죄학과 인간 본성에 관심 있고, 사건 묘사에 거부감 없는 분께."},
-    {t:"실리콘밸리의 팀장들",by:"쭈",g:"career",r:"팀 리더·매니저, 조직의 피드백 문화를 고민하는 분께."},
-    {t:"바람이 분다 당신이 좋다",by:"상준",g:"novel",r:"잔잔하고 따뜻하게 쉬고 싶은 사람, 극한의 F 감성이 궁금한 T에게."},
-    {t:"마음의 지혜",by:"선우",g:"sci",r:"번아웃과 '자발적 전환'. 삶의 기준이 되어줄 8가지 심리학."},
-    {t:"원칙 (Principles)",by:"아써",g:"career",r:"삶과 일에서 복잡한 문제에 직면한 사람, 혹은 관리자에게."},
-    {t:"스토너",by:"지원",g:"novel",r:"평범한 삶 속에서 나의 가치와 행복을 찾아가는 이야기."},
-    {t:"장미와 나이프",by:"엘린",g:"novel",r:"책과 안 친했던 분도 몰입되는, 후루룩 읽는 추리극."},
-    {t:"AI시대 돈 버는 규칙이 뒤바뀐다",by:"제혁",g:"career",r:"생성형 AI로 수익화하는 아이디어가 궁금한 분께."},
-    {t:"원씽 (One Thing)",by:"고니",g:"self",r:"목표가 많을수록 성공은 멀어진다. 딱 하나에 집중하기."},
-    {t:"대논쟁! 철학배틀",by:"우리",g:"philo",r:"사상가 37명의 논쟁으로 즐기는 지적인 '싸움 구경'."},
-    {t:"모순",by:"지현",g:"novel",r:"삶은 모순 그 자체. 인생의 정답이 궁금한 사람에게."},
-    {t:"노이즈: 생각의 잡음",by:"이슬",g:"sci",r:"당연한 판단을 다시 보고, 잡음을 피해 더 좋은 선택으로."},
-    {t:"어떤 개발자가 되고 싶니",by:"진수",g:"career",r:"개발자로 커리어를 이어가거나 전환하려는 분께."},
-    {t:"경험의 멸종",by:"린",g:"philo",r:"'대리 체험'만 늘어나는 현실에서, 경험의 의미를 다시 묻다."},
-    {t:"사고 싶게 만드는 것들",by:"효",g:"career",r:"무엇이든 만들어 파는 사람이라면 누구에게나."},
-    {t:"논어",by:"수민",g:"philo",r:"하루 한 문장, 가벼운 마음으로 생각을 정리하고 싶다면."},
-    {t:"식물의 사회생활",by:"혜준",g:"sci",r:"식물과 자연을 좋아하고, 사랑하는 사람에게."},
-    {t:"노희영의 브랜딩 법칙",by:"서현",g:"career",r:"내 일과 가치관을 더 단단히 하고 싶은 모두에게."},
-    {t:"구글은 어떻게 일하는가",by:"소현",g:"career",r:"일 잘하고 싶은 사람, 목표 설정이 고민인 사람에게."},
-    {t:"우리의 낙원에서 만나자",by:"태윤",g:"novel",r:"가볍게 읽으며 생각을 정리하고, 잠깐 숨 고르고 싶을 때."},
-    {t:"모순",by:"정윤",g:"novel",r:"<참을 수 없는 존재의 가벼움>과 함께 읽는, 결혼 전 '양대산맥'."},
-    {t:"다정한 사람이 이긴다",by:"찬주",g:"sci",r:"힘이 되는 책이 필요한 분, 관계가 고민인 분께."},
-    {t:"딸은 엄마의 감정을 먹고 자란다",by:"대니",g:"family",r:"감정을 미뤄온 딸들, 사랑과 책임의 경계를 고민하는 이에게."},
-    {t:"뇌는 어떻게 나를 조종하는가",by:"영주",g:"sci",r:"생각이 어디서 어떻게 오는지 궁금한 분께."},
-    {t:"초역 부처의 말",by:"종민",g:"philo",r:"감정을 정리하고 다시 시작하게 돕는, 짧고 실용적인 문장들."},
-    {t:"동물농장",by:"혜민",g:"novel",r:"짧지만 깊은 메시지를 담은 고전을 읽고 싶은 분께."},
-    {t:"한 뼘의 계절에서 배운 것",by:"유리",g:"novel",r:"사계절의 흐름 속 사소한 감정으로 나를 이해하게 되는 에세이."}
+    {t:"나의 인생이 당신의 지혜가 된다면",by:"로지",g:"self",r:"“어떻게 살 것인가는 내 중심에 달려 있다.” 다양한 삶의 경험이 궁금한 분께.",u:"갑작스러워 보이는 기쁨의 순간도, 알고 보면 세심한 계획과 배려심 있는 생활의 결과이다."},
+    {t:"경복궁 환상 여행",by:"채영",g:"philo",r:"근정전·경회루에 숨은 73가지 동물 찾기. 궁궐을 새롭게 보고 싶은 분께.",u:"임금과 신하가 덕으로 만난다."},
+    {t:"나는 매주 시체를 보러 간다",by:"한나",g:"sci",r:"범죄학과 인간 본성에 관심 있고, 사건 묘사에 거부감 없는 분께.",u:"죽음을 직면하면, 삶이 얼마나 절실한지 보인다."},
+    {t:"실리콘밸리의 팀장들",by:"쭈",g:"career",r:"팀 리더·매니저, 조직의 피드백 문화를 고민하는 분께.",u:"훌륭한 리더는 지시하는 사람이 아니라, 사람들이 스스로 최선을 다하게 만드는 사람이다."},
+    {t:"바람이 분다 당신이 좋다",by:"상준",g:"novel",r:"잔잔하고 따뜻하게 쉬고 싶은 사람, 극한의 F 감성이 궁금한 T에게.",u:"삿포로에 갈까요. 이 말은 당신을 좋아한다는 말입니다."},
+    {t:"마음의 지혜",by:"선우",g:"sci",r:"번아웃과 '자발적 전환'. 삶의 기준이 되어줄 8가지 심리학.",u:"우리 각자가 위대한 인간은 못 되더라도, 좋은 사람은 될 수 있을 테니까요."},
+    {t:"원칙 (Principles)",by:"아써",g:"career",r:"삶과 일에서 복잡한 문제에 직면한 사람, 혹은 관리자에게.",u:"당신이 어떤 사람이 될 것인가는, 당신의 관점에 달려 있다."},
+    {t:"스토너",by:"지원",g:"novel",r:"평범한 삶 속에서 나의 가치와 행복을 찾아가는 이야기.",u:"넌 무엇을 기대했나?"},
+    {t:"장미와 나이프",by:"엘린",g:"novel",r:"책과 안 친했던 분도 몰입되는, 후루룩 읽는 추리극.",u:"새 주인에게 바칠 선물은 충분하다."},
+    {t:"AI시대 돈 버는 규칙이 뒤바뀐다",by:"제혁",g:"career",r:"생성형 AI로 수익화하는 아이디어가 궁금한 분께.",u:"AI는 당신의 능력을 복제하고 증폭시키는 도구일 뿐, 핵심은 결국 당신의 아이디어와 실행력에 달려 있다."},
+    {t:"원씽 (One Thing)",by:"고니",g:"self",r:"목표가 많을수록 성공은 멀어진다. 딱 하나에 집중하기.",u:"한 가지에 파고드는 것은, 남다른 성과를 내기 위한 가장 간단한 방법이다."},
+    {t:"대논쟁! 철학배틀",by:"우리",g:"philo",r:"사상가 37명의 논쟁으로 즐기는 지적인 '싸움 구경'.",u:""},
+    {t:"모순",by:"지현",g:"novel",r:"삶은 모순 그 자체. 인생의 정답이 궁금한 사람에게.",u:"인생은 탐구하면서 사는 게 아니라, 살아가면서 탐구하는 것이다."},
+    {t:"노이즈: 생각의 잡음",by:"이슬",g:"sci",r:"당연한 판단을 다시 보고, 잡음을 피해 더 좋은 선택으로.",u:"판단이 있는 곳이라면 어디든 잡음이 있다. 우리가 생각하는 것보다 더 많은 잡음이."},
+    {t:"어떤 개발자가 되고 싶니",by:"진수",g:"career",r:"개발자로 커리어를 이어가거나 전환하려는 분께.",u:"모소대나무는 4년간 3cm밖에 자라지 않다가, 5년째부터 하루 30cm씩 자라 곧 울창한 숲을 이룬다. 개발자도 모소대나무처럼, 뿌리를 내리는 시기가 필요하다."},
+    {t:"경험의 멸종",by:"린",g:"philo",r:"'대리 체험'만 늘어나는 현실에서, 경험의 의미를 다시 묻다.",u:"기술이 우리에게 준 가장 큰 착각은, 우리가 언제든지 모든 것을 경험하고 있다는 믿음이다. 그러나 실제로는 '대리 체험'만이 늘어나고 있을 뿐이다."},
+    {t:"사고 싶게 만드는 것들",by:"효",g:"career",r:"무엇이든 만들어 파는 사람이라면 누구에게나.",u:"소비자의 약 85%는 제품이 주는 느낌(미적 감각)으로 구매를 결정하고, 겨우 15%만이 이성과 논리로 특징과 기능을 보고 결정한다."},
+    {t:"논어",by:"수민",g:"philo",r:"하루 한 문장, 가벼운 마음으로 생각을 정리하고 싶다면.",u:"공자님 말씀 적으실 적하고 지금하고, 사람 사는 거 달라진 게 하나도 없다."},
+    {t:"식물의 사회생활",by:"혜준",g:"sci",r:"식물과 자연을 좋아하고, 사랑하는 사람에게.",u:""},
+    {t:"노희영의 브랜딩 법칙",by:"서현",g:"career",r:"내 일과 가치관을 더 단단히 하고 싶은 모두에게.",u:""},
+    {t:"구글은 어떻게 일하는가",by:"소현",g:"career",r:"일 잘하고 싶은 사람, 목표 설정이 고민인 사람에게.",u:""},
+    {t:"우리의 낙원에서 만나자",by:"태윤",g:"novel",r:"가볍게 읽으며 생각을 정리하고, 잠깐 숨 고르고 싶을 때.",u:""},
+    {t:"모순",by:"정윤",g:"novel",r:"<참을 수 없는 존재의 가벼움>과 함께 읽는, 결혼 전 '양대산맥'.",u:"인간에게는 행복만큼 불행도 필수적인 것이다. 늘 같은 분량의 행복과 불행을 누려야, 사는 것처럼 사는 것이다."},
+    {t:"다정한 사람이 이긴다",by:"찬주",g:"sci",r:"힘이 되는 책이 필요한 분, 관계가 고민인 분께.",u:"무리해서 얻은 반짝이는 성취보다, 무너지지 않고 계속 이어가는 날들이 내게는 더 소중하다."},
+    {t:"딸은 엄마의 감정을 먹고 자란다",by:"대니",g:"family",r:"감정을 미뤄온 딸들, 사랑과 책임의 경계를 고민하는 이에게.",u:"엄마가 자신의 불안을 제대로 관리하지 못할 때, 그 대가는 가장 가까운 자녀가 치러야 한다."},
+    {t:"뇌는 어떻게 나를 조종하는가",by:"영주",g:"sci",r:"생각이 어디서 어떻게 오는지 궁금한 분께.",u:"마음은 도구이다. 문제는, 당신이 도구를 쓰는가 아니면 도구가 당신을 부리는가?"},
+    {t:"초역 부처의 말",by:"종민",g:"philo",r:"감정을 정리하고 다시 시작하게 돕는, 짧고 실용적인 문장들.",u:"자기를 다스리는 자가, 세상을 다스리는 자보다 크다."},
+    {t:"동물농장",by:"혜민",g:"novel",r:"짧지만 깊은 메시지를 담은 고전을 읽고 싶은 분께.",u:"모든 동물은 평등하다. 그러나 어떤 동물은 다른 동물보다 더욱 평등하다."},
+    {t:"한 뼘의 계절에서 배운 것",by:"유리",g:"novel",r:"사계절의 흐름 속 사소한 감정으로 나를 이해하게 되는 에세이.",u:"계절의 전환이 없었더라면 내 몫의 문장은 절반도 되지 않았을 거다. 계절의 변화가 좁고 얕은 나의 세계를 무한히 밝혔다."}
   ];
   var order=["career","self","philo","sci","novel","family"];
   var grid=document.getElementById('grid'), filters=document.getElementById('filters'), empty=document.getElementById('empty');
@@ -199,6 +202,8 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
   BOOKS.forEach(function(b){
     var g=G[b.g], card=document.createElement('article');
     card.className='book'; card.setAttribute('data-g',b.g); card.tabIndex=0; card.setAttribute('role','button'); card.setAttribute('aria-label',b.t+' · 탭하면 한 줄 추천을 볼 수 있어요');
+    var uq = b.u ? ('<p class="bk-q"><span class="uline">'+esc(b.u)+'</span></p><div class="bk-src">— 「'+esc(b.t)+'」</div>')
+                 : '<p class="bk-empty">🔖 이 책의 밑줄 문장은<br>아직 공유되지 않았어요.</p>';
     card.innerHTML=''
       +'<div class="book-in">'
       + '<div class="face front">'
@@ -206,12 +211,13 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
       +  '<div class="fbody">'
       +   '<span class="pill" style="background:'+g.pb+';color:'+g.pc+'">'+g.n+'</span>'
       +   '<div class="by">'+esc(b.by)+'님의 선택</div>'
-      +   '<div class="hint"><span class="ic">↻</span>한 줄 보기</div>'
+      +   '<p class="frec">'+esc(b.r)+'</p>'
+      +   '<div class="hint"><span class="ic">↻</span>밑줄 문장 보기</div>'
       +  '</div>'
       + '</div>'
       + '<div class="face back">'
-      +  '<div class="bk-mark">✍️ '+esc(b.by)+'님의 한 줄</div>'
-      +  '<p class="bk-rec">'+esc(b.r)+'</p>'
+      +  '<div class="bk-mark">✍️ '+esc(b.by)+'님의 밑줄</div>'
+      +  uq
       +  '<a class="bk-go" href="https://search.kyobobook.co.kr/search?keyword='+encodeURIComponent(b.t)+'" target="_blank" rel="noopener noreferrer">책 보러 가기 →</a>'
       +  '<span class="bk-back">↩ 뒤집기</span>'
       + '</div>'
