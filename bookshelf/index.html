@@ -92,9 +92,10 @@ h1 .hl{background:linear-gradient(120deg,var(--blue),var(--blue-500)); -webkit-b
 .bk-q .uline{background:linear-gradient(transparent 58%, var(--peach) 58%); padding:0 1px; -webkit-box-decoration-break:clone; box-decoration-break:clone}
 .bk-src{font-size:11.5px; color:var(--gray); font-weight:700; margin-top:10px}
 .bk-empty{font-size:14px; line-height:1.7; color:var(--gray-2); font-weight:500; flex:1; display:flex; align-items:center}
-.bk-go{display:inline-flex; align-items:center; gap:5px; align-self:flex-start; margin-top:10px; font-size:12.5px; font-weight:700; color:var(--blue); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s}
+.bk-foot{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px}
+.bk-go{display:inline-flex; align-items:center; gap:5px; font-size:12.5px; font-weight:700; color:var(--blue); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s}
 .bk-go:hover{border-color:var(--blue)}
-.bk-back{position:absolute; top:13px; right:15px; font-size:11px; font-weight:700; color:var(--gray-2)}
+.bk-back{font-size:11px; font-weight:700; color:var(--gray-2); flex-shrink:0}
 .empty{display:none; text-align:center; color:var(--gray); padding:48px 0; font-size:15px}
 
 /* footer */
@@ -129,17 +130,11 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
     <span class="eyebrow">📚 Team Book-it · 책잇기</span>
     <h1>빌베인 <span class="hl">책장</span></h1>
     <p class="lead">한 사람이 읽고, 다음 사람에게 잇는 — 빌리지베이비 팀이 서로에게 건넨 책과 한 줄의 마음을 모았어요.</p>
-    <div class="stat"><span><b id="cnt">29</b>권의 책</span><span><b>29</b>명의 빌베인</span><span>지금도 이어지는 중</span></div>
+    <div class="stat"><span><b id="cnt">29</b>권의 책</span><span><b>29</b>명의 빌베인</span></div>
   </div>
 </header>
 
 <main class="wrap">
-  <div class="uq">
-    <span class="uq-label">✍️ 빌베인의 밑줄 한 줄</span>
-    <p class="uq-text">“사랑하는 사람을 잃는다는 것은 <span class="u">그 사람과 함께한 시간을 잃는 것이 아니다.</span>”</p>
-    <p class="uq-from">빌베인이 책 속에서 밑줄 그은 한 문장</p>
-  </div>
-
   <div class="filters" id="filters"></div>
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty">해당 분야의 책이 아직 없어요.</div>
@@ -168,7 +163,7 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
     {t:"나의 인생이 당신의 지혜가 된다면",by:"로지",g:"self",r:"“어떻게 살 것인가는 내 중심에 달려 있다.” 다양한 삶의 경험이 궁금한 분께.",u:"갑작스러워 보이는 기쁨의 순간도, 알고 보면 세심한 계획과 배려심 있는 생활의 결과이다."},
     {t:"경복궁 환상 여행",by:"채영",g:"philo",r:"근정전·경회루에 숨은 73가지 동물 찾기. 궁궐을 새롭게 보고 싶은 분께.",u:"임금과 신하가 덕으로 만난다."},
     {t:"나는 매주 시체를 보러 간다",by:"한나",g:"sci",r:"범죄학과 인간 본성에 관심 있고, 사건 묘사에 거부감 없는 분께.",u:"죽음을 직면하면, 삶이 얼마나 절실한지 보인다."},
-    {t:"실리콘밸리의 팀장들",by:"쭈",g:"career",r:"팀 리더·매니저, 조직의 피드백 문화를 고민하는 분께.",u:"훌륭한 리더는 지시하는 사람이 아니라, 사람들이 스스로 최선을 다하게 만드는 사람이다."},
+    {t:"실리콘밸리의 팀장들",by:"쑤",g:"career",r:"팀 리더·매니저, 조직의 피드백 문화를 고민하는 분께.",u:"훌륭한 리더는 지시하는 사람이 아니라, 사람들이 스스로 최선을 다하게 만드는 사람이다."},
     {t:"바람이 분다 당신이 좋다",by:"상준",g:"novel",r:"잔잔하고 따뜻하게 쉬고 싶은 사람, 극한의 F 감성이 궁금한 T에게.",u:"삿포로에 갈까요. 이 말은 당신을 좋아한다는 말입니다."},
     {t:"마음의 지혜",by:"선우",g:"sci",r:"번아웃과 '자발적 전환'. 삶의 기준이 되어줄 8가지 심리학.",u:"우리 각자가 위대한 인간은 못 되더라도, 좋은 사람은 될 수 있을 테니까요."},
     {t:"원칙 (Principles)",by:"아써",g:"career",r:"삶과 일에서 복잡한 문제에 직면한 사람, 혹은 관리자에게.",u:"당신이 어떤 사람이 될 것인가는, 당신의 관점에 달려 있다."},
@@ -176,7 +171,7 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
     {t:"장미와 나이프",by:"엘린",g:"novel",r:"책과 안 친했던 분도 몰입되는, 후루룩 읽는 추리극.",u:"새 주인에게 바칠 선물은 충분하다."},
     {t:"AI시대 돈 버는 규칙이 뒤바뀐다",by:"제혁",g:"career",r:"생성형 AI로 수익화하는 아이디어가 궁금한 분께.",u:"AI는 당신의 능력을 복제하고 증폭시키는 도구일 뿐, 핵심은 결국 당신의 아이디어와 실행력에 달려 있다."},
     {t:"원씽 (One Thing)",by:"고니",g:"self",r:"목표가 많을수록 성공은 멀어진다. 딱 하나에 집중하기.",u:"한 가지에 파고드는 것은, 남다른 성과를 내기 위한 가장 간단한 방법이다."},
-    {t:"대논쟁! 철학배틀",by:"우리",g:"philo",r:"사상가 37명의 논쟁으로 즐기는 지적인 '싸움 구경'.",u:""},
+    {t:"대논쟁! 철학배틀",by:"우리",g:"philo",r:"사상가 37명의 논쟁으로 즐기는 지적인 '싸움 구경'.",u:"한 가지에 파고드는 것은 남다른 성과를 내기 위한 간단한 방법이다."},
     {t:"모순",by:"지현",g:"novel",r:"삶은 모순 그 자체. 인생의 정답이 궁금한 사람에게.",u:"인생은 탐구하면서 사는 게 아니라, 살아가면서 탐구하는 것이다."},
     {t:"노이즈: 생각의 잡음",by:"이슬",g:"sci",r:"당연한 판단을 다시 보고, 잡음을 피해 더 좋은 선택으로.",u:"판단이 있는 곳이라면 어디든 잡음이 있다. 우리가 생각하는 것보다 더 많은 잡음이."},
     {t:"어떤 개발자가 되고 싶니",by:"진수",g:"career",r:"개발자로 커리어를 이어가거나 전환하려는 분께.",u:"모소대나무는 4년간 3cm밖에 자라지 않다가, 5년째부터 하루 30cm씩 자라 곧 울창한 숲을 이룬다. 개발자도 모소대나무처럼, 뿌리를 내리는 시기가 필요하다."},
@@ -218,8 +213,7 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
       + '<div class="face back">'
       +  '<div class="bk-mark">✍️ '+esc(b.by)+'님의 밑줄</div>'
       +  uq
-      +  '<a class="bk-go" href="https://search.kyobobook.co.kr/search?keyword='+encodeURIComponent(b.t)+'" target="_blank" rel="noopener noreferrer">책 보러 가기 →</a>'
-      +  '<span class="bk-back">↩ 뒤집기</span>'
+      +  '<div class="bk-foot"><a class="bk-go" href="https://search.kyobobook.co.kr/search?keyword='+encodeURIComponent(b.t)+'" target="_blank" rel="noopener noreferrer">책 보러 가기 →</a><span class="bk-back">↩ 뒤집기</span></div>'
       + '</div>'
       +'</div>';
     card.addEventListener('click',function(e){ if(e.target.closest('a'))return; card.classList.toggle('flipped'); });
