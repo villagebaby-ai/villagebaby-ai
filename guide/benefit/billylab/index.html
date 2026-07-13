@@ -73,6 +73,29 @@ body{
 .faq-item .fa{font-size:13px;color:#555;line-height:1.75}
 .print-cover{display:none}
 
+/* ---------- 리포트 웹 페이지네이션 ---------- */
+.rpage{display:none}
+.rpage.on{display:block;animation:pgIn .25s ease}
+@keyframes pgIn{from{opacity:.3;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pagin{display:flex;justify-content:center;align-items:center;gap:5px;padding:20px 16px 6px;flex-wrap:wrap}
+.pagin button{min-width:33px;height:33px;border-radius:10px;border:1.5px solid var(--gray-300);background:#fff;font-family:inherit;font-weight:700;font-size:12.5px;color:var(--gray);cursor:pointer}
+.pagin button:hover{border-color:var(--main);color:var(--main)}
+.pagin button.on{background:var(--main);border-color:var(--main);color:#fff}
+.pagin button.pnav{min-width:38px;font-size:15px}
+.pagin-label{text-align:center;font-size:11.5px;color:var(--gray);padding:6px 0 18px}
+
+/* ---------- 스트레스 심층 섹션 ---------- */
+.sig-group{background:#fff;border:1px solid var(--gray-200);border-radius:14px;padding:14px 16px;margin-bottom:9px}
+.sig-group h5{font-size:13px;font-weight:800;color:var(--main-deep);margin-bottom:7px}
+.sig-group .sig{display:flex;gap:8px;font-size:13px;color:#4a5560;line-height:1.7;padding:4px 0}
+.sig-group .sig .dot{flex-shrink:0;color:var(--side-deep);font-weight:900}
+.plan-day{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:11px 14px;margin-bottom:7px}
+.plan-day .pd-d{flex-shrink:0;width:34px;height:34px;border-radius:10px;background:var(--main-100);color:var(--main-deep);font-weight:900;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.plan-day .pd-t{font-size:13px;line-height:1.65;color:#444;padding-top:4px}
+.plan-day .pd-t b{display:block;font-size:13.5px;color:var(--ink);padding-bottom:1px}
+.selftalk{background:linear-gradient(155deg,var(--side-soft),#fff 70%);border:1px solid var(--side);border-radius:16px;padding:18px 20px;margin-bottom:10px;text-align:center}
+.selftalk p{font-size:14.5px;font-weight:600;color:#5a4636;line-height:1.8;margin:0;max-width:100%}
+
 /* ---------- print (PDF 저장) ---------- */
 @media print{
   body{background:#fff}
@@ -81,8 +104,11 @@ body{
   .view{display:none!important}
   .view.on{display:block!important;padding-bottom:0}
   .rep-head{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .scene,.card,.trait-card,.type-card,.sum-box,.sci,.rx-card,.interp,.lg-card,.faq-item,.book{break-inside:avoid}
+  .scene,.card,.trait-card,.type-card,.sum-box,.sci,.rx-card,.interp,.lg-card,.faq-item,.book,.sig-group,.plan-day,.selftalk{break-inside:avoid}
   .pb{break-before:page}
+  .rpage{display:block!important}
+  .rpage+.rpage{break-before:page}
+  .pagin,.pagin-label{display:none!important}
   .print-cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:88vh;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .print-cover .pc-brand{font-size:15px;font-weight:900;color:var(--main);letter-spacing:.04em}
   .print-cover .pc-title{font-size:34px;font-weight:900;margin-top:22px;letter-spacing:-0.02em;line-height:1.35}
@@ -481,12 +507,12 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
       <div class="suite-card locked" id="fitCard" onclick="openFit()">
         <div class="icon">🔓</div>
-        <div><div class="tit">우리 아이 × 나의 궁합 리포트</div>
+        <div><div class="tit">우리 아이 × 나의 기질 조합 리포트</div>
         <div class="desc">기질검사 + 양육기질 검사를 마치면 열려요</div></div>
         <div class="go" id="fitState" style="color:var(--gray)">잠김</div>
       </div>
 
-      <div class="cycle-note">💡 <b>아이의 시기마다 다른 검사를 만나요</b> — 영아 때는 영아 기질검사로, 3세부터는 유치원·또래 장면으로 새로 설계된 유아 기질검사로. 여기에 양육기질 검사를 더하면 궁합 리포트가 열려요. 멤버십을 유지하는 동안 성장 단계별 리포트가 계속 쌓입니다.</div>
+      <div class="cycle-note">💡 <b>아이의 시기마다 다른 검사를 만나요</b> — 영아 때는 영아 기질검사로, 3세부터는 유치원·또래 장면으로 새로 설계된 유아 기질검사로. 여기에 양육기질 검사를 더하면 기질 조합 리포트가 열려요. 멤버십을 유지하는 동안 성장 단계별 리포트가 계속 쌓입니다.</div>
 
       <div style="display:flex;gap:8px;margin-top:16px">
         <button class="btn btn-line btn-md" style="flex:1" onclick="go('v-dex')">기질 유형 도감</button>
@@ -557,7 +583,7 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
     <div class="intro-hero">
       <img src="assets/baby-wink.png" alt="빌리" onerror="this.style.display='none'">
       <h2>이번엔 부모님 차례예요</h2>
-      <p>나의 기질과 양육 스타일을 알면, 아이와의 궁합 리포트가 열려요</p>
+      <p>나의 기질과 양육 스타일을 알면, 아이와의 기질 조합 리포트가 열려요</p>
     </div>
     <div class="spec-grid">
       <div class="sp"><b>32</b><span>문항</span></div>
@@ -597,7 +623,7 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
   <!-- ═══════════ FIT REPORT ═══════════ -->
   <div class="view" id="v-fit">
-    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">궁합 리포트</span><span class="badge-mem">멤버십</span><button class="pdf-btn" onclick="window.print()">PDF 저장</button></div>
+    <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">기질 조합 리포트</span><span class="badge-mem">멤버십</span><button class="pdf-btn" onclick="window.print()">PDF 저장</button></div>
     <div id="fitBody"></div>
   </div>
 
@@ -1045,7 +1071,7 @@ const TYPES = {
        fix:'감정에 이름을 먼저 붙여 주고, 진정된 뒤에 방법을 함께 찾아 주세요. 순서가 중요해요 — 감정이 먼저, 해결은 나중에.',
        say:'많이 속상했구나, 거의 다 됐었는데. 화가 나는 건 그만큼 잘하고 싶었다는 뜻이야. 조금 쉬었다가 엄마아빠랑 같이 다시 해 볼까?'},
       {t:'과몰입 후 지쳤을 때',
-       d:'좋아하는 일에 에너지를 다 써 버리는 아이예요. 몰입이 끝난 저녁에 갑자기 짜증이 늘어난다면, 에너지 계좌가 바닥난 것입니다.',
+       d:'좋아하는 일에 에너지를 다 써 버리는 아이예요. 몰입이 끝난 저녁에 갑자기 짜증이 늘어난다면, 에너지가 바닥났다는 뜻입니다.',
        notice:'몰입하던 아이가 갑자기 칭얼대거나 멍해지면, 쉼표가 필요하다는 몸의 신호예요.',
        reframe:'변덕이 아니라 연료가 떨어진 상태예요. 어른도 몰입한 뒤에는 방전되잖아요.',
        fix:'몰입 활동 사이에 간식·물 마시기 같은 중간 쉼표 신호를 정해 두고, 부모가 먼저 쉼표를 불러 주세요.',
@@ -1164,7 +1190,7 @@ const TYPES = {
 };
 const BADGE_SCENE = {t:'자극 많은 날의 저녁',
   d:'감각 민감성이 높은 아이는 소리·촉감·사람의 자극이 종일 쌓여요. 자극이 많았던 날 저녁에 무너지는 건 버릇이 아니라 과부하입니다.',
-  notice:'외출에서 돌아온 뒤 사소한 일에 짜증이 급증하면, 감각 계좌가 초과됐다는 신호예요.',
+  notice:'외출에서 돌아온 뒤 사소한 일에 짜증이 급증하면, 감각 자극이 하루 용량을 넘었다는 신호예요.',
   reframe:'예민한 게 아니라 세상을 남들보다 자세히 느끼는 능력이에요. 관리만 배우면 재능이 됩니다.',
   fix:'자극이 많은 일정 뒤에는 조명·소리를 낮춘 쿨다운 20분을 루틴으로 만들어 주세요.',
   say:'오늘 시끌시끌한 하루였지? 우리 조용한 데서 잠깐 쉬자. 아무것도 안 해도 돼 — 그냥 엄마아빠 옆에 있기만 해도 충분해.'};
@@ -1206,7 +1232,7 @@ const BOOKS=[
  {t:'엄마 심리 수업',a:'윤우상 · 심플라이프',w:'부모 자신의 무의식과 성장 배경이 양육에 미치는 영향을 다뤄요. 나를 더 깊이 이해하고 싶은 부모에게 권해요.',tags:['self']},
  {t:'엄마의 말 공부',a:'이임숙 · 카시오페아',w:'욱하기 쉬운 부모의 말투를 다듬는 법을 알려 줘요. 감정 반응이 크거나 고집 센 아이 앞에서 자주 목소리가 커진다면 도움이 됩니다.',tags:['self','P2-hi','stubborn']},
  {t:'엄마의 첫 심리 공부',a:'강현식 · 유노북스',w:'자녀·부부 관계와 자존감을 아우르는 심리학 입문서예요. 육아 심리학을 처음 체계적으로 공부하고 싶은 부모에게 좋아요.',tags:['self']},
- {t:'기질을 알면 자녀가 보인다',a:'데이빗 스툽 · 미션월드라이브러리',w:'전통적인 4기질론으로 부모와 자녀의 기질 궁합을 살펴보는 책이에요. 이 검사의 궁합 리포트를 더 깊게 읽고 싶을 때 권해요.',tags:['self','core']},
+ {t:'기질을 알면 자녀가 보인다',a:'데이빗 스툽 · 미션월드라이브러리',w:'전통적인 4기질론으로 부모와 자녀의 기질 조합을 살펴보는 책이에요. 이 검사의 기질 조합 리포트를 더 깊게 읽고 싶을 때 권해요.',tags:['self','core']},
  {t:'조선미의 현실 육아 상담소',a:'조선미 · 북하우스',w:'부모의 불안·죄책감·기대치를 현실적으로 점검하는 책이에요. 육아서를 읽을수록 오히려 불안해지는 부모에게 권해요.',tags:['self']},
  {t:'존 볼비의 안전기지',a:'존 볼비 · 학지사',w:'애착이론을 만든 저자가 직접 임상에 적용한 사례를 정리한 책이에요. 애착 이론을 제대로 배우고 싶은 부모에게 좋아요.',tags:['attachment']},
  {t:'존 볼비와 애착이론',a:'제레미 홈즈 · 학지사',w:'애착이론을 처음 접하는 사람도 이해하기 쉽게 풀어낸 입문서예요. 원전보다 가볍게 애착이론을 알고 싶을 때 좋아요.',tags:['attachment']},
@@ -1330,6 +1356,42 @@ const REPORT_FAQ=[
   a:'기질은 진단이 아니라 아이가 세상에 반응하는 고유한 방식이에요. 어떤 프로파일도 문제를 의미하지 않아요. 다만 발달 자체가 걱정되신다면 이 리포트와 별개로 소아청소년과 전문의나 발달 전문가와 상담해 보시길 권해요.'}
 ];
 
+/* ═══════════ 리포트 페이지네이션 ═══════════
+   렌더 함수가 h 문자열에 PG('페이지 제목') 마커를 심으면, renderPagedInto()가
+   마커 기준으로 쪼개 번호 페이지(1,2,3…)로 보여준다. 인쇄 시에는 전체 페이지가 이어서 출력. */
+function PG(t){return '<!--PG|'+t+'-->';}
+const RP={};
+function renderPagedInto(cid,html,firstTitle){
+  const chunks=html.split('<!--PG|');
+  const pages=[{t:firstTitle||'표지',h:chunks[0]}];
+  for(let i=1;i<chunks.length;i++){
+    const ix=chunks[i].indexOf('-->');
+    pages.push({t:chunks[i].slice(0,ix),h:chunks[i].slice(ix+3)});
+  }
+  RP[cid]={pages,cur:0};
+  const el=$(cid);
+  el.innerHTML=pages.map((p,i)=>`<div class="rpage${i===0?' on':''}">${p.h}</div>`).join('')
+   +`<div class="pagin" id="${cid}-pg">
+      <button class="pnav" onclick="rpNav('${cid}',-1)">‹</button>
+      ${pages.map((p,i)=>`<button class="${i===0?'on':''}" onclick="rpGo('${cid}',${i})" title="${p.t}">${i+1}</button>`).join('')}
+      <button class="pnav" onclick="rpNav('${cid}',1)">›</button>
+    </div>
+    <div class="pagin-label" id="${cid}-pl">1 / ${pages.length} · ${pages[0].t}</div>`;
+}
+function rpGo(cid,i){
+  const st=RP[cid]; if(!st)return;
+  i=Math.max(0,Math.min(st.pages.length-1,i)); st.cur=i;
+  const el=$(cid);
+  el.querySelectorAll('.rpage').forEach((pg,j)=>pg.classList.toggle('on',j===i));
+  el.querySelectorAll('#'+cid+'-pg button').forEach(b=>{
+    const n=parseInt(b.textContent,10);
+    if(!isNaN(n))b.classList.toggle('on',n===i+1);
+  });
+  const pl=$(cid+'-pl'); if(pl)pl.textContent=(i+1)+' / '+st.pages.length+' · '+st.pages[i].t;
+  window.scrollTo(0,0);
+}
+function rpNav(cid,d){ const st=RP[cid]; if(st)rpGo(cid,st.cur+d); }
+
 /* ═══════════ STATE ═══════════ */
 const LS='billyTemp1';
 let S = JSON.parse(localStorage.getItem(LS)||'{}');
@@ -1349,7 +1411,7 @@ $('respToggle').addEventListener('click',e=>{
 });
 $('childBirth').addEventListener('change',()=>{
   const m=monthAge(); if(m==null)return;
-  let set = m<6?'아직 이르어요 (생후 6개월부터 가능해요)': m<18?'영아 기질검사 권장 · 반응 성향 리포트로 제공돼요': m<36?'영아 기질검사(6~35개월)를 권해요': m<84?'유아 기질검사(3~6세)를 권해요':'유아 기질검사 상한 연령을 넘었어요';
+  let set = m<6?'아직 일러요 (생후 6개월부터 가능해요)': m<18?'영아 기질검사 권장 · 반응 성향 리포트로 제공돼요': m<36?'영아 기질검사(6~35개월)를 권해요': m<84?'유아 기질검사(3~6세)를 권해요':'유아 기질검사 상한 연령을 넘었어요';
   $('ageNote').textContent = `현재 ${m}개월 · ${set}`;
 });
 function monthAge(){
@@ -1536,6 +1598,7 @@ function renderReport(who){
   </div>`;
 
   /* S1 type — 기질 유형 */
+  h+=PG('기질 유형');
   if(isInfant){
     h+=`<div class="type-card"><div class="t-mono">🌱</div>
       <div class="t-label">지금은 성향이 자라는 시기</div>
@@ -1561,6 +1624,7 @@ function renderReport(who){
   }
 
   /* S1c 대표 기질 특성 Top 3 (CliftonStrengths 문법) */
+  h+=PG('대표 기질 특성');
   const traits=Object.keys(SCALES).map(sc=>({sc,v:r.sub[sc],d:Math.abs(r.sub[sc]-4)}))
     .sort((a,b)=>b.d-a.d).slice(0,3)
     .map(t=>({...t,pole:POLE_NARR[t.sc+(t.v>=4?'_hi':'_lo')]}));
@@ -1574,6 +1638,7 @@ function renderReport(who){
   </div>`;
 
   /* S2 profile — TCI 형식: 요인 표 + 하위척도 양극 차트 */
+  h+=PG('기질 프로파일');
   h+=`<div class="section pb"><h2 class="sec">기질 프로파일</h2><p class="sub">광역 5요인과 12개 하위척도 — 모든 척도는 낮은 쪽과 높은 쪽 모두 고유한 의미가 있어요</p>
   <div class="card" style="overflow-x:auto">
     <table class="ftable"><thead><tr><th>요인</th><th style="text-align:center">평균 점수</th><th style="text-align:center">위치*</th><th style="min-width:104px">프로파일 그래프</th></tr></thead><tbody>
@@ -1603,17 +1668,23 @@ function renderReport(who){
   h+=`<div class="fnote">음영 구간은 또래 중간 범위이며, 점이 구간 밖에 있을수록 해당 특성이 뚜렷하다는 뜻입니다. 하위척도는 포함 문항 수가 적으므로 참고 자료로 활용해 주세요. '해당 없음' 응답은 계산에서 제외되었습니다.</div>
   </div></div>`;
 
-  /* S2b 하위척도 상세 해설 — 12개 전체 */
+  /* S2b 하위척도 상세 해설 — 12개 전체 (2페이지 분할) */
   const bandKey=v=>v>=4.3?'hi':v<=3.7?'lo':'mid';
-  h+=`<div class="section pb"><h2 class="sec">척도 하나하나 자세히 볼게요</h2><p class="sub">12개 하위척도 각각이 ${nm}의 일상에서 어떤 모습으로 나타나는지 풀어 봤어요</p>`;
-  factorOrder.forEach(([fk,scs])=>{
-    h+=`<div class="factor-title">${FACTORS[fk]}</div>`;
-    scs.forEach(sc=>{
-      const v=r.sub[sc],bk=bandKey(v);
-      h+=`<div class="interp"><div class="i-top"><span class="i-name">${SCALES[sc].name}</span><span class="i-band ${bk==='mid'?'mid':''}">${bandName(v)} · ${v.toFixed(1)}</span></div><p>${SCALE_INTERP[sc][bk]}</p></div>`;
+  const interpBlock=groups=>{
+    let out='';
+    groups.forEach(([fk,scs])=>{
+      out+=`<div class="factor-title">${FACTORS[fk]}</div>`;
+      scs.forEach(sc=>{
+        const v=r.sub[sc],bk=bandKey(v);
+        out+=`<div class="interp"><div class="i-top"><span class="i-name">${SCALES[sc].name}</span><span class="i-band ${bk==='mid'?'mid':''}">${bandName(v)} · ${v.toFixed(1)}</span></div><p>${SCALE_INTERP[sc][bk]}</p></div>`;
+      });
     });
-  });
-  h+=`</div>`;
+    return out;
+  };
+  h+=PG('척도 해설 ①');
+  h+=`<div class="section pb"><h2 class="sec">척도 하나하나 자세히 볼게요 ①</h2><p class="sub">12개 하위척도 각각이 ${nm}의 일상에서 어떤 모습으로 나타나는지 풀어 봤어요 — 먼저 에너지와 감정의 축이에요</p>${interpBlock([factorOrder[0],factorOrder[1]])}</div>`;
+  h+=PG('척도 해설 ②');
+  h+=`<div class="section pb"><h2 class="sec">척도 하나하나 자세히 볼게요 ②</h2><p class="sub">이어서 자기조절과 사회적·감각 민감성의 축이에요</p>${interpBlock([factorOrder[2],factorOrder[3],factorOrder[4]])}</div>`;
 
   /* couple compare callout */
   if(otherRes){
@@ -1623,6 +1694,7 @@ function renderReport(who){
 
   /* S3 playbook */
   if(!isInfant){
+    h+=PG('힘든 순간 가이드');
     h+=`<div class="section pb"><h2 class="sec">이럴 때 힘들 수 있어요</h2><p class="sub">${T.name} 기질의 아이에게 자주 찾아오는 순간들이에요. 순간마다 ① 알아채고 → ② 다르게 보고 → ③ 맞춰 반응하는 순서로 안내해 드릴게요.</p>`;
     const scenes=[...T.scenes]; if(t.badge)scenes.push(BADGE_SCENE);
     scenes.forEach(s=>{
@@ -1637,6 +1709,7 @@ function renderReport(who){
   }
 
   /* S3b 생활 영역별 가이드 — 점수 기반 룰 매칭 */
+  h+=PG('생활 영역 가이드');
   h+=`<div class="section pb"><h2 class="sec">하루의 장면마다 이렇게 도와주세요</h2><p class="sub">${nm}의 프로파일에 맞춰, 생활 영역 4곳의 돌봄 포인트를 골라 봤어요</p>`;
   LIFE_GUIDE.forEach(dm=>{
     const tips=dm.rules.filter(rule=>rule.c(r.sub)).slice(0,2);
@@ -1646,6 +1719,7 @@ function renderReport(who){
   h+=`</div>`;
 
   /* 추천 도서 */
+  h+=PG('추천 도서');
   const books=pickBooksChild(r.f,r.sub,t.badge);
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${nm}의 기질 결과에 맞춰 골라 본 육아서예요</p>
     ${books.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
@@ -1653,11 +1727,13 @@ function renderReport(who){
   </div>`;
 
   /* 자주 묻는 질문 */
+  h+=PG('자주 묻는 질문');
   h+=`<div class="section pb"><h2 class="sec">결과를 읽으며 궁금하실 것들</h2><p class="sub">부모님들이 결과지를 보며 가장 자주 물어보시는 질문이에요</p>
     ${REPORT_FAQ.map((f2,i)=>`<div class="faq-item"><div class="fq"><span>Q${i+1}.</span>${f2.q}</div><div class="fa">${f2.a}</div></div>`).join('')}
   </div>`;
 
   /* 부록 — 점수 상세표 */
+  h+=PG('부록·점수표');
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">부록 · 점수 상세표</h2><p class="sub">12개 하위척도의 평균 점수를 한 표로 정리했어요 (1~7점)</p>
   <div class="card" style="overflow-x:auto">
     <table class="ftable"><thead><tr><th>광역 요인</th><th>하위척도</th><th style="text-align:center">평균 점수</th><th style="text-align:center">위치*</th></tr></thead><tbody>
@@ -1667,9 +1743,10 @@ function renderReport(who){
   </div></div>`;
 
   /* S4 next */
-  h+=`<div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
-    ${S.parent&&S.parent[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">${nm}의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
-    :`<div class="next-card"><div class="n-emoji">🌿</div><div><div class="tit">양육기질 검사 (5분)</div><div class="desc">${relLabel}의 기질을 알면 <b>궁합 리포트</b>가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-pintro')">시작</button></div>`}
+  h+=PG('마무리');
+  h+=`<div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
+    ${S.parent&&S.parent[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">기질 조합 리포트가 열렸어요!</div><div class="desc">${nm}의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
+    :`<div class="next-card"><div class="n-emoji">🌿</div><div><div class="tit">양육기질 검사 (5분)</div><div class="desc">${relLabel}의 기질을 알면 <b>기질 조합 리포트</b>가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-pintro')">시작</button></div>`}
     <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">${res.set==='C'?'6개월 뒤, 다시 만나요':'다음 검사 예고'}</div><div class="desc">${res.set==='C'?`6개월 뒤 다시 검사하면 ${nm}의 기질 변화 그래프가 생겨요`:`${nm}가 3세가 되면, 유치원·또래 장면으로 새로 설계된 유아 기질검사가 기다려요`}</div></div></div>
     ${!otherRes?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">같은 아이, 다른 시선 — 부부 비교 리포트가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
   </div>
@@ -1686,7 +1763,7 @@ function renderReport(who){
   </div>
   <div class="disclaim">본 리포트는 부모님 응답을 바탕으로 아이의 기질적 성향을 안내하는 참고 자료이며, 의학적·심리학적 진단이 아닙니다. 기질에는 좋고 나쁨이 없으며, 결과는 아이의 발달과 환경에 따라 변할 수 있습니다. 발달이 궁금하거나 걱정되는 점이 있다면 소아청소년과 전문의 또는 발달 전문가와 상담하세요. · 베이비빌리 멤버십 혜택 · 문항·해석 체계 ⓒ 베이비빌리</div>`;
 
-  $('reportBody').innerHTML=h;
+  renderPagedInto('reportBody',h,'표지 · 결과 요약');
 }
 
 /* ═══════════ PARENT TEST (검사 ②) ═══════════ */
@@ -1861,16 +1938,16 @@ function renderPReport(who){
     ${pickBooksParent(pr.r.sub).map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
     <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
   </div>
-  <div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
-    ${S.results[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">궁합 리포트가 열렸어요!</div><div class="desc">아이의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
-    :`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">마치면 궁합 리포트가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`}
+  <div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
+    ${S.results[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">기질 조합 리포트가 열렸어요!</div><div class="desc">아이의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
+    :`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">마치면 기질 조합 리포트가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`}
     ${!otherP?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">부부의 양육 스타일 비교가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
   </div>
   <div class="disclaim">본 리포트는 자기보고 응답 기반의 참고 자료이며 심리학적 진단이 아닙니다. 양육 스타일에는 우열이 없으며, 아이의 기질·발달 단계에 따라 어울리는 반응이 달라질 수 있습니다.</div>`;
   $('pReportBody').innerHTML=h;
 }
 
-/* ═══════════ FIT REPORT (궁합) ═══════════ */
+/* ═══════════ FIT REPORT (기질 조합) ═══════════ */
 function fitRules(cs,ps){
   const R=[];
   if(cs.FE>=4.6&&ps.R2>=4.6)R.push({k:'주의',t:'조심성 높은 아이 × 세심한 보호',d:'아이의 경계심을 보호로 감싸면 당장은 편안하지만, 새로운 상황을 피하는 습관이 굳어질 수 있다는 것이 기질 연구의 일관된 결과예요.',f:'"무섭지 않은 아주 작은 도전 → 곁에서 지켜보기 → 성공 축하" 3단계로 안전한 도전을 매주 하나씩 연습해요.'});
@@ -1900,7 +1977,7 @@ function renderFit(who){
   const {cau,str}=fitRules(res.r.sub,pr.r.sub);
   let h=`
   <div class="rep-head"><div class="rh-top"><span>${nm} × ${relLabel}</span><span>2026-07-09</span></div>
-    <h2>${nm} × ${relLabel}의 궁합 리포트</h2><div class="meta">기질 조화적합도(Goodness-of-Fit) 분석</div>
+    <h2>${nm} × ${relLabel}의 기질 조합 리포트</h2><div class="meta">기질 조화적합도(Goodness-of-Fit) 분석</div>
     <div class="trust-strip"><span class="t ok">아이 기질검사 ✓</span><span class="t ok">양육기질 검사 ✓</span></div>
   </div>
   <div class="sum-box"><div class="sum-label">우리 조합 요약</div>
@@ -1910,7 +1987,7 @@ function renderFit(who){
   <div class="section" style="padding-bottom:8px"><h2 class="sec">이런 점이 서로 잘 맞아요</h2><p class="sub">두 사람의 기질이 만나 자연스럽게 좋은 방향으로 흘러가는 지점이에요. 이미 잘하고 있는 것이니, 그대로 이어 가시면 돼요.</p>
   ${str.map(s=>`<div class="scene" style="border-color:var(--main-200)"><div class="s-tag" style="color:var(--main-deep)">강점 ✦ ${s.t}</div>
     <h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s.d}</h4>
-    <div class="fix" style="background:var(--main-100)"><span class="sw">💙</span><div><b style="font-size:12px;color:var(--main-deep)">이렇게 살려요</b><br>${s.f}</div></div></div>`).join('')}
+    <div class="fix" style="background:var(--main-100)"><span class="sw">💙</span><div><b style="font-size:12px;color:var(--main-deep)">이렇게 이어 가 보세요</b><br>${s.f}</div></div></div>`).join('')}
   </div>
   <div class="section" style="padding-top:8px"><h2 class="sec">이럴 때 부딪힐 수 있어요</h2>
   <div class="cycle-note" style="margin:0 0 14px">기질과 기질이 만나면 유난히 자주 부딪히는 지점이 생겨요. 이건 아이의 문제도, ${relLabel}의 잘못도 아니에요 — 두 기질의 조합이 만드는 자연스러운 패턴일 뿐이에요. 그런데 이 패턴을 미리 알아 두면, 그 순간이 왔을 때 "내가 뭘 잘못했지?", "얘가 왜 이러지?" 대신 <b>"아, 우리 조합의 그 장면이 왔구나"</b>라고 알아차릴 수 있어요. 알아차리는 순간, 감정 대신 방법을 고를 여유가 생깁니다.</div>
@@ -1923,9 +2000,9 @@ function renderFit(who){
     <li>조화적합도(Goodness-of-Fit)는 Thomas & Chess가 제안한 개념으로, 발달을 결정하는 것은 아이의 기질 자체가 아니라 <b>기질과 환경(양육)의 맞물림</b>이라는 이론이에요.</li>
     <li>기질에 맞춰 부모의 반응을 조율하는 개입 프로그램(INSIGHTS 등)은 무작위 대조 연구에서 아동 문제행동 감소 효과가 확인되어 있어요.</li>
   </div>
-  <div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
-    <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 궁합도 있어요</div><div class="desc">같은 아이라도 부모마다 Fit이 달라요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>
-    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">아이가 자라면 궁합도 자라요</div><div class="desc">다음 시기의 기질검사를 마치면 궁합 리포트도 새로 업데이트돼요</div></div></div>
+  <div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
+    <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 조합 리포트도 있어요</div><div class="desc">같은 아이라도 부모마다 Fit이 달라요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>
+    <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">아이가 자라면 조합 리포트도 자라요</div><div class="desc">다음 시기의 기질검사를 마치면 기질 조합 리포트도 새로 업데이트돼요</div></div></div>
   </div>
   <div class="disclaim">본 리포트는 두 검사의 응답을 조합한 참고 자료이며 진단이 아닙니다. 조합 해석은 부모의 잘잘못이 아닌 '기질 간 상호작용'에 대한 안내입니다.</div>`;
   $('fitBody').innerHTML=h;
@@ -1971,6 +2048,44 @@ const SRX={
  S3:{tag:'관계 회복',h:'하루 3분, 아이와 눈 맞추기',p:'가르치거나 훈육하지 않고, 그저 아이가 노는 걸 3분간 따라가며 함께해 보세요("스페셜 타임"). 관계의 거리감은 큰 이벤트가 아니라 이런 짧은 순간들이 좁혀 줘요. 나에게 향하던 죄책감도 조금 옅어질 거예요.'}
 };
 
+/* ═══════════ 스트레스 심층 리포트 콘텐츠 ═══════════ */
+const STRESS_INTERP={
+ S1:{low:'나를 위한 에너지가 아직 남아 있는 상태예요. 지금의 균형을 만들어 주는 습관(수면, 혼자만의 시간)이 무엇인지 알아 두면, 힘든 시기가 와도 돌아올 기준점이 됩니다.',
+     mid:'몸과 마음의 배터리가 조금씩 닳고 있는 상태예요. 아직 큰 신호는 아니지만, 회복 없이 소모가 이어지면 어느 순간 급격히 지칠 수 있어요. 이번 주에 나를 위한 시간을 의식적으로 하나 넣어 보세요.',
+     high:'에너지가 많이 소모된 상태예요. 이 점수는 의지나 사랑의 문제가 아니라, 회복할 시간이 절대적으로 부족했다는 뜻이에요. 지금 필요한 것은 더 잘하려는 노력이 아니라 쉼을 확보하는 일입니다.'},
+ S2:{low:'아이를 돌보는 일의 무게를 비교적 감당할 만하다고 느끼고 있어요. 지금의 방식(역할 분담, 하루 루틴)이 잘 작동하고 있다는 신호예요.',
+     mid:'돌봄의 무게가 어깨에 조금씩 쌓이고 있어요. 특히 자주 반복되는 힘든 장면(식사, 재우기 등)이 있다면, 그 장면 하나만이라도 배우자나 가족과 나누는 것부터 시작해 보세요.',
+     high:'돌봄이 실제로 버거운 시기예요. 아이가 유난히 손이 많이 가는 시기이거나 도와줄 손이 부족한 상황일 수 있어요. 돌봄을 나눌 방법(가족, 기관, 돌봄 서비스)을 적극적으로 찾아볼 때입니다.'},
+ S3:{low:'아이와의 관계에서 오는 긴장이 낮은 편이에요. 함께 있는 시간이 즐거움으로 남는 상태 — 이 관계의 온기가 스트레스를 막아 주는 가장 든든한 보호막이에요.',
+     mid:'아이와의 관계에서 가끔 거리감이나 죄책감이 느껴지는 상태예요. 자연스러운 일이에요. 다만 하루 3분이라도 아무 목적 없이 아이와 눈을 맞추는 시간이 그 거리감을 좁혀 줍니다.',
+     high:'관계에서 오는 마음의 무게가 큰 시기예요. 죄책감이 클수록 아이를 피하게 되고, 피할수록 죄책감이 커지는 순환이 생기기 쉬워요. 큰 결심보다, 아주 짧은 긍정적인 순간을 자주 만드는 것이 이 순환을 끊는 방법입니다.'}
+};
+const STRESS_SIGNALS=[
+ {g:'몸의 신호',items:['자고 일어나도 풀리지 않는 피로','두통이나 어깨 결림이 잦아짐','입맛이 없거나, 반대로 자꾸 먹게 됨']},
+ {g:'마음의 신호',items:['사소한 일에 눈물이 나거나 짜증이 올라옴','멍하니 있는 시간이 늘어남','"나만 힘든가" 하는 생각이 반복됨']},
+ {g:'행동의 신호',items:['말수가 눈에 띄게 줄어듦','아이의 부름에 반응이 한 박자 늦어짐','휴대폰만 들여다보는 시간이 늘어남']}
+];
+const STRESS_PLAN=[
+ {d:'월',t:'나만의 15분',p:'아이와 무관한 나만의 15분을 캘린더에 약속으로 넣어 두세요. 죄책감 없이 — 회복도 일정의 일부입니다.'},
+ {d:'화',t:'몸의 신호 살피기',p:'잠들기 전 1분, 오늘 내 몸이 보낸 신호를 하나만 떠올려 보세요. 알아차리는 것이 회복의 시작이에요.'},
+ {d:'수',t:'부탁 한 가지',p:'배우자나 가족에게 구체적인 부탁을 하나 해 보세요. "도와줘"보다 "목욕만 맡아 줘"가 더 잘 통합니다.'},
+ {d:'목',t:'10분 산책',p:'혼자든 아이와 함께든, 햇빛 아래에서 10분만 걸어 보세요. 몸을 움직이면 마음의 무게도 조금 가벼워져요.'},
+ {d:'금',t:'스페셜 타임 3분',p:'가르치지도 훈육하지도 않고, 아이가 노는 것을 3분간 그저 따라가 보세요. 관계의 온기가 다시 차오릅니다.'},
+ {d:'토',t:'교대 시간',p:'배우자와 각자의 자유 시간을 맞교대로 가져 보세요. 짧아도 "온전히 내 시간"이라는 감각이 중요해요.'},
+ {d:'일',t:'잘한 것 세 가지',p:'이번 주 내가 해낸 것을 세 가지만 적어 보세요. 부족한 것 말고, 해낸 것을 세는 연습이에요.'}
+];
+const STRESS_SELFTALK=[
+ '좋은 부모가 되고 싶다는 마음에 지쳤다는 것은, 그만큼 오래 애써 왔다는 뜻입니다.',
+ '아이에게 필요한 것은 완벽한 부모가 아니라, 지쳤다가도 회복하는 모습을 보여 주는 부모입니다.',
+ '도움을 청하는 것은 부족함이 아니라, 아이를 위해 나를 지키는 가장 어른스러운 방법입니다.'
+];
+const STRESS_FAQ=[
+ {q:'점수가 높게 나왔어요. 제가 나쁜 부모인가요?',a:'아니요. 이 점수는 부모 노릇의 성적이 아니라, 지금 짊어지고 있는 무게의 크기예요. 무거운 짐을 들고 있는 사람에게 필요한 것은 평가가 아니라 짐을 나누는 일입니다.'},
+ {q:'배우자와 점수가 많이 달라요.',a:'자연스러운 일이에요. 돌봄의 역할과 시간이 다르면 체감하는 무게도 다릅니다. 점수 차이를 "누가 더 힘든가"의 경쟁이 아니라, 무게를 다시 나누는 대화의 출발점으로 삼아 보세요.'},
+ {q:'제 스트레스가 아이에게 전해질까 봐 걱정돼요.',a:'부모의 스트레스 자체보다, 회복 없이 누적되는 것이 문제라고 연구들은 말해요. 지쳤다가 회복하는 모습을 보여 주는 것은 오히려 아이에게 좋은 배움이 됩니다. 이 리포트를 보고 계신 것 자체가 이미 회복의 첫걸음이에요.'},
+ {q:'얼마나 자주 체크하는 것이 좋을까요?',a:'기본은 2~3개월 간격이에요. 다만 복직, 이사, 둘째 출산처럼 생활이 크게 바뀐 뒤에는 그 사이라도 한 번 체크해 보시길 권해요. 변화 직후가 스트레스가 가장 빠르게 쌓이는 시기입니다.'}
+];
+
 let sCurCh=1,sAnswers={};
 function startSSurvey(){sAnswers={};sCurCh=1;renderSCh();go('v-ssurvey');}
 function sItemsOf(ch){return SITEMS.map((it,i)=>({i,dm:it[0],ch:it[1],text:it[2]})).filter(x=>x.ch===ch);}
@@ -2004,7 +2119,7 @@ function scoreS(ans){
 }
 /* 1~5 → level */
 const sLevel=v=>v<2?'low':v<3?'mid':v<4?'high':'alert';
-const sLevelName={low:'여유',mid:'주의',high:'높음',alert:'많이 지침'};
+const sLevelName={low:'낮음',mid:'보통',high:'높음',alert:'매우 높음'};
 function finishS(){
   go('v-analyzing');
   const steps=['응답을 확인하고 있어요','세 영역의 스트레스를 계산하고 있어요','나에게 맞는 회복 처방을 고르고 있어요'];
@@ -2035,34 +2150,47 @@ function renderSReport(who){
   const hist=S.stress&&S.stress[who];if(!hist||!hist.length)return;
   const cur=hist[hist.length-1],{dom,overall}=cur.r;
   const relLabel=who==='mom'?'엄마':'아빠';
-  const oLv=sLevel(overall),oPct=Math.round((overall-1)/4*100);
+  const oLv=sLevel(overall);
   const tempWord={low:'여유로운 편',mid:'조금 지친',high:'많이 지친',alert:'돌봄이 필요한'}[oLv];
   const childName=S.results[who]?S.results[who].name:'';
   const hasChild=!!S.results[who];
+  const iLv=v=>{const l=sLevel(v);return l==='alert'?'high':l;};
   /* 스트레스×기질 연동 문장 */
   let linkLine='';
   if(hasChild){
     const cf=S.results[who].r.f;
     if(dom.S2>=3&&cf.N>=4.6)linkLine=`${childName}는 감정을 크고 선명하게 표현하는 아이예요. 돌봄 부담이 높게 나온 건 부모의 부족이 아니라, 큰 감정을 매일 받아 내는 일이 실제로 고된 노동이기 때문이에요.`;
     else if(dom.S1>=3&&cf.E>=4.6)linkLine=`${childName}의 높은 에너지를 온몸으로 받아 내다 보면 소진이 빨리 와요. 에너지 담당을 나누는 것이 회복의 열쇠예요.`;
-    else if(dom.S3>=3&&cf.S>=4.6)linkLine=`${childName}는 사람과의 교감을 원하는 아이라 요구가 많게 느껴질 수 있어요. 관계 피로는 애정이 부족해서가 아니에요.`;
+    else if(dom.S3>=3&&cf.S>=4.6)linkLine=`${childName}는 사람과의 교감을 원하는 아이라 요구가 많게 느껴질 수 있어요. 관계에서 오는 피로는 애정이 부족해서 생기는 것이 아니에요.`;
   }
+
+  /* P1 — 표지·컨디션 요약 */
   let h=`
+  <div class="print-cover">
+    <div class="pc-brand">베이비빌리 · 빌리랩</div>
+    <div class="pc-title">${relLabel}의<br>마음 컨디션 보고서</div>
+    <div class="pc-sub">양육 스트레스 3영역 체크 · 24문항</div>
+    <div class="pc-meta">응답 <b>${relLabel}</b> · 체크일 <b>${cur.date}</b><br>감수 <b>이수진 임상심리전문가</b></div>
+    <div class="pc-foot">본 보고서는 자기보고 기반의 참고 자료이며 의학적 진단이 아닙니다 · ⓒ 베이비빌리</div>
+  </div>
   <div class="rep-head"><div class="rh-top"><span>${relLabel} · ${cur.date}</span><span>${cur.sample?'샘플':(hist.length>1?hist.length+'회차':'첫 체크')}</span></div>
-    <h2>${relLabel}의 마음 컨디션</h2><div class="meta">양육 스트레스 3영역 체크</div>
+    <h2>${relLabel}의 마음 컨디션</h2><div class="meta">양육 스트레스 3영역 체크 · 24문항</div>
+    <div class="trust-strip"><span class="t ok">✓ 자기보고 24문항</span><span class="t">이수진 임상심리전문가 감수</span></div>
   </div>
   <div class="overall-card">
     <div class="o-temp ${'lv-'+oLv}">${overall.toFixed(1)}<span style="font-size:18px;color:var(--gray)">/5</span></div>
     <div class="g-level ${'lv-'+oLv}" style="font-size:16px;margin-top:6px">지금 ${relLabel}는 <b>${tempWord}</b> 상태예요</div>
-    <div class="o-cap">${oLv==='low'?'지금의 균형을 잘 지키고 있어요':oLv==='mid'?'무리하지 않도록 나를 살펴 줄 때예요':'나를 먼저 돌봐야 할 신호예요. 혼자 견디지 않으셔도 돼요'}</div>
+    <div class="o-cap">${oLv==='low'?'지금의 균형을 잘 지키고 있어요':oLv==='mid'?'무리하지 않도록 나를 살펴 줄 때예요':'나를 먼저 돌봐야 한다는 신호예요. 혼자 견디지 않으셔도 돼요'}</div>
   </div>`;
-  /* 고위험 케어 박스 */
   if(oLv==='alert'||dom.S1>=4){
     h+=`<div class="care-box"><div class="c-tag">잠깐, 이 이야기를 꼭 전하고 싶어요</div>
     <p>요즘 많이 지치셨네요. 이건 ${relLabel}가 약해서가 아니라, 그만큼 오래 애써 왔다는 신호예요. 혼자 버티지 마시고 곁의 사람이나 전문가에게 마음을 나눠 보세요.<br><br>· 육아종합지원센터 (거주지 검색)<br>· 보건복지상담센터 <a href="tel:129">☎ 129</a> (24시간)<br>· 정신건강상담전화 <a href="tel:1577-0199">☎ 1577-0199</a></p></div>`;
   }
-  /* 3영역 게이지 */
-  h+=`<div class="section" style="padding-bottom:8px"><h2 class="sec">영역별로 살펴보면</h2><p class="sub">지난 2주 기준 · 어느 영역이 나를 가장 누르고 있는지 봐요</p><div class="card">`;
+  h+=`<div class="section"><div class="cycle-note">이 보고서는 ${relLabel}의 지난 2주를 세 영역(부모 소진 · 돌봄 부담 · 관계 스트레스)으로 나눠 살펴보고, 영역별 해설과 회복 플랜, 함께 읽을 책까지 담았어요. 아래 페이지 번호를 눌러 차례로 읽어 보세요.</div></div>`;
+
+  /* P2 — 영역별 결과 */
+  h+=PG('영역별 결과');
+  h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">영역별로 살펴보면</h2><p class="sub">지난 2주 기준 · 어느 영역이 나를 가장 누르고 있는지 봐요</p><div class="card">`;
   Object.keys(SDOMAINS).forEach(dm=>{
     const v=dom[dm],lv=sLevel(v),pct=Math.round((v-1)/4*100);
     h+=`<div class="gauge"><div class="g-top"><span class="g-name">${SDOMAINS[dm]}</span><span class="g-level ${'lv-'+lv}">${sLevelName[lv]} · ${v.toFixed(1)}</span></div>
@@ -2070,31 +2198,80 @@ function renderSReport(who){
   });
   h+=`</div>`;
   if(linkLine)h+=`<div class="cycle-note" style="margin-top:0">🧩 <b>기질검사와 함께 보면</b> — ${linkLine}</div>`;
-  h+=`</div>`;
-  /* 추이 그래프 */
-  if(hist.length>1){
-    const max=5;
-    h+=`<div class="trend"><h4>나의 컨디션 흐름</h4><div class="trend-graph">`;
-    hist.slice(-4).forEach((e,i,arr)=>{
-      const isNow=i===arr.length-1,pct=Math.round(e.r.overall/max*100);
-      h+=`<div class="tb ${isNow?'now':''}"><div class="val">${e.r.overall.toFixed(1)}</div><div class="bar" style="height:${pct}%"></div><div class="lbl">${e.date.slice(5).replace('-','.')}</div></div>`;
-    });
-    h+=`</div><div class="t-note">${hist[hist.length-1].r.overall<hist[hist.length-2].r.overall?'지난번보다 나아지고 있어요. 잘 하고 계세요 👏':'지난번보다 조금 힘들어졌어요. 나를 위한 시간을 늘려 봐요'}</div></div>`;
-  }
-  /* 회복 처방 (상위 2영역) */
+  h+=`<div class="fnote" style="border-top:0;margin-top:8px">점수는 1~5점 빈도 척도의 영역별 평균입니다. 스트레스는 기질과 달리 시기에 따라 오르내리는 상태라서, 지금의 점수는 "나"가 아니라 "지금의 나"를 보여 줍니다.</div></div>`;
+
+  /* P3 — 영역 해설 */
+  h+=PG('영역 해설');
+  h+=`<div class="section pb"><h2 class="sec">세 영역을 자세히 읽어 볼게요</h2><p class="sub">각 영역의 점수가 ${relLabel}의 일상에서 어떤 의미인지 풀어 봤어요</p>
+  ${Object.keys(SDOMAINS).map(dm=>{
+    const v=dom[dm],lv=sLevel(v);
+    return `<div class="interp"><div class="i-top"><span class="i-name">${SDOMAINS[dm]}</span><span class="i-band ${lv==='mid'?'mid':''}">${sLevelName[lv]} · ${v.toFixed(1)}</span></div><p>${STRESS_INTERP[dm][iLv(v)]}</p></div>`;
+  }).join('')}</div>`;
+
+  /* P4 — 몸과 마음의 신호 */
+  h+=PG('몸과 마음의 신호');
+  h+=`<div class="section pb"><h2 class="sec">지금 이런 신호가 있는지 살펴보세요</h2><p class="sub">양육 소진은 점수보다 몸이 먼저 말해 주는 경우가 많아요</p>
+  ${STRESS_SIGNALS.map(g=>`<div class="sig-group"><h5>${g.g}</h5>${g.items.map(it=>`<div class="sig"><span class="dot">›</span><span>${it}</span></div>`).join('')}</div>`).join('')}
+  <div class="cycle-note">세 묶음을 통틀어 <b>3개 이상</b> 해당된다면, 뒤에 나오는 7일 회복 플랜을 이번 주에 꼭 시작해 보시길 권해요. 신호는 빨리 알아차릴수록 회복도 빨라집니다.</div></div>`;
+
+  /* P5 — 회복 처방 */
+  h+=PG('회복 처방');
   const top=Object.keys(SDOMAINS).map(dm=>({dm,v:dom[dm]})).sort((a,b)=>b.v-a.v).slice(0,2).filter(x=>x.v>=2);
-  h+=`<div class="section"><h2 class="sec">${relLabel}를 위한 회복 처방</h2><p class="sub">${top.length?'가장 무거운 영역부터, 오늘 할 수 있는 작은 것':'지금의 균형을 지키는 습관'}</p>`;
+  h+=`<div class="section pb"><h2 class="sec">${relLabel}를 위한 회복 처방</h2><p class="sub">${top.length?'가장 무거운 영역부터, 오늘 할 수 있는 작은 것부터 시작해요':'지금의 균형을 지키는 습관이에요'}</p>`;
   (top.length?top:[{dm:'S1'}]).forEach(t=>{const rx=SRX[t.dm];
     h+=`<div class="rx-card"><div class="rx-tag">${rx.tag}</div><h4>${rx.h}</h4><p>${rx.p}</p></div>`;
   });
   h+=`</div>`;
-  /* 다음 */
-  h+=`<div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
+
+  /* P6 — 7일 회복 플랜 */
+  h+=PG('7일 회복 플랜');
+  h+=`<div class="section pb"><h2 class="sec">이번 주, 하루 하나씩만 해 보세요</h2><p class="sub">한꺼번에 다 하려고 하지 마세요 — 하루에 하나면 충분해요</p>
+  ${STRESS_PLAN.map(d=>`<div class="plan-day"><span class="pd-d">${d.d}</span><div class="pd-t"><b>${d.t}</b>${d.p}</div></div>`).join('')}</div>`;
+
+  /* P7 — 나에게 건네는 말 */
+  h+=PG('나에게 건네는 말');
+  h+=`<div class="section pb"><h2 class="sec">오늘, 나에게 건네 보세요</h2><p class="sub">아이에게 하듯, 나에게도 다정한 말이 필요해요</p>
+  ${STRESS_SELFTALK.map(t=>`<div class="selftalk"><p>“${t}”</p></div>`).join('')}</div>`;
+
+  /* P8 — 추천 도서 */
+  h+=PG('추천 도서');
+  const sTags=['self']; if(dom.S3>=3)sTags.push('nvc'); if(dom.S1>=3)sTags.push('P2-hi'); if(dom.S2>=3)sTags.push('core');
+  const sBooks=pickBooksFor(sTags,4);
+  h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${relLabel}의 컨디션 결과에 맞춰, 부모의 마음을 돌보는 책을 골라 봤어요</p>
+  ${sBooks.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
+  <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p></div>`;
+
+  /* P9 — FAQ */
+  h+=PG('자주 묻는 질문');
+  h+=`<div class="section pb"><h2 class="sec">결과를 읽으며 궁금하실 것들</h2><p class="sub">부모님들이 이 체크 결과를 보며 가장 자주 물어보시는 질문이에요</p>
+  ${STRESS_FAQ.map((f2,i)=>`<div class="faq-item"><div class="fq"><span>Q${i+1}.</span>${f2.q}</div><div class="fa">${f2.a}</div></div>`).join('')}</div>`;
+
+  /* P10 — 흐름·다음 체크·근거 */
+  h+=PG('흐름과 다음 체크');
+  h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">나의 컨디션 흐름</h2><p class="sub">분기마다 체크하면 이 그래프가 계속 이어져요</p></div>`;
+  if(hist.length>1){
+    const max=5;
+    h+=`<div class="trend"><h4>지금까지의 기록</h4><div class="trend-graph">`;
+    hist.slice(-4).forEach((e,i,arr)=>{
+      const isNow=i===arr.length-1,pct=Math.round(e.r.overall/max*100);
+      h+=`<div class="tb ${isNow?'now':''}"><div class="val">${e.r.overall.toFixed(1)}</div><div class="bar" style="height:${pct}%"></div><div class="lbl">${e.date.slice(5).replace('-','.')}</div></div>`;
+    });
+    h+=`</div><div class="t-note">${hist[hist.length-1].r.overall<hist[hist.length-2].r.overall?'지난번보다 나아지고 있어요. 잘하고 계세요 👏':'지난번보다 조금 무거워졌어요. 이번 주 회복 플랜부터 시작해 보세요'}</div></div>`;
+  } else {
+    h+=`<div class="section" style="padding-top:0"><div class="cycle-note">이번이 첫 체크예요. 다음 체크부터는 이 자리에 컨디션 변화 그래프가 그려집니다.</div></div>`;
+  }
+  h+=`<div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
     <div class="next-card"><div class="n-emoji">📅</div><div><div class="tit">3개월 뒤 다시 체크해 보세요</div><div class="desc">분기마다 체크하면 ${relLabel}의 컨디션 흐름이 그래프로 쌓여요</div></div></div>
     ${!hasChild?`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">아이 기질과 함께 보면 해석이 깊어져요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`:''}
   </div>
-  <div class="disclaim">본 체크는 양육 스트레스 정도를 스스로 살펴보기 위한 참고 자료이며, 의학적 진단이나 우울·불안 선별검사가 아닙니다. 마음이 계속 힘들다면 전문기관의 도움을 받으시길 권합니다. · 보건복지상담센터 129</div>`;
-  $('sReportBody').innerHTML=h;
+  <div class="sci"><h4>이 체크의 구성과 한계</h4>
+    <li>본 체크는 양육 스트레스 연구에서 널리 쓰이는 <b>3영역 구조(부모 소진 · 돌봄 부담 · 부모-자녀 관계)</b>를 참조해 설계했으며, 문항은 자체 개발했습니다.</li>
+    <li>기질과 달리 스트레스는 <b>상태</b>를 재는 것이라, 결과는 응답 시점의 컨디션을 반영합니다. 시기에 따라 달라지는 것이 자연스러워요.</li>
+    <li>본 체크는 우울·불안 선별검사가 아니며, 마음이 계속 힘들다면 전문기관의 도움을 받으시길 권합니다.</li>
+  </div>
+  <div class="disclaim">본 체크는 양육 스트레스 정도를 스스로 살펴보기 위한 참고 자료이며, 의학적 진단이 아닙니다. · 보건복지상담센터 129 · 베이비빌리 멤버십 혜택</div>`;
+
+  renderPagedInto('sReportBody',h,'컨디션 요약');
 }
 
 /* ═══════════ HOME STATE ═══════════ */
