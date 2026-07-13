@@ -53,6 +53,26 @@ body{
 .pdf-btn{margin-left:auto;font-family:inherit;font-size:12px;font-weight:700;color:var(--main);background:var(--main-100);border:0;border-radius:999px;padding:6px 13px;cursor:pointer}
 .pdf-btn:hover{background:var(--main-200)}
 
+/* ---------- 심층 리포트 섹션 ---------- */
+.interp{background:#fff;border:1px solid var(--gray-200);border-radius:14px;padding:14px 16px;margin-bottom:9px}
+.interp .i-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.interp .i-name{font-size:13.5px;font-weight:800}
+.interp .i-band{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 8px;background:var(--main-100);color:var(--main-deep)}
+.interp .i-band.mid{background:var(--gray-100);color:var(--gray)}
+.interp p{font-size:12.5px;color:#555;line-height:1.7;margin:0;max-width:100%}
+.lg-card{background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:16px;margin-bottom:11px}
+.lg-card .lg-head{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.lg-card .lg-ico{width:36px;height:36px;border-radius:11px;background:var(--main-100);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.lg-card h4{font-size:14.5px;font-weight:800}
+.lg-card .lg-tip{display:flex;gap:8px;font-size:13px;color:#4a5560;line-height:1.75;padding:8px 0;border-top:1px solid var(--gray-100)}
+.lg-card .lg-tip:first-of-type{border-top:0}
+.lg-card .lg-tip .dot{flex-shrink:0;color:var(--main);font-weight:900}
+.faq-item{background:#fff;border:1px solid var(--gray-200);border-radius:14px;padding:15px 17px;margin-bottom:9px}
+.faq-item .fq{font-size:14px;font-weight:800;margin-bottom:6px}
+.faq-item .fq span{color:var(--main);margin-right:6px}
+.faq-item .fa{font-size:13px;color:#555;line-height:1.75}
+.print-cover{display:none}
+
 /* ---------- print (PDF 저장) ---------- */
 @media print{
   body{background:#fff}
@@ -61,7 +81,15 @@ body{
   .view{display:none!important}
   .view.on{display:block!important;padding-bottom:0}
   .rep-head{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .scene,.card,.trait-card,.type-card,.sum-box,.sci,.rx-card{break-inside:avoid}
+  .scene,.card,.trait-card,.type-card,.sum-box,.sci,.rx-card,.interp,.lg-card,.faq-item,.book{break-inside:avoid}
+  .pb{break-before:page}
+  .print-cover{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:88vh;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .print-cover .pc-brand{font-size:15px;font-weight:900;color:var(--main);letter-spacing:.04em}
+  .print-cover .pc-title{font-size:34px;font-weight:900;margin-top:22px;letter-spacing:-0.02em;line-height:1.35}
+  .print-cover .pc-sub{font-size:15px;color:var(--gray);margin-top:10px}
+  .print-cover .pc-meta{margin-top:44px;font-size:13.5px;color:#555;line-height:2.1}
+  .print-cover .pc-meta b{color:var(--ink)}
+  .print-cover .pc-foot{margin-top:56px;font-size:12px;color:var(--gray);border-top:1px solid var(--gray-300);padding-top:14px}
 }
 .view{display:none;padding-bottom:56px}
 .view.on{display:block}
@@ -1220,6 +1248,88 @@ function pickBooksParent(sub){
   return pickBooksFor(tags,4);
 }
 
+/* ═══════════ 12하위척도 상세 해설 (심층 리포트) — 밴드별 3종 ═══════════ */
+const SCALE_INTERP={
+ AC:{hi:'몸을 움직이며 세상을 배우는 아이예요. 에너지가 큰 만큼, 하루 안에 마음껏 움직일 시간이 확보되면 정서도 함께 안정됩니다.',
+     mid:'상황에 따라 동적인 놀이와 정적인 놀이를 오가는 균형 잡힌 활동성이에요. 특별히 조정할 것 없이 아이의 리듬을 따라가 주면 됩니다.',
+     lo:'조용히 앉아서 하는 활동을 좋아하는 차분한 에너지예요. 걱정할 일은 아니지만, 하루 한 번 가벼운 신체 놀이로 몸 쓰는 즐거움을 알려 주면 좋아요.'},
+ AP:{hi:'새로운 것을 보면 먼저 다가가는 탐색가예요. 호기심이 배움의 엔진이 되는 기질이라, 다양한 경험을 안전하게 열어 주는 것이 최고의 지원이에요.',
+     mid:'새로움 앞에서 다가감과 관망을 상황에 맞게 선택해요. 익숙한 것과 새로운 것의 균형을 스스로 조절하는 편이에요.',
+     lo:'새로운 것 앞에서 시간을 두고 살펴보는 신중한 접근이에요. 재촉하지 않고 관찰할 시간을 주면 자기 속도로 충분히 다가갑니다.'},
+ HP:{hi:'빠르고 짜릿한 자극에서 큰 즐거움을 느껴요. 신나는 신체 놀이가 좋은 보상이 되는 아이라, 안전 규칙과 함께라면 이 에너지는 큰 자산이 됩니다.',
+     mid:'신나는 놀이도 잔잔한 놀이도 고루 즐겨요. 자극의 세기에 크게 좌우되지 않는 유연한 즐거움이에요.',
+     lo:'잔잔하고 아늑한 놀이에서 만족을 얻는 아이예요. 요란한 자극이 없어도 충분히 행복할 수 있다는 뜻이니, 아이의 놀이 취향을 존중해 주세요.'},
+ FE:{hi:'낯선 자극을 한 번 더 확인하고 움직이는 정교한 경계 센서를 가졌어요. 예고와 준비가 있으면 안정감이 크게 올라가는 기질이에요.',
+     mid:'상황에 따라 조심스러움과 대담함을 오가요. 위험 감지와 도전 사이의 균형이 잘 잡혀 있는 편이에요.',
+     lo:'낯선 상황에서도 크게 움츠러들지 않는 담대함이 있어요. 다만 위험 신호도 작게 느낄 수 있으니, 안전 약속은 구체적으로 정해 두는 게 좋아요.'},
+ FR:{hi:'원하는 것이 막히면 온몸으로 알리는 선명한 표현이에요. 감정의 크기가 큰 만큼, 감정에 이름을 붙여 주는 연습이 자기조절의 발판이 됩니다.',
+     mid:'좌절 상황에서 화를 내기도 하고 넘어가기도 하는 보통의 표현 강도예요. 연령에 맞는 자연스러운 모습이에요.',
+     lo:'뜻대로 안 되는 순간에도 비교적 순하게 받아들여요. 표현이 작아 속마음을 놓치기 쉬우니, 가끔 먼저 물어봐 주세요.'},
+ SO:{hi:'속상해도 금방 제자리로 돌아오는 회복 탄력이 큰 자산이에요. 달램이 잘 통하는 아이라 위로의 효과가 큽니다.',
+     mid:'속상한 마음이 풀리는 데 걸리는 시간이 상황에 따라 달라요. 회복의 속도보다 회복의 경험이 쌓이는 것이 중요해요.',
+     lo:'한번 흔들린 마음이 가라앉는 데 시간이 걸려요. 빨리 달래려 서두르기보다 곁에 있어 주는 것이 이 아이에게는 가장 빠른 길이에요.'},
+ AT:{hi:'좋아하는 것에 오래 머무는 집중력이 돋보여요. 몰입을 끊지 않는 환경이 이 재능을 키우는 토양이에요.',
+     mid:'집중과 전환이 고르게 발달하고 있어요. 활동의 종류에 따라 몰입 시간이 달라지는 자연스러운 모습이에요.',
+     lo:'주의가 빠르게 옮겨 다니며 세상을 폭넓게 살펴요. 산만함이 아니라 넓게 탐색하는 방식이라, 짧은 단위로 나눈 활동이 잘 맞아요.'},
+ IC:{hi:'"잠깐만"이 통하는 아이예요. 이 시기에 귀한 자기조절의 싹이니, 기다려 준 순간을 알아봐 주면 더 단단해집니다.',
+     mid:'멈춤과 기다림을 연습하는 중이에요. 되는 날과 안 되는 날이 오가는 것이 이 시기의 정상적인 발달이에요.',
+     lo:'생각과 동시에 몸이 움직이는 실행파예요. 브레이크는 발달과 함께 자라니, 지금은 환경을 안전하게 만들고 선택지를 주는 것이 효과적이에요.'},
+ SC:{hi:'사람에게서 에너지를 얻는 아이예요. 표정을 살피고 마음을 나누는 힘이 관계의 재능으로 자라고 있어요.',
+     mid:'함께 노는 시간과 혼자 노는 시간을 고루 즐겨요. 관계와 독립의 균형이 좋은 편이에요.',
+     lo:'혼자만의 놀이 세계가 단단한 아이예요. 사교성이 부족한 게 아니라 혼자의 시간으로 충전하는 방식이에요.'},
+ SH:{hi:'낯선 사람 앞에서 워밍업 시간이 필요해요. 억지로 인사시키기보다 곁에서 지켜볼 시간을 주면 스스로 다가갑니다.',
+     mid:'낯선 사람에게 다가가는 속도가 상대와 상황에 따라 달라요. 관계의 문을 여는 자기만의 기준이 생기고 있는 중이에요.',
+     lo:'처음 보는 사람과도 금방 가까워지는 친화력이 있어요. 다만 낯선 사람에 대한 경계는 별도로 가르쳐 둘 필요가 있어요.'},
+ SS:{hi:'남들이 못 느끼는 작은 자극까지 잡아내는 정밀한 센서를 가졌어요. 예민함이 아니라 세상을 자세히 느끼는 능력이에요.',
+     mid:'감각 자극에 적당히 반응하고 적당히 흘려보내요. 일상의 자극에 무리 없이 적응하는 편이에요.',
+     lo:'웬만한 자극에는 흔들리지 않는 무던함이 있어요. 어디서든 잘 적응하는 큰 장점이에요.'},
+ SA:{hi:'자극이 많은 날엔 조용한 회복 시간이 필요해요. 외출 뒤 쿨다운 루틴이 이 아이의 컨디션을 지켜 줍니다.',
+     mid:'자극이 많은 환경도 어느 정도 즐기고, 지치면 스스로 쉼을 찾는 편이에요.',
+     lo:'북적이는 곳에서도 지치지 않고 잘 지내요. 새로운 환경에 데려가기 좋은 씩씩한 체질이에요.'}
+};
+
+/* ═══════════ 생활 영역별 가이드 (심층 리포트) — 점수 기반 룰 매칭 ═══════════ */
+const LIFE_GUIDE=[
+ {t:'잠자리와 휴식',icon:'🌙',rules:[
+   {c:s=>s.AC>=4.6,tip:'에너지가 큰 아이는 잠자리에서도 몸이 먼저 놀아요. 잠들기 1시간 전부터는 뛰는 놀이 대신 목욕→그림책→소등처럼 점점 조용해지는 순서를 지켜 주세요.'},
+   {c:s=>s.SA>=4.6||s.SS>=4.6,tip:'자극에 민감한 아이는 침구의 감촉·조명·소리가 수면의 질을 좌우해요. 어두운 조명과 일정한 소리 환경, 아이가 좋아하는 감촉의 이불을 찾아 주면 잠드는 시간이 짧아집니다.'},
+   {c:s=>s.SO<=3.4,tip:'마음이 천천히 가라앉는 아이라 잠자리 루틴의 예측 가능성이 특히 중요해요. 매일 같은 순서, 같은 말로 하루를 마무리하면 루틴 자체가 진정제가 됩니다.'},
+   {c:()=>true,tip:'잠자리 루틴은 내용보다 순서의 일관성이 핵심이에요. 어떤 순서든 매일 똑같이 반복되면, 아이의 몸이 "이제 잘 시간"을 스스로 알아차립니다.'}
+ ]},
+ {t:'식사 시간',icon:'🍚',rules:[
+   {c:s=>s.SS>=4.6,tip:'맛·냄새·식감을 예리하게 느끼는 아이는 편식이 고집이 아니라 감각 반응일 수 있어요. 새 음식은 "한 입만" 대신 접시에 올려 두고 눈으로 익히는 단계부터 시작해 주세요.'},
+   {c:s=>s.AC>=4.6,tip:'식탁에 오래 앉아 있기 힘든 에너지예요. 식사 시간을 20분 안팎으로 짧게 잡고, 다 먹으면 일어나도 되는 규칙을 두면 오히려 앉아 있는 힘이 자랍니다.'},
+   {c:s=>s.FR>=4.6,tip:'식사 거부가 실랑이로 번지기 쉬운 기질이에요. "먹어라" 대신 "뭐부터 먹을지 골라 봐"처럼 선택권을 주면 식탁의 긴장이 줄어듭니다.'},
+   {c:()=>true,tip:'식사는 영양 공급이면서, 하루 중 가장 자주 반복되는 관계의 시간이에요. 먹는 양보다 식탁의 분위기가 즐거웠는지를 기준으로 삼아 주세요.'}
+ ]},
+ {t:'놀이와 배움',icon:'🧩',rules:[
+   {c:s=>s.AT>=4.6,tip:'몰입력이 좋은 아이는 놀이가 곧 공부예요. 몰입하는 중에는 끼어들지 말고, 끝난 뒤에 "어떻게 만든 거야?"라고 과정을 물어봐 주면 생각하는 힘이 자랍니다.'},
+   {c:s=>s.AT<=3.4,tip:'주의가 빠르게 옮겨 다니는 아이는 긴 활동 하나보다 10~15분짜리 짧은 활동 여러 개가 잘 맞아요. 전환을 막기보다, 바꾸기 전에 마무리 한 번("블록 하나만 더 올리고 바꾸자")을 연습시켜 주세요.'},
+   {c:s=>s.AP>=4.6,tip:'새로움이 배움의 연료인 아이예요. 완전히 새 장난감보다, 익숙한 놀잇감에 새로운 재료 하나를 더해 주는 방식이 호기심과 지속성을 함께 잡아 줍니다.'},
+   {c:()=>true,tip:'놀이의 주도권은 아이에게 두는 것이 기본이에요. 부모가 가르치는 사람보다 궁금해하는 관객일 때, 아이의 놀이가 가장 깊어집니다.'}
+ ]},
+ {t:'사람들과 어울리기',icon:'👋',rules:[
+   {c:s=>s.SH>=4.6,tip:'천천히 데워지는 아이에게 새로운 모임은 도착 후 30분이 고비예요. 조금 일찍 도착해 공간이 붐비기 전에 익숙해질 시간을 주면 적응이 훨씬 빨라집니다.'},
+   {c:s=>s.SC>=4.6,tip:'사람을 좋아하는 아이에게는 관계가 곧 배움의 통로예요. 또래를 만나는 정기적인 자리를 만들어 주되, 다툼도 관계를 배우는 수업이니 어른이 너무 빨리 개입하지 않아도 됩니다.'},
+   {c:s=>s.FE>=4.6,tip:'낯선 사람과 장소 앞에서 굳는 것은 무례함이 아니라 신중함이에요. "인사해야지" 대신 부모가 먼저 반갑게 인사하는 모습을 보여 주면, 아이는 관찰로 배웁니다.'},
+   {c:()=>true,tip:'또래 관계의 속도는 아이마다 달라요. 친구가 몇 명인지보다, 한 명과 얼마나 편안하게 노는지를 기준으로 지켜봐 주세요.'}
+ ]}
+];
+
+/* ═══════════ 자주 묻는 질문 (심층 리포트) ═══════════ */
+const REPORT_FAQ=[
+ {q:'유형이 나중에 바뀔 수도 있나요?',
+  a:'네, 자연스러운 일이에요. 기질의 큰 결은 유지되는 편이지만 표현되는 방식은 발달과 환경에 따라 달라져요. 특히 자기조절 축은 뇌 발달과 함께 계속 자라는 영역이라, 시기별 재검사에서 변화가 보이는 것이 오히려 정상입니다.'},
+ {q:'형제자매인데 결과가 정반대예요. 이상한 건가요?',
+  a:'전혀요. 같은 부모에게서 태어나도 기질은 크게 다를 수 있고, 실제 연구에서도 형제자매의 기질 유사성은 생각보다 낮게 나타나요. 두 아이를 비교하기보다 각자의 결에 맞는 반응을 찾는 것이 이 검사의 목적이에요.'},
+ {q:'점수가 "높음"이면 좋은 건가요?',
+  a:'아니요. 이 검사의 모든 척도는 성적표가 아니에요. 예를 들어 활동수준이 높으면 에너지가 자산이고, 낮으면 차분한 몰입이 자산이에요. 양쪽 끝 모두 각자의 강점과 돌봄 포인트가 있을 뿐입니다.'},
+ {q:'엄마와 아빠의 검사 결과가 서로 달라요.',
+  a:'두 분 중 누가 틀린 게 아니라, 아이가 두 사람에게 실제로 다른 모습을 보여 주고 있을 가능성이 커요. 연구에서도 같은 아이에 대한 부모 두 사람의 평가 일치도는 낮은 편이에요. 결과가 다른 척도가 바로 대화해 볼 좋은 주제입니다.'},
+ {q:'결과를 보고 나니 걱정이 돼요.',
+  a:'기질은 진단이 아니라 아이가 세상에 반응하는 고유한 방식이에요. 어떤 프로파일도 문제를 의미하지 않아요. 다만 발달 자체가 걱정되신다면 이 리포트와 별개로 소아청소년과 전문의나 발달 전문가와 상담해 보시길 권해요.'}
+];
+
 /* ═══════════ STATE ═══════════ */
 const LS='billyTemp1';
 let S = JSON.parse(localStorage.getItem(LS)||'{}');
@@ -1398,6 +1508,17 @@ function renderReport(who){
   const trust=r.flags<=1?'양호':r.flags===2?'일부 재확인 권장':'주의';
 
   let h=`
+  <div class="print-cover">
+    <div class="pc-brand">베이비빌리 · 빌리랩</div>
+    <div class="pc-title">${nm}의<br>기질 검사 결과 보고서</div>
+    <div class="pc-sub">${res.setName||'기질검사'} · 78문항 · 12하위척도 정밀 분석</div>
+    <div class="pc-meta">
+      아이 <b>${res.name}</b> (${res.month!=null?res.month+'개월':'-'})<br>
+      응답 <b>${relLabel}</b> · 검사일 <b>${res.date}</b><br>
+      감수 <b>이수진 임상심리전문가</b>
+    </div>
+    <div class="pc-foot">본 보고서는 부모 응답 기반의 기질 안내 자료이며 의학적·심리학적 진단이 아닙니다 · ⓒ 베이비빌리</div>
+  </div>
   <div class="rep-head">
     <div class="rh-top"><span>${res.name} · ${res.month!=null?res.month+'개월':''} · ${relLabel} 응답</span><span>${res.date}${res.sample?' · 샘플':''}</span></div>
     <h2>${nm}의 기질 리포트</h2>
@@ -1453,7 +1574,7 @@ function renderReport(who){
   </div>`;
 
   /* S2 profile — TCI 형식: 요인 표 + 하위척도 양극 차트 */
-  h+=`<div class="section"><h2 class="sec">기질 프로파일</h2><p class="sub">광역 5요인과 12개 하위척도 — 모든 척도는 낮은 쪽과 높은 쪽 모두 고유한 의미가 있어요</p>
+  h+=`<div class="section pb"><h2 class="sec">기질 프로파일</h2><p class="sub">광역 5요인과 12개 하위척도 — 모든 척도는 낮은 쪽과 높은 쪽 모두 고유한 의미가 있어요</p>
   <div class="card" style="overflow-x:auto">
     <table class="ftable"><thead><tr><th>요인</th><th style="text-align:center">평균 점수</th><th style="text-align:center">위치*</th><th style="min-width:104px">프로파일 그래프</th></tr></thead><tbody>
     ${['E','N','R','S','X'].map(k=>{const v=r.f[k],pct=((v-1)/6*100).toFixed(1);
@@ -1482,6 +1603,18 @@ function renderReport(who){
   h+=`<div class="fnote">음영 구간은 또래 중간 범위이며, 점이 구간 밖에 있을수록 해당 특성이 뚜렷하다는 뜻입니다. 하위척도는 포함 문항 수가 적으므로 참고 자료로 활용해 주세요. '해당 없음' 응답은 계산에서 제외되었습니다.</div>
   </div></div>`;
 
+  /* S2b 하위척도 상세 해설 — 12개 전체 */
+  const bandKey=v=>v>=4.3?'hi':v<=3.7?'lo':'mid';
+  h+=`<div class="section pb"><h2 class="sec">척도 하나하나 자세히 볼게요</h2><p class="sub">12개 하위척도 각각이 ${nm}의 일상에서 어떤 모습으로 나타나는지 풀어 봤어요</p>`;
+  factorOrder.forEach(([fk,scs])=>{
+    h+=`<div class="factor-title">${FACTORS[fk]}</div>`;
+    scs.forEach(sc=>{
+      const v=r.sub[sc],bk=bandKey(v);
+      h+=`<div class="interp"><div class="i-top"><span class="i-name">${SCALES[sc].name}</span><span class="i-band ${bk==='mid'?'mid':''}">${bandName(v)} · ${v.toFixed(1)}</span></div><p>${SCALE_INTERP[sc][bk]}</p></div>`;
+    });
+  });
+  h+=`</div>`;
+
   /* couple compare callout */
   if(otherRes){
     const diffs=Object.keys(SCALES).map(sc=>({sc,d:Math.abs(r.sub[sc]-otherRes.r.sub[sc])})).sort((a,b)=>b.d-a.d);
@@ -1490,7 +1623,7 @@ function renderReport(who){
 
   /* S3 playbook */
   if(!isInfant){
-    h+=`<div class="section"><h2 class="sec">이럴 때 힘들 수 있어요</h2><p class="sub">${T.name} 기질의 아이에게 자주 찾아오는 순간들이에요. 순간마다 ① 알아채고 → ② 다르게 보고 → ③ 맞춰 반응하는 순서로 안내해 드릴게요.</p>`;
+    h+=`<div class="section pb"><h2 class="sec">이럴 때 힘들 수 있어요</h2><p class="sub">${T.name} 기질의 아이에게 자주 찾아오는 순간들이에요. 순간마다 ① 알아채고 → ② 다르게 보고 → ③ 맞춰 반응하는 순서로 안내해 드릴게요.</p>`;
     const scenes=[...T.scenes]; if(t.badge)scenes.push(BADGE_SCENE);
     scenes.forEach(s=>{
       h+=`<div class="scene"><div class="s-tag">${s.t}</div>
@@ -1503,12 +1636,35 @@ function renderReport(who){
     h+=`</div>`;
   }
 
+  /* S3b 생활 영역별 가이드 — 점수 기반 룰 매칭 */
+  h+=`<div class="section pb"><h2 class="sec">하루의 장면마다 이렇게 도와주세요</h2><p class="sub">${nm}의 프로파일에 맞춰, 생활 영역 4곳의 돌봄 포인트를 골라 봤어요</p>`;
+  LIFE_GUIDE.forEach(dm=>{
+    const tips=dm.rules.filter(rule=>rule.c(r.sub)).slice(0,2);
+    h+=`<div class="lg-card"><div class="lg-head"><span class="lg-ico">${dm.icon}</span><h4>${dm.t}</h4></div>
+    ${tips.map(tp=>`<div class="lg-tip"><span class="dot">›</span><span>${tp.tip}</span></div>`).join('')}</div>`;
+  });
+  h+=`</div>`;
+
   /* 추천 도서 */
   const books=pickBooksChild(r.f,r.sub,t.badge);
-  h+=`<div class="section" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${nm}의 기질 결과에 맞춰 골라 본 육아서예요</p>
+  h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${nm}의 기질 결과에 맞춰 골라 본 육아서예요</p>
     ${books.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
     <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
   </div>`;
+
+  /* 자주 묻는 질문 */
+  h+=`<div class="section pb"><h2 class="sec">결과를 읽으며 궁금하실 것들</h2><p class="sub">부모님들이 결과지를 보며 가장 자주 물어보시는 질문이에요</p>
+    ${REPORT_FAQ.map((f2,i)=>`<div class="faq-item"><div class="fq"><span>Q${i+1}.</span>${f2.q}</div><div class="fa">${f2.a}</div></div>`).join('')}
+  </div>`;
+
+  /* 부록 — 점수 상세표 */
+  h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">부록 · 점수 상세표</h2><p class="sub">12개 하위척도의 평균 점수를 한 표로 정리했어요 (1~7점)</p>
+  <div class="card" style="overflow-x:auto">
+    <table class="ftable"><thead><tr><th>광역 요인</th><th>하위척도</th><th style="text-align:center">평균 점수</th><th style="text-align:center">위치*</th></tr></thead><tbody>
+    ${factorOrder.map(([fk,scs])=>scs.map((sc,si)=>`<tr>${si===0?`<td class="fname" rowspan="${scs.length}">${FACTORS[fk]}</td>`:''}<td>${SCALES[sc].name}</td><td class="fnum">${r.sub[sc].toFixed(1)}</td><td class="fnum">${bandName(r.sub[sc])}</td></tr>`).join('')).join('')}
+    </tbody></table>
+    <div class="fnote"><b>*</b> 위치는 베타 응답 분포 기반 5구간 밴드입니다. 모든 척도의 높낮이에는 우열이 없으며, 응답 시점의 아이 상태에 따라 달라질 수 있습니다.</div>
+  </div></div>`;
 
   /* S4 next */
   h+=`<div class="section no-print"><h2 class="sec">다음은 이거예요</h2>
