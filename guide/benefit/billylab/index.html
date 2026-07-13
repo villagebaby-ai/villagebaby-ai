@@ -1748,7 +1748,7 @@ function renderReport(who){
     ${S.parent&&S.parent[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">기질 조합 리포트가 열렸어요!</div><div class="desc">${nm}의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
     :`<div class="next-card"><div class="n-emoji">🌿</div><div><div class="tit">양육기질 검사 (5분)</div><div class="desc">${relLabel}의 기질을 알면 <b>기질 조합 리포트</b>가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-pintro')">시작</button></div>`}
     <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">${res.set==='C'?'6개월 뒤, 다시 만나요':'다음 검사 예고'}</div><div class="desc">${res.set==='C'?`6개월 뒤 다시 검사하면 ${nm}의 기질 변화 그래프가 생겨요`:`${nm}가 3세가 되면, 유치원·또래 장면으로 새로 설계된 유아 기질검사가 기다려요`}</div></div></div>
-    ${!otherRes?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">같은 아이, 다른 시선 — 부부 비교 리포트가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
+    ${!otherRes?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">같은 아이, 다른 시선 — 부부 비교 리포트가 열려요</div></div><button class="btn btn-line btn-sm" onclick="inviteShare()">초대</button></div>`:''}
   </div>
   <div class="sci">
     <h4>이 검사의 과학적 근거</h4>
@@ -1941,7 +1941,7 @@ function renderPReport(who){
   <div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
     ${S.results[who]?`<div class="next-card"><div class="n-emoji">🔓</div><div><div class="tit">기질 조합 리포트가 열렸어요!</div><div class="desc">아이의 기질 × ${relLabel}의 스타일 조합 분석</div></div><button class="btn btn-pri btn-sm" onclick="openFit()">보기</button></div>`
     :`<div class="next-card"><div class="n-emoji">🧸</div><div><div class="tit">아이 기질검사</div><div class="desc">마치면 기질 조합 리포트가 열려요</div></div><button class="btn btn-pri btn-sm" onclick="go('v-intro')">시작</button></div>`}
-    ${!otherP?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">부부의 양육 스타일 비교가 열려요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>`:''}
+    ${!otherP?`<div class="next-card"><div class="n-emoji">${other==='dad'?'👨':'👩'}</div><div><div class="tit">${otherLabel}도 응답해 보세요</div><div class="desc">부부의 양육 스타일 비교가 열려요</div></div><button class="btn btn-line btn-sm" onclick="inviteShare()">초대</button></div>`:''}
   </div>
   <div class="disclaim">본 리포트는 자기보고 응답 기반의 참고 자료이며 심리학적 진단이 아닙니다. 양육 스타일에는 우열이 없으며, 아이의 기질·발달 단계에 따라 어울리는 반응이 달라질 수 있습니다.</div>`;
   $('pReportBody').innerHTML=h;
@@ -2001,7 +2001,7 @@ function renderFit(who){
     <li>기질에 맞춰 부모의 반응을 조율하는 개입 프로그램(INSIGHTS 등)은 무작위 대조 연구에서 아동 문제행동 감소 효과가 확인되어 있어요.</li>
   </div>
   <div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
-    <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 조합 리포트도 있어요</div><div class="desc">같은 아이라도 부모마다 Fit이 달라요</div></div><button class="btn btn-line btn-sm" onclick="go('v-home')">초대</button></div>
+    <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 조합 리포트도 있어요</div><div class="desc">같은 아이라도 부모마다 Fit이 달라요</div></div><button class="btn btn-line btn-sm" onclick="inviteShare()">초대</button></div>
     <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">아이가 자라면 조합 리포트도 자라요</div><div class="desc">다음 시기의 기질검사를 마치면 기질 조합 리포트도 새로 업데이트돼요</div></div></div>
   </div>
   <div class="disclaim">본 리포트는 두 검사의 응답을 조합한 참고 자료이며 진단이 아닙니다. 조합 해석은 부모의 잘잘못이 아닌 '기질 간 상호작용'에 대한 안내입니다.</div>`;
@@ -2307,6 +2307,26 @@ function doLogin(){
   localStorage.setItem('billyAuth',JSON.stringify({phone:v.slice(0,3)+'-****-'+v.slice(-4),at:'2026-07-09'}));
   closeLogin(); updateAuth();
 }
+/* 배우자 초대 — 모바일 네이티브 공유 시트, 미지원 환경은 링크 복사 */
+function inviteShare(){
+  const url=location.origin+location.pathname;
+  const kid=(S.results[resp]&&S.results[resp].name)?S.results[resp].name:'우리 아이';
+  const data={
+    title:'빌리랩 기질검사 · 베이비빌리',
+    text:`${kid}의 기질검사, 우리 각자 응답하고 비교해 봐요. 부부가 각자 하면 비교 리포트도 열려요! (베이비빌리 멤버십 무료 혜택)`,
+    url
+  };
+  if(navigator.share){
+    navigator.share(data).catch(function(){});
+  } else if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(data.text+'\n'+url).then(function(){
+      alert('초대 메시지를 복사했어요. 메신저에 붙여넣어 보내 주세요!');
+    },function(){ prompt('아래 링크를 복사해 보내 주세요',url); });
+  } else {
+    prompt('아래 링크를 복사해 보내 주세요',url);
+  }
+}
+
 function updateAuth(){
   const s=session(),b=$('authBtn'); if(!b)return;
   if(s){ b.textContent=s.phone; b.classList.add('in'); } else { b.textContent='로그인'; b.classList.remove('in'); }
