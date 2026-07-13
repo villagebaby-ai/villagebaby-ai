@@ -2165,6 +2165,70 @@ updateAuth();
   });
   $('dexGrid').innerHTML=h;
 })();
+
+/* ═══════════ 검수용 미리보기 라우터 (#preview-…) ═══════════
+   URL 해시로 고정 프로파일 결과지를 바로 연다. localStorage에 저장하지 않음(사용자 데이터 오염 방지).
+   예) #preview-child-HHH · #preview-infant-LHL-badge · #preview-parent-CP · #preview-stress-high · #preview-fit */
+function previewSub(typeKey,badge){
+  const hi=5.6, lo=2.4, mid=4.0;
+  const sub={};
+  sub.AC=sub.AP=sub.HP=(typeKey[0]==='H')?hi:lo;
+  if(typeKey[1]==='H'){sub.FE=hi;sub.FR=hi;sub.SO=lo;}else{sub.FE=lo;sub.FR=lo;sub.SO=hi;}
+  sub.AT=sub.IC=(typeKey[2]==='H')?hi:lo;
+  sub.SC=mid+0.6; sub.SH=mid-0.4;
+  sub.SS=sub.SA=badge?hi:mid-0.6;
+  /* 고정 지터로 대표특성 Top3 순위가 결정적으로 갈리게 함 */
+  const jit=[0.3,0.15,0,-0.15,-0.3]; let i=0;
+  Object.keys(sub).forEach(k=>{sub[k]=+Math.min(7,Math.max(1,sub[k]+jit[i++%5])).toFixed(2);});
+  return sub;
+}
+function previewFactors(sub){
+  return {E:(sub.AC+sub.AP+sub.HP)/3,N:(sub.FE+sub.FR+(8-sub.SO))/3,R:(sub.AT+sub.IC)/2,S:(sub.SC+sub.SH)/2,X:(sub.SS+sub.SA)/2};
+}
+function runPreview(hash){
+  const p=hash.replace('#preview-','').split('-');
+  const kind=p[0]; resp='mom';
+  if(kind==='infant'||kind==='child'){
+    const type=(p[1]&&/^[HL]{3}$/.test(p[1]))?p[1]:'HHH';
+    const badge=p.includes('badge');
+    selectSet(kind==='child'?'C':'I');
+    const sub=previewSub(type,badge);
+    S.results.mom={r:{sub,f:previewFactors(sub),flags:0},name:'도담',month:kind==='child'?52:26,date:'2026-07-09',sample:true,set:curSet,setName:SETMETA[curSet].name};
+    renderReport('mom'); go('v-report');
+  } else if(kind==='baby'){
+    selectSet('I'); const sub=previewSub('HLH',false);
+    S.results.mom={r:{sub,f:previewFactors(sub),flags:0},name:'도담',month:14,date:'2026-07-09',sample:true,set:'I',setName:SETMETA.I.name};
+    renderReport('mom'); go('v-report');
+  } else if(kind==='parent'){
+    const style=(p[1]&&/^[CA][PD]$/.test(p[1]))?p[1]:'AP';
+    const map={C:5.4,A:2.6,P:5.4,D:2.6};
+    const psub={P1:3.2,P2:5.0,P3:4.8,R1:map[style[0]],R2:map[style[1]]};
+    if(!S.parent)S.parent={};
+    S.parent.mom={r:{sub:psub,flags:0},style:pStyleOf(psub),date:'2026-07-09',sample:true};
+    renderPReport('mom'); go('v-preport');
+  } else if(kind==='stress'){
+    const lvl=p[1]||'mid';
+    const dm=lvl==='high'?{S1:4.4,S2:4.0,S3:3.6}:lvl==='low'?{S1:1.6,S2:1.9,S3:1.5}:{S1:3.2,S2:2.8,S3:2.3};
+    const overall=+((dm.S1+dm.S2+dm.S3)/3).toFixed(2);
+    if(!S.stress)S.stress={};
+    S.stress.mom=[
+      {r:{dom:{S1:+(dm.S1-0.4).toFixed(1),S2:+(dm.S2-0.2).toFixed(1),S3:+(dm.S3-0.1).toFixed(1)},overall:+(overall-0.25).toFixed(2)},date:'2026-04-09',sample:true},
+      {r:{dom:dm,overall},date:'2026-07-09',sample:true}
+    ];
+    renderSReport('mom'); go('v-sreport');
+  } else if(kind==='fit'){
+    selectSet('I');
+    const sub=previewSub('LHH',true);
+    S.results.mom={r:{sub,f:previewFactors(sub),flags:0},name:'도담',month:26,date:'2026-07-09',sample:true,set:'I',setName:SETMETA.I.name};
+    const psub={P1:3.0,P2:5.0,P3:4.8,R1:4.6,R2:5.2};
+    if(!S.parent)S.parent={};
+    S.parent.mom={r:{sub:psub,flags:0},style:pStyleOf(psub),date:'2026-07-09',sample:true};
+    renderFit('mom'); go('v-fit');
+  } else if(kind==='about'){ go('v-about'); }
+  else if(kind==='dex'){ go('v-dex'); }
+}
+if(location.hash.indexOf('#preview')===0) runPreview(location.hash);
+window.addEventListener('hashchange',function(){ if(location.hash.indexOf('#preview')===0) runPreview(location.hash); });
 </script>
 </body>
 </html>
