@@ -190,6 +190,9 @@ footer{background:var(--ink); color:#fff; padding:52px clamp(20px,5vw,48px) 40px
     {t:"동물농장",by:"혜민",g:"novel",r:"짧지만 깊은 메시지를 담은 고전을 읽고 싶은 분께.",u:"모든 동물은 평등하다. 그러나 어떤 동물은 다른 동물보다 더욱 평등하다."},
     {t:"한 뼘의 계절에서 배운 것",by:"유리",g:"novel",r:"사계절의 흐름 속 사소한 감정으로 나를 이해하게 되는 에세이.",u:"계절의 전환이 없었더라면 내 몫의 문장은 절반도 되지 않았을 거다. 계절의 변화가 좁고 얕은 나의 세계를 무한히 밝혔다."}
   ];
+  var TS={로지:1746840079,채영:1746786661,한나:1748569799,쑤:1748571860,상준:1750421766,선우:1750397971,아써:1751622238,지원:1751000243,엘린:1753064811,제혁:1753109529,고니:1754284135,우리:1754965781,지현:1755139175,이슬:1756734910,진수:1756684216,린:1758154360,효:1757902276,수민:1761132857,혜준:1761351842,서현:1764911863,소현:1764032653,태윤:1767149830,정윤:1767589253,찬주:1770279727,대니:1770600500,영주:1773621074,종민:1777333616,혜민:1781517636,유리:1778024692};
+  BOOKS.forEach(function(b){ b.d=TS[b.by]||0; });
+  BOOKS.sort(function(a,b){ return b.d-a.d; });
   var order=["career","self","philo","sci","novel","family"];
   var grid=document.getElementById('grid'), filters=document.getElementById('filters'), empty=document.getElementById('empty');
   document.getElementById('cnt').textContent=BOOKS.length;
