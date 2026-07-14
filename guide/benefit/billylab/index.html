@@ -114,6 +114,21 @@ body{
 .open-ta:focus{outline:none;border-color:var(--main)}
 .logo-brand{display:inline-flex;align-items:center;gap:7px}
 .logo-brand img{height:24px;width:auto}
+.modal-box.sheet-full{border-radius:0;max-height:100dvh;height:100dvh;width:100%;max-width:none;padding:0;display:flex;flex-direction:column;animation:none}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-bottom:1px solid var(--gray-100);flex-shrink:0}
+.sheet-head b{font-size:16px;font-weight:800}
+.sheet-head button{font-family:inherit;background:none;border:0;font-size:15px;cursor:pointer;padding:4px 2px}
+.sh-cancel{color:var(--gray)}
+.sh-done{color:var(--main);font-weight:800}
+.sheet-body{padding:10px 20px 30px;overflow-y:auto;flex:1;max-width:520px;margin:0 auto;width:100%}
+.sh-label{display:block;font-size:13.5px;font-weight:700;margin:20px 0 8px;color:var(--ink)}
+.sh-label em{font-style:normal;color:var(--main)}
+.sh-input{width:100%;font-family:inherit;font-size:16px;padding:14px 15px;border:1.5px solid var(--gray-300);border-radius:12px;background:#fff;color:var(--ink);-webkit-appearance:none;appearance:none}
+.sh-input:focus{outline:none;border-color:var(--main)}
+select.sh-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23898989' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center}
+.sh-hint{font-size:12px;color:var(--main-deep);margin-top:8px;min-height:16px}
+.sh-del{display:block;margin:40px auto 8px;background:none;border:0;font-family:inherit;font-size:13.5px;color:var(--gray);text-decoration:underline;cursor:pointer}
+.bchip .bpen{font-size:11px;opacity:.75;margin-left:3px}
 .pagin2{display:flex;align-items:center;justify-content:center;gap:14px}
 .pagin2 .pnav{width:46px;min-width:46px;height:46px;font-size:22px;font-weight:800;border-radius:50%;border:1.5px solid var(--main);background:#fff;color:var(--main);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 2px;line-height:1}
 .pagin2 .pn-next{background:var(--main);color:#fff}
@@ -514,15 +529,13 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
     <div class="profile-box">
       <label>아이 정보 · 응답하는 사람</label>
       <div class="baby-chips" id="babyChips"></div>
-      <div class="row">
-        <input id="childName" type="text" placeholder="아이 이름" maxlength="10">
-        <input id="childBirth" type="month" title="출생 년월">
-      </div>
+      <input id="childName" type="hidden">
+      <input id="childBirth" type="hidden">
       <div class="resp-toggle" id="respToggle">
         <button data-r="mom" class="on">👩 엄마가 응답</button>
         <button data-r="dad">👨 아빠가 응답</button>
       </div>
-      <div class="profile-note" id="ageNote">출생 년월을 입력하면 월령에 맞는 검사 세트를 안내해 드려요.</div>
+      <div class="profile-note" id="ageNote">아기를 추가하면 월령에 맞는 검사 세트를 안내해 드려요.</div>
     </div>
 
     <div class="section">
@@ -791,7 +804,31 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
   </div>
 
   <!-- ═══════════ ADMIN (스텁) ═══════════ -->
-  <div class="view" id="v-admin">
+  <div class="modal-overlay" id="babySheet">
+  <div class="modal-box sheet-full">
+    <div class="sheet-head">
+      <button class="sh-cancel" onclick="closeBabySheet()">취소</button>
+      <b id="babySheetTitle">아기 정보 수정</b>
+      <button class="sh-done" onclick="saveBabySheet()">완료</button>
+    </div>
+    <div class="sheet-body">
+      <label class="sh-label">아기 이름 <em>*</em></label>
+      <input id="bsName" type="text" maxlength="10" class="sh-input" placeholder="이름 또는 태명을 입력해 주세요">
+      <label class="sh-label">생일 <em>*</em></label>
+      <input id="bsBirth" type="date" class="sh-input">
+      <div class="sh-hint" id="bsAge"></div>
+      <label class="sh-label">성별</label>
+      <select id="bsGender" class="sh-input">
+        <option value="unknown">아직 몰라요</option>
+        <option value="boy">남아</option>
+        <option value="girl">여아</option>
+      </select>
+      <button class="sh-del" onclick="delBabyFromSheet()">아기 정보 삭제</button>
+    </div>
+  </div>
+</div>
+
+<div class="view" id="v-admin">
     <div class="topbar"><button class="back" onclick="go('v-home')">‹</button><span class="logo">관리자</span><span class="badge-mem">STUB</span></div>
     <div class="section">
       <h2 class="sec">관리자 대시보드</h2>
@@ -3013,12 +3050,16 @@ function renderBabies(){
   let h='';
   S.babies.forEach(function(b){
     const on=b.id===S.curBaby;
-    h+=`<button class="bchip ${on?'on':''}" onclick="selectBaby('${b.id}')">${b.name||'이름 없음'}${on?`<span class="bx" onclick="event.stopPropagation();delBaby('${b.id}')" title="아기 삭제">✕</span>`:''}</button>`;
+    h+=`<button class="bchip ${on?'on':''}" onclick="chipTap('${b.id}')" title="${on?'한 번 더 누르면 정보를 수정할 수 있어요':''}">${b.name||'이름 없음'}${on?' <span class="bpen">✎</span>':''}</button>`;
   });
   h+=`<button class="bchip add" onclick="addBaby()">＋ 아기 추가</button>`;
   box.innerHTML=h;
   const cb=curBabyObj();
-  if(cb&&!cb.name){ $('ageNote').textContent='아래에 아기 이름을 입력하면 바로 저장돼요.'; }
+  if(cb&&!cb.name){ $('ageNote').textContent='아기 칩을 한 번 더 누르면 이름과 생일을 입력할 수 있어요.'; }
+}
+function chipTap(id){
+  if(S.curBaby===id){ openBabySheet(id); return; }
+  selectBaby(id);
 }
 function selectBaby(id){
   S.curBaby=id; const b=curBabyObj();
@@ -3033,27 +3074,68 @@ function delBaby(id){
   S.babies=S.babies.filter(function(x){return x.id!==id;});
   if(S.curBaby===id){
     if(S.babies.length){ selectBaby(S.babies[0].id); }
-    else { S.curBaby=null; $('childName').value=''; $('childBirth').value=''; $('ageNote').textContent='출생 년월을 입력하면 월령에 맞는 검사 세트를 안내해 드려요.'; }
+    else { S.curBaby=null; $('childName').value=''; $('childBirth').value=''; $('ageNote').textContent='아기를 추가하면 월령에 맞는 검사 세트를 안내해 드려요.'; }
   }
   save(); renderBabies(); refreshHome();
 }
 function addBaby(){
-  /* 이름·정보가 비어 있는 아기가 이미 있으면 새로 만들지 않고 그 아기를 선택 */
+  /* 이름·정보가 비어 있는 아기가 이미 있으면 새로 만들지 않고 그 아기의 시트를 연다 */
   const empty=S.babies.find(function(x){return !x.name&&!x.birth;});
-  if(empty){ selectBaby(empty.id); $('childName').focus(); return; }
-  const b={id:'b'+Date.now(),name:'',birth:'',results:{}};
+  if(empty){ selectBaby(empty.id); openBabySheet(empty.id); return; }
+  const b={id:'b'+Date.now(),name:'',birth:'',gender:'unknown',results:{}};
   S.babies.push(b); S.curBaby=b.id;
-  $('childName').value=''; $('childBirth').value=''; $('ageNote').textContent='새 아기의 이름과 출생 년월을 입력해 주세요.';
+  $('childName').value=''; $('childBirth').value='';
   save(); renderBabies(); refreshHome();
-  $('childName').focus();
+  openBabySheet(b.id);
 }
 function syncBabyField(k,v){
   let b=curBabyObj();
   if(!b){ if(!v)return; b={id:'b'+Date.now(),name:'',birth:'',results:S.results||{}}; S.babies.push(b); S.curBaby=b.id; }
   b[k]=v; save(); renderBabies();
 }
-$('childName').addEventListener('input',function(){ syncBabyField('name',this.value); });
-$('childBirth').addEventListener('change',function(){ syncBabyField('birth',this.value); refreshHome(); });
+$('childBirth').addEventListener('change',function(){ refreshHome(); });
+
+/* ═══════════ 아기 정보 시트 (베이비빌리 앱 스타일) ═══════════ */
+let bsTarget=null;
+function openBabySheet(id){
+  const b=S.babies.find(function(x){return x.id===id;}); if(!b)return;
+  bsTarget=id;
+  $('babySheetTitle').textContent=(b.name||b.birth)?'아기 정보 수정':'아기 정보 입력';
+  $('bsName').value=b.name||'';
+  /* 하위호환: 기존 'YYYY-MM' 데이터는 1일로 보정해 프리필 */
+  $('bsBirth').value=b.birth?(b.birth.length===7?b.birth+'-01':b.birth):'';
+  $('bsGender').value=b.gender||'unknown';
+  bsAgeHint();
+  $('babySheet').classList.add('on');
+  if(!b.name)setTimeout(function(){$('bsName').focus();},50);
+}
+function closeBabySheet(){ $('babySheet').classList.remove('on'); bsTarget=null; }
+function bsAgeHint(){
+  const v=$('bsBirth').value, el=$('bsAge');
+  if(!v){ el.textContent=''; return; }
+  const parts=v.split('-').map(Number), now=new Date(2026,6,1);
+  const m=Math.max(0,(now.getFullYear()-parts[0])*12+(now.getMonth()+1-parts[1]));
+  el.textContent = m<6?`현재 ${m}개월 · 검사는 생후 6개월부터 가능해요`
+    : m<36?`현재 ${m}개월 · 영아 기질검사(6~35개월) 대상이에요`
+    : m<84?`현재 ${m}개월 · 유아 기질검사(3~6세) 대상이에요`
+    : `현재 ${m}개월 · 유아 기질검사 상한 연령을 넘었어요`;
+}
+$('bsBirth').addEventListener('change',bsAgeHint);
+function saveBabySheet(){
+  const name=$('bsName').value.trim(), birth=$('bsBirth').value;
+  if(!name){ alert('아기 이름을 입력해 주세요.'); $('bsName').focus(); return; }
+  if(!birth){ alert('생일을 입력해 주세요.'); return; }
+  const b=S.babies.find(function(x){return x.id===bsTarget;});
+  if(!b){ closeBabySheet(); return; }
+  b.name=name; b.birth=birth; b.gender=$('bsGender').value;
+  save(); closeBabySheet();
+  if(S.curBaby===b.id){
+    $('childName').value=b.name; $('childBirth').value=b.birth;
+    $('childBirth').dispatchEvent(new Event('change'));
+  }
+  renderBabies(); refreshHome();
+}
+function delBabyFromSheet(){ const id=bsTarget; closeBabySheet(); delBaby(id); }
 
 /* ═══════════ 지난 검사 결과 (열람·삭제) ═══════════ */
 function renderHistory(){
