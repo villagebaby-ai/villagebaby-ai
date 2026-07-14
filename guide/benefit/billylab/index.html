@@ -48,7 +48,7 @@ body{
 /* ---------- common ---------- */
 .topbar{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--gray-200);padding:14px 20px;display:flex;align-items:center;gap:10px}
 .topbar .logo{font-weight:900;color:var(--main);font-size:16px;letter-spacing:-0.02em}
-.topbar .badge-mem{font-size:11px;font-weight:700;color:var(--main-deep);background:var(--main-100);border-radius:999px;padding:3px 10px}
+.topbar .badge-mem{font-size:11px;font-weight:700;color:#fff;background:var(--main);border-radius:999px;padding:4px 11px}
 .topbar .back{border:0;background:none;font-size:20px;color:var(--gray);cursor:pointer;line-height:1;padding:2px 6px 2px 0}
 .auth-btn{margin-left:auto;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--main);background:#fff;border:1.5px solid var(--main-200);border-radius:999px;padding:5px 14px;cursor:pointer}
 .auth-btn:hover{background:var(--main-100)}
@@ -112,13 +112,16 @@ body{
 .hist-row .hr-b{display:flex;gap:6px;flex-shrink:0}
 .open-ta{width:100%;font-family:inherit;font-size:14px;line-height:1.6;padding:11px 13px;border:1.5px solid var(--gray-300);border-radius:12px;margin-top:12px;min-height:74px;resize:vertical;color:var(--ink)}
 .open-ta:focus{outline:none;border-color:var(--main)}
+.logo-brand{display:inline-flex;align-items:center;gap:7px}
+.logo-brand img{height:24px;width:auto}
 .pagin2{display:flex;align-items:center;justify-content:center;gap:14px}
 .pagin2 .pnav{width:46px;min-width:46px;height:46px;font-size:22px;font-weight:800;border-radius:50%;border:1.5px solid var(--main);background:#fff;color:var(--main);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 2px;line-height:1}
 .pagin2 .pn-next{background:var(--main);color:#fff}
 .pagin2 .pnav:disabled{opacity:.32;cursor:default}
 .pagin2 .pg-stat{font-size:14px;color:var(--gray);min-width:56px;text-align:center}
 .pagin2 .pg-stat b{color:var(--ink);font-size:16px}
-.imgslot{position:relative;border:1.5px dashed var(--gray-300);background:var(--gray-100);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.imgslot{position:relative;border:1.5px dashed var(--gray-300);background:var(--gray-100);overflow:hidden;display:none;align-items:center;justify-content:center;flex-shrink:0}
+.imgslot.has{display:flex}
 .imgslot.is-round{border-radius:50%}
 .imgslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 .imgslot.has{border-style:solid;border-color:transparent;background:none}
@@ -480,7 +483,7 @@ p.sub{font-size:13px;color:var(--gray);margin-bottom:16px}
 
   <!-- ═══════════ HOME ═══════════ -->
   <div class="view on" id="v-home">
-    <div class="topbar"><span class="logo">베이비빌리</span><span class="badge-mem">멤버십 혜택</span>
+    <div class="topbar"><span class="logo logo-brand"><img src="assets/logo-billy.png" alt="베이비빌리" onerror="this.style.display='none'">베이비빌리</span><span class="badge-mem">베이비빌리 멤버십</span>
       <button class="auth-btn" id="authBtn" onclick="authClick()">로그인</button>
     </div>
     <div class="hero">
@@ -2863,6 +2866,10 @@ function renderSReport(who){
   h+=`<div class="section"><div class="cycle-note">이 보고서는 ${relLabel}의 지난 2주를 세 영역(부모 소진 · 돌봄 부담 · 관계 스트레스)으로 나눠 살펴보고, 영역별 해설과 회복 플랜, 함께 읽을 책까지 담았어요. 아래 페이지 번호를 눌러 차례로 읽어 보세요.</div></div>`;
 
   /* P2 — 영역별 결과 */
+  h+=`<div class="section" style="padding-top:4px"><div class="card"><h4 style="font-size:13.5px;font-weight:800;margin-bottom:8px">이 리포트의 구성</h4>
+  ${['영역별 결과','영역 해설','몸과 마음의 신호','회복 처방','7일 회복 플랜','나에게 건네는 말','추천 도서','자주 묻는 질문','흐름과 다음 체크'].map((t2,i)=>`<div style="font-size:12.5px;padding:3.5px 0;color:#555"><b style="color:var(--main);display:inline-block;width:24px">${i+2}</b>${t2}</div>`).join('')}
+  <div class="fnote" style="margin-top:8px">오늘 지쳐 있다면 6페이지 '7일 회복 플랜'만 봐 주세요 — 하루 하나면 충분해요.</div></div></div>`;
+
   h+=PG('영역별 결과');
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">영역별로 살펴보면</h2><p class="sub">지난 2주 기준 · 어느 영역이 나를 가장 누르고 있는지 봐요</p><div class="card">`;
   Object.keys(SDOMAINS).forEach(dm=>{
@@ -2872,7 +2879,8 @@ function renderSReport(who){
   });
   h+=`</div>`;
   if(linkLine)h+=`<div class="cycle-note" style="margin-top:0">🧩 <b>기질검사와 함께 보면</b> — ${linkLine}</div>`;
-  h+=`<div class="fnote" style="border-top:0;margin-top:8px">점수는 1~5점 빈도 척도의 영역별 평균입니다. 스트레스는 기질과 달리 시기에 따라 오르내리는 상태라서, 지금의 점수는 "나"가 아니라 "지금의 나"를 보여 줍니다.</div></div>`;
+  h+=`<div class="fnote" style="border-top:0;margin-top:8px">점수는 1~5점 빈도 척도의 영역별 평균입니다. 스트레스는 기질과 달리 시기에 따라 오르내리는 상태라서, 지금의 점수는 "나"가 아니라 "지금의 나"를 보여 줍니다.</div>
+  <div class="cycle-note" style="margin-top:10px"><b>세 영역을 따로 보는 이유</b> — 양육 스트레스 연구는 부모의 지침이 한 덩어리가 아니라 결이 다른 세 갈래로 쌓인다고 말해요. <b>부모 소진</b>은 나 자신의 배터리가, <b>돌봄 부담</b>은 아이를 돌보는 일의 무게가, <b>관계 스트레스</b>는 아이·배우자와의 마음 거리가 각각 얼마나 무거운지를 봅니다. 총점이 같아도 어느 갈래가 무거운지에 따라 회복의 방법이 완전히 달라지기 때문에, 이 리포트의 처방과 플랜은 모두 가장 무거운 영역을 기준으로 맞춰 드려요.</div></div>`;
 
   /* P3 — 영역 해설 */
   h+=PG('영역 해설');
@@ -2895,7 +2903,7 @@ function renderSReport(who){
   (top.length?top:[{dm:'S1'}]).forEach(t=>{const rx=SRX[t.dm];
     h+=`<div class="rx-card"><div class="rx-tag">${rx.tag}</div><h4>${rx.h}</h4><p>${rx.p}</p></div>`;
   });
-  h+=`</div>`;
+  h+=`<div class="cycle-note" style="margin-top:12px"><b>처방을 실천으로 옮기는 요령</b> — 지친 상태에서 새로운 다짐은 오히려 짐이 됩니다. 그래서 위 처방은 "더 잘하기"가 아니라 "덜어 내기"로 읽어 주세요. 이번 주에 딱 하나, 가장 만만해 보이는 것부터 시작하고, 해냈다면 그 사실을 스스로에게 소리 내어 인정해 주세요("오늘 하나 했다"). 회복은 큰 결심이 아니라 작은 반복에서 오고, 다음 페이지의 7일 플랜이 그 반복을 요일별로 잘게 나눠 드립니다.</div></div>`;
 
   /* P6 — 7일 회복 플랜 */
   h+=PG('7일 회복 플랜');
@@ -2908,7 +2916,8 @@ function renderSReport(who){
   ${talks.map(t=>`<div class="selftalk"><p>“${t}”</p></div>`).join('')}
   ${cur.open&&(cur.open.o1||cur.open.o2)?`<h2 class="sec" style="font-size:15px;margin-top:20px">내가 적어 둔 문장</h2><p class="sub">체크를 마치며 ${relLabel}가 직접 적은 문장이에요 — 저희는 해석하지 않아요. 다음 체크 때 다시 읽어 보면, 그 자체로 변화가 보입니다.</p>
   ${cur.open.o1?`<div class="interp"><div class="i-top"><span class="i-name">나를 지치게 하는 것</span></div><p>“${cur.open.o1}”</p></div>`:''}
-  ${cur.open.o2?`<div class="interp"><div class="i-top"><span class="i-name">나를 버티게 하는 것</span></div><p>“${cur.open.o2}”</p></div>`:''}`:''}</div>`;
+  ${cur.open.o2?`<div class="interp"><div class="i-top"><span class="i-name">나를 버티게 하는 것</span></div><p>“${cur.open.o2}”</p></div>`:''}`:''}
+  <div class="cycle-note" style="margin-top:12px"><b>이 문장들이 하는 일</b> — 지쳤을 때 머릿속에 먼저 떠오르는 말은 대개 "나는 왜 이것밖에 못 하지"예요. 심리학은 이런 자동적인 자기비판을 다른 문장으로 <b>바꿔 끼우는 연습</b>이 실제로 스트레스 반응을 낮춘다는 것을 반복해서 확인해 왔어요(자기자비 연구). 위 문장이 오글거리게 느껴져도 괜찮아요 — 소리 내어 읽는 것이 아니라, 자기비판이 올라오는 순간 하나를 떠올리는 것만으로 충분합니다. 문장은 ${relLabel}의 이번 결과에서 가장 무거웠던 영역에 맞춰 골랐고, 다음 체크 때 결과가 달라지면 문장도 달라져요.</div></div>`;
 
   /* P8 — 추천 도서 */
   h+=PG('추천 도서');
