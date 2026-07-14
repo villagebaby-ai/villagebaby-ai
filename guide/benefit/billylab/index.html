@@ -113,7 +113,7 @@ body{
 .open-ta{width:100%;font-family:inherit;font-size:14px;line-height:1.6;padding:11px 13px;border:1.5px solid var(--gray-300);border-radius:12px;margin-top:12px;min-height:74px;resize:vertical;color:var(--ink)}
 .open-ta:focus{outline:none;border-color:var(--main)}
 .pagin2{display:flex;align-items:center;justify-content:center;gap:14px}
-.pagin2 .pnav{min-width:88px;min-height:44px;font-size:14px;font-weight:800;border-radius:999px;border:1.5px solid var(--main);background:#fff;color:var(--main);cursor:pointer}
+.pagin2 .pnav{width:46px;min-width:46px;height:46px;font-size:22px;font-weight:800;border-radius:50%;border:1.5px solid var(--main);background:#fff;color:var(--main);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 0 2px;line-height:1}
 .pagin2 .pn-next{background:var(--main);color:#fff}
 .pagin2 .pnav:disabled{opacity:.32;cursor:default}
 .pagin2 .pg-stat{font-size:14px;color:var(--gray);min-width:56px;text-align:center}
@@ -1581,9 +1581,9 @@ function renderPagedInto(cid,html,firstTitle){
   const el=$(cid);
   el.innerHTML=pages.map((p,i)=>`<div class="rpage${i===0?' on':''}">${p.h}</div>`).join('')
    +`<div class="pagin pagin2" id="${cid}-pg">
-      <button class="pnav pn-prev" onclick="rpNav('${cid}',-1)" disabled>‹ 이전</button>
+      <button class="pnav pn-prev" onclick="rpNav('${cid}',-1)" aria-label="이전 페이지" disabled>‹</button>
       <div class="pg-stat"><b id="${cid}-cur">1</b><span> / ${pages.length}</span></div>
-      <button class="pnav pn-next" onclick="rpNav('${cid}',1)"${pages.length<2?' disabled':''}>다음 ›</button>
+      <button class="pnav pn-next" onclick="rpNav('${cid}',1)" aria-label="다음 페이지"${pages.length<2?' disabled':''}>›</button>
     </div>
     <div class="pagin-label" id="${cid}-pl">${pages[0].t}</div>`;
 }
@@ -1814,7 +1814,10 @@ function renderReport(who,ovr){
   /* S1a 결과 요약 (PBCG 문법) */
   h+=`<div class="sum-box"><div class="sum-label">나의 결과 요약</div>
     ${summaryLines(r.f,nm).map(s=>`<p>${s.replace(/「(.+?)」/,'「<b>$1</b>」')}</p>`).join('')}
-  </div>`;
+  </div>
+  <div class="section" style="padding-top:4px"><div class="card"><h4 style="font-size:13.5px;font-weight:800;margin-bottom:8px">이 리포트의 구성</h4>
+  ${(isInfant?['반응 성향','대표 기질 특성','기질 프로파일','척도 해설 ①','척도 해설 ②','이럴 때 힘들 수 있어요','하루의 장면별 가이드','추천 도서','자주 묻는 질문','부록 · 점수표','전문가 상담 안내','마무리·과학적 근거']:['기질 유형','대표 기질 특성','기질 프로파일','척도 해설 ①','척도 해설 ②','이럴 때 힘들 수 있어요','하루의 장면별 가이드','추천 도서','자주 묻는 질문','부록 · 점수표','전문가 상담 안내','마무리·과학적 근거']).map((t2,i)=>`<div style="font-size:12.5px;padding:3.5px 0;color:#555"><b style="color:var(--main);display:inline-block;width:24px">${i+2}</b>${t2}</div>`).join('')}
+  <div class="fnote" style="margin-top:8px">시간이 없다면 7페이지 '이럴 때 힘들 수 있어요'부터 봐 주세요 — 오늘 바로 쓸 수 있는 가이드예요.</div></div></div>`;
 
   /* S1 type — 기질 유형 */
   h+=PG('기질 유형');
@@ -1840,6 +1843,10 @@ function renderReport(who,ovr){
     h+=`<div class="section" style="padding-top:4px;padding-bottom:8px">
       <h2 class="sec" style="font-size:15px">이런 순간에 반짝여요</h2>
       ${T.shine.map(s=>`<div style="font-size:13.5px;padding:8px 12px;background:var(--gray-100);border-radius:12px;margin-bottom:6px">✨ ${s}</div>`).join('')}
+      <h2 class="sec" style="font-size:15px;margin-top:18px">여덟 유형 안에서 ${nm}의 자리</h2>
+      <p class="sub">유형은 활력·감정·조절 세 축의 높낮이 조합으로 나뉘어요</p>
+      <div class="pmap">${Object.keys(TYPES).map(k=>`<div class="pm-cell ${k===t.key?'on':''}"><b>${TYPES[k].name}</b></div>`).join('')}</div>
+      <div class="cycle-note" style="margin-top:12px">유형은 아이를 가두는 칸이 아니라 이해를 돕는 지도예요. 기질은 원래 연속된 스펙트럼이라 어떤 아이도 유형 하나에 딱 맞아떨어지지 않고, 같은 유형이라도 대표 특성 조합(다음 페이지)까지 보면 결과는 1,320가지로 갈라집니다. 유형명은 "아이를 이해하는 첫 문장"으로만 써 주시고, 아이 앞에서 "너는 ○○형이라 그래"처럼 설명의 도구로 쓰는 것은 피해 주세요 — 이름표가 되는 순간 아이의 변화 가능성을 좁힐 수 있어요.</div>
     </div>`;
   }
 
@@ -1859,6 +1866,7 @@ function renderReport(who,ovr){
       <h4>${t.pole[0]}<small>${SCALES[t.sc].name} · ${bandName(t.v)}${t.d<0.8?' · 자라는 중':''}</small></h4>
       <p>${t.pole[1].replaceAll('{n}',nm)}</p>
     </div></div>`).join('')}
+  <div class="cycle-note" style="margin-top:12px"><b>대표 특성은 어떻게 뽑았을까요</b> — 12개 하위척도 가운데 중간값에서 가장 멀리 떨어진, 그러니까 ${nm}에게서 가장 뚜렷하게 나타나는 세 가지를 순서대로 골랐어요. 유형이 아이의 큰 틀이라면 대표 특성은 그 안의 세부 무늬라, 같은 유형의 아이라도 이 세 가지 조합은 거의 겹치지 않아요. 아이를 누군가에게 소개해야 할 때(기관 선생님, 조부모님) 유형명보다 이 세 문장을 읽어 드리는 쪽이 아이를 훨씬 정확하게 전달합니다. '자라는 중' 표시가 붙은 특성은 아직 뚜렷하게 굳어지지 않았다는 뜻이라, 다음 검사에서 바뀔 수 있어요.</div>
   </div>`;
 
   /* S2 profile — TCI 형식: 요인 표 + 하위척도 양극 차트 */
@@ -1950,6 +1958,7 @@ function renderReport(who,ovr){
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${nm}의 기질 결과에 맞춰 골라 본 육아서예요</p>
     ${books.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
     <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
+    <div class="cycle-note" style="margin-top:12px"><b>이렇게 활용해 보세요</b> — 네 권을 다 읽으실 필요는 없어요. 제목과 소개를 보고 지금 가장 마음이 가는 한 권만 고르세요. 육아서는 처음부터 끝까지 정독하는 책이 아니라, 목차에서 우리 집 장면과 닮은 챕터를 먼저 펴 보는 책이에요. 한 챕터에서 시도해 볼 것 하나를 찾았다면, 그 책은 제 몫을 다한 것입니다. 그리고 다음 재검사 때 결과가 달라지면 추천 도서도 새로 골라 드려요.</div>
   </div>`;
 
   /* 자주 묻는 질문 — 결과에 맞는 질문 우선 선별 */
@@ -1973,7 +1982,8 @@ function renderReport(who,ovr){
     ${factorOrder.map(([fk,scs])=>scs.map((sc,si)=>`<tr>${si===0?`<td class="fname" rowspan="${scs.length}">${FACTORS[fk]}</td>`:''}<td>${SCALES[sc].name}</td><td class="fnum">${r.cnts&&(r.cnts[sc]||0)<3?'—':r.sub[sc].toFixed(1)}</td><td class="fnum">${r.cnts&&(r.cnts[sc]||0)<3?'응답 부족':bandName(r.sub[sc])}</td></tr>`).join('')).join('')}
     </tbody></table>
     <div class="fnote"><b>*</b> 위치는 베타 응답 분포 기반 5구간 밴드입니다. 모든 척도의 높낮이에는 우열이 없으며, 응답 시점의 아이 상태에 따라 달라질 수 있습니다.</div>
-  </div></div>`;
+  </div>
+  <div class="cycle-note" style="margin-top:12px"><b>이 표를 읽는 법</b> — 숫자보다 패턴을 봐 주세요. 점수 하나하나의 높낮이보다, "우리 아이는 어떤 척도들이 함께 높고 함께 낮은가"라는 모양이 아이를 더 잘 설명합니다. 그리고 이 표는 6개월 뒤 재검사와 나란히 놓았을 때 가장 쓸모가 커요 — 변한 척도는 발달과 환경의 이야기를, 변하지 않은 척도는 아이의 타고난 결을 보여 줍니다. 지금 결과지를 저장해 두시면 다음 검사 때 비교해 볼 수 있어요.</div></div>`;
 
   /* 전문가 상담 안내 (red flag) */
   h+=PG('전문가 상담 안내');
@@ -1987,6 +1997,11 @@ function renderReport(who,ovr){
     <div class="sig"><span class="dot">›</span><span>익숙한 환경에서도 불안이 심해 놀이·등원 같은 일상이 어려울 때</span></div>
   </div>
   <div class="cycle-note">해당된다고 해서 문제가 있다는 뜻이 아니에요. 다만 이런 신호는 기질검사가 아니라 <b>전문가 평가의 영역</b>이라, 소아청소년과·발달클리닉이나 영유아 건강검진(발달선별검사)을 통해 확인해 보시길 권해요. 확인해서 아무 일 아니면 그것으로 안심이고, 도움이 필요한 경우라면 빨리 시작할수록 아이에게 좋습니다.</div>
+  <div class="lg-card" style="margin-top:12px"><div class="lg-head"><span class="lg-ico">📋</span><h4>상담을 가기로 했다면, 이렇게 준비하면 좋아요</h4></div>
+    <div class="lg-tip"><span class="dot">1</span><span>걱정되는 장면을 휴대폰 영상으로 2~3개 찍어 두세요. 진료실에서 아이는 평소와 다르게 행동하는 경우가 많아, 짧은 일상 영상이 어떤 설명보다 정확합니다.</span></div>
+    <div class="lg-tip"><span class="dot">2</span><span>어린이집·유치원에 다닌다면 담임 선생님께 기관에서의 모습을 미리 여쭤 보세요. 집과 기관에서 모두 나타나는 신호인지가 전문가에게 중요한 정보예요.</span></div>
+    <div class="lg-tip"><span class="dot">3</span><span>최근 영유아 건강검진 결과지와 이 리포트를 함께 가져가세요. 언제부터, 얼마나 자주였는지 메모해 두면 진료 시간이 훨씬 알차집니다.</span></div>
+  </div>
   <div class="fnote">본 안내 문구는 이수진 임상심리전문가의 감수 절차를 거칩니다.</div></div>`;
 
   /* S4 next */
@@ -2257,7 +2272,10 @@ function renderPReport(who,ovr){
     <p>그리고 「<b>${nTxt}</b>」.</p>
     <p>아이와 함께할 때는 「<b>${ST.name}</b>」 스타일로 반응합니다.</p>
   </div>
-  <div class="section" style="padding-top:4px"><div class="cycle-note">이 리포트는 ${relLabel}를 평가하지 않아요. 양육 스타일은 성적이 아니라 <b>내가 아이를 만나는 고유한 방식</b>이고, 어떤 스타일이든 빛나는 장면과 걸리는 장면이 있을 뿐입니다. 다음 페이지부터 나의 스타일 → 다섯 가지 축 → 빛나는 순간과 흔들리는 순간 → 아이와의 장면별 가이드 순서로 이어집니다.</div></div>`;
+  <div class="section" style="padding-top:4px"><div class="cycle-note">이 리포트는 ${relLabel}를 평가하지 않아요. 양육 스타일은 성적이 아니라 <b>내가 아이를 만나는 고유한 방식</b>이고, 어떤 스타일이든 빛나는 장면과 걸리는 장면이 있을 뿐입니다.</div>
+  <div class="card" style="margin-top:12px"><h4 style="font-size:13.5px;font-weight:800;margin-bottom:8px">이 리포트의 구성</h4>
+  ${['나의 양육 스타일','나의 프로파일 (5축)','기질 3축 해설','양육 반응 2축 해설','빛나는 순간','흔들릴 수 있는 순간','아이와 만나는 장면별 가이드','나에게 건네는 말','추천 도서','자주 묻는 질문','마무리·과학적 근거'].map((t2,i)=>`<div style="font-size:12.5px;padding:3.5px 0;color:#555"><b style="color:var(--main);display:inline-block;width:24px">${i+2}</b>${t2}</div>`).join('')}
+  <div class="fnote" style="margin-top:8px">급하신 날은 8페이지 '장면별 가이드'만 먼저 보셔도 좋아요.</div></div></div>`;
 
   /* P2 — 양육 스타일 */
   h+=PG('나의 양육 스타일');
@@ -2306,7 +2324,9 @@ function renderPReport(who,ovr){
   h+=`<div class="section pb"><h2 class="sec">아이에게 반응하는 나의 방향</h2><p class="sub">이 두 축은 높낮이가 아니라 방향이에요 — 어느 쪽이든 그 방향의 강점과 숙제가 있어요</p>
   <div class="interp"><div class="i-top"><span class="i-name">개입 축 · ${sub.R1>=4?'구조화':'자율 지지'} 방향</span><span class="i-band">${sub.R1.toFixed(1)}점</span></div><p>${PAXIS_INTERP.R1[pBand(sub.R1)==='mid'?'mid':(sub.R1>=4.3?'hi':'lo')]}</p></div>
   <div class="interp"><div class="i-top"><span class="i-name">안전 축 · ${sub.R2>=4?'보호 중시':'도전 허용'} 방향</span><span class="i-band">${sub.R2.toFixed(1)}점</span></div><p>${PAXIS_INTERP.R2[pBand(sub.R2)==='mid'?'mid':(sub.R2>=4.3?'hi':'lo')]}</p></div>
-  <div class="fnote">중간 범위(3.7~4.3)로 나온 축은 상황에 따라 양방향을 오가는 유연 구간이에요.</div></div>`;
+  <div class="fnote">중간 범위(3.7~4.3)로 나온 축은 상황에 따라 양방향을 오가는 유연 구간이에요.</div>
+  <div class="cycle-note" style="margin-top:12px"><b>왜 이 두 축을 볼까요</b> — 수십 년의 양육 행동 연구가 반복해서 확인한 것은, 아이의 발달에 영향을 주는 것이 부모의 성격 자체가 아니라 <b>아이에게 실제로 어떻게 반응하는가</b>라는 사실이에요. 그 반응을 가장 크게 가르는 두 갈래가 "얼마나 개입하는가"와 "위험 앞에서 어떻게 하는가"입니다. 앞 페이지의 기질 3축이 타고난 바탕이라면, 이 두 축은 바탕 위에서 만들어진 나의 반응 습관이에요. 그래서 기질보다 조율의 여지가 크고, 이 리포트의 가이드도 대부분 이 두 축을 다룹니다.</div>
+  <div class="cycle-note"><b>두 축이 만나면</b> — 개입 방향과 안전 방향이 조합되어 앞에서 본 네 가지 스타일이 됩니다. 예를 들어 구조화 + 보호 중시는 '세심한 안전 설계자', 자율 지지 + 도전 허용은 '자유로운 응원가'가 돼요. 같은 스타일이라도 두 축의 점수가 얼마나 뚜렷한지에 따라 표현 강도가 달라지니, 위의 점수를 함께 봐 주세요.</div></div>`;
 
   /* P6 — 빛나는 순간 */
   h+=PG('빛나는 순간');
@@ -2314,6 +2334,7 @@ function renderPReport(who,ovr){
   h+=`<div class="section pb"><h2 class="sec">내 스타일이 빛나는 순간</h2><p class="sub">이미 잘하고 있는 것들이에요 — 그대로 이어 가시면 돼요</p>
     ${ST.shine.map(s2=>`<div style="font-size:13.5px;padding:10px 13px;background:var(--gray-100);border-radius:12px;margin-bottom:7px;line-height:1.7">✨ ${s2}</div>`).join('')}
     ${shineEx.map(s2=>`<div style="font-size:13.5px;padding:10px 13px;background:var(--main-100);border-radius:12px;margin-bottom:7px;line-height:1.7">✨ ${s2.t}</div>`).join('')}
+  <div class="cycle-note" style="margin-top:12px"><b>강점을 먼저 보는 이유</b> — 부모 교육 연구에서 일관되게 확인되는 사실이 있어요. 부모가 자신의 약점을 고치려 애쓸 때보다 <b>이미 가진 강점을 의식적으로 더 쓸 때</b> 양육 효능감이 빨리 회복된다는 것이에요. 위 목록에서 하나를 골라, 이번 주에 "의도적으로 한 번 더" 써 보세요. 예를 들어 루틴이 강점이라면 아이가 가장 힘들어하는 시간대에 작은 루틴을 하나 새로 심어 보는 식이에요. 강점은 쓸수록 선명해지고, 선명한 강점 하나가 흔들리는 날의 기둥이 됩니다.</div>
   </div>`;
 
   /* P7 — 흔들릴 수 있는 순간 */
@@ -2334,7 +2355,8 @@ function renderPReport(who,ovr){
   /* P9 — 나에게 건네는 말 (+부부) */
   h+=PG('나에게 건네는 말');
   h+=`<div class="section pb"><h2 class="sec">오늘, 나에게 건네 보세요</h2><p class="sub">${relLabel}의 정서 반응성 결과에 맞춰 골랐어요</p>
-  ${P_SELFTALK[p2b].map(t2=>`<div class="selftalk"><p>“${t2}”</p></div>`).join('')}`;
+  ${P_SELFTALK[p2b].map(t2=>`<div class="selftalk"><p>“${t2}”</p></div>`).join('')}
+  <div class="cycle-note" style="margin-top:12px"><b>자기 대화가 왜 중요할까요</b> — 아이에게 하는 말투는 결국 나에게 하는 말투를 닮아 갑니다. 스스로를 다그치는 부모는 아이도 다그치기 쉽고, 스스로에게 관대한 부모는 아이의 실수에도 여유가 생겨요. 그래서 말투 연습의 시작은 아이가 아니라 나입니다. 위 문장이 마음에 닿지 않는 날은 그냥 지나가도 괜찮아요 — 다만 유난히 힘들었던 날 밤, 이 페이지를 한 번 다시 열어 봐 주세요.</div>`;
   if(otherP){
     const diffs=Object.keys(PSCALES).map(sc=>({sc,d:Math.abs(sub[sc]-otherP.r.sub[sc])})).sort((a,b)=>b.d-a.d).filter(x=>x.d>=1.2).slice(0,2);
     if(diffs.length){
@@ -2351,6 +2373,7 @@ function renderPReport(who,ovr){
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${relLabel}의 양육기질 결과에 맞춰 골라 본 책이에요</p>
     ${pickBooksParent(sub,who).map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
     <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
+    <div class="cycle-note" style="margin-top:12px"><b>이렇게 활용해 보세요</b> — 네 권을 다 읽으실 필요는 없어요. 제목과 소개를 보고 지금 가장 마음이 가는 한 권만 고르세요. 육아서는 처음부터 끝까지 정독하는 책이 아니라, 목차에서 우리 집 장면과 닮은 챕터를 먼저 펴 보는 책이에요. 한 챕터에서 시도해 볼 것 하나를 찾았다면, 그 책은 제 몫을 다한 것입니다. 그리고 다음 재검사 때 결과가 달라지면 추천 도서도 새로 골라 드려요.</div>
   </div>`;
 
   /* P11 — FAQ */
@@ -2492,7 +2515,10 @@ function renderFit(who){
     <p>이 조합의 강점 <b>${str.length}가지</b>와 미리 알아 둘 지점 <b>${cau.length}가지</b>를 찾았어요.</p>
     <p>발달을 결정하는 것은 아이의 기질이 아니라 「<b>기질과 양육의 맞물림</b>」이라는 것이 이 리포트의 출발점이에요. 아래 가이드는 모두 '아이를 고치는 법'이 아니라 '내 반응을 맞춰 가는 법'입니다.</p>
   </div>
-  <div class="section" style="padding-top:4px"><div class="cycle-note">이 리포트는 두 검사의 결과를 교차해 만들어요. 조합에는 좋고 나쁨이 없습니다 — 어떤 조합이든 자연스럽게 잘 흘러가는 지점과 유난히 자주 부딪히는 지점이 있을 뿐이고, 그 지도를 미리 아는 것만으로 절반은 해결됩니다.</div></div>`;
+  <div class="section" style="padding-top:4px"><div class="cycle-note">이 리포트는 두 검사의 결과를 교차해 만들어요. 조합에는 좋고 나쁨이 없습니다 — 어떤 조합이든 자연스럽게 잘 흘러가는 지점과 유난히 자주 부딪히는 지점이 있을 뿐이고, 그 지도를 미리 아는 것만으로 절반은 해결됩니다.</div>
+  <div class="card" style="margin-top:12px"><h4 style="font-size:13.5px;font-weight:800;margin-bottom:8px">이 리포트의 구성</h4>
+  ${['조합 한눈에 · 우리 조합의 결','서로 잘 맞는 지점','부딪히기 쉬운 장면','우리 집 반응 3원칙','이런 말이 잘 통해요','아이의 눈으로 보면','추천 도서','자주 묻는 질문','이 리포트의 근거','마무리'].map((t2,i)=>`<div style="font-size:12.5px;padding:3.5px 0;color:#555"><b style="color:var(--main);display:inline-block;width:24px">${i+2}</b>${t2}</div>`).join('')}
+  <div class="fnote" style="margin-top:8px">시간이 없다면 5페이지 '우리 집 반응 3원칙'만 냉장고에 붙여 두세요.</div></div></div>`;
 
   /* P2 — 조합 한눈에 */
   h+=PG('조합 한눈에');
@@ -2519,6 +2545,7 @@ function renderFit(who){
   ${str.map(s2=>`<div class="scene" style="border-color:var(--main-200)"><div class="s-tag" style="color:var(--main-deep)">강점 ✦ ${s2.t}</div>
     <h4 style="font-size:13.5px;font-weight:500;color:#555;margin-top:6px">${s2.d}</h4>
     <div class="fix" style="background:var(--main-100)"><span class="sw">💙</span><div><b style="font-size:12px;color:var(--main-deep)">이렇게 이어 가 보세요</b><br>${s2.f}</div></div></div>`).join('')}
+  <div class="cycle-note" style="margin-top:12px"><b>강점은 그냥 두면 되는 게 아니에요</b> — 잘 맞는 지점은 공기처럼 자연스러워서 오히려 잊히기 쉬워요. 그런데 조화적합도 연구가 말하는 좋은 관계는 마찰이 없는 관계가 아니라, <b>잘 맞는 순간이 자주 반복되는 관계</b>입니다. 위의 장면들을 "우리가 원래 잘하는 것"으로 이름 붙여 두고 일부러 자주 만들어 주세요. 잘 맞는 순간의 저금이 쌓여 있으면, 부딪히는 순간(다음 페이지)이 와도 관계가 흔들리지 않아요.</div>
   </div>`;
 
   /* P4 — 부딪히기 쉬운 장면 */
@@ -2552,6 +2579,7 @@ function renderFit(who){
   h+=`<div class="section pb"><h2 class="sec">${nm}의 눈으로 보면</h2><p class="sub">검사 결과를 아이의 목소리로 옮겨 봤어요 — 힘든 순간에 이 페이지를 다시 열어 보세요</p>
   ${eyes.map(e2=>`<div class="selftalk"><p>“${e2}”</p></div>`).join('')}
   <div class="fnote">아이가 실제로 한 말이 아니라, 기질 연구가 말하는 아이의 내적 경험을 1인칭으로 풀어 쓴 것이에요.</div>
+  <div class="cycle-note" style="margin-top:12px"><b>이 페이지가 필요한 이유</b> — 힘든 장면의 한가운데에서 부모의 머릿속에는 "왜 이러지?"라는 질문이 먼저 올라와요. 그 질문을 "지금 이 아이의 눈에는 뭐가 보일까?"로 바꾸는 것이 관점 전환이고, 부모 교육 프로그램들이 공통으로 훈련하는 핵심 기술이에요. 아이의 행동을 나에 대한 공격이 아니라 기질의 표현으로 읽게 되면, 같은 장면에서 화 대신 방법이 먼저 떠오릅니다. 위 세 문단을 힘든 순간의 "아이 쪽 자막"이라고 생각하고 다시 열어 봐 주세요.</div>
   </div>`;
 
   /* P8 — 함께 읽어 보면 좋아요 */
@@ -2567,6 +2595,7 @@ function renderFit(who){
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">두 사람의 조합에 맞춰 골라 본 책이에요</p>
     ${fitBooks.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
     <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
+    <div class="cycle-note" style="margin-top:12px"><b>이렇게 활용해 보세요</b> — 네 권을 다 읽으실 필요는 없어요. 제목과 소개를 보고 지금 가장 마음이 가는 한 권만 고르세요. 육아서는 처음부터 끝까지 정독하는 책이 아니라, 목차에서 우리 집 장면과 닮은 챕터를 먼저 펴 보는 책이에요. 한 챕터에서 시도해 볼 것 하나를 찾았다면, 그 책은 제 몫을 다한 것입니다. 그리고 다음 재검사 때 결과가 달라지면 추천 도서도 새로 골라 드려요.</div>
   </div>`;
 
   /* P9 — FAQ */
@@ -2584,13 +2613,19 @@ function renderFit(who){
     <li>기질에 맞춰 부모의 반응을 조율하는 개입 프로그램(INSIGHTS 등)은 무작위 대조 연구에서 아동 문제행동 감소 효과가 확인되어 있어요.</li>
     <li>조합 해석은 아이 기질검사 12개 하위척도와 양육기질 5축의 교차 규칙으로 계산되며, 규칙은 임상심리전문가의 감수 절차를 거칩니다.</li>
     <li>${isYoung?'18개월 미만은 기질이 자리 잡는 중이라 유형 대신 반응 성향으로 조합을 해석했어요. 돌 이후 재검사에서 더 안정된 조합을 만날 수 있어요.':'아이의 기질 표현은 발달과 함께 달라지므로, 6개월 간격 재검사 시 조합 리포트도 새로 계산됩니다.'}</li>
-  </div></div>`;
+  </div>
+  <h2 class="sec" style="font-size:15px;margin-top:18px">리포트에 나온 용어, 쉽게 풀면</h2>
+  <div class="interp"><div class="i-top"><span class="i-name">조화적합도 (Goodness-of-Fit)</span></div><p>아이의 기질과 주변 환경(특히 부모의 반응)이 얼마나 잘 맞물리는가를 뜻해요. 열쇠와 자물쇠의 관계와 같아서, 좋은 열쇠·나쁜 열쇠가 따로 있는 게 아니라 맞는 조합과 조율이 필요한 조합이 있을 뿐이에요.</p></div>
+  <div class="interp"><div class="i-top"><span class="i-name">기질</span></div><p>아이가 세상에 반응하는 타고난 방식이에요. 성격보다 먼저 있는 바탕색으로, 좋고 나쁨이 없고 바꾸는 대상이 아니라 이해하는 대상이에요.</p></div>
+  <div class="interp"><div class="i-top"><span class="i-name">양육 스타일</span></div><p>부모가 아이에게 반응하는 습관의 묶음이에요. 기질과 달리 조율의 여지가 커서, 이 리포트의 가이드는 아이의 기질이 아니라 부모의 반응을 다뤄요.</p></div>
+  </div>`;
 
   /* P11 — 마무리 */
   h+=PG('마무리');
   h+=`<div class="section no-print"><h2 class="sec">다음 단계로 이어 가세요</h2>
     <div class="next-card"><div class="n-emoji">${who==='mom'?'👨':'👩'}</div><div><div class="tit">${who==='mom'?'아빠':'엄마'} 버전 조합 리포트도 있어요</div><div class="desc">같은 아이라도 부모마다 조합이 달라요</div></div><button class="btn btn-line btn-sm" onclick="inviteShare()">초대</button></div>
     <div class="next-card"><div class="n-emoji">📈</div><div><div class="tit">아이가 자라면 조합 리포트도 자라요</div><div class="desc">다음 시기의 기질검사를 마치면 기질 조합 리포트도 새로 업데이트돼요</div></div></div>
+    <div class="cycle-note" style="margin-top:12px"><b>이 리포트를 오래 쓰는 법</b> — ① 오늘은 5페이지의 3원칙만 기억하세요. 나머지는 필요할 때 찾아보는 사전이에요. ② 2주 동안 3원칙 중 하나를 실천해 보고, 아이의 반응이 달라졌는지 부부가 함께 이야기해 보세요. ③ 유난히 힘든 날에는 '아이의 눈으로 보면' 페이지를 다시 열어 보세요. ④ 6개월 뒤 재검사하면 조합 리포트가 새로 계산돼요 — 지금 리포트를 PDF로 저장해 두면 아이와 나의 변화를 나란히 볼 수 있습니다.</div>
   </div>
   <div class="disclaim">본 리포트는 두 검사의 응답을 조합한 참고 자료이며 진단이 아닙니다. 조합 해석은 부모의 잘잘못이 아닌 '기질 간 상호작용'에 대한 안내입니다. · 베이비빌리 멤버십 혜택</div>`;
 
@@ -2881,7 +2916,8 @@ function renderSReport(who){
   const sBooks=pickBooksFor(sTags,4,null,'self',Math.round(overall*100)%89+1);
   h+=`<div class="section pb" style="padding-bottom:8px"><h2 class="sec">함께 읽어 보면 좋아요</h2><p class="sub">${relLabel}의 컨디션 결과에 맞춰, 부모의 마음을 돌보는 책을 골라 봤어요</p>
   ${sBooks.map(b=>`<div class="book"><span class="b-ico">📖</span><div><b>${b.t}</b><span class="b-a"> · ${b.a}</span><p>${b.w}</p></div></div>`).join('')}
-  <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p></div>`;
+  <p style="font-size:11px;color:var(--gray);margin-top:6px">* 추천 도서는 참고용이며, 저자·출판사와 어떤 이해관계도 없이 선정했어요.</p>
+    <div class="cycle-note" style="margin-top:12px"><b>이렇게 활용해 보세요</b> — 네 권을 다 읽으실 필요는 없어요. 제목과 소개를 보고 지금 가장 마음이 가는 한 권만 고르세요. 육아서는 처음부터 끝까지 정독하는 책이 아니라, 목차에서 우리 집 장면과 닮은 챕터를 먼저 펴 보는 책이에요. 한 챕터에서 시도해 볼 것 하나를 찾았다면, 그 책은 제 몫을 다한 것입니다. 그리고 다음 재검사 때 결과가 달라지면 추천 도서도 새로 골라 드려요.</div></div>`;
 
   /* P9 — FAQ (결과 영역에 맞는 질문 우선) */
   const sCondFaqs=SFAQ_COND.filter(f2=>{try{return f2.c(dom);}catch(e){return false;}}).slice(0,2);
