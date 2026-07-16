@@ -215,7 +215,35 @@
     }
     .foot .brand { margin-top: 24px; font-size: 12.5px; color: #8C9AA8; font-weight: 700; line-height: 1.7; }
     .foot .brand b { color: var(--blue); font-weight: 800; }
-  </style>
+  
+/* --- 보험사 토글 (현대해상 우선) --- */
+.ins-primary-tag { display:inline-block; background:var(--blue); color:#fff; font-size:11.5px; font-weight:800; padding:3px 9px; border-radius:999px; margin-bottom:9px; letter-spacing:-0.2px; }
+.ins-others { display:none; }
+.ins-others.open { display:block; animation:fadeIn .25s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:none} }
+.ins-toggle {
+  width:100%; background:#fff; border:1.5px solid #D5E4F6; border-radius:14px;
+  padding:14px 16px; font-size:14.5px; font-weight:800; color:var(--blue-dark);
+  cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px;
+  margin-bottom:14px; font-family:inherit; letter-spacing:-0.3px;
+  transition:background .15s ease;
+}
+.ins-toggle:hover { background:#F5F9FE; }
+.ins-toggle .tg-arrow { transition:transform .25s ease; font-size:12px; }
+.ins-toggle.open .tg-arrow { transform:rotate(180deg); }
+/* --- 방법2 전화번호 인라인 --- */
+.tel-list { display:flex; flex-direction:column; gap:8px; margin-top:12px; }
+.tel-item {
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:#fff; border:1.5px solid #E3EEFA; border-radius:12px; padding:11px 14px;
+  text-decoration:none; transition:border-color .15s ease;
+}
+.tel-item:hover { border-color:var(--blue); }
+.tel-item .ti-name { font-size:14px; font-weight:800; color:#1E3247; display:flex; align-items:center; gap:7px; }
+.tel-item .ti-badge { background:#EAF3FD; color:var(--blue); font-size:10.5px; font-weight:800; padding:2px 7px; border-radius:999px; }
+.tel-item .ti-num { font-size:15px; font-weight:800; color:var(--blue-dark); letter-spacing:-0.2px; }
+.tel-item .ti-num::before { content:'📞 '; font-size:12px; }
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -301,10 +329,11 @@
 
       <!-- 보험사별 등록 방법 (방법 1 바로가기) -->
       <div class="ins-block">
-        <div class="ins-block-title">🏢 보험사별 등록 방법<span>가입한 보험사를 찾아 홈페이지로 이동하세요</span></div>
+        <div class="ins-block-title">🏢 보험사별 등록 방법<span>가입하신 보험사를 찾아 바로가기 하세요</span></div>
 
         <!-- 현대해상 -->
         <div class="ins-card">
+          <span class="ins-primary-tag">가장 많이 가입하신 보험사</span>
           <div class="ins-head">
             <img class="ins-logo" src="logos/hyundai.png" alt="현대해상" />
             <span class="ins-name">현대해상<small>자녀등록(태아확정) 전용 페이지 운영</small></span>
@@ -317,7 +346,12 @@
           <div class="ins-row"><span class="k">고객센터</span><span class="v"><a class="tel" href="tel:15885656">1588-5656</a></span></div>
         </div>
 
-        <!-- DB손해보험 -->
+        <button class="ins-toggle" id="insToggle" type="button" aria-expanded="false" aria-controls="insOthers">
+          <span>다른 보험사 보기 (DB손해보험 · 삼성화재 · 메리츠화재)</span><span class="tg-arrow">▼</span>
+        </button>
+
+        <div class="ins-others" id="insOthers">
+<!-- DB손해보험 -->
         <div class="ins-card">
           <div class="ins-head">
             <img class="ins-logo" src="logos/db.png" alt="DB손해보험" />
@@ -359,7 +393,9 @@
           <div class="ins-row"><span class="k">고객센터</span><span class="v"><a class="tel" href="tel:15667711">1566-7711</a></span></div>
         </div>
 
-        <p class="ins-disclaimer">※ 메뉴 이름은 가입 경로(설계사/다이렉트)·앱 버전에 따라 조금씩 다를 수 있어요.</p>
+                </div>
+
+<p class="ins-disclaimer">※ 메뉴 이름은 가입 경로(설계사/다이렉트)·앱 버전에 따라 조금씩 다를 수 있어요.</p>
       </div>
 
       <!-- 방법 2 : 고객센터 -->
@@ -372,10 +408,29 @@
           앱·홈페이지가 익숙하지 않다면 <b>보험사 고객센터</b>에 전화해서 자녀 주민등록번호를 알려주면 바로 등록돼요.
         </div>
         <div class="steps">
-          <div class="step"><span class="sn">1</span><span class="st">가입한 보험사 <b>고객센터</b>에 전화 (번호는 아래 참고)</span></div>
+          <div class="step"><span class="sn">1</span><span class="st">가입하신 보험사 <b>고객센터</b>로 전화 (아래에서 바로 걸 수 있어요)</span></div>
           <div class="step"><span class="sn">2</span><span class="st"><b>"태아보험 자녀 등록"</b> 이라고 말하기</span></div>
           <div class="step"><span class="sn">3</span><span class="st">본인 확인 후 자녀 <b>이름·주민번호</b> 전달 → 완료</span></div>
         </div>
+        <div class="tel-list">
+          <a class="tel-item" href="tel:15885656">
+            <span class="ti-name">현대해상 <span class="ti-badge">가장 많음</span></span>
+            <span class="ti-num">1588-5656</span>
+          </a>
+          <a class="tel-item" href="tel:15880100">
+            <span class="ti-name">DB손해보험</span>
+            <span class="ti-num">1588-0100</span>
+          </a>
+          <a class="tel-item" href="tel:15885114">
+            <span class="ti-name">삼성화재</span>
+            <span class="ti-num">1588-5114</span>
+          </a>
+          <a class="tel-item" href="tel:15667711">
+            <span class="ti-name">메리츠화재</span>
+            <span class="ti-num">1566-7711</span>
+          </a>
+        </div>
+
       </div>
 
       <!-- 방법 3 : 상담사에게 등본 -->
@@ -430,5 +485,21 @@
     </footer>
 
   </div>
+
+<script>
+(function(){
+  var btn = document.getElementById('insToggle');
+  var box = document.getElementById('insOthers');
+  if(!btn || !box) return;
+  btn.addEventListener('click', function(){
+    var open = box.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.querySelector('span').textContent = open
+      ? '다른 보험사 접기'
+      : '다른 보험사 보기 (DB손해보험 · 삼성화재 · 메리츠화재)';
+  });
+})();
+</script>
 </body>
 </html>
