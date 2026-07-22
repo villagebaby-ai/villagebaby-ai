@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Tue, 21 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 22 Jul 2026 00:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -23,6 +23,17 @@
     <category>보험</category>
     <category>태아보험</category>
     <category>어린이보험</category>
+
+    <!-- 계류유산 소파수술 비용·실손 (신규 2026-07-22) -->
+<item>
+      <title>계류유산 소파수술 비용·실손보험 청구 총정리 (2026)</title>
+      <link>https://villagebaby.kr/guide/%EA%B3%84%EB%A5%98%EC%9C%A0%EC%82%B0-%EC%86%8C%ED%8C%8C%EC%88%98%EC%88%A0-%EB%B9%84%EC%9A%A9-%EC%8B%A4%EC%86%90/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EA%B3%84%EB%A5%98%EC%9C%A0%EC%82%B0-%EC%86%8C%ED%8C%8C%EC%88%98%EC%88%A0-%EB%B9%84%EC%9A%A9-%EC%8B%A4%EC%86%90/</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>태아보험</category>
+      <description>계류유산 소파수술의 급여·비급여 비용 구조, 실손보험·수술급여금 청구 가능성과 보험사별 쟁점, 준비 서류와 청구 절차, 유산·사산휴가 일수를 정리했습니다.</description>
+    </item>
 
     <!-- 유산 이력과 태아보험 가입 (신규 2026-07-20) -->
 <item>
