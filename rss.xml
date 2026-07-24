@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Thu, 23 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 00:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -23,6 +23,17 @@
     <category>보험</category>
     <category>태아보험</category>
     <category>어린이보험</category>
+
+    <!-- 고위험 임산부 의료비 지원 2026 (신규 2026-07-24) -->
+<item>
+      <title>고위험 임산부 의료비 지원 2026 — 19대 질환·소득기준 없음, 최대 300만원 신청 총정리</title>
+      <link>https://villagebaby.kr/guide/%EA%B3%A0%EC%9C%84%ED%97%98-%EC%9E%84%EC%82%B0%EB%B6%80-%EC%9D%98%EB%A3%8C%EB%B9%84-%EC%A7%80%EC%9B%90-2026/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EA%B3%A0%EC%9C%84%ED%97%98-%EC%9E%84%EC%82%B0%EB%B6%80-%EC%9D%98%EB%A3%8C%EB%B9%84-%EC%A7%80%EC%9B%90-2026/</guid>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>태아보험</category>
+      <description>조기진통·전치태반·임신중독증 등 19대 고위험 임신질환으로 입원했다면 소득 기준 없이 진료비의 90%(최대 300만원)를 지원받을 수 있습니다. 2026년 대상 질환·금액·신청 방법·서류와 태아보험과의 관계를 정리했습니다.</description>
+    </item>
 
     <!-- 임신 전 보험 정비 체크리스트 (신규 2026-07-23) -->
 <item>
