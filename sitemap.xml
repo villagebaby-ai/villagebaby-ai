@@ -3686,7 +3686,7 @@
 
   <url><loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0%EC%84%B1-%EB%8B%B9%EB%87%A8-%EA%B2%80%EC%82%AC-OGTT-24-28%EC%A3%BC/</loc><lastmod>2026-06-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
-  <url><loc>https://villagebaby.kr/guide/%EC%82%B0%EC%A0%84-%ED%98%88%EC%95%A1%EA%B2%80%EC%82%AC-%EC%A2%85%ED%95%A9-8%EA%B0%80%EC%A7%80/</loc><lastmod>2026-06-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://villagebaby.kr/guide/%EC%82%B0%EC%A0%84-%ED%98%88%EC%95%A1%EA%B2%80%EC%82%AC-%EC%A2%85%ED%95%A9-8%EA%B0%80%EC%A7%80/</loc><lastmod>2026-07-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
   <url><loc>https://villagebaby.kr/guide/%EB%8B%A4%EC%9A%B4%EC%A6%9D%ED%9B%84%EA%B5%B0-%EC%82%B0%EC%A0%84%EA%B2%80%EC%82%AC/</loc><lastmod>2026-06-04</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
@@ -3886,7 +3886,11 @@
       <image:title>고위험 임산부 의료비 지원 2026</image:title>
     </image:image>
   </url>
+<url>
+    <loc>https://villagebaby.kr/guide/%EB%91%98%EC%A7%B8-%EC%9E%84%EC%8B%A0-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%8B%A4%EC%8B%9C-%EA%B0%80%EC%9E%85/</loc><lastmod>2026-07-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EB%91%98%EC%A7%B8-%EC%9E%84%EC%8B%A0-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%8B%A4%EC%8B%9C-%EA%B0%80%EC%9E%85.png</image:loc>
+      <image:title>둘째 임신 태아보험 다시 가입</image:title>
+    </image:image>
+  </url>
 </urlset>
-
-
-
