@@ -11,6 +11,7 @@
 <meta name="description" content="임신을 확인하면 실손·건강보험 신규 가입이 제한되거나 임신 관련 부담보가 잡힐 수 있습니다. 임신 준비 단계에서 산모 본인의 실손·질병보험을 먼저 정비해야 하는 이유와, 임신 전에 점검할 보장 체크리스트를 2026년 기준으로 정리했습니다.">
 
 <link rel="canonical" href="https://villagebaby.kr/guide/임신-전-보험-정비-체크리스트/">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 
 <meta property="og:type" content="article">
 
@@ -32,17 +33,18 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
-
 :root{--blue:#2563eb;--blue-dark:#1d4ed8;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--radius:12px}
 
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Pretendard Variable','Pretendard',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
 
 a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 
-nav{background:#fff;border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
-
-.nav-logo{font-weight:700;font-size:1.1rem;color:var(--text)}.nav-links{display:flex;gap:24px;font-size:.92rem}
+.vb-nav{border-bottom:1px solid #E5E7EB;background:#fff;position:sticky;top:0;z-index:50}
+.vb-nav-inner{max-width:880px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vb-nav-logo{display:inline-flex;align-items:center}.vb-nav-logo img{height:36px;width:auto;display:block}
+.vb-nav-cta{display:inline-flex;align-items:center;gap:6px;background:#1666C5;color:#fff !important;font-size:13px;font-weight:700;padding:9px 16px;border-radius:16px;text-decoration:none;box-shadow:0 3px 12px rgba(22,102,197,.25);white-space:nowrap}
+.vb-nav-cta::before{content:'';width:6px;height:6px;background:#FFEB55;border-radius:50%;animation:vb-pulse 1.5s infinite}
+@keyframes vb-pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 .hero{background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);color:#fff;padding:64px 24px 48px;text-align:center}
 
@@ -106,13 +108,16 @@ caption{caption-side:bottom;font-size:.8rem;color:var(--muted);text-align:left;p
 
 .steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:30px;height:30px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
 
-footer{background:#1e293b;color:#94a3b8;text-align:center;padding:32px 20px;font-size:.85rem;margin-top:64px}
+.disclaimer-note{font-size:12px;color:#9CA3AF;line-height:1.7;margin:20px 0 8px;padding:10px 14px;background:#F9FAFB;border-radius:8px;border:none}
+.disclaimer-note strong{color:#6B7280}
+.vb-footer{border-top:1px solid #E5E7EB;background:#fff;padding:28px 24px 36px;text-align:center;color:#6B7280;font-size:12.5px;margin-top:32px}
+.vb-footer .vb-ftop{font-weight:700;color:#374151;font-size:13.5px;margin-bottom:6px}
+.vb-footer .vb-fdesc{font-size:11.5px;color:#9CA3AF;line-height:1.65;max-width:540px;margin:0 auto}
+.vb-footer .vb-fmenu{margin-top:11px;font-size:11.5px;color:#9CA3AF}
+.vb-footer .vb-fmenu a{color:inherit;text-decoration:none}.vb-footer .vb-fmenu a:hover{text-decoration:underline}
 
-footer a{color:#94a3b8}.footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:12px;flex-wrap:wrap}
-
-.footer-disclaimer{max-width:780px;margin:0 auto;font-size:.82rem;opacity:.85;line-height:1.6}
-
-@media(max-width:600px){.nav-links{display:none}.hero{padding:48px 16px 36px}}
+@media(max-width:600px){.hero{padding:48px 16px 36px}}
+@media(max-width:760px){.vb-nav-inner{padding:10px 16px;gap:8px}.vb-nav-logo img{height:32px}.vb-nav-cta{font-size:12px;padding:8px 13px}}
 
 </style>
 
@@ -138,23 +143,7 @@ footer a{color:#94a3b8}.footer-links{display:flex;justify-content:center;gap:20p
 
 <body>
 
-<nav>
-
-  <a class="nav-logo" href="/">빌리지베이비</a>
-
-  <div class="nav-links">
-
-    <a href="/guide/">태아보험 가이드</a>
-
-    <a href="/child/">어린이보험</a>
-
-    <a href="/guide/태아보험-보험사-비교-매트릭스/">보험 비교</a>
-
-    <a href="/tools/">보험 계산기</a>
-
-  </div>
-
-</nav>
+<nav class="vb-nav"><div class="vb-nav-inner"><a href="/" class="vb-nav-logo" aria-label="베이비빌리 홈"><img src="/logo.png" alt="베이비빌리" width="99" height="74"></a><a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%9E%84%EC%8B%A0-%EC%A0%84-%EB%B3%B4%ED%97%98-%EC%A0%95%EB%B9%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8&utm_content=pos1" class="vb-nav-cta">카톡 무료 상담</a></div></nav>
 
 
 
@@ -413,24 +402,15 @@ footer a{color:#94a3b8}.footer-links{display:flex;justify-content:center;gap:20p
 
 
 
+<p class="disclaimer-note">본 페이지는 <strong>실손의료보험 표준약관, 금융감독원 실손의료보험 안내, 보건복지부 임신·출산 진료비 지원사업, 찾기쉬운 생활법령정보(태아보험 가입)</strong> 등 공개 자료를 참고해 정리한 일반 안내예요. 보험 가입·심사·부담보 여부와 지원 항목·금액은 개인의 건강 상태·상품·약관·거주 지자체에 따라 달라질 수 있으니, 정확한 내용은 가입 보험사·약관과 정부24·보건소에서 확인하시길 권합니다. 본 콘텐츠는 특정 상품 권유가 아닌 정보 제공을 목적으로 합니다. · 최종 업데이트 일자: 2026.07.25</p>
 </div>
 
 
 
-<footer>
-
-  <div class="footer-links">
-
-    <a href="/guide/">태아보험 가이드</a>
-
-    <a href="/child/">어린이보험</a>
-
-    <a href="/guide/태아보험-완전정리/">태아보험 완전정리</a>
-
-  </div>
-
-  <p class="footer-disclaimer">본 페이지는 <strong>실손의료보험 표준약관, 금융감독원 실손의료보험 안내, 보건복지부 임신·출산 진료비 지원사업, 찾기쉬운 생활법령정보(태아보험 가입)</strong> 등 공개 자료를 참고해 정리한 일반 안내예요. 보험 가입·심사·부담보 여부와 지원 항목·금액은 개인의 건강 상태·상품·약관·거주 지자체에 따라 달라질 수 있으니, 정확한 내용은 가입 보험사·약관과 정부24·보건소에서 확인하시길 권합니다. 본 콘텐츠는 특정 상품 권유가 아닌 정보 제공을 목적으로 합니다. · 최종 업데이트 일자: 2026.07.25</p>
-
+<footer class="vb-footer">
+<p class="vb-ftop">부모를 위한 모든 보험 연구소</p>
+<p class="vb-fdesc">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요.</p>
+<p class="vb-fmenu"><a href="/">홈</a> · <a href="/guide/">가이드</a> · <a href="/child/">어린이보험</a> · <a href="/tools/">도구</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/terms/">이용약관</a></p>
 </footer>
 
 </body>
