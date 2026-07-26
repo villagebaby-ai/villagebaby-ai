@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Sat, 25 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 00:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -23,6 +23,17 @@
     <category>보험</category>
     <category>태아보험</category>
     <category>어린이보험</category>
+
+    <!-- 가임력 검사비 지원 2026 (신규 2026-07-26) -->
+<item>
+      <title>가임력 검사비 지원 2026 — 임신 사전건강관리 지원사업 완전정리</title>
+      <link>https://villagebaby.kr/guide/%EA%B0%80%EC%9E%84%EB%A0%A5-%EA%B2%80%EC%82%AC%EB%B9%84-%EC%A7%80%EC%9B%90-2026/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EA%B0%80%EC%9E%84%EB%A0%A5-%EA%B2%80%EC%82%AC%EB%B9%84-%EC%A7%80%EC%9B%90-2026/</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>임신 준비</category>
+      <description>임신 준비 첫걸음인 가임력 검사비를 국가가 지원합니다. 여성 최대 13만원(난소기능검사·부인과 초음파), 남성 최대 5만원(정액검사)을 20-49세 남녀에게 주기별 1회, 생애 최대 3회 지원해요. 대상·금액·e보건소 신청 절차와 검사 전에 챙길 보험 순서까지 2026년 기준으로 정리했습니다.</description>
+    </item>
 
     <!-- 둘째 임신 태아보험 다시 가입 (신규 2026-07-25) -->
 <item>
