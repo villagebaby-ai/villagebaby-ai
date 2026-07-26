@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Sun, 26 Jul 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -23,6 +23,17 @@
     <category>보험</category>
     <category>태아보험</category>
     <category>어린이보험</category>
+
+    <!-- 임신 초기 초음파 횟수 비용 (신규 2026-07-26) -->
+<item>
+      <title>임신 초기 초음파 횟수와 비용 — 초진부터 12주까지 몇 번, 얼마</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%B4%88%EC%9D%8C%ED%8C%8C-%ED%9A%9F%EC%88%98-%EB%B9%84%EC%9A%A9/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%B4%88%EC%9D%8C%ED%8C%8C-%ED%9A%9F%EC%88%98-%EB%B9%84%EC%9A%A9/</guid>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 보험 전문팀</dc:creator>
+      <category>임신 초기</category>
+      <description>초진에서 아기집을 보고, 6-7주에 심박동을 확인하고, 11-13주에 목덜미 투명대(NT)까지. 임신 12주 전까지 초음파는 보통 4-5회 봅니다. 건강보험은 임신 전 기간 7회이고 그중 13주 이하에 일반 2회와 정밀 1회가 배정돼요. 급여와 비급여가 갈리는 지점, 임신부 외래 본인부담률 경감(의원 10%), 국민행복카드 바우처(단태아 100만원) 차감까지 정리했습니다.</description>
+    </item>
 
     <!-- 임신 확인서 발급 용도 총정리 (신규 2026-07-26) -->
 <item>
