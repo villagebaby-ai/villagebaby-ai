@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Sun, 26 Jul 2026 19:30:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -23,6 +23,18 @@
     <category>보험</category>
     <category>태아보험</category>
     <category>어린이보험</category>
+
+    <!-- 자궁외임신-수술-비용-보험 (신규 2026-07-27) -->
+    <item>
+      <title>자궁외임신 수술 비용과 보험 — 실손 청구, 그리고 다음 임신 준비</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%90%EA%B6%81%EC%99%B8%EC%9E%84%EC%8B%A0-%EC%88%98%EC%88%A0-%EB%B9%84%EC%9A%A9-%EB%B3%B4%ED%97%98/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%90%EA%B6%81%EC%99%B8%EC%9E%84%EC%8B%A0-%EC%88%98%EC%88%A0-%EB%B9%84%EC%9A%A9-%EB%B3%B4%ED%97%98/</guid>
+      <pubDate>Mon, 27 Jul 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 태아보험팀</dc:creator>
+      <category>임신</category>
+      <category>실손보험</category>
+      <description>자궁외임신은 산부인과 응급 질환이라 준비할 틈 없이 치료가 시작됩니다. 기대요법·메토트렉세이트 약물치료·복강경 및 개복 수술로 갈리는 치료 갈래별 비용 구조, 실손의료보험의 임신·출산·산후기 면책 조항을 둘러싼 쟁점과 5세대 실손의 달라진 점, 수술급여금 청구 서류, 다시 임신을 준비할 때의 계약 전 알릴 의무까지 정리했습니다.</description>
+    </item>
 
     <!-- 임신 초기 초음파 횟수 비용 (신규 2026-07-26) -->
     <!-- 임신-초기-약-복용-고지의무 (신규 2026-07-26) -->
