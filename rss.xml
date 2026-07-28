@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Mon, 27 Jul 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 28 Jul 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -23,6 +23,19 @@
     <category>보험</category>
     <category>태아보험</category>
     <category>어린이보험</category>
+
+    <!-- 갑상선-기능저하-임산부-태아보험 (신규 2026-07-28) -->
+    <item>
+      <title>갑상선 기능저하 진단과 태아보험 — 산모특약 심사에서 갈리는 지점</title>
+      <link>https://villagebaby.kr/guide/%EA%B0%91%EC%83%81%EC%84%A0-%EA%B8%B0%EB%8A%A5%EC%A0%80%ED%95%98-%EC%9E%84%EC%82%B0%EB%B6%80-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EA%B0%91%EC%83%81%EC%84%A0-%EA%B8%B0%EB%8A%A5%EC%A0%80%ED%95%98-%EC%9E%84%EC%82%B0%EB%B6%80-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</guid>
+      <pubDate>Tue, 28 Jul 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 태아보험팀</dc:creator>
+      <category>임신</category>
+      <category>태아보험</category>
+      <description>임신 초기 산전 혈액검사에서 갑상선 기능저하 소견을 들었을 때, 태아보험 심사는 어떻게 움직일까요. 태아 보장과 산모특약이 갈리는 지점, 계약 전 알릴 의무의 3개월·1년·5년 기준에 진단과 상시 투약을 대입하는 법, 심박 확인 직후라는 가입 타이밍, 그리고 임신부 외래 본인부담 경감과 실손 세대 구분까지 정리했습니다.</description>
+      <enclosure url="https://villagebaby.kr/assets/og/guide_%EA%B0%91%EC%83%81%EC%84%A0-%EA%B8%B0%EB%8A%A5%EC%A0%80%ED%95%98-%EC%9E%84%EC%82%B0%EB%B6%80-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98.png" type="image/png" length="0"/>
+    </item>
 
     <!-- 자궁외임신-수술-비용-보험 (신규 2026-07-27) -->
     <item>
