@@ -195,7 +195,7 @@
 </main>
 
 <footer>
-  <p class="ftop">부모를 위한 모든 보험 연구소</p>
+  <p class="ftop">엄빠를 위한 베이비빌리 꿀팁 연구소</p>
   <p style="font-size:11px;color:var(--gray-500)">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요. · <a href="/guide/">{카테고리} 가이드</a></p>
 </footer>
 
