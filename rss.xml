@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Tue, 28 Jul 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2026 10:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -26,6 +26,18 @@
 
     <!-- 갑상선-기능저하-임산부-태아보험 (신규 2026-07-28) -->
     <!-- 임신-초기-증상-총정리 (신규 2026-07-29) -->
+    <!-- 자궁근종-임산부-태아보험 (신규 2026-07-29) -->
+    <item>
+      <title>자궁근종 진단 후 태아보험 — 가입은 되고, 조건은 산모특약에 붙어요</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%90%EA%B6%81%EA%B7%BC%EC%A2%85-%EC%9E%84%EC%82%B0%EB%B6%80-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%90%EA%B6%81%EA%B7%BC%EC%A2%85-%EC%9E%84%EC%82%B0%EB%B6%80-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98/</guid>
+      <pubDate>Wed, 29 Jul 2026 10:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신</category>
+      <category>태아보험</category>
+      <description>자궁근종이 있는 상태로 임신했을 때 태아보험은 어떻게 될까요. 태아 담보의 피보험자는 아기라서 보장은 열려 있고, 조건이 붙는 자리는 산모특약이라는 점을 짚었습니다. 청약서 최근 5년 문항의 자궁근종·자궁 수술 고지 방법, 심박 확인 후 12주 이전 타이밍, 임신부 외래 본인부담률 경감과 5세대 실손 280일 조건까지 정리했어요.</description>
+      <enclosure url="https://villagebaby.kr/assets/og/guide_%EC%9E%90%EA%B6%81%EA%B7%BC%EC%A2%85-%EC%9E%84%EC%82%B0%EB%B6%80-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98.png" type="image/png" length="0"/>
+    </item>
     <item>
       <title>임신 초기 증상 총정리 — 언제부터, 어디까지가 정상일까 (1~12주)</title>
       <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%A6%9D%EC%83%81-%EC%B4%9D%EC%A0%95%EB%A6%AC/</link>
