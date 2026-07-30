@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>베이비빌리 | 브랜드 광고 무료 컨설팅</title>
+<meta name="description" content="대한민국 대표 임신·육아 플랫폼 베이비빌리가 브랜드의 고민을 듣고 브랜딩부터 전환까지 맞춤 광고 전략을 무료로 컨설팅해 드립니다.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="베이비빌리 | 브랜드 광고 무료 컨설팅">
+<meta property="og:description" content="대한민국 대표 임신·육아 플랫폼 베이비빌리가 브랜드의 고민을 듣고 브랜딩부터 전환까지 맞춤 광고 전략을 무료로 컨설팅해 드립니다.">
+<meta property="og:image" content="https://villagebaby.kr/assets/img/billy-smart.png">
+<meta property="og:url" content="https://villagebaby.kr/ad-marketing/">
+<link rel="icon" href="https://villagebaby.kr/assets/img/favicon.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --billy:#3373BA;
+    --billy-deep:#2B62A0;
+    --billy-50:#EAF1F8;
+    --peach:#F6D5C3;
+    --peach-soft:#FBF0E8;
+    --peach-ink:#8A4A23;
+    --gray:#898989;
+    --ink:#222222;
+    --line:#EEF0F3;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans KR', sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    line-height:1.6;
+    padding-bottom:76px; /* space for sticky bar */
+  }
+  h1,h2,h3{
+    font-family:'Noto Sans KR', sans-serif;
+    color:var(--ink);
+    line-height:1.35;
+  }
+  img{max-width:100%; height:auto;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;}
+  .tag-peach{background:var(--peach); color:var(--peach-ink);}
+  .tag-blue{background:var(--billy-50); color:var(--billy);}
+  .tag-onblue{background:rgba(255,255,255,0.16); color:#fff;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Noto Sans KR', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    padding:15px 26px;
+    border-radius:100px;
+    border:none;
+    cursor:pointer;
+    text-decoration:none;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:focus-visible{outline:3px solid #9DBFE2; outline-offset:2px;}
+  .btn-primary{background:var(--billy); color:var(--white);}
+  .btn-primary:hover{background:var(--billy-deep); transform:translateY(-1px); box-shadow:0 10px 24px rgba(51,115,186,0.32);}
+  .btn-sm{padding:9px 18px; font-size:13.5px;}
+
+  /* ---------- HEADER BAR ---------- */
+  .topbar{background:var(--white); border-bottom:1px solid var(--line);}
+  .topbar-inner{
+    max-width:1080px; margin:0 auto; padding:12px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .topbar-logo{height:36px; width:auto; display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(135deg,#3373BA,#2B62A0);
+    color:var(--white);
+    padding:96px 0 110px;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;}
+  /* reserve room for the character so the headline never runs under it */
+  .hero-copy{max-width:min(620px, calc(100% - 320px));}
+  .hero h1{
+    color:var(--white);
+    font-size:clamp(28px, 4.2vw, 46px);
+    font-weight:800;
+  }
+  .hero p.sub{
+    margin-top:22px;
+    font-size:16px;
+    color:#D9E5F2;
+    max-width:520px;
+  }
+  .hero .btn{margin-top:36px;}
+  .hero-char{
+    position:absolute;
+    right:28px; /* align to .wrap content edge, not padding edge */
+    top:50%;
+    transform:translateY(-50%);
+    width:clamp(240px, 30vw, 340px);
+    pointer-events:none;
+  }
+  .hero-char img{width:100%; height:auto; display:block; animation:billyFloat 6s ease-in-out infinite;}
+  @keyframes billyFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-14px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-char img{animation:none;}
+  }
+
+  /* ---------- SECTION ---------- */
+  .section{padding:88px 0;}
+  .section-tint-blue{background:var(--billy-50);}
+  .section-tint-peach{background:var(--peach-soft);}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(22px,3vw,30px); font-weight:800;}
+  .section-head p{margin-top:14px; color:var(--gray); font-size:15.5px;}
+
+  /* ---------- PAIN POINTS ---------- */
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.05);
+    padding:32px;
+  }
+  .pain-list{list-style:none; margin-top:8px;}
+  .pain-list li{
+    display:flex;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+    color:var(--ink);
+  }
+  .pain-list li:last-child{border-bottom:none;}
+  .pain-list .mark{
+    flex:none;
+    width:22px; height:22px;
+    border-radius:50%;
+    border:1.5px solid var(--billy);
+    color:var(--billy);
+    font-size:12px;
+    display:flex; align-items:center; justify-content:center;
+    margin-top:2px;
+  }
+  .quote-strip{
+    margin-top:22px;
+    padding-top:20px;
+    border-top:1px dashed var(--line);
+    font-size:16px;
+    font-weight:700;
+    color:var(--billy);
+  }
+
+  .strategy-list{display:flex; flex-direction:column; gap:14px;}
+  .strategy-item{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:var(--peach-soft);
+    border-radius:12px;
+    padding:18px 20px;
+  }
+  .strategy-item .ico{
+    flex:none;
+    width:40px; height:40px;
+    border-radius:50%;
+    background:var(--billy);
+    color:var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px;
+  }
+  .strategy-item .t{font-weight:700; font-size:14.5px; color:var(--ink);}
+  .strategy-item .d{font-size:13.5px; color:var(--gray); margin-top:2px;}
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-band{background:var(--billy); color:var(--white);}
+  .pkg-band .section-head h2{color:var(--white);}
+  .pkg-band .section-head p{color:#D9E5F2;}
+  .pkg-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  .pkg-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.05);
+    padding:26px 26px 24px;
+    position:relative;
+  }
+  .pkg-card.wide{grid-column:1 / -1;}
+  .pkg-top{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .pkg-num{
+    font-size:13px;
+    font-weight:700;
+    color:var(--peach-ink);
+    background:var(--peach);
+    width:26px; height:26px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .pkg-type{font-size:12.5px; font-weight:700; color:var(--billy); letter-spacing:0.03em;}
+  .pkg-new{
+    font-size:10.5px; font-weight:800; color:var(--peach-ink);
+    background:var(--peach); padding:2px 8px; border-radius:100px;
+  }
+  .pkg-name{font-size:16.5px; font-weight:700; color:#222; margin-bottom:10px;}
+  .pkg-compose{font-size:13.5px; color:var(--gray); line-height:1.7;}
+  .pkg-price{
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+    display:flex; align-items:baseline; justify-content:space-between;
+  }
+  .pkg-price .label{font-size:12px; color:var(--gray);}
+  .pkg-price .val{font-size:19px; font-weight:800; color:var(--billy);}
+  .pkg-note{
+    margin-top:26px;
+    font-size:13px;
+    color:rgba(255,255,255,0.75);
+    text-align:center;
+  }
+
+  /* ---------- WHY ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
+  .why-item{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.05);
+    padding:22px 16px;
+    text-align:center;
+  }
+  .why-item .n{font-size:13px; color:var(--billy); font-weight:700; margin-bottom:10px;}
+  .why-item .t{font-size:14px; font-weight:700; color:var(--ink); line-height:1.5;}
+
+  /* ---------- PROCESS ---------- */
+  .process-wrap{position:relative; padding-top:10px;}
+  .process-track{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+  }
+  .process-track::before{
+    content:"";
+    position:absolute;
+    top:23px; left:10%; right:10%;
+    height:2px;
+    background-image:linear-gradient(to right, #E3CDBD 0 8px, transparent 8px 16px);
+    background-size:16px 2px;
+    background-repeat:repeat-x;
+  }
+  .p-step{position:relative; text-align:center;}
+  .p-dot{
+    width:46px; height:46px;
+    border-radius:50%;
+    background:var(--white);
+    border:2px solid var(--billy);
+    color:var(--billy);
+    font-weight:700;
+    font-size:16px;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 14px;
+    position:relative;
+    z-index:1;
+  }
+  .p-step .t{font-size:14px; font-weight:700; color:#222;}
+  .p-step .d{font-size:12.5px; color:var(--gray); margin-top:6px;}
+
+  .cta-panel{
+    margin-top:56px;
+    background:var(--peach);
+    border-radius:24px;
+    padding:48px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-panel-inner{max-width:640px; margin:0 auto; position:relative; z-index:1;}
+  .cta-panel h3{color:#223A54; font-size:clamp(20px,2.6vw,26px); font-weight:800;}
+  .cta-panel p{color:#6B564A; margin-top:12px; font-size:14.5px;}
+  .cta-panel .btn{margin-top:26px;}
+  .cta-wave{
+    position:absolute;
+    right:22px; bottom:0;
+    height:120px; width:auto;
+    display:block;
+    pointer-events:none;
+  }
+
+  /* ---------- STICKY BAR ---------- */
+  .sticky-bar{
+    position:fixed; left:0; right:0; bottom:0;
+    background:var(--white);
+    border-top:1px solid var(--line);
+    box-shadow:0 -8px 24px rgba(34,34,34,0.08);
+    z-index:50;
+  }
+  .sticky-inner{
+    max-width:1080px; margin:0 auto; padding:12px 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+  }
+  .sticky-steps{display:flex; gap:6px; font-size:12px; color:var(--gray);}
+  .sticky-steps span{
+    padding:5px 10px; border-radius:100px; background:#F4F6F8; white-space:nowrap;
+  }
+  .sticky-inner .btn{padding:11px 20px; font-size:14px;}
+
+  footer{
+    text-align:center;
+    padding:36px 0 12px;
+    font-size:12.5px;
+    color:var(--gray);
+  }
+
+  @media (max-width: 860px){
+    .grid-2{grid-template-columns:1fr;}
+    .pkg-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:repeat(2,1fr); gap:12px;}
+    .why-item:last-child{grid-column:1 / -1;}
+    .process-track{grid-template-columns:1fr; gap:26px;}
+    .process-track::before{display:none;}
+    .sticky-steps{display:none;}
+    .section{padding:60px 0;}
+    .hero{padding:70px 0 80px;}
+    .hero-copy{max-width:none;}
+    .hero-char{
+      position:static;
+      transform:none;
+      width:220px;
+      margin:24px auto 0;
+    }
+    .hero p.sub{max-width:none;}
+    .cta-panel{padding:40px 24px 112px;}
+    .cta-wave{right:16px; height:90px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="https://villagebaby.kr/" aria-label="베이비빌리 홈">
+        <img class="topbar-logo" src="https://villagebaby.kr/assets/img/logo-billy.png" alt="베이비빌리 로고">
+      </a>
+      <a href="mailto:jy.lee@villagebaby.kr?subject=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B9%8C%EB%A6%AC%20%EA%B4%91%EA%B3%A0%20%EB%AC%B4%EB%A3%8C%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EB%AC%B8%EC%9D%98" class="btn btn-primary btn-sm">광고 문의</a>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow tag-onblue">BABYBILLY · 브랜드 광고 컨설팅</span>
+        <h1 class="reveal">육아 브랜드의 성장을 함께 고민합니다.<br>우리 브랜드, 어떻게 알리면 더 좋을까요?</h1>
+        <div class="hero-char">
+          <img src="https://villagebaby.kr/assets/img/billy-smart.png" alt="클립보드와 지갑을 든 베이비빌리 캐릭터">
+        </div>
+        <p class="sub reveal">광고를 시작하기 전에, 먼저 브랜드의 고민을 듣고 싶습니다.<br>브랜드마다 목표가 다르고 정답도 다르기에, 브랜딩부터 매출까지 함께 답을 찾아갑니다.</p>
+        <a href="#consult" class="btn btn-primary reveal">무료 컨설팅 문의하기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PAIN POINT + STRATEGY ===================== -->
+  <section class="section section-tint-blue">
+    <div class="wrap">
+      <div class="grid-2">
+        <div class="card reveal">
+          <span class="eyebrow tag-peach">고민</span>
+          <h2 style="font-size:19px;">혹시 이런 고민을 하고 계신가요?</h2>
+          <ul class="pain-list">
+            <li><span class="mark">✓</span>브랜드 인지도를 높이고 싶어요.</li>
+            <li><span class="mark">✓</span>광고 성과와 매출을 함께 높이고 싶어요.</li>
+            <li><span class="mark">✓</span>신제품을 효과적으로 런칭하고 싶어요.</li>
+            <li><span class="mark">✓</span>우리 브랜드에 맞는 광고가 무엇인지 모르겠어요.</li>
+            <li><span class="mark">✓</span>고객에게 자연스럽게 브랜드를 알리고 싶어요.</li>
+          </ul>
+          <p class="quote-strip">“걱정하지 마세요. 브랜드마다 답은 다르니까요.”</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="eyebrow tag-blue">전략</span>
+          <h2 style="font-size:19px;">베이비빌리는 맞춤형 답을 함께 찾습니다</h2>
+          <p style="color:var(--gray); font-size:14.5px; margin:10px 0 20px;">광고 상품을 먼저 제안하지 않고, 브랜드를 먼저 이해합니다.</p>
+          <div class="strategy-list">
+            <div class="strategy-item">
+              <div class="ico">①</div>
+              <div>
+                <div class="t">브랜딩이 필요한 브랜드 → 브랜딩 중심 전략 제안</div>
+              </div>
+            </div>
+            <div class="strategy-item">
+              <div class="ico">②</div>
+              <div>
+                <div class="t">구매 전환이 필요한 브랜드 → 전환 중심 전략 제안</div>
+              </div>
+            </div>
+            <div class="strategy-item">
+              <div class="ico">③</div>
+              <div>
+                <div class="t">신제품을 런칭하는 브랜드 → 런칭 중심 전략 제안</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PACKAGE SOLUTION ===================== -->
+  <section class="section pkg-band">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-onblue">목적별 추천</span>
+        <h2>목적에 맞는 검증 패키지</h2>
+        <p>브랜딩 · 전환 · 런칭, 브랜드의 목표에 따라 가장 효과적이었던 광고 조합을 참고로 보여드려요.<br>정확한 구성과 견적은 상담을 통해 브랜드 상황에 맞게 다시 설계됩니다.</p>
+      </div>
+
+      <div class="pkg-grid">
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">01</span><span class="pkg-type">브랜딩 중심 · 인지도 확산</span></div>
+          <div class="pkg-name">바이럴 + 구매 전환 패키지</div>
+          <div class="pkg-compose">메인 팝업 7일 + 앱 푸시<br>+ 커뮤니티 베동 배너<br>+ 0원 이벤트 체험단</div>
+          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 500만원</span></div>
+        </div>
+
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">02</span><span class="pkg-type">브랜딩 중심 · 노출 임팩트</span></div>
+          <div class="pkg-name">노출 임팩트 패키지</div>
+          <div class="pkg-compose">스플래시 배너 3일(단독) + 메인 팝업 7일<br>+ 쇼핑팝업 3일<br>+ 커뮤니티 베동 30만 노출</div>
+          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 400만원</span></div>
+        </div>
+
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">03</span><span class="pkg-type">전환 중심 · 구매 전환 집중</span></div>
+          <div class="pkg-name">전환 집중 패키지</div>
+          <div class="pkg-compose">메인 팝업 7일 + 쇼핑 팝업 3일<br>+ 카카오 푸시(단독)</div>
+          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 350만원</span></div>
+        </div>
+
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">04</span><span class="pkg-type">전환 중심 · 타겟팅 클릭</span></div>
+          <div class="pkg-name">타겟팅 집중 노출 패키지</div>
+          <div class="pkg-compose">카카오 푸시 단독 3만명<br>+ 커뮤니티 베동 50만 노출</div>
+          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 300만원</span></div>
+        </div>
+
+        <div class="pkg-card wide reveal">
+          <div class="pkg-top"><span class="pkg-num">05</span><span class="pkg-type">런칭 중심 · 신제품 런칭</span><span class="pkg-new">NEW</span></div>
+          <div class="pkg-name">신제품 런칭 패키지</div>
+          <div class="pkg-compose">스플래시 배너 3일 + 메인팝업 7일<br>+ 카카오 푸시 단독 3만명 + 빌리 설문단</div>
+          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 500만원</span></div>
+        </div>
+      </div>
+
+      <p class="pkg-note reveal">위 구성은 지난 캠페인의 실제 조합을 참고용으로 정리한 것입니다. 브랜드 상황에 맞게 자유롭게 변경됩니다.</p>
+    </div>
+  </section>
+
+  <!-- ===================== WHY BABYBILLY ===================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-peach">신뢰</span>
+        <h2>신뢰할 수 있는 대표 플랫폼</h2>
+        <p>상품을 파는 것이 아니라, 성장의 파트너로 함께 고민합니다.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal"><div class="n">01</div><div class="t">대한민국 대표<br>임신·육아 플랫폼</div></div>
+        <div class="why-item reveal"><div class="n">02</div><div class="t">임신부터 육아까지<br>이어지는 고객 여정</div></div>
+        <div class="why-item reveal"><div class="n">03</div><div class="t">회원 기반의<br>정교한 타겟팅</div></div>
+        <div class="why-item reveal"><div class="n">04</div><div class="t">브랜딩부터 전환까지<br>다양한 광고 솔루션</div></div>
+        <div class="why-item reveal"><div class="n">05</div><div class="t">광고 이후<br>성과 분석 및 운영 지원</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FREE CONSULTING PROCESS ===================== -->
+  <section class="section section-tint-peach" id="consult">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-blue">프로세스</span>
+        <h2>브랜드 광고 무료 컨설팅 프로세스</h2>
+        <p>광고를 많이 하는 것보다 브랜드에 맞는 광고를 하는 것이 중요합니다.<br>상품 판매자가 아닌 성장의 파트너로 함께 고민합니다.</p>
+      </div>
+
+      <div class="process-wrap reveal">
+        <div class="process-track">
+          <div class="p-step">
+            <div class="p-dot">01</div>
+            <div class="t">현황 진단</div>
+            <div class="d">브랜드와 시장을<br>함께 살펴봐요</div>
+          </div>
+          <div class="p-step">
+            <div class="p-dot">02</div>
+            <div class="t">목표 설정</div>
+            <div class="d">인지도인지 전환인지<br>먼저 정해요</div>
+          </div>
+          <div class="p-step">
+            <div class="p-dot">03</div>
+            <div class="t">맞춤 전략</div>
+            <div class="d">브랜드 유형에 맞는<br>방향을 제안해요</div>
+          </div>
+          <div class="p-step">
+            <div class="p-dot">04</div>
+            <div class="t">상품 추천</div>
+            <div class="d">필요한 만큼의<br>구성만 골라요</div>
+          </div>
+          <div class="p-step">
+            <div class="p-dot">05</div>
+            <div class="t">성과 제안</div>
+            <div class="d">집행 후 리포트로<br>다음을 준비해요</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-panel reveal">
+        <div class="cta-panel-inner">
+          <h3>광고를 문의하지 마세요.<br>먼저 브랜드의 고민을 들려주세요.</h3>
+          <p>브랜드마다 답은 다릅니다. 베이비빌리가 가장 적합한 답을 함께 찾겠습니다.</p>
+          <a href="mailto:jy.lee@villagebaby.kr?subject=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B9%8C%EB%A6%AC%20%EA%B4%91%EA%B3%A0%20%EB%AC%B4%EB%A3%8C%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EB%AC%B8%EC%9D%98" class="btn btn-primary">무료 컨설팅 신청하기</a>
+        </div>
+        <img class="cta-wave" src="https://villagebaby.kr/assets/img/baby-wave.png" alt="인사하는 베이비빌리 캐릭터">
+      </div>
+    </div>
+  </section>
+
+  <footer>© villagebaby · 베이비빌리 브랜드 광고 무료 컨설팅</footer>
+
+  <!-- ===================== STICKY BOTTOM BAR ===================== -->
+  <div class="sticky-bar">
+    <div class="sticky-inner">
+      <div class="sticky-steps">
+        <span>01. 현황 진단</span>
+        <span>02. 목표 설정</span>
+        <span>03. 맞춤 전략</span>
+        <span>04. 상품 추천</span>
+        <span>05. 성과 제안</span>
+      </div>
+      <a href="mailto:jy.lee@villagebaby.kr?subject=%EB%B2%A0%EC%9D%B4%EB%B9%84%EB%B9%8C%EB%A6%AC%20%EA%B4%91%EA%B3%A0%20%EB%AC%B4%EB%A3%8C%20%EC%BB%A8%EC%84%A4%ED%8C%85%20%EB%AC%B8%EC%9D%98" class="btn btn-primary" style="margin-left:auto;">무료 컨설팅 신청하기</a>
+    </div>
+  </div>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+</body>
+</html>
