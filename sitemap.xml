@@ -4010,4 +4010,15 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%9D%91%EA%B8%89%EC%8B%A4-%EB%B9%84%EC%9A%A9-%EC%B2%AD%EA%B5%AC/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%9D%91%EA%B8%89%EC%8B%A4-%EB%B9%84%EC%9A%A9-%EC%B2%AD%EA%B5%AC.png</image:loc>
+      <image:title>임신 초기 응급실 비용 청구</image:title>
+      <image:caption>임신 초기 야간·휴일 응급실 영수증 해독 - 응급의료관리료와 야간 가산, 중증도 분류가 가르는 본인부담률, 건강보험·임신부 경감·국민행복카드·실손 네 창구와 태아보험 고지까지 정리</image:caption>
+    </image:image>
+  </url>
 </urlset>
