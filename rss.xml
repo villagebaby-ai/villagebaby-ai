@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Mon, 03 Aug 2026 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 14:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -30,6 +30,18 @@
     <!-- 유산방지주사-프로게스테론-비용 (신규 2026-07-30) -->
     <!-- 임신-초기-응급실-비용-청구 (신규 2026-07-31) -->
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
+    <!-- 임신-중-실손-청구-태아보험-영향 (신규 2026-08-03) -->
+    <item>
+      <title>임신 중 실손 청구, 태아보험에 영향이 있을까 - 심사가 실제로 보는 것</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%A4%91-%EC%8B%A4%EC%86%90-%EC%B2%AD%EA%B5%AC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%98%81%ED%96%A5/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%A4%91-%EC%8B%A4%EC%86%90-%EC%B2%AD%EA%B5%AC-%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%98%81%ED%96%A5/</guid>
+      <pubDate>Mon, 03 Aug 2026 14:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신</category>
+      <category>실손보험</category>
+      <category>태아보험</category>
+      <description>임신 중에 실손보험금을 청구하면 태아보험 심사에 불리할까요? 심사가 보는 건 청구 이력이 아니라 청약서의 계약 전 알릴 의무 질문에 걸리는 진료·투약·입원·수술 기록이에요. 실손 세대별로 임신 중 청구가 성립하는 자리, 태아 보장과 산모특약의 분리, 보험사가 기록을 확인하는 방식, 상법상 청구권 3년까지 공식 자료로 정리했어요.</description>
+    </item>
     <item>
       <title>태아보험 만기 100세 vs 30세 — 얼마로 들어야 할까</title>
       <link>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%A7%8C%EA%B8%B0-100%EC%84%B8-vs-30%EC%84%B8/</link>
