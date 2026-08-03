@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Sun, 02 Aug 2026 10:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2026 10:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -30,6 +30,16 @@
     <!-- 유산방지주사-프로게스테론-비용 (신규 2026-07-30) -->
     <!-- 임신-초기-응급실-비용-청구 (신규 2026-07-31) -->
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
+    <item>
+      <title>아기집·심장소리 언제 보여? 안 보여도 괜찮을까 (임신 4~8주)</title>
+      <link>https://villagebaby.kr/guide/%EC%95%84%EA%B8%B0%EC%A7%91-%EC%8B%AC%EC%9E%A5%EC%86%8C%EB%A6%AC-%EC%96%B8%EC%A0%9C/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%95%84%EA%B8%B0%EC%A7%91-%EC%8B%AC%EC%9E%A5%EC%86%8C%EB%A6%AC-%EC%96%B8%EC%A0%9C/</guid>
+      <pubDate>Mon, 03 Aug 2026 10:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신</category>
+      <category>임신 초기</category>
+      <description>아기집은 보통 임신 5주경, 심장소리는 6~7주경 초음파로 확인돼요. 아직 안 보여도 배란이 늦었으면 정상인 경우가 많아요. 언제 보이는지, 안 보일 때 어떻게 하는지, 병원에 바로 가야 하는 신호, 그리고 베동 커뮤니티 초기 엄마들의 실제 걱정(아기집 1,407건·심장소리 829건)까지 대한산부인과학회·ACOG 기준으로 정리했어요.</description>
+    </item>
     <item>
       <title>유산·사산 휴가 일수·급여 신청 2026 — 주수별 휴가일수와 고용보험 급여, 배우자 휴가 신설</title>
       <link>https://villagebaby.kr/guide/%EC%9C%A0%EC%82%B0-%EC%82%AC%EC%82%B0-%ED%9C%B4%EA%B0%80-%EA%B8%89%EC%97%AC-2026/</link>
