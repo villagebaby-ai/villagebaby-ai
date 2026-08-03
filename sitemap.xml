@@ -4031,6 +4031,11 @@
       <image:title>임신 준비 영양제, 뭐부터 챙길까</image:title>
       <image:caption>임신 준비 영양제의 핵심 엽산 - 언제부터 얼마나, 남편도 챙길지, 피해야 할 고용량 비타민A까지 정리</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%A4%80%EB%B9%84-%EC%98%81%EC%96%91%EC%A0%9C/table-supplements.png</image:loc>
+      <image:title>임신 준비 영양제 요약 표</image:title>
+      <image:caption>엽산 필수(임신 3개월 전~12주, 하루 400~600μg)·비타민D 보조·오메가3·철분 상황별 한눈 정리</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EB%82%9C%EC%86%8C%EB%82%AD%EC%A2%85-%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EB%B3%B4%ED%97%98/</loc>
@@ -4063,6 +4068,11 @@
       <image:loc>https://villagebaby.kr/assets/og/guide_%EC%95%84%EA%B8%B0%EC%A7%91-%EC%8B%AC%EC%9E%A5%EC%86%8C%EB%A6%AC-%EC%96%B8%EC%A0%9C-blue.png</image:loc>
       <image:title>아기집·심장소리 언제 보여</image:title>
       <image:caption>아기집은 임신 5주경, 심장소리는 6~7주경 - 안 보여도 정상인 경우, 안 보일 때 대처, 병원 갈 신호까지 정리</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%EC%95%84%EA%B8%B0%EC%A7%91-%EC%8B%AC%EC%9E%A5%EC%86%8C%EB%A6%AC-%EC%96%B8%EC%A0%9C/table-week.png</image:loc>
+      <image:title>아기집·심장소리 주차별 초음파 요약 표</image:title>
+      <image:caption>임신 4주 아기집 안 보임(정상)·5주 아기집·6~7주 심장 박동까지 주차별 한눈 정리</image:caption>
     </image:image>
   </url>
 </urlset>
