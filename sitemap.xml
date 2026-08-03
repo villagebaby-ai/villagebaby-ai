@@ -4036,6 +4036,11 @@
       <image:title>임신 준비 영양제 요약 표</image:title>
       <image:caption>엽산 필수(임신 3개월 전~12주, 하루 400~600μg)·비타민D 보조·오메가3·철분 상황별 한눈 정리</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%A4%80%EB%B9%84-%EC%98%81%EC%96%91%EC%A0%9C/table-bedong.png</image:loc>
+      <image:title>베동 임신 준비 중 638건 데이터</image:title>
+      <image:caption>임테기 27.4%·생리주기 26.5%·배란 25.1%·병원검사 22.1%·영양제 2.5%</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://villagebaby.kr/guide/%EB%82%9C%EC%86%8C%EB%82%AD%EC%A2%85-%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EB%B3%B4%ED%97%98/</loc>
@@ -4073,6 +4078,11 @@
       <image:loc>https://villagebaby.kr/guide/%EC%95%84%EA%B8%B0%EC%A7%91-%EC%8B%AC%EC%9E%A5%EC%86%8C%EB%A6%AC-%EC%96%B8%EC%A0%9C/table-week.png</image:loc>
       <image:title>아기집·심장소리 주차별 초음파 요약 표</image:title>
       <image:caption>임신 4주 아기집 안 보임(정상)·5주 아기집·6~7주 심장 박동까지 주차별 한눈 정리</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%EC%95%84%EA%B8%B0%EC%A7%91-%EC%8B%AC%EC%9E%A5%EC%86%8C%EB%A6%AC-%EC%96%B8%EC%A0%9C/table-bedong.png</image:loc>
+      <image:title>베동 초기 엄마들의 실제 걱정 데이터</image:title>
+      <image:caption>아기집 언급 1,407건 중 44%가 정상인지 걱정·안 보여요 305건·심박 829건</image:caption>
     </image:image>
   </url>
 </urlset>
