@@ -4128,4 +4128,20 @@
       <image:caption>빈도·완화·동반증상으로 구분 - 규칙적 반복·출혈·심한 통증이면 병원</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%8B%A4%EC%86%90-%EC%8B%A4%EB%B9%84-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%8B%A4%EC%86%90-%EC%8B%A4%EB%B9%84-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC-blue.png</image:loc>
+      <image:title>태아보험 실손(실비) 완전정리</image:title>
+      <image:caption>출생과 동시에 아기 실손 보장 - 꼭 넣어야 하는지·중복 여부·연결 방법 정리</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EC%8B%A4%EC%86%90-%EC%8B%A4%EB%B9%84-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/table-silson.png</image:loc>
+      <image:title>태아보험 실손 핵심 정리표</image:title>
+      <image:caption>피보험자·보장 시작·갱신형·중복 여부·넣는 시점 한눈 정리</image:caption>
+    </image:image>
+  </url>
 </urlset>
