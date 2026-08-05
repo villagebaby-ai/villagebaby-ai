@@ -133,6 +133,10 @@ def render(p):
         for i, (n, t, u) in enumerate(refs)
     )
 
+    seed_html = p['seed'].replace(
+        "{LINK}",
+        f'<a href="{utm(slug, "seed_prep")}" id="ins-seed" target="_blank" rel="noopener">{p["seed_anchor"]}</a>')
+
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -194,15 +198,15 @@ def render(p):
 
 {body}
 
-<div class="cta app"><p class="ct">{p['app_ct']}</p><p class="cd">{p['app_cd']}</p><a href="{APP_LINK}" target="_blank" rel="noopener">베이비빌리 앱에서 내 주차 보기 →</a></div>
+<div class="cta app"><p class="ct">{p['app_ct']}</p><p class="cd">{p['app_cd']}</p><a href="{APP_LINK}" target="_blank" rel="noopener">{p['app_btn']}</a></div>
 
-<div class="callout"><strong>참고로,</strong> {p['seed_pre']} <a href="{utm(slug,'seed_prep')}" id="ins-seed" target="_blank" rel="noopener">흐름만 미리 알아두고</a> 싶을 때 가볍게 보세요. 가입 강요는 없어요.</div>
+<div class="callout">{seed_html}</div>
 
 <section><h2>자주 묻는 질문</h2>
 {faq_html}
 </section>
 
-<div class="cta"><p class="ct">{p['ins_ct']}</p><p class="cd">{p['ins_cd']}</p><a href="{utm(slug,'cta_insurance')}" id="ins-cta" target="_blank" rel="noopener">태아보험 무료로 알아보기 →</a></div>
+<div class="cta"><p class="ct">{p['ins_ct']}</p><p class="cd">{p['ins_cd']}</p><a href="{utm(slug,'cta_insurance')}" id="ins-cta" target="_blank" rel="noopener">{p['ins_btn']}</a></div>
 
 <section><h2>함께 보면 좋은 가이드</h2>
 <ul>
@@ -213,7 +217,7 @@ def render(p):
 <ol style="font-size:.88rem;color:var(--muted);line-height:1.85">
 {refs_html}
 </ol>
-<p class="disclaimer-note">※ 본 페이지의 의학 정보는 <strong>대한산부인과학회·ACOG·보건복지부 자료와 베이비빌리 베동 커뮤니티</strong>를 기반으로 정리한 일반 안내예요. {p['disclaimer']} 특정 상품을 권유하지 않습니다.</p></section>
+<p class="disclaimer-note">{p['disclaimer_head']} {p['disclaimer']} 특정 상품을 권유하지 않습니다.</p></section>
 </div></main>
 <footer class="vb-footer">
 <p class="vb-ftop">엄빠를 위한 베이비빌리 꿀팁 연구소</p>
