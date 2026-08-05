@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>아이 병원비 실손 청구 계산기 — 영수증 금액으로 예상 환급액 30초 확인 | 베이비빌리</title>
+  <meta name="description" content="소아과·응급실 영수증의 급여 본인부담금·비급여 금액만 넣으면 실손 세대별(2~5세대) 예상 환급액을 바로 계산해드려요. 질병코드 청구 가능 여부 조회까지 한 번에.">
+  <meta name="keywords" content="실손 청구 계산기, 아이 병원비 청구, 실손 환급액, 어린이 실손보험 청구, 소아과 실비 청구, 베이비빌리">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="아이 병원비 실손 청구 계산기 — 예상 환급액 30초 확인">
+  <meta property="og:description" content="영수증의 급여·비급여 금액만 넣으면 실손 세대별 예상 환급액을 바로 계산해드려요.">
+  <meta property="og:url" content="https://villagebaby.kr/tools/claim-calculator/">
+  <meta property="og:image" content="https://villagebaby.kr/assets/og/tools.png">
+  <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="베이비빌리"><meta property="og:locale" content="ko_KR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://villagebaby.kr/assets/og/tools.png">
+  <link rel="canonical" href="https://villagebaby.kr/tools/claim-calculator/">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://villagebaby.kr/tools/claim-calculator/#app",
+        "name": "아이 병원비 실손 청구 계산기",
+        "url": "https://villagebaby.kr/tools/claim-calculator/",
+        "description": "진료비 영수증의 급여 본인부담금과 비급여 금액을 입력하면 실손 세대별(2~5세대) 예상 환급액을 계산합니다.",
+        "applicationCategory": "FinanceApplication",
+        "dateModified": "2026-08-05",
+        "author": {
+          "@type": "Person",
+          "image": {"@type":"ImageObject","url":"https://villagebaby.kr/assets/img/billy-author-256.png","width":1200,"height":630},
+          "name": "베이비빌리 보험 전문팀",
+          "jobTitle": "부모·가족 보험 컨설턴트",
+          "worksFor": { "@type": "Organization", "name": "베이비빌리", "url": "https://babybilly.co" },
+          "description": "태아·어린이·실손보험 등 부모를 위한 모든 보험을 10년 이상 전문 상담한 팀.",
+          "knowsAbout": ["실손보험 청구", "어린이보험", "태아보험", "보험 청구 서류", "질병코드"]
+        },
+        "reviewedBy": { "@type": "Person", "name": "베이비빌리 보험 전문 감수단", "description": "10년 이상 태아·어린이보험 분야에 종사한 전문가들이 감수한 콘텐츠입니다." },
+        "publisher": { "@type": "Organization", "name": "베이비빌리", "url": "https://villagebaby.kr/", "logo": { "@type": "ImageObject", "url": "https://villagebaby.kr/logo.png" } }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://villagebaby.kr/" },
+          { "@type": "ListItem", "position": 2, "name": "도구 모음", "item": "https://villagebaby.kr/tools/" },
+          { "@type": "ListItem", "position": 3, "name": "실손 청구 계산기", "item": "https://villagebaby.kr/tools/claim-calculator/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "아이 실손이 몇 세대인지 모르면 어떻게 확인하나요?", "acceptedAnswer": { "@type": "Answer", "text": "보험사 앱이나 가입 증권에서 가입일을 확인하면 돼요. 2021년 7월 이후 가입은 4세대, 2017년 4월~2021년 6월은 3세대, 2009년 10월~2017년 3월은 2세대(표준화)예요. 태아보험 실손은 대부분 출생 전 가입이라 아이 출생연도로도 추정할 수 있어요." } },
+          { "@type": "Question", "name": "영수증에서 급여 본인부담금과 비급여 금액은 어디를 보나요?", "acceptedAnswer": { "@type": "Answer", "text": "진료비 계산서·영수증의 '급여' 영역 중 '본인부담금' 칸의 금액과, '비급여' 영역의 금액을 각각 보면 돼요. 항목별 상세 구분이 필요하면 진료비 세부산정내역서를 발급받으세요." } },
+          { "@type": "Question", "name": "계산 결과와 실제 지급액이 다를 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "이 계산기는 표준약관 기준 참고용 시뮬레이션이에요. 실제 지급액은 통원 회당 한도, 연간 한도, 가입 상품의 세부 조건, 보험사 심사에 따라 달라질 수 있어요. 정확한 금액은 보험사 접수 후 확정돼요." } },
+          { "@type": "Question", "name": "약국 처방약 영수증도 같이 청구할 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "네, 처방·조제된 약제비도 통원 의료비에 포함돼요. 4세대 이후 실손은 외래와 처방조제를 합산해 1회 통원으로 계산하니, 같은 날 병원+약국 영수증을 합산해 입력하고 함께 청구하세요." } },
+          { "@type": "Question", "name": "실손 청구는 어떻게 하나요? 서류가 복잡한가요?", "acceptedAnswer": { "@type": "Answer", "text": "통원 10만 원 이하는 대부분 보험사 앱에서 진료비 영수증(+약제비 영수증) 사진만으로 간편청구가 돼요. 10만 원 초과는 진료비 세부산정내역서, 입원·수술은 진단서 또는 입퇴원확인서를 추가로 준비하면 돼요." } },
+          { "@type": "Question", "name": "예전 병원비도 지금 청구할 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "네, 실손 청구권 소멸시효는 3년이에요. 3년이 지나지 않은 진료비라면 밀린 영수증을 모아 한 번에 청구할 수 있어요. 병원에서 지난 영수증 재발급도 가능해요." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+    :root{--blue-900:#0D3B6F;--blue-800:#15518F;--blue-700:#2563B6;--blue-600:#2D7CD2;--blue-200:#C9DCEF;--blue-100:#E4ECF6;--blue-50:#EFF4FA;--pink-50:#FFF1E6;--light-yellow:#FFE4B5;--skyblue:#C9E2EE;--light-violet:#ECE0FF;--mint:#BFEBE0;--gray-900:#1F2937;--gray-800:#374151;--gray-700:#4B5563;--gray-600:#6B7280;--gray-500:#9CA3AF;--gray-400:#D1D5DB;--gray-300:#E5E7EB;--gray-200:#F3F4F6;--gray-100:#F9FAFB;--white:#FFFFFF;--red:#F94646;--green:#2ED371;--shadow-blue:0 3px 17px 1px rgba(45,124,210,.30);--shadow-s:0 1px 6px 0 rgba(0,0,0,.15);--shadow-xs:0 0 3px 0 rgba(0,0,0,.10)}
+    body{font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;color:var(--gray-900);background:var(--white);-webkit-font-smoothing:antialiased;word-break:keep-all;line-height:1.6}
+    .vb-nav{border-bottom:1px solid #E5E7EB;background:#fff;position:sticky;top:0;z-index:50}
+    .vb-nav-inner{max-width:880px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .vb-nav-logo{display:inline-flex;align-items:center}.vb-nav-logo img{height:36px;width:auto;display:block}
+    .vb-nav-cta{display:inline-flex;align-items:center;gap:6px;background:#1666C5;color:#fff !important;font-size:13px;font-weight:700;padding:9px 16px;border-radius:16px;text-decoration:none;box-shadow:0 3px 12px rgba(22,102,197,.25);white-space:nowrap}
+    .vb-nav-cta::before{content:'';width:6px;height:6px;background:#FFEB55;border-radius:50%;animation:vb-pulse 1.5s infinite}
+    @keyframes vb-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero{position:relative;padding:48px 24px 36px;background:linear-gradient(180deg,var(--blue-50) 0%,var(--white) 100%);border-bottom:1px solid var(--blue-100)}
+    .hero-inner{max-width:780px;margin:0 auto}
+    .hero .breadcrumb{font-size:12px;color:var(--gray-500);margin-bottom:14px}.hero .breadcrumb a{color:var(--gray-500)}
+    .hero .badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-700);color:#fff;font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:12px;margin-bottom:14px}
+    .hero h1{font-size:31px;font-weight:700;margin-bottom:12px;line-height:1.35}.hero h1 em{font-style:normal;color:var(--blue-700)}
+    .hero h1 .h1-sub{font-size:21px;font-weight:700;color:var(--gray-700)}
+    .hero .lead{color:var(--gray-700);font-size:15.5px;line-height:1.75;margin-bottom:16px;max-width:640px}
+    .hero .meta{display:flex;gap:14px;font-size:12.5px;color:var(--gray-600);flex-wrap:wrap}
+    .container{max-width:780px;margin:0 auto;padding:0 24px}
+    .author-card{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:12px;margin:28px 0 20px}
+    .author-card .ac-photo{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;display:block}
+    .author-card .ac-photo img{width:100%;height:100%;object-fit:cover}
+    .author-card .ac-name{font-size:13.5px;color:#374151;margin:0 0 3px;font-weight:600;line-height:1.4}
+    .author-card .ac-name a{color:var(--blue-700);font-weight:800;border-bottom:1px dotted currentColor}
+    .author-card .ac-rev{font-size:11.5px;color:#6B7280;margin:0;line-height:1.5}
+    .answer{background:linear-gradient(135deg,#FFFAEB 0%,#FFF1C2 100%);border:1.5px solid #F5B500;border-radius:16px;padding:22px 24px;margin:0 0 28px;color:#5C3A00}
+    .answer .lab{font-size:11.5px;font-weight:700;color:#8C5A00;margin-bottom:8px}.answer .lab::before{content:'⚡ '}
+    .answer .text{font-size:15px;line-height:1.7;font-weight:600;color:#3D2700}
+    .answer .text strong{color:var(--blue-800);background:rgba(255,255,255,.7);padding:1px 4px;border-radius:4px;font-weight:800}
+
+    .calc-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow-xs)}
+    .step-heading{font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:1.1rem}
+    .step-heading .num{display:inline-flex;width:24px;height:24px;background:var(--blue-600);color:#fff;border-radius:50%;font-size:12px;align-items:center;justify-content:center;margin-right:8px}
+    .gen-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-bottom:.6rem}
+    .gen-card{border:2px solid var(--gray-300);border-radius:12px;padding:.95rem .9rem;cursor:pointer;background:var(--white);transition:all .2s;text-align:left;font-family:inherit}
+    .gen-card:hover{border-color:var(--blue-200)}
+    .gen-card.selected{border-color:var(--blue-600);background:var(--blue-50)}
+    .gen-card .gc-name{font-size:14.5px;font-weight:800;color:var(--gray-900);margin-bottom:3px}
+    .gen-card.selected .gc-name{color:var(--blue-700)}
+    .gen-card .gc-desc{font-size:11.5px;color:var(--gray-500);line-height:1.5}
+    .unknown-row{margin-top:.4rem;padding:14px 16px;background:var(--gray-100);border-radius:12px;display:none}
+    .unknown-row.show{display:block}
+    .unknown-row label{font-size:13px;font-weight:700;color:var(--gray-800);display:block;margin-bottom:8px}
+    .unknown-row select{width:100%;padding:12px 14px;border:1.5px solid var(--gray-300);border-radius:10px;font-size:15px;font-family:inherit;background:var(--white)}
+    .unknown-row .u-note{font-size:11.5px;color:var(--gray-500);margin-top:8px;line-height:1.6}
+    .visit-btns{display:flex;gap:.55rem;flex-wrap:wrap;margin-bottom:1.2rem}
+    .visit-btn{flex:1;min-width:100px;padding:.8rem .5rem;border:2px solid var(--gray-300);border-radius:12px;background:var(--white);font-size:13px;font-weight:700;color:var(--gray-700);cursor:pointer;text-align:center;transition:all .2s;font-family:inherit;line-height:1.4}
+    .visit-btn .icon{font-size:20px;display:block;margin-bottom:3px}
+    .visit-btn:hover{border-color:var(--blue-200)}
+    .visit-btn.selected{border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-700)}
+    .amt-row{margin-bottom:1rem}
+    .amt-label{font-size:13.5px;font-weight:700;color:var(--gray-800);display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+    .amt-label .hint{font-size:11.5px;font-weight:500;color:var(--gray-500)}
+    .amt-input-wrap{position:relative}
+    .amt-input{width:100%;padding:14px 44px 14px 16px;border:1.5px solid var(--gray-300);border-radius:12px;font-size:17px;font-weight:700;font-family:inherit;outline:none;transition:border-color .2s;text-align:right}
+    .amt-input:focus{border-color:var(--blue-600)}
+    .amt-input-wrap::after{content:'원';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--gray-500);font-weight:600}
+    .severe-row{display:none;background:var(--light-violet);border-radius:12px;padding:14px 16px;margin-bottom:1rem}
+    .severe-row.show{display:block}
+    .severe-row .s-label{font-size:13px;font-weight:700;color:#5B21B6;margin-bottom:8px}
+    .severe-btns{display:flex;gap:.5rem}
+    .severe-btn{flex:1;padding:.6rem;border:2px solid transparent;border-radius:10px;background:rgba(255,255,255,.7);font-size:12.5px;font-weight:700;color:var(--gray-700);cursor:pointer;font-family:inherit}
+    .severe-btn.selected{border-color:#7C3AED;background:#fff;color:#5B21B6}
+    .btn-calc{display:block;width:100%;padding:1rem;background:var(--blue-600);color:#fff;font-size:16px;font-weight:800;border:none;border-radius:14px;cursor:pointer;transition:background .2s;font-family:inherit;box-shadow:var(--shadow-blue)}
+    .btn-calc:hover{background:var(--blue-700)}
+    .btn-calc:disabled{background:var(--gray-300);cursor:not-allowed;box-shadow:none}
+
+    #result-section{display:none}
+    #result-section.show{display:block}
+    .result-box{background:linear-gradient(135deg,var(--blue-800) 0%,var(--blue-600) 100%);border-radius:18px;padding:28px 24px;text-align:center;color:#fff;margin-bottom:1.1rem;box-shadow:var(--shadow-blue)}
+    .result-label{font-size:12.5px;opacity:.9;margin-bottom:8px;font-weight:600}
+    .result-amt{font-size:42px;font-weight:900;line-height:1.15}
+    .result-amt .unit{font-size:20px;font-weight:700;margin-left:2px}
+    .result-sub{font-size:12.5px;opacity:.88;margin-top:10px;line-height:1.6}
+    .breakdown{border:1.5px solid var(--gray-200);border-radius:14px;overflow:hidden;margin-bottom:1.1rem}
+    .breakdown .bd-head{background:var(--gray-100);padding:12px 18px;font-size:13.5px;font-weight:800;color:var(--gray-800)}
+    .breakdown .bd-row{display:flex;justify-content:space-between;gap:10px;padding:11px 18px;border-bottom:1px dashed var(--gray-200);font-size:13.5px}
+    .breakdown .bd-row:last-child{border-bottom:none}
+    .breakdown .bd-row .k{color:var(--gray-600)}
+    .breakdown .bd-row .v{font-weight:800;color:var(--gray-900);white-space:nowrap}
+    .breakdown .bd-row.total{background:var(--blue-50)}
+    .breakdown .bd-row.total .k,.breakdown .bd-row.total .v{color:var(--blue-800);font-weight:900}
+    .callout{border-radius:12px;padding:16px 18px;font-size:13.5px;line-height:1.75;margin:0 0 1.1rem}
+    .callout.info{background:var(--blue-50);color:var(--gray-800)}.callout.info strong{color:var(--blue-800)}
+    .callout.warn{background:#FFF8F0;border:1px solid #FFD9A8;color:#7A4A08}
+    .docs-mini{background:var(--gray-100);border-radius:12px;padding:16px 18px;margin-bottom:1.1rem}
+    .docs-mini .dm-t{font-size:13.5px;font-weight:800;color:var(--gray-800);margin-bottom:8px}
+    .docs-mini p{font-size:13px;color:var(--gray-700);line-height:1.7}
+    .btn-recalc{display:inline-block;padding:.6rem 1.6rem;background:transparent;color:var(--gray-600);font-size:13.5px;font-weight:600;border:1px solid var(--gray-300);border-radius:14px;cursor:pointer;margin-bottom:1.5rem;font-family:inherit}
+    .btn-recalc:hover{border-color:var(--gray-500)}
+
+    .code-widget{border:2px solid var(--blue-200);border-radius:16px;padding:1.6rem;margin:0 0 1.5rem;background:var(--white)}
+    .code-widget h3{font-size:16.5px;font-weight:800;color:var(--gray-900);margin-bottom:4px}
+    .code-widget .cw-sub{font-size:12.5px;color:var(--gray-600);margin-bottom:14px}
+    .cw-input-row{display:flex;gap:8px}
+    .cw-input{flex:1;padding:13px 16px;border:1.5px solid var(--gray-300);border-radius:12px;font-size:15px;font-family:inherit;outline:none}
+    .cw-input:focus{border-color:var(--blue-600)}
+    .cw-btn{padding:13px 22px;background:var(--blue-600);color:#fff;font-size:14px;font-weight:800;border:none;border-radius:12px;cursor:pointer;font-family:inherit;white-space:nowrap}
+    .cw-results{margin-top:12px}
+    .cw-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border:1px solid var(--gray-200);border-radius:12px;margin-bottom:8px;transition:border-color .2s}
+    .cw-item:hover{border-color:var(--blue-600)}
+    .cw-item .ci-code{font-size:15px;font-weight:900;color:var(--blue-700);min-width:56px}
+    .cw-item .ci-name{flex:1;font-size:13.5px;font-weight:700;color:var(--gray-900)}
+    .cw-item .ci-badge{font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:8px;white-space:nowrap}
+    .ci-badge.b-yes{background:#E6FAF1;color:#0D5C32}.ci-badge.b-cond{background:#FEF5E4;color:#92540A}.ci-badge.b-no{background:#FFF1F1;color:#7C1D1D}
+    .cw-empty{font-size:13px;color:var(--gray-500);padding:10px 4px;display:none}
+    .cw-all{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--blue-700)}
+
+    .lead-form-card{background:var(--white);border:2px solid var(--blue-200);border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow-xs)}
+    .lead-form-header{text-align:center;margin-bottom:1.5rem}
+    .lead-form-header h3{font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:.4rem}
+    .lead-form-header p{font-size:13.5px;color:var(--gray-600);line-height:1.7}
+    .form-row{margin-bottom:1rem}
+    .form-label{display:block;font-size:13px;font-weight:700;color:var(--gray-800);margin-bottom:6px}
+    .form-input{width:100%;padding:13px 15px;border:1.5px solid var(--gray-300);border-radius:12px;font-size:15px;font-family:inherit;outline:none;background:var(--white)}
+    .form-input:focus{border-color:var(--blue-600)}
+    .consent-row{display:flex;gap:8px;align-items:flex-start;margin:14px 0;font-size:11.5px;color:var(--gray-600);line-height:1.6}
+    .consent-row a{color:var(--blue-700);text-decoration:underline}
+    .btn-submit{display:block;width:100%;padding:1rem;background:var(--blue-600);color:#fff;font-size:15.5px;font-weight:800;border:none;border-radius:14px;cursor:pointer;font-family:inherit;box-shadow:var(--shadow-blue)}
+    .btn-submit:hover{background:var(--blue-700)}
+    .form-note{text-align:center;font-size:11.5px;color:var(--gray-500);margin-top:10px}
+    #form-success{display:none;text-align:center;padding:1rem 0}
+    #form-success .success-icon{font-size:44px;margin-bottom:10px}
+    #form-success h4{font-size:18px;font-weight:800;margin-bottom:8px}
+    #form-success p{font-size:13.5px;color:var(--gray-600);line-height:1.7;margin-bottom:16px}
+    .btn-kakao{display:inline-block;background:#FEE500;color:#191919;padding:12px 28px;border-radius:14px;font-weight:800;font-size:14px}
+
+    h2.sec{font-size:21px;font-weight:700;margin:36px 0 14px;color:var(--gray-900);padding-left:12px;border-left:4px solid var(--blue-600)}
+    .faq-item{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;margin-bottom:8px;overflow:hidden}
+    .faq-q{width:100%;padding:16px 20px;text-align:left;font-size:14.5px;font-weight:700;color:var(--gray-900);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border:none;background:none;font-family:inherit}
+    .faq-q::before{content:'Q.';color:var(--blue-600);font-weight:900;margin-right:6px}
+    .faq-q .arrow{color:var(--gray-400);transition:.2s;font-style:normal}
+    .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+    .faq-a{padding:0 20px 16px 46px;font-size:13.5px;color:var(--gray-700);line-height:1.7;display:none}
+    .faq-item.open .faq-a{display:block}
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+    .related-card{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px;transition:box-shadow .2s}
+    .related-card:hover{box-shadow:var(--shadow-s)}
+    .related-thumb{width:48px;height:48px;border-radius:10px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px}
+    .related-thumb.yellow{background:var(--light-yellow)}.related-thumb.mint{background:var(--mint)}.related-thumb.violet{background:var(--light-violet)}
+    .related-card .ttl{font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:2px;line-height:1.4}
+    .related-card .desc{font-size:11.5px;color:var(--gray-500)}
+    .cta-block{background:linear-gradient(135deg,#FFFAEB 0%,#FFEDB8 100%);border:1.5px solid #F5B500;border-radius:18px;padding:30px 28px;text-align:center;color:#3D2700;margin:36px 0}
+    .cta-block h3{font-size:20px;font-weight:800;margin-bottom:10px;color:#3D2700}
+    .cta-block p{font-size:14px;color:#6B4A00;line-height:1.7;margin-bottom:18px}
+    .cta-block .cta-btn{display:inline-block;background:#FEE500;color:#191919;padding:13px 34px;border-radius:16px;font-weight:800;font-size:15px;box-shadow:0 3px 12px rgba(245,181,0,.35)}
+    .vb-footer{border-top:1px solid #E5E7EB;background:#fff;padding:32px 24px 44px;text-align:center;color:#6B7280;font-size:13px;margin-top:40px}
+    .vb-footer .vb-ftop{font-weight:700;color:#374151;font-size:13.5px;margin-bottom:6px}
+    .vb-footer .vb-fdesc{font-size:11.5px;color:#9CA3AF;line-height:1.65;max-width:540px;margin:0 auto}
+    .vb-footer .vb-fmenu{margin-top:12px;font-size:11.5px;color:#9CA3AF}
+    .vb-footer .vb-fmenu a{color:inherit}
+    .expert-float{position:fixed;bottom:28px;right:24px;z-index:9999;background:var(--blue-600);color:#fff;display:flex;align-items:center;gap:9px;padding:11px 20px 11px 14px;border-radius:999px;font-size:14px;font-weight:700;box-shadow:0 4px 20px rgba(45,124,210,.38);transition:transform .2s;white-space:nowrap}
+    .expert-float:hover{background:var(--blue-700);transform:translateY(-3px)}
+    @media(max-width:760px){
+      .hero h1{font-size:24px}.hero h1 .h1-sub{font-size:17px}.hero{padding:38px 18px 26px}.container{padding:0 18px}
+      .calc-card{padding:1.5rem 1.25rem}.gen-cards{grid-template-columns:1fr}
+      .result-amt{font-size:34px}.related-grid{grid-template-columns:1fr}
+      .lead-form-card{padding:1.5rem 1.25rem}
+      .vb-nav-inner{padding:10px 16px;gap:8px}.vb-nav-logo img{height:32px}.vb-nav-cta{font-size:12px;padding:8px 13px}
+    }
+    @media(max-width:480px){.expert-float{padding:0;width:52px;height:52px;border-radius:50%;justify-content:center;bottom:20px;right:16px}.expert-float span:last-child{display:none}}
+  </style>
+</head>
+<body>
+
+<nav class="vb-nav"><div class="vb-nav-inner"><a href="/" class="vb-nav-logo" aria-label="베이비빌리 홈"><img src="/logo.png" alt="베이비빌리" width="99" height="74"></a><a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos1" class="vb-nav-cta">카톡 무료 상담</a></div></nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="breadcrumb"><a href="/">홈</a> · <a href="/tools/">도구</a> · 실손 청구 계산기</p>
+    <span class="badge">🧮 실손 2~5세대 표준약관 기준</span>
+    <h1><em>아이 병원비 실손 청구 계산기</em><br><span class="h1-sub">영수증 금액으로 30초 확인</span></h1>
+    <p class="lead">소아과·응급실 영수증의 급여 본인부담금과 비급여 금액만 넣으면, 우리 아이 실손 세대 기준 예상 환급액을 바로 계산해드려요.</p>
+    <div class="meta">
+      <span>최종 업데이트 일자: 2026.08.05</span>
+      <span>👥 작성: <strong><a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos2" target="_blank" rel="author noopener" style="color:inherit;border-bottom:1px dotted currentColor">베이비빌리</a></strong></span>
+      <span>🔗 <a href="/tools/claim-dict/" style="color:var(--blue-700);font-weight:700">질병코드 보장 사전 →</a></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <aside class="author-card">
+      <a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos3" target="_blank" rel="author noopener" class="ac-photo">
+        <img src="/assets/img/billy-author-96.png" srcset="/assets/img/billy-author-96.png 1x, /assets/img/billy-author-256.png 2x" alt="베이비빌리" width="48" height="48">
+      </a>
+      <div class="ac-meta">
+        <p class="ac-name"><a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos4" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+        <p class="ac-rev">10년 이상 태아·어린이보험을 전문 상담한 팀이 검수한 콘텐츠입니다.</p>
+      </div>
+    </aside>
+
+    <div class="answer">
+      <div class="lab">한 줄 요약</div>
+      <p class="text">실손 환급액은 <strong>세대별 공제금액·자기부담률</strong>이 결정해요. 영수증의 급여 본인부담금·비급여 금액을 넣으면 예상 환급액이 바로 나오고, 통원 10만원 이하는 <strong>영수증만으로 간편청구</strong>가 돼요.</p>
+    </div>
+
+    <!-- ── 계산기 ── -->
+    <div class="calc-card" id="calculator">
+
+      <h2 class="step-heading"><span class="num">1</span>아이 실손 가입 시기를 선택해주세요</h2>
+      <div class="gen-cards" role="group" aria-label="실손 세대 선택">
+        <button class="gen-card" data-gen="4" onclick="selGen('4')"><div class="gc-name">2021년 7월 이후 (4세대)</div><div class="gc-desc">2021년 7월 이후 태어난 아이 대부분 · 급여 20%, 비급여 30% 자기부담</div></button>
+        <button class="gen-card" data-gen="3" onclick="selGen('3')"><div class="gc-name">2017년 4월~2021년 6월 (3세대)</div><div class="gc-desc">착한실손 · 급여 10~20%, 비급여 20~30% 자기부담</div></button>
+        <button class="gen-card" data-gen="2" onclick="selGen('2')"><div class="gc-name">2009년 10월~2017년 3월 (2세대)</div><div class="gc-desc">표준화 실손 · 통원 공제 후 대부분 환급</div></button>
+        <button class="gen-card" data-gen="5" onclick="selGen('5')"><div class="gc-name">2026년 7월 이후 신규 (5세대)</div><div class="gc-desc">급여 20%, 중증 비급여 30%, 비중증 비급여 50%</div></button>
+      </div>
+      <button class="gen-card" style="width:100%" data-gen="unknown" onclick="selGen('unknown')"><div class="gc-name">🤷 잘 몰라요 — 아이 출생연도로 추정할게요</div><div class="gc-desc">태아보험 실손은 대부분 출생 전 가입이라 출생연도로 세대를 추정할 수 있어요</div></button>
+      <div class="unknown-row" id="unknownRow">
+        <label for="birthYear">아이 출생연도</label>
+        <select id="birthYear" onchange="selBirthYear()">
+          <option value="">선택해주세요</option>
+        </select>
+        <p class="u-note">※ 2017년·2021년생은 가입 월에 따라 세대가 갈릴 수 있어요. 보험사 앱에서 가입일을 확인하면 더 정확해요.</p>
+      </div>
+
+      <h2 class="step-heading" style="margin-top:1.6rem"><span class="num">2</span>진료 유형과 영수증 금액을 입력해주세요</h2>
+      <div class="visit-btns" role="group" aria-label="진료 유형">
+        <button class="visit-btn" data-v="clinic" onclick="selVisit('clinic')"><span class="icon">🏥</span>동네 의원<br>(소아과 등)</button>
+        <button class="visit-btn" data-v="hosp" onclick="selVisit('hosp')"><span class="icon">🏨</span>병원·종합병원<br>(응급실 포함)</button>
+        <button class="visit-btn" data-v="tertiary" onclick="selVisit('tertiary')"><span class="icon">🏢</span>상급종합병원<br>(대학병원)</button>
+        <button class="visit-btn" data-v="inpatient" onclick="selVisit('inpatient')"><span class="icon">🛏️</span>입원·수술</button>
+      </div>
+
+      <div class="amt-row">
+        <div class="amt-label"><span>급여 본인부담금</span><span class="hint">영수증 '급여' 영역의 본인부담금 칸 (약국 영수증 합산)</span></div>
+        <div class="amt-input-wrap"><input class="amt-input" type="text" id="amtGy" inputmode="numeric" placeholder="0" oninput="fmtAmt(this)"></div>
+      </div>
+      <div class="amt-row">
+        <div class="amt-label"><span>비급여 금액</span><span class="hint">영수증 '비급여' 영역 합계 (없으면 0)</span></div>
+        <div class="amt-input-wrap"><input class="amt-input" type="text" id="amtBg" inputmode="numeric" placeholder="0" oninput="fmtAmt(this)"></div>
+      </div>
+
+      <div class="severe-row" id="severeRow">
+        <div class="s-label">5세대는 비급여를 중증/비중증으로 나눠요. 이번 진료는 어디에 가까운가요?</div>
+        <div class="severe-btns">
+          <button class="severe-btn selected" data-s="no" onclick="selSevere('no')">일반 진료 (비중증) — 자기부담 50%</button>
+          <button class="severe-btn" data-s="yes" onclick="selSevere('yes')">중증 질환 치료 — 자기부담 30%</button>
+        </div>
+      </div>
+
+      <button class="btn-calc" id="calcBtn" onclick="calculate()">예상 환급액 계산하기</button>
+      <p style="font-size:11.5px;color:var(--gray-500);margin-top:10px;text-align:center">※ 표준약관 기준 참고용 시뮬레이션이에요. 실제 지급액은 상품 조건·한도·심사에 따라 달라질 수 있어요.</p>
+    </div>
+
+    <!-- ── 결과 ── -->
+    <div id="result-section">
+      <div class="result-box">
+        <div class="result-label" id="resLabel">예상 환급액</div>
+        <div class="result-amt"><span id="resAmt">—</span><span class="unit">원</span></div>
+        <div class="result-sub" id="resSub"></div>
+      </div>
+
+      <div class="breakdown">
+        <div class="bd-head">📋 계산 내역</div>
+        <div class="bd-row"><span class="k">총 진료비 (급여 본인부담 + 비급여)</span><span class="v" id="bdTotal">—</span></div>
+        <div class="bd-row"><span class="k">급여분 예상 환급</span><span class="v" id="bdGy">—</span></div>
+        <div class="bd-row"><span class="k">비급여분 예상 환급</span><span class="v" id="bdBg">—</span></div>
+        <div class="bd-row"><span class="k">공제금액·자기부담 합계</span><span class="v" id="bdDeduct">—</span></div>
+        <div class="bd-row total"><span class="k">예상 환급액 합계</span><span class="v" id="bdRefund">—</span></div>
+      </div>
+
+      <div class="callout info" id="resNote"></div>
+      <div class="docs-mini" id="docsMini">
+        <div class="dm-t">📄 이 청구에 필요한 서류</div>
+        <p id="docsText"></p>
+      </div>
+      <div class="callout warn">⚠️ 밀린 영수증도 걱정 마세요. 청구권 소멸시효는 3년이라 지난 병원비도 모아서 한 번에 청구할 수 있어요.</div>
+
+      <button class="btn-recalc" onclick="resetCalc()">↺ 다시 계산하기</button>
+
+      <!-- 리드 폼 -->
+      <div class="lead-form-card" id="lead-form">
+        <div id="form-area">
+          <div class="lead-form-header">
+            <div style="font-size:36px;margin-bottom:.5rem">🔎</div>
+            <h3>청구 놓친 병원비, 무료로 점검받으세요</h3>
+            <p>아이 보험 증권 기준으로 놓친 청구·못 받은 특약이 없는지<br>전문가가 무료로 확인해드려요. 영업 강요 없는 1회성 점검이에요.</p>
+          </div>
+          <form id="consultForm" onsubmit="submitForm(event)">
+            <input type="hidden" id="f_gen" name="실손세대">
+            <input type="hidden" id="f_visit" name="진료유형">
+            <input type="hidden" id="f_amt" name="입력금액">
+            <input type="hidden" id="f_refund" name="예상환급액">
+            <input type="hidden" name="유입도구" value="claim-calculator">
+            <div class="form-row">
+              <label class="form-label" for="f_name">이름 <span style="color:var(--red)">*</span></label>
+              <input class="form-input" type="text" id="f_name" name="이름" placeholder="홍길동" required autocomplete="name">
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="f_phone">연락처 <span style="color:var(--red)">*</span></label>
+              <input class="form-input" type="tel" id="f_phone" name="연락처" placeholder="010-0000-0000" required autocomplete="tel">
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="f_pref">선호 연락 방법</label>
+              <select class="form-input" id="f_pref" name="선호연락방법">
+                <option value="카카오톡">카카오톡</option>
+                <option value="전화">전화</option>
+                <option value="문자">문자</option>
+              </select>
+            </div>
+            <div class="consent-row">
+              <input type="checkbox" id="consent" name="개인정보동의" required>
+              <label for="consent">개인정보 수집·이용에 동의합니다. 수집된 정보는 보험 상담 목적으로만 사용되며 상담 완료 후 즉시 삭제됩니다. (<a href="/privacy">개인정보처리방침</a>)</label>
+            </div>
+            <button type="submit" class="btn-submit">📞 무료 청구 점검 신청하기</button>
+            <p class="form-note">평균 응답 10분 이내 · 영업 강요 없어요</p>
+          </form>
+        </div>
+        <div id="form-success">
+          <div class="success-icon" id="fs-icon">🎉</div>
+          <h4 id="fs-title">점검 신청이 완료되었습니다!</h4>
+          <p id="fs-desc">곧 전문가가 연락드릴 예정이에요. 카카오톡 채널에서도 바로 문의하실 수 있어요.</p>
+          <a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos5" target="_blank" rel="noopener" class="btn-kakao">💬 카톡으로 바로 문의 ></a>
+        </div>
+      </div>
+    </div><!-- /result-section -->
+
+    <!-- ── 질병코드 조회 위젯 ── -->
+    <div class="code-widget">
+      <h3>📖 진단서 질병코드, 청구 되는지 바로 조회</h3>
+      <p class="cw-sub">진단서·영수증의 질병분류기호(예: J20, A08)나 병명을 입력해보세요. 소아 다빈도 41개 코드 수록.</p>
+      <div class="cw-input-row">
+        <input class="cw-input" type="text" id="cwQ" placeholder="예: J20, 중이염, 장염" autocomplete="off" aria-label="질병코드 검색">
+        <button class="cw-btn" onclick="cwSearch()">조회</button>
+      </div>
+      <div class="cw-results" id="cwResults"></div>
+      <p class="cw-empty" id="cwEmpty">일치하는 코드가 없어요. <a href="/tools/claim-dict/" style="color:var(--blue-700);font-weight:700;text-decoration:underline">사전 전체 보기</a>에서 찾아보거나 카톡으로 물어보세요.</p>
+      <a class="cw-all" href="/tools/claim-dict/">질병코드 보장 사전 전체 보기 →</a>
+    </div>
+
+    <!-- FAQ -->
+    <section style="padding:8px 0">
+      <h2 class="sec">자주 묻는 질문</h2>
+      <div class="faq-item">
+        <button class="faq-q" type="button">아이 실손이 몇 세대인지 모르면 어떻게 확인하나요? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>보험사 앱이나 가입 증권에서 가입일을 확인하면 돼요. 2021년 7월 이후 가입은 4세대, 2017년 4월~2021년 6월은 3세대, 2009년 10월~2017년 3월은 2세대(표준화)예요. 태아보험 실손은 대부분 출생 전 가입이라 아이 출생연도로도 추정할 수 있어요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">영수증에서 급여 본인부담금과 비급여 금액은 어디를 보나요? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>진료비 계산서·영수증의 '급여' 영역 중 '본인부담금' 칸의 금액과, '비급여' 영역의 금액을 각각 보면 돼요. 항목별 상세 구분이 필요하면 진료비 세부산정내역서를 발급받으세요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">계산 결과와 실제 지급액이 다를 수 있나요? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>이 계산기는 표준약관 기준 참고용 시뮬레이션이에요. 실제 지급액은 통원 회당 한도, 연간 한도, 가입 상품의 세부 조건, 보험사 심사에 따라 달라질 수 있어요. 정확한 금액은 보험사 접수 후 확정돼요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">약국 처방약 영수증도 같이 청구할 수 있나요? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>네, 처방·조제된 약제비도 통원 의료비에 포함돼요. 4세대 이후 실손은 외래와 처방조제를 합산해 1회 통원으로 계산하니, 같은 날 병원+약국 영수증을 합산해 입력하고 함께 청구하세요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">실손 청구는 어떻게 하나요? 서류가 복잡한가요? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>통원 10만 원 이하는 대부분 보험사 앱에서 진료비 영수증(+약제비 영수증) 사진만으로 간편청구가 돼요. 10만 원 초과는 진료비 세부산정내역서, 입원·수술은 진단서 또는 입퇴원확인서를 추가로 준비하면 돼요.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">예전 병원비도 지금 청구할 수 있나요? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>네, 실손 청구권 소멸시효는 3년이에요. 3년이 지나지 않은 진료비라면 밀린 영수증을 모아 한 번에 청구할 수 있어요. 병원에서 지난 영수증 재발급도 가능해요.</p></div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section style="padding:8px 0">
+      <h2 class="sec">함께 보면 좋아요</h2>
+      <div class="related-grid">
+        <a href="/tools/claim-dict/" class="related-card">
+          <div class="related-thumb">📖</div>
+          <div><p class="ttl">🆕 아이 질병코드 보장 사전</p><p class="desc">J20·A08·H66… 코드별 청구 가능 여부 41종</p></div>
+        </a>
+        <a href="/guide/태아보험-청구-방법/" class="related-card">
+          <div class="related-thumb yellow"><span>📝</span></div>
+          <div><p class="ttl">태아보험 청구 방법 총정리</p><p class="desc">서류 준비부터 접수까지 단계별 가이드</p></div>
+        </a>
+        <a href="/guide/태아실손보험-일반실손-차이/" class="related-card">
+          <div class="related-thumb mint"><span>🔍</span></div>
+          <div><p class="ttl">태아 실손 vs 일반 실손 차이</p><p class="desc">우리 아이 실손이 어떤 상품인지 확인</p></div>
+        </a>
+        <a href="/guide/5세대-실손-완전정리/" class="related-card">
+          <div class="related-thumb violet"><span>📊</span></div>
+          <div><p class="ttl">5세대 실손 완전정리</p><p class="desc">2026년 7월 출시 5세대 보장 구조 해설</p></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h3>계산해보니 생각보다 적게 나오나요?</h3>
+      <p>보장 구조가 우리 아이에게 맞는지, 놓친 특약 청구는 없는지 전문가가 무료로 점검해드려요.</p>
+      <a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos6" class="cta-btn">💬 카톡으로 무료 상담 ></a>
+    </div>
+
+  </div>
+</main>
+
+<a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos7" target="_blank" rel="noopener" class="expert-float" aria-label="카톡 무료 상담"><span style="font-size:18px">💬</span><span>카톡 무료 상담</span></a>
+
+<script>
+// ── STATE ──
+var state={gen:null,visit:null,severe:'no'};
+var GEN_LABEL={2:'2세대(표준화)',3:'3세대(착한실손)',4:'4세대',5:'5세대'};
+var VISIT_LABEL={clinic:'외래(의원)',hosp:'외래(병원·종합병원)',tertiary:'외래(상급종합병원)',inpatient:'입원·수술'};
+
+// 출생연도 select 채우기
+(function(){
+  var sel=document.getElementById('birthYear');
+  for(var y=2026;y>=2009;y--){var o=document.createElement('option');o.value=y;o.textContent=y+'년생';sel.appendChild(o);}
+})();
+
+function selGen(g){
+  document.querySelectorAll('.gen-card').forEach(function(b){b.classList.toggle('selected',b.dataset.gen===g)});
+  var unknownRow=document.getElementById('unknownRow');
+  if(g==='unknown'){unknownRow.classList.add('show');state.gen=null;}
+  else{unknownRow.classList.remove('show');state.gen=g;}
+  updateSevereVisibility();
+}
+function selBirthYear(){
+  var y=parseInt(document.getElementById('birthYear').value);
+  if(!y)return;
+  var g = y<=2016?'2' : y<=2020?'3' : '4';
+  state.gen=g;
+  var note=document.querySelector('.unknown-row .u-note');
+  note.innerHTML='→ <strong style="color:var(--blue-700)">'+y+'년생은 '+GEN_LABEL[g]+' 실손</strong>로 추정해 계산할게요. 2017년·2021년생은 가입 월에 따라 다를 수 있어요.';
+  updateSevereVisibility();
+}
+function selVisit(v){
+  state.visit=v;
+  document.querySelectorAll('.visit-btn').forEach(function(b){b.classList.toggle('selected',b.dataset.v===v)});
+}
+function selSevere(s){
+  state.severe=s;
+  document.querySelectorAll('.severe-btn').forEach(function(b){b.classList.toggle('selected',b.dataset.s===s)});
+}
+function updateSevereVisibility(){
+  document.getElementById('severeRow').classList.toggle('show',state.gen==='5');
+}
+function fmtAmt(el){
+  var v=el.value.replace(/[^0-9]/g,'');
+  el.value=v?parseInt(v).toLocaleString('ko-KR'):'';
+}
+function getAmt(id){
+  var v=document.getElementById(id).value.replace(/[^0-9]/g,'');
+  return v?parseInt(v):0;
+}
+var fmt=function(n){return Math.round(n).toLocaleString('ko-KR')+'원'};
+
+// ── 계산 로직 (표준약관 기준 참고 추정) ──
+// 통원 공제금액: 급여 — 2·3세대 의원1만/병원1.5만/상급2만, 4·5세대 의원1만/병원·상급2만
+// 비급여 공제(통원): 4세대 3만, 5세대 중증 3만 / 비중증 max(5만, 50%)
+function calcRefund(gen,visit,gy,bg,severe){
+  var inpat = visit==='inpatient';
+  var dedGy23 = {clinic:10000,hosp:15000,tertiary:20000}[visit]||10000;
+  var dedGy45 = {clinic:10000,hosp:20000,tertiary:20000}[visit]||10000;
+  var r={gyLow:0,gyHigh:0,bgLow:0,bgHigh:0};
+
+  if(gen==='2'){
+    if(inpat){ r.gyLow=r.gyHigh=gy*0.9; r.bgLow=r.bgHigh=bg*0.9; }
+    else{
+      var total=gy+bg, ref=Math.max(0,total-dedGy23);
+      // 급여/비급여 비례 배분 (표시용)
+      r.gyLow=r.gyHigh= total>0? ref*(gy/total):0;
+      r.bgLow=r.bgHigh= total>0? ref*(bg/total):0;
+    }
+  } else if(gen==='3'){
+    if(inpat){
+      r.gyLow=gy*0.8; r.gyHigh=gy*0.9;   // 급여 자기부담 10~20%
+      r.bgLow=bg*0.7; r.bgHigh=bg*0.8;   // 비급여 20~30%
+    }else{
+      var selfLow=Math.max(dedGy23, gy*0.1+bg*0.2);
+      var selfHigh=Math.max(dedGy23, gy*0.2+bg*0.3);
+      var totalO=gy+bg;
+      var refLow=Math.max(0,totalO-selfHigh), refHigh=Math.max(0,totalO-selfLow);
+      r.gyLow= totalO>0? refLow*(gy/totalO):0; r.gyHigh= totalO>0? refHigh*(gy/totalO):0;
+      r.bgLow= totalO>0? refLow*(bg/totalO):0; r.bgHigh= totalO>0? refHigh*(bg/totalO):0;
+    }
+  } else { // 4·5세대
+    var bgRate = gen==='5' ? (severe==='yes'?0.3:0.5) : 0.3;
+    var bgDed  = gen==='5' ? (severe==='yes'?30000:50000) : 30000;
+    if(inpat){
+      r.gyLow=r.gyHigh=gy*0.8;
+      r.bgLow=r.bgHigh=bg*(1-bgRate);
+    }else{
+      var gySelf=gy>0?Math.max(dedGy45,gy*0.2):0;
+      var bgSelf=bg>0?Math.max(bgDed,bg*bgRate):0;
+      r.gyLow=r.gyHigh=Math.max(0,gy-gySelf);
+      r.bgLow=r.bgHigh=Math.max(0,bg-bgSelf);
+    }
+  }
+  return r;
+}
+
+function calculate(){
+  if(!state.gen){alert('아이 실손 가입 시기(세대)를 먼저 선택해주세요.');return;}
+  if(!state.visit){alert('진료 유형을 선택해주세요.');return;}
+  var gy=getAmt('amtGy'), bg=getAmt('amtBg');
+  if(gy+bg<=0){alert('영수증 금액을 입력해주세요.');return;}
+
+  var r=calcRefund(state.gen,state.visit,gy,bg,state.severe);
+  var low=r.gyLow+r.bgLow, high=r.gyHigh+r.bgHigh;
+  var total=gy+bg;
+  var isRange=Math.round(low)!==Math.round(high);
+
+  document.getElementById('resAmt').textContent = isRange
+    ? Math.round(low).toLocaleString('ko-KR')+'~'+Math.round(high).toLocaleString('ko-KR')
+    : Math.round(high).toLocaleString('ko-KR');
+  document.getElementById('resLabel').textContent='예상 환급액 ('+GEN_LABEL[state.gen]+' · '+VISIT_LABEL[state.visit]+')';
+  document.getElementById('resSub').textContent = isRange
+    ? '가입 상품의 급여형·선택형 구성에 따라 범위로 표시돼요'
+    : '표준약관 기준 추정치예요';
+
+  document.getElementById('bdTotal').textContent=fmt(total);
+  document.getElementById('bdGy').textContent = isRange? fmt(r.gyLow)+' ~ '+fmt(r.gyHigh) : fmt(r.gyHigh);
+  document.getElementById('bdBg').textContent = isRange? fmt(r.bgLow)+' ~ '+fmt(r.bgHigh) : fmt(r.bgHigh);
+  document.getElementById('bdDeduct').textContent = isRange? fmt(total-high)+' ~ '+fmt(total-low) : fmt(total-high);
+  document.getElementById('bdRefund').textContent = isRange? fmt(low)+' ~ '+fmt(high) : fmt(high);
+
+  // 안내 문구
+  var note='';
+  if(high<=0){
+    note='이번 건은 공제금액(자기부담) 이내라 환급액이 없을 수 있어요. <strong>같은 날 약국 영수증을 합산</strong>하거나, 다른 진료 건과 모아서 청구 실익을 확인해보세요.';
+  } else if(state.visit==='inpatient'){
+    note='입원·수술 건은 실손 외에 <strong>질병(상해)수술비·입원일당 특약</strong>이 별도로 지급될 수 있어요. 증권의 특약 목록을 꼭 확인하세요.';
+  } else if(state.gen==='5'&&state.severe==='no'&&bg>0){
+    note='5세대 비중증 비급여는 자기부담이 50%로 커요. 비급여 비중이 큰 치료가 반복된다면 <strong>보장 구조 점검</strong>을 받아보는 걸 추천해요.';
+  } else {
+    note='통원은 회당 한도(보통 20만~30만 원) 내에서 <strong>방문 횟수 제한 없이</strong> 청구할 수 있어요. 밀린 영수증도 3년 안이면 함께 청구하세요.';
+  }
+  document.getElementById('resNote').innerHTML='💡 '+note;
+
+  var docs = state.visit==='inpatient'
+    ? '진료비 계산서·영수증 + 진료비 세부산정내역서 + 진단서 또는 입퇴원확인서 (수술 시 수술확인서). 퇴원 수속 때 한 번에 발급받는 게 편해요.'
+    : (total<=100000
+      ? '통원 10만 원 이하 — 진료비 계산서·영수증(+약제비 영수증)만으로 보험사 앱 간편청구가 가능해요.'
+      : '통원 10만 원 초과 — 영수증에 더해 진료비 세부산정내역서를 준비하세요. 비급여 항목이 있으면 특히 필요해요.');
+  document.getElementById('docsText').textContent=docs;
+
+  // 리드 폼 hidden
+  document.getElementById('f_gen').value=GEN_LABEL[state.gen];
+  document.getElementById('f_visit').value=VISIT_LABEL[state.visit];
+  document.getElementById('f_amt').value='급여 '+fmt(gy)+' / 비급여 '+fmt(bg);
+  document.getElementById('f_refund').value = isRange? fmt(low)+'~'+fmt(high) : fmt(high);
+
+  var rs=document.getElementById('result-section');
+  rs.classList.add('show');
+  setTimeout(function(){rs.scrollIntoView({behavior:'smooth',block:'start'})},100);
+}
+
+function resetCalc(){
+  document.getElementById('result-section').classList.remove('show');
+  document.getElementById('calculator').scrollIntoView({behavior:'smooth'});
+}
+
+// ── 리드 폼 ──
+function submitForm(e){
+  e.preventDefault();
+  // TODO: 아래 URL을 실제 폼 엔드포인트로 교체하세요 (핏체크와 동일 패턴)
+  var ENDPOINT='https://formspree.io/f/YOUR_FORM_ID';
+  // 엔드포인트가 연결되기 전에는 접수를 약속하지 않고 카톡 채널로 안내한다.
+  if(ENDPOINT.indexOf('YOUR_FORM_ID')>-1){
+    document.getElementById('fs-icon').textContent='💬';
+    document.getElementById('fs-title').textContent='카톡으로 연결해드릴게요';
+    document.getElementById('fs-desc').textContent='온라인 접수 창구를 준비 중이에요. 아래 카카오톡 채널로 문의하시면 전문가와 가장 빠르게 연결됩니다.';
+  }else{
+    fetch(ENDPOINT,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}}).catch(function(){});
+  }
+  document.getElementById('form-area').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  document.getElementById('form-success').scrollIntoView({behavior:'smooth'});
+}
+
+// ── 질병코드 조회 위젯 ──
+var CW_DATA=null;
+var CW_BADGE={yes:['b-yes','청구 가능'],cond:['b-cond','조건부·주의'],no:['b-no','보상 제외']};
+function cwLoad(cb){
+  if(CW_DATA){cb();return;}
+  fetch('/tools/claim-dict/codes.json').then(function(r){return r.json()}).then(function(d){CW_DATA=d;cb();})
+    .catch(function(){CW_DATA=[];cb();});
+}
+function cwSearch(){
+  var kw=document.getElementById('cwQ').value.trim().toLowerCase().replace(/\./g,'-');
+  var box=document.getElementById('cwResults'), empty=document.getElementById('cwEmpty');
+  if(!kw){box.innerHTML='';empty.style.display='none';return;}
+  cwLoad(function(){
+    var hits=CW_DATA.filter(function(c){
+      return c.slug.indexOf(kw)>-1 || c.code.toLowerCase().indexOf(kw)>-1 || c.name.toLowerCase().indexOf(kw)>-1;
+    }).slice(0,5);
+    box.innerHTML=hits.map(function(c){
+      var b=CW_BADGE[c.badge];
+      return '<a class="cw-item" href="/tools/claim-dict/'+c.slug+'/"><span class="ci-code">'+c.code+'</span><span class="ci-name">'+c.name+'</span><span class="ci-badge '+b[0]+'">'+b[1]+'</span></a>';
+    }).join('');
+    empty.style.display=hits.length?'none':'block';
+  });
+}
+document.getElementById('cwQ').addEventListener('input',cwSearch);
+document.getElementById('cwQ').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();cwSearch();}});
+
+// ── FAQ ──
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open')})});
+</script>
+
+<footer class="vb-footer">
+  <p class="vb-ftop">부모를 위한 모든 보험 연구소</p>
+  <p class="vb-fdesc">본 계산기는 표준약관 기준 참고용 시뮬레이션이며, 실제 보상 여부와 금액은 가입 상품의 약관·한도·보험사 심사에 따라 달라질 수 있어요.</p>
+  <p class="vb-fmenu"><a href="/">홈</a> · <a href="/guide/">가이드</a> · <a href="/child/">어린이보험</a> · <a href="/tools/">도구</a> · <a href="/tools/claim-dict/">질병코드 사전</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/terms/">이용약관</a></p>
+</footer>
+</body>
+</html>
