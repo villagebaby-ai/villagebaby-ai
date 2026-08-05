@@ -2696,7 +2696,10 @@ function sendToSheet(P,C,pageCount,fname){
       matu:C.matu||'',label:C.label||'',tier:C.tier||'',kind:C.kind||'',before:C.before||'',after:C.after||'',
       bands:(C.bands||[]).join(' / '),bandLabels:(C.labels||[]).join(' / '),pages:pageCount,filename:fname,
       ua:navigator.userAgent};
-    fetch(SHEET_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(function(){});
+    const body=JSON.stringify(payload);
+    var sent=false;
+    if(navigator.sendBeacon){try{sent=navigator.sendBeacon(SHEET_WEBHOOK,new Blob([body],{type:'text/plain;charset=utf-8'}));}catch(e){sent=false;}}
+    if(!sent){fetch(SHEET_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body,keepalive:true}).catch(function(){});}
   }catch(e){}
 }
 let lastDoc="",lastName="";
