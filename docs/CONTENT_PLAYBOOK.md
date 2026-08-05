@@ -52,12 +52,48 @@
 3. **본문 sections** — `.sec` 블록 6~10개.
 4. **자주 묻는 질문 (FAQ)** — 6~10개. JSON-LD `FAQPage` 와 1:1 대응.
 5. **함께 읽으면 좋아요 (Related)** — `.related-grid` 4개 카드. 같은 pillar 클러스터 우선.
-6. **CTA 블록** — 카톡 무료 상담 또는 자사 앱 링크.
+6. **CTA 블록** — 카톡 무료 상담 또는 자사 앱 링크. **UTM 필수 (Section 2-1).**
 7. **Author card** — `<aside class="author-card">`. 본문 최상단 (TL;DR 직전).
 
 ### 사실 밀도 (GEO 핵심)
 - 모든 핵심 수치 (보험료, 자기부담률, 한도) 는 **본문 텍스트에도 명시**. 표·인포그래픽 안에만 두지 말 것. AI 검색 봇은 이미지를 못 읽음 → 텍스트에 동기화돼야 인용됨.
 - 예: 인포그래픽 alt 에 "5세대 자기부담률 50%" 가 있어도, 본문에 "5세대 비중증 자기부담률은 50%" 가 별도 텍스트로 있어야 GEO 활용도 ↑.
+
+---
+
+## 2-1. 측정 규칙 (빠지면 그 글은 성과가 0으로 보인다)
+
+2026-08-05 전수 점검에서 **`/child/` 29편 등 56페이지가 CTA에 UTM 없이 발행**돼 있었고, 11페이지는 GA4 태그 자체가 없었다. 원인은 이 플레이북이 CTA 스니펫을 UTM 없이 예시로 담고 있었던 것. 아래 두 규칙을 신규 글에 반드시 적용한다.
+
+### GA4 태그 — 전 페이지 `<head>` 필수
+정본 속성은 **`G-SRWXXLKTKD`** (우리 속성). `G-VNXYBTFWXB` 는 사이트 제작 시부터 있던 속성으로, 두 개를 같이 `config` 하는 것이 현재 사양이다(둘 다 수집). 템플릿 블록을 그대로 복사할 것.
+- 예외: `/admin-vb-*` 관리자 페이지는 넣지 않는다 (내부 방문이 지표를 오염시킴).
+
+### 상담 CTA UTM — `babybilly.co` 로 나가는 모든 링크
+```
+?utm_source=villagebaby&utm_medium=content&utm_campaign={슬러그를 percent-encoding}&utm_content=pos{N}
+```
+- `utm_campaign` = **폴더 슬러그**를 URL 인코딩한 값. 허브 페이지는 폴더명(`guide`, `child`, `tools`).
+- `utm_content` = `pos1`, `pos2`, … **문서에 등장하는 순서**. 한 페이지 안에서 번호가 겹치면 어느 버튼이 먹혔는지 구분이 안 된다.
+- 목적지는 글 주제에 맞춰서:
+
+| 콘텐츠 | 목적지 |
+|---|---|
+| 태아보험·임신 (`/guide/`) | `babybilly.co/insurance/general/v2` (태아보험 전용 폼) |
+| 어린이보험 (`/child/`) | `babybilly.co/insurance/child/standard` |
+| 매거진 케이스 (`/magazine/`) | `babybilly.co/insurance/baby/talk/v1` |
+| 그 밖의 가족 보험 (`/cancer/ /care/ /driver/ /female/ /education/`) | `babybilly.co/insurance/general` (가족 종합 상담 폼) |
+
+- ⚠️ `insurance/general/` 처럼 **끝에 슬래시를 붙이면 301 이 한 번 더 탄다.** 슬래시 없이 쓸 것.
+- ⚠️ JSON-LD 의 `sameAs` 같은 **스키마 값에는 UTM 을 붙이지 않는다** (링크가 아니라 식별자).
+
+### 발행 전 확인
+```bash
+# UTM 없는 상담 CTA 가 남았는지
+grep -o 'href="https://babybilly\.co/insurance/[^"]*"' {새글}/index.html | grep -v utm_source
+# GA 태그가 있는지
+grep -c "G-SRWXXLKTKD" {새글}/index.html
+```
 
 ---
 
@@ -91,6 +127,17 @@
   { /* JSON-LD 전체 — Section 4 참조 */ }
   </script>
 
+  <!-- 측정 태그 — 필수. 빠지면 그 글의 유입이 GA4 에 안 잡힌다. Section 3-1 참조 -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNXYBTFWXB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VNXYBTFWXB');
+    gtag('config', 'G-SRWXXLKTKD');
+  </script>
+
   <style>
     /* 디자인 토큰 — Section 5 참조 */
     /* author-card CSS — Section 9 참조 */
@@ -103,7 +150,8 @@
     <a href="/" class="nav-logo" aria-label="베이비빌리 홈">
       <img src="/logo.png" alt="베이비빌리">
     </a>
-    <a href="https://babybilly.co/insurance/baby/talk/v1" class="nav-cta">카톡 무료 상담</a>
+    <!-- UTM 필수 — Section 2-1 -->
+    <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign={인코딩된-슬러그}&utm_content=pos1" class="nav-cta">카톡 무료 상담</a>
   </div>
 </nav>
 
@@ -188,7 +236,7 @@
       <div class="cta-content">
         <h3 class="h3">{CTA 헤드라인}</h3>
         <p>{CTA 설명}</p>
-        <a href="https://babybilly.co/insurance/baby/talk/v1" class="cta-btn">💬 카톡으로 무료 상담</a>
+        <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign={인코딩된-슬러그}&utm_content=pos{N}" class="cta-btn">💬 카톡으로 무료 상담</a>
       </div>
     </div>
   </div>
