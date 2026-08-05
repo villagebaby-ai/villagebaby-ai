@@ -1,0 +1,55 @@
+name: Index submit (daily queue)
+
+# sitemap.xml 의 신규·갱신 URL 을 하루 N건씩만 IndexNow 에 제출.
+# 배치 발행 시 한 번에 몰아 넣지 않기 위한 큐. 구글은 IndexNow 미지원이라
+# 사이트맵 수집에 맡긴다(scripts/index-submit.mjs 주석 참고).
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 매일 01:00 UTC = 10:00 KST
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: '이번 실행에서 제출할 최대 건수'
+        required: false
+        default: '3'
+      dry_run:
+        description: '1 이면 전송 없이 대상만 출력'
+        required: false
+        default: '0'
+
+concurrency:
+  group: index-submit
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: IndexNow 제출
+        env:
+          INDEXNOW_LIMIT: ${{ github.event.inputs.limit || '3' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
+        run: node scripts/index-submit.mjs
+
+      - name: 상태 파일 커밋
+        if: ${{ github.event.inputs.dry_run != '1' }}
+        run: |
+          if [ -n "$(git status --porcelain .github/state)" ]; then
+            git config user.name  "villagebaby-index-bot"
+            git config user.email "bot@villagebaby.kr"
+            git add .github/state
+            git commit -m "chore(index): IndexNow 제출 기록 갱신"
+            git pull --rebase --autostash origin main
+            git push origin HEAD:main
+          else
+            echo "변경 없음 — 커밋 생략"
+          fi

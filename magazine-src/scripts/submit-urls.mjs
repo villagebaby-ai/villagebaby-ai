@@ -4,9 +4,14 @@
  * GitHub Actions 빌드 후 자동 실행.
  * 변경된 MDX 파일을 감지해 URL 변환 후 3종 검색엔진에 자동 제출.
  *
- * - IndexNow (Bing + Yandex): 신규/수정 URL 즉시 색인 요청
- * - Google Sitemap Ping: sitemap.xml 갱신 알림
- * - Naver Sitemap Ping: sitemap.xml 갱신 알림
+ * - IndexNow: 신규/수정 URL 즉시 색인 요청
+ *   → 참여 엔진(Bing·Yandex·Naver·Seznam·Yep)에 함께 전달된다.
+ *
+ * ⚠️ 2026-08-05 확인 — 아래 두 경로는 제거했다. 살아있는 줄 알고 뒀지만 죽은 코드였다.
+ *   · Google sitemap ping: 구글이 2023-06 에 폐기 → 프로덕션 로그에서 계속 404
+ *   · Naver  sitemap ping: 같은 로그에서 404
+ *   구글은 IndexNow 를 지원하지 않으므로 사이트맵 수집이 유일한 경로다.
+ *   (구글 Indexing API 는 JobPosting/BroadcastEvent 전용 — 일반 콘텐츠에 쓰면 정책 위반)
  */
 
 import { execSync } from 'child_process';
@@ -98,36 +103,6 @@ async function submitIndexNow(urlList) {
   });
 }
 
-// ─── Sitemap Ping (Google / Naver) ──────────────────────────────────────────
-async function pingSitemap(pingUrl) {
-  return new Promise((resolve) => {
-    const u = new URL(pingUrl);
-    const req = https.request(
-      {
-        hostname: u.hostname,
-        path: u.pathname + u.search,
-        method: 'GET',
-        headers: { 'User-Agent': 'villagebaby-bot/1.0' },
-      },
-      (res) => {
-        console.log(`[Ping] ${u.hostname}: ${res.statusCode}`);
-        res.resume();
-        resolve(res.statusCode);
-      }
-    );
-    req.on('error', e => {
-      console.warn(`[Ping] ${u.hostname} 오류:`, e.message);
-      resolve(null);
-    });
-    req.setTimeout(10_000, () => {
-      req.destroy();
-      console.warn(`[Ping] ${u.hostname} 타임아웃`);
-      resolve(null);
-    });
-    req.end();
-  });
-}
-
 // ─── main ────────────────────────────────────────────────────────────────────
 console.log('\n=== 검색엔진 URL 자동 제출 시작 ===');
 
@@ -139,16 +114,5 @@ const submitUrls  = [`${SITE}/magazine/`, ...articleUrls];
 
 // IndexNow 제출
 await submitIndexNow(submitUrls);
-
-// Sitemap Ping (항상 실행)
-console.log('\n[Ping] Sitemap 갱신 알림 전송...');
-const sitemapBase = encodeURIComponent(SITE);
-const magSitemap  = encodeURIComponent(`${SITE}/magazine/sitemap-index.xml`);
-const mainSitemap = encodeURIComponent(`${SITE}/sitemap.xml`);
-
-await pingSitemap(`https://www.google.com/ping?sitemap=${magSitemap}`);
-await pingSitemap(`https://www.google.com/ping?sitemap=${mainSitemap}`);
-await pingSitemap(`https://searchadvisor.naver.com/tool/ping?url=${magSitemap}`);
-await pingSitemap(`https://searchadvisor.naver.com/tool/ping?url=${mainSitemap}`);
 
 console.log('\n=== 제출 완료 ===\n');
