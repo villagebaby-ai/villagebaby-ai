@@ -2424,18 +2424,21 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue)}
       <label style="margin-top:12px">설계서 PDF 업로드</label>
       <div class="file" id="pdf_drop">여기로 PDF 드래그 또는 <b>클릭해서 선택</b><br><span id="pdf_name" style="font-size:11px"></span></div>
       <input type="file" id="pdf_file" accept="application/pdf" style="display:none">
-      <button class="btn" id="gen" disabled>⚙️ 빌리 HTML 생성하기</button>
+      <button class="btn" id="gen" disabled>🚀 villagebaby.kr에 게시하기</button>
       <div class="status" id="status"></div>
-      <button class="btn" id="pub" style="display:none">🚀 villagebaby.kr에 게시하기</button>
-      <div class="status" id="pubStatus"></div>
-      <button class="btn dl" id="dl" style="display:none">⬇️ HTML 파일로도 저장(선택)</button>
     </div>
 
     <!-- 미리보기 -->
     <div class="card prev">
       <h2><span class="n">3</span>미리보기</h2>
       <iframe id="preview"></iframe>
-      <div class="mini" style="text-align:center">생성 후 위에 결과가 표시됩니다. "villagebaby.kr에 게시하기"를 누르면 자동으로 올라가고 공유 링크가 발급돼요.</div>
+      <div class="mini" style="text-align:center">게시 버튼을 누르면 villagebaby.kr에 자동으로 올라가고, 완료되면 위에 공유 링크가 표시돼요.</div>
+    </div>
+
+    <!-- 내가 만든 링크 -->
+    <div class="card prev" id="historyCard" style="display:none">
+      <h2><span class="n">4</span>내가 만든 링크 <span style="font-weight:400;font-size:12px;color:var(--sub)">(이 브라우저 기준)</span></h2>
+      <div id="historyList"></div>
     </div>
   </div>
 </div>
@@ -2675,7 +2678,7 @@ function resetAll(){
   document.getElementById('c_cover').checked=false;
   pdfFile=null;document.getElementById('pdf_file').value='';document.getElementById('pdf_name').textContent='';
   document.getElementById('gen').disabled=true;
-  document.getElementById('preview').srcdoc='';document.getElementById('dl').style.display='none';
+  document.getElementById('preview').srcdoc='';
   document.getElementById('status').textContent='🆕 새 상담사 입력 모드 — 모두 초기화됐어요.';
 }
 document.getElementById('profile_pick').onchange=e=>{const n=e.target.value;if(!n){resetAll();return;}const s=loadProfiles()[n];if(s)applyProfile(s);document.getElementById('status').textContent='';};
@@ -2704,58 +2707,137 @@ function sendToSheet(P,C,pageCount,fname){
     if(!sent){fetch(SHEET_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:body,keepalive:true}).catch(function(){});}
   }catch(e){}
 }
-let lastDoc="",lastName="",lastP=null,lastC=null;
+let lastDoc="",lastName="",lastP=null,lastC=null,editingPath=null,editingUrl=null,cachedPages=null,cachedMemoji=null,cachedQr=null;
+
+// ---- IndexedDB: PDF 변환 결과(무거운 이미지) 캐시 — "수정하기" 시 재업로드 없이 재사용 ----
+function idbOpen(){
+  return new Promise((resolve,reject)=>{
+    const req=indexedDB.open('billyCache',1);
+    req.onupgradeneeded=()=>{req.result.createObjectStore('items',{keyPath:'path'});};
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function idbPut(item){
+  try{const db=await idbOpen();await new Promise((res,rej)=>{const tx=db.transaction('items','readwrite');tx.objectStore('items').put(item);tx.oncomplete=res;tx.onerror=()=>rej(tx.error);});}catch(e){}
+}
+async function idbGet(path){
+  try{const db=await idbOpen();return await new Promise((res)=>{const tx=db.transaction('items','readonly');const rq=tx.objectStore('items').get(path);rq.onsuccess=()=>res(rq.result||null);rq.onerror=()=>res(null);});}catch(e){return null;}
+}
+async function idbDelete(path){
+  try{const db=await idbOpen();await new Promise((res)=>{const tx=db.transaction('items','readwrite');tx.objectStore('items').delete(path);tx.oncomplete=res;tx.onerror=res;});}catch(e){}
+}
+
+// ---- 링크 이력(가벼운 목록, localStorage) ----
+const HISTORY_MAX=30;
+function loadHistory(){try{return JSON.parse(localStorage.getItem('billy_history')||'[]');}catch(e){return [];}}
+function saveHistoryEntry(entry){
+  const list=loadHistory().filter(x=>x.path!==entry.path);
+  list.unshift(entry);
+  const kept=list.slice(0,HISTORY_MAX);
+  const dropped=list.slice(HISTORY_MAX);
+  dropped.forEach(x=>idbDelete(x.path));
+  localStorage.setItem('billy_history',JSON.stringify(kept));
+  renderHistory();
+}
+function renderHistory(){
+  const list=loadHistory();
+  const card=document.getElementById('historyCard');
+  const box=document.getElementById('historyList');
+  if(!list.length){card.style.display='none';return;}
+  card.style.display='block';
+  box.innerHTML=list.map(h=>{
+    const d=new Date(h.ts);
+    const when=d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0');
+    return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)">'
+      +'<div style="min-width:0;flex:1">'
+      +'<div style="font-weight:700;font-size:13px">'+esc(h.matu)+'세만기 · '+esc(h.label)+'</div>'
+      +'<a href="'+h.url+'" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);word-break:break-all">'+h.url+'</a>'
+      +'<div style="font-size:11px;color:var(--sub)">'+when+'</div></div>'
+      +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px;flex:none" data-path="'+encodeURIComponent(h.path)+'">✏️ 수정하기</button>'
+      +'</div>';
+  }).join('');
+  box.querySelectorAll('button[data-path]').forEach(btn=>{
+    btn.onclick=()=>loadForEdit(decodeURIComponent(btn.getAttribute('data-path')));
+  });
+}
+async function loadForEdit(path){
+  const st=document.getElementById('status');
+  const hist=loadHistory().find(h=>h.path===path);
+  if(!hist){st.textContent='⚠️ 이력 정보를 찾을 수 없어요.';return;}
+  editingPath=path;editingUrl=hist.url;
+  document.getElementById('c_matu').value=hist.matu;
+  document.getElementById('c_label').value=hist.label;
+  const cached=await idbGet(path);
+  if(cached){
+    if(cached.P)applyProfile(cached.P);
+    if(cached.C){
+      document.getElementById('c_tier').value=cached.C.tier||'';
+      if(cached.C.kind)document.getElementById('c_kind').value=cached.C.kind;
+      document.getElementById('c_before').value=cached.C.before||'0';
+      document.getElementById('c_after').value=cached.C.after||'0';
+      const bvals=document.querySelectorAll('#bands .bval'),blabs=document.querySelectorAll('#bands .blab');
+      (cached.C.bands||[]).forEach((v,i)=>{if(bvals[i])bvals[i].value=v;});
+      (cached.C.labels||[]).forEach((v,i)=>{if(blabs[i])blabs[i].value=v;});
+    }
+    cachedPages=cached.pages||null;cachedMemoji=cached.memojiURI||null;cachedQr=cached.qrURI||null;
+    document.getElementById('gen').disabled=false;
+    st.textContent='✏️ 수정 모드 — 이전 내용을 불러왔어요. PDF를 다시 첨부하지 않아도 값만 바꿔서 같은 링크로 다시 게시할 수 있어요.';
+  }else{
+    cachedPages=null;cachedMemoji=null;cachedQr=null;
+    st.textContent='✏️ 수정 모드 — 이 브라우저엔 예전 PDF 캐시가 없어서 PDF를 다시 첨부해야 해요. (같은 링크로 갱신돼요)';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderHistory();
+
 document.getElementById('gen').onclick=async()=>{
   const st=document.getElementById('status');
   const P=collectProfile();
   if(!P.name){st.textContent='⚠️ 상담사 이름을 입력하세요.';return;}
-  if(!memojiURI){st.textContent='⚠️ 명함 이모지 이미지를 올려주세요.';return;}
-  if(!pdfFile){st.textContent='⚠️ 설계서 PDF를 올려주세요.';return;}
+  if(!P.email){st.textContent='⚠️ 게시하려면 이메일을 입력하세요.';return;}
+  if(!memojiURI&&!cachedMemoji){st.textContent='⚠️ 명함 이모지 이미지를 올려주세요(최초 1회만 필요해요).';return;}
   const bands=[...document.querySelectorAll('#bands .bval')].map(x=>x.value.trim());
   const labels=[...document.querySelectorAll('#bands .blab')].map(x=>x.value.trim()||' ');
   const C={matu:val('c_matu'),label:val('c_label')||'기본형',tier:val('c_tier')||'기본',kind:val('c_kind'),
            before:val('c_before')||bands[0]||'-',after:val('c_after')||'-',bands,labels};
-  document.getElementById('dl').style.display='none';
-  document.getElementById('pub').style.display='none';
-  document.getElementById('pubStatus').innerHTML='';
   try{
-    st.textContent='⏳ QR 생성 중...';
-    const qrURI=makeQR(P);
-    st.textContent='⏳ PDF 페이지 변환 중...';
-    const pages=await pdfToPages(pdfFile,document.getElementById('c_cover').checked,(a,b)=>{st.textContent='⏳ 페이지 변환 '+a+' / '+b;});
+    let pages,qrURI,memoji;
+    if(cachedPages&&cachedPages.length){
+      st.textContent='⏳ 이전에 저장된 PDF 페이지 재사용 중...';
+      pages=cachedPages;qrURI=cachedQr||makeQR(P);memoji=cachedMemoji||memojiURI;
+    }else{
+      if(!pdfFile){st.textContent='⚠️ 설계서 PDF를 올려주세요.';return;}
+      st.textContent='⏳ QR 생성 중...';
+      qrURI=makeQR(P);
+      st.textContent='⏳ PDF 페이지 변환 중...';
+      pages=await pdfToPages(pdfFile,document.getElementById('c_cover').checked,(a,b)=>{st.textContent='⏳ 페이지 변환 '+a+' / '+b;});
+      memoji=memojiURI;
+    }
     st.textContent='⏳ HTML 조립 중...';
-    lastDoc=genDoc(P,C,pages,memojiURI,qrURI);
+    lastDoc=genDoc(P,C,pages,memoji,qrURI);
     lastName=C.matu+'세만기_'+C.tier+'_가입제안서_빌리_'+P.name+'.html';
     lastP=P;lastC=C;
     document.getElementById('preview').srcdoc=lastDoc;
-    document.getElementById('dl').style.display='block';
-    document.getElementById('pub').style.display='block';
-    st.textContent='✅ 완성! ('+pages.length+'페이지) "villagebaby.kr에 게시하기"를 눌러 링크를 만드세요.';
     sendToSheet(P,C,pages.length,lastName);
-  }catch(e){st.textContent='❌ 오류: '+e.message;console.error(e);}
-};
-async function publishToWeb(){
-  const pst=document.getElementById('pubStatus');
-  if(!lastDoc||!lastP){pst.textContent='⚠️ 먼저 HTML을 생성하세요.';return;}
-  if(!lastP.email){pst.textContent='⚠️ 게시하려면 상담사 명함에 이메일을 입력해야 해요.';return;}
-  pst.textContent='⏳ villagebaby.kr에 게시 중... (최대 1분 소요)';
-  try{
-    const resp=await fetch(SHEET_WEBHOOK,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify({action:'publish',email:lastP.email,matu:lastC.matu,label:lastC.label,html:lastDoc})});
+
+    st.textContent='⏳ villagebaby.kr에 게시 중... (최대 1~3분, 이 창을 닫지 마세요)';
+    const payload=editingPath
+      ?{action:'update',path:editingPath,html:lastDoc}
+      :{action:'publish',email:P.email,matu:C.matu,label:C.label,html:lastDoc};
+    const resp=await fetch(SHEET_WEBHOOK,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
     const data=await resp.json();
     if(data.ok){
-      pst.innerHTML='✅ 게시 완료! <a href="'+data.url+'" target="_blank" rel="noopener">'+data.url+'</a> (사이트 반영까지 1~3분 걸릴 수 있어요)';
+      const finalUrl=data.url||editingUrl;
+      const finalPath=data.path||editingPath;
+      st.innerHTML='✅ 게시 완료! ('+pages.length+'페이지) <a href="'+finalUrl+'" target="_blank" rel="noopener">'+finalUrl+'</a> (사이트 반영까지 1~3분 걸릴 수 있어요)';
+      await idbPut({path:finalPath,P,C,pages,memojiURI:memoji,qrURI,ts:Date.now()});
+      saveHistoryEntry({path:finalPath,url:finalUrl,matu:C.matu,label:C.label,ts:Date.now()});
+      editingPath=null;editingUrl=null;cachedPages=null;cachedMemoji=null;cachedQr=null;
     }else{
-      pst.textContent='❌ 게시 실패: '+(data.error||'알 수 없는 오류');
+      st.textContent='❌ 게시 실패: '+(data.error||'알 수 없는 오류');
     }
-  }catch(e){
-    pst.textContent='❌ 게시 실패: '+e.message;
-  }
-}
-document.getElementById('pub').onclick=publishToWeb;
-document.getElementById('dl').onclick=()=>{
-  const b=new Blob([lastDoc],{type:'text/html'});const u=URL.createObjectURL(b);
-  const a=document.createElement('a');a.href=u;a.download=lastName;a.click();URL.revokeObjectURL(u);
+  }catch(e){st.textContent='❌ 오류: '+e.message;console.error(e);}
 };
 </script>
 </body></html>
