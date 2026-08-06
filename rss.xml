@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Wed, 05 Aug 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -31,6 +31,36 @@
     <!-- 임신-초기-응급실-비용-청구 (신규 2026-07-31) -->
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
     <!-- 임신-중-실손-청구-태아보험-영향 (신규 2026-08-03) -->
+    <item>
+      <title>초음파 사진 속 GS·CRL·FHR, 무슨 뜻일까?</title>
+      <link>https://villagebaby.kr/guide/%EC%B4%88%EC%9D%8C%ED%8C%8C-%EC%82%AC%EC%A7%84-%EB%B3%B4%EB%8A%94%EB%B2%95/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%B4%88%EC%9D%8C%ED%8C%8C-%EC%82%AC%EC%A7%84-%EB%B3%B4%EB%8A%94%EB%B2%95/</guid>
+      <pubDate>Thu, 06 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 초기</category>
+      <category>임신 가이드</category>
+      <description>초음파 사진에 찍힌 GS, CRL, FHR, BPD가 무슨 뜻인지 모르겠죠. 주수마다 무엇이 보이는지, 사진 위 숫자가 어떤 의미인지, 병원 주수와 앱 주수가 왜 다른지 하나씩 읽는 법을 정리했어요.</description>
+    </item>
+    <item>
+      <title>임산부 커피, 하루 몇 잔까지 괜찮을까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%BB%A4%ED%94%BC-%EC%B9%B4%ED%8E%98%EC%9D%B8/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%BB%A4%ED%94%BC-%EC%B9%B4%ED%8E%98%EC%9D%B8/</guid>
+      <pubDate>Thu, 06 Aug 2026 10:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>임신하면 커피를 끊어야 할까요. 하루 카페인 200mg이 어느 정도인지, 아메리카노·커피믹스·녹차·콜라에 얼마나 들었는지, 이미 마신 커피는 어떻게 봐야 하는지 숫자로 정리했어요.</description>
+    </item>
+    <item>
+      <title>아기가 주수보다 작대요 — 걱정해야 할까?</title>
+      <link>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84-%ED%81%AC%EA%B8%B0-%EC%9E%91%EB%8B%A4-%ED%81%AC%EB%8B%A4/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%ED%83%9C%EC%95%84-%ED%81%AC%EA%B8%B0-%EC%9E%91%EB%8B%A4-%ED%81%AC%EB%8B%A4/</guid>
+      <pubDate>Thu, 06 Aug 2026 11:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 중기~후기</category>
+      <category>임신 가이드</category>
+      <description>검진에서 아기가 주수보다 작다 크다는 말을 들으면 그날 하루가 무너지죠. 초음파 추정체중이 어떻게 계산되는지, 백분위 10과 90이 무슨 뜻인지, 한 번의 숫자보다 무엇을 봐야 하는지 정리했어요.</description>
+    </item>
     <item>
       <title>맘편한 임신 원스톱 신청, 한 번에 되는 것과 따로 할 것</title>
       <link>https://villagebaby.kr/guide/%EB%A7%98%ED%8E%B8%ED%95%9C-%EC%9E%84%EC%8B%A0-%EC%9B%90%EC%8A%A4%ED%86%B1-%EC%8B%A0%EC%B2%AD/</link>

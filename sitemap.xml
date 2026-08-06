@@ -4372,4 +4372,37 @@
       <image:caption>정부24에서 한 번에 신청되는 항목과 따로 해야 하는 항목, 서류와 창구를 정리했어요.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%B4%88%EC%9D%8C%ED%8C%8C-%EC%82%AC%EC%A7%84-%EB%B3%B4%EB%8A%94%EB%B2%95/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%B4%88%EC%9D%8C%ED%8C%8C-%EC%82%AC%EC%A7%84-%EB%B3%B4%EB%8A%94%EB%B2%95-blue.png</image:loc>
+      <image:title>초음파 사진 보는 법</image:title>
+      <image:caption>초기 초음파 3대 약어와 사진 위 숫자 읽는 법, 병원 주수가 기준인 이유까지 정리했어요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%BB%A4%ED%94%BC-%EC%B9%B4%ED%8E%98%EC%9D%B8/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%82%B0%EB%B6%80-%EC%BB%A4%ED%94%BC-%EC%B9%B4%ED%8E%98%EC%9D%B8-blue.png</image:loc>
+      <image:title>임산부 커피·카페인</image:title>
+      <image:caption>카페인 200mg 기준이 실제로 몇 잔인지, 커피 말고 어디에 숨어 있는지 정리했어요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84-%ED%81%AC%EA%B8%B0-%EC%9E%91%EB%8B%A4-%ED%81%AC%EB%8B%A4/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%ED%83%9C%EC%95%84-%ED%81%AC%EA%B8%B0-%EC%9E%91%EB%8B%A4-%ED%81%AC%EB%8B%A4-blue.png</image:loc>
+      <image:title>태아 크기 작다·크다</image:title>
+      <image:caption>추정체중 오차와 백분위의 의미, 한 번의 숫자 대신 봐야 할 성장 추세를 정리했어요.</image:caption>
+    </image:image>
+  </url>
 </urlset>
