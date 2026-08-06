@@ -7,12 +7,16 @@
 |---|---|
 | `ogcard.py` | OG 카드 생성기 (1200×630 · blue/mint/cream/lavender/peach 5색). 기존 카드 레이아웃 실측 재현 |
 | `build_pages.py` | `pages_data.py` 를 읽어 `guide/{슬러그}/index.html` 생성. 템플릿 정본 = `guide/임신-초기-배뭉침/` |
-| `pages_data.example.py` | 8편 실제 콘텐츠 데이터 (구조 참고용) |
+| `sync_publish.py` | sitemap.xml · rss.xml · lab/mypages.json 갱신 (이미 있으면 건너뜀) |
+| `backlinks.py` | 기존 글 → 신규 글 역방향 내부링크 삽입 (신형·구형 마크업 둘 다) |
+| `pages_data.py` | **이번 회차** 콘텐츠 데이터. 회차마다 갈아 끼운다 |
+| `pages_data.example.py` | 2026-08-05 8편 데이터 (구조 참고용) |
 
 ## 실행
 ```bash
 cd /Users/villagebaby/villagebaby-ai-site/scripts_temp/seo-guide
-cp pages_data.example.py pages_data.py   # 내용 교체
+# build_pages.py 의 TODAY 를 오늘 날짜로, sync_publish.py 의 TODAY·RSS_DATE 도 맞춘다
+vi pages_data.py                          # 이번 회차 내용으로 교체
 python3 - <<'PY'
 from ogcard import make_all
 from pages_data import PAGES
@@ -21,7 +25,11 @@ for p in PAGES:
              '/Users/villagebaby/villagebaby-ai-site/assets/og', p.get('flip', False))
 PY
 python3 build_pages.py
+python3 sync_publish.py
+python3 backlinks.py                      # LINKS 딕셔너리를 이번 회차용으로 교체하고 실행
 ```
+⚠️ 기존 HTML 중 **CRLF 로 저장된 파일이 섞여 있다.** 파일을 다시 쓸 땐 `newline=""` 로 열 것
+(안 그러면 줄바꿈이 전부 LF 로 바뀌어 1줄 추가가 전체 파일 diff 로 잡힌다 — `임신-체중-증가-관리` 에서 겪음).
 
 ## 주제 선정 (매번 같은 방식)
 소스 = `~/babybilly-marketing/analysis/content_posts_index.csv` (어드민 콘텐츠 1,693건 · id·title·slug·**views**).

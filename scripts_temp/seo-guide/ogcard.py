@@ -2,7 +2,8 @@
 """villagebaby.kr OG 카드 생성기 (1200x630, 5색 변형)
 기존 guide_임신-초기-배뭉침-*.png 레이아웃을 그대로 재현."""
 import os
-from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 W, H = 1200, 630
 FONT_DIR = os.path.expanduser("~/Library/Fonts")
@@ -38,6 +39,32 @@ def vgrad(top, bot):
     return img
 
 
+def _paste_premul(bg, il, sz, pos, scale=1.0):
+    """알파를 프리멀티플한 상태로 리샘플·합성.
+    저해상도 일러스트를 확대할 때 생기는 가장자리 계단·검은 테두리를 막는다
+    (투명 픽셀 RGB 가 0,0,0 이라 일반 LANCZOS 확대는 어두운 링이 생긴다).
+    1.3배 넘게 확대하면 원본 컷아웃의 계단이 그대로 보이므로 색·알파에 같은 양의
+    블러를 걸어 윤곽만 다듬는다 (같은 양이어야 어두운 헤일로가 안 생긴다)."""
+    a = np.asarray(il, dtype=np.float32) / 255.0
+    rgb, alpha = a[..., :3], a[..., 3:4]
+    if scale > 1.3:
+        # 원본 컷아웃의 계단·잔털 정리: 블러 → 소프트 재임계 (윤곽은 살리고 톱니만 없앤다)
+        sm = np.asarray(Image.fromarray((alpha[..., 0] * 255).astype(np.uint8), "L")
+                        .filter(ImageFilter.GaussianBlur(1.0)), dtype=np.float32) / 255.0
+        alpha = np.clip((sm - 0.42) / 0.22, 0.0, 1.0)[..., None]
+    pm = Image.fromarray(np.clip(rgb * alpha * 255.0, 0, 255).astype(np.uint8), "RGB").resize(sz, Image.LANCZOS)
+    am = Image.fromarray(np.clip(alpha[..., 0] * 255.0, 0, 255).astype(np.uint8), "L").resize(sz, Image.LANCZOS)
+
+    out = np.asarray(bg, dtype=np.float32).copy()
+    x, y = pos
+    w, h = sz
+    reg = out[y:y + h, x:x + w]
+    pma = np.asarray(pm, dtype=np.float32)
+    ama = np.asarray(am, dtype=np.float32)[..., None] / 255.0
+    out[y:y + h, x:x + w] = np.clip(reg * (1.0 - ama) + pma, 0, 255)
+    return Image.fromarray(out.astype(np.uint8), "RGB")
+
+
 def make(slug, badge_text, title_lines, subtitle, illust, variant, out_dir, flip=False):
     p = PALETTE[variant]
     img = vgrad(p["bg_top"], p["bg_bot"])
@@ -52,8 +79,8 @@ def make(slug, badge_text, title_lines, subtitle, illust, variant, out_dir, flip
         if flip:
             il = il.transpose(Image.FLIP_LEFT_RIGHT)
         scale = min(578 / il.height, 552 / il.width)
-        il = il.resize((max(1, round(il.width * scale)), max(1, round(il.height * scale))), Image.LANCZOS)
-        img.paste(il, (W - 24 - il.width, H - 6 - il.height), il)
+        sz = (max(1, round(il.width * scale)), max(1, round(il.height * scale)))
+        img = _paste_premul(img, il, sz, (W - 24 - sz[0], H - 6 - sz[1]), scale)
 
     d = ImageDraw.Draw(img)
     fb = ImageFont.truetype(F_SEMI, 25)
