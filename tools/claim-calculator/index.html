@@ -351,50 +351,7 @@
       <button class="btn-recalc" onclick="resetCalc()">↺ 다시 계산하기</button>
 
       <!-- 리드 폼 -->
-      <div class="lead-form-card" id="lead-form">
-        <div id="form-area">
-          <div class="lead-form-header">
-            <div style="font-size:36px;margin-bottom:.5rem">🔎</div>
-            <h3>청구 놓친 병원비, 무료로 점검받으세요</h3>
-            <p>아이 보험 증권 기준으로 놓친 청구·못 받은 특약이 없는지<br>전문가가 무료로 확인해드려요. 영업 강요 없는 1회성 점검이에요.</p>
-          </div>
-          <form id="consultForm" onsubmit="submitForm(event)">
-            <input type="hidden" id="f_gen" name="실손세대">
-            <input type="hidden" id="f_visit" name="진료유형">
-            <input type="hidden" id="f_amt" name="입력금액">
-            <input type="hidden" id="f_refund" name="예상환급액">
-            <input type="hidden" name="유입도구" value="claim-calculator">
-            <div class="form-row">
-              <label class="form-label" for="f_name">이름 <span style="color:var(--red)">*</span></label>
-              <input class="form-input" type="text" id="f_name" name="이름" placeholder="홍길동" required autocomplete="name">
-            </div>
-            <div class="form-row">
-              <label class="form-label" for="f_phone">연락처 <span style="color:var(--red)">*</span></label>
-              <input class="form-input" type="tel" id="f_phone" name="연락처" placeholder="010-0000-0000" required autocomplete="tel">
-            </div>
-            <div class="form-row">
-              <label class="form-label" for="f_pref">선호 연락 방법</label>
-              <select class="form-input" id="f_pref" name="선호연락방법">
-                <option value="카카오톡">카카오톡</option>
-                <option value="전화">전화</option>
-                <option value="문자">문자</option>
-              </select>
-            </div>
-            <div class="consent-row">
-              <input type="checkbox" id="consent" name="개인정보동의" required>
-              <label for="consent">개인정보 수집·이용에 동의합니다. 수집된 정보는 보험 상담 목적으로만 사용되며 상담 완료 후 즉시 삭제됩니다. (<a href="/privacy">개인정보처리방침</a>)</label>
-            </div>
-            <button type="submit" class="btn-submit">📞 무료 청구 점검 신청하기</button>
-            <p class="form-note">평균 응답 10분 이내 · 영업 강요 없어요</p>
-          </form>
-        </div>
-        <div id="form-success">
-          <div class="success-icon" id="fs-icon">🎉</div>
-          <h4 id="fs-title">점검 신청이 완료되었습니다!</h4>
-          <p id="fs-desc">곧 전문가가 연락드릴 예정이에요. 카카오톡 채널에서도 바로 문의하실 수 있어요.</p>
-          <a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=pos5" target="_blank" rel="noopener" class="btn-kakao">💬 카톡으로 바로 문의 ></a>
-        </div>
-      </div>
+      <div class="lead-form-card" id="lead-form" style="text-align:center"><div style="font-size:36px;margin-bottom:.5rem">🔎</div><h3>놓친 병원비가 있는지 무료로 점검받으세요</h3><p>아이 보험 증권을 기준으로 못 받은 청구와 빠진 특약이 없는지 확인해 드려요. 청구권 시효가 3년이라 지난 영수증도 함께 볼 수 있어요.</p><a href="https://babybilly.co/insurance/general/v2?utm_source=villagebaby&utm_medium=content&utm_campaign=claim-calculator&utm_content=cta_main" target="_blank" rel="noopener" class="btn-kakao" style="display:inline-block;margin-top:14px">놓친 청구 점검받기 →</a></div>
     </div><!-- /result-section -->
 
     <!-- ── 질병코드 조회 위젯 ── -->
@@ -630,22 +587,7 @@ function resetCalc(){
 }
 
 // ── 리드 폼 ──
-function submitForm(e){
-  e.preventDefault();
-  // TODO: 아래 URL을 실제 폼 엔드포인트로 교체하세요 (핏체크와 동일 패턴)
-  var ENDPOINT='https://formspree.io/f/YOUR_FORM_ID';
-  // 엔드포인트가 연결되기 전에는 접수를 약속하지 않고 카톡 채널로 안내한다.
-  if(ENDPOINT.indexOf('YOUR_FORM_ID')>-1){
-    document.getElementById('fs-icon').textContent='💬';
-    document.getElementById('fs-title').textContent='카톡으로 연결해드릴게요';
-    document.getElementById('fs-desc').textContent='온라인 접수 창구를 준비 중이에요. 아래 카카오톡 채널로 문의하시면 전문가와 가장 빠르게 연결됩니다.';
-  }else{
-    fetch(ENDPOINT,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}}).catch(function(){});
-  }
-  document.getElementById('form-area').style.display='none';
-  document.getElementById('form-success').style.display='block';
-  document.getElementById('form-success').scrollIntoView({behavior:'smooth'});
-}
+
 
 // ── 질병코드 조회 위젯 ──
 var CW_DATA=null;

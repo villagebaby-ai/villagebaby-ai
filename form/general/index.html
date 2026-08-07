@@ -324,9 +324,9 @@
 <!-- FORM -->
 <div class="container">
   <section class="form-section" id="apply">
-    <form class="form-card" id="inquiry-form" method="POST" action="/api/inquiry" novalidate>
+    <form class="form-card" id="inquiry-form" method="POST" novalidate>
       <div class="form-head">
-        <span class="gift-tag">🎁 신청만 해도 사은품 증정</span>
+        <span class="gift-tag">💬 카톡으로 바로 상담</span>
         <h2>부모를 위한 모든 보험 전문가</h2>
         <p>베이비빌리 팀이 함께 합니다.</p>
       </div>
@@ -600,24 +600,11 @@
   const btn = document.getElementById('submit-btn');
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    const fd = new FormData(form);
-    const interests = fd.getAll('interests');
+    var fd = new FormData(form);
     if (!fd.get('name') || !fd.get('phone')) { alert('성함과 연락처를 입력해주세요.'); return; }
     if (!fd.get('agree')) { alert('개인정보 수집·이용 동의에 체크해주세요.'); return; }
-    if (interests.length === 0) {
-      const ok = confirm('관심 보험을 선택하지 않으셨습니다. 그래도 신청하시겠어요?');
-      if (!ok) return;
-    }
-    btn.disabled = true; btn.innerHTML = '신청 중...';
-    setTimeout(() => {
-      console.log('[Inquiry]', { name: fd.get('name'), phone: fd.get('phone'), interests, memo: fd.get('memo'), timestamp: new Date().toISOString() });
-      btn.innerHTML = '✓ 신청 완료'; btn.style.background = 'var(--green)';
-      alert('신청이 접수됐어요!\n24시간 이내에 카톡 또는 전화로 연락드릴게요. 🙏\n사은품은 다음 달 초에 발송돼요.');
-      form.reset();
-      summary.innerHTML = '<span class="ph">선택해주세요 — 자세히 보기</span>';
-      chipsBox.innerHTML = '';
-      setTimeout(() => { btn.disabled = false; btn.innerHTML = '💬 무료 상담 신청하기<span class="gift">선착순 사은품 + 가입 시 추가 선물</span>'; btn.style.background = ''; }, 2000);
-    }, 600);
+    if (typeof gtag === 'function') { gtag('event','cta_click',{cta_type:'kakao',cta_variant:'general_form',page_slug:'form-general',send_to:'G-SRWXXLKTKD'}); }
+    window.open('https://pf.kakao.com/_bxjJfn/chat', '_blank', 'noopener');
   });
   document.getElementById('phone').addEventListener('input', function(e){
     let v = e.target.value.replace(/\D/g, ''); if (v.length > 11) v = v.slice(0, 11);
