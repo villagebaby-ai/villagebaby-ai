@@ -58,6 +58,22 @@ function notify(d, ts) {
   } catch (err) { return 'MAIL_FAIL: ' + String(err).slice(0, 180); }
 }
 
+
+/** 진단용 — try/catch 없이 맨몸으로 보낸다. 실패하면 실행 기록에 오류가 그대로 뜬다.
+ *  편집기에서 이 함수를 직접 실행해 보세요. */
+function notifyTestRaw() {
+  MailApp.sendEmail(NOTIFY_TO,
+    '\u005BTEST\u005D babybilly calculator',
+    'raw send test ' + Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss'));
+  Logger.log('sent to ' + NOTIFY_TO + ' | remaining quota: ' + MailApp.getRemainingDailyQuota());
+}
+
+/** 남은 메일 발송 한도만 확인 (0 이면 그날 못 보낸다) */
+function checkQuota() {
+  Logger.log('remaining daily quota: ' + MailApp.getRemainingDailyQuota());
+  Logger.log('effective user: ' + Session.getEffectiveUser().getEmail());
+}
+
 /** 최초 1회 직접 실행해서 메일 권한을 승인해 두세요 */
 function notifyTest() {
   notify({ name: 'TEST', phone: '01000000000', weeks: '12', gender: 'F',
