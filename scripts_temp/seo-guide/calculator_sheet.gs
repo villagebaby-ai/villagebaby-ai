@@ -14,7 +14,7 @@ function doPost(e) {
     var day = Utilities.formatDate(now, 'Asia/Seoul', 'yyyy-MM-dd');
     var ts  = Utilities.formatDate(now, 'Asia/Seoul', 'yyyy-MM-dd HH:mm:ss');
     sh.appendRow([
-      String(d.phone || ''),   // A 휴대폰
+      fmtPhone(d.phone),       // A \uD734\uB300\uD3F0 (010-0000-0000)
       d.name    || '',         // B 이름
       d.weeks   || '',         // C 주차
       '',                      // D 상담사은품 (이 페이지는 사은품 없음)
@@ -32,6 +32,13 @@ function doPost(e) {
   } catch (err) {
     return json({ ok: false, error: String(err) });
   }
+}
+
+function fmtPhone(v) {
+  var d = String(v || '').replace(/[^0-9]/g, '');
+  if (d.length === 11) return d.slice(0,3) + '-' + d.slice(3,7) + '-' + d.slice(7);
+  if (d.length === 10) return d.slice(0,3) + '-' + d.slice(3,6) + '-' + d.slice(6);
+  return d;
 }
 
 function doGet() { return json({ ok: true, alive: true }); }

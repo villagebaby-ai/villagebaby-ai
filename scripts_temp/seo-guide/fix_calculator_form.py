@@ -29,7 +29,12 @@ ENDPOINT = sys.argv[1] if len(sys.argv) > 1 else "SHEET_ENDPOINT_PENDING"
 NEW_JS = """function submitForm(e){e.preventDefault();
   var EP='%EP%';
   var g=function(id){var el=document.getElementById(id);return el?el.value:'';};
-  var payload={phone:g('f_phone'),name:g('f_name'),weeks:g('f_weeks'),gender:g('f_gender'),
+  // 시트에서 앞자리 0 이 잘리지 않게 010-0000-0000 형태로 보낸다 (하이픈이 있으면 숫자로 파싱되지 않음)
+  var fmtPhone=function(v){var d=String(v||'').replace(/[^0-9]/g,'');
+    if(d.length===11)return d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7);
+    if(d.length===10)return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
+    return d;};
+  var payload={phone:fmtPhone(g('f_phone')),name:g('f_name'),weeks:g('f_weeks'),gender:g('f_gender'),
     coverage:g('f_coverage'),range:g('f_range'),pref:g('f_pref'),
     pageUrl:location.href,referrer:document.referrer||''};
   var btn=e.target.querySelector('.btn-submit');
