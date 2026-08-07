@@ -13,7 +13,9 @@
 <meta property="og:description" content="100일부터 초등학교 입학까지, 베이비빌리 가입 엄빠님을 위한 성장 선물을 한눈에 확인하세요.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://villagebaby.kr/guide/benefit/">
-<meta property="og:image" content="https://villagebaby.kr/assets/img/baby-birthday.png">
+<meta property="og:image" content="https://villagebaby.kr/assets/img/benefit/og-benefit.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,7 +102,14 @@
     margin: 28px auto 0;
     position: relative;
   }
-  .hero-baby img { width: 100%; height: auto; }
+  .hero-baby img.main { width: 100%; height: auto; }
+  .hero-baby img.deco {
+    position: absolute;
+    width: 46%; height: auto;
+    filter: drop-shadow(0 8px 16px rgba(51,115,186,.10));
+  }
+  .hero-baby img.deco.l { left: -30%; bottom: 2%; transform: rotate(-8deg); }
+  .hero-baby img.deco.r { right: -28%; bottom: 26%; transform: rotate(7deg); }
   .hero-bubble {
     display: inline-block;
     background: #fff;
@@ -152,14 +161,11 @@
     border-color: var(--main);
   }
   .ms-card .thumb {
-    width: 88px; height: 88px;
+    width: 92px; height: 92px;
     margin: 0 auto 14px;
-    background: var(--side-tint);
-    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
   }
-  .ms-card .thumb img { width: 68%; height: auto; }
+  .ms-card .thumb img { width: 100%; height: auto; }
   .ms-card .stage {
     display: inline-block;
     font-size: 13px; font-weight: 700;
@@ -199,13 +205,10 @@
     box-shadow: 0 6px 20px rgba(51,115,186,.07);
   }
   .coupon-card .c-img {
-    flex: 0 0 76px; width: 76px; height: 76px;
-    background: var(--main-tint);
-    border-radius: 50%;
+    flex: 0 0 82px; width: 82px; height: 82px;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
   }
-  .coupon-card .c-img img { width: 66%; }
+  .coupon-card .c-img img { width: 100%; height: auto; }
   .coupon-card .c-body { flex: 1; min-width: 0; }
   .coupon-card .c-stage { font-size: 13px; font-weight: 700; color: var(--main); }
   .coupon-card .c-title { font-size: 18px; font-weight: 900; margin: 3px 0 6px; }
@@ -237,13 +240,10 @@
     box-shadow: 0 6px 20px rgba(0,0,0,.05);
   }
   .gift-card .g-img {
-    flex: 0 0 100px; width: 100px; height: 100px;
-    background: var(--main-tint);
-    border-radius: var(--r-md);
+    flex: 0 0 104px; width: 104px; height: 104px;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
   }
-  .gift-card .g-img img { width: 72%; height: auto; }
+  .gift-card .g-img img { width: 100%; height: auto; }
   .gift-card h3 { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
   .gift-card h3 .who { display: block; font-size: 13px; font-weight: 700; color: var(--main); margin-bottom: 4px; }
   .gift-card p { font-size: 13.5px; color: var(--gray); }
@@ -273,14 +273,11 @@
     box-shadow: 0 6px 20px rgba(51,115,186,.08);
   }
   .test-card .t-img {
-    flex: 0 0 110px;
-    width: 110px; height: 110px;
-    background: var(--side-tint);
-    border-radius: var(--r-md);
+    flex: 0 0 114px;
+    width: 114px; height: 114px;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
   }
-  .test-card .t-img img { width: 74%; height: auto; }
+  .test-card .t-img img { width: 100%; height: auto; }
   .test-card h3 { font-size: 19px; font-weight: 900; margin-bottom: 8px; }
   .test-card h3 .who {
     display: block;
@@ -363,14 +360,15 @@
     text-align: center;
   }
   .sp-card .ico {
-    width: 56px; height: 56px;
+    width: 64px; height: 64px;
     margin: 0 auto 16px;
     background: #fff;
     border-radius: var(--r-md);
     display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
+    overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,.06);
   }
+  .sp-card .ico img { width: 86%; height: auto; }
   .sp-card h3 { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
   .sp-card h3 .pt { color: var(--main); }
   .sp-card p { font-size: 14px; color: var(--gray); }
@@ -422,10 +420,10 @@
     color: #fff;
   }
   .cx-banner .b-img {
-    flex: 0 0 120px; width: 120px;
-    background: rgba(255,255,255,.15);
+    flex: 0 0 128px; width: 128px;
     border-radius: 50%;
-    padding: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
   }
   .cx-banner h3 { font-size: clamp(19px, 2.6vw, 24px); font-weight: 900; line-height: 1.45; margin-bottom: 10px; }
   .cx-banner h3 .hl { color: var(--side); }
@@ -525,7 +523,9 @@
       <p class="sub">베이비빌리는 단순히 보험 가입으로 끝나는 게 아니라,<br>
       <strong>아가의 특별한 순간마다</strong> 늘 든든하게 함께할게요.</p>
       <div class="hero-baby">
-        <img src="/assets/img/baby-wave.webp" alt="손을 흔드는 아기 일러스트" width="240" height="280">
+        <img class="main" src="/assets/img/benefit/hero-billy-heart.webp" alt="하트를 든 베이비빌리 캐릭터" width="525" height="560">
+        <img class="deco l" src="/assets/img/benefit/hero-billy-hug.webp" alt="" width="359" height="360" aria-hidden="true">
+        <img class="deco r" src="/assets/img/benefit/hero-billy-thumb.webp" alt="" width="261" height="360" aria-hidden="true">
       </div>
       <span class="hero-bubble">우리 아이의 모든 순간을 응원할게요!</span>
     </div>
@@ -542,37 +542,37 @@
 
       <div class="timeline">
         <div class="ms-card">
-          <div class="thumb"><img src="/assets/img/pregnant-mom.webp" alt="임신부 일러스트" loading="lazy"></div>
+          <div class="thumb"><img src="/assets/img/benefit/ms-join.webp" alt="하트를 안고 있는 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <span class="stage">보험 가입</span>
           <div class="gift">엄마 배 속의<br>아기와 첫 만남</div>
           <div class="desc">빌리와의 인연이 시작돼요 💙</div>
         </div>
         <div class="ms-card">
-          <div class="thumb"><img src="/assets/img/baby-cloud.webp" alt="구름 위 아기 일러스트" loading="lazy"></div>
+          <div class="thumb"><img src="/assets/img/benefit/ms-100days.webp" alt="분홍 배냇저고리를 쓴 백일 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <span class="stage">100일</span>
           <div class="gift">빌리쇼핑<br>5,000원 쿠폰</div>
           <div class="desc">알림톡으로 보내드려요</div>
         </div>
         <div class="ms-card">
-          <div class="thumb"><img src="/assets/img/baby-birthday.webp" alt="생일 케이크 모자를 쓴 아기 일러스트" loading="lazy"></div>
+          <div class="thumb"><img src="/assets/img/benefit/ms-firstbirthday.webp" alt="생일 고깔모자를 쓴 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <span class="stage">첫돌</span>
           <div class="gift">빌리쇼핑<br>10,000원 쿠폰</div>
           <div class="desc">알림톡으로 보내드려요</div>
         </div>
         <div class="ms-card new">
-          <div class="thumb"><img src="/assets/img/baby-magnifier.webp" alt="돋보기를 든 아기 일러스트" loading="lazy"></div>
+          <div class="thumb"><img src="/assets/img/benefit/ms-test.webp" alt="연필과 검사지를 든 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <span class="stage">1살~</span>
           <div class="gift">아이 &amp; 양육자 기질 검사<br>이용권 제공</div>
           <div class="desc">아이 발달 단계별로 임상심리전문가의<br>검사·발달 보고서가 제공돼요!</div>
         </div>
         <div class="ms-card">
-          <div class="thumb"><img src="/assets/img/baby-gift.webp" alt="선물을 든 아기 일러스트" loading="lazy"></div>
+          <div class="thumb"><img src="/assets/img/benefit/ms-2years.webp" alt="선물 상자를 안고 있는 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <span class="stage">두돌</span>
           <div class="gift">러베 아기<br>스킨케어 SET</div>
           <div class="desc">실물로 직접 보내드려요!</div>
         </div>
         <div class="ms-card">
-          <div class="thumb"><img src="/assets/img/baby-graduate.webp" alt="학사모를 쓴 아이 일러스트" loading="lazy"></div>
+          <div class="thumb"><img src="/assets/img/benefit/ms-school.webp" alt="학사모를 쓴 아이 일러스트" width="240" height="240" loading="lazy"></div>
           <span class="stage">초등학교 입학</span>
           <div class="gift">입학 축하 BOX</div>
           <div class="desc">학용품 10종 세트 —<br>사물함 준비물 몽땅!</div>
@@ -594,7 +594,7 @@
 
       <div class="coupon-grid">
         <div class="coupon-card">
-          <div class="c-img"><img src="/assets/img/baby-cloud.webp" alt="구름 위 아기 일러스트" loading="lazy"></div>
+          <div class="c-img"><img src="/assets/img/benefit/cp-100days.webp" alt="분홍 배냇저고리를 쓴 백일 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <div class="c-body">
             <div class="c-stage">100일 축하</div>
             <div class="c-title">100일 선물 쿠폰</div>
@@ -603,7 +603,7 @@
           <div class="c-amount"><small>COUPON</small><b>5,000원</b></div>
         </div>
         <div class="coupon-card">
-          <div class="c-img"><img src="/assets/img/baby-birthday.webp" alt="생일 케이크 모자를 쓴 아기 일러스트" loading="lazy"></div>
+          <div class="c-img"><img src="/assets/img/benefit/cp-firstbirthday.webp" alt="생일 고깔모자를 쓴 아기 일러스트" width="240" height="240" loading="lazy"></div>
           <div class="c-body">
             <div class="c-stage">첫돌 축하</div>
             <div class="c-title">첫돌 선물 쿠폰</div>
@@ -634,14 +634,14 @@
 
       <div class="gift-grid">
         <div class="gift-card">
-          <div class="g-img"><img src="/assets/img/baby-gift.webp" alt="선물을 든 아기 일러스트" loading="lazy"></div>
+          <div class="g-img"><img src="/assets/img/benefit/gf-2years.webp" alt="선물 상자를 안고 있는 아기 일러스트" width="280" height="280" loading="lazy"></div>
           <div>
             <h3><span class="who">두돌 감사선물</span>러베 아기 스킨케어 SET</h3>
             <p>신생아 때 태열 케어에 이어, 한층 예민해진 유아기 피부까지 책임지는 러베 스킨케어 SET을 보내드려요.</p>
           </div>
         </div>
         <div class="gift-card">
-          <div class="g-img"><img src="/assets/img/baby-graduate.webp" alt="학사모를 쓴 아이 일러스트" loading="lazy"></div>
+          <div class="g-img"><img src="/assets/img/benefit/gf-school.webp" alt="학사모를 쓴 아이 일러스트" width="280" height="280" loading="lazy"></div>
           <div>
             <h3><span class="who">초등학교 입학 선물</span>입학 축하 BOX (학용품 10종)</h3>
             <p>크레파스, 색연필, 사인펜부터 줄넘기, 가위, 딱풀까지! 사물함에 필요한 준비물을 몽땅 챙겨드려요.</p>
@@ -664,21 +664,21 @@
 
       <div class="test-grid">
         <div class="test-card">
-          <div class="t-img"><img src="/assets/img/baby-bear-study.webp" alt="공부하는 아기 일러스트" loading="lazy"></div>
+          <div class="t-img"><img src="/assets/img/benefit/ts-child.webp" alt="아빠와 딸랑이를 가지고 노는 아기 일러스트" width="320" height="320" loading="lazy"></div>
           <div>
             <h3><span class="who">우리 아이를 위한</span>아이 발달 기질 검사</h3>
             <p>우리 아이는 어떤 기질을 가졌을까요? 아이의 발달과 타고난 기질을 확인하고, 아이에게 꼭 맞는 양육 방향을 찾도록 도와드려요.</p>
           </div>
         </div>
         <div class="test-card">
-          <div class="t-img"><img src="/assets/img/pregnant-mom.webp" alt="엄마 일러스트" loading="lazy"></div>
+          <div class="t-img"><img src="/assets/img/benefit/ts-parent.webp" alt="우는 아기를 안고 달래는 엄마 일러스트" width="320" height="320" loading="lazy"></div>
           <div>
             <h3><span class="who">엄마 아빠를 위한</span>양육 기질 검사</h3>
             <p>나는 어떤 양육자일까요? 부모의 양육 기질을 파악해서, 아이와 더 잘 맞는 양육 방식을 찾도록 도와드려요.</p>
           </div>
         </div>
         <div class="test-card">
-          <div class="t-img"><img src="/assets/img/woman-phone.webp" alt="휴대폰을 보는 엄마 일러스트" loading="lazy"></div>
+          <div class="t-img"><img src="/assets/img/benefit/ts-stress.webp" alt="고민에 잠긴 엄마 아빠 일러스트" width="320" height="320" loading="lazy"></div>
           <div>
             <h3><span class="who">엄마 아빠를 위한</span>양육 스트레스 검사</h3>
             <p>아이만큼 엄빠의 마음도 소중하니까요. 양육 과정에서 쌓인 스트레스를 점검하고, 더 건강한 육아를 위한 맞춤 가이드를 받아보세요.</p>
@@ -715,17 +715,17 @@
       </div>
       <div class="support-grid">
         <div class="sp-card">
-          <div class="ico">📅</div>
+          <div class="ico"><img src="/assets/img/benefit/sp-calendar.webp" alt="달력 아이콘" width="160" height="160" loading="lazy"></div>
           <h3>보험료 <span class="pt">인하 시기</span> 알림</h3>
           <p>보험료를 낮출 수 있는 시기가 되면 먼저 알려드려요!</p>
         </div>
         <div class="sp-card">
-          <div class="ico">📋</div>
+          <div class="ico"><img src="/assets/img/benefit/sp-claim.webp" alt="보상금 주머니 아이콘" width="160" height="160" loading="lazy"></div>
           <h3>보상금 <span class="pt">청구</span> 지원</h3>
           <p>출산 이후 보상금 청구 관련해서도 언제든 도와드릴게요!</p>
         </div>
         <div class="sp-card">
-          <div class="ico">🛡️</div>
+          <div class="ico"><img src="/assets/img/benefit/sp-shield.webp" alt="보장 방패 아이콘" width="160" height="160" loading="lazy"></div>
           <h3>보장 <span class="pt">변경</span> 체크</h3>
           <p>우리 아이에게 꼭 맞는 보장으로 변경해야 할 때 함께 체크해드려요!</p>
         </div>
@@ -737,7 +737,7 @@
   <section class="ins-sec" id="insurance">
     <div class="wrap">
       <div class="ins-card">
-        <div class="i-img"><img src="/assets/img/billy-smart.png" alt="의료 서류와 보험카드를 든 아기 일러스트" loading="lazy"></div>
+        <div class="i-img"><img src="/assets/img/benefit/ins-billy-expert.webp" alt="안경을 쓰고 보험 체크리스트를 든 베이비빌리 캐릭터" width="480" height="423" loading="lazy"></div>
         <div class="i-body">
           <span class="lifetime-badge">🔒 평생 무료</span>
           <h3>부모님 보험도, <span class="blue">평생 무료</span>로 분석해드려요</h3>
@@ -759,7 +759,7 @@
   <section style="padding-top:0;">
     <div class="wrap">
       <div class="cx-banner">
-        <div class="b-img"><img src="/assets/img/baby-laughing.webp" alt="웃고 있는 아기 일러스트" loading="lazy"></div>
+        <div class="b-img"><img src="/assets/img/benefit/cx-billy-phone.webp" alt="휴대폰으로 알림을 확인하는 아기 일러스트" width="320" height="320" loading="lazy"></div>
         <div>
           <h3>해당 시기가 되면 베이비빌리 엄빠 CX팀에서<br><span class="hl">알림톡이나 문자로 개별 연락</span>드릴 예정이에요</h3>
           <p>놓치지 마시고 확인 부탁드려요 😊</p>
