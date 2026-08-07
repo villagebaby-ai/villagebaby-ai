@@ -28,16 +28,17 @@ function doPost(e) {
       d.range   || '',         // J
       d.pref    || '',         // K
       d.referrer|| '',         // L
-      ts                       // M
+      ts,                      // M
+      notify(d, ts)            // N \uC54C\uB9BC \uACB0\uACFC (sent / \uC5D0\uB7EC\uBA54\uC2DC\uC9C0)
     ]);
-    notify(d, ts);             // 적재 성공 뒤에만 · 실패해도 리드는 이미 저장됨
     return json({ ok: true });
   } catch (err) {
     return json({ ok: false, error: String(err) });
   }
 }
 
-/** 메일 실패가 리드 저장을 망치면 안 되므로 통째로 try 안에 둔다 */
+/** 메일 실패가 리드 저장을 망치면 안 되므로 통째로 try 안에 둔다.
+ *  결과 문자열을 돌려주고 시트 N열에 남긴다 — 조용히 실패하면 원인을 못 찾는다 */
 function notify(d, ts) {
   try {
     var L = function (k, v) { return k + ': ' + (v || '(\uC5C6\uC74C)') + '\n'; };
@@ -53,7 +54,8 @@ function notify(d, ts) {
       + L('\uC811\uC218\uC2DC\uAC01',   ts)
       + '\n\uC2DC\uD2B8\uC5D0\uC11C \uBCF4\uAE30: https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit';
     MailApp.sendEmail(NOTIFY_TO, '[\uBCA0\uC774\uBE44\uBE4C\uB9AC] \uD0DC\uC544\uBCF4\uD5D8\uB8CC \uACC4\uC0B0\uAE30 \uC0C1\uB2F4\uC2E0\uCCAD 1\uAC74', body);
-  } catch (err) { /* 알림 실패는 무시 */ }
+    return 'sent';
+  } catch (err) { return 'MAIL_FAIL: ' + String(err).slice(0, 180); }
 }
 
 /** 최초 1회 직접 실행해서 메일 권한을 승인해 두세요 */
