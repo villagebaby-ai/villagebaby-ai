@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Thu, 06 Aug 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 07 Aug 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -31,6 +31,36 @@
     <!-- 임신-초기-응급실-비용-청구 (신규 2026-07-31) -->
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
     <!-- 임신-중-실손-청구-태아보험-영향 (신규 2026-08-03) -->
+    <item>
+      <title>임산부 화장품, 뭘 빼고 뭘 써도 될까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%ED%99%94%EC%9E%A5%ED%92%88-%EB%AF%B8%EC%9A%A9%EC%8B%9C%EC%88%A0/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%ED%99%94%EC%9E%A5%ED%92%88-%EB%AF%B8%EC%9A%A9%EC%8B%9C%EC%88%A0/</guid>
+      <pubDate>Fri, 07 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>임신하면 쓰던 화장품을 다 바꿔야 할까요. 피하는 게 좋은 성분과 그대로 써도 되는 성분, 네일·제모·염색·보톡스 같은 시술은 어디까지 괜찮은지 근거와 함께 정리했어요.</description>
+    </item>
+    <item>
+      <title>임산부 교통비 70만원, 언제 신청하나요?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EA%B5%90%ED%86%B5%EB%B9%84-%EC%A7%80%EC%9B%90/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EA%B5%90%ED%86%B5%EB%B9%84-%EC%A7%80%EC%9B%90/</guid>
+      <pubDate>Fri, 07 Aug 2026 10:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 중기</category>
+      <category>임신 가이드</category>
+      <description>서울에 사는 임산부는 교통비를 지원받을 수 있어요. 첫째 70만원부터 시작하는 지원 금액과 임신 12주가 지나야 신청되는 이유, 거주 요건과 신청처까지 헷갈리는 부분만 모아 정리했어요.</description>
+    </item>
+    <item>
+      <title>임신 초기 변비와 설사, 어떻게 해야 할까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EB%B3%80%EB%B9%84-%EC%84%A4%EC%82%AC/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EB%B3%80%EB%B9%84-%EC%84%A4%EC%82%AC/</guid>
+      <pubDate>Fri, 07 Aug 2026 11:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 초기</category>
+      <category>임신 가이드</category>
+      <description>임신하면 변비로 며칠씩 고생하다가 갑자기 설사를 하기도 해요. 호르몬과 철분제가 어떻게 작용하는지, 집에서 할 수 있는 것과 약을 함부로 먹으면 안 되는 이유, 병원에 가야 하는 신호까지 정리했어요.</description>
+    </item>
     <item>
       <title>초음파 사진 속 GS·CRL·FHR, 무슨 뜻일까?</title>
       <link>https://villagebaby.kr/guide/%EC%B4%88%EC%9D%8C%ED%8C%8C-%EC%82%AC%EC%A7%84-%EB%B3%B4%EB%8A%94%EB%B2%95/</link>
