@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Sun, 09 Aug 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -31,6 +31,17 @@
     <!-- 임신-초기-응급실-비용-청구 (신규 2026-07-31) -->
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
     <!-- 임신-중-실손-청구-태아보험-영향 (신규 2026-08-03) -->
+    <!-- 프리랜서-자영업-임산부-출산급여 (신규 2026-08-10) -->
+    <item>
+      <title>프리랜서·1인 사업자도 출산급여 150만원 받습니다</title>
+      <link>https://villagebaby.kr/guide/%ED%94%84%EB%A6%AC%EB%9E%9C%EC%84%9C-%EC%9E%90%EC%98%81%EC%97%85-%EC%9E%84%EC%82%B0%EB%B6%80-%EC%B6%9C%EC%82%B0%EA%B8%89%EC%97%AC/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%ED%94%84%EB%A6%AC%EB%9E%9C%EC%84%9C-%EC%9E%90%EC%98%81%EC%97%85-%EC%9E%84%EC%82%B0%EB%B6%80-%EC%B6%9C%EC%82%B0%EA%B8%89%EC%97%AC/</guid>
+      <pubDate>Mon, 10 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>고용보험이 없으면 출산전후휴가급여를 못 받지만, 대신 받는 제도가 따로 있어요. 고용보험 미적용자 출산급여 150만원의 유형별 자격과 2026년 달라진 요건, 출산 30일 뒤부터 1년 이내라는 신청 시점까지 정리했습니다.</description>
+    </item>
     <item>
       <title>임신 중 치과, 오히려 덜 냅니다 - 급여·지원 총정리</title>
       <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%B9%98%EA%B3%BC-%EC%B9%98%EB%A3%8C-%EA%B8%89%EC%97%AC-%EC%A7%80%EC%9B%90/</link>
