@@ -2754,12 +2754,41 @@ function renderHistory(){
       +'<div style="font-weight:700;font-size:13px">'+esc(h.matu)+'세만기 · '+esc(h.label)+'</div>'
       +'<a href="'+h.url+'" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);word-break:break-all">'+h.url+'</a>'
       +'<div style="font-size:11px;color:var(--sub)">'+when+'</div></div>'
-      +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px;flex:none" data-path="'+encodeURIComponent(h.path)+'">✏️ 수정하기</button>'
+      +'<div style="display:flex;gap:6px;flex:none">'
+      +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px" data-path="'+encodeURIComponent(h.path)+'">✏️ 수정하기</button>'
+      +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px;background:#c0392b" data-del-path="'+encodeURIComponent(h.path)+'">🗑 삭제</button>'
+      +'</div>'
       +'</div>';
   }).join('');
   box.querySelectorAll('button[data-path]').forEach(btn=>{
     btn.onclick=()=>loadForEdit(decodeURIComponent(btn.getAttribute('data-path')));
   });
+  box.querySelectorAll('button[data-del-path]').forEach(btn=>{
+    btn.onclick=()=>deleteLink(decodeURIComponent(btn.getAttribute('data-del-path')));
+  });
+}
+async function deleteLink(path){
+  const hist=loadHistory().find(h=>h.path===path);
+  if(!hist)return;
+  if(!confirm('정말 삭제할까요?\n'+hist.url+'\n\n삭제하면 villagebaby.kr에서 이 링크가 더 이상 열리지 않습니다.'))return;
+  const st=document.getElementById('status');
+  st.textContent='⏳ 삭제 중...';
+  try{
+    const resp=await fetch(SHEET_WEBHOOK,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'delete',path})});
+    const data=await resp.json();
+    if(data.ok){
+      const list=loadHistory().filter(x=>x.path!==path);
+      localStorage.setItem('billy_history',JSON.stringify(list));
+      idbDelete(path);
+      if(editingPath===path){editingPath=null;editingUrl=null;cachedPages=null;cachedMemoji=null;cachedQr=null;}
+      renderHistory();
+      st.textContent='✅ 삭제 완료 (사이트 반영까지 1~3분 걸릴 수 있어요)';
+    }else{
+      st.textContent='❌ 삭제 실패: '+(data.error||'알 수 없는 오류');
+    }
+  }catch(e){
+    st.textContent='❌ 삭제 실패: '+e.message;
+  }
 }
 async function loadForEdit(path){
   const st=document.getElementById('status');
