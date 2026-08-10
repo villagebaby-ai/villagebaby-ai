@@ -2654,8 +2654,8 @@ function loadMemoji(f){ if(!f)return; document.getElementById('memo_name').textC
 // pdf upload
 const pdfInput=document.getElementById('pdf_file');
 document.getElementById('pdf_drop').onclick=()=>pdfInput.click();
-pdfInput.onchange=e=>{pdfFile=e.target.files[0];document.getElementById('pdf_name').textContent=pdfFile?pdfFile.name:'';document.getElementById('gen').disabled=!pdfFile;};
-['dragover','drop'].forEach(ev=>document.getElementById('pdf_drop').addEventListener(ev,x=>{x.preventDefault();if(ev==='drop'&&x.dataTransfer.files[0]){pdfFile=x.dataTransfer.files[0];document.getElementById('pdf_name').textContent=pdfFile.name;document.getElementById('gen').disabled=false;}}));
+pdfInput.onchange=e=>{pdfFile=e.target.files[0];document.getElementById('pdf_name').textContent=pdfFile?pdfFile.name:'';document.getElementById('gen').disabled=!pdfFile;if(pdfFile)cachedPages=null;};
+['dragover','drop'].forEach(ev=>document.getElementById('pdf_drop').addEventListener(ev,x=>{x.preventDefault();if(ev==='drop'&&x.dataTransfer.files[0]){pdfFile=x.dataTransfer.files[0];document.getElementById('pdf_name').textContent=pdfFile.name;document.getElementById('gen').disabled=false;cachedPages=null;}}));
 
 // profile save/load (localStorage)
 function collectProfile(){return{name:val('p_name'),title:val('p_title'),tagline:val('p_tagline'),career:val('p_career'),email:val('p_email'),phone:val('p_phone'),kakao:val('p_kakao'),memoji:memojiURI};}
