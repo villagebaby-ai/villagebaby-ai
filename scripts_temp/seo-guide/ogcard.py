@@ -65,7 +65,7 @@ def _paste_premul(bg, il, sz, pos, scale=1.0):
     return Image.fromarray(out.astype(np.uint8), "RGB")
 
 
-def make(slug, badge_text, title_lines, subtitle, illust, variant, out_dir, flip=False):
+def make(slug, badge_text, title_lines, subtitle, illust, variant, out_dir, flip=False, prefix="guide"):
     p = PALETTE[variant]
     img = vgrad(p["bg_top"], p["bg_bot"])
 
@@ -110,13 +110,13 @@ def make(slug, badge_text, title_lines, subtitle, illust, variant, out_dir, flip
         img.paste(lg, (LOGO_X, LOGO_Y), lg)
 
     os.makedirs(out_dir, exist_ok=True)
-    out = os.path.join(out_dir, f"guide_{slug}-{variant}.png")
+    out = os.path.join(out_dir, f"{prefix}_{slug}-{variant}.png")
     img.save(out, optimize=True)
     return out
 
 
-def make_all(slug, badge_text, title_lines, subtitle, illust, out_dir, flip=False):
-    return [make(slug, badge_text, title_lines, subtitle, illust, v, out_dir, flip) for v in VARIANTS]
+def make_all(slug, badge_text, title_lines, subtitle, illust, out_dir, flip=False, prefix="guide"):
+    return [make(slug, badge_text, title_lines, subtitle, illust, v, out_dir, flip, prefix) for v in VARIANTS]
 
 
 if __name__ == "__main__":

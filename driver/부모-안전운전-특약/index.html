@@ -331,6 +331,8 @@
     </div>
 
   </div>
+
+<section style="max-width:820px;margin:28px auto 8px;padding:18px 20px;background:#F8FAFC;border-radius:12px"><h2 style="font-size:1.05rem;font-weight:700;margin-bottom:10px;border:0;padding:0">함께 읽으면 좋아요</h2><ul style="margin:0 0 0 18px;font-size:.94rem"><li style="margin-bottom:6px"><a href="/driver/12대-중과실-운전자보험/">12대 중과실이면 종합보험도 소용없어요</a></li></ul></section>
 </main>
 
 <footer><p class="ftop">엄빠를 위한 베이비빌리 꿀팁 연구소</p><p style="font-size:11px;color:var(--gray-500)">본 콘텐츠는 정보 제공 목적이며 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요. · <a href="/driver/">운전자보험 허브</a></p>
@@ -338,5 +340,28 @@
 </footer>
 
 <script>document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));</script>
+
+<script>
+/* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+(function(){
+  var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+  function kind(h){
+    if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+    if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+    if(h.indexOf('app.babybilly.app')>-1) return 'app';
+    return null;
+  }
+  function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var k=kind(a.getAttribute('href')||''); if(!k) return;
+    a.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+          page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>

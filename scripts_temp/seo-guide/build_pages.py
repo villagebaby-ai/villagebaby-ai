@@ -65,10 +65,19 @@ REFS_DEFAULT = [
 
 APP_LINK = "https://app.babybilly.app/qm6eya8"
 INS_BASE = "https://babybilly.co/insurance/baby/talk/v1"
+INS_GENERAL = "https://babybilly.co/insurance/general/v2"
+
+# 섹션별 빵부스러기 이름 — /guide/ 외 영역에도 같은 템플릿을 쓴다
+CRUMB = {
+    "guide": ("태아보험 가이드", "https://villagebaby.kr/guide/"),
+    "driver": ("운전자보험", "https://villagebaby.kr/driver/"),
+    "care": ("간병보험", "https://villagebaby.kr/care/"),
+    "child": ("어린이보험", "https://villagebaby.kr/child/"),
+}
 
 
-def utm(slug, content):
-    return f"{INS_BASE}?utm_source=villagebaby&utm_medium=content&utm_campaign={slug}&utm_content={content}"
+def utm(slug, content, base=INS_BASE):
+    return f"{base}?utm_source=villagebaby&utm_medium=content&utm_campaign={slug}&utm_content={content}"
 
 
 def esc(s):
@@ -81,6 +90,8 @@ def strip_tags(s):
 
 def render(p):
     slug = p["slug"]
+    sec = p.get("section", "guide")
+    base = p.get("ins_base", INS_BASE)
     faqs = p["faqs"]
     refs = p.get("refs", REFS_DEFAULT)
 
@@ -91,7 +102,7 @@ def render(p):
                 "@type": "MedicalWebPage",
                 "headline": p["title"],
                 "description": p["ld_desc"],
-                "url": f"https://villagebaby.kr/guide/{slug}/",
+                "url": f"https://villagebaby.kr/{sec}/{slug}/",
                 "datePublished": f"{TODAY}T00:00:00+09:00",
                 "dateModified": TODAY,
                 "author": {"@type": "Organization", "name": "베이비빌리 콘텐츠팀"},
@@ -99,15 +110,15 @@ def render(p):
                     "@type": "Organization", "name": "베이비빌리", "url": "https://villagebaby.kr",
                     "logo": {"@type": "ImageObject", "url": "https://villagebaby.kr/logo.png"},
                 },
-                "image": [f"https://villagebaby.kr/assets/og/guide_{slug}-blue.png"],
+                "image": [f"https://villagebaby.kr/assets/og/{sec}_{slug}-blue.png"],
                 "citation": [{"@type": "CreativeWork", "name": n, "url": u} for n, _, u in refs],
             },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://villagebaby.kr/"},
-                    {"@type": "ListItem", "position": 2, "name": "태아보험 가이드", "item": "https://villagebaby.kr/guide/"},
-                    {"@type": "ListItem", "position": 3, "name": p["crumb"], "item": f"https://villagebaby.kr/guide/{slug}/"},
+                    {"@type": "ListItem", "position": 2, "name": CRUMB.get(sec, CRUMB["guide"])[0], "item": CRUMB.get(sec, CRUMB["guide"])[1]},
+                    {"@type": "ListItem", "position": 3, "name": p["crumb"], "item": f"https://villagebaby.kr/{sec}/{slug}/"},
                 ],
             },
             {
@@ -133,9 +144,13 @@ def render(p):
         for i, (n, t, u) in enumerate(refs)
     )
 
+    app_block = ("" if not p.get("app_ct") else
+                 f'<div class="cta app"><p class="ct">{p["app_ct"]}</p><p class="cd">{p["app_cd"]}</p>'
+                 f'<a href="{APP_LINK}" target="_blank" rel="noopener">{p["app_btn"]}</a></div>')
+
     seed_html = p['seed'].replace(
         "{LINK}",
-        f'<a href="{utm(slug, "seed_prep")}" id="ins-seed" target="_blank" rel="noopener">{p["seed_anchor"]}</a>')
+        f'<a href="{utm(slug, "seed_prep", base)}" id="ins-seed" target="_blank" rel="noopener">{p["seed_anchor"]}</a>')
 
     return f"""<!DOCTYPE html>
 <html lang="ko">
@@ -147,20 +162,20 @@ def render(p):
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
-<link rel="canonical" href="https://villagebaby.kr/guide/{slug}/">
+<link rel="canonical" href="https://villagebaby.kr/{sec}/{slug}/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="베이비빌리">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="{p['og_title']}">
 <meta property="og:description" content="{p['og_desc']}">
-<meta property="og:url" content="https://villagebaby.kr/guide/{slug}/">
+<meta property="og:url" content="https://villagebaby.kr/{sec}/{slug}/">
 <meta property="article:modified_time" content="{TODAY}T00:00:00+09:00">
-<meta property="og:image" content="https://villagebaby.kr/assets/og/guide_{slug}-blue.png">
+<meta property="og:image" content="https://villagebaby.kr/assets/og/{sec}_{slug}-blue.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:alt" content="{p['og_alt']} | 베이비빌리">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://villagebaby.kr/assets/og/guide_{slug}-blue.png">
+<meta name="twitter:image" content="https://villagebaby.kr/assets/og/{sec}_{slug}-blue.png">
 <meta name="twitter:image:alt" content="{p['og_alt']} | 베이비빌리">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <script type="application/ld+json">{ld_json}</script>
@@ -178,7 +193,7 @@ def render(p):
   </script>
 </head>
 <body>
-<nav class="vb-nav"><div class="vb-nav-inner"><a href="/" class="vb-nav-logo" aria-label="베이비빌리 홈"><img src="/logo.png" alt="베이비빌리" width="99" height="74"></a><a href="{utm(slug,'pos1')}" class="vb-nav-cta">카톡 무료 상담</a></div></nav>
+<nav class="vb-nav"><div class="vb-nav-inner"><a href="/" class="vb-nav-logo" aria-label="베이비빌리 홈"><img src="/logo.png" alt="베이비빌리" width="99" height="74"></a><a href="{utm(slug,'pos1',base)}" class="vb-nav-cta">카톡 무료 상담</a></div></nav>
 <header class="hero">
 <picture><source srcset="/assets/img/pregnant-mom.webp" type="image/webp"><img class="hero-deco" src="/assets/img/pregnant-mom.png" alt="" aria-hidden="true" width="308" height="324"></picture>
 <div class="hero-inner">
@@ -189,8 +204,8 @@ def render(p):
 </div>
 </header>
 <main>
-  <img id="og-hero" src="/assets/og/guide_{slug}-blue.png" alt="{p['og_alt']} - 베이비빌리 가이드" title="{p['crumb']}" width="1200" height="630" decoding="async" style="width:100%;max-width:560px;height:auto;border-radius:16px;display:block;margin:24px auto;box-shadow:0 4px 16px rgba(0,0,0,0.08)">
-  <script>(function(){{var c=["blue","mint","cream","lavender","peach"];var p=c[Math.floor(Math.random()*c.length)];if(p!=="blue"){{var el=document.getElementById("og-hero");if(el)el.src="/assets/og/guide_{slug}-"+p+".png";}}}})();</script>
+  <img id="og-hero" src="/assets/og/{sec}_{slug}-blue.png" alt="{p['og_alt']} - 베이비빌리 가이드" title="{p['crumb']}" width="1200" height="630" decoding="async" style="width:100%;max-width:560px;height:auto;border-radius:16px;display:block;margin:24px auto;box-shadow:0 4px 16px rgba(0,0,0,0.08)">
+  <script>(function(){{var c=["blue","mint","cream","lavender","peach"];var p=c[Math.floor(Math.random()*c.length)];if(p!=="blue"){{var el=document.getElementById("og-hero");if(el)el.src="/assets/og/{sec}_{slug}-"+p+".png";}}}})();</script>
 <div class="container">
 <div class="answer-box"><div class="lab">세 줄 요약</div><ul class="text" style="margin:0;padding-left:20px;line-height:1.72">
 {summary}
@@ -198,7 +213,7 @@ def render(p):
 
 {body}
 
-<div class="cta app"><p class="ct">{p['app_ct']}</p><p class="cd">{p['app_cd']}</p><a href="{APP_LINK}" target="_blank" rel="noopener">{p['app_btn']}</a></div>
+{app_block}
 
 <div class="callout">{seed_html}</div>
 
@@ -206,7 +221,7 @@ def render(p):
 {faq_html}
 </section>
 
-<div class="cta"><p class="ct">{p['ins_ct']}</p><p class="cd">{p['ins_cd']}</p><a href="{utm(slug,'cta_insurance')}" id="ins-cta" target="_blank" rel="noopener">{p['ins_btn']}</a></div>
+<div class="cta"><p class="ct">{p['ins_ct']}</p><p class="cd">{p['ins_cd']}</p><a href="{utm(slug,'cta_insurance',base)}" id="ins-cta" target="_blank" rel="noopener">{p['ins_btn']}</a></div>
 
 <section><h2>함께 보면 좋은 가이드</h2>
 <ul>
@@ -242,7 +257,7 @@ def render(p):
 if __name__ == "__main__":
     from pages_data import PAGES
     for p in PAGES:
-        d = os.path.join(SITE, "guide", p["slug"])
+        d = os.path.join(SITE, p.get("section", "guide"), p["slug"])
         os.makedirs(d, exist_ok=True)
         html = render(p)
         with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
