@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""발행 동기화 — sitemap.xml · rss.xml · lab/mypages.json 3종 갱신.
+"""발행 동기화 — sitemap.xml · rss.xml · lab/mypages.json 3종 갱신 + 구글 사이트맵 재제출.
 (OG 5색은 ogcard.py, 역방향 내부링크는 backlinks.py 가 맡는다)
 pages_data.PAGES 를 읽어 이미 들어 있는 슬러그는 건너뛴다(중복 실행 안전).
 """
@@ -100,8 +100,28 @@ def sync_registry(pages):
     return added
 
 
+
+def resubmit_sitemap():
+    """구글에 사이트맵을 다시 읽으라고 알린다.
+    🔴 IndexNow 는 네이버·빙 전용이라 구글엔 아무 영향이 없다. 구글은 이 재제출이 유일한 레버.
+    안 하면 새 글이 며칠씩 "Google 에는 아직 알려지지 않은 URL" 로 방치된다 (2026-08-10 실측)."""
+    try:
+        from google.oauth2.service_account import Credentials
+        from googleapiclient.discovery import build
+        key = os.path.expanduser("~/.config/gcp/gsc-reader-key.json")
+        build("searchconsole", "v1", cache_discovery=False,
+              credentials=Credentials.from_service_account_file(
+                  key, scopes=["https://www.googleapis.com/auth/webmasters"])
+              ).sitemaps().submit(siteUrl="sc-domain:villagebaby.kr",
+                                  feedpath="https://villagebaby.kr/sitemap.xml").execute()
+        return "재제출 완료"
+    except Exception as e:
+        return f"실패({str(e)[:70]}) — 손으로 서치콘솔에서 제출할 것"
+
+
 if __name__ == "__main__":
     from pages_data import PAGES
     print("sitemap :", sync_sitemap(PAGES) or "변경 없음")
     print("rss     :", sync_rss(PAGES) or "변경 없음")
     print("registry:", sync_registry(PAGES) or "변경 없음")
+    print("구글 사이트맵:", resubmit_sitemap())   # 푸시·배포가 끝난 뒤 한 번 더 돌리면 확실하다
