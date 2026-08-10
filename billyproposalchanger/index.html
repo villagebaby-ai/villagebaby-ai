@@ -2755,17 +2755,25 @@ function renderHistory(){
       +'<a href="'+h.url+'" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);word-break:break-all">'+h.url+'</a>'
       +'<div style="font-size:11px;color:var(--sub)">'+when+'</div></div>'
       +'<div style="display:flex;gap:6px;flex:none">'
+      +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px" data-copy="'+encodeURIComponent(h.url)+'">🔗 복사</button>'
       +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px" data-path="'+encodeURIComponent(h.path)+'">✏️ 수정하기</button>'
       +'<button class="btn" style="width:auto;padding:8px 14px;font-size:12px;background:#c0392b" data-del-path="'+encodeURIComponent(h.path)+'">🗑 삭제</button>'
       +'</div>'
       +'</div>';
   }).join('');
+  box.querySelectorAll('button[data-copy]').forEach(btn=>{
+    btn.onclick=()=>{copyText(decodeURIComponent(btn.getAttribute('data-copy')));const old=btn.textContent;btn.textContent='✅ 복사됨';setTimeout(()=>btn.textContent=old,1500);};
+  });
   box.querySelectorAll('button[data-path]').forEach(btn=>{
     btn.onclick=()=>loadForEdit(decodeURIComponent(btn.getAttribute('data-path')));
   });
   box.querySelectorAll('button[data-del-path]').forEach(btn=>{
     btn.onclick=()=>deleteLink(decodeURIComponent(btn.getAttribute('data-del-path')));
   });
+}
+function copyText(t){
+  const fb=()=>{try{const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).catch(fb);}else{fb();}
 }
 async function deleteLink(path){
   const hist=loadHistory().find(h=>h.path===path);
@@ -2859,7 +2867,8 @@ document.getElementById('gen').onclick=async()=>{
     if(data.ok){
       const finalUrl=data.url||editingUrl;
       const finalPath=data.path||editingPath;
-      st.innerHTML='✅ 게시 완료! ('+pages.length+'페이지) <a href="'+finalUrl+'" target="_blank" rel="noopener">'+finalUrl+'</a> (사이트 반영까지 1~3분 걸릴 수 있어요)';
+      st.innerHTML='✅ 게시 완료! ('+pages.length+'페이지) <a href="'+finalUrl+'" target="_blank" rel="noopener">'+finalUrl+'</a> <button class="btn" id="copyMainLink" style="width:auto;padding:5px 10px;font-size:12px;margin-left:6px">🔗 복사</button> (사이트 반영까지 1~3분 걸릴 수 있어요)';
+      document.getElementById('copyMainLink').onclick=()=>{copyText(finalUrl);const b=document.getElementById('copyMainLink');b.textContent='✅ 복사됨';setTimeout(()=>b.textContent='🔗 복사',1500);};
       await idbPut({path:finalPath,P,C,pages,memojiURI:memoji,qrURI,ts:Date.now()});
       saveHistoryEntry({path:finalPath,url:finalUrl,matu:C.matu,label:C.label,ts:Date.now()});
       editingPath=null;editingUrl=null;cachedPages=null;cachedMemoji=null;cachedQr=null;
