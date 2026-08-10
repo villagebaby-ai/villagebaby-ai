@@ -2560,7 +2560,7 @@ function genDoc(P,C,pageURIs,memojiURI,qrURI){
 }
 
 // ---- PDF → 마스킹된 페이지 이미지 ----
-const MASKS=[[270,31,816,57],[864,30,972,58],[28,1219,952,1286]];
+const MASKS=[];
 async function pdfToPages(file,dropCover,onprog){
   const buf=await file.arrayBuffer();
   const pdf=await pdfjsLib.getDocument({data:buf}).promise;
