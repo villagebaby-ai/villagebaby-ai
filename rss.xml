@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Mon, 10 Aug 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -32,6 +32,36 @@
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
     <!-- 임신-중-실손-청구-태아보험-영향 (신규 2026-08-03) -->
     <!-- 프리랜서-자영업-임산부-출산급여 (신규 2026-08-10) -->
+    <item>
+      <title>임신인 줄 모르고 술 마셨는데 괜찮을까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%88%A0-%EC%95%BD-%EB%B3%B5%EC%9A%A9/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%88%A0-%EC%95%BD-%EB%B3%B5%EC%9A%A9/</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 초기</category>
+      <category>임신 가이드</category>
+      <description>임신 사실을 알기 전에 술을 마셨거나 약을 먹었다면 잠이 안 오죠. 수정 직후와 기관이 만들어지는 시기는 영향이 다릅니다. 시기별로 어떻게 보는지와 지금 무엇을 하면 되는지 정리했어요.</description>
+    </item>
+    <item>
+      <title>임신 초기에 여행 가도 괜찮을까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%97%AC%ED%96%89-%EB%B9%84%ED%96%89%EA%B8%B0/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%97%AC%ED%96%89-%EB%B9%84%ED%96%89%EA%B8%B0/</guid>
+      <pubDate>Tue, 11 Aug 2026 10:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>예약해 둔 여행을 취소해야 할지 고민되시죠. 시기별로 무엇이 달라지는지, 비행기는 몇 주까지 탈 수 있는지, 오래 앉아 있을 때 조심할 것과 여행자보험에서 빠지는 부분까지 정리했어요.</description>
+    </item>
+    <item>
+      <title>임신하고 코피가 자주 나는데 괜찮을까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%BD%94%ED%94%BC-%EB%B9%84%EC%97%BC/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%BD%94%ED%94%BC-%EB%B9%84%EC%97%BC/</guid>
+      <pubDate>Tue, 11 Aug 2026 11:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>임신 후 갑자기 코가 막히고 코피가 잦아졌다면 임신성 비염일 수 있어요. 왜 생기는지, 약 없이 할 수 있는 것과 코피가 났을 때 올바른 응급처치, 병원에 가야 하는 신호까지 정리했어요.</description>
+    </item>
     <item>
       <title>종합보험 들었는데 왜 처벌받나요?</title>
       <link>https://villagebaby.kr/driver/12%EB%8C%80-%EC%A4%91%EA%B3%BC%EC%8B%A4-%EC%9A%B4%EC%A0%84%EC%9E%90%EB%B3%B4%ED%97%98/</link>
