@@ -10,7 +10,7 @@
     <description>임산부와 영유아 부모를 위한 태아보험·어린이보험 실전 가이드. 가입시기, 보험사 비교, 특약, 보험료, 청구 방법까지 베이비빌리 베동 커뮤니티 전문가 분석.</description>
     <language>ko-kr</language>
     <copyright>© 베이비빌리 (베키스튜디오)</copyright>
-    <lastBuildDate>Tue, 11 Aug 2026 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 09:00:00 +0900</lastBuildDate>
     <pubDate>Tue, 05 May 2026 00:00:00 +0900</pubDate>
     <generator>villagebaby.kr</generator>
     <managingEditor>contact@villagebaby.kr (베이비빌리)</managingEditor>
@@ -32,6 +32,36 @@
     <!-- 유산-사산-휴가-급여-2026 (신규 2026-08-02) -->
     <!-- 임신-중-실손-청구-태아보험-영향 (신규 2026-08-03) -->
     <!-- 프리랜서-자영업-임산부-출산급여 (신규 2026-08-10) -->
+    <item>
+      <title>임산부 차, 어떤 걸 마셔도 될까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%B0%A8-%EC%9D%8C%EB%A3%8C/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%B0%A8-%EC%9D%8C%EB%A3%8C/</guid>
+      <pubDate>Wed, 12 Aug 2026 09:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>커피를 줄이고 차로 바꿨는데 이번엔 차가 걱정되시죠. 마음 놓고 마셔도 되는 것과 자궁 수축 이야기가 도는 허브차, 녹차의 숨은 카페인, 탄산수까지 하나씩 정리했어요.</description>
+    </item>
+    <item>
+      <title>임산부 예방접종, 뭘 언제 맞나요?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%98%88%EB%B0%A9%EC%A0%91%EC%A2%85/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%82%B0%EB%B6%80-%EC%98%88%EB%B0%A9%EC%A0%91%EC%A2%85/</guid>
+      <pubDate>Wed, 12 Aug 2026 10:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>임신 중에 맞아도 되는 백신과 안 되는 백신이 나뉩니다. 독감은 언제든, 백일해는 정해진 주수에 맞아요. 임신 전에 챙겼어야 하는 풍진은 어떻게 하는지까지 시기별로 정리했어요.</description>
+    </item>
+    <item>
+      <title>임신 중 반신욕, 해도 괜찮을까?</title>
+      <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EB%AA%A9%EC%9A%95-%EC%82%AC%EC%9A%B0%EB%82%98/</link>
+      <guid isPermaLink="true">https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EB%AA%A9%EC%9A%95-%EC%82%AC%EC%9A%B0%EB%82%98/</guid>
+      <pubDate>Wed, 12 Aug 2026 11:00:00 +0900</pubDate>
+      <dc:creator>베이비빌리 콘텐츠팀</dc:creator>
+      <category>임신 전 기간</category>
+      <category>임신 가이드</category>
+      <description>따뜻한 물에 몸을 담그고 싶은데 괜찮을지 고민되시죠. 문제는 물이 아니라 체온이 오르는 정도예요. 온도와 시간 기준, 사우나와 찜질방을 피하라는 이유, 안전하게 씻는 방법을 정리했어요.</description>
+    </item>
     <item>
       <title>임신인 줄 모르고 술 마셨는데 괜찮을까?</title>
       <link>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%88%A0-%EC%95%BD-%EB%B3%B5%EC%9A%A9/</link>
