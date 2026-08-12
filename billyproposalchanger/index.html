@@ -2420,6 +2420,10 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--blue)}
         <div><label>표지 "출생 전" 대표금액</label><input type="text" id="c_before" class="money" inputmode="numeric" value="0"></div>
         <div><label>출생 후 보험료</label><input type="text" id="c_after" class="money" inputmode="numeric" value="0"></div>
       </div>
+      <div class="two" style="margin-top:10px">
+        <div><label>보험료변동일(상령일)</label><input type="text" id="c_rateDate" placeholder="예: 2026.09.15"></div>
+      </div>
+      <div class="chk"><input type="checkbox" id="c_rateNotice"><label style="margin:0">보험료 변동일 강조 문구 표시</label></div>
       <div class="chk"><input type="checkbox" id="c_cover"><label style="margin:0">표지형 설계서 (첫 페이지가 시상/표지 → 제외)</label></div>
       <label style="margin-top:12px">설계서 PDF 업로드</label>
       <div class="file" id="pdf_drop">여기로 PDF 드래그 또는 <b>클릭해서 선택</b><br><span id="pdf_name" style="font-size:11px"></span></div>
@@ -2467,6 +2471,10 @@ function attachMoney(el){
 document.querySelectorAll('.money').forEach(attachMoney);
 
 // ---- output CSS (빌리 문서용) ----
+// 보험료변동일(상령일) 강조 문구 — 톤 조정 시 이 함수만 수정
+function rateChangeNoticeText(date){
+  return `⚠️ 본 보험료는 ${date}까지 적용되는 조건이며, 이후에는 보험나이 변경으로 재산정될 수 있습니다.`;
+}
 const CSS=`
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@700&display=swap');
@@ -2555,8 +2563,9 @@ function genDoc(P,C,pageURIs,memojiURI,qrURI){
   const tagline=esc(P.tagline).replace(/\n/g,'<br>');
   const card=`<div class="bcard"><img class="clogo" src="${LOGO}" alt="Baby Billy" style="filter:brightness(0) invert(1)"><img class="ava" src="${memojiURI}" alt="${esc(P.name)}"><div class="nm">${esc(P.name)} <small>${esc(P.title)}</small></div><div class="tl">${tagline}</div><div class="info"><div class="irow"><span class="ic">🏅</span><span class="k">경력</span><span class="v">${esc(P.career)}</span></div><div class="irow"><span class="ic">✉️</span><span class="k">이메일</span><span class="v">${esc(P.email)}</span></div><div class="irow"><span class="ic">📱</span><span class="k">휴대폰</span><span class="v">${esc(P.phone)}</span></div><div class="irow kk"><span class="ic">💬</span><span class="k">카카오톡</span><span class="v">${esc(P.kakao)} <button type="button" class="copyid" onclick="copyKakao()">(친구추가)</button></span></div><div class="qrbox"><img src="${qrURI}" alt="연락처 QR"><div class="qt"><b>QR 스캔</b>으로<br>연락처를 바로 저장하세요</div></div></div><a class="cta" href="tel:${esc(P.phone)}">📞 상담 전화하기</a></div>`;
   const title=`${C.matu}세만기 ${C.label}`;
+  const rateNoticeHtml=(C.rateNotice&&C.rateDate)?`<div class="rate-notice" style="margin:10px 20px 0;padding:12px 14px;background:#FFF1F1;border:1px solid #F94646;border-radius:10px;color:#F94646;font-weight:700;font-size:13px;line-height:1.5">${esc(rateChangeNoticeText(C.rateDate))}</div>`:'';
   const script=`<script>function _toast(m){var e=document.getElementById('toast');e.textContent=m;e.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(function(){e.classList.remove('show')},2800);}function copyKakao(){var id=${JSON.stringify(P.kakao)};var ok=function(){_toast("카카오톡 ID '"+id+"' 복사 완료!\\n카톡 친구추가 → 붙여넣기 하세요");};var fb=function(){try{var t=document.createElement('input');t.value=id;t.setAttribute('readonly','');t.style.position='absolute';t.style.left='-9999px';document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);ok();}catch(e){_toast('카카오톡 ID : '+id);}};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(id).then(ok).catch(fb);}else{fb();}}<\/script>`;
-  return `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>베이비빌리 · ${title} 가입제안서</title><style>${CSS}</style></head><body><div class="wrap"><div class="top"><img class="logo" src="${LOGO}"><span class="tag">태아보험 가입제안서</span></div><div class="cover"><div class="billy" style="background-image:url('${BILLY}')"></div><div class="kb">현대해상 · ${C.matu}세만기 · ${esc(C.label)}</div><h1>고객님을 위한<br>가입제안서</h1><div class="sub">무배당 현대해상 굿앤굿어린이종합보험Q(Hi2607)<br>${esc(C.kind)}</div><div class="price"><div class="pc"><div class="l">출생 전 · 태아기간</div><div class="v">${C.before}원</div></div><div class="pc"><div class="l">출생 후</div><div class="v">${C.after}원</div></div></div><div class="meta"><span>피보험자 태아</span><span>하이플래너 ${esc(P.name)}</span><span>약관 기준 ${curYM}</span></div></div><div class="intro">아래는 <b>현대해상 공식 가입제안서 원본</b>이에요. 담보별 상세 보장·지급조건, 납입안내, 해약환급금, 유의사항까지 원본 그대로 담았고, 베이비빌리가 보기 편하게 정리해 드렸어요. 🐣</div>${quote}${cards}${card}<div class="foot">현대해상화재보험 · 고객센터 1588-5656 · www.hi.co.kr<br>※ 본 자료는 참고용이며 실제 보장·보험료는 약관을 따릅니다. (약관 기준 ${curYM})</div></div><div class="toast" id="toast"></div>${script}</body></html>`;
+  return `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>베이비빌리 · ${title} 가입제안서</title><style>${CSS}</style></head><body><div class="wrap"><div class="top"><img class="logo" src="${LOGO}"><span class="tag">태아보험 가입제안서</span></div><div class="cover"><div class="billy" style="background-image:url('${BILLY}')"></div><div class="kb">현대해상 · ${C.matu}세만기 · ${esc(C.label)}</div><h1>고객님을 위한<br>가입제안서</h1><div class="sub">무배당 현대해상 굿앤굿어린이종합보험Q(Hi2607)<br>${esc(C.kind)}</div><div class="price"><div class="pc"><div class="l">출생 전 · 태아기간</div><div class="v">${C.before}원</div></div><div class="pc"><div class="l">출생 후</div><div class="v">${C.after}원</div></div></div>${rateNoticeHtml}<div class="meta"><span>피보험자 태아</span><span>하이플래너 ${esc(P.name)}</span><span>약관 기준 ${curYM}</span></div></div><div class="intro">아래는 <b>현대해상 공식 가입제안서 원본</b>이에요. 담보별 상세 보장·지급조건, 납입안내, 해약환급금, 유의사항까지 원본 그대로 담았고, 베이비빌리가 보기 편하게 정리해 드렸어요. 🐣</div>${quote}${cards}${card}<div class="foot">현대해상화재보험 · 고객센터 1588-5656 · www.hi.co.kr<br>※ 본 자료는 참고용이며 실제 보장·보험료는 약관을 따릅니다. (약관 기준 ${curYM})</div></div><div class="toast" id="toast"></div>${script}</body></html>`;
 }
 
 // ---- PDF → 마스킹된 페이지 이미지 ----
@@ -2656,6 +2665,14 @@ const pdfInput=document.getElementById('pdf_file');
 document.getElementById('pdf_drop').onclick=()=>pdfInput.click();
 pdfInput.onchange=e=>{pdfFile=e.target.files[0];document.getElementById('pdf_name').textContent=pdfFile?pdfFile.name:'';document.getElementById('gen').disabled=!pdfFile;if(pdfFile)cachedPages=null;};
 ['dragover','drop'].forEach(ev=>document.getElementById('pdf_drop').addEventListener(ev,x=>{x.preventDefault();if(ev==='drop'&&x.dataTransfer.files[0]){pdfFile=x.dataTransfer.files[0];document.getElementById('pdf_name').textContent=pdfFile.name;document.getElementById('gen').disabled=false;cachedPages=null;}}));
+
+// 보험료변동일 강조 문구: 날짜를 먼저 입력해야 체크 가능
+document.getElementById('c_rateNotice').addEventListener('change',e=>{
+  if(e.target.checked&&!val('c_rateDate')){
+    e.target.checked=false;
+    document.getElementById('status').textContent='⚠️ 먼저 보험료변동일을 입력해주세요.';
+  }
+});
 
 // profile save/load (localStorage)
 function collectProfile(){return{name:val('p_name'),title:val('p_title'),tagline:val('p_tagline'),career:val('p_career'),email:val('p_email'),phone:val('p_phone'),kakao:val('p_kakao'),memoji:memojiURI};}
@@ -2813,6 +2830,8 @@ async function loadForEdit(path){
       if(cached.C.kind)document.getElementById('c_kind').value=cached.C.kind;
       document.getElementById('c_before').value=cached.C.before||'0';
       document.getElementById('c_after').value=cached.C.after||'0';
+      document.getElementById('c_rateDate').value=cached.C.rateDate||'';
+      document.getElementById('c_rateNotice').checked=!!(cached.C.rateNotice&&cached.C.rateDate);
       const bvals=document.querySelectorAll('#bands .bval'),blabs=document.querySelectorAll('#bands .blab');
       (cached.C.bands||[]).forEach((v,i)=>{if(bvals[i])bvals[i].value=v;});
       (cached.C.labels||[]).forEach((v,i)=>{if(blabs[i])blabs[i].value=v;});
@@ -2837,7 +2856,8 @@ document.getElementById('gen').onclick=async()=>{
   const bands=[...document.querySelectorAll('#bands .bval')].map(x=>x.value.trim());
   const labels=[...document.querySelectorAll('#bands .blab')].map(x=>x.value.trim()||' ');
   const C={matu:val('c_matu'),label:val('c_label')||'기본형',tier:val('c_tier')||'기본',kind:val('c_kind'),
-           before:val('c_before')||bands[0]||'-',after:val('c_after')||'-',bands,labels};
+           before:val('c_before')||bands[0]||'-',after:val('c_after')||'-',bands,labels,
+           rateDate:val('c_rateDate'),rateNotice:document.getElementById('c_rateNotice').checked};
   try{
     let pages,qrURI,memoji;
     if(cachedPages&&cachedPages.length){
