@@ -201,7 +201,7 @@
     "https://villagebaby.kr/guide/%EC%A7%84%ED%86%B5-%EC%8B%9C%EC%9E%91-%EC%8B%A0%ED%98%B8/": "2026-06-04",
     "https://villagebaby.kr/guide/%EC%B6%9C%EC%82%B0-%ED%98%B8%ED%9D%A1%EB%B2%95-%EB%9D%BC%EB%A7%88%EC%A6%88/": "2026-06-04",
     "https://villagebaby.kr/guide/NIPT-%EA%B2%80%EC%82%AC-%EC%99%84%EC%A0%84%EC%A0%95%EB%A6%AC/": "2026-06-04",
-    "https://villagebaby.kr/guide/%EC%96%91%EC%88%98%EA%B2%80%EC%82%AC-%EC%A0%88%EC%B0%A8-%EC%9C%84%ED%97%98/": "2026-06-04",
+    "https://villagebaby.kr/guide/%EC%96%91%EC%88%98%EA%B2%80%EC%82%AC-%EC%A0%88%EC%B0%A8-%EC%9C%84%ED%97%98/": "2026-08-13",
     "https://villagebaby.kr/guide/1%EC%B0%A8-%EA%B8%B0%ED%98%95%EC%95%84-%EA%B2%80%EC%82%AC-%EB%AA%A9-%ED%88%AC%EB%AA%85%EB%8C%80/": "2026-06-04",
     "https://villagebaby.kr/guide/%EC%A0%95%EB%B0%80-%EC%B4%88%EC%9D%8C%ED%8C%8C-20-24%EC%A3%BC/": "2026-06-04",
     "https://villagebaby.kr/guide/4D-%EC%B4%88%EC%9D%8C%ED%8C%8C-%EC%8B%9C%EA%B8%B0-%EB%B9%84%EC%9A%A9/": "2026-06-04",
@@ -323,7 +323,9 @@
     "https://villagebaby.kr/driver/%EC%9E%90%EB%8F%99%EC%B0%A8%EC%82%AC%EA%B3%A0-%EB%B6%80%EC%83%81%EC%B9%98%EB%A3%8C%EB%B9%84/": "2026-08-13",
     "https://villagebaby.kr/driver/%EC%9A%B4%EC%A0%84%EC%9E%90%EB%B3%B4%ED%97%98-%EC%9D%8C%EC%A3%BC-%EB%AC%B4%EB%A9%B4%ED%97%88-%EB%A9%B4%EC%B1%85/": "2026-08-13",
     "https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%95%84%EB%B9%A0-%ED%95%A0-%EC%9D%BC/": "2026-08-13",
-    "https://villagebaby.kr/tools/claim-dict/l22/": "2026-08-05"
+    "https://villagebaby.kr/tools/claim-dict/l22/": "2026-08-05",
+    "https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%97%AC%ED%96%89%EC%9E%90%EB%B3%B4%ED%97%98-%EC%9E%84%EC%8B%A0-%EB%B3%B4%EC%9E%A5/": "2026-08-13",
+    "https://villagebaby.kr/tools/claim-dict/t78-4/": "2026-08-05"
   },
-  "lastRun": "2026-08-13T00:44:15.976Z"
+  "lastRun": "2026-08-13T03:30:16.974Z"
 }
