@@ -168,7 +168,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
 </ul>
 <div class="callout tip"><strong>기록해 두면 나중에도 쓸모 있어요.</strong> 임신 중 받은 진단과 복용한 약은 나중에 보험 가입 시 알려야 하는 항목이 될 수 있어요. 진료 날짜와 처방 내용을 간단히 남겨두면 나중에 찾느라 고생하지 않아요.</div></section>
 
-<div class="cta app"><p class="ct">📱 입덧 심한 주차, 혼자 버티지 않게</p><p class="cd">입덧이 가장 심한 시기와 곧 편해질 시기를 미리 알면 버티기가 훨씬 나아요. 베이비빌리 앱이 예정일 기준으로 이번 주 몸의 변화를 매일 알려드려요.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 입덧 시기 확인하기 →</a></div>
+<div class="cta app"><p class="ct">📱 입덧 심한 주차, 혼자 버티지 않게</p><p class="cd">입덧이 가장 심한 시기와 곧 편해질 시기를 미리 알면 버티기가 훨씬 나아요. 베이비빌리 앱이 예정일 기준으로 이번 주 몸의 변화를 매일 알려드려요.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 입덧 시기 확인하기 →</a><a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=%EB%A8%B9%EB%8D%A7-%EC%9B%90%EC%9D%B8-%EA%B4%80%EB%A6%AC%EB%B2%95&utm_content=cta_app_kakao" id="app-kakao" target="_blank" rel="noopener" style="display:inline-block;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85);font-weight:700;padding:9.5px 24px;border-radius:16px;font-size:.94rem;margin:8px 5px 0">💬 카톡 무료 상담</a></div>
 
 <div class="callout"><strong>참고로,</strong> 입덧이 가라앉는 12~16주 무렵이 <strong>태아보험</strong>을 차분히 볼 수 있는 시기예요. 대부분 임신 22주 전후에 마감되니 지금 서두를 일은 아니고, <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=먹덧-원인-관리법&utm_content=seed_prep" id="ins-seed" target="_blank" rel="noopener">그때 무엇을 비교하면 되는지만</a> 미리 봐두면 편해요.</div>
 
@@ -213,7 +213,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
   var SLUG="먹덧-원인-관리법";
   function track(type,variant){ if(typeof gtag==="function"){ gtag('event','cta_click',{cta_type:type,cta_variant:variant||'none',page_slug:SLUG,send_to:'G-SRWXXLKTKD'}); } }
   var k=document.querySelector('.vb-nav-cta'); if(k){ k.addEventListener('click',function(){ track('kakao'); }); }
-  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); }
+  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); } var akao=document.getElementById('app-kakao'); if(akao){ akao.addEventListener('click',function(){ track('kakao','cta_app'); }); }
   var seed=document.getElementById('ins-seed'); if(seed){ seed.addEventListener('click',function(){ track('insurance','seed_prep'); }); }
   var ic=document.getElementById('ins-cta'); if(ic){ ic.addEventListener('click',function(){ track('insurance','cta_main'); }); }
 })();

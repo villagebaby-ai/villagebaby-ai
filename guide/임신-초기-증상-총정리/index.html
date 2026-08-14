@@ -188,7 +188,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
 })();
 </script>
 
-<div class="cta app"><p class="ct">📱 내 주차엔 어떤 게 정상일까? 매일 챙겨드려요</p><p class="cd">주차마다 필요한 증상 체크·검진·할 일이 달라져요. 베이비빌리 앱이 내 예정일 기준으로 "이번 주 챙길 것"을 매일 알려드려요.</p><a href="https://app.babybilly.app/e6sasl" target="_blank" rel="noopener">베이비빌리 앱에서 내 주차 보기 →</a></div>
+<div class="cta app"><p class="ct">📱 내 주차엔 어떤 게 정상일까? 매일 챙겨드려요</p><p class="cd">주차마다 필요한 증상 체크·검진·할 일이 달라져요. 베이비빌리 앱이 내 예정일 기준으로 "이번 주 챙길 것"을 매일 알려드려요.</p><a href="https://app.babybilly.app/e6sasl" target="_blank" rel="noopener">베이비빌리 앱에서 내 주차 보기 →</a><a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%A6%9D%EC%83%81-%EC%B4%9D%EC%A0%95%EB%A6%AC&utm_content=cta_app_kakao" id="app-kakao" target="_blank" rel="noopener" style="display:inline-block;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85);font-weight:700;padding:9.5px 24px;border-radius:16px;font-size:.94rem;margin:8px 5px 0">💬 카톡 무료 상담</a></div>
 
 <section><h2>자주 묻는 질문</h2>
 <div class="faq-item"><div class="faq-q">임신 초기 증상은 언제부터 시작되나요?</div><div class="faq-a"><p>보통 임신 4~6주부터 느껴지지만, 착상 직후 느끼거나 거의 못 느끼는 경우도 있어요. 개인차가 큽니다.</p></div></div>
@@ -232,7 +232,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
   var SLUG="임신-초기-증상-총정리";
   function track(type){ if(typeof gtag==="function"){ gtag('event','cta_click',{cta_type:type,cta_variant:'none',page_slug:SLUG,send_to:'G-SRWXXLKTKD'}); } }
   var k=document.querySelector('.vb-nav-cta'); if(k){ k.addEventListener('click',function(){ track('kakao'); }); }
-  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); }
+  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); } var akao=document.getElementById('app-kakao'); if(akao){ akao.addEventListener('click',function(){ track('kakao','cta_app'); }); }
 })();
 </script>
 </body></html>

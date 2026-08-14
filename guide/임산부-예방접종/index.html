@@ -149,7 +149,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
 </ul>
 <div class="callout">비용은 시기와 지역에 따라 달라요. <strong>임산부 독감 접종을 무료로 지원하는 기간</strong>이 있으니 보건소에 확인해 보세요. 지원 대상과 기간은 해마다 바뀝니다.</div></section>
 
-<div class="cta app"><p class="ct">📱 접종 시기, 놓치지 않게 미리 알려드려요</p><p class="cd">백일해처럼 정해진 주수에 맞아야 하는 것들이 있어요. 예정일만 넣어두면 지금 챙길 접종과 검사를 베이비빌리 앱이 때맞춰 알려드립니다.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 내 일정 확인하기 →</a></div>
+<div class="cta app"><p class="ct">📱 접종 시기, 놓치지 않게 미리 알려드려요</p><p class="cd">백일해처럼 정해진 주수에 맞아야 하는 것들이 있어요. 예정일만 넣어두면 지금 챙길 접종과 검사를 베이비빌리 앱이 때맞춰 알려드립니다.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 내 일정 확인하기 →</a><a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%9E%84%EC%82%B0%EB%B6%80-%EC%98%88%EB%B0%A9%EC%A0%91%EC%A2%85&utm_content=cta_app_kakao" id="app-kakao" target="_blank" rel="noopener" style="display:inline-block;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85);font-weight:700;padding:9.5px 24px;border-radius:16px;font-size:.94rem;margin:8px 5px 0">💬 카톡 무료 상담</a></div>
 
 <div class="callout"><strong>접종 기록은 한곳에 모아두세요.</strong> 산모수첩이든 휴대폰 메모든 상관없어요. 나중에 다른 병원에 갈 때, 그리고 아기 접종 일정을 잡을 때 계속 쓰이게 됩니다.</div>
 
@@ -193,7 +193,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
   var SLUG="임산부-예방접종";
   function track(type,variant){ if(typeof gtag==="function"){ gtag('event','cta_click',{cta_type:type,cta_variant:variant||'none',page_slug:SLUG,send_to:'G-SRWXXLKTKD'}); } }
   var k=document.querySelector('.vb-nav-cta'); if(k){ k.addEventListener('click',function(){ track('kakao'); }); }
-  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); }
+  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); } var akao=document.getElementById('app-kakao'); if(akao){ akao.addEventListener('click',function(){ track('kakao','cta_app'); }); }
   var seed=document.getElementById('ins-seed'); if(seed){ seed.addEventListener('click',function(){ track('insurance','seed_prep'); }); }
   var ic=document.getElementById('ins-cta'); if(ic){ ic.addEventListener('click',function(){ track('insurance','cta_main'); }); }
 })();

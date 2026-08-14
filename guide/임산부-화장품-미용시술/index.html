@@ -150,7 +150,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
 </ul>
 <div class="callout warn"><strong>이럴 땐 진료를 받으세요.</strong><br>배를 중심으로 두드러기처럼 번지면서 밤에 잠을 못 잘 만큼 가렵거나, 손바닥·발바닥이 유독 가렵다면 임신 중에만 생기는 피부·간 관련 문제일 수 있어요. 보습제로 버티지 말고 진료를 받아 주세요.</div></section>
 
-<div class="cta app"><p class="ct">📱 이번 주 내 몸에 생기는 변화, 미리 알고 넘어가기</p><p class="cd">기미가 짙어지고 피부가 예민해지는 것도 다 시기가 있어요. 예정일만 넣어두면 이번 주에 어떤 변화가 흔한지 베이비빌리 앱이 알려드려서, 밤중에 검색하며 걱정하지 않아도 돼요.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 이번 주 변화 보기 →</a></div>
+<div class="cta app"><p class="ct">📱 이번 주 내 몸에 생기는 변화, 미리 알고 넘어가기</p><p class="cd">기미가 짙어지고 피부가 예민해지는 것도 다 시기가 있어요. 예정일만 넣어두면 이번 주에 어떤 변화가 흔한지 베이비빌리 앱이 알려드려서, 밤중에 검색하며 걱정하지 않아도 돼요.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 이번 주 변화 보기 →</a><a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%9E%84%EC%82%B0%EB%B6%80-%ED%99%94%EC%9E%A5%ED%92%88-%EB%AF%B8%EC%9A%A9%EC%8B%9C%EC%88%A0&utm_content=cta_app_kakao" id="app-kakao" target="_blank" rel="noopener" style="display:inline-block;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85);font-weight:700;padding:9.5px 24px;border-radius:16px;font-size:.94rem;margin:8px 5px 0">💬 카톡 무료 상담</a></div>
 
 <div class="callout"><strong>피부는 대부분 출산 후 돌아와요.</strong> 지금 크게 손대기보다 자외선차단제와 보습에 성실한 쪽이 결과가 좋습니다. 임신 중에는 안 해도 되는 걸 줄이는 게 곧 관리예요.</div>
 
@@ -195,7 +195,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
   var SLUG="임산부-화장품-미용시술";
   function track(type,variant){ if(typeof gtag==="function"){ gtag('event','cta_click',{cta_type:type,cta_variant:variant||'none',page_slug:SLUG,send_to:'G-SRWXXLKTKD'}); } }
   var k=document.querySelector('.vb-nav-cta'); if(k){ k.addEventListener('click',function(){ track('kakao'); }); }
-  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); }
+  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); } var akao=document.getElementById('app-kakao'); if(akao){ akao.addEventListener('click',function(){ track('kakao','cta_app'); }); }
   var seed=document.getElementById('ins-seed'); if(seed){ seed.addEventListener('click',function(){ track('insurance','seed_prep'); }); }
   var ic=document.getElementById('ins-cta'); if(ic){ ic.addEventListener('click',function(){ track('insurance','cta_main'); }); }
 })();

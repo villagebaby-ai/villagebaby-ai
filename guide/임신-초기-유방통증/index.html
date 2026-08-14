@@ -157,7 +157,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
 <p>임신 중에도 유방 문제는 생길 수 있어요. "임신이라 그렇겠지" 하고 넘기지 말고, 위 신호가 있으면 진료로 확인하는 게 안전해요.</p>
 <p>베이비빌리 <strong>베동 커뮤니티</strong>에서도 초기 엄마들이 "가슴이 너무 아픈데 정상인지" 자주 물어봐요. 대부분은 지나가는 과정이지만, 한쪽만 아프거나 멍울이 만져진다는 이야기에는 진료를 권하는 답이 많이 달려요.</p></section>
 
-<div class="cta app"><p class="ct">📱 지금 이 증상, 정상일까? 매일 알려드려요</p><p class="cd">주차마다 나타나는 증상이 달라요. 베이비빌리 앱이 예정일 기준으로 이번 주 몸의 변화를 매일 알려드려서, 매번 검색하지 않아도 되게 도와드려요.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 내 주차 증상 보기 →</a></div>
+<div class="cta app"><p class="ct">📱 지금 이 증상, 정상일까? 매일 알려드려요</p><p class="cd">주차마다 나타나는 증상이 달라요. 베이비빌리 앱이 예정일 기준으로 이번 주 몸의 변화를 매일 알려드려서, 매번 검색하지 않아도 되게 도와드려요.</p><a href="https://app.babybilly.app/qm6eya8" target="_blank" rel="noopener">앱에서 내 주차 증상 보기 →</a><a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%9C%A0%EB%B0%A9%ED%86%B5%EC%A6%9D&utm_content=cta_app_kakao" id="app-kakao" target="_blank" rel="noopener" style="display:inline-block;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85);font-weight:700;padding:9.5px 24px;border-radius:16px;font-size:.94rem;margin:8px 5px 0">💬 카톡 무료 상담</a></div>
 
 <div class="callout"><strong>참고로,</strong> 가슴 통증이 둔해지는 12주 무렵이면 <strong>태아보험</strong>을 볼 만한 시기예요. 대부분 임신 22주 전후에 닫히니 아직 여유가 있고, <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=villagebaby&utm_medium=content&utm_campaign=임신-초기-유방통증&utm_content=seed_prep" id="ins-seed" target="_blank" rel="noopener">어떤 특약이 필요한지만 먼저</a> 훑어봐도 돼요.</div>
 
@@ -199,7 +199,7 @@ th{background:#1e3a5f;color:#fff;padding:10px 13px;text-align:left}td{padding:10
   var SLUG="임신-초기-유방통증";
   function track(type,variant){ if(typeof gtag==="function"){ gtag('event','cta_click',{cta_type:type,cta_variant:variant||'none',page_slug:SLUG,send_to:'G-SRWXXLKTKD'}); } }
   var k=document.querySelector('.vb-nav-cta'); if(k){ k.addEventListener('click',function(){ track('kakao'); }); }
-  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); }
+  var ap=document.querySelector('.cta.app a'); if(ap){ ap.addEventListener('click',function(){ track('app'); }); } var akao=document.getElementById('app-kakao'); if(akao){ akao.addEventListener('click',function(){ track('kakao','cta_app'); }); }
   var seed=document.getElementById('ins-seed'); if(seed){ seed.addEventListener('click',function(){ track('insurance','seed_prep'); }); }
   var ic=document.getElementById('ins-cta'); if(ic){ ic.addEventListener('click',function(){ track('insurance','cta_main'); }); }
 })();
