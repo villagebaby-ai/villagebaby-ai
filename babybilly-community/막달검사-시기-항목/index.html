@@ -125,7 +125,7 @@ a{text-decoration:none;color:inherit}
 /* header */
 .site-header{border-bottom:1px solid #F0F0F0}
 .logo-row{display:flex;align-items:center;padding:14px 0 12px}
-.logo{font-size:20px;font-weight:800;color:#2D7CD2;letter-spacing:-0.5px}
+.logo{display:block;height:32px;width:auto}
 .logo-row .spacer{flex:1}
 .gnb{display:flex;align-items:flex-end;gap:18px;overflow-x:auto}
 .gnb a{
@@ -133,19 +133,6 @@ a{text-decoration:none;color:inherit}
   white-space:nowrap;border-bottom:2px solid transparent;
 }
 .gnb a.on{color:#353535;font-weight:700;border-bottom:2px solid #2D7CD2}
-
-/* app banner */
-.app-banner{
-  display:flex;align-items:center;gap:12px;
-  background:#EAF1F8;border-radius:12px;padding:14px 16px;margin:16px 0;
-}
-.app-banner .txt{flex:1;min-width:0}
-.app-banner .t1{font-size:13px;color:#6A6A6A;line-height:18px}
-.app-banner .t2{font-size:14px;font-weight:700;color:#353535;line-height:20px}
-.app-banner .btn{
-  flex:0 0 auto;font-size:13px;font-weight:700;color:#fff;
-  background:#2D7CD2;border-radius:8px;padding:8px 14px;white-space:nowrap;
-}
 
 /* list */
 .list-head{padding:8px 0 4px}
@@ -222,7 +209,7 @@ a{text-decoration:none;color:inherit}
 <header class="site-header">
   <div class="wrap">
     <div class="logo-row">
-      <span class="logo">베이비빌리</span>
+      <img class="logo" src="/assets/img/logo-billy.png" alt="베이비빌리" width="99" height="74">
       <span class="spacer"></span>
     </div>
     <nav class="gnb">
@@ -233,16 +220,6 @@ a{text-decoration:none;color:inherit}
     </nav>
   </div>
 </header>
-<div class="wrap">
-  <!-- Airbridge 딥링크 데모 — 실제 스킴/베이스링크로 교체 -->
-  <a class="app-banner" href="https://app.babybilly.app/zn6is0?deeplink_url=billyapp%3A%2F%2Fcommunity%2Fdetail%2F%EB%A7%89%EB%8B%AC%EA%B2%80%EC%82%AC-%EC%8B%9C%EA%B8%B0-%ED%95%AD%EB%AA%A9" target="_blank" rel="noopener">
-    <span class="txt">
-      <span class="t1">베이비빌리 앱에서</span><br>
-      <span class="t2">더 많은 베동글을 볼 수 있어요!</span>
-    </span>
-    <span class="btn">앱 다운받기</span>
-  </a>
-</div>
 <main class="wrap">
   <a class="back" href="/babybilly-community/">← 베동 인기글</a>
   <div class="cat">베이비빌리 동기모임</div>
