@@ -43,3 +43,5 @@ Allow: /
 Sitemap: https://villagebaby.kr/sitemap.xml
 Sitemap: https://villagebaby.kr/rss.xml
 Sitemap: https://villagebaby.kr/magazine/sitemap-index.xml
+Sitemap: https://villagebaby.kr/babybilly-community/sitemap.xml
+Sitemap: https://villagebaby.kr/babybilly-thread/sitemap.xml
