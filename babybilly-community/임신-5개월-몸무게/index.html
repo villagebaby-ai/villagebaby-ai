@@ -38,7 +38,10 @@
     "@type": "Person",
     "name": "아이스크림중독"
   },
-  "image": "https://villagebaby.kr/babybilly-community/assets/og/임신-5개월-몸무게.png",
+  "image": [
+    "https://villagebaby.kr/babybilly-community/assets/og/임신-5개월-몸무게.png",
+    "https://villagebaby.kr/babybilly-community/assets/photos/scale-feet.jpg"
+  ],
   "commentCount": 31,
   "interactionStatistic": [
     {
@@ -403,6 +406,7 @@ a{text-decoration:none;color:inherit}
 .meta-1{margin-top:8px}
 .meta-2{margin-top:4px;display:flex;gap:8px;flex-wrap:wrap}
 .bar{display:inline-block;width:1px;height:13px;background:#C5C5C5;margin:0 4px;vertical-align:-2px}
+.thumb{flex:0 0 64px;width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid #F0F0F0}
 .bubble{
   position:relative;flex:0 0 42px;width:42px;height:36px;
   background:#F0F0F0;border-radius:10px;
@@ -420,6 +424,18 @@ a{text-decoration:none;color:inherit}
 .cat{font-size:13px;color:#6A6A6A;margin-top:8px}
 .post-title{font-size:22px;line-height:30px;font-weight:700;color:#353535;margin:6px 0 10px}
 .post-body{font-size:17px;line-height:27px;color:#353535;white-space:pre-line}
+.media-wrap{position:relative;display:block;max-width:420px;margin:16px 0 0}
+.media{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #F0F0F0}
+.media-overlay{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.media-appicon{display:block;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.25);background:#fff}
+.media-cta{
+  background:#2D7CD2;color:#fff;font-size:13px;font-weight:700;line-height:18px;
+  padding:10px 18px;border-radius:24px;white-space:nowrap;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+}
 .like-row{text-align:center;margin:24px 0 20px}
 .like-pill{
   display:inline-block;border:1px solid #2D7CD2;border-radius:20px;
@@ -486,6 +502,14 @@ a{text-decoration:none;color:inherit}
 임신 중기 몸무게 관리 다들 어떻게 하세요?
 막달까지 총 몇 kg 찌는 게 보통인지도 궁금해요
 오늘도 아이스크림 먹으면서 쓰는 중입니다</div>
+  <!-- Airbridge 랜딩 데모 링크 -->
+  <a class="media-wrap" href="https://app.babybilly.app/9eksn6" target="_blank" rel="noopener">
+    <img class="media" src="/babybilly-community/assets/photos/scale-feet.jpg" alt="체중계 위에 올라선 맨발을 내려다본 사진" width="1080" height="1080" loading="lazy">
+    <span class="media-overlay">
+      <img class="media-appicon" src="/babybilly-community/assets/favicon-192.png" alt="" width="48" height="48">
+      <span class="media-cta">앱에서 원본 사진 보기</span>
+    </span>
+  </a>
   <div class="like-row"><span class="like-pill">공감해요 18</span></div>
   <div class="thick-divider"></div>
   <div class="comment-head">
