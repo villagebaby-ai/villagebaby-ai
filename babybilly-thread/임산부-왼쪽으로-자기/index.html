@@ -188,8 +188,8 @@ a{text-decoration:none;color:inherit}
 .wrap{max-width:600px;margin:0 auto;padding:0 20px}
 
 /* header — threads식 중앙 로고, 하단 헤어라인 없음 */
-.site-header{position:sticky;top:0;z-index:10;background:#fff}
-.site-header .bar{display:flex;align-items:center;justify-content:center;padding:12px 0 16px}
+.site-header{position:sticky;top:0;z-index:10;background:#fff;padding-bottom:8px}
+.site-header .bar{display:flex;align-items:center;justify-content:center;padding:16px 0}
 .site-header .logo{display:block;height:30px;width:auto}
 
 /* feed head */
@@ -219,14 +219,19 @@ a{text-decoration:none;color:inherit}
 .head .spacer{flex:1}
 .head .date{font-size:13px;color:#C5C5C5;line-height:18px;white-space:nowrap;padding-left:8px}
 .text{font-size:15px;line-height:22px;color:#353535;white-space:pre-line;margin-top:4px}
-.post-heading{font-size:18px;line-height:26px;font-weight:700;color:#353535;margin:8px 0 16px}
+.post-heading{font-size:18px;line-height:26px;font-weight:700;color:#353535;margin:0 0 20px}
 .clamp-6{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
 .clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .more{display:inline-block;font-size:13px;color:#898989;line-height:18px;margin-top:2px}
 .media-wrap{position:relative;display:block;max-width:420px;margin-top:10px}
 .media{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #F0F0F0}
-.media-cta{
+.media-overlay{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.media-appicon{display:block;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.25);background:#fff}
+.media-cta{
   background:#2D7CD2;color:#fff;font-size:13px;font-weight:700;line-height:18px;
   padding:10px 18px;border-radius:24px;white-space:nowrap;
   box-shadow:0 2px 8px rgba(0,0,0,.18);
@@ -253,14 +258,25 @@ a{text-decoration:none;color:inherit}
 .bar{display:inline-block;width:1px;height:12px;background:#C5C5C5;margin:0 6px;vertical-align:-1px}
 
 .item-divider{height:1px;background:#F0F0F0;margin:20px 0}
-.back{display:inline-block;font-size:13px;color:#6A6A6A;line-height:18px;padding:0 0 12px}
+.back{display:inline-block;font-size:13px;color:#6A6A6A;line-height:18px;padding:20px 0 20px}
 
-/* related */
-.related{margin:24px 0 8px}
-.related h2{font-size:16px;font-weight:700;color:#353535;margin:0 0 12px}
-.related ul{list-style:none;margin:0;padding:0}
-.related li{margin:0 0 10px}
-.related a{font-size:15px;line-height:22px;color:#2D7CD2}
+/* 상세 하단 앱 유도 버튼 */
+.app-actions{display:flex;gap:8px;margin:20px 0 4px}
+.btn-primary{
+  flex:1;text-align:center;background:#2D7CD2;color:#fff;
+  font-size:14px;font-weight:700;line-height:20px;padding:12px 0;border-radius:8px;
+}
+.btn-outline{
+  flex:1;text-align:center;border:1px solid #C5C5C5;color:#353535;
+  font-size:14px;font-weight:700;line-height:20px;padding:11px 0;border-radius:8px;
+}
+
+/* related — 실제 스레드 셀 */
+.more-threads{margin:28px 0 8px}
+.more-threads h2{font-size:16px;font-weight:700;color:#353535;margin:0 0 16px}
+.row-related{padding:2px 0}
+.row-related .text{margin-top:2px}
+.rel-meta{display:block;font-size:13px;color:#898989;line-height:18px;margin-top:6px}
 .to-list{text-align:center;margin:24px 0 32px}
 .to-list a{
   display:inline-block;border:1px solid #C5C5C5;border-radius:8px;
@@ -301,7 +317,7 @@ a{text-decoration:none;color:inherit}
 임산부 수면 자세 다들 어떻게 하세요?
 바디필로우 쓰면 좀 나아지나요?
 오른쪽으로 자는 건 정말 안 되는 건가요</div>
-        <div class="acts"><span class="act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353535" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3 4.3 12.9a4.6 4.6 0 0 1 6.4-6.6l1.3 1.3 1.3-1.3a4.6 4.6 0 0 1 6.4 6.6z"></path></svg><span class="n">11</span></span><span class="act"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353535" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a7.8 7.8 0 0 1-8.4 7.8c-.9 0-1.8-.2-2.6-.5l-5.1 1.6 1.6-4.7a7.8 7.8 0 1 1 14.5-4.2z"></path></svg><span class="n">10</span></span></div>
+        <div class="acts"><a class="act" href="https://app.babybilly.app/9eksn6" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353535" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3 4.3 12.9a4.6 4.6 0 0 1 6.4-6.6l1.3 1.3 1.3-1.3a4.6 4.6 0 0 1 6.4 6.6z"></path></svg><span class="n">11</span></a><a class="act" href="https://app.babybilly.app/9eksn6" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353535" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a7.8 7.8 0 0 1-8.4 7.8c-.9 0-1.8-.2-2.6-.5l-5.1 1.6 1.6-4.7a7.8 7.8 0 1 1 14.5-4.2z"></path></svg><span class="n">10</span></a><a class="act" href="https://app.babybilly.app/9eksn6" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#353535" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h11a1 1 0 0 1 1 1v16l-6.5-4-6.5 4v-16a1 1 0 0 1 1-1z"></path></svg></a></div>
       </div>
     </div>
     <div class="row row-comment">
@@ -424,13 +440,38 @@ a{text-decoration:none;color:inherit}
       </div>
     </div>
   </div>
-  <section class="related">
+  <div class="app-actions">
+    <a class="btn-primary" href="https://app.babybilly.app/9eksn6" target="_blank" rel="noopener">댓글달기</a>
+    <a class="btn-outline" href="https://app.babybilly.app/9eksn6" target="_blank" rel="noopener">저장하기</a>
+  </div>
+  <section class="more-threads">
     <h2>함께 보는 스레드</h2>
-    <ul>
-      <li><a href="/babybilly-thread/유모차-디럭스-절충형/">유모차 디럭스 절충형 뭐 사셨어요? 오늘 매장 갔다가 더 헷갈려요</a></li>
-      <li><a href="/babybilly-thread/임신-회사-알리기/">회사에 임신 사실 언제 알리셨어요? 12주까지 기다리는 게 맞을까요</a></li>
-      <li><a href="/babybilly-thread/임산부-염색-파마/">임산부 염색이나 파마 해도 되나요? 뿌리가 한계에 도달했어요</a></li>
-    </ul>
+    <a class="row row-related" href="/babybilly-thread/유모차-디럭스-절충형/">
+      <span class="gutter"><img class="av av-36" src="/babybilly-thread/assets/avatars/billy_default_image_2.png" alt="" width="36" height="36" loading="lazy"></span>
+      <span class="content">
+        <span class="head"><span class="nick">두시간유모차만봄</span><span class="stage">임신 6개월</span><span class="spacer"></span><span class="date">2026.08.15</span></span>
+        <span class="text clamp-2">오늘 베이비페어 가서 유모차만 두 시간 봤어요 디럭스는 무겁지만 승차감이 좋다고 하고 절충형은 가볍지만 다들 쓰는 거라 고민되고 결국 못 정하고 사진만 찍어왔네요ㅋㅋ 디럭스 쓰다 절충형으로 갈아타신 분들이 많던데 처…</span>
+        <span class="rel-meta">답글 17개 · 좋아요 18개</span>
+      </span>
+    </a>
+    <div class="item-divider"></div>
+    <a class="row row-related" href="/babybilly-thread/임신-회사-알리기/">
+      <span class="gutter"><img class="av av-36" src="/babybilly-thread/assets/avatars/billy_default_image_4.png" alt="" width="36" height="36" loading="lazy"></span>
+      <span class="content">
+        <span class="head"><span class="nick">회의중화장실</span><span class="stage">임신 3개월</span><span class="spacer"></span><span class="date">2026.08.15</span></span>
+        <span class="text clamp-2">이제 9주인데 입덧 때문에 회사에서 숨기기가 힘들어요 안정기 지나고 알리려 했는데 자꾸 회의 중에 화장실 가니까 눈치 보여요 다들 회사에 임신 언제 알리셨어요? 팀장님한테 먼저? 아니면 인사팀에 먼저 말하는 게 맞나…</span>
+        <span class="rel-meta">답글 13개 · 좋아요 16개</span>
+      </span>
+    </a>
+    <div class="item-divider"></div>
+    <a class="row row-related" href="/babybilly-thread/임산부-염색-파마/">
+      <span class="gutter"><img class="av av-36" src="/babybilly-thread/assets/avatars/billy_default_image_4.png" alt="" width="36" height="36" loading="lazy"></span>
+      <span class="content">
+        <span class="head"><span class="nick">뿌리오센치</span><span class="stage">임신 5개월</span><span class="spacer"></span><span class="date">2026.08.15</span></span>
+        <span class="text clamp-2">임신 전에 탈색한 머리라 뿌리가 5센치는 자랐어요 거울 볼 때마다 스트레스인데 염색해도 되는지 모르겠어요 검색하면 중기 이후엔 괜찮다는 말도 있고 아예 하지 말라는 말도 있고 임산부 염색이나 파마 해보신 분들 어떠셨…</span>
+        <span class="rel-meta">답글 11개 · 좋아요 12개</span>
+      </span>
+    </a>
   </section>
   <div class="to-list"><a href="/babybilly-thread/">피드로</a></div>
 </main>
