@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>베이비빌리 | 브랜드 광고 무료 컨설팅</title>
-<meta name="description" content="대한민국 대표 임신·육아 플랫폼 베이비빌리가 브랜드의 고민을 듣고 브랜딩부터 전환까지 맞춤 광고 전략을 무료로 컨설팅해 드립니다.">
-<meta name="robots" content="noindex,nofollow">
+<title>임산부·육아맘 타겟 광고 무료 컨설팅 | 베이비빌리</title>
+<meta name="description" content="임신부 80%가 쓰는 베이비빌리에서 임산부·육아맘 타겟 광고를 시작하세요. 브랜드 인지부터 구매 전환, 체험단까지 목표별 지면 조합을 무료로 컨설팅해 드립니다. 최소 150만원부터.">
+<link rel="canonical" href="https://villagebaby.kr/ad-marketing/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="베이비빌리 | 브랜드 광고 무료 컨설팅">
-<meta property="og:description" content="대한민국 대표 임신·육아 플랫폼 베이비빌리가 브랜드의 고민을 듣고 브랜딩부터 전환까지 맞춤 광고 전략을 무료로 컨설팅해 드립니다.">
-<meta property="og:image" content="https://villagebaby.kr/assets/img/billy-smart.png">
+<meta property="og:site_name" content="베이비빌리">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="임산부·육아맘 타겟 광고 무료 컨설팅 | 베이비빌리">
+<meta property="og:description" content="임신부 80%가 쓰는 베이비빌리에서 임산부·육아맘 타겟 광고를 시작하세요. 브랜드 인지부터 구매 전환, 체험단까지 목표별 지면 조합을 무료로 컨설팅해 드립니다. 최소 150만원부터.">
+<meta property="og:image" content="https://villagebaby.kr/ad-marketing/og-ad-consulting.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="베이비빌리 임산부·육아맘 타겟 광고 무료 컨설팅">
 <meta property="og:url" content="https://villagebaby.kr/ad-marketing/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="임산부·육아맘 타겟 광고 무료 컨설팅 | 베이비빌리">
+<meta name="twitter:description" content="임신부 80%가 쓰는 베이비빌리에서 임산부·육아맘 타겟 광고를 시작하세요. 목표별 지면 조합을 무료로 컨설팅해 드립니다.">
+<meta name="twitter:image" content="https://villagebaby.kr/ad-marketing/og-ad-consulting.png">
 <link rel="icon" href="https://villagebaby.kr/assets/img/favicon.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,6 +95,8 @@
   .btn:focus-visible{outline:3px solid #9DBFE2; outline-offset:2px;}
   .btn-primary{background:var(--billy); color:var(--white);}
   .btn-primary:hover{background:var(--billy-deep); transform:translateY(-1px); box-shadow:0 10px 24px rgba(51,115,186,0.32);}
+  .btn-ghost{background:transparent; color:var(--white); box-shadow:inset 0 0 0 1.5px rgba(255,255,255,0.55);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.14); transform:translateY(-1px);}
   .btn-sm{padding:9px 18px; font-size:13.5px;}
 
   /* ---------- HEADER BAR ---------- */
@@ -120,7 +131,7 @@
     color:#D9E5F2;
     max-width:520px;
   }
-  .hero .btn{margin-top:36px;}
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:12px; margin-top:36px;}
   .hero-char{
     position:absolute;
     right:28px; /* align to .wrap content edge, not padding edge */
@@ -146,66 +157,20 @@
   .section-head h2{font-size:clamp(22px,3vw,30px); font-weight:800;}
   .section-head p{margin-top:14px; color:var(--gray); font-size:15.5px;}
 
-  /* ---------- PAIN POINTS ---------- */
-  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
-  .card{
+  /* ---------- WHY (3 cards) ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .why-item{
     background:var(--white);
     border:1px solid var(--line);
     border-radius:16px;
     box-shadow:0 4px 16px rgba(0,0,0,0.05);
-    padding:32px;
+    padding:28px 24px;
   }
-  .pain-list{list-style:none; margin-top:8px;}
-  .pain-list li{
-    display:flex;
-    gap:12px;
-    padding:14px 0;
-    border-bottom:1px solid var(--line);
-    font-size:15px;
-    color:var(--ink);
-  }
-  .pain-list li:last-child{border-bottom:none;}
-  .pain-list .mark{
-    flex:none;
-    width:22px; height:22px;
-    border-radius:50%;
-    border:1.5px solid var(--billy);
-    color:var(--billy);
-    font-size:12px;
-    display:flex; align-items:center; justify-content:center;
-    margin-top:2px;
-  }
-  .quote-strip{
-    margin-top:22px;
-    padding-top:20px;
-    border-top:1px dashed var(--line);
-    font-size:16px;
-    font-weight:700;
-    color:var(--billy);
-  }
+  .why-item .n{font-size:13px; color:var(--billy); font-weight:700; margin-bottom:10px;}
+  .why-item .t{font-size:17px; font-weight:700; color:var(--ink); line-height:1.5;}
+  .why-item .d{font-size:14px; color:var(--gray); margin-top:10px; line-height:1.7;}
 
-  .strategy-list{display:flex; flex-direction:column; gap:14px;}
-  .strategy-item{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    background:var(--peach-soft);
-    border-radius:12px;
-    padding:18px 20px;
-  }
-  .strategy-item .ico{
-    flex:none;
-    width:40px; height:40px;
-    border-radius:50%;
-    background:var(--billy);
-    color:var(--white);
-    display:flex; align-items:center; justify-content:center;
-    font-size:17px;
-  }
-  .strategy-item .t{font-weight:700; font-size:14.5px; color:var(--ink);}
-  .strategy-item .d{font-size:13.5px; color:var(--gray); margin-top:2px;}
-
-  /* ---------- PACKAGES ---------- */
+  /* ---------- GOAL PACKAGES ---------- */
   .pkg-band{background:var(--billy); color:var(--white);}
   .pkg-band .section-head h2{color:var(--white);}
   .pkg-band .section-head p{color:#D9E5F2;}
@@ -215,10 +180,11 @@
     border:1px solid var(--line);
     border-radius:16px;
     box-shadow:0 4px 16px rgba(0,0,0,0.05);
-    padding:26px 26px 24px;
+    padding:26px 26px 22px;
     position:relative;
+    display:flex;
+    flex-direction:column;
   }
-  .pkg-card.wide{grid-column:1 / -1;}
   .pkg-top{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
   .pkg-num{
     font-size:13px;
@@ -230,39 +196,46 @@
     display:flex; align-items:center; justify-content:center;
   }
   .pkg-type{font-size:12.5px; font-weight:700; color:var(--billy); letter-spacing:0.03em;}
-  .pkg-new{
-    font-size:10.5px; font-weight:800; color:var(--peach-ink);
-    background:var(--peach); padding:2px 8px; border-radius:100px;
-  }
   .pkg-name{font-size:16.5px; font-weight:700; color:#222; margin-bottom:10px;}
   .pkg-compose{font-size:13.5px; color:var(--gray); line-height:1.7;}
+  .pkg-when{
+    margin-top:14px;
+    background:var(--peach-soft);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:13.5px;
+    font-weight:700;
+    color:var(--peach-ink);
+  }
   .pkg-price{
-    margin-top:16px;
+    margin-top:auto;
     padding-top:14px;
     border-top:1px solid var(--line);
     display:flex; align-items:baseline; justify-content:space-between;
   }
   .pkg-price .label{font-size:12px; color:var(--gray);}
   .pkg-price .val{font-size:19px; font-weight:800; color:var(--billy);}
+  .pkg-fine{margin-top:8px; font-size:11.5px; color:var(--gray);}
   .pkg-note{
     margin-top:26px;
     font-size:13px;
     color:rgba(255,255,255,0.75);
     text-align:center;
   }
+  .pkg-note a{color:#fff;}
 
-  /* ---------- WHY ---------- */
-  .why-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px;}
-  .why-item{
+  /* ---------- INDUSTRY TAGS ---------- */
+  .tag-cloud{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag-chip{
     background:var(--white);
     border:1px solid var(--line);
-    border-radius:16px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.05);
-    padding:22px 16px;
-    text-align:center;
+    border-radius:100px;
+    padding:10px 18px;
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink);
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
   }
-  .why-item .n{font-size:13px; color:var(--billy); font-weight:700; margin-bottom:10px;}
-  .why-item .t{font-size:14px; font-weight:700; color:var(--ink); line-height:1.5;}
 
   /* ---------- PROCESS ---------- */
   .process-wrap{position:relative; padding-top:10px;}
@@ -297,6 +270,60 @@
   }
   .p-step .t{font-size:14px; font-weight:700; color:#222;}
   .p-step .d{font-size:12.5px; color:var(--gray); margin-top:6px;}
+  .process-highlight{
+    margin-top:34px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    font-size:14.5px;
+    color:var(--ink);
+    line-height:1.8;
+  }
+  .process-highlight strong{color:var(--billy);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:flex; flex-direction:column; gap:12px;}
+  .faq-item{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.05);
+    padding:22px 26px;
+  }
+  .faq-item h3{
+    font-size:16px;
+    font-weight:700;
+    color:var(--ink);
+    display:flex;
+    gap:10px;
+  }
+  .faq-item h3::before{content:"Q"; color:var(--billy); font-weight:800;}
+  .faq-item p{
+    margin-top:10px;
+    padding-left:22px;
+    font-size:14.5px;
+    color:var(--gray);
+    line-height:1.8;
+  }
+
+  /* ---------- PROMO BANNER ---------- */
+  .promo-banner{
+    background:var(--peach);
+    border-radius:16px;
+    padding:20px 26px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .promo-banner .txt{font-size:15px; font-weight:700; color:#223A54;}
+  .promo-banner .date{display:block; font-size:12.5px; font-weight:500; color:var(--peach-ink); margin-top:4px;}
+  .promo-banner a{
+    font-size:14px; font-weight:700; color:var(--billy-deep);
+    text-decoration:underline; white-space:nowrap;
+  }
 
   .cta-panel{
     margin-top:56px;
@@ -345,10 +372,8 @@
   }
 
   @media (max-width: 860px){
-    .grid-2{grid-template-columns:1fr;}
     .pkg-grid{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:repeat(2,1fr); gap:12px;}
-    .why-item:last-child{grid-column:1 / -1;}
+    .why-grid{grid-template-columns:1fr; gap:12px;}
     .process-track{grid-template-columns:1fr; gap:26px;}
     .process-track::before{display:none;}
     .sticky-steps{display:none;}
@@ -366,15 +391,103 @@
     .cta-wave{right:16px; height:90px;}
   }
 </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNXYBTFWXB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-VNXYBTFWXB');
-    gtag('config', 'G-SRWXXLKTKD');
-  </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "임신·육아 타겟 광고 컨설팅",
+  "serviceType": "광고 컨설팅",
+  "url": "https://villagebaby.kr/ad-marketing/",
+  "description": "브랜드 인지, 구매 전환, 체험단, 라이브 커머스 등 목표에 맞춰 베이비빌리 앱 광고 지면 조합을 설계해 주는 무료 컨설팅 서비스입니다.",
+  "provider": {
+    "@type": "Organization",
+    "name": "주식회사 빌리지베이비",
+    "url": "https://villagebaby.kr/"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "KR"
+  },
+  "audience": {
+    "@type": "BusinessAudience",
+    "name": "임산부·육아맘 대상 마케팅을 준비하는 브랜드"
+  },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "KRW",
+    "price": "1500000",
+    "description": "캠페인 1건 최소 집행 금액 150만원부터 (부가세 별도)"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "광고를 시작하려면 예산이 얼마나 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "캠페인 한 건 기준 150만원(부가세 별도)부터 시작하실 수 있습니다. 예산 규모가 커질수록 노출 지면과 메시지 채널을 함께 묶어, 인지와 전환을 한 캠페인 안에서 동시에 노릴 수 있습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "타겟은 어디까지 좁힐 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "출산 예정 주수, 아이 개월 수, 거주 지역, 회원 연령대를 기준으로 대상을 나눠 내보낼 수 있습니다. 다만 지면마다 지원하는 조건이 다르기 때문에, 상담 때 원하시는 타겟이 어떤 상품에서 구현되는지 정리해 드립니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "광고 소재는 누가 만드나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "이미지와 문구는 브랜드에서 준비해 주시면 됩니다. 지면별 규격과 표현 기준을 담은 가이드를 미리 전달해 드리고, 받은 소재는 검수 단계에서 함께 확인해 조정합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "세팅이나 운영도 광고주가 직접 해야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아닙니다. 소재 검수부터 지면 등록, 집행 기간 중 관리까지 베이비빌리 담당자가 맡습니다. 브랜드에서 따로 계정을 만들거나 광고 대시보드를 다루실 필요가 없습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "집행이 끝나면 성과를 확인할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "캠페인이 마무리되면 노출 수와 클릭 수를 정리한 결과 자료를 보내드립니다. 다음 집행에서 어떤 지면을 늘리고 줄일지 판단하는 근거로 활용하실 수 있습니다."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "베이비빌리",
+      "item": "https://villagebaby.kr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "광고 컨설팅",
+      "item": "https://villagebaby.kr/ad-marketing/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -393,173 +506,213 @@
     <div class="wrap">
       <div class="hero-copy">
         <span class="eyebrow tag-onblue">BABYBILLY · 브랜드 광고 컨설팅</span>
-        <h1 class="reveal"><span class="h1-block">육아 브랜드의<br>성장을 함께 고민합니다.</span><span class="h1-block">우리 브랜드,<br>어떻게 알리면 더 좋을까요?</span></h1>
+        <h1 class="reveal"><span class="h1-block">임산부·육아맘 타겟 광고,<br>어디서 시작해야 할지<br>막막하신가요?</span></h1>
         <div class="hero-char">
           <img src="https://villagebaby.kr/assets/img/billy-smart.png" alt="클립보드와 지갑을 든 베이비빌리 캐릭터">
         </div>
-        <p class="sub reveal">광고를 시작하기 전에, 먼저 브랜드의 고민을 듣고 싶습니다.<br>브랜드마다 목표가 다르고 정답도 다르기에, 브랜딩부터 매출까지 함께 답을 찾아갑니다.</p>
-        <a href="#consult" class="btn btn-primary reveal">무료 컨설팅 문의하기 →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PAIN POINT + STRATEGY ===================== -->
-  <section class="section section-tint-blue">
-    <div class="wrap">
-      <div class="grid-2">
-        <div class="card reveal">
-          <span class="eyebrow tag-peach">고민</span>
-          <h2 style="font-size:19px;">혹시 이런 고민을 하고 계신가요?</h2>
-          <ul class="pain-list">
-            <li><span class="mark">✓</span>브랜드 인지도를 높이고 싶어요.</li>
-            <li><span class="mark">✓</span>광고 성과와 매출을 함께 높이고 싶어요.</li>
-            <li><span class="mark">✓</span>신제품을 효과적으로 런칭하고 싶어요.</li>
-            <li><span class="mark">✓</span>우리 브랜드에 맞는 광고가 무엇인지 모르겠어요.</li>
-            <li><span class="mark">✓</span>고객에게 자연스럽게 브랜드를 알리고 싶어요.</li>
-          </ul>
-          <p class="quote-strip">“걱정하지 마세요. 브랜드마다 답은 다르니까요.”</p>
-        </div>
-
-        <div class="card reveal">
-          <span class="eyebrow tag-blue">전략</span>
-          <h2 style="font-size:19px;">베이비빌리는 맞춤형 답을 함께 찾습니다</h2>
-          <p style="color:var(--gray); font-size:14.5px; margin:10px 0 20px;">광고 상품을 먼저 제안하지 않고, 브랜드를 먼저 이해합니다.</p>
-          <div class="strategy-list">
-            <div class="strategy-item">
-              <div class="ico">①</div>
-              <div>
-                <div class="t">브랜딩이 필요한 브랜드 → 브랜딩 중심 전략 제안</div>
-              </div>
-            </div>
-            <div class="strategy-item">
-              <div class="ico">②</div>
-              <div>
-                <div class="t">구매 전환이 필요한 브랜드 → 전환 중심 전략 제안</div>
-              </div>
-            </div>
-            <div class="strategy-item">
-              <div class="ico">③</div>
-              <div>
-                <div class="t">신제품을 런칭하는 브랜드 → 런칭 중심 전략 제안</div>
-              </div>
-            </div>
-          </div>
+        <p class="sub reveal">국내 임신부 열 명 중 여덟 명이 쓰는 베이비빌리에서, 브랜드가 세운 목표에 맞는 지면 조합을 무료로 설계해 드립니다.<br>어떤 상품을 살지부터 고민하지 마시고, 무엇을 얻고 싶은지부터 알려주세요.</p>
+        <div class="hero-ctas">
+          <a href="#consult" class="btn btn-primary reveal">무료 컨설팅 문의하기 →</a>
+          <a href="https://ads.villagebaby.kr/" target="_blank" rel="noopener" class="btn btn-ghost reveal">광고 상품 소개서 받기</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== PACKAGE SOLUTION ===================== -->
-  <section class="section pkg-band">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow tag-onblue">목적별 추천</span>
-        <h2>목적에 맞는 검증 패키지</h2>
-        <p>브랜딩 · 전환 · 런칭, 브랜드의 목표에 따라 가장 효과적이었던 광고 조합을 참고로 보여드려요.<br>정확한 구성과 견적은 상담을 통해 브랜드 상황에 맞게 다시 설계됩니다.</p>
-      </div>
-
-      <div class="pkg-grid">
-        <div class="pkg-card reveal">
-          <div class="pkg-top"><span class="pkg-num">01</span><span class="pkg-type">브랜딩 중심 · 인지도 확산</span></div>
-          <div class="pkg-name">바이럴 + 구매 전환 패키지</div>
-          <div class="pkg-compose">메인 팝업 7일 + 앱 푸시<br>+ 커뮤니티 베동 배너<br>+ 0원 이벤트 체험단</div>
-          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 500만원</span></div>
-        </div>
-
-        <div class="pkg-card reveal">
-          <div class="pkg-top"><span class="pkg-num">02</span><span class="pkg-type">브랜딩 중심 · 노출 임팩트</span></div>
-          <div class="pkg-name">노출 임팩트 패키지</div>
-          <div class="pkg-compose">스플래시 배너 3일(단독) + 메인 팝업 7일<br>+ 쇼핑팝업 3일<br>+ 커뮤니티 베동 30만 노출</div>
-          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 400만원</span></div>
-        </div>
-
-        <div class="pkg-card reveal">
-          <div class="pkg-top"><span class="pkg-num">03</span><span class="pkg-type">전환 중심 · 구매 전환 집중</span></div>
-          <div class="pkg-name">전환 집중 패키지</div>
-          <div class="pkg-compose">메인 팝업 7일 + 쇼핑 팝업 3일<br>+ 카카오 푸시(단독)</div>
-          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 350만원</span></div>
-        </div>
-
-        <div class="pkg-card reveal">
-          <div class="pkg-top"><span class="pkg-num">04</span><span class="pkg-type">전환 중심 · 타겟팅 클릭</span></div>
-          <div class="pkg-name">타겟팅 집중 노출 패키지</div>
-          <div class="pkg-compose">카카오 푸시 단독 3만명<br>+ 커뮤니티 베동 50만 노출</div>
-          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 300만원</span></div>
-        </div>
-
-        <div class="pkg-card wide reveal">
-          <div class="pkg-top"><span class="pkg-num">05</span><span class="pkg-type">런칭 중심 · 신제품 런칭</span><span class="pkg-new">NEW</span></div>
-          <div class="pkg-name">신제품 런칭 패키지</div>
-          <div class="pkg-compose">스플래시 배너 3일 + 메인팝업 7일<br>+ 카카오 푸시 단독 3만명 + 빌리 설문단</div>
-          <div class="pkg-price"><span class="label">참고 견적</span><span class="val">약 500만원</span></div>
-        </div>
-      </div>
-
-      <p class="pkg-note reveal">위 구성은 지난 캠페인의 실제 조합을 참고용으로 정리한 것입니다. 브랜드 상황에 맞게 자유롭게 변경됩니다.</p>
     </div>
   </section>
 
   <!-- ===================== WHY BABYBILLY ===================== -->
-  <section class="section">
+  <section class="section section-tint-blue">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow tag-peach">신뢰</span>
-        <h2>신뢰할 수 있는 대표 플랫폼</h2>
-        <p>상품을 파는 것이 아니라, 성장의 파트너로 함께 고민합니다.</p>
+        <span class="eyebrow tag-peach">왜 베이비빌리</span>
+        <h2>임신·육아 시장에서 가장 확실한 접점</h2>
+        <p>예비 엄마가 임신을 확인한 순간부터 아이가 자라는 동안 계속 열어보는 앱, 그 안에 브랜드 자리를 만듭니다.</p>
       </div>
       <div class="why-grid">
-        <div class="why-item reveal"><div class="n">01</div><div class="t">대한민국 대표<br>임신·육아 플랫폼</div></div>
-        <div class="why-item reveal"><div class="n">02</div><div class="t">임신부터 육아까지<br>이어지는 고객 여정</div></div>
-        <div class="why-item reveal"><div class="n">03</div><div class="t">회원 기반의<br>정교한 타겟팅</div></div>
-        <div class="why-item reveal"><div class="n">04</div><div class="t">브랜딩부터 전환까지<br>다양한 광고 솔루션</div></div>
-        <div class="why-item reveal"><div class="n">05</div><div class="t">광고 이후<br>성과 분석 및 운영 지원</div></div>
+        <div class="why-item reveal">
+          <div class="n">01</div>
+          <div class="t">임신부 열 명 중<br>여덟 명이 씁니다</div>
+          <div class="d">국내 임신·육아 앱 가운데 이용자가 가장 많습니다. 따로 모객하지 않아도, 지금 임신 중이거나 아이를 키우는 사람들이 이미 모여 있는 곳에서 시작합니다.</div>
+        </div>
+        <div class="why-item reveal">
+          <div class="n">02</div>
+          <div class="t">지갑을 여는<br>30~50대 여성 회원</div>
+          <div class="d">가정의 소비를 실제로 결정하는 연령대가 주 이용층입니다. 관심만 끌고 끝나는 노출이 아니라, 구매까지 이어질 여지가 큰 대상에게 닿습니다.</div>
+        </div>
+        <div class="why-item reveal">
+          <div class="n">03</div>
+          <div class="t">시기와 지역까지<br>골라 내보냅니다</div>
+          <div class="d">임신 몇 주차인지, 아이가 몇 개월인지, 어느 지역에 사는지, 나이대는 어떤지에 따라 대상을 나눌 수 있습니다. 필요한 사람에게만 예산을 씁니다.</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== FREE CONSULTING PROCESS ===================== -->
+  <!-- ===================== GOAL-BASED COMBINATIONS ===================== -->
+  <section class="section pkg-band">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-onblue">목표별 추천</span>
+        <h2>목표를 말씀하시면, 조합을 짜 드립니다</h2>
+        <p>상품 목록을 놓고 고르는 대신 원하는 결과부터 정합니다. 아래는 같은 목표를 가진 브랜드들이 자주 선택한 출발점이며, 실제 구성은 예산과 일정에 맞춰 다시 설계됩니다.</p>
+      </div>
+
+      <div class="pkg-grid">
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">01</span><span class="pkg-type">브랜드 인지</span></div>
+          <div class="pkg-name">스플래시 + 메인 팝업</div>
+          <div class="pkg-compose">앱을 켜는 순간 화면 전체를 브랜드가 독점하고, 이어서 메인 화면 팝업으로 한 번 더 각인시킵니다.</div>
+          <div class="pkg-when">신제품 런칭, 브랜드 각인이 목표라면</div>
+          <div class="pkg-price"><span class="label">시작 예산</span><span class="val">300만원~</span></div>
+          <div class="pkg-fine">VAT 별도 · 상세 단가는 광고센터에서</div>
+        </div>
+
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">02</span><span class="pkg-type">구매 전환</span></div>
+          <div class="pkg-name">쇼핑 팝업 + 카카오·앱 푸시</div>
+          <div class="pkg-compose">물건을 보러 들어온 화면에서 노출하고, 지금 그 시기에 해당하는 회원에게만 메시지를 따로 보냅니다.</div>
+          <div class="pkg-when">지금 구매할 사람에게만 닿고 싶다면</div>
+          <div class="pkg-price"><span class="label">시작 예산</span><span class="val">150만원~</span></div>
+          <div class="pkg-fine">VAT 별도 · 상세 단가는 광고센터에서</div>
+        </div>
+
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">03</span><span class="pkg-type">체험단·바이럴</span></div>
+          <div class="pkg-name">0원 이벤트 체험단</div>
+          <div class="pkg-compose">회원이 제품을 직접 써 보고 SNS에 글을 남깁니다. 참여자 열 명 중 여덟 명의 후기 작성을 보장합니다.</div>
+          <div class="pkg-when">실사용 후기가 필요한 브랜드라면</div>
+          <div class="pkg-price"><span class="label">시작 예산</span><span class="val">300만원~</span></div>
+          <div class="pkg-fine">VAT 별도 · 상세 단가는 광고센터에서</div>
+        </div>
+
+        <div class="pkg-card reveal">
+          <div class="pkg-top"><span class="pkg-num">04</span><span class="pkg-type">라이브 커머스</span></div>
+          <div class="pkg-name">빌리 쇼핑 라이브</div>
+          <div class="pkg-compose">스튜디오와 송출을 저희가 준비합니다. 방송 중 들어오는 질문에 바로 답하며 구매까지 끌고 갑니다.</div>
+          <div class="pkg-when">실시간 소통으로 전환까지</div>
+          <div class="pkg-price"><span class="label">시작 예산</span><span class="val">300만원~</span></div>
+          <div class="pkg-fine">VAT 별도 · 상세 단가는 광고센터에서</div>
+        </div>
+      </div>
+
+      <p class="pkg-note reveal">지면별 정가와 규격이 궁금하시면 <a href="https://ads.villagebaby.kr/" target="_blank" rel="noopener">베이비빌리 광고센터</a>에서 전체 목록을 확인하실 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- ===================== INDUSTRIES ===================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-blue">함께한 업종</span>
+        <h2>다양한 브랜드가 함께하고 있습니다</h2>
+        <p>육아용품 브랜드만 오는 곳이 아닙니다. 아이를 키우는 가정이라면 필요한 거의 모든 분야가 이 앱에서 광고를 집행해 왔습니다.</p>
+      </div>
+      <div class="tag-cloud reveal">
+        <span class="tag-chip">패션·잡화</span>
+        <span class="tag-chip">교육</span>
+        <span class="tag-chip">식음료</span>
+        <span class="tag-chip">금융</span>
+        <span class="tag-chip">문구·완구</span>
+        <span class="tag-chip">문화·행사</span>
+        <span class="tag-chip">전자·가전</span>
+        <span class="tag-chip">병원</span>
+        <span class="tag-chip">생활용품</span>
+        <span class="tag-chip">여행·레저</span>
+        <span class="tag-chip">뷰티</span>
+        <span class="tag-chip">기타</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROCESS ===================== -->
   <section class="section section-tint-peach" id="consult">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow tag-blue">프로세스</span>
-        <h2>브랜드 광고 무료 컨설팅 프로세스</h2>
-        <p>광고를 많이 하는 것보다 브랜드에 맞는 광고를 하는 것이 중요합니다.<br>상품 판매자가 아닌 성장의 파트너로 함께 고민합니다.</p>
+        <h2>문의부터 리포트까지 다섯 단계</h2>
+        <p>브랜드는 목표와 소재만 준비하시면 됩니다. 나머지 손이 가는 일은 저희 담당자가 맡습니다.</p>
       </div>
 
       <div class="process-wrap reveal">
         <div class="process-track">
           <div class="p-step">
             <div class="p-dot">01</div>
-            <div class="t">현황 진단</div>
-            <div class="d">브랜드와 시장을<br>함께 살펴봐요</div>
+            <div class="t">문의 접수</div>
+            <div class="d">목표와 예산, 일정을<br>먼저 여쭤봐요</div>
           </div>
           <div class="p-step">
             <div class="p-dot">02</div>
-            <div class="t">목표 설정</div>
-            <div class="d">인지도인지 전환인지<br>먼저 정해요</div>
+            <div class="t">제안·견적</div>
+            <div class="d">지면 조합과 예상 성과를<br>정리해 드려요</div>
           </div>
           <div class="p-step">
             <div class="p-dot">03</div>
-            <div class="t">맞춤 전략</div>
-            <div class="d">브랜드 유형에 맞는<br>방향을 제안해요</div>
+            <div class="t">계약·부킹</div>
+            <div class="d">시작일 최소 이틀 전<br>자리를 잡아요</div>
           </div>
           <div class="p-step">
             <div class="p-dot">04</div>
-            <div class="t">상품 추천</div>
-            <div class="d">필요한 만큼의<br>구성만 골라요</div>
+            <div class="t">집행·운영</div>
+            <div class="d">검수와 세팅은<br>저희가 해요</div>
           </div>
           <div class="p-step">
             <div class="p-dot">05</div>
-            <div class="t">성과 제안</div>
-            <div class="d">집행 후 리포트로<br>다음을 준비해요</div>
+            <div class="t">리포트·정산</div>
+            <div class="d">노출과 클릭 결과를<br>정리해 보내요</div>
           </div>
         </div>
       </div>
 
+      <div class="process-highlight reveal">
+        <strong>손이 많이 가는 구간은 저희가 맡습니다.</strong> 브랜드에서는 가이드에 맞춰 소재만 보내주시면 되고, 소재 검수와 지면 세팅, 집행 중 운영은 베이비빌리 담당자가 처리합니다. 광고 계정을 새로 만들거나 대시보드를 익히실 필요가 없습니다. 다만 단일 상품 부킹은 시작일 기준 최소 이틀 전에 확정되어야 하니, 일정은 넉넉히 잡고 문의해 주세요.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow tag-peach">자주 묻는 질문</span>
+        <h2>문의 전에 많이 물어보시는 것들</h2>
+        <p>여기에 없는 내용은 컨설팅 문의 때 편하게 물어봐 주세요.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <h3>광고를 시작하려면 예산이 얼마나 필요한가요?</h3>
+          <p>캠페인 한 건 기준 150만원(부가세 별도)부터 시작하실 수 있습니다. 예산 규모가 커질수록 노출 지면과 메시지 채널을 함께 묶어, 인지와 전환을 한 캠페인 안에서 동시에 노릴 수 있습니다.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>타겟은 어디까지 좁힐 수 있나요?</h3>
+          <p>출산 예정 주수, 아이 개월 수, 거주 지역, 회원 연령대를 기준으로 대상을 나눠 내보낼 수 있습니다. 다만 지면마다 지원하는 조건이 다르기 때문에, 상담 때 원하시는 타겟이 어떤 상품에서 구현되는지 정리해 드립니다.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>광고 소재는 누가 만드나요?</h3>
+          <p>이미지와 문구는 브랜드에서 준비해 주시면 됩니다. 지면별 규격과 표현 기준을 담은 가이드를 미리 전달해 드리고, 받은 소재는 검수 단계에서 함께 확인해 조정합니다.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>세팅이나 운영도 광고주가 직접 해야 하나요?</h3>
+          <p>아닙니다. 소재 검수부터 지면 등록, 집행 기간 중 관리까지 베이비빌리 담당자가 맡습니다. 브랜드에서 따로 계정을 만들거나 광고 대시보드를 다루실 필요가 없습니다.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>집행이 끝나면 성과를 확인할 수 있나요?</h3>
+          <p>캠페인이 마무리되면 노출 수와 클릭 수를 정리한 결과 자료를 보내드립니다. 다음 집행에서 어떤 지면을 늘리고 줄일지 판단하는 근거로 활용하실 수 있습니다.</p>
+        </div>
+      </div>
+
+      <!-- ===================== PROMO BANNER ===================== -->
+      <div class="promo-banner reveal" style="margin-top:34px;">
+        <div class="txt">
+          이번 달 프로모션 진행 중 — 첫 집행 광고주 추가 할인
+          <span class="date">2026.08 기준 · 할인 폭은 매월 달라집니다</span>
+        </div>
+        <a href="https://ads.villagebaby.kr/" target="_blank" rel="noopener">이번 달 혜택 확인하기 →</a>
+      </div>
+
       <div class="cta-panel reveal">
         <div class="cta-panel-inner">
-          <h3>광고를 문의하지 마세요.<br>먼저 브랜드의 고민을 들려주세요.</h3>
-          <p>브랜드마다 답은 다릅니다. 베이비빌리가 가장 적합한 답을 함께 찾겠습니다.</p>
+          <h3>어떤 상품을 살지보다<br>무엇을 얻고 싶은지를 먼저 알려주세요.</h3>
+          <p>목표와 예산만 주시면 그에 맞는 지면 조합과 예상 성과를 무료로 정리해 드립니다.</p>
           <a href="https://salesmap.kr/web-form/6f89dfe0-df77-4475-acc9-dd49f89c6870" target="_blank" rel="noopener" class="btn btn-primary">무료 컨설팅 신청하기</a>
         </div>
         <img class="cta-wave" src="https://villagebaby.kr/assets/img/baby-wave.png" alt="인사하는 베이비빌리 캐릭터">
@@ -567,17 +720,17 @@
     </div>
   </section>
 
-  <footer>© villagebaby · 베이비빌리 브랜드 광고 무료 컨설팅</footer>
+  <footer>© villagebaby · 임산부·육아맘 타겟 광고 무료 컨설팅</footer>
 
   <!-- ===================== STICKY BOTTOM BAR ===================== -->
   <div class="sticky-bar">
     <div class="sticky-inner">
       <div class="sticky-steps">
-        <span>01. 현황 진단</span>
-        <span>02. 목표 설정</span>
-        <span>03. 맞춤 전략</span>
-        <span>04. 상품 추천</span>
-        <span>05. 성과 제안</span>
+        <span>01. 문의 접수</span>
+        <span>02. 제안·견적</span>
+        <span>03. 계약·부킹</span>
+        <span>04. 집행·운영</span>
+        <span>05. 리포트·정산</span>
       </div>
       <a href="https://salesmap.kr/web-form/6f89dfe0-df77-4475-acc9-dd49f89c6870" target="_blank" rel="noopener" class="btn btn-primary" style="margin-left:auto;">무료 컨설팅 신청하기</a>
     </div>
