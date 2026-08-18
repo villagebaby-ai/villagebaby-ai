@@ -10,8 +10,8 @@ import re
 from urllib.parse import quote
 
 SITE = "/Users/villagebaby/villagebaby-ai-site"
-TODAY = "2026-08-14"
-RSS_DATE = "Fri, 14 Aug 2026 %02d:00:00 +0900"   # 편당 1시간씩
+TODAY = "2026-08-18"
+RSS_DATE = "Tue, 18 Aug 2026 %02d:00:00 +0900"   # 편당 1시간씩
 
 
 def esc(s):

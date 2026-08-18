@@ -4630,4 +4630,26 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-9%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-9%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC-blue.png</image:loc>
+      <image:title>임신 9주 증상·해야 할 일</image:title>
+      <image:caption>이번 주가 고비예요. 12주 안에만 열리는 근로시간 단축까지 챙기세요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-10%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-10%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC-blue.png</image:loc>
+      <image:title>임신 10주 증상·해야 할 일</image:title>
+      <image:caption>주요 기관이 대부분 만들어진 주. 검사 일정과 12주 전 마무리할 것들.</image:caption>
+    </image:image>
+  </url>
 </urlset>
