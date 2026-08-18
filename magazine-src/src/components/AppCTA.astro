@@ -41,7 +41,14 @@ const BTN = [
   '무료로 시작하기', '베이비빌리 앱 보러가기', '앱에서 기록 시작하기', '앱 설치하고 시작하기',
 ];
 
-function h(s: string) { let n = 0; for (let i = 0; i < s.length; i++) n = (n * 31 + s.charCodeAt(i)) >>> 0; return n; }
+// FNV-1a + 최종 믹싱. 단순 n*31 해시는 하위 비트가 몰려서 pool 길이 8로 나누면
+// 슬러그가 달라도 같은 문구가 뽑힌다(실제로 5편이 겹쳤다).
+function h(s: string) {
+  let n = 2166136261 >>> 0;
+  for (let i = 0; i < s.length; i++) { n ^= s.charCodeAt(i); n = Math.imul(n, 16777619) >>> 0; }
+  n ^= n >>> 15; n = Math.imul(n, 2246822507) >>> 0; n ^= n >>> 13;
+  return n >>> 0;
+}
 const pick = (pool: string[], salt: string) => pool[h(slug + salt) % pool.length];
 
 const isPreg = pillar === 'pregnancy';
