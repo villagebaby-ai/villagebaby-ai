@@ -6,6 +6,7 @@ import AuthorCard from '../components/AuthorCard.astro';
 import TOC from '../components/TOC.astro';
 import FAQ from '../components/FAQ.astro';
 import LeadCTA from '../components/LeadCTA.astro';
+import AppCTA from '../components/AppCTA.astro';
 import RelatedCards from '../components/RelatedCards.astro';
 import CaseDisclaimer from '../components/CaseDisclaimer.astro';
 import CoverImage from '../components/CoverImage.astro';
@@ -132,6 +133,8 @@ const articleJsonLd = {
     <div class="article-body">
       <slot />
     </div>
+
+    <AppCTA title={title} slug={slug} pillar={pillar} />
 
     <FAQ items={faq} />
 
