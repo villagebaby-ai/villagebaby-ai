@@ -64,4 +64,25 @@
 임신 주차·검사 결과·가족력 등 12문항에 답하시면 가입 가능성 점수와 추천 시기, 주의해야 할 특약을 정리해드려요.
 </p><a class="lead-cta-btn" href="/magazine/tools/fit-check/?utm_source=magazine&#38;utm_medium=article-cta&#38;utm_campaign=school%2F%EC%B4%88%EB%93%B1-%EC%9E%85%ED%95%99%EC%A0%84-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%9E%AC%EC%84%A4%EA%B3%84" data-astro-cid-uyiggmjf>태아보험 핏체크 시작</a><p class="lead-cta-fallback" data-astro-cid-uyiggmjf>
 바로 사람과 이야기하시고 싶다면 <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=magazine&utm_medium=article-cta&utm_campaign=school%2F%EC%B4%88%EB%93%B1-%EC%9E%85%ED%95%99%EC%A0%84-%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98-%EC%9E%AC%EC%84%A4%EA%B3%84" data-astro-cid-uyiggmjf>카톡 무료 상담</a>도 가능해요.
-</p></section> </article>   </main> <footer> <p>© 베이비빌리 · <a href="https://villagebaby.kr/">villagebaby.kr</a> · <a href="/magazine/">보험 매거진</a></p> <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">본 매거진은 정보 제공 목적이며 특정 상품 가입 권유가 아닙니다. 가입 결정은 약관과 전문가 상담 후 신중히 진행하세요.</p> </footer> </body></html>
+</p></section> </article>   </main> <footer> <p>© 베이비빌리 · <a href="https://villagebaby.kr/">villagebaby.kr</a> · <a href="/magazine/">보험 매거진</a></p> <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">본 매거진은 정보 제공 목적이며 특정 상품 가입 권유가 아닙니다. 가입 결정은 약관과 전문가 상담 후 신중히 진행하세요.</p> </footer> <script>
+  /* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+  (function(){
+    var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+    function kind(h){
+      if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+      if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+      if(h.indexOf('app.babybilly.app')>-1) return 'app';
+      return null;
+    }
+    function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var k=kind(a.getAttribute('href')||''); if(!k) return;
+      a.addEventListener('click',function(){
+        if(typeof gtag==='function'){
+          gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+            page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+        }
+      });
+    });
+  })();
+  </script> </body> </html>

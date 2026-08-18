@@ -24,4 +24,25 @@
 
 ## 두 번째 단락
 
-..." data-astro-cid-c6fipqug></textarea> <span class="adm-hint" data-astro-cid-c6fipqug>## 헤더는 본문 단락. TLDR 박스는 첫 단락 위에 직접 마크다운으로. 친근 존댓말 톤(~요/~해드려요).</span> </label> <fieldset class="adm-full" data-astro-cid-c6fipqug> <legend data-astro-cid-c6fipqug>FAQ (Q&A 6~10개 권장 — 본문 FAQ + JSON-LD FAQPage 자동 매칭)</legend> <div id="faq-list" data-astro-cid-c6fipqug></div> <button type="button" id="add-faq" class="adm-btn adm-btn-ghost" data-astro-cid-c6fipqug>+ FAQ 추가</button> </fieldset> </div> <div class="adm-footer" data-astro-cid-c6fipqug> <button id="save-draft" class="adm-btn adm-btn-ghost" data-astro-cid-c6fipqug>초안으로 저장 (draft: true)</button> <button id="save-publish" class="adm-btn adm-btn-primary" data-astro-cid-c6fipqug>발행 (draft: false)</button> </div> <p id="save-status" class="adm-status" data-astro-cid-c6fipqug></p> <pre id="save-error" class="adm-error" hidden data-astro-cid-c6fipqug></pre> </section> </div> <script src="/magazine/admin-mg-9c4kv7/admin.js" defer></script>   </main> <footer> <p>© 베이비빌리 · <a href="https://villagebaby.kr/">villagebaby.kr</a> · <a href="/magazine/">보험 매거진</a></p> <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">본 매거진은 정보 제공 목적이며 특정 상품 가입 권유가 아닙니다. 가입 결정은 약관과 전문가 상담 후 신중히 진행하세요.</p> </footer> </body></html>
+..." data-astro-cid-c6fipqug></textarea> <span class="adm-hint" data-astro-cid-c6fipqug>## 헤더는 본문 단락. TLDR 박스는 첫 단락 위에 직접 마크다운으로. 친근 존댓말 톤(~요/~해드려요).</span> </label> <fieldset class="adm-full" data-astro-cid-c6fipqug> <legend data-astro-cid-c6fipqug>FAQ (Q&A 6~10개 권장 — 본문 FAQ + JSON-LD FAQPage 자동 매칭)</legend> <div id="faq-list" data-astro-cid-c6fipqug></div> <button type="button" id="add-faq" class="adm-btn adm-btn-ghost" data-astro-cid-c6fipqug>+ FAQ 추가</button> </fieldset> </div> <div class="adm-footer" data-astro-cid-c6fipqug> <button id="save-draft" class="adm-btn adm-btn-ghost" data-astro-cid-c6fipqug>초안으로 저장 (draft: true)</button> <button id="save-publish" class="adm-btn adm-btn-primary" data-astro-cid-c6fipqug>발행 (draft: false)</button> </div> <p id="save-status" class="adm-status" data-astro-cid-c6fipqug></p> <pre id="save-error" class="adm-error" hidden data-astro-cid-c6fipqug></pre> </section> </div> <script src="/magazine/admin-mg-9c4kv7/admin.js" defer></script>   </main> <footer> <p>© 베이비빌리 · <a href="https://villagebaby.kr/">villagebaby.kr</a> · <a href="/magazine/">보험 매거진</a></p> <p style="margin-top:8px;font-size:12px;color:var(--gray-500);">본 매거진은 정보 제공 목적이며 특정 상품 가입 권유가 아닙니다. 가입 결정은 약관과 전문가 상담 후 신중히 진행하세요.</p> </footer> <script>
+  /* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+  (function(){
+    var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+    function kind(h){
+      if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+      if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+      if(h.indexOf('app.babybilly.app')>-1) return 'app';
+      return null;
+    }
+    function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+    document.querySelectorAll('a[href]').forEach(function(a){
+      var k=kind(a.getAttribute('href')||''); if(!k) return;
+      a.addEventListener('click',function(){
+        if(typeof gtag==='function'){
+          gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+            page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+        }
+      });
+    });
+  })();
+  </script> </body> </html>
