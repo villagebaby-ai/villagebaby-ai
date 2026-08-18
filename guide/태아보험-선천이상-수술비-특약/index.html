@@ -113,4 +113,27 @@
 <div class="faq-item"><div class="faq-q">선천이상 수술비와 실손보험을 동시에 청구할 수 있나요?</div><div class="faq-a"><p>선천이상 수술비(정액)와 실손보험(실비)은 동시 청구가 가능해요.</p><ul><li><strong>정액 특약</strong>: 수술 사실 확인 후 약관 기준 금액 지급 — 실제 비용과 무관</li><li><strong>실손보험</strong>: 실제 발생 의료비 보장 — 정액과 중복 지급 허용돼요</li><li><strong>동시 청구 방법</strong>: 두 보험사에 각각 서류 제출 (진단서·영수증 각 1부씩)</li><li>정액 + 실손 동시 청구로 수술비 대부분을 커버 가능해요</li></ul></div></div>
 </section>
 </div></main>
-</footer></body></html>
+</footer>
+<script>
+/* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+(function(){
+  var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+  function kind(h){
+    if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+    if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+    if(h.indexOf('app.babybilly.app')>-1) return 'app';
+    return null;
+  }
+  function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var k=kind(a.getAttribute('href')||''); if(!k) return;
+    a.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+          page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+      }
+    });
+  });
+})();
+</script>
+</body></html>

@@ -153,4 +153,27 @@ td.good{color:#16a34a;font-weight:600}td.bad{color:#dc2626;font-weight:600}
 <p class="vb-fdesc">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요.</p>
 <p class="vb-fmenu"><a href="/">홈</a> · <a href="/guide/">가이드</a> · <a href="/child/">어린이보험</a> · <a href="/tools/">도구</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/terms/">이용약관</a></p>
 </footer>
+
+<script>
+/* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+(function(){
+  var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+  function kind(h){
+    if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+    if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+    if(h.indexOf('app.babybilly.app')>-1) return 'app';
+    return null;
+  }
+  function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var k=kind(a.getAttribute('href')||''); if(!k) return;
+    a.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+          page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+      }
+    });
+  });
+})();
+</script>
 </body></html>

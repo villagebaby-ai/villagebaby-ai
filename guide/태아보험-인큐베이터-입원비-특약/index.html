@@ -255,5 +255,28 @@ footer a{color:#94a3b8}.footer-links{display:flex;justify-content:center;gap:20p
   </div>
   <p class="footer-disclaimer">본 페이지의 평가·보험료·통계는 <strong>대한신생아학회 진료 안내, 보건복지부 미숙아·선천성이상아 의료비 지원사업, 손해보험협회 보험다모아 공시, 질병관리청 국가건강정보포털, 통계청 출생통계</strong> 등 공개 자료와 베이비빌리 베동 커뮤니티 후기를 기반으로 정리한 일반 안내예요. 정확한 가입 조건·보장 내용은 가입 시점 약관을 확인하시고, 개별 사안은 전문가 상담을 받으시길 권합니다. · 최종 업데이트 일자: 2026.07.18</p>
 </footer>
+
+<script>
+/* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+(function(){
+  var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+  function kind(h){
+    if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+    if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+    if(h.indexOf('app.babybilly.app')>-1) return 'app';
+    return null;
+  }
+  function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var k=kind(a.getAttribute('href')||''); if(!k) return;
+    a.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+          page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>

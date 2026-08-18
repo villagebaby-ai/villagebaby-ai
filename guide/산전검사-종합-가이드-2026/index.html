@@ -154,4 +154,27 @@
 <p class="footer-disc">본 사이트의 정보는 참고용입니다. 정확한 검사·비용·보장은 산부인과 및 보험사 안내를 확인하세요.</p>
 <p class="footer-disclaimer">본 페이지의 검사 정보·비용은 <strong>2026년 평균 추정치와 베이비빌리 베동 커뮤니티 후기</strong>, 보건복지부 임신·출산 진료비 지원 안내를 기반으로 정리한 일반 안내이며, 개인별 검사·비용은 산부인과 안내를 확인하세요. 출처: 보건복지부 임신·출산진료비 지원사업, 국민행복카드(voucher.go.kr), 질병관리청 산전검진 안내, 대한산부인과학회 진료 지침, 베이비빌리 베동 커뮤니티 후기.</p>
 </div></footer>
+
+<script>
+/* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+(function(){
+  var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+  function kind(h){
+    if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+    if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+    if(h.indexOf('app.babybilly.app')>-1) return 'app';
+    return null;
+  }
+  function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var k=kind(a.getAttribute('href')||''); if(!k) return;
+    a.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+          page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+      }
+    });
+  });
+})();
+</script>
 </body></html>

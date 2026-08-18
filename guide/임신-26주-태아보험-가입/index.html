@@ -93,4 +93,27 @@
 <div class="faq-item"><div class="faq-q">임신 26주에 가입하면 보험료는 줄어드나요?</div><div class="faq-a"><p>아니요, 보험료는 거의 줄어들지 않아요. 보장은 줄고 보험료는 비슷한 경우가 대부분입니다.</p><ul><li><strong>보험료</strong>: 특약 제외로 약간 낮아질 수 있지만 22주 이전 대비 큰 차이 없어요</li><li><strong>보장 대비 비용</strong>: 22주 이전 가입이 cost-benefit 측면에서 압도적으로 유리</li><li><strong>26주 가입 의미</strong>: 최소한의 선천이상·어린이 보장 확보 목적</li><li>이미 지난 시점이므로 최선을 다해 남은 보장을 확보하는 것이 목표</li></ul></div></div>
 </section>
 </div></main>
-</footer></body></html>
+</footer>
+<script>
+/* CTA 클릭 이벤트 — 상담·카톡·앱 링크를 자동 인식해 GA4 로 보냄 */
+(function(){
+  var SLUG=decodeURIComponent(location.pathname.replace(/\/$/,'').split('/').pop()||'index');
+  function kind(h){
+    if(h.indexOf('babybilly.co/insurance')>-1) return 'insurance';
+    if(h.indexOf('pf.kakao.com')>-1) return 'kakao';
+    if(h.indexOf('app.babybilly.app')>-1) return 'app';
+    return null;
+  }
+  function variant(h){ var m=h.match(/utm_content=([^&#]+)/); return m?decodeURIComponent(m[1]):'none'; }
+  document.querySelectorAll('a[href]').forEach(function(a){
+    var k=kind(a.getAttribute('href')||''); if(!k) return;
+    a.addEventListener('click',function(){
+      if(typeof gtag==='function'){
+        gtag('event','cta_click',{cta_type:k,cta_variant:variant(a.href),
+          page_slug:SLUG,page_section:location.pathname.split('/')[1]||'',send_to:'G-SRWXXLKTKD'});
+      }
+    });
+  });
+})();
+</script>
+</body></html>
