@@ -12,7 +12,7 @@ on:
       limit:
         description: '이번 실행에서 제출할 최대 건수'
         required: false
-        default: '3'
+        default: '10'
       dry_run:
         description: '1 이면 전송 없이 대상만 출력'
         required: false
@@ -36,7 +36,7 @@ jobs:
 
       - name: IndexNow 제출
         env:
-          INDEXNOW_LIMIT: ${{ github.event.inputs.limit || '3' }}
+          INDEXNOW_LIMIT: ${{ github.event.inputs.limit || '10' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}
         run: node scripts/index-submit.mjs
 

@@ -145,23 +145,31 @@ def main():
     if not a.run:
         return
     batch = todo[:a.run]
-    changed = []
+    changed, nochange = [], []
     for e in batch:
         f = os.path.join(SITE, e["path"].strip("/"), "index.html")
+        if not os.path.exists(f):
+            print("!! 파일없음 %s" % e["path"]); continue
         h0 = io.open(f, encoding="utf-8", newline="").read()
         slug = e["path"].strip("/").split("/")[-1]
         h, why = insert_bar(h0, slug)
         h, nd = touch_dates(h)
         h, nt = fix_title(h)
-        mark = "DRY" if a.dry else "OK "
+        mark = "DRY" if a.dry else ("OK " if h != h0 else "-- ")
         print("%s %-44s 카톡바:%-8s 날짜:%d 제목:%d" % (mark, e["title"][:44], why, nd, nt))
-        if not a.dry and h != h0:
-            io.open(f, "w", encoding="utf-8", newline="").write(h)
+        if h != h0:
+            if not a.dry:
+                io.open(f, "w", encoding="utf-8", newline="").write(h)
             changed.append(e["path"])
+        else:
+            nochange.append(e["path"])
     if a.dry:
+        print("\n[미리보기] 바뀔 것 %d편 · 그대로 %d편" % (len(changed), len(nochange)))
         return
-    n = bump_sitemap([e["path"] for e in batch])
-    print("\nsitemap lastmod 갱신: %d건" % n)
+    # 실제로 바뀐 것만 lastmod 를 올린다 — 안 바뀐 걸 올리면 가짜 신선도 신호가 된다
+    n = bump_sitemap(changed)
+    print("\n실제 변경 %d편 · 변화없음 %d편 · sitemap lastmod 갱신 %d건"
+          % (len(changed), len(nochange), n))
     done |= set(e["path"] for e in batch)
     json.dump(sorted(done), io.open(STATE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     print("진행 기록: %d / %d편 완료" % (len(done), len(q)))
