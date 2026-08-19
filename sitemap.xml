@@ -4719,4 +4719,15 @@
       <image:caption>지금 병원에 가면 아직 안 보여요. 이번 주에 할 일은 딱 세 가지입니다.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%ED%99%95%EC%9D%B8-%ED%9B%84-2%EC%A3%BC-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-%ED%99%95%EC%9D%B8-%ED%9B%84-2%EC%A3%BC-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8-blue.png</image:loc>
+      <image:title>임신 확인 후 2주 체크리스트</image:title>
+      <image:caption>순서만 알면 한 번에 끝나요. 진료비 100만원·맘편한 임신·보건소 무료검사.</image:caption>
+    </image:image>
+  </url>
 </urlset>
