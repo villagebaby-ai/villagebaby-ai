@@ -67,6 +67,14 @@ APP_LINK = "https://app.babybilly.app/qm6eya8"
 INS_BASE = "https://babybilly.co/insurance/baby/talk/v1"
 INS_GENERAL = "https://babybilly.co/insurance/general/v2"
 
+# 카톡 상담 바 — 앱 카드 아래 별도 덩어리 (카카오 노랑이라 파란 앱 카드와 안 섞인다)
+KAKAO_BAR_STYLE = ("display:flex;align-items:center;justify-content:space-between;gap:14px;"
+                   "background:#FEE500;color:#3C1E1E;border-radius:12px;padding:16px 20px;"
+                   "margin:16px 0 32px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.07)")
+KAKAO_CT = "\U0001F4AC 궁금한 건 카톡으로 물어보세요"
+KAKAO_CD = "전문 상담사 무료 상담 · 가입 안 하셔도 됩니다"
+KAKAO_BTN = "무료 상담 →"
+
 # 섹션별 빵부스러기 이름 — /guide/ 외 영역에도 같은 템플릿을 쓴다
 CRUMB = {
     "guide": ("태아보험 가이드", "https://villagebaby.kr/guide/"),
@@ -144,9 +152,23 @@ def render(p):
         for i, (n, t, u) in enumerate(refs)
     )
 
+    # 앱 카드와 카톡 상담은 **두 덩어리로 분리**한다 (2026-08-19 고니님 지시).
+    # 한 카드 안에 버튼 두 개면 서로 경쟁해서 둘 다 안 눌린다.
     app_block = ("" if not p.get("app_ct") else
                  f'<div class="cta app"><p class="ct">{p["app_ct"]}</p><p class="cd">{p["app_cd"]}</p>'
                  f'<a href="{APP_LINK}" target="_blank" rel="noopener">{p["app_btn"]}</a></div>')
+    if p.get("app_ct"):
+        kct = p.get("kakao_ct", KAKAO_CT)
+        kcd = p.get("kakao_cd", KAKAO_CD)
+        kurl = utm(slug, "cta_app_kakao", base)
+        app_block += (
+            '\n<a href="' + kurl + '" id="app-kakao" class="vb-kakao-bar" target="_blank" rel="noopener" '
+            'style="' + KAKAO_BAR_STYLE + '">'
+            '<span style="line-height:1.5">'
+            '<span style="display:block;font-size:.97rem;font-weight:800">' + kct + '</span>'
+            '<span style="display:block;font-size:.83rem;font-weight:500;opacity:.72;margin-top:3px">'
+            + kcd + '</span></span>'
+            '<span style="flex:none;font-size:.9rem;font-weight:800;white-space:nowrap">' + KAKAO_BTN + '</span></a>')
 
     seed_html = p['seed'].replace(
         "{LINK}",
@@ -246,6 +268,7 @@ def render(p):
   function track(type,variant){{ if(typeof gtag==="function"){{ gtag('event','cta_click',{{cta_type:type,cta_variant:variant||'none',page_slug:SLUG,send_to:'G-SRWXXLKTKD'}}); }} }}
   var k=document.querySelector('.vb-nav-cta'); if(k){{ k.addEventListener('click',function(){{ track('kakao'); }}); }}
   var ap=document.querySelector('.cta.app a'); if(ap){{ ap.addEventListener('click',function(){{ track('app'); }}); }}
+  var ak=document.getElementById('app-kakao'); if(ak){{ ak.addEventListener('click',function(){{ track('kakao','cta_app'); }}); }}
   var seed=document.getElementById('ins-seed'); if(seed){{ seed.addEventListener('click',function(){{ track('insurance','seed_prep'); }}); }}
   var ic=document.getElementById('ins-cta'); if(ic){{ ic.addEventListener('click',function(){{ track('insurance','cta_main'); }}); }}
 }})();
