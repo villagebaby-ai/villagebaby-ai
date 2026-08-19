@@ -4664,4 +4664,48 @@
     </image:image>
   </url>
   <url><loc>https://villagebaby.kr/guide/%ED%83%9C%EC%95%84%EB%B3%B4%ED%97%98-%EB%A9%B4%EC%B1%85%EA%B8%B0%EA%B0%84-%EB%B3%B4%EC%9E%A5%EA%B0%9C%EC%8B%9C/</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%A3%BC%EC%B0%A8%EB%B3%84-%EA%B0%80%EC%9D%B4%EB%93%9C/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EC%A3%BC%EC%B0%A8%EB%B3%84-%EA%B0%80%EC%9D%B4%EB%93%9C-blue.png</image:loc>
+      <image:title>임신 초기 주차별 가이드</image:title>
+      <image:caption>주차별 할 일과 놓치면 안 되는 마감일을 한 장에 모았어요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-13%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-13%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC-blue.png</image:loc>
+      <image:title>임신 13주 증상·해야 할 일</image:title>
+      <image:caption>목 투명대 검사는 이번 주까지. 입덧이 잦아들고 컨디션이 돌아옵니다.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-14%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-14%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC-blue.png</image:loc>
+      <image:title>임신 14주 증상·해야 할 일</image:title>
+      <image:caption>중기의 시작. 미뤄뒀던 치과·운동을 시작하기 좋은 때예요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-15%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-15%EC%A3%BC-%EC%A6%9D%EC%83%81-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC-blue.png</image:loc>
+      <image:title>임신 15주 증상·해야 할 일</image:title>
+      <image:caption>아기가 소리를 듣기 시작해요. 지금 잡아둘 일정을 정리했어요.</image:caption>
+    </image:image>
+  </url>
 </urlset>
