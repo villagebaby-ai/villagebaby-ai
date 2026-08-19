@@ -14,7 +14,7 @@
 """
 import glob, io, os, re, sys
 
-SITE = "/Users/villagebaby/villagebaby-ai-site"
+SITE = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 
 
 def counts(s):

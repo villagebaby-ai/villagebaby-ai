@@ -23,8 +23,9 @@
 """
 import argparse, io, json, os, re, sys, datetime
 
-SITE = "/Users/villagebaby/villagebaby-ai-site"
+# 레포 어디에 체크아웃돼도 동작하게 스크립트 위치에서 거슬러 올라간다 (GitHub Actions 러너 포함)
 HERE = os.path.dirname(os.path.abspath(__file__))
+SITE = os.path.abspath(os.path.join(HERE, "..", ".."))
 STATE = os.path.join(HERE, "revive_state.json")
 QUEUE = os.path.join(HERE, "revive_queue.json")
 TODAY = datetime.date.today().isoformat()
