@@ -30,10 +30,23 @@ const STATE = path.join(ROOT, '.github', 'state', 'indexnow-submitted.json');
 const LIMIT = Number(process.env.INDEXNOW_LIMIT || 3);
 const DRY = process.env.DRY_RUN === '1';
 
-// ─── sitemap.xml → [{url, lastmod}] ────────────────────────────────────────
-function readSitemap() {
-  const xml = fs.readFileSync(SITEMAP, 'utf8');
+// ─── robots.txt 에 선언된 모든 사이트맵 → [{url, lastmod}] ──────────────────
+// 2026-08-19: 예전엔 메인 sitemap.xml 만 읽어서 babybilly-community/thread 60편이
+// 큐에 한 번도 안 들어갔다(= 네이버·빙에 미제출). robots.txt 선언분을 전부 읽는다.
+function localPath(sitemapUrl) {
+  return path.join(ROOT, sitemapUrl.replace(SITE, '').replace(/^\//, ''));
+}
+
+function parseOne(file, seenFiles) {
+  if (seenFiles.has(file) || !fs.existsSync(file)) return [];
+  seenFiles.add(file);
+  const xml = fs.readFileSync(file, 'utf8');
   const out = [];
+  // sitemapindex 면 자식 사이트맵으로 내려간다
+  for (const block of xml.match(/<sitemap>[\s\S]*?<\/sitemap>/g) || []) {
+    const loc = block.match(/<loc>\s*([^<\s]+)\s*<\/loc>/);
+    if (loc) out.push(...parseOne(localPath(loc[1]), seenFiles));
+  }
   for (const block of xml.match(/<url>[\s\S]*?<\/url>/g) || []) {
     const loc = block.match(/<loc>\s*([^<\s]+)\s*<\/loc>/);
     if (!loc) continue;
@@ -41,6 +54,26 @@ function readSitemap() {
     out.push({ url: loc[1], lastmod: lm ? lm[1] : '' });
   }
   return out;
+}
+
+function readSitemap() {
+  const files = [SITEMAP];
+  try {
+    const robots = fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8');
+    for (const m of robots.matchAll(/^\s*Sitemap:\s*(\S+)\s*$/gim)) {
+      if (m[1].endsWith('rss.xml')) continue;            // RSS 는 색인 큐 대상 아님
+      const f = localPath(m[1]);
+      if (!files.includes(f)) files.push(f);
+    }
+  } catch { /* robots 없으면 메인만 */ }
+  const seenFiles = new Set();
+  const byUrl = new Map();
+  for (const f of files) {
+    for (const e of parseOne(f, seenFiles)) {
+      if (!byUrl.has(e.url)) byUrl.set(e.url, e);        // 중복 URL 은 처음 것만
+    }
+  }
+  return [...byUrl.values()];
 }
 
 function readState() {
