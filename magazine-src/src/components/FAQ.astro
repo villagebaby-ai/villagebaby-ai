@@ -10,9 +10,9 @@ const { items } = Astro.props;
   <section class="faq" aria-labelledby="faq-heading">
     <h2 id="faq-heading">자주 묻는 질문</h2>
     <dl>
-      {items.map((it) => (
+      {items.map((it, i) => (
         <div class="faq-item">
-          <dt>{it.q}</dt>
+          <dt><span class="faq-num">{String(i + 1).padStart(2, '0')}</span>{it.q}</dt>
           <dd>{it.a}</dd>
         </div>
       ))}
@@ -23,40 +23,39 @@ const { items } = Astro.props;
 <style>
   .faq { margin: 48px 0 24px; }
   .faq h2 {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 800;
     color: var(--gray-900);
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     letter-spacing: -0.01em;
   }
-  .faq dl { display: grid; gap: 14px; }
+  .faq dl { display: block; }
   .faq-item {
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 16px 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--gray-200);
   }
+  .faq-item:last-child { border-bottom: 1px solid var(--gray-200); }
   .faq-item dt {
-    font-size: 15px;
-    font-weight: 600;
+    display: flex;
+    gap: 14px;
+    font-size: 15.5px;
+    font-weight: 700;
     color: var(--gray-900);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     line-height: 1.5;
   }
-  .faq-item dt::before {
-    content: 'Q. ';
+  .faq-num {
+    flex-shrink: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    font-weight: 600;
     color: var(--blue-700);
-    font-weight: 700;
+    padding-top: 1px;
   }
   .faq-item dd {
     font-size: 14px;
     color: var(--gray-700);
-    line-height: 1.7;
-    margin: 0;
-  }
-  .faq-item dd::before {
-    content: 'A. ';
-    color: var(--gray-500);
-    font-weight: 600;
+    line-height: 1.75;
+    margin: 0 0 0 34px;
   }
 </style>

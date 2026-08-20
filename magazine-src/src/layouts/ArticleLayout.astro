@@ -45,6 +45,16 @@ const pillarName: Record<string, string> = {
   case: '케이스',
 };
 
+const pillarInk: Record<string, { bg: string; ink: string }> = {
+  pregnancy: { bg: '#FFE0CC', ink: '#7A4228' },
+  newborn: { bg: '#C9DCEF', ink: '#15518F' },
+  toddler: { bg: '#BFEBE0', ink: '#1F6B5A' },
+  school: { bg: '#ECE0FF', ink: '#5B3A8E' },
+  teen: { bg: '#C9E2EE', ink: '#1F5470' },
+  case: { bg: '#FFE4B5', ink: '#8B6914' },
+};
+const eyebrow = pillarInk[pillar] ?? pillarInk['pregnancy'];
+
 // JSON-LD (Article + BreadcrumbList + FAQPage)
 const articleJsonLd = {
   '@context': 'https://schema.org',
@@ -110,7 +120,7 @@ const articleJsonLd = {
 
   <article>
     <header class="article-header">
-      <p class="article-meta">{pillarName[pillar] ?? pillar} · {type === 'case' ? '케이스 스토리' : type === 'tool' ? '도구' : '가이드'}</p>
+      <p class="article-meta" style={`background:${eyebrow.bg};color:${eyebrow.ink};`}>{pillarName[pillar] ?? pillar} · {type === 'case' ? '케이스 스토리' : type === 'tool' ? '도구' : '가이드'}</p>
       <h1>{title}</h1>
       <p class="article-lede">{description}</p>
     </header>
@@ -154,26 +164,29 @@ const articleJsonLd = {
     .breadcrumb span { margin: 0 6px; }
 
     .article-cover { margin: 16px 0 8px; }
-    .article-header { margin: 16px 0 8px; }
+    .article-header { margin: 20px 0 8px; }
     .article-meta {
-      font-size: 13px;
-      color: var(--blue-700);
-      font-weight: 500;
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
       letter-spacing: 0.02em;
-      margin-bottom: 10px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
     }
     .article-header h1 {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: 1.35;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 800;
+      line-height: 1.32;
       letter-spacing: -0.02em;
       color: var(--gray-900);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      text-wrap: balance;
     }
     .article-lede {
       font-size: 17px;
       color: var(--gray-700);
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .article-body { margin: 32px 0; }

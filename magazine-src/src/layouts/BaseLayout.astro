@@ -89,22 +89,28 @@ const base = import.meta.env.BASE_URL; // '/magazine/'
       z-index: 100;
     }
     .nav-inner {
-      max-width: 880px; margin: 0 auto;
+      max-width: 1080px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 24px;
-      gap: 16px;
+      gap: 20px;
     }
-    .nav-logo img { height: 28px; }
+    .nav-left { display: flex; align-items: center; gap: 22px; }
+    .nav-logo { display: flex; align-items: baseline; gap: 8px; }
+    .nav-logo img { height: 24px; }
+    .nav-logo span { font-size: 14px; font-weight: 700; color: var(--gray-800); letter-spacing: -0.01em; }
+    .nav-links { display: flex; align-items: center; gap: 18px; }
+    .nav-links a { font-size: 13.5px; font-weight: 600; color: var(--gray-600); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--blue-700); }
     .nav-cta {
-      background: var(--blue-600); color: var(--white);
+      background: var(--yellow); color: #3A2E00;
       padding: 8px 18px; border-radius: 24px;
-      font-size: 14px; font-weight: 500;
+      font-size: 14px; font-weight: 700;
       transition: opacity 0.15s;
       white-space: nowrap;
     }
-    .nav-cta:hover { opacity: 0.9; }
+    .nav-cta:hover { opacity: 0.88; }
 
-    main { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
+    main { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; }
 
     footer {
       border-top: 1px solid var(--gray-200);
@@ -114,6 +120,10 @@ const base = import.meta.env.BASE_URL; // '/magazine/'
       font-size: 14px;
     }
     footer a { color: var(--blue-700); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -129,8 +139,17 @@ const base = import.meta.env.BASE_URL; // '/magazine/'
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src={`${base}logo.png`} alt="베이비빌리" /></a>
-      <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=magazine&utm_medium=nav" class="nav-cta">카톡 무료 상담</a>
+      <div class="nav-left">
+        <a href="/magazine/" class="nav-logo"><img src={`${base}logo.png`} alt="베이비빌리" /><span>매거진</span></a>
+        <div class="nav-links">
+          <a href="/magazine/pregnancy/">임신</a>
+          <a href="/magazine/newborn/">신생아</a>
+          <a href="/magazine/toddler/">영유아</a>
+          <a href="/magazine/school/">초등기</a>
+          <a href="/magazine/case/">사례</a>
+        </div>
+      </div>
+      <a href="https://babybilly.co/insurance/baby/talk/v1?utm_source=magazine&utm_medium=nav" class="nav-cta">💬 카톡 무료 상담</a>
     </div>
   </nav>
 
