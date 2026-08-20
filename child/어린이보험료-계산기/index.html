@@ -554,50 +554,13 @@
 
       <button class="btn-recalc" onclick="resetCalc()">↺ 다시 계산하기</button>
 
-      <!-- 리드 폼 -->
-      <div class="lead-form-card" id="lead-form">
-        <div id="form-area">
-          <div class="lead-form-header">
-            <div style="font-size:36px;margin-bottom:.5rem">💬</div>
-            <h3>정확한 보험료, 무료로 확인하세요</h3>
-            <p>계산 결과를 바탕으로 전문가가 맞춤 견적을 드려요.<br>영업 강요 없는 1회성 상담입니다.</p>
-          </div>
-          <form id="consultForm" onsubmit="submitForm(event)">
-            <input type="hidden" id="f_weeks" name="자녀나이">
-            <input type="hidden" id="f_gender" name="성별">
-            <input type="hidden" id="f_coverage" name="보장범위">
-            <input type="hidden" id="f_range" name="예상보험료범위">
-            <div class="form-row">
-              <label class="form-label" for="f_name">이름 <span style="color:var(--red)">*</span></label>
-              <input class="form-input" type="text" id="f_name" name="이름" placeholder="홍길동" required autocomplete="name">
-            </div>
-            <div class="form-row">
-              <label class="form-label" for="f_phone">연락처 <span style="color:var(--red)">*</span></label>
-              <input class="form-input" type="tel" id="f_phone" name="연락처" placeholder="010-0000-0000" required autocomplete="tel">
-            </div>
-            <div class="form-row">
-              <label class="form-label" for="f_pref">선호 연락 방법</label>
-              <select class="form-input" id="f_pref" name="선호연락방법">
-                <option value="카카오톡">카카오톡</option>
-                <option value="전화">전화</option>
-                <option value="문자">문자</option>
-              </select>
-            </div>
-            <div class="consent-row">
-              <input type="checkbox" id="consent" name="개인정보동의" required>
-              <label for="consent">개인정보 수집·이용에 동의합니다. 수집된 정보는 보험 상담 목적으로만 사용되며 상담 완료 후 즉시 삭제됩니다. (<a href="/privacy">개인정보처리방침</a>)</label>
-            </div>
-            <button type="submit" class="btn-submit">📞 무료 상담 신청하기</button>
-            <p class="form-note">평균 응답 10분 이내 · 영업 강요 없어요</p>
-          </form>
-        </div>
-        <div id="form-success">
-          <div class="success-icon">🎉</div>
-          <h4>상담 신청이 완료되었습니다!</h4>
-          <p>곧 전문가가 연락드릴 예정이에요. 카카오톡 채널에서도 바로 문의하실 수 있어요.</p>
-          <a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos5" target="_blank" rel="noopener" class="btn-kakao">💬 카톡으로 바로 문의</a>
-        </div>
-<div id="form-fallback" style="display:none;text-align:center;padding:28px 20px"><div class="success-icon">💬</div><h4>지금은 접수 창구를 점검하고 있어요</h4><p>입력하신 내용이 저장되지 않았어요. 번거로우시겠지만 아래 버튼으로 바로 상담 연결해 드릴게요. 같은 내용으로 빠르게 도와드립니다.</p><a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=form_fallback" target="_blank" rel="noopener" class="btn-kakao">💬 카톡으로 바로 상담하기</a></div>
+      <!-- 상담 연결 CTA -->
+      <div class="lead-form-card" id="lead-form" style="text-align:center">
+        <div style="font-size:36px;margin-bottom:.5rem">💬</div>
+        <h3 style="font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:.5rem">정확한 보험료, 무료로 확인하세요</h3>
+        <p style="font-size:13.5px;color:var(--gray-600);margin-bottom:1.5rem">계산 결과를 바탕으로 전문가가 맞춤 견적을 드려요.<br>영업 강요 없는 1회성 상담입니다.</p>
+        <a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos5" target="_blank" rel="noopener" id="resultCta" class="btn-submit" style="display:inline-block;text-decoration:none;padding:1rem 2.5rem">📞 무료 상담 신청하기</a>
+        <p class="form-note">평균 응답 10분 이내 · 영업 강요 없어요</p>
       </div>
 
     </div><!-- /result-section -->
@@ -812,10 +775,8 @@ function calculate(){
       <td style="font-size:12px;color:var(--gray-600)">${ins.note}</td>
     </tr>`).join('');
 
-  document.getElementById('f_weeks').value=`만${w}세`;
-  document.getElementById('f_gender').value=gLabel;
-  document.getElementById('f_coverage').value=cLabel;
-  document.getElementById('f_range').value=`${toMan(minWon)}만원–${toMan(maxWon)}만원`;
+  var ctaBase='https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos5';
+  document.getElementById('resultCta').href=ctaBase+'&age='+w+'&gender='+encodeURIComponent(gLabel)+'&coverage='+encodeURIComponent(cLabel);
 
   const rs=document.getElementById('result-section');
   rs.classList.add('show');
@@ -831,38 +792,10 @@ function resetCalc(){
   goStep(1);
 }
 
-// ── FORM ──
-function submitForm(e){e.preventDefault();
-  var EP='https://script.google.com/macros/s/AKfycbzLlrpfs3RhwVFXLi3FdupEcB6jwFnqvUIYlVFj8vJYkKoqhJGmfwoU5i2TAG4wt5eZ/exec';
-  var g=function(id){var el=document.getElementById(id);return el?el.value:'';};
-  var fmtPhone=function(v){var d=String(v||'').replace(/[^0-9]/g,'');
-    if(d.length===11)return d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7);
-    if(d.length===10)return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
-    return d;};
-  var payload={phone:fmtPhone(g('f_phone')),name:g('f_name'),weeks:g('f_weeks'),gender:g('f_gender'),
-    coverage:g('f_coverage'),range:g('f_range'),pref:g('f_pref'),
-    pageUrl:location.href,referrer:document.referrer||''};
-  var btn=e.target.querySelector('.btn-submit');
-  if(btn){btn.disabled=true;btn.textContent='전송 중...';}
-  function ga(ok){if(typeof gtag==='function'){gtag('event','form_submit',
-    {form_name:'child_premium_calc',status:ok?'success':'fail',send_to:'G-SRWXXLKTKD'});}}
-  if(EP.indexOf('https://')!==0){ga(false);showFallback();return;}
-  fetch(EP,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
-    body:JSON.stringify(payload)})
-    .then(function(r){return r.json();})
-    .then(function(j){ if(j&&j.ok){ga(true);showSuccess();} else {ga(false);showFallback();} })
-    .catch(function(){ga(false);showFallback();});
-}
-function showFallback(){
-  var a=document.getElementById('form-area'); if(a)a.style.display='none';
-  var f=document.getElementById('form-fallback');
-  if(f){f.style.display='block';f.scrollIntoView({behavior:'smooth'});}
-}
-function showSuccess(){
-  document.getElementById('form-area').style.display='none';
-  document.getElementById('form-success').style.display='block';
-  document.getElementById('form-success').scrollIntoView({behavior:'smooth'});
-}
+document.getElementById('resultCta').addEventListener('click',function(){
+  if(typeof gtag==='function'){gtag('event','cta_click',
+    {cta_type:'insurance',cta_variant:'pos5',page_slug:'어린이보험료-계산기',page_section:'child',send_to:'G-SRWXXLKTKD'});}
+});
 
 // ── FAQ ──
 document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
