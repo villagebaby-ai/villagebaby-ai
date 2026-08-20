@@ -1870,13 +1870,34 @@
 
     <priority>0.92</priority>
 
-  
+
 
     <image:image>
 
       <image:loc>https://villagebaby.kr/assets/og/guide_태아보험료-계산기.png</image:loc>
 
       <image:title>태아보험료 계산기</image:title>
+
+    </image:image>
+
+  </url>
+  <url>
+
+    <loc>https://villagebaby.kr/child/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0/</loc>
+
+    <lastmod>2026-08-20</lastmod>
+
+    <changefreq>monthly</changefreq>
+
+    <priority>0.92</priority>
+
+
+
+    <image:image>
+
+      <image:loc>https://villagebaby.kr/assets/og/child_어린이보험-보험료-적정선.png</image:loc>
+
+      <image:title>어린이보험료 계산기</image:title>
 
     </image:image>
 

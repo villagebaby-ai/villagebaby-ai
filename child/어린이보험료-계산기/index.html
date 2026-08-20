@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>어린이보험료 계산기 — 나이·성별·보장범위별 예상 월 보험료 (2026년) | 베이비빌리</title>
+  <meta name="description" content="자녀 나이, 성별, 보장 범위를 선택하면 어린이보험 예상 월 보험료를 30초 만에 확인할 수 있어요. 0세부터 15세까지 나이별 보험료 변화와 2026년 최신 보험료 시뮬레이션.">
+  <meta name="keywords" content="어린이보험료 계산기, 어린이보험 보험료, 나이별 보험료, 어린이보험 얼마, 베이비빌리">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="어린이보험료 계산기 — 나이별 예상 월 보험료 30초 확인">
+  <meta property="og:description" content="자녀 나이와 보장 범위를 선택하면 어린이보험 예상 월 보험료를 바로 확인할 수 있어요.">
+  <meta property="og:url" content="https://villagebaby.kr/child/어린이보험료-계산기/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://villagebaby.kr/child/어린이보험료-계산기/">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://villagebaby.kr/child/어린이보험료-계산기/#app",
+        "name": "어린이보험료 계산기",
+        "url": "https://villagebaby.kr/child/어린이보험료-계산기/",
+        "description": "자녀 나이, 성별, 보장 범위에 따른 어린이보험 예상 월 보험료를 계산합니다.",
+        "applicationCategory": "FinanceApplication",
+        "dateModified": "2026-08-20",
+        "author": {
+          "@type": "Person",
+          "image": {"@type":"ImageObject","url":"https://villagebaby.kr/assets/img/billy-author-256.png","width":1200,"height":630},
+          "name": "베이비빌리 보험 전문팀",
+          "jobTitle": "부모·가족 보험 컨설턴트",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "베이비빌리",
+            "url": "https://babybilly.co"
+          },
+          "description": "태아·어린이·실손보험 등 부모를 위한 모든 보험을 10년 이상 전문 상담한 팀.",
+          "knowsAbout": ["태아보험", "어린이보험", "실손보험", "보험 비교", "보험 청구"]
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "name": "베이비빌리 보험 전문 감수단",
+          "description": "10년 이상 태아·어린이보험 분야에 종사한 전문가들이 감수한 콘텐츠입니다."
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "베이비빌리",
+          "url": "https://villagebaby.kr/",
+          "logo": { "@type": "ImageObject", "url": "https://villagebaby.kr/logo.png" },
+          "sameAs": ["https://babybilly.co/insurance/child/standard", "https://villagebaby.kr/"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://villagebaby.kr/" },
+          { "@type": "ListItem", "position": 2, "name": "어린이보험", "item": "https://villagebaby.kr/child/" },
+          { "@type": "ListItem", "position": 3, "name": "어린이보험료 계산기", "item": "https://villagebaby.kr/child/어린이보험료-계산기/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "어린이보험은 자녀 나이가 많을수록 보험료가 비싸지나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "네, 일반적으로 나이가 많을수록 보험료가 올라갑니다. 0세 가입이 평생 가장 저렴하고, 진료·진단 이력이 쌓이는 7세 이후부터는 보험료가 뚜렷하게 오릅니다. 10세를 넘어가면 일부 보험사에서 인수 심사가 까다로워질 수 있어요." }
+          },
+          {
+            "@type": "Question",
+            "name": "어린이보험 월 보험료는 성별에 따라 달라지나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "어린이보험은 대부분의 필수 특약이 성별과 무관하게 동일한 보험료로 책정됩니다. 일부 특약에서만 소폭 차이가 발생할 수 있어, 이 계산기는 참고용으로 작은 폭의 성별 보정을 반영합니다." }
+          },
+          {
+            "@type": "Question",
+            "name": "이 어린이보험료 계산기의 결과는 실제 보험료와 얼마나 정확한가요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "이 계산기는 2026년 손해보험사 평균 추정치를 기반으로 한 참고용 시뮬레이션입니다. 실제 보험료는 보험사, 가입 시점, 세부 특약 구성, 자녀의 진료 이력에 따라 달라질 수 있으므로 정확한 견적은 전문가 상담을 통해 확인하세요." }
+          },
+          {
+            "@type": "Question",
+            "name": "어린이보험 최소형과 표준형 중 어떤 걸 선택해야 하나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "예산이 타이트하다면 최소형(진단비+실손 중심)부터 검토하고, 일반적인 가정이라면 표준형(진단+수술+입원일당+실손)을 권장합니다. 가족력이 있거나 활동량이 많은 자녀라면 풀커버 구성을 함께 비교해보세요." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── 리셋 ── */
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ── 토큰 ── */
+    :root{
+      --blue-900:#0D3B6F; --blue-800:#15518F; --blue-700:#2563B6; --blue-600:#2D7CD2;
+      --blue-200:#C9DCEF; --blue-100:#E4ECF6; --blue-50:#EFF4FA;
+      --pink-50:#FFF1E6; --light-yellow:#FFE4B5; --skyblue:#C9E2EE; --light-violet:#ECE0FF; --mint:#BFEBE0;
+      --gray-900:#1F2937; --gray-800:#374151; --gray-700:#4B5563; --gray-600:#6B7280; --gray-500:#9CA3AF;
+      --gray-400:#D1D5DB; --gray-300:#E5E7EB; --gray-200:#F3F4F6; --gray-100:#F9FAFB; --white:#FFFFFF;
+      --red:#F94646; --green:#2ED371;
+      --shadow-blue:0 3px 17px 1px rgba(45,124,210,.30);
+      --shadow-l:0 3px 17px 6px rgba(0,0,0,.15);
+      --shadow-s:0 1px 6px 0 rgba(0,0,0,.15);
+      --shadow-xs:0 0 3px 0 rgba(0,0,0,.10);
+    }
+
+    body{
+      font-family:'Pretendard Variable','Pretendard',-apple-system,sans-serif;
+      color:var(--gray-900);background:var(--white);
+      -webkit-font-smoothing:antialiased;
+      word-break:keep-all;line-height:1.6;
+    }
+
+    /* ── NAV ── */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200)}
+    .nav-inner{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo img{height:32px;width:auto}
+    .nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--blue-600);color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:16px;box-shadow:var(--shadow-blue);transition:background .2s}
+    .nav-cta:hover{background:var(--blue-700)}
+
+    /* ── HERO ── */
+    .hero{position:relative;padding:52px 24px 40px;background:linear-gradient(180deg,var(--blue-50) 0%,var(--white) 100%);overflow:hidden;border-bottom:1px solid var(--blue-100)}
+    .hero-inner{max-width:780px;margin:0 auto;position:relative;z-index:1}
+    .hero .breadcrumb{font-size:12px;color:var(--gray-500);margin-bottom:14px}
+    .hero .breadcrumb a{color:var(--gray-500)}
+    .hero .breadcrumb a:hover{color:var(--blue-600)}
+    .hero .badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-700);color:#fff;font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:12px;margin-bottom:14px}
+    .hero h1{font-size:32px;font-weight:700;margin-bottom:12px;line-height:1.35;color:var(--gray-900)}
+    .hero h1 em{font-style:normal;color:var(--blue-700)}
+    .hero .lead{color:var(--gray-700);font-size:15.5px;line-height:1.75;margin-bottom:18px;max-width:640px}
+    .hero .meta{display:flex;gap:14px;font-size:12.5px;color:var(--gray-600);flex-wrap:wrap}
+
+    /* ── CONTAINER ── */
+    .container{max-width:780px;margin:0 auto;padding:0 24px}
+
+    /* ── AUTHOR CARD ── */
+    .author-card{display:flex;align-items:center;gap:14px;padding:14px 18px;background:#F9FAFB;border:1px solid #F3F4F6;border-radius:12px;margin:28px 0 20px}
+    .author-card .ac-photo{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;display:block}
+    .author-card .ac-photo img{width:100%;height:100%;object-fit:cover;display:block}
+    .author-card .ac-meta{flex:1;min-width:0}
+    .author-card .ac-name{font-size:13.5px;color:#374151;margin:0 0 3px;font-weight:600;line-height:1.4}
+    .author-card .ac-name a{color:var(--blue-700);font-weight:800;border-bottom:1px dotted currentColor}
+    .author-card .ac-rev{font-size:11.5px;color:#6B7280;margin:0;line-height:1.5}
+
+    /* ── TL;DR (계산기용 info박스) ── */
+    .answer{background:linear-gradient(135deg,#FFFAEB 0%,#FFF1C2 100%);border:1.5px solid #F5B500;border-radius:16px;padding:22px 24px;margin:0 0 28px;color:#5C3A00}
+    .answer .lab{font-size:11.5px;font-weight:700;color:#8C5A00;margin-bottom:8px}
+    .answer .lab::before{content:'⚡ '}
+    .answer .text{font-size:15px;line-height:1.7;font-weight:600;color:#3D2700}
+    .answer .text strong{color:var(--blue-800);background:rgba(255,255,255,.7);padding:1px 4px;border-radius:4px;font-weight:800}
+
+    /* ── 계산기 카드 ── */
+    .calc-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow-xs)}
+
+    /* Step indicator */
+    .step-indicator{display:flex;align-items:center;margin-bottom:2rem}
+    .step-item{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+    .step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;background:var(--gray-200);color:var(--gray-500);transition:all .3s}
+    .step-num.active{background:var(--blue-600);color:#fff}
+    .step-num.done{background:var(--blue-100);color:var(--blue-700)}
+    .step-label{font-size:11px;color:var(--gray-500);font-weight:500;white-space:nowrap}
+    .step-label.active{color:var(--blue-700);font-weight:700}
+    .step-line{flex:1;height:2px;background:var(--gray-200);margin:0 6px;margin-bottom:20px;transition:background .3s}
+    .step-line.done{background:var(--blue-200)}
+
+    /* Step panels */
+    .step-panel{display:none}
+    .step-panel.active{display:block}
+
+    .step-heading{font-size:16px;font-weight:700;color:var(--gray-900);margin-bottom:1.25rem}
+    .step-heading .num{display:inline-flex;width:24px;height:24px;background:var(--blue-600);color:#fff;border-radius:50%;font-size:12px;align-items:center;justify-content:center;margin-right:8px}
+
+    /* 나이 슬라이더 */
+    .week-value-display{text-align:center;margin-bottom:1rem}
+    .week-num{font-size:48px;font-weight:900;color:var(--blue-700);line-height:1}
+    .week-unit{font-size:18px;color:var(--gray-600);margin-left:2px}
+    .week-msg{font-size:13px;margin-top:6px;font-weight:600;padding:5px 14px;border-radius:16px;display:inline-block}
+    .week-msg.safe{background:#E6FAF1;color:#0D5C32}
+    .week-msg.caution{background:#FEF5E4;color:#92540A}
+    .week-msg.urgent{background:#FFF1F1;color:#7C1D1D}
+
+    input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;outline:none;background:var(--gray-200);cursor:pointer}
+    input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--blue-600);border:3px solid #fff;box-shadow:0 2px 8px rgba(45,124,210,.35);cursor:pointer}
+    .week-labels{display:flex;justify-content:space-between;margin-top:8px}
+    .week-labels span{font-size:11px;color:var(--gray-500)}
+
+    .deadline-note{margin-top:1rem;background:var(--blue-50);border-radius:12px;padding:14px 18px;font-size:14px;color:var(--gray-800);line-height:1.7}
+    .deadline-note strong{color:var(--blue-800)}
+
+    /* 성별 버튼 */
+    .gender-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+    .gender-btn{flex:1;min-width:90px;padding:.9rem .5rem;border:2px solid var(--gray-300);border-radius:12px;background:var(--white);font-size:14.5px;font-weight:600;color:var(--gray-700);cursor:pointer;text-align:center;transition:all .2s;font-family:inherit}
+    .gender-btn .icon{font-size:24px;display:block;margin-bottom:4px}
+    .gender-btn:hover{border-color:var(--blue-200);color:var(--blue-700)}
+    .gender-btn.selected{border-color:var(--blue-600);background:var(--blue-50);color:var(--blue-700)}
+
+    /* 보장 범위 카드 */
+    .coverage-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+    .coverage-card{border:2px solid var(--gray-300);border-radius:12px;padding:1.1rem .9rem;cursor:pointer;background:var(--white);transition:all .2s;text-align:center}
+    .coverage-card:hover{border-color:var(--blue-200)}
+    .coverage-card.selected{border-color:var(--blue-600);background:var(--blue-50)}
+    .coverage-card .cv-icon{font-size:24px;margin-bottom:6px}
+    .coverage-card .cv-name{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
+    .coverage-card.selected .cv-name{color:var(--blue-700)}
+    .coverage-card .cv-desc{font-size:11px;color:var(--gray-500);line-height:1.5}
+    .coverage-card .cv-price{margin-top:8px;font-size:12px;font-weight:700;color:var(--blue-600)}
+
+    /* 버튼 */
+    .btn-next{display:inline-block;padding:.65rem 2rem;background:var(--blue-600);color:#fff;font-size:14px;font-weight:700;border:none;border-radius:16px;cursor:pointer;margin-top:1.25rem;transition:background .2s;font-family:inherit}
+    .btn-next:hover{background:var(--blue-700)}
+    .btn-back{display:inline-block;padding:.65rem 1.5rem;background:transparent;color:var(--gray-600);font-size:14px;font-weight:500;border:1px solid var(--gray-300);border-radius:16px;cursor:pointer;margin-top:1.25rem;margin-right:.75rem;transition:all .2s;font-family:inherit}
+    .btn-back:hover{border-color:var(--blue-600);color:var(--blue-700)}
+    .btn-calc{width:100%;padding:1rem;background:var(--blue-600);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:16px;cursor:pointer;margin-top:1.5rem;transition:background .2s;font-family:inherit}
+    .btn-calc:hover{background:var(--blue-700)}
+    .btn-calc:disabled{background:var(--gray-400);cursor:not-allowed}
+
+    /* ── 결과 ── */
+    #result-section{display:none;animation:fadeUp .4s ease}
+    #result-section.show{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    .result-premium-box{background:linear-gradient(135deg,var(--blue-700) 0%,var(--blue-800) 100%);border-radius:16px;padding:2rem 1.75rem;text-align:center;margin-bottom:1.25rem;box-shadow:var(--shadow-l);position:relative;overflow:hidden}
+    .result-premium-box::after{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,.08);border-radius:50%}
+    .result-label{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:.5rem}
+    .result-range{font-size:38px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px}
+    .result-range .unit{font-size:20px;font-weight:600}
+    .result-note{font-size:12px;color:rgba(255,255,255,.65);margin-top:.5rem}
+    .result-urgency{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:16px;font-size:13px;font-weight:600;margin-top:.75rem}
+    .result-urgency.safe{background:rgba(46,211,113,.2);color:#b3f0d6}
+    .result-urgency.caution{background:rgba(245,181,0,.2);color:#ffe0a0}
+    .result-urgency.urgent{background:rgba(249,70,70,.2);color:#ffb3ac}
+
+    /* 보장 항목 */
+    .coverage-breakdown{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem;box-shadow:var(--shadow-xs)}
+    .cb-title{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:1rem}
+    .cb-item{display:flex;align-items:center;gap:10px;padding:.55rem 0;border-bottom:1px solid var(--gray-100)}
+    .cb-item:last-child{border-bottom:none;padding-bottom:0}
+    .cb-check{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+    .cb-check.included{background:var(--blue-50);color:var(--blue-700)}
+    .cb-check.excluded{background:var(--gray-100);color:var(--gray-500)}
+    .cb-text{font-size:13px;color:var(--gray-700)}
+    .cb-text.dim{color:var(--gray-400);text-decoration:line-through}
+
+    /* 보험사 표 */
+    .insurer-table-wrap{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;overflow:hidden;margin-bottom:1.25rem;box-shadow:var(--shadow-xs)}
+    .insurer-table-title{padding:1rem 1.25rem .5rem;font-size:14px;font-weight:700;color:var(--gray-900)}
+    .insurer-table{width:100%;border-collapse:collapse;font-size:13px}
+    .insurer-table th{background:var(--blue-50);color:var(--blue-800);font-weight:700;padding:.6rem 1rem;text-align:left;border-bottom:1.5px solid var(--blue-100)}
+    .insurer-table td{padding:.65rem 1rem;border-bottom:1px solid var(--gray-100);vertical-align:middle;color:var(--gray-800)}
+    .insurer-table tr:last-child td{border-bottom:none}
+    .stars{color:var(--blue-600);letter-spacing:1px}
+
+    /* Callout */
+    .callout{background:var(--blue-50);border-radius:12px;padding:16px 20px;margin:18px 0;color:var(--gray-800);font-size:14px;line-height:1.7}
+    .callout.warn{background:#FFF1F1;color:#5C1010}
+
+    /* 재계산 버튼 */
+    .btn-recalc{display:block;text-align:center;padding:.65rem 2rem;background:var(--gray-100);color:var(--gray-600);font-size:14px;font-weight:600;border:1px solid var(--gray-300);border-radius:16px;cursor:pointer;margin:0 auto 1.5rem;transition:all .2s;width:fit-content;font-family:inherit}
+    .btn-recalc:hover{border-color:var(--blue-600);color:var(--blue-700)}
+
+    /* ── 리드 폼 ── */
+    .lead-form-card{background:var(--white);border:2px solid var(--blue-200);border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow-xs)}
+    .lead-form-header{text-align:center;margin-bottom:1.5rem}
+    .lead-form-header h3{font-size:20px;font-weight:700;color:var(--gray-900);margin-bottom:.4rem}
+    .lead-form-header p{font-size:13.5px;color:var(--gray-600)}
+    .form-row{margin-bottom:1rem}
+    .form-label{display:block;font-size:13px;font-weight:600;color:var(--gray-800);margin-bottom:.4rem}
+    .form-input{width:100%;padding:.75rem 1rem;border:1.5px solid var(--gray-300);border-radius:8px;font-size:15px;font-family:inherit;color:var(--gray-900);background:#fff;outline:none;transition:border-color .2s}
+    .form-input:focus{border-color:var(--blue-600)}
+    .form-input::placeholder{color:var(--gray-400)}
+    .consent-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:1.25rem}
+    .consent-row input[type="checkbox"]{width:16px;height:16px;margin-top:2px;accent-color:var(--blue-600);flex-shrink:0}
+    .consent-row label{font-size:12px;color:var(--gray-600);line-height:1.5}
+    .consent-row a{color:var(--blue-700)}
+    .btn-submit{width:100%;padding:1rem;background:var(--blue-600);color:#fff;font-size:16px;font-weight:700;border:none;border-radius:16px;cursor:pointer;transition:background .2s;font-family:inherit}
+    .btn-submit:hover{background:var(--blue-700)}
+    .form-note{text-align:center;margin-top:.75rem;font-size:12px;color:var(--gray-500)}
+    #form-success{display:none;text-align:center;padding:2rem 1rem}
+    #form-success .success-icon{font-size:48px;margin-bottom:.75rem}
+    #form-success h4{font-size:18px;font-weight:700;margin-bottom:.5rem;color:var(--gray-900)}
+    #form-success p{font-size:14px;color:var(--gray-600);margin-bottom:1rem}
+    .btn-kakao{display:inline-flex;align-items:center;gap:8px;background:#FEE500;color:#1C1C1E;font-size:15px;font-weight:700;padding:.75rem 2rem;border-radius:16px;transition:opacity .2s}
+    .btn-kakao:hover{opacity:.85}
+
+    /* ── CTA 블록 ── */
+    .cta-block{background:linear-gradient(135deg,var(--blue-700) 0%,var(--blue-800) 100%);border-radius:16px;padding:32px 28px;text-align:center;color:#fff;margin:36px 0;box-shadow:var(--shadow-l)}
+    .cta-block h3{font-size:20px;font-weight:700;margin-bottom:.5rem}
+    .cta-block p{font-size:14px;color:rgba(255,255,255,.8);margin-bottom:1.25rem}
+    .cta-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue-700);font-size:14.5px;font-weight:700;padding:13px 26px;border-radius:16px}
+
+    /* ── Related ── */
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0}
+    .related-card{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--gray-200);border-radius:12px;padding:14px 16px;transition:box-shadow .2s}
+    .related-card:hover{box-shadow:var(--shadow-s)}
+    .related-thumb{width:54px;height:54px;border-radius:8px;background:var(--blue-50);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+    .related-thumb img{width:100%;height:100%;object-fit:contain;padding:4px}
+    .related-thumb.yellow{background:var(--light-yellow)}
+    .related-thumb.mint{background:var(--mint)}
+    .related-thumb.violet{background:var(--light-violet)}
+    .related-thumb.pink{background:var(--pink-50)}
+    .related-card .ttl{font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:2px;line-height:1.4}
+    .related-card .desc{font-size:11.5px;color:var(--gray-500)}
+
+    /* ── FAQ ── */
+    .faq-item{background:var(--white);border:1px solid var(--gray-200);border-radius:12px;margin-bottom:8px;overflow:hidden}
+    .faq-q{width:100%;padding:16px 20px;text-align:left;font-size:14.5px;font-weight:700;color:var(--gray-900);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border:none;background:none;font-family:inherit}
+    .faq-q::before{content:'Q.';color:var(--blue-600);font-weight:900;margin-right:6px}
+    .faq-q .arrow{color:var(--gray-400);transition:.2s;font-style:normal}
+    .faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+    .faq-a{padding:0 20px 16px 46px;font-size:13.5px;color:var(--gray-700);line-height:1.7;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-a p{margin-bottom:10px}
+    .faq-a p:last-child{margin-bottom:0}
+    .faq-a strong{color:var(--gray-900);font-weight:700}
+    .faq-a ul{margin:8px 0 10px;padding-left:20px}
+    .faq-a li{margin-bottom:4px;line-height:1.7}
+
+    /* ── Footer ── */
+    footer{padding:32px 24px 60px;text-align:center;background:var(--gray-100);border-top:1px solid var(--gray-200);color:var(--gray-600);font-size:13px}
+    footer .ftop{font-weight:700;color:var(--gray-800);margin-bottom:6px}
+
+    /* ── Floating ── */
+    .expert-float{position:fixed;bottom:28px;right:24px;z-index:9999;background:var(--blue-600);color:#fff;display:flex;align-items:center;gap:9px;padding:11px 20px 11px 14px;border-radius:999px;font-family:inherit;font-size:14px;font-weight:700;box-shadow:0 4px 20px rgba(45,124,210,.38);transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+    .expert-float:hover{background:var(--blue-700);transform:translateY(-3px);box-shadow:0 8px 28px rgba(45,124,210,.45)}
+
+    /* ── 반응형 ── */
+    @media(max-width:760px){
+      .hero h1{font-size:25px}
+      .hero{padding:40px 18px 28px}
+      .container{padding:0 18px}
+      .calc-card{padding:1.5rem 1.25rem}
+      .coverage-cards{grid-template-columns:1fr}
+      .result-range{font-size:30px}
+      .related-grid{grid-template-columns:1fr}
+      .lead-form-card{padding:1.5rem 1.25rem}
+      .gender-btns{gap:.5rem}
+    }
+    @media(max-width:480px){
+      .expert-float{padding:0;width:52px;height:52px;border-radius:50%;justify-content:center;bottom:20px;right:16px}
+      .expert-float span:last-child{display:none}
+    }
+  </style>
+  <meta property="og:image" content="https://villagebaby.kr/assets/og/child_어린이보험-보험료-적정선.png">
+  <meta property="og:image:alt" content="어린이보험료 계산기 — 나이·성별·보장범위별 예상 월 보험료 (2026년) | 베이비빌리">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="1200">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:site_name" content="베이비빌리">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="twitter:image" content="https://villagebaby.kr/assets/og/child_어린이보험-보험료-적정선.png">
+  <meta name="twitter:image:alt" content="어린이보험료 계산기 — 나이·성별·보장범위별 예상 월 보험료 (2026년) | 베이비빌리">
+<style>
+.vb-nav{border-bottom:1px solid #E5E7EB;background:#fff;position:sticky;top:0;z-index:50}
+.vb-nav-inner{max-width:880px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.vb-nav-logo{display:inline-flex;align-items:center}
+.vb-nav-logo img{height:36px;width:auto;display:block}
+.vb-nav-cta{display:inline-flex;align-items:center;gap:6px;background:#1666C5;color:#fff !important;font-size:13px;font-weight:700;padding:9px 16px;border-radius:16px;text-decoration:none;box-shadow:0 3px 12px rgba(22,102,197,.25);white-space:nowrap}
+.vb-nav-cta::before{content:'';width:6px;height:6px;background:#FFEB55;border-radius:50%;animation:vb-pulse 1.5s infinite}
+@keyframes vb-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.vb-footer{border-top:1px solid #E5E7EB;background:#fff;padding:32px 24px 44px;text-align:center;color:#6B7280;font-size:13px;margin-top:40px}
+.vb-footer .vb-ftop{font-weight:700;color:#374151;font-size:13.5px;margin-bottom:6px}
+.vb-footer .vb-fdesc{font-size:11.5px;color:#9CA3AF;line-height:1.65;max-width:540px;margin:0 auto}
+.vb-footer .vb-fmenu{margin-top:12px;font-size:11.5px;color:#9CA3AF}
+.vb-footer .vb-fmenu a{color:inherit;text-decoration:none}
+.vb-footer .vb-fmenu a:hover{text-decoration:underline}
+@media(max-width:760px){.vb-nav-inner{padding:10px 16px;gap:8px}.vb-nav-logo img{height:32px}.vb-nav-cta{font-size:12px;padding:8px 13px}}
+</style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNXYBTFWXB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VNXYBTFWXB');
+    gtag('config', 'G-SRWXXLKTKD');
+  </script>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="vb-nav"><div class="vb-nav-inner"><a href="/" class="vb-nav-logo" aria-label="베이비빌리 홈"><img src="/logo.png" alt="베이비빌리" width="99" height="74"></a><a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos1" class="vb-nav-cta">카톡 무료 상담</a></div></nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="breadcrumb"><a href="/">홈</a> · <a href="/child/">어린이보험</a> · 어린이보험료 계산기</p>
+    <span class="badge">🧮 2026년 8월 최신 기준</span>
+    <h1>어린이보험료 계산기<br><em>30초 만에 예상 보험료 확인</em></h1>
+    <p class="lead">자녀 나이·성별·보장 범위를 선택하면 어린이보험 예상 월 보험료를 바로 알 수 있어요.</p>
+    <div class="meta">
+      <span>최종 업데이트 일자: 2026.08.20</span>
+      <span>👥 작성: <strong><a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos2" target="_blank" rel="author noopener" style="color:inherit;border-bottom:1px dotted currentColor">베이비빌리</a></strong></span>
+      <span>🔗 <a href="/child/어린이보험-완전정리/" style="color:var(--blue-700);font-weight:700">어린이보험 완전정리 →</a></span>
+    </div>
+  </div>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+  <div class="container">
+
+    <!-- Author Card -->
+    <aside class="author-card">
+      <a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos3" target="_blank" rel="author noopener" class="ac-photo">
+        <img src="/assets/img/billy-author-96.png" srcset="/assets/img/billy-author-96.png 1x, /assets/img/billy-author-256.png 2x" alt="베이비빌리" width="48" height="48">
+      </a>
+      <div class="ac-meta">
+        <p class="ac-name"><a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos4" target="_blank" rel="author noopener">베이비빌리</a> · 200만 엄빠가 사용하는 육아 콘텐츠 앱</p>
+        <p class="ac-rev">10년 이상 태아·어린이보험을 전문 상담한 팀이 검수한 콘텐츠입니다.</p>
+      </div>
+    </aside>
+
+    <!-- TL;DR -->
+    <div class="answer">
+      <div class="lab">한 줄 요약</div>
+      <p class="text"><strong>자녀 나이가 어릴수록</strong> 보험료가 저렴하고 인수 심사도 수월해요. 이 계산기로 예상 보험료를 확인하고 전문가 상담을 통해 정확한 견적을 받아보세요.</p>
+    </div>
+
+    <!-- ── 계산기 ── -->
+    <div class="calc-card" id="calculator">
+
+      <!-- Step 표시 -->
+      <div class="step-indicator" aria-label="단계">
+        <div class="step-item">
+          <div class="step-num active" id="ind-1">1</div>
+          <div class="step-label active" id="lbl-1">자녀 나이</div>
+        </div>
+        <div class="step-line" id="line-1"></div>
+        <div class="step-item">
+          <div class="step-num" id="ind-2">2</div>
+          <div class="step-label" id="lbl-2">자녀 성별</div>
+        </div>
+        <div class="step-line" id="line-2"></div>
+        <div class="step-item">
+          <div class="step-num" id="ind-3">3</div>
+          <div class="step-label" id="lbl-3">보장 범위</div>
+        </div>
+      </div>
+
+      <!-- Step 1: 나이 -->
+      <div class="step-panel active" id="step1">
+        <h2 class="step-heading"><span class="num">1</span>자녀의 만 나이를 선택해주세요</h2>
+        <div class="week-value-display">
+          <span class="week-num" id="weekDisplay">0</span><span class="week-unit">세</span>
+          <div class="week-msg safe" id="weekMsg">지금이 가장 저렴한 가입 시기예요</div>
+        </div>
+        <input type="range" id="weekSlider" min="0" max="15" value="0" aria-label="자녀 만 나이 선택">
+        <div class="week-labels">
+          <span>0세</span><span>4세</span><span>8세</span><span>12세</span><span>15세</span>
+        </div>
+        <div class="deadline-note" id="weekNote">
+          💡 어린이보험은 <strong>0세(출생 직후)</strong>에 가입해야 보험료가 평생 가장 저렴하고 진료 이력 없이 넓은 보장으로 가입할 수 있어요.
+        </div>
+        <div style="text-align:right">
+          <button class="btn-next" onclick="goStep(2)">다음 단계 →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: 성별 -->
+      <div class="step-panel" id="step2">
+        <h2 class="step-heading"><span class="num">2</span>자녀 성별을 선택해주세요</h2>
+        <div class="gender-btns" role="group" aria-label="자녀 성별">
+          <button class="gender-btn" data-gender="male" onclick="selectGender('male')">
+            <span class="icon">👦</span>남아
+          </button>
+          <button class="gender-btn" data-gender="female" onclick="selectGender('female')">
+            <span class="icon">👧</span>여아
+          </button>
+        </div>
+        <p style="font-size:12px;color:var(--gray-500);margin-top:.75rem">※ 어린이보험은 대부분 특약이 성별과 무관하게 동일한 보험료로 책정돼요. 일부 특약에서만 소폭 차이가 있을 수 있습니다.</p>
+        <div>
+          <button class="btn-back" onclick="goStep(1)">← 이전</button>
+          <button class="btn-next" id="genderNextBtn" onclick="goStep(3)" disabled>다음 단계 →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: 보장 범위 -->
+      <div class="step-panel" id="step3">
+        <h2 class="step-heading"><span class="num">3</span>원하시는 보장 범위를 선택해주세요</h2>
+        <div class="coverage-cards" role="group" aria-label="보장 범위">
+          <div class="coverage-card" data-coverage="basic" onclick="selectCoverage('basic')">
+            <div class="cv-icon">🛡️</div>
+            <div class="cv-name">최소형</div>
+            <div class="cv-desc">진단비·실손<br>중심 보장</div>
+            <div class="cv-price">약 4–6만원/월</div>
+          </div>
+          <div class="coverage-card" data-coverage="standard" onclick="selectCoverage('standard')">
+            <div class="cv-icon">⭐</div>
+            <div class="cv-name">표준형</div>
+            <div class="cv-desc">진단+수술+<br>입원일당+실손</div>
+            <div class="cv-price">약 7–10만원/월</div>
+          </div>
+          <div class="coverage-card" data-coverage="premium" onclick="selectCoverage('premium')">
+            <div class="cv-icon">💎</div>
+            <div class="cv-name">풀커버형</div>
+            <div class="cv-desc">표준 + 생활위험·<br>5대질병진단비</div>
+            <div class="cv-price">약 10–14만원/월</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:1rem">
+          💡 어떤 보장이 맞을지 모르겠다면? 일반 가정은 표준형부터, 가족력이 있거나 활동량이 많은 자녀라면 풀커버형을 검토해보세요.
+        </div>
+        <div>
+          <button class="btn-back" onclick="goStep(2)">← 이전</button>
+          <button class="btn-calc" id="calcBtn" onclick="calculate()" disabled>📊 보험료 계산하기</button>
+        </div>
+      </div>
+
+    </div><!-- /calc-card -->
+
+    <!-- ── 결과 ── -->
+    <div id="result-section">
+
+      <div class="result-premium-box">
+        <div class="result-label">예상 월 보험료 범위 (2026년 8월 손해보험사 평균 추정치)</div>
+        <div class="result-range">
+          <span id="resMin">—</span><span class="unit">만원</span>
+          <span style="font-size:24px;font-weight:400;margin:0 4px">–</span>
+          <span id="resMax">—</span><span class="unit">만원</span>
+        </div>
+        <div class="result-note" id="resNote"></div>
+        <div class="result-urgency" id="resUrgency"></div>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.25rem" id="resTags"></div>
+
+      <!-- 보장 항목 -->
+      <div class="coverage-breakdown">
+        <div class="cb-title">✅ 선택하신 보장 범위 포함 항목</div>
+        <div id="coverageList"></div>
+      </div>
+
+      <!-- 보험사 표 -->
+      <div class="insurer-table-wrap">
+        <div class="insurer-table-title">📊 보험사별 상대 가격 수준</div>
+        <table class="insurer-table">
+          <thead><tr><th>보험사</th><th>가격 수준</th><th>특징</th></tr></thead>
+          <tbody id="insurerTable"></tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        ⚠️ 이 계산기는 참고용 시뮬레이션입니다. 실제 보험료는 보험사, 가입 시점, 자녀의 진료 이력에 따라 달라질 수 있어요. 정확한 견적은 아래 무료 상담을 통해 확인하세요.
+      </div>
+
+      <button class="btn-recalc" onclick="resetCalc()">↺ 다시 계산하기</button>
+
+      <!-- 리드 폼 -->
+      <div class="lead-form-card" id="lead-form">
+        <div id="form-area">
+          <div class="lead-form-header">
+            <div style="font-size:36px;margin-bottom:.5rem">💬</div>
+            <h3>정확한 보험료, 무료로 확인하세요</h3>
+            <p>계산 결과를 바탕으로 전문가가 맞춤 견적을 드려요.<br>영업 강요 없는 1회성 상담입니다.</p>
+          </div>
+          <form id="consultForm" onsubmit="submitForm(event)">
+            <input type="hidden" id="f_weeks" name="자녀나이">
+            <input type="hidden" id="f_gender" name="성별">
+            <input type="hidden" id="f_coverage" name="보장범위">
+            <input type="hidden" id="f_range" name="예상보험료범위">
+            <div class="form-row">
+              <label class="form-label" for="f_name">이름 <span style="color:var(--red)">*</span></label>
+              <input class="form-input" type="text" id="f_name" name="이름" placeholder="홍길동" required autocomplete="name">
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="f_phone">연락처 <span style="color:var(--red)">*</span></label>
+              <input class="form-input" type="tel" id="f_phone" name="연락처" placeholder="010-0000-0000" required autocomplete="tel">
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="f_pref">선호 연락 방법</label>
+              <select class="form-input" id="f_pref" name="선호연락방법">
+                <option value="카카오톡">카카오톡</option>
+                <option value="전화">전화</option>
+                <option value="문자">문자</option>
+              </select>
+            </div>
+            <div class="consent-row">
+              <input type="checkbox" id="consent" name="개인정보동의" required>
+              <label for="consent">개인정보 수집·이용에 동의합니다. 수집된 정보는 보험 상담 목적으로만 사용되며 상담 완료 후 즉시 삭제됩니다. (<a href="/privacy">개인정보처리방침</a>)</label>
+            </div>
+            <button type="submit" class="btn-submit">📞 무료 상담 신청하기</button>
+            <p class="form-note">평균 응답 10분 이내 · 영업 강요 없어요</p>
+          </form>
+        </div>
+        <div id="form-success">
+          <div class="success-icon">🎉</div>
+          <h4>상담 신청이 완료되었습니다!</h4>
+          <p>곧 전문가가 연락드릴 예정이에요. 카카오톡 채널에서도 바로 문의하실 수 있어요.</p>
+          <a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos5" target="_blank" rel="noopener" class="btn-kakao">💬 카톡으로 바로 문의</a>
+        </div>
+<div id="form-fallback" style="display:none;text-align:center;padding:28px 20px"><div class="success-icon">💬</div><h4>지금은 접수 창구를 점검하고 있어요</h4><p>입력하신 내용이 저장되지 않았어요. 번거로우시겠지만 아래 버튼으로 바로 상담 연결해 드릴게요. 같은 내용으로 빠르게 도와드립니다.</p><a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=form_fallback" target="_blank" rel="noopener" class="btn-kakao">💬 카톡으로 바로 상담하기</a></div>
+      </div>
+
+    </div><!-- /result-section -->
+
+    <!-- FAQ -->
+    <section style="padding:36px 0 8px">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:14px;color:var(--gray-900)">자주 묻는 질문</h2>
+      <div class="faq-item">
+        <button class="faq-q" type="button">어린이보험은 자녀 나이가 많을수록 보험료가 비싸지나요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>네, 일반적으로 나이가 많을수록 보험료가 올라가요.</p>
+          <ul>
+            <li><strong>0세</strong>: 평생 가장 저렴하고 진료 이력이 없어 인수 거절 위험도 사실상 0에 가까워요.</li>
+            <li><strong>3~5세</strong>: 감기·중이염 정도 이력은 대부분 통과되고 보험료도 아직 낮은 편이에요.</li>
+            <li><strong>7세 이상</strong>: 진료 이력이 쌓이며 보험료가 뚜렷하게 오르고 일부 특약에 부담보가 붙을 수 있어요.</li>
+            <li><strong>10세 이상</strong>: 보험사별 인수 심사가 까다로워지고 일부 특약 가입이 제한될 수 있어요.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">어린이보험 월 보험료는 성별에 따라 달라지나요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>대부분의 필수 특약은 성별과 무관하게 동일한 보험료로 책정돼요.</p>
+          <ul>
+            <li><strong>성별 무관 특약</strong>: 진단비·수술비·입원일당·실손 등 핵심 특약은 대부분 동일해요.</li>
+            <li><strong>성별 차이 특약</strong>: 극히 일부 특약에서만 소폭 차이가 발생할 수 있어요.</li>
+            <li>이 계산기는 참고용으로 작은 폭의 성별 보정만 반영합니다.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">이 어린이보험료 계산기의 결과는 실제 보험료와 얼마나 정확한가요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>이 계산기는 2026년 손해보험사 평균 추정치를 기반으로 한 <strong>참고용 시뮬레이션</strong>이에요.</p>
+          <ul>
+            <li><strong>계산 기준</strong>: 2026년 현대해상·삼성화재·DB손보·메리츠 평균 추정값이에요.</li>
+            <li><strong>실제 차이 발생 원인</strong>: 보험사별 약관, 가입 시점, 자녀의 진료·진단 이력에 따라 달라져요.</li>
+            <li><strong>오차 범위</strong>: 실제 보험료는 ±10~20% 내외 차이가 있을 수 있어요.</li>
+            <li>정확한 견적은 전문가 상담을 통해 2~3개 보험사 설계서를 비교하는 게 가장 정확해요.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">어린이보험 최소형과 표준형 중 어떤 걸 선택해야 하나요? <span class="arrow">▾</span></button>
+        <div class="faq-a">
+          <p>가족 예산과 가족력에 따라 달라지지만, 대부분의 경우 <strong>표준형</strong>부터 검토하는 게 좋아요.</p>
+          <ul>
+            <li><strong>최소형</strong>: 예산이 타이트한 경우 선택 가능해요. 진단비·실손 등 핵심 보장은 포함돼요.</li>
+            <li><strong>표준형</strong>: 일반적인 가정에 가장 추천하는 구성이에요. 비용 대비 보장이 균형 있어요.</li>
+            <li><strong>풀커버형</strong>: 가족력이 있거나 활동량이 많은 자녀라면 검토하세요.</li>
+            <li>어떤 구성이 맞는지 모르겠다면 전문가에게 가족 상황을 설명하고 맞춤 설계를 받는 게 가장 확실해요.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related -->
+    <section style="padding:20px 0 8px">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:14px;color:var(--gray-900)">함께 읽으면 좋아요</h2>
+      <div class="related-grid">
+        <a href="/child/어린이보험-완전정리/" class="related-card">
+          <div class="related-thumb yellow"><img src="/assets/img/baby-medical.png" alt="어린이보험 완전정리"></div>
+          <div><p class="ttl">어린이보험 완전정리 — 가입부터 청구까지</p><p class="desc">어린이보험 A–Z 한 페이지 정리</p></div>
+        </a>
+        <a href="/child/어린이보험-보장-적정성-진단/" class="related-card">
+          <div class="related-thumb mint"><img src="/assets/img/baby-angel.png" alt="어린이보험 보장 적정성 진단"></div>
+          <div><p class="ttl">🆕 어린이보험 보장 적정성 진단</p><p class="desc">지금 가입한 보험, 보장이 충분한지 진단해보세요</p></div>
+        </a>
+        <a href="/child/자녀-보험-가입-시기-진단/" class="related-card">
+          <div class="related-thumb violet"><img src="/assets/img/baby-wink.png" alt="자녀 보험 가입 시기 진단"></div>
+          <div><p class="ttl">자녀 보험 가입 시기 진단</p><p class="desc">지금이 적기인지 몇 문항으로 바로 확인</p></div>
+        </a>
+        <a href="/child/갱신형-보험료-계산기/" class="related-card">
+          <div class="related-thumb pink"><img src="/assets/img/baby-wave.png" alt="갱신형 보험료 폭탄 계산기"></div>
+          <div><p class="ttl">갱신형 보험료 폭탄 계산기</p><p class="desc">5·10·15년 후 갱신 보험료를 미리 확인해보세요</p></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h3>어린이보험, 아직 망설이고 계신가요?</h3>
+      <p>계산 결과가 복잡하게 느껴지신다면 전문가와 함께 비교해보세요. 부담 없는 무료 상담입니다.</p>
+      <a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos6" class="cta-btn">💬 카톡으로 무료 상담</a>
+    </div>
+
+  </div><!-- /container -->
+</main>
+
+
+<!-- Floating -->
+<a href="https://babybilly.co/insurance/child/standard?utm_source=villagebaby&utm_medium=content&utm_campaign=%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B3%B4%ED%97%98%EB%A3%8C-%EA%B3%84%EC%82%B0%EA%B8%B0&utm_content=pos7" target="_blank" rel="noopener" class="expert-float" aria-label="카톡 무료 상담">
+  <span style="font-size:18px">💬</span>
+  <span>카톡 무료 상담</span>
+</a>
+
+<script>
+// ── STATE ──
+const state = {week:0, gender:null, coverage:null};
+
+// ── STEP ──
+function goStep(n){
+  if(n===3 && !state.gender){alert('성별을 선택해주세요.');return;}
+  document.querySelectorAll('.step-panel').forEach((p,i)=>p.classList.toggle('active',i+1===n));
+  for(let i=1;i<=3;i++){
+    const num=document.getElementById('ind-'+i), lbl=document.getElementById('lbl-'+i);
+    if(i<n){num.className='step-num done';lbl.className='step-label';}
+    else if(i===n){num.className='step-num active';lbl.className='step-label active';}
+    else{num.className='step-num';lbl.className='step-label';}
+  }
+  for(let i=1;i<=2;i++) document.getElementById('line-'+i).classList.toggle('done',i<n);
+  document.getElementById('calculator').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ── SLIDER ──
+const slider=document.getElementById('weekSlider');
+const weekDisp=document.getElementById('weekDisplay');
+const weekMsg=document.getElementById('weekMsg');
+const weekNote=document.getElementById('weekNote');
+
+function updateWeek(w){
+  state.week=w; weekDisp.textContent=w;
+  const pct=(w/15)*100;
+  const color=w<=6?'#2D7CD2':w<=9?'#d4860a':'#F94646';
+  slider.style.background=`linear-gradient(to right,${color} ${pct}%,var(--gray-200) ${pct}%)`;
+  if(w===0){weekMsg.textContent='최적의 가입 시기예요 ✓';weekMsg.className='week-msg safe';weekNote.innerHTML='💡 어린이보험은 <strong>0세(출생 직후)</strong>에 가입해야 보험료가 평생 가장 저렴하고 진료 이력 없이 넓은 보장으로 가입할 수 있어요.';}
+  else if(w<=3){weekMsg.textContent='아직 여유 있어요, 서두르세요';weekMsg.className='week-msg safe';weekNote.innerHTML='💡 아직 진료 이력이 적은 시기예요. <strong>미루지 말고 지금 비교해보세요.</strong>';}
+  else if(w<=6){weekMsg.textContent='⚠️ 진료 이력이 쌓이기 시작해요';weekMsg.className='week-msg caution';weekNote.innerHTML='⚠️ <strong>이 시기부터 감기·중이염 등 이력이 보험료에 반영</strong>되기 시작해요.';}
+  else if(w<=9){weekMsg.textContent='🔴 보험료 상승 구간';weekMsg.className='week-msg urgent';weekNote.innerHTML='🔴 <strong>보험료가 0세 대비 15–40% 높아</strong>지는 구간이에요.';}
+  else{weekMsg.textContent='🚨 인수 심사 강화 구간';weekMsg.className='week-msg urgent';weekNote.innerHTML='🚨 <strong>10세 이상은 보험사별 인수 심사가 까다로워지고</strong> 일부 특약 가입이 제한될 수 있어요. 지금 바로 전문가 상담을 받아보세요.';}
+}
+slider.addEventListener('input',()=>updateWeek(parseInt(slider.value)));
+updateWeek(0);
+
+// ── GENDER ──
+function selectGender(g){
+  state.gender=g;
+  document.querySelectorAll('.gender-btn').forEach(b=>b.classList.toggle('selected',b.dataset.gender===g));
+  document.getElementById('genderNextBtn').disabled=false;
+}
+
+// ── COVERAGE ──
+function selectCoverage(c){
+  state.coverage=c;
+  document.querySelectorAll('.coverage-card').forEach(card=>card.classList.toggle('selected',card.dataset.coverage===c));
+  document.getElementById('calcBtn').disabled=false;
+}
+
+// ── CALCULATE ──
+const coverageItems={
+  basic:[
+    {text:'어린이종합진단비',included:true},{text:'실손 의료비',included:true},
+    {text:'수술비 (일반)',included:false},{text:'입원일당',included:false},
+    {text:'생활위험 (골절·화상)',included:false},{text:'5대질병진단비',included:false},
+  ],
+  standard:[
+    {text:'어린이종합진단비',included:true},{text:'실손 의료비',included:true},
+    {text:'수술비 (일반+고액)',included:true},{text:'입원일당',included:true},
+    {text:'생활위험 (골절·화상)',included:false},{text:'5대질병진단비',included:false},
+  ],
+  premium:[
+    {text:'어린이종합진단비',included:true},{text:'실손 의료비',included:true},
+    {text:'수술비 (일반+고액)',included:true},{text:'입원일당',included:true},
+    {text:'생활위험 (골절·화상)',included:true},{text:'5대질병진단비',included:true},
+  ],
+};
+
+const insurerData=[
+  {name:'A사 (대형 손보)',stars:4,note:'진단비 한도 크고 특약 구성 유연'},
+  {name:'B사 (대형 손보)',stars:4,note:'청구 만족도 높은 편, 보험료 다소 높음'},
+  {name:'C사 (중형 손보)',stars:4,note:'가성비 우수, 진단비 한도 큰 편'},
+  {name:'D사 (중형 손보)',stars:3,note:'가격 경쟁력 우수, 청구 프로세스 간편'},
+];
+
+function getAgeMult(a){if(a===0)return .85;if(a<=2)return .92;if(a<=5)return 1;if(a<=9)return 1.15;if(a<=12)return 1.35;return 1.6;}
+function getGenderMult(g){return{male:1,female:.97}[g]||1;}
+const baseRanges={basic:{min:45000,max:58000},standard:{min:70000,max:95000},premium:{min:100000,max:135000}};
+
+function calculate(){
+  if(!state.coverage){alert('보장 범위를 선택해주세요.');return;}
+  const w=state.week, g=state.gender||'male', c=state.coverage;
+  const base=baseRanges[c], wm=getAgeMult(w), gm=getGenderMult(g);
+  const minWon=Math.round(base.min*wm*gm/5000)*5000;
+  const maxWon=Math.round(base.max*wm*gm/5000)*5000;
+  const toMan=v=>(v/10000).toFixed(0);
+
+  document.getElementById('resMin').textContent=toMan(minWon);
+  document.getElementById('resMax').textContent=toMan(maxWon);
+
+  const gLabel={male:'남아',female:'여아'}[g];
+  const cLabel={basic:'최소형',standard:'표준형',premium:'풀커버형'}[c];
+  document.getElementById('resNote').textContent=`만${w}세 · ${gLabel} · ${cLabel} 기준 (2026년 8월 손해보험사 평균 추정치)`;
+
+  const urg=document.getElementById('resUrgency');
+  if(w<=3){urg.className='result-urgency safe';urg.textContent='✅ 적기 가입 구간';}
+  else if(w<=6){urg.className='result-urgency caution';urg.textContent='⚠️ 보험료 상승 시작 구간';}
+  else{urg.className='result-urgency urgent';urg.textContent=w<=9?'🔴 보험료 상승 구간':'🚨 인수 심사 강화 구간';}
+
+  document.getElementById('resTags').innerHTML=
+    [`만${w}세`,gLabel,cLabel].map(t=>`<span style="background:var(--blue-50);color:var(--blue-700);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px">${t}</span>`).join('');
+
+  document.getElementById('coverageList').innerHTML=coverageItems[c].map(item=>`
+    <div class="cb-item">
+      <div class="cb-check ${item.included?'included':'excluded'}">${item.included?'✓':'✕'}</div>
+      <div class="cb-text ${item.included?'':'dim'}">${item.text}</div>
+    </div>`).join('');
+
+  document.getElementById('insurerTable').innerHTML=insurerData.map(ins=>`
+    <tr>
+      <td>${ins.name}</td>
+      <td><span class="stars">${'★'.repeat(ins.stars)}${'☆'.repeat(5-ins.stars)}</span></td>
+      <td style="font-size:12px;color:var(--gray-600)">${ins.note}</td>
+    </tr>`).join('');
+
+  document.getElementById('f_weeks').value=`만${w}세`;
+  document.getElementById('f_gender').value=gLabel;
+  document.getElementById('f_coverage').value=cLabel;
+  document.getElementById('f_range').value=`${toMan(minWon)}만원–${toMan(maxWon)}만원`;
+
+  const rs=document.getElementById('result-section');
+  rs.classList.add('show');
+  setTimeout(()=>rs.scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+function resetCalc(){
+  document.getElementById('result-section').classList.remove('show');
+  state.gender=null; state.coverage=null;
+  document.querySelectorAll('.gender-btn,.coverage-card').forEach(el=>el.classList.remove('selected'));
+  document.getElementById('genderNextBtn').disabled=true;
+  document.getElementById('calcBtn').disabled=true;
+  goStep(1);
+}
+
+// ── FORM ──
+function submitForm(e){e.preventDefault();
+  var EP='https://script.google.com/macros/s/AKfycbzLlrpfs3RhwVFXLi3FdupEcB6jwFnqvUIYlVFj8vJYkKoqhJGmfwoU5i2TAG4wt5eZ/exec';
+  var g=function(id){var el=document.getElementById(id);return el?el.value:'';};
+  var fmtPhone=function(v){var d=String(v||'').replace(/[^0-9]/g,'');
+    if(d.length===11)return d.slice(0,3)+'-'+d.slice(3,7)+'-'+d.slice(7);
+    if(d.length===10)return d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);
+    return d;};
+  var payload={phone:fmtPhone(g('f_phone')),name:g('f_name'),weeks:g('f_weeks'),gender:g('f_gender'),
+    coverage:g('f_coverage'),range:g('f_range'),pref:g('f_pref'),
+    pageUrl:location.href,referrer:document.referrer||''};
+  var btn=e.target.querySelector('.btn-submit');
+  if(btn){btn.disabled=true;btn.textContent='전송 중...';}
+  function ga(ok){if(typeof gtag==='function'){gtag('event','form_submit',
+    {form_name:'child_premium_calc',status:ok?'success':'fail',send_to:'G-SRWXXLKTKD'});}}
+  if(EP.indexOf('https://')!==0){ga(false);showFallback();return;}
+  fetch(EP,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(payload)})
+    .then(function(r){return r.json();})
+    .then(function(j){ if(j&&j.ok){ga(true);showSuccess();} else {ga(false);showFallback();} })
+    .catch(function(){ga(false);showFallback();});
+}
+function showFallback(){
+  var a=document.getElementById('form-area'); if(a)a.style.display='none';
+  var f=document.getElementById('form-fallback');
+  if(f){f.style.display='block';f.scrollIntoView({behavior:'smooth'});}
+}
+function showSuccess(){
+  document.getElementById('form-area').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  document.getElementById('form-success').scrollIntoView({behavior:'smooth'});
+}
+
+// ── FAQ ──
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+</script>
+
+<footer class="vb-footer">
+  <p class="vb-ftop">엄빠를 위한 베이비빌리 꿀팁 연구소</p>
+  <p class="vb-fdesc">본 콘텐츠는 정보 제공 목적이며, 실제 가입 시 보험사 약관과 전문가 상담을 통해 확인하세요.</p>
+  <p class="vb-fmenu">
+    <a href="/">홈</a> · <a href="/guide/">가이드</a> · <a href="/child/">어린이보험</a> · <a href="/tools/">도구</a> · <a href="/privacy/">개인정보처리방침</a> · <a href="/terms/">이용약관</a>
+  </p>
+</footer>
+</body>
+</html>
