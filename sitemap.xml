@@ -4956,4 +4956,59 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EA%B0%90%EA%B8%B0-%EA%B8%B0%EC%B9%A8/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EA%B0%90%EA%B8%B0-%EA%B8%B0%EC%B9%A8-blue.png</image:loc>
+      <image:title>임신 초기 감기·기침</image:title>
+      <image:caption>감기 자체보다 위험한 건 자가 복용과 오래 가는 고열이에요. 대처 기준을 정리했어요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EB%B9%88%EB%87%A8-%EC%86%8C%EB%B3%80-%EB%B3%80%ED%99%94/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-%EC%B4%88%EA%B8%B0-%EB%B9%88%EB%87%A8-%EC%86%8C%EB%B3%80-%EB%B3%80%ED%99%94-blue.png</image:loc>
+      <image:title>임신 초기 빈뇨·소변 변화</image:title>
+      <image:caption>정상 빈뇨와 방광염을 가르는 기준은 '아픈가'예요. 구분법을 정리했어요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0-%EC%98%81%EC%96%91%EC%A0%9C-%EB%B3%B5%EC%9A%A9-%EC%8B%9C%EA%B8%B0-%EC%88%9C%EC%84%9C/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0-%EC%98%81%EC%96%91%EC%A0%9C-%EB%B3%B5%EC%9A%A9-%EC%8B%9C%EA%B8%B0-%EC%88%9C%EC%84%9C-blue.png</image:loc>
+      <image:title>임신 영양제 복용 시기</image:title>
+      <image:caption>엽산은 초기, 철분은 중기부터. 같이 먹으면 안 되는 조합까지 정리했어요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%ED%83%9C%EA%B5%90-%EC%8B%9C%EC%9E%91-%EC%8B%9C%EA%B8%B0-%EB%B0%A9%EB%B2%95/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%ED%83%9C%EA%B5%90-%EC%8B%9C%EC%9E%91-%EC%8B%9C%EA%B8%B0-%EB%B0%A9%EB%B2%95-blue.png</image:loc>
+      <image:title>태교 시작 시기</image:title>
+      <image:caption>초기엔 아직 듣지 못해요. 그래서 초기 태교는 엄마 컨디션이 전부예요.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://villagebaby.kr/guide/%EC%9E%84%EC%8B%A0%EB%B6%80-%EC%A0%9C%EB%AA%A8-%EC%99%81%EC%8B%B1-%EB%A0%88%EC%9D%B4%EC%A0%80/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://villagebaby.kr/assets/og/guide_%EC%9E%84%EC%8B%A0%EB%B6%80-%EC%A0%9C%EB%AA%A8-%EC%99%81%EC%8B%B1-%EB%A0%88%EC%9D%B4%EC%A0%80-blue.png</image:loc>
+      <image:title>임신부 제모</image:title>
+      <image:caption>면도기는 무난하고 레이저·제모크림은 미루는 쪽. 방법별로 정리했어요.</image:caption>
+    </image:image>
+  </url>
 </urlset>

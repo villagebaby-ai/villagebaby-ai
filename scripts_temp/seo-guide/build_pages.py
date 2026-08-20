@@ -9,7 +9,7 @@ import re
 import sys
 
 SITE = "/Users/villagebaby/villagebaby-ai-site"
-TODAY = "2026-08-19"
+TODAY = "2026-08-20"
 
 CSS = """:root{--blue:#2563eb;--blue-dark:#1d4ed8;--bg:#f8fafc;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--radius:12px;--mint:#3a8a7a;--mint-bg:#e8f4ef}
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:'Pretendard Variable','Pretendard',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;word-break:keep-all}
